@@ -50,7 +50,7 @@ namespace Yamed.Control
         }
 
 
-        public static IList LoadedRows;
+        public static List<object> LoadedRows;
         public static bool IsLoaded;
 
         public static void GetSelectedGridRowsAsync(ref GridControl gridControl)
@@ -62,11 +62,10 @@ namespace Yamed.Control
             handles = handles.Where(x => x >= 0).Select(x => x).ToArray();
 
             var count = handles.Length;
-
             if (count > 500) LoadedRows = gridControl.DataController.GetAllFilteredAndSortedRows().OfType<ReadonlyThreadSafeProxyForObjectFromAnotherThread>().Select(x=>x.OriginalRow).ToList();
             else
             {
-                LoadedRows = new object[count];
+                LoadedRows = new List<object>();
 
                 for (int index = 0; index < count; index++)
                 {
@@ -83,15 +82,15 @@ namespace Yamed.Control
                         }
                         gridControl.GetRowAsync(handle).ContinueWith((x) =>
                         {
-                            LoadedRows[i] =
+                            LoadedRows.Add(
                                 ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)
-                                    x.Result)?.OriginalRow;
+                                    x.Result)?.OriginalRow);
                         });
                     }
                     else
-                        LoadedRows[i] =
+                        LoadedRows.Add(
                             ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)
-                                row).OriginalRow;
+                                row).OriginalRow);
                 }
 
                 IsLoaded = !isAsyncLoader;

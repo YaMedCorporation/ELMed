@@ -339,17 +339,24 @@ where zsl.D3_SCID in {ids}";
             {
                 if (DxHelper.LoadedRows.Count > 0)
                 {
-                    var window = new DXWindow
+                    if (DxHelper.LoadedRows.GroupBy(x => ObjHelper.GetAnonymousValue(x, "LPU")).Select(gr => gr.Key).Count() > 1)
                     {
-                        ShowIcon = false,
-                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                        Content = new ReqControl(),
-                        Title = "Запрос на первичную документацию",
-                        SizeToContent = SizeToContent.Height,
-                        Width = 300
-                    };
-                    window.ShowDialog();
-                    ReqBind();
+                        DXMessageBox.Show("Документ можно создать только в рамках одной МО");
+                    }
+                    else
+                    {
+                        var window = new DXWindow
+                        {
+                            ShowIcon = false,
+                            WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                            Content = new ReqControl(),
+                            Title = "Запрос на первичную документацию",
+                            SizeToContent = SizeToContent.Height,
+                            Width = 300
+                        };
+                        window.ShowDialog();
+                        ReqBind();
+                    }
                 }
                 ElReestrTabNew11.gridControl1.IsEnabled = true;
                 DxHelper.LoadedRows.Clear();
