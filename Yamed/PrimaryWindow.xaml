@@ -251,7 +251,17 @@
                                             <TextBlock Grid.Column="1" Text="НСИ" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
                                         </Grid>
                                     </Button>
-                                    <!--<materialMenu:MenuButton Image="/Yamed.Icons;component/Icons/Doctor_2-512.png" Text="Поликлиника">
+                                <Button Click="Update_OnClick" Style="{StaticResource InformButton}" IsEnabled="True">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="75"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="/Yamed.Icons;component/Icons/update.png" Width="48" Height="48" ></Image>
+                                        <TextBlock Grid.Column="1" Text="Обновление" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
+                                    </Grid>
+                                </Button>
+                                <!--<materialMenu:MenuButton Image="/Yamed.Icons;component/Icons/Doctor_2-512.png" Text="Поликлиника">
                                             <materialMenu:MenuButton.Children >
                                                 <materialMenu:MenuButton Image="/Yamed.Icons;component/Icons/Work_Desk-512.png" Text="Рабочее место врача" MouseDown="WorkSpaceMenuButton_OnMouseDown" Margin="15,0,0,0"></materialMenu:MenuButton>
                                                 <materialMenu:MenuButton Image="/Yamed.Icons;component/Icons/time_sheduled-512.png" Text="Регистратура" MouseDown="UIElement_OnMouseDown" Margin="15,0,0,0"></materialMenu:MenuButton>

@@ -984,5 +984,10 @@ namespace Yamed
             ((Button) sender).IsEnabled = true;
 
         }
+
+        private void Update_OnClick(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater.exe"));
+        }
     }
 }
