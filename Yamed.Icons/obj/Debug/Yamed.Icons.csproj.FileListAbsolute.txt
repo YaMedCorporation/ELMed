@@ -10,3 +10,10 @@ F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
 F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojResolveAssemblyReference.cache
+E:\Apps\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+E:\Apps\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+E:\Apps\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojAssemblyReference.cache
+E:\Apps\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+E:\Apps\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
+E:\Apps\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+E:\Apps\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
