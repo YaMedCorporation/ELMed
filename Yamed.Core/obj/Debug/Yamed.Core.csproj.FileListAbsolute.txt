@@ -1,0 +1,5 @@
+F:\TFS_Codes\Yamed\Yamed.Core\bin\Debug\Yamed.Core.dll
+F:\TFS_Codes\Yamed\Yamed.Core\bin\Debug\Yamed.Core.pdb
+F:\TFS_Codes\Yamed\Yamed.Core\obj\Debug\Yamed.Core.dll
+F:\TFS_Codes\Yamed\Yamed.Core\obj\Debug\Yamed.Core.pdb
+F:\TFS_Codes\Yamed\Yamed.Core\obj\Debug\Yamed.Core.csprojResolveAssemblyReference.cache

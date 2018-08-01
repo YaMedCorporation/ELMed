@@ -1,0 +1,5 @@
+F:\TFS_Codes\Yamed\WebUI\bin\Debug\WebUI.dll
+F:\TFS_Codes\Yamed\WebUI\bin\Debug\WebUI.pdb
+F:\TFS_Codes\Yamed\WebUI\obj\Debug\WebUI.dll
+F:\TFS_Codes\Yamed\WebUI\obj\Debug\WebUI.pdb
+F:\TFS_Codes\Yamed\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache

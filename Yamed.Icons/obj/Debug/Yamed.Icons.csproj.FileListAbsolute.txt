@@ -1,0 +1,12 @@
+F:\CODE\ElmedicineOMS\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+F:\CODE\ElmedicineOMS\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+F:\CODE\ElmedicineOMS\Yamed.Icons\obj\Debug\Yamed.Icons.csprojResolveAssemblyReference.cache
+F:\CODE\ElmedicineOMS\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+F:\CODE\ElmedicineOMS\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+F:\CODE\ElmedicineOMS\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+F:\TFS_Codes\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+F:\TFS_Codes\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+F:\TFS_Codes\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojResolveAssemblyReference.cache

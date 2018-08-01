@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19.75, 22.125" name="YamedDataClasses">
+  <DataContextMoniker Name="/YamedDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b8ad5119-186e-4490-b623-87cfa80e218c" absoluteBounds="14.75, 9, 2, 6.5784326171874987">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_F003" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e39d5405-6c61-4143-8d82-1abb4724aadf" absoluteBounds="14.765, 9.46, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3ff64f1f-deb4-4617-bf3c-0817b126661d" absoluteBounds="0.75, 2.25, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/Yamed_Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0185375-cdaf-4986-a543-68f30eed8ae8" absoluteBounds="0.76500000000000057, 2.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6872fa8f-9019-41c2-936e-42798722ac12" absoluteBounds="0.75, 15.25, 2, 6.5784326171874987">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_AKT_MEE_TBL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="afa43dcd-2aef-4d9d-ac34-4a4f89fef0ed" absoluteBounds="0.76499999999999968, 15.71, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="395b25f0-61ef-4d5d-9b54-41ff967ce4e4" absoluteBounds="14.75, 0.75, 2, 7.1553369140624987">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/PACIENT1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24ec92c3-f296-4de2-ba53-d9014d3d9788" absoluteBounds="14.765, 1.21, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b4c3711-b179-446d-854c-c6a70f76721c" absoluteBounds="17.5, 3.25, 2, 18.116518554687502">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/SLUCH1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="72923355-af7b-49d9-851b-5605191a3767" absoluteBounds="17.515, 3.7100000000000009, 1.9700000000000002, 17.5565185546875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(16.75 : 12.2892163085937); (17.5 : 12.2892163085937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_F003/D3_F003_SLUCH1" />
+      <nodes>
+        <classShapeMoniker Id="b8ad5119-186e-4490-b623-87cfa80e218c" />
+        <classShapeMoniker Id="7b4c3711-b179-446d-854c-c6a70f76721c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 10.5821081542969); (17.5 : 10.5821081542969)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_F003/D3_F003_SLUCH11" />
+      <nodes>
+        <classShapeMoniker Id="b8ad5119-186e-4490-b623-87cfa80e218c" />
+        <classShapeMoniker Id="7b4c3711-b179-446d-854c-c6a70f76721c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 5.57766845703125); (17.5 : 5.57766845703125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/PACIENT1/PACIENT1_SLUCH1" />
+      <nodes>
+        <classShapeMoniker Id="395b25f0-61ef-4d5d-9b54-41ff967ce4e4" />
+        <classShapeMoniker Id="7b4c3711-b179-446d-854c-c6a70f76721c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c76d3559-f4fa-45be-b716-2cc3a2a7c0bd" absoluteBounds="12.25, 10, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_DSS_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f2dde26-9076-4fc1-8025-9f3261f1b996" absoluteBounds="12.265, 10.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb2d6c49-38c3-4494-87fd-302e90399ca6" absoluteBounds="3.5, 6.75, 2, 7.7322412109375014">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_PACIENT_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce998dbc-ea7b-48e9-81c1-0edd80d1c389" absoluteBounds="3.5149999999999997, 7.21, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bc1e06c5-d8f7-474d-8205-704eb1ecc45e" absoluteBounds="0.75, 8.25, 2, 4.8477197265624987">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_SCHET_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dbfa5c6b-e042-470e-ae39-25b99ef0c29c" absoluteBounds="0.76499999999999968, 8.71, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 10.6738598632812); (3.5 : 10.6738598632812)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SCHET_OMS/D3_SCHET_OMS_D3_PACIENT_OMS" />
+      <nodes>
+        <classShapeMoniker Id="bc1e06c5-d8f7-474d-8205-704eb1ecc45e" />
+        <classShapeMoniker Id="eb2d6c49-38c3-4494-87fd-302e90399ca6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4a0b0226-dddd-408a-bd1b-b37bf80c0c97" absoluteBounds="11.75, 19, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_SL_KSLP_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="390b925c-e66f-4843-9d32-7d5255a3692c" absoluteBounds="11.765, 19.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f997e80-83c9-40eb-8615-0fcfc07a555e" absoluteBounds="6.25, 6.25, 2, 8.8860498046875023">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_ZSL_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76bc96fc-8ae9-42cd-836a-95ebd51b589e" absoluteBounds="6.2650000000000006, 6.71, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 13.0977197265625); (1.75 : 14.8403955078125); (6.25 : 14.8403955078125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SCHET_OMS/D3_SCHET_OMS_D3_ZSL_OMS" />
+      <nodes>
+        <classShapeMoniker Id="bc1e06c5-d8f7-474d-8205-704eb1ecc45e" />
+        <classShapeMoniker Id="0f997e80-83c9-40eb-8615-0fcfc07a555e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 10.6161206054688); (6.25 : 10.6161206054688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_PACIENT_OMS/D3_PACIENT_OMS_D3_ZSL_OMS" />
+      <nodes>
+        <classShapeMoniker Id="eb2d6c49-38c3-4494-87fd-302e90399ca6" />
+        <classShapeMoniker Id="0f997e80-83c9-40eb-8615-0fcfc07a555e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d381f909-8712-48f1-b382-e73cde39452e" absoluteBounds="9.75, 6.125, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_SANK_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10863102-3be4-433d-93cf-dad83ad3b747" absoluteBounds="9.765, 6.585, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.4375 : 9.8189111328125); (11.4375 : 20.8932926432292); (2.75 : 20.8932926432292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SANK_OMS/D3_SANK_OMS_D3_AKT_MEE_TBL" />
+      <nodes>
+        <classShapeMoniker Id="d381f909-8712-48f1-b382-e73cde39452e" />
+        <classShapeMoniker Id="6872fa8f-9019-41c2-936e-42798722ac12" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 8.25); (1.75 : 6.15625); (9.75 : 6.15625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SCHET_OMS/D3_SCHET_OMS_D3_SANK_OMS" />
+      <nodes>
+        <classShapeMoniker Id="bc1e06c5-d8f7-474d-8205-704eb1ecc45e" />
+        <classShapeMoniker Id="d381f909-8712-48f1-b382-e73cde39452e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 8.03445556640625); (9.75 : 8.03445556640625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_ZSL_OMS/D3_ZSL_OMS_D3_SANK_OMS" />
+      <nodes>
+        <classShapeMoniker Id="0f997e80-83c9-40eb-8615-0fcfc07a555e" />
+        <classShapeMoniker Id="d381f909-8712-48f1-b382-e73cde39452e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a5705920-13fd-48f6-a283-c2cac320e27c" absoluteBounds="9.125, 10.625, 2, 9.2706526692708326">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_SL_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c5c73f4b-0607-4361-b5ee-372ebb58f5ab" absoluteBounds="9.14, 11.085, 1.9700000000000002, 8.7106526692708321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.125 : 11.2940991210937); (11.3541666666667 : 11.2940991210937 : JumpStart); (11.5208333333333 : 11.2940991210937 : JumpEnd); (12.25 : 11.2940991210937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SL_OMS/D3_SL_OMS_D3_DSS_OMS" />
+      <nodes>
+        <classShapeMoniker Id="a5705920-13fd-48f6-a283-c2cac320e27c" />
+        <classShapeMoniker Id="c76d3559-f4fa-45be-b716-2cc3a2a7c0bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.125 : 19.4478263346354); (11.3541666666667 : 19.4478263346354 : JumpStart); (11.5208333333333 : 19.4478263346354 : JumpEnd); (11.75 : 19.4478263346354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SL_OMS/D3_SL_OMS_D3_SL_KSLP_OMS" />
+      <nodes>
+        <classShapeMoniker Id="a5705920-13fd-48f6-a283-c2cac320e27c" />
+        <classShapeMoniker Id="4a0b0226-dddd-408a-bd1b-b37bf80c0c97" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 12.8805249023438); (9.125 : 12.8805249023438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_ZSL_OMS/D3_ZSL_OMS_D3_SL_OMS" />
+      <nodes>
+        <classShapeMoniker Id="0f997e80-83c9-40eb-8615-0fcfc07a555e" />
+        <classShapeMoniker Id="a5705920-13fd-48f6-a283-c2cac320e27c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f480cc4f-905b-4a04-984a-face4c4efc80" absoluteBounds="12.25, 12.625, 2, 6.0015283203125">
+      <DataClassMoniker Name="/YamedDataClassesDataContext/D3_USL_OMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3fa4af62-863d-4cae-ac8f-bd414e3c03cb" absoluteBounds="12.265, 13.085, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.125 : 15.6257641601562); (11.3541666666667 : 15.6257641601562 : JumpStart); (11.5208333333333 : 15.6257641601562 : JumpEnd); (12.25 : 15.6257641601562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YamedDataClassesDataContext/D3_SL_OMS/D3_SL_OMS_D3_USL_OMS" />
+      <nodes>
+        <classShapeMoniker Id="a5705920-13fd-48f6-a283-c2cac320e27c" />
+        <classShapeMoniker Id="f480cc4f-905b-4a04-984a-face4c4efc80" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,14 @@
+F:\TFS_Codes\Yamed\Update\bin\Debug\Update.exe.config
+F:\TFS_Codes\Yamed\Update\bin\Debug\Update.exe
+F:\TFS_Codes\Yamed\Update\bin\Debug\Update.pdb
+F:\TFS_Codes\Yamed\Update\bin\Debug\DotNetZip.dll
+F:\TFS_Codes\Yamed\Update\bin\Debug\Yamed.Core.dll
+F:\TFS_Codes\Yamed\Update\bin\Debug\Yamed.Server.dll
+F:\TFS_Codes\Yamed\Update\bin\Debug\Yamed.Entity.dll
+F:\TFS_Codes\Yamed\Update\bin\Debug\Yamed.Core.pdb
+F:\TFS_Codes\Yamed\Update\bin\Debug\Yamed.Server.pdb
+F:\TFS_Codes\Yamed\Update\bin\Debug\DotNetZip.xml
+F:\TFS_Codes\Yamed\Update\bin\Debug\Yamed.Entity.pdb
+F:\TFS_Codes\Yamed\Update\obj\Debug\Update.csprojResolveAssemblyReference.cache
+F:\TFS_Codes\Yamed\Update\obj\Debug\Update.exe
+F:\TFS_Codes\Yamed\Update\obj\Debug\Update.pdb

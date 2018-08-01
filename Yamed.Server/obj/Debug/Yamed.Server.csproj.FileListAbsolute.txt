@@ -1,0 +1,9 @@
+F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
+F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
+F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+F:\TFS_Codes\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojResolveAssemblyReference.cache
+F:\TFS_Codes\Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
+F:\TFS_Codes\Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
