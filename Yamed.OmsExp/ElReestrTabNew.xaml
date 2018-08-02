@@ -7,7 +7,7 @@
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
         xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-        x:Class="Yamed.OmsExp.ElReestrTabNew" mc:Ignorable="d"  Unloaded="UserControl_Unloaded" Loaded="UserControl_Loaded">
+        x:Class="Yamed.OmsExp.ElReestrTabNew" mc:Ignorable="d"  Unloaded="UserControl_Unloaded" Loaded="UserControl_Loaded" >
 
     <UserControl.Resources>
         <!--<dx:LinqInstantFeedbackDataSource x:Key="LinqInstantFeedbackDataSource" AreSourceRowsThreadSafe="False" KeyExpression="KeyID"/>-->
@@ -50,7 +50,7 @@
             <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" Width="110" Name="MekCommSearchEdit" Margin="5,0,10,0" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor" />
 
         </StackPanel>-->
-        <dxg:GridControl Name="gridControl1" AutoExpandAllGroups="True" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}">
+        <dxg:GridControl Name="gridControl1" AutoExpandAllGroups="True" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public">
             <dxg:GridControl.Columns>
 
                 <dxg:GridColumn x:Name="Column_IDC" FieldName="ID" Header="ИД" />

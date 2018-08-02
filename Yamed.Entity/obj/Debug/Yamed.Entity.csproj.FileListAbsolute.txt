@@ -4,3 +4,9 @@ F:\TFS_Codes\Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
 F:\TFS_Codes\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
 F:\TFS_Codes\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
 F:\TFS_Codes\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojResolveAssemblyReference.cache
+F:\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+F:\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+F:\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+F:\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojResolveAssemblyReference.cache
+F:\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+F:\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using Yamed.Control;
 using Yamed.Core;
 using Yamed.Emr;
 using Yamed.Entity;
+using Yamed.OmsExp.MekEditor;
 using Yamed.Server;
 
 namespace Yamed.Oms
@@ -260,5 +262,41 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
 
 
+        private void Perenos_OnClick(object sender, RoutedEventArgs e)
+        {
+            DxHelper.GetSelectedGridRowsAsync(ref ElReestrTabNew11.gridControl1);
+            bool isLoaded = false;
+            ElReestrTabNew11.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action) delegate()
+                    {
+                        if (ElReestrTabNew11.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+            }).ContinueWith(lr =>
+            {
+
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    Content = new ReestrChooseControl(),
+                    Title = "Выбор реестра для переноса"
+                };
+                window.ShowDialog();
+
+                ElReestrTabNew11.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
     }
 }

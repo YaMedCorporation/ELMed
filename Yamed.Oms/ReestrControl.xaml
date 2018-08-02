@@ -140,7 +140,7 @@
                 <Button Style="{StaticResource InformButton}" Click="ZslCompile_OnClick" Margin="10,2,2,2">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Yamed.Icons;component/Icons/Leader-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Объединить обращение" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Объединить обр." VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="FlkLoad_OnClick" Margin="10,2,2,2">
@@ -149,9 +149,15 @@
                         <TextBlock Text="ФЛК/ОСП" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
                     </StackPanel>
                 </Button>
+                <Button Style="{StaticResource InformButton}" Click="Perenos_OnClick" Margin="10,2,2,2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Yamed.Icons;component/Icons/527-512.png" Width="48" Height="48"></Image>
+                        <TextBlock Text="Перенос" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Grid>
-        <omsExp:ElReestrTabNew Grid.Row="1" Name="ElReestrTabNew11"></omsExp:ElReestrTabNew>
+        <omsExp:ElReestrTabNew Grid.Row="1" Name="ElReestrTabNew11" ></omsExp:ElReestrTabNew>
 
     </Grid>
 </UserControl>
