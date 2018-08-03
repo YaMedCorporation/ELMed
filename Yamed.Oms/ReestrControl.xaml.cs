@@ -288,7 +288,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 var window = new DXWindow
                 {
                     ShowIcon = false,
-                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     Content = new ReestrChooseControl(),
                     Title = "Выбор реестра для переноса"
                 };

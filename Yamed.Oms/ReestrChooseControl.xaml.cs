@@ -18,6 +18,8 @@ using Yamed.Core;
 using Yamed.Server;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace Yamed.Oms
 {
@@ -30,27 +32,31 @@ namespace Yamed.Oms
         {
             InitializeComponent();
         }
+        
 
         private int _id;
-        private void ButtonEdit_OnDefaultButtonClick(object sender, RoutedEventArgs e)
+
+        private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            _id = Convert.ToInt32(ButtonEdit.EditValue);
-            var ids = GetIds(DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray());
-
-            var updObj = (IList)Reader2List.CustomAnonymousSelect($"Select * from D3_ZSL_OMS Where ID in ({ids})",
-                SprClass.LocalConnectionString);
-            //updObj.ForEach(x=> x.SetValue("D3_SCID", _id));
-            foreach (var row in updObj)
+            int selectCbOne = cbOperation.SelectedIndex;
+            if (selectCbOne == 1)
             {
-                var r = row;
-                ObjHelper.SetAnonymousValue(ref r, _id, "D3_SCID");
+                var ids = GetIds(DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray());
+
+                var updObj = (IList)Reader2List.CustomAnonymousSelect($"Select * from D3_ZSL_OMS Where ID in ({ids})",
+                    SprClass.LocalConnectionString);
+                //updObj.ForEach(x=> x.SetValue("D3_SCID", _id));
+                foreach (var row in updObj)
+                {
+                    var r = row;
+                    ObjHelper.SetAnonymousValue(ref r, _id, "D3_SCID");
+                }
+
+                var upd = Reader2List.CustomUpdateCommand("D3_ZSL_OMS", updObj, "ID");
+                Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                MessageBox.Show("Перенос записей выполнен успешно.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            var upd = Reader2List.CustomUpdateCommand("D3_ZSL_OMS", updObj, "ID");
-            Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
-            MessageBox.Show("Перенос записей выполнен успешно.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
 
         string GetIds(int[] collection)
         {
@@ -70,6 +76,10 @@ namespace Yamed.Oms
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<string> list = new ObservableCollection<string>();
+            list.Add("1 Копирование");
+            list.Add("2 Перенос");
+            cbOperation.ItemsSource = list;
             using (SqlConnection sc = new SqlConnection(SprClass.LocalConnectionString))
             {
                 sc.Open();
@@ -78,17 +88,17 @@ namespace Yamed.Oms
                     using (DataTable dt = new DataTable())
                     {
                         sda.Fill(dt);
-                        comboboxSchets.ItemsSource = dt;
+                        cbSchets.ItemsSource = dt;
                     }
                 }
                 sc.Close();
-                comboboxSchets.SelectedIndex = -1;
+                cbSchets.SelectedIndex = -1;
             }
         }
 
         private void comboboxSchets_SelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-            ButtonEdit.EditValue = ((DataRowView)comboboxSchets.SelectedItem)[comboboxSchets.ValueMember].ToString();
+            _id = Convert.ToInt32(((DataRowView)cbSchets.SelectedItem)[cbSchets.ValueMember]);
         }
     }
 }
