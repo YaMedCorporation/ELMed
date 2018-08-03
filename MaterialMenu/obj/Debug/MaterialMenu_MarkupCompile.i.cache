@@ -4,7 +4,7 @@
 library
 C#
 .cs
-F:\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\
+D:\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\
 MaterialMenu
 none
 false
@@ -16,5 +16,5 @@ DEBUG;TRACE
 121654848548
 MenuButton.xaml;SideMenu.xaml;
 
-False
+True
 

@@ -23,3 +23,9 @@ F:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojResolveAssemblyRe
 F:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 F:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 F:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+D:\TFS_Codes\Git_Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+D:\TFS_Codes\Git_Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojResolveAssemblyReference.cache
+D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb

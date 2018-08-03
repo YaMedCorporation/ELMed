@@ -4,7 +4,7 @@
 library
 C#
 .cs
-F:\TFS_Codes\Git_Yamed\Yamed.Registry\obj\Debug\
+D:\TFS_Codes\Git_Yamed\Yamed.Registry\obj\Debug\
 Yamed.Registry
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 10516491175
 159977419
 23984681522
-57295674333
+57-406363785
 PacientReserveControl.xaml;PatientRegistration.xaml;ScheduleControl.xaml;ScheduleGen.xaml;ScheduleModelControl.xaml;ScheduleModelEditControl.xaml;Views\BookingItem.xaml;Views\BookingView.xaml;Views\HourBookingView.xaml;Views\ScheduleView.xaml;
 
 True

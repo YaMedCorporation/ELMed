@@ -257,7 +257,7 @@
                                             <ColumnDefinition Width="75"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="/Yamed.Icons;component/Icons/update.png" Width="48" Height="48" ></Image>
+                                        <Image Source="/Yamed.Icons;component/Icons/cloud_update-512.png" Width="48" Height="48" ></Image>
                                         <TextBlock Grid.Column="1" Text="Обновление" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
                                     </Grid>
                                 </Button>
