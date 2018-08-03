@@ -307,9 +307,6 @@ E:\Apps\Yamed\Yamed.Report\bin\Debug\DevExpress.XtraCharts.v16.2.dll
 E:\Apps\Yamed\Yamed.Report\bin\Debug\DevExpress.XtraGauges.v16.2.Core.dll
 E:\Apps\Yamed\Yamed.Report\bin\Debug\DevExpress.XtraReports.v16.2.dll
 E:\Apps\Yamed\Yamed.Report\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.dll
-E:\Apps\Yamed\Yamed.Report\bin\Debug\FastReport.Bars.dll
-E:\Apps\Yamed\Yamed.Report\bin\Debug\FastReport.dll
-E:\Apps\Yamed\Yamed.Report\bin\Debug\FastReport.Editor.dll
 E:\Apps\Yamed\Yamed.Report\bin\Debug\Yamed.Control.dll
 E:\Apps\Yamed\Yamed.Report\bin\Debug\Yamed.Core.dll
 E:\Apps\Yamed\Yamed.Report\bin\Debug\Yamed.Icons.dll
