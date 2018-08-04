@@ -249,8 +249,8 @@ namespace Yamed.Server
             YamedUsers = Reader2List.GetAnonymousTable("Yamed_Users", LocalConnectionString);
             KslpList = Reader2List.CustomAnonymousSelect("Select * from SprKSLP where DATEBEG >='20180101'", LocalConnectionString);
             DnList = Reader2List.CustomAnonymousSelect("Select * from Yamed_Spr_Dn", LocalConnectionString);
-            SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
-            SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
+            //SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
+            //SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
 
             using (ElmedDataClassesDataContext elMed = new ElmedDataClassesDataContext(LocalConnectionString))
             {
@@ -266,8 +266,7 @@ namespace Yamed.Server
                 KodTers = elMed.GetTable<KodTer>().ToList();
                 SocStats = elMed.GetTable<SocStat>().ToList();
                 KatLgots = elMed.GetTable<KatLgot>().ToList();
-
-
+                
                 Gospits = elMed.GetTable<Gospit>().ToList();
                 Dostavs = elMed.GetTable<Dostav>().ToList();
                 TravmaTbls = elMed.GetTable<TravmaTbl>().ToList();

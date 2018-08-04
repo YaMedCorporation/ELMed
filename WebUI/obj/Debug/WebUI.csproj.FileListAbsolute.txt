@@ -8,3 +8,8 @@ F:\TFS_Codes\Git_Yamed\WebUI\bin\Debug\WebUI.pdb
 F:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
 F:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.dll
 F:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.pdb
+D:\TFS_Codes\Git_Yamed\WebUI\bin\Debug\WebUI.dll
+D:\TFS_Codes\Git_Yamed\WebUI\bin\Debug\WebUI.pdb
+D:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
+D:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.dll
+D:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.pdb
