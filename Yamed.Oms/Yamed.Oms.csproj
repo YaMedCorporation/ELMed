@@ -55,7 +55,7 @@
     </Reference>
     <Reference Include="GalaSoft.MvvmLight.WPF4, Version=3.0.0.30125, Culture=neutral, PublicKeyToken=6fcde8ddc3781e3e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Elmedicine\Elmedicine\bin\Debug\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+      <HintPath>..\..\Yamed\Yamed\bin\Debug\GalaSoft.MvvmLight.WPF4.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

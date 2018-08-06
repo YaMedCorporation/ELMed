@@ -1373,3 +1373,4 @@ D:\TFS_Codes\Git_Yamed\Yamed\obj\Debug\App.baml
 D:\TFS_Codes\Git_Yamed\Yamed\obj\Debug\Yamed.g.resources
 D:\TFS_Codes\Git_Yamed\Yamed\obj\Debug\Yamed.Properties.Resources.resources
 D:\TFS_Codes\Git_Yamed\Yamed\obj\Debug\Yamed.csproj.GenerateResource.Cache
+D:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\GalaSoft.MvvmLight.WPF4.dll

@@ -38,6 +38,7 @@ namespace Yamed.Oms
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
+            _id = (int) cbSchets.EditValue;
             int selectCbOne = cbOperation.SelectedIndex;
             if (selectCbOne == 1)
             {
@@ -80,25 +81,29 @@ namespace Yamed.Oms
             list.Add("1 Копирование");
             list.Add("2 Перенос");
             cbOperation.ItemsSource = list;
-            using (SqlConnection sc = new SqlConnection(SprClass.LocalConnectionString))
-            {
-                sc.Open();
-                using (SqlDataAdapter sda = new SqlDataAdapter("select s.id as ID, case   when s.month = 1 then concat('Реестр счета (', s.id, ') Январь ', s.year,' г.')   when s.month = 2 then concat('Реестр счета (', s.id, ') Февраль ', s.year,' г.')   when s.month = 3 then concat('Реестр счета (', s.id, ') Март ', s.year,' г.')   when s.month = 4 then concat('Реестр счета (', s.id, ') Апрель ', s.year,' г.')   when s.month = 5 then concat('Реестр счета (', s.id, ') Май ', s.year,' г.')   when s.month = 6 then concat('Реестр счета (', s.id, ') Июнь ', s.year,' г.')   when s.month = 7 then concat('Реестр счета (', s.id, ') Июль ', s.year,' г.')   when s.month = 8 then concat('Реестр счета (', s.id, ') Август ', s.year,' г.')   when s.month = 9 then concat('Реестр счета (', s.id, ') Сентябрь ', s.year,' г.')   when s.month = 10 then concat('Реестр счета (', s.id, ') Октябрь ', s.year,' г.')   when s.month = 11 then concat('Реестр счета (', s.id, ') Ноябрь ', s.year,' г.')   when s.month = 12 then concat('Реестр счета (', s.id, ') Декабрь ', s.year,' г.') end nameSchet from d3_schet_oms s", sc))
-                {
-                    using (DataTable dt = new DataTable())
-                    {
-                        sda.Fill(dt);
-                        cbSchets.ItemsSource = dt;
-                    }
-                }
-                sc.Close();
-                cbSchets.SelectedIndex = -1;
-            }
+            //using (SqlConnection sc = new SqlConnection(SprClass.LocalConnectionString))
+            //{
+            //    sc.Open();
+            //    using (SqlDataAdapter sda = new SqlDataAdapter("select (((('—счет(' + CONVERT([varchar](16), [ID])  + ')/период '+CONVERT([varchar](2),[MONTH],(0)))+'.')+CONVERT([char](6),[YEAR],(0)))+isnull(('('+[COMENTS])+')','')) nameSchet from d3_schet_oms s", sc))
+            //    {
+            //        using (DataTable dt = new DataTable())
+            //        {
+            //            sda.Fill(dt);
+            //            cbSchets.ItemsSource = dt;
+            //        }
+            //    }
+            //    sc.Close();
+            //    cbSchets.SelectedIndex = -1;
+            //}
+            cbSchets.ItemsSource =
+                Reader2List.CustomAnonymousSelect(
+                    "select(((('—счет(' + CONVERT([varchar](16), [ID]) + ')/период ' + CONVERT([varchar](2),[MONTH], (0)))+'.')+CONVERT([char](6),[YEAR],(0)))+isnull(('('+[COMENTS])+')','')) nameSchet from d3_schet_oms s",
+                    SprClass.LocalConnectionString);
         }
 
         private void comboboxSchets_SelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-            _id = Convert.ToInt32(((DataRowView)cbSchets.SelectedItem)[cbSchets.ValueMember]);
+            //_id = Convert.ToInt32(((DataRowView)cbSchets.SelectedItem)[cbSchets.ValueMember]);
         }
     }
 }

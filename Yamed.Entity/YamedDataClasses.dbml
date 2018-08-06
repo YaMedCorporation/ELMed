@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ELMEDICINENEWFOND" Class="YamedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=77.241.17.98,1416;Initial Catalog=ELMEDICINENEWFOND;User ID=Vasilenko" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ELMEDICINENEWFONDConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Elmed" Class="YamedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ElmedConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.F003" Member="D3_F003">
     <Type Name="D3_F003">
       <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -34,6 +34,7 @@
       <Column Name="NameWithID" Type="System.String" DbType="NVarChar(260)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="D3_F003_SLUCH1" Member="SLUCH" ThisKey="mcod" OtherKey="LPU" Type="SLUCH1" />
       <Association Name="D3_F003_SLUCH11" Member="SLUCH1" ThisKey="mcod" OtherKey="NPR_MO" Type="SLUCH1" />
+      <Association Name="D3_F003_D3_SCHET_SMO_OMS" Member="D3_SCHET_SMO_OMS" ThisKey="mcod" OtherKey="CODE_MO" Type="D3_SCHET_SMO_OMS" />
     </Type>
   </Table>
   <Table Name="dbo.Yamed_Users" Member="Yamed_Users">
@@ -463,6 +464,26 @@
       <Column Name="VERS_SPEC" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
       <Column Name="PRVS_VERS" Type="System.String" DbType="NVarChar(9)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="D3_SL_OMS_D3_USL_OMS" Member="D3_SL_OMS" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.D3_SCHET_SMO_OMS" Member="D3_SCHET_SMO_OMS">
+    <Type Name="D3_SCHET_SMO_OMS">
+      <Column Name="CODE" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SCHET_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODE_MO" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="YEAR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MONTH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NSCHET" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DSCHET" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PLAT" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="SUMMAV" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="COMENTS" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="SUMMAP" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SANK_MEK" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SANK_MEE" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SANK_EKMP" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="COUNT_SL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="D3_F003_D3_SCHET_SMO_OMS" Member="D3_F003" ThisKey="CODE_MO" OtherKey="mcod" Type="D3_F003" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

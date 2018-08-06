@@ -175,6 +175,8 @@ namespace Yamed.Reports
             {
                 if (p.Name == "ID")
                     p.Value = _scs.First();
+                if (p.Name == "smo")
+                    p.Value = _smo;
                 //if (p.Name == "ReqID")
                 //    p.Value = req;
                 //if (p.Name == "s_dates")

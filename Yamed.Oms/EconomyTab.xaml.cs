@@ -34,7 +34,7 @@ namespace Yamed.Oms
     public partial class EconomyWindow : UserControl
     {
         public LinqInstantFeedbackDataSource linqInstantFeedbackDataSource;
-        public List<SCHET_OMS> OmsList;
+        public List<D3_SCHET_SMO_OMS> OmsList;
 
         public static readonly DependencyProperty IsSmoTableVisibleProperty =
             DependencyProperty.Register("IsSmoTableVisible", typeof (Visibility), typeof (EconomyWindow), null);
@@ -191,7 +191,7 @@ namespace Yamed.Oms
 
         private void OmsAddItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            var oms = new SCHET_OMS();
+            var oms = new D3_SCHET_SMO_OMS();
             var row = DxHelper.GetSelectedGridRow(gridControl);
             oms.SCHET_ID = (int)ObjHelper.GetAnonymousValue(row, "ID");
             oms.YEAR = (int)ObjHelper.GetAnonymousValue(row, "YEAR");
@@ -201,7 +201,7 @@ namespace Yamed.Oms
             OmsList.Add(oms);
             //var type = typeof (SCHET_OMS);
             //var obj = Activator.CreateInstance(type);
-            var sprEditWindow = new UniSprEditControl("SCHET_OMS", oms, false, SprClass.LocalConnectionString);
+            var sprEditWindow = new UniSprEditControl("D3_SCHET_SMO_OMS", oms, false, SprClass.LocalConnectionString);
             var window = new DXWindow
             {
                 ShowIcon = false,
@@ -214,8 +214,8 @@ namespace Yamed.Oms
             {
                 OmsList.Remove(oms);
             }
-            OmsList = Reader2List.CustomSelect<SCHET_OMS>(
-                $@"Select * From SCHET_OMS WHERE SCHET_ID = {ObjHelper.GetAnonymousValue(row, "ID")}"
+            OmsList = Reader2List.CustomSelect<D3_SCHET_SMO_OMS>(
+                $@"Select * From D3_SCHET_SMO_OMS WHERE SCHET_ID = {ObjHelper.GetAnonymousValue(row, "ID")}"
                 , SprClass.LocalConnectionString);
             gridControl2.DataContext = OmsList;
         }
@@ -227,8 +227,8 @@ namespace Yamed.Oms
 
             var id = ObjHelper.GetAnonymousValue(row, "ID");
             OmsList =
-                Reader2List.CustomSelect<SCHET_OMS>(
-                    $@"Select * From SCHET_OMS WHERE SCHET_ID = {id}"
+                Reader2List.CustomSelect<D3_SCHET_SMO_OMS>(
+                    $@"Select * From D3_SCHET_SMO_OMS WHERE SCHET_ID = {id}"
                     , SprClass.LocalConnectionString);
             gridControl2.DataContext = OmsList;
         }
@@ -237,7 +237,7 @@ namespace Yamed.Oms
         {
             var row = gridControl2.SelectedItem;
             if (row == null) return;
-            var sprEditWindow = new UniSprEditControl("SCHET_OMS", row, true, SprClass.LocalConnectionString);
+            var sprEditWindow = new UniSprEditControl("D3_SCHET_SMO_OMS", row, true, SprClass.LocalConnectionString);
             var window = new DXWindow
             {
                 ShowIcon = false,
@@ -251,10 +251,10 @@ namespace Yamed.Oms
 
         private void OmsDelItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            var row = (SCHET_OMS)gridControl2.SelectedItem;
+            var row = (D3_SCHET_SMO_OMS)gridControl2.SelectedItem;
             if (row == null) return;
 
-            Reader2List.CustomExecuteQuery($"DELETE FROM {"SCHET_OMS"} WHERE {"CODE"}={row.CODE}", SprClass.LocalConnectionString);
+            Reader2List.CustomExecuteQuery($"DELETE FROM {"D3_SCHET_SMO_OMS"} WHERE {"CODE"}={row.CODE}", SprClass.LocalConnectionString);
             OmsList.Remove(row);
             gridControl2.RefreshData();
         }
@@ -357,7 +357,7 @@ namespace Yamed.Oms
         private void DocumentItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(gridControl));
-            var row = (SCHET_OMS)gridControl2.SelectedItem;
+            var row = (D3_SCHET_SMO_OMS)gridControl2.SelectedItem;
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {

@@ -290,7 +290,8 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     Content = new ReestrChooseControl(),
-                    Title = "Выбор реестра для переноса"
+                    Title = "Выбор реестра для переноса",
+                    Width = 350, Height = 300
                 };
                 window.ShowDialog();
 

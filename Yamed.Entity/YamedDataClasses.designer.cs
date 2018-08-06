@@ -22,7 +22,7 @@ namespace Yamed.Entity
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ELMEDICINENEWFOND")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Elmed")]
 	public partial class YamedDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -69,10 +69,13 @@ namespace Yamed.Entity
     partial void InsertD3_USL_OMS(D3_USL_OMS instance);
     partial void UpdateD3_USL_OMS(D3_USL_OMS instance);
     partial void DeleteD3_USL_OMS(D3_USL_OMS instance);
+    partial void InsertD3_SCHET_SMO_OMS(D3_SCHET_SMO_OMS instance);
+    partial void UpdateD3_SCHET_SMO_OMS(D3_SCHET_SMO_OMS instance);
+    partial void DeleteD3_SCHET_SMO_OMS(D3_SCHET_SMO_OMS instance);
     #endregion
 		
 		public YamedDataClassesDataContext() : 
-				base(global::Yamed.Entity.Properties.Settings.Default.ELMEDICINENEWFONDConnectionString, mappingSource)
+				base(global::Yamed.Entity.Properties.Settings.Default.ElmedConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -204,6 +207,14 @@ namespace Yamed.Entity
 				return this.GetTable<D3_USL_OMS>();
 			}
 		}
+		
+		public System.Data.Linq.Table<D3_SCHET_SMO_OMS> D3_SCHET_SMO_OMS
+		{
+			get
+			{
+				return this.GetTable<D3_SCHET_SMO_OMS>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.F003")]
@@ -276,6 +287,8 @@ namespace Yamed.Entity
 		
 		private EntitySet<SLUCH1> _SLUCH1;
 		
+		private EntitySet<D3_SCHET_SMO_OMS> _D3_SCHET_SMO_OMS;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -346,6 +359,7 @@ namespace Yamed.Entity
 		{
 			this._SLUCH = new EntitySet<SLUCH1>(new Action<SLUCH1>(this.attach_SLUCH), new Action<SLUCH1>(this.detach_SLUCH));
 			this._SLUCH1 = new EntitySet<SLUCH1>(new Action<SLUCH1>(this.attach_SLUCH1), new Action<SLUCH1>(this.detach_SLUCH1));
+			this._D3_SCHET_SMO_OMS = new EntitySet<D3_SCHET_SMO_OMS>(new Action<D3_SCHET_SMO_OMS>(this.attach_D3_SCHET_SMO_OMS), new Action<D3_SCHET_SMO_OMS>(this.detach_D3_SCHET_SMO_OMS));
 			OnCreated();
 		}
 		
@@ -975,6 +989,19 @@ namespace Yamed.Entity
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_F003_D3_SCHET_SMO_OMS", Storage="_D3_SCHET_SMO_OMS", ThisKey="mcod", OtherKey="CODE_MO")]
+		public EntitySet<D3_SCHET_SMO_OMS> D3_SCHET_SMO_OMS
+		{
+			get
+			{
+				return this._D3_SCHET_SMO_OMS;
+			}
+			set
+			{
+				this._D3_SCHET_SMO_OMS.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1017,6 +1044,18 @@ namespace Yamed.Entity
 		{
 			this.SendPropertyChanging();
 			entity.D3_F0031 = null;
+		}
+		
+		private void attach_D3_SCHET_SMO_OMS(D3_SCHET_SMO_OMS entity)
+		{
+			this.SendPropertyChanging();
+			entity.D3_F003 = this;
+		}
+		
+		private void detach_D3_SCHET_SMO_OMS(D3_SCHET_SMO_OMS entity)
+		{
+			this.SendPropertyChanging();
+			entity.D3_F003 = null;
 		}
 	}
 	
@@ -10860,6 +10899,445 @@ namespace Yamed.Entity
 						this._D3_SLID = default(int);
 					}
 					this.SendPropertyChanged("D3_SL_OMS");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.D3_SCHET_SMO_OMS")]
+	public partial class D3_SCHET_SMO_OMS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CODE;
+		
+		private int _SCHET_ID;
+		
+		private string _CODE_MO;
+		
+		private int _YEAR;
+		
+		private int _MONTH;
+		
+		private string _NSCHET;
+		
+		private System.DateTime _DSCHET;
+		
+		private string _PLAT;
+		
+		private System.Nullable<decimal> _SUMMAV;
+		
+		private string _COMENTS;
+		
+		private System.Nullable<decimal> _SUMMAP;
+		
+		private System.Nullable<decimal> _SANK_MEK;
+		
+		private System.Nullable<decimal> _SANK_MEE;
+		
+		private System.Nullable<decimal> _SANK_EKMP;
+		
+		private System.Nullable<int> _COUNT_SL;
+		
+		private EntityRef<D3_F003> _D3_F003;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCODEChanging(int value);
+    partial void OnCODEChanged();
+    partial void OnSCHET_IDChanging(int value);
+    partial void OnSCHET_IDChanged();
+    partial void OnCODE_MOChanging(string value);
+    partial void OnCODE_MOChanged();
+    partial void OnYEARChanging(int value);
+    partial void OnYEARChanged();
+    partial void OnMONTHChanging(int value);
+    partial void OnMONTHChanged();
+    partial void OnNSCHETChanging(string value);
+    partial void OnNSCHETChanged();
+    partial void OnDSCHETChanging(System.DateTime value);
+    partial void OnDSCHETChanged();
+    partial void OnPLATChanging(string value);
+    partial void OnPLATChanged();
+    partial void OnSUMMAVChanging(System.Nullable<decimal> value);
+    partial void OnSUMMAVChanged();
+    partial void OnCOMENTSChanging(string value);
+    partial void OnCOMENTSChanged();
+    partial void OnSUMMAPChanging(System.Nullable<decimal> value);
+    partial void OnSUMMAPChanged();
+    partial void OnSANK_MEKChanging(System.Nullable<decimal> value);
+    partial void OnSANK_MEKChanged();
+    partial void OnSANK_MEEChanging(System.Nullable<decimal> value);
+    partial void OnSANK_MEEChanged();
+    partial void OnSANK_EKMPChanging(System.Nullable<decimal> value);
+    partial void OnSANK_EKMPChanged();
+    partial void OnCOUNT_SLChanging(System.Nullable<int> value);
+    partial void OnCOUNT_SLChanged();
+    #endregion
+		
+		public D3_SCHET_SMO_OMS()
+		{
+			this._D3_F003 = default(EntityRef<D3_F003>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODE", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CODE
+		{
+			get
+			{
+				return this._CODE;
+			}
+			set
+			{
+				if ((this._CODE != value))
+				{
+					this.OnCODEChanging(value);
+					this.SendPropertyChanging();
+					this._CODE = value;
+					this.SendPropertyChanged("CODE");
+					this.OnCODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SCHET_ID", DbType="Int NOT NULL")]
+		public int SCHET_ID
+		{
+			get
+			{
+				return this._SCHET_ID;
+			}
+			set
+			{
+				if ((this._SCHET_ID != value))
+				{
+					this.OnSCHET_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SCHET_ID = value;
+					this.SendPropertyChanged("SCHET_ID");
+					this.OnSCHET_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODE_MO", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string CODE_MO
+		{
+			get
+			{
+				return this._CODE_MO;
+			}
+			set
+			{
+				if ((this._CODE_MO != value))
+				{
+					if (this._D3_F003.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCODE_MOChanging(value);
+					this.SendPropertyChanging();
+					this._CODE_MO = value;
+					this.SendPropertyChanged("CODE_MO");
+					this.OnCODE_MOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YEAR", DbType="Int NOT NULL")]
+		public int YEAR
+		{
+			get
+			{
+				return this._YEAR;
+			}
+			set
+			{
+				if ((this._YEAR != value))
+				{
+					this.OnYEARChanging(value);
+					this.SendPropertyChanging();
+					this._YEAR = value;
+					this.SendPropertyChanged("YEAR");
+					this.OnYEARChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MONTH", DbType="Int NOT NULL")]
+		public int MONTH
+		{
+			get
+			{
+				return this._MONTH;
+			}
+			set
+			{
+				if ((this._MONTH != value))
+				{
+					this.OnMONTHChanging(value);
+					this.SendPropertyChanging();
+					this._MONTH = value;
+					this.SendPropertyChanged("MONTH");
+					this.OnMONTHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NSCHET", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string NSCHET
+		{
+			get
+			{
+				return this._NSCHET;
+			}
+			set
+			{
+				if ((this._NSCHET != value))
+				{
+					this.OnNSCHETChanging(value);
+					this.SendPropertyChanging();
+					this._NSCHET = value;
+					this.SendPropertyChanged("NSCHET");
+					this.OnNSCHETChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSCHET", DbType="DateTime NOT NULL")]
+		public System.DateTime DSCHET
+		{
+			get
+			{
+				return this._DSCHET;
+			}
+			set
+			{
+				if ((this._DSCHET != value))
+				{
+					this.OnDSCHETChanging(value);
+					this.SendPropertyChanging();
+					this._DSCHET = value;
+					this.SendPropertyChanged("DSCHET");
+					this.OnDSCHETChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAT", DbType="NVarChar(5) NOT NULL", CanBeNull=false)]
+		public string PLAT
+		{
+			get
+			{
+				return this._PLAT;
+			}
+			set
+			{
+				if ((this._PLAT != value))
+				{
+					this.OnPLATChanging(value);
+					this.SendPropertyChanging();
+					this._PLAT = value;
+					this.SendPropertyChanged("PLAT");
+					this.OnPLATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUMMAV", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> SUMMAV
+		{
+			get
+			{
+				return this._SUMMAV;
+			}
+			set
+			{
+				if ((this._SUMMAV != value))
+				{
+					this.OnSUMMAVChanging(value);
+					this.SendPropertyChanging();
+					this._SUMMAV = value;
+					this.SendPropertyChanged("SUMMAV");
+					this.OnSUMMAVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COMENTS", DbType="NVarChar(250)")]
+		public string COMENTS
+		{
+			get
+			{
+				return this._COMENTS;
+			}
+			set
+			{
+				if ((this._COMENTS != value))
+				{
+					this.OnCOMENTSChanging(value);
+					this.SendPropertyChanging();
+					this._COMENTS = value;
+					this.SendPropertyChanged("COMENTS");
+					this.OnCOMENTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUMMAP", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> SUMMAP
+		{
+			get
+			{
+				return this._SUMMAP;
+			}
+			set
+			{
+				if ((this._SUMMAP != value))
+				{
+					this.OnSUMMAPChanging(value);
+					this.SendPropertyChanging();
+					this._SUMMAP = value;
+					this.SendPropertyChanged("SUMMAP");
+					this.OnSUMMAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SANK_MEK", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> SANK_MEK
+		{
+			get
+			{
+				return this._SANK_MEK;
+			}
+			set
+			{
+				if ((this._SANK_MEK != value))
+				{
+					this.OnSANK_MEKChanging(value);
+					this.SendPropertyChanging();
+					this._SANK_MEK = value;
+					this.SendPropertyChanged("SANK_MEK");
+					this.OnSANK_MEKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SANK_MEE", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> SANK_MEE
+		{
+			get
+			{
+				return this._SANK_MEE;
+			}
+			set
+			{
+				if ((this._SANK_MEE != value))
+				{
+					this.OnSANK_MEEChanging(value);
+					this.SendPropertyChanging();
+					this._SANK_MEE = value;
+					this.SendPropertyChanged("SANK_MEE");
+					this.OnSANK_MEEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SANK_EKMP", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> SANK_EKMP
+		{
+			get
+			{
+				return this._SANK_EKMP;
+			}
+			set
+			{
+				if ((this._SANK_EKMP != value))
+				{
+					this.OnSANK_EKMPChanging(value);
+					this.SendPropertyChanging();
+					this._SANK_EKMP = value;
+					this.SendPropertyChanged("SANK_EKMP");
+					this.OnSANK_EKMPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COUNT_SL", DbType="Int")]
+		public System.Nullable<int> COUNT_SL
+		{
+			get
+			{
+				return this._COUNT_SL;
+			}
+			set
+			{
+				if ((this._COUNT_SL != value))
+				{
+					this.OnCOUNT_SLChanging(value);
+					this.SendPropertyChanging();
+					this._COUNT_SL = value;
+					this.SendPropertyChanged("COUNT_SL");
+					this.OnCOUNT_SLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_F003_D3_SCHET_SMO_OMS", Storage="_D3_F003", ThisKey="CODE_MO", OtherKey="mcod", IsForeignKey=true)]
+		public D3_F003 D3_F003
+		{
+			get
+			{
+				return this._D3_F003.Entity;
+			}
+			set
+			{
+				D3_F003 previousValue = this._D3_F003.Entity;
+				if (((previousValue != value) 
+							|| (this._D3_F003.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._D3_F003.Entity = null;
+						previousValue.D3_SCHET_SMO_OMS.Remove(this);
+					}
+					this._D3_F003.Entity = value;
+					if ((value != null))
+					{
+						value.D3_SCHET_SMO_OMS.Add(this);
+						this._CODE_MO = value.mcod;
+					}
+					else
+					{
+						this._CODE_MO = default(string);
+					}
+					this.SendPropertyChanged("D3_F003");
 				}
 			}
 		}

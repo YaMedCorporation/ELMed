@@ -241,7 +241,7 @@ namespace Yamed.Server
             ForPomList = Reader2List.GetAnonymousTable("V014", LocalConnectionString);
             MedicalEmployeeList = Reader2List.GetAnonymousTable("View_Yamed_Spr_MedicalEmployee", LocalConnectionString);
             SprDetProfilList = Reader2List.GetAnonymousTable("SprDetProfil", LocalConnectionString);
-            SprPCelList = Reader2List.GetAnonymousTable("SprPCel", LocalConnectionString);
+            SprPCelList = Reader2List.GetAnonymousTable("V025", LocalConnectionString);
             SprUsl804 = Reader2List.GetAnonymousTable("Yamed_Spr_Usl804", LocalConnectionString);
             SprBit = Reader2List.GetAnonymousTable("D3_Spr_BIT", LocalConnectionString);
             SprNpl = Reader2List.GetAnonymousTable("D3_Spr_NPL", LocalConnectionString);
@@ -249,8 +249,8 @@ namespace Yamed.Server
             YamedUsers = Reader2List.GetAnonymousTable("Yamed_Users", LocalConnectionString);
             KslpList = Reader2List.CustomAnonymousSelect("Select * from SprKSLP where DATEBEG >='20180101'", LocalConnectionString);
             DnList = Reader2List.CustomAnonymousSelect("Select * from Yamed_Spr_Dn", LocalConnectionString);
-            //SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
-            //SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
+            SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
+            SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
 
             using (ElmedDataClassesDataContext elMed = new ElmedDataClassesDataContext(LocalConnectionString))
             {
