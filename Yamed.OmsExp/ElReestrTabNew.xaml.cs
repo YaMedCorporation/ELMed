@@ -266,7 +266,7 @@ namespace Yamed.OmsExp
                               sl.PODR,
                               sl.PROFIL,
                               sl.DET,
-                              sl.P_CEL,
+                              sl.P_CEL25,
                               sl.TAL_NUM,
                               sl.TAL_D,
                               sl.TAL_P,
@@ -384,7 +384,7 @@ namespace Yamed.OmsExp
                         sl.PODR,
                         sl.PROFIL,
                         sl.DET,
-                        sl.P_CEL,
+                        sl.P_CEL25,
                         sl.TAL_NUM,
                         sl.TAL_D,
                         sl.TAL_P,
@@ -504,7 +504,7 @@ namespace Yamed.OmsExp
                               sl.PODR,
                               sl.PROFIL,
                               sl.DET,
-                              sl.P_CEL,
+                              sl.P_CEL25,
                               sl.TAL_NUM,
                               sl.TAL_D,
                               sl.TAL_P,
@@ -580,7 +580,7 @@ namespace Yamed.OmsExp
                           join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                           join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                           where ((sc.MONTH >= m1 && sc.MONTH <= m2) || m1 == null || m2 == null) && ((sc.YEAR >= y1 && sc.YEAR <= y2) || y1 == null || y2 == null)
-                          && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL == pcel || pcel == null)
+                          && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
                           && (sl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl== null)
                           select new
                           {
@@ -628,7 +628,7 @@ namespace Yamed.OmsExp
                               sl.PODR,
                               sl.PROFIL,
                               sl.DET,
-                              sl.P_CEL,
+                              sl.P_CEL25,
                               sl.TAL_NUM,
                               sl.TAL_D,
                               sl.TAL_P,

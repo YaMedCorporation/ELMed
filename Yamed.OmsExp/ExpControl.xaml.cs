@@ -680,15 +680,16 @@ namespace Yamed.OmsExp
 
         private void SchetRep_OnClick(object sender, RoutedEventArgs e)
         {
+            var schets = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl).Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray();
 
             var yr = SqlReader.Select($"Select * from YamedReports where RepName = '_schetReport'", SprClass.LocalConnectionString);
             var rl = (string)ObjHelper.GetAnonymousValue(yr[0], "Template");
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
 
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement
             {
                 Header = "Отчет по счету " + sc.CODE_MO,
-                MyControl = new PreviewControl(rl, sc.ID),
+                MyControl = new PreviewControl(rl, sc.ID, ids: ObjHelper.GetIds(schets)),
                 IsCloseable = "True",
                 //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
             });

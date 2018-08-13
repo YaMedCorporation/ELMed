@@ -230,6 +230,10 @@ WHERE R_YEAR=2018 and R_MONTH = 5
                         where SCHET_ID = { sc.ID} and USL_OK in (1,2)", SprClass.LocalConnectionString);
 
             Reader2List.CustomExecuteQuery($@"
+                        EXEC [dbo].[p_fix] { sc.ID}", SprClass.LocalConnectionString);
+
+
+            Reader2List.CustomExecuteQuery($@"
 UPDATE D3_ZSL_OMS SET VOZR =
                              (CASE
 								WHEN dbo.GetDateDiff(dr, DATE_Z_2) = 0 THEN 'G00.M00'
@@ -465,7 +469,8 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 
             Reader2List.CustomExecuteQuery($@"
 					Update D3_SL_OMS 
-                    SET TARIF= 
+                    SET 
+                        TARIF= 
                             (CASE 
 								WHEN (sl.P_CEL25 = '1.0' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif1
 								WHEN (sl.P_CEL25 = '1.1' ) THEN t.tarif2
@@ -482,35 +487,35 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
                             END),
                         SUM_M=
                             (CASE 
-								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL not in (63,85,86,87,88,89,90))																										   THEN ROUND(sl.ED_COL * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN 0.00  --ROUND(sl.ED_COL * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN 0.00  --ROUND(sl.ED_COL * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL not in (63,85,86,87,88,89,90))																										   THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN 0.00  --ROUND(isnull(sl.ED_COL, 1.00) * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL not in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN 0.00  --ROUND(isnull(sl.ED_COL, 1.00) * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
 
-								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90))																										   THEN ROUND(sl.ED_COL / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 12 * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 12 * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90))																										   THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
 
-                                --WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-                                --WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
-                                --WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
-								--WHEN (sl.P_CEL25 = '2.0' and sl.PROFIL in (63,85,86,87,88,89,90)) THEN ROUND(sl.ED_COL / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
-								--WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL / 12 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
+                                --WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+                                --WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
+                                --WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
+								--WHEN (sl.P_CEL25 = '2.0' and sl.PROFIL in (63,85,86,87,88,89,90)) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
+								--WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -536,8 +541,8 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					Update D3_ZSL_OMS SET
                         SUMV=
                             (CASE 
-                                WHEN (zsl.FOR_POM = 1 ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif5
-                                WHEN (zsl.FOR_POM = 2 ) THEN t.tarif4
+                                WHEN (zsl.FOR_POM = 1 ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN (zsl.FOR_POM = 2 ) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -545,6 +550,8 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					Join D3_SL_OMS sl on zsl.ID = sl.D3_ZSLID and zsl.USL_OK = 4
                     join (Select * From CalcAmbTarif where OS_SLUCH is null and USL_OK = 4) as t on --sl.Profil = t.Profil and
                         (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND +1) 
+                    left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
+
                     where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
 ", SprClass.LocalConnectionString);
 
@@ -553,8 +560,8 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					Update D3_ZSL_OMS SET
                         SUMV=
                             (CASE 
-                                WHEN ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) and sl.P_CEL25 = '3.0' THEN t.tarif10
-                                WHEN ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) and sl.P_CEL25 = '3.1' THEN t.tarif11
+                                WHEN ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) and sl.P_CEL25 = '3.0' THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) and sl.P_CEL25 = '3.1' THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -562,6 +569,7 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					Join D3_SL_OMS sl on zsl.ID = sl.D3_ZSLID and zsl.USL_OK = 3 and sl.P_CEL25 in ('3.0', '3.1') and sl.PROFIL not in (63,85,86,87,88,89,90)
                     join (Select * From CalcAmbTarif where OS_SLUCH is null and USL_OK = 3) as t on sl.Profil = t.Profil
 					and (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND +1) 
+                    left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
                     where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
 ", SprClass.LocalConnectionString);
 
@@ -624,13 +632,14 @@ where zsl.OS_SLUCH_REGION in (6,30) and ed_col is null
 					Update D3_ZSL_OMS SET
 					--select
                          SUMV = (CASE
-                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 4,5,6,7,9,17,21,29,30,31,32,33,34,35,36,37,38,39,40) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(sl.ED_COL*t.tarif1, 2)
+                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 4,5,6,7,9,17,21,29,30,31,32,33,34,35,36,37,38,39,40) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
                     JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
 					join D3_SL_OMS sl on zsl.ID = sl.D3_ZSLID --and zsl.USL_OK =3
                     join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (sl.DATE_2 >= t.TBEG and sl.DATE_2 < t.TEND +1) 
+                    left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
                     where zsl.D3_SCID = { sc.ID} and 
 					 OS_SLUCH_REGION not in (11,22)
 ", SprClass.LocalConnectionString);

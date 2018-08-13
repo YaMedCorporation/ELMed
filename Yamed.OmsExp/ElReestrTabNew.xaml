@@ -196,9 +196,9 @@
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__DET" FieldName="DET" Header="Детский профиль" FilterPopupMode="CheckedList"/>
-                <dxg:GridColumn x:Name="Column__SL__P_CEL" FieldName="P_CEL" Header="Цель посещения" FilterPopupMode="CheckedList">
+                <dxg:GridColumn x:Name="Column__SL__P_CEL" FieldName="P_CEL25" Header="Цель посещения" FilterPopupMode="CheckedList">
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="PCelEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="PCelEdit" DisplayMember="NameWithID" ValueMember="IDPC" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__TAL_N" FieldName="TAL_N" Header="Номер талона на госп." FilterPopupMode="CheckedList"/>

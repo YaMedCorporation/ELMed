@@ -97,7 +97,7 @@ namespace Yamed.Oms
             //}
             cbSchets.ItemsSource =
                 Reader2List.CustomAnonymousSelect(
-                    "select(((('—счет(' + CONVERT([varchar](16), [ID]) + ')/период ' + CONVERT([varchar](2),[MONTH], (0)))+'.')+CONVERT([char](6),[YEAR],(0)))+isnull(('('+[COMENTS])+')','')) nameSchet from d3_schet_oms s",
+                    "select ID, (((('—счет(' + CONVERT([varchar](16), [ID]) + ')/период ' + CONVERT([varchar](2),[MONTH], (0)))+'.')+CONVERT([char](6),[YEAR],(0)))+isnull(('('+[COMENTS])+')','')) nameSchet from d3_schet_oms s",
                     SprClass.LocalConnectionString);
         }
 

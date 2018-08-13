@@ -653,7 +653,7 @@ namespace Yamed.Emr
             ((D3_SL_OMS) SlGridControl.SelectedItem).PRVS = _slLock.PRVS;
             ((D3_SL_OMS) SlGridControl.SelectedItem).PROFIL = _slLock.PROFIL;
             ((D3_SL_OMS) SlGridControl.SelectedItem).DET = _slLock.DET;
-            ((D3_SL_OMS) SlGridControl.SelectedItem).P_CEL = _slLock.P_CEL;
+            ((D3_SL_OMS) SlGridControl.SelectedItem).P_CEL25 = _slLock.P_CEL25;
             ((D3_SL_OMS) SlGridControl.SelectedItem).DS1 = _slLock.DS1;
             ((D3_SL_OMS) SlGridControl.SelectedItem).DATE_1 = _slLock.DATE_1;
             ((D3_SL_OMS) SlGridControl.SelectedItem).DATE_2 = _slLock.DATE_2;
@@ -688,7 +688,7 @@ namespace Yamed.Emr
             _slLock.PRVS = PrvsTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PRVS : null;
             _slLock.PROFIL = ProfilTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL : null;
             _slLock.DET = DetTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DET : null;
-            _slLock.P_CEL = PCelTypeTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_CEL : null;
+            _slLock.P_CEL25 = PCelTypeTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_CEL25 : null;
             _slLock.DS1 = Ds1Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS1 : null;
             _slLock.DATE_1 = Date1Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DATE_1 : null;
             _slLock.DATE_2 = Date2Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DATE_2 : null;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 
 namespace Yamed.Core
 {
@@ -34,6 +35,23 @@ namespace Yamed.Core
         {
             obj.GetType().GetProperty(field).SetValue(obj, value, null);
         }
+
+        public static string GetIds(int[] collection)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in collection)
+            {
+                //sb.Append("'");
+                sb.Append(item.ToString());
+                //sb.Append("'");
+                sb.Append(",");
+            }
+
+            var ids = sb.ToString();
+            ids = ids.Remove(ids.Length - 1);
+            return ids;
+        }
+
 
     }
 

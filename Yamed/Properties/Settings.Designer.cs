@@ -49,8 +49,8 @@ namespace Yamed.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=91.240.209.20,1432;Initial Catalog=elmed;User ID=sa;Password=Hospital" +
-            "6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=77.241.17.98,1416;Initial Catalog=elmedicinenewfond;User ID=Vasilenko" +
+            ";Password=LtdPfrByl")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
