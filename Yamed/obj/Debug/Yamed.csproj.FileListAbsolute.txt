@@ -1666,7 +1666,3 @@ C:\Users\rshko\Source\Repos\Yamed\Yamed\obj\Debug\Yamed.Properties.Resources.res
 C:\Users\rshko\Source\Repos\Yamed\Yamed\obj\Debug\Yamed.csproj.GenerateResource.cache
 C:\Users\rshko\Source\Repos\Yamed\Yamed\obj\Debug\Yamed.csproj.CoreCompileInputs.cache
 C:\Users\rshko\Source\Repos\Yamed\Yamed\obj\Debug\Yamed.csproj.CopyComplete
-C:\Users\rshko\Source\Repos\Yamed\Yamed\bin\Debug\Yamed Update.exe
-C:\Users\rshko\Source\Repos\Yamed\Yamed\bin\Debug\ICSharpCode.SharpZipLib.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed\bin\Debug\Yamed Update.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed\bin\Debug\Yamed Update.exe.config

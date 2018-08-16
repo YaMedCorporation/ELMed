@@ -220,10 +220,6 @@
       <Project>{dc810fba-1dc9-429f-a247-35075ea49648}</Project>
       <Name>MaterialMenu</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Update\Update.csproj">
-      <Project>{4b48db9f-636c-4c22-b81c-ee0847747559}</Project>
-      <Name>Update</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebUI\WebUI.csproj">
       <Project>{6e45b4fe-f5e0-4354-abb9-8a63daf225c5}</Project>
       <Name>WebUI</Name>
