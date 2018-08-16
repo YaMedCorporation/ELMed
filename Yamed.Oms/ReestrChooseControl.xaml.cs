@@ -38,7 +38,7 @@ namespace Yamed.Oms
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            _id = (int) cbSchets.EditValue;
+            _id = (int)cbSchets.EditValue;
             int selectCbOne = cbOperation.SelectedIndex;
             if (selectCbOne == 1)
             {
@@ -56,6 +56,22 @@ namespace Yamed.Oms
                 var upd = Reader2List.CustomUpdateCommand("D3_ZSL_OMS", updObj, "ID");
                 Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                 MessageBox.Show("Перенос записей выполнен успешно.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            if (selectCbOne == 2)
+            {
+                var ids = GetIds(DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray());
+                var insObjZsl = (IList)Reader2List.CustomAnonymousSelect($"select * from d3_zsl_oms where id in ({ids})", SprClass.LocalConnectionString);
+                var insObjSl = (IList)Reader2List.CustomAnonymousSelect($"select * from d3_sl_oms where d3_zslid in ({ids})", SprClass.LocalConnectionString);
+                var insObjPacient = (IList)Reader2List.CustomAnonymousSelect($"select * from d3_pacient_oms where id in (select d3_pid from d3_zsl_oms where id in ({ids}))", SprClass.LocalConnectionString);
+                var insObjUsl = (IList)Reader2List.CustomAnonymousSelect($"select * from d3_usl_oms where d3_zslid in (select id from d3_zsl_oms where id in ({ids}))", SprClass.LocalConnectionString);
+                foreach (var row in insObjPacient)
+                {
+                    var r = row;
+                    ObjHelper.SetAnonymousValue(ref r, _id, "D3_SCID");
+                    ObjHelper.SetAnonymousValue(ref r, Guid.NewGuid(), "ID_PAC");
+                }
+                var ins = Reader2List.CustomInsertCommand("d3_pacient_oms", insObjPacient, "ID", SprClass.LocalConnectionString);
+                Reader2List.CustomExecuteQuery(ins.ToString(), SprClass.LocalConnectionString);
             }
         }
 
@@ -99,11 +115,6 @@ namespace Yamed.Oms
                 Reader2List.CustomAnonymousSelect(
                     "select ID, (((('—счет(' + CONVERT([varchar](16), [ID]) + ')/период ' + CONVERT([varchar](2),[MONTH], (0)))+'.')+CONVERT([char](6),[YEAR],(0)))+isnull(('('+[COMENTS])+')','')) nameSchet from d3_schet_oms s",
                     SprClass.LocalConnectionString);
-        }
-
-        private void comboboxSchets_SelectedIndexChanged(object sender, RoutedEventArgs e)
-        {
-            //_id = Convert.ToInt32(((DataRowView)cbSchets.SelectedItem)[cbSchets.ValueMember]);
         }
     }
 }

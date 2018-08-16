@@ -990,7 +990,7 @@ namespace Yamed
 //=======
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater.exe"));
+            System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Yamed Update.exe"));
         }
 //>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15
     }
