@@ -567,3 +567,4 @@ C:\Users\rshko\Source\Repos\Yamed\Yamed.Control\obj\Debug\Yamed.Control.csproj.C
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Control\obj\Debug\Yamed.Control.csproj.CopyComplete
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Control\obj\Debug\Yamed.Control.dll
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Control\obj\Debug\Yamed.Control.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Control\bin\Debug\Yamed.Entity.dll.config

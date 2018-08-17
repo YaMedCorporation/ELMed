@@ -29,3 +29,10 @@ D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojResolveAssemblyRe
 D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb

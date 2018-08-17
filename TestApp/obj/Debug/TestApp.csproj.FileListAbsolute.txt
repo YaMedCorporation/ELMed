@@ -1280,7 +1280,6 @@ C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\Window1.baml
 C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.g.resources
 C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.Properties.Resources.resources
 C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.csproj.GenerateResource.cache
-C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.exe.licenses
 C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.csproj.CoreCompileInputs.cache
 C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.csproj.CopyComplete
 C:\Users\rshko\Source\Repos\Yamed\TestApp\obj\Debug\TestApp.exe

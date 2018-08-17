@@ -1263,3 +1263,4 @@ C:\Users\rshko\Source\Repos\Yamed\Yamed.Settings\bin\Debug\ja\DevExpress.XtraPiv
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Settings\bin\Debug\ru\DevExpress.XtraPivotGrid.v16.2.resources.dll
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.csproj.CoreCompileInputs.cache
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.csproj.CopyComplete
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Settings\bin\Debug\Yamed.Entity.dll.config

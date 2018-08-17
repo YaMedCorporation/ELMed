@@ -16,3 +16,10 @@ D:\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
 D:\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojResolveAssemblyReference.cache
 D:\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb

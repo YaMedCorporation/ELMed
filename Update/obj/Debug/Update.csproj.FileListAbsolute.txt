@@ -72,3 +72,4 @@ C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed Update.exe
 C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed Update.pdb
 C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Yamed Update.exe
 C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Yamed Update.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Entity.dll.config

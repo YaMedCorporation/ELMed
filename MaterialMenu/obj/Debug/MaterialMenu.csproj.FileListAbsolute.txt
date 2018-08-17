@@ -94,3 +94,4 @@ C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.Gen
 C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
 C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
 C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache

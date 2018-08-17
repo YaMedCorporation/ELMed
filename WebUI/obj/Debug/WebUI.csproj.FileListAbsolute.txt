@@ -13,3 +13,9 @@ D:\TFS_Codes\Git_Yamed\WebUI\bin\Debug\WebUI.pdb
 D:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.dll
 D:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.pdb
 D:\TFS_Codes\Git_Yamed\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\WebUI\bin\Debug\WebUI.dll
+C:\Users\rshko\Source\Repos\Yamed\WebUI\bin\Debug\WebUI.pdb
+C:\Users\rshko\Source\Repos\Yamed\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
+C:\Users\rshko\Source\Repos\Yamed\WebUI\obj\Debug\WebUI.dll
+C:\Users\rshko\Source\Repos\Yamed\WebUI\obj\Debug\WebUI.pdb

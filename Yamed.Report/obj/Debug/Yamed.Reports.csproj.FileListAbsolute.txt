@@ -1344,3 +1344,4 @@ C:\Users\rshko\Source\Repos\Yamed\Yamed.Report\bin\Debug\ru\DevExpress.XtraChart
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Report\obj\Debug\Yamed.Reports.csproj.CoreCompileInputs.cache
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Report\obj\Debug\Yamed.Reports.csproj.CopyComplete
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Report\obj\Debug\Yamed.Reports.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Report\bin\Debug\Yamed.Entity.dll.config

@@ -25,3 +25,15 @@ D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
 D:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojResolveAssemblyReference.cache
 D:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
