@@ -70,7 +70,6 @@ namespace Update
             private static extern int WritePrivateString(string section, string key, string str, string path);
         }
 
-
         // Класс для апдейтера
         public class Updater
         {
@@ -81,7 +80,6 @@ namespace Update
                 public string appElmedConfig; // Названия файла конфигурации оболочки.
                 public string connectLocalDatabase; //Строка коннекта в локальную БД.
                 public string connectServerDatabase; // Строка коннекта в серверуню БД.
-                public string updaterConfig; // Название файла конфигурации Апдейтера.
                 public string folderMain; // Главная папка Апдейтера.
                 public string folderApps; // Папка с zip-архивами программ.
                 public string folderScripts; // Папка с zip-архивами скриптов.
@@ -105,6 +103,7 @@ namespace Update
                 public string sDbObjType; // Тип объекта.
                 public string sDbDescription; // Описание объекта.
                 public List<string> newZipDb = new List<string>(); // Новые версии zip-архивов базы данных.
+                public List<int> debtors = new List<int>(); // Список должников
             }
 
             Identifiers id = new Identifiers();
@@ -259,7 +258,6 @@ namespace Update
                     }
                 }
             }
-
 
             // Проверка правил, создание таблицы LogUpdates, добавление записей версий.
             public void scriptExtensionTable()
@@ -686,7 +684,6 @@ namespace Update
                 }
             }
 
-
             // Инсталляция скриптов в оффлайн режиме
             public void installDatabaseOffline()
             {
@@ -824,39 +821,88 @@ namespace Update
             public void Update()
             {
                 insertINI();
-                killProccess();
-                try
+                using (SqlConnection sqlconnL = new SqlConnection(id.connectLocalDatabase))
                 {
-                    using (SqlConnection sqlConn = new SqlConnection(id.connectServerDatabase))
+                    sqlconnL.Open();
+                    using (SqlCommand sqlcommL = new SqlCommand("select Parametr from Settings where id = 1", sqlconnL))
                     {
-                        sqlConn.Open();
-                        if (sqlConn.State == System.Data.ConnectionState.Open)
+                        sqlcommL.CommandTimeout = 0;
+                        using (SqlDataReader sqlreadL = sqlcommL.ExecuteReader())
+                        {
+                            while (sqlreadL.Read())
+                            {
+                                id.code_org = Convert.ToInt32(sqlreadL["Parametr"]);
+                            }
+                            sqlreadL.Close();
+                        }
+                        sqlcommL.Dispose();
+                    }
+                    sqlconnL.Close();
+                }
+                using (SqlConnection sqlconn = new SqlConnection(id.connectServerDatabase))
+                {
+                    sqlconn.Open();
+                    using (SqlCommand sqlcomm = new SqlCommand("select org_code	from imed_clients_products where product = 'ELMED.MO' and debt_amount > 0 and upd_enable = 0", sqlconn))
+                    {
+                        sqlcomm.CommandTimeout = 0;
+                        using (SqlDataReader sqlread = sqlcomm.ExecuteReader())
+                        {
+                            while (sqlread.Read())
+                            {
+                                id.debtors.Add(Convert.ToInt32(sqlread["org_code"]));
+                            }
+                            sqlread.Close();
+                        }
+                        sqlcomm.Dispose();
+                    }
+                    sqlconn.Close();
+                }
+                for (int i = 0; i < id.debtors.Count; i++)
+                {
+                    if (id.code_org == id.debtors[i])
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(" \n Данная услуга недоступна для вашей организации.");
+                        pause();
+                    }
+                    else
+                    {
+                        killProccess();
+                        try
+                        {
+                            using (SqlConnection sqlConn = new SqlConnection(id.connectServerDatabase))
+                            {
+                                sqlConn.Open();
+                                if (sqlConn.State == System.Data.ConnectionState.Open)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("\n Включена поддержка онлайн режима.");
+                                    checkFolders();
+                                    checkConnectionLocalDatabase();
+                                    checkConnectionServerDatabase(id.connectServerDatabase);
+                                    scriptExtensionTable();
+                                    checkVersionLocal();
+                                    checkVersionServerOnline();
+                                    installZipProgram();
+                                    installZipDataBase();
+                                    pause();
+                                }
+                                sqlConn.Close();
+                            }
+                        }
+                        catch (SqlException)
                         {
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("\n Включена поддержка онлайн режима.");
+                            Console.WriteLine("\n Включена поддержка оффлайн режима.");
                             checkFolders();
                             checkConnectionLocalDatabase();
-                            checkConnectionServerDatabase(id.connectServerDatabase);
                             scriptExtensionTable();
                             checkVersionLocal();
-                            checkVersionServerOnline();
-                            installZipProgram();
-                            installZipDataBase();
+                            installProgramOffline();
+                            installDatabaseOffline();
                             pause();
                         }
                     }
-                }
-                catch (SqlException)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n Включена поддержка оффлайн режима.");
-                    checkFolders();
-                    checkConnectionLocalDatabase();
-                    scriptExtensionTable();
-                    checkVersionLocal();
-                    installProgramOffline();
-                    installDatabaseOffline();
-                    pause();
                 }
             }
         }
