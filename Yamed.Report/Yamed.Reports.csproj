@@ -148,9 +148,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Yamed.Control\Yamed.Control.csproj">
       <Project>{55af80cb-3938-4c66-a9ba-edb16592f00e}</Project>
       <Name>Yamed.Control</Name>

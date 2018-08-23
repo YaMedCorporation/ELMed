@@ -56,3 +56,20 @@ D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed.Entity.pdb
 D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.csprojResolveAssemblyReference.cache
 D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.exe
 D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\DotNetZip.dll
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Core.dll
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Server.dll
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Entity.dll
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Core.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Server.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\DotNetZip.xml
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Entity.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Update.csprojAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Update.csproj.CoreCompileInputs.cache
+C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Update.csproj.CopyComplete
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed Update.exe.config
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed Update.exe
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed Update.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Yamed Update.exe
+C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Yamed Update.pdb
+C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Entity.dll.config

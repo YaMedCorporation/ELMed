@@ -252,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MekEditor\SqlSyntax.xshd" />
-    <EmbeddedResource Include="Properties\Licenses.licx" />
     <None Include="MekEditor\SqlSyntax2.xshd" />
     <None Include="packages.config" />
   </ItemGroup>

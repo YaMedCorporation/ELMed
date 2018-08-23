@@ -13,3 +13,9 @@ D:\TFS_Codes\Git_Yamed\Yamed.Core\bin\Debug\Yamed.Core.pdb
 D:\TFS_Codes\Git_Yamed\Yamed.Core\obj\Debug\Yamed.Core.csprojResolveAssemblyReference.cache
 D:\TFS_Codes\Git_Yamed\Yamed.Core\obj\Debug\Yamed.Core.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Core\obj\Debug\Yamed.Core.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Core\bin\Debug\Yamed.Core.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Core\bin\Debug\Yamed.Core.pdb
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Core\obj\Debug\Yamed.Core.csproj.CoreCompileInputs.cache
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Core\obj\Debug\Yamed.Core.dll
+C:\Users\rshko\Source\Repos\Yamed\Yamed.Core\obj\Debug\Yamed.Core.pdb
