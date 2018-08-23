@@ -150,7 +150,7 @@ where zsl.D3_SCID in {ids}";
                 var rows = (IEnumerable<object>)DxHelper.LoadedRows;
                 Parallel.ForEach(rows, (x) =>
                 {
-                    if ((int?)ObjHelper.GetAnonymousValue(x, "OPLATA") == 1 || SprClass.IsTfoms)
+                    if ((int?)ObjHelper.GetAnonymousValue(x, "OPLATA") == 1 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                     {
                         sluids.Add((int)ObjHelper.GetAnonymousValue(x, "ID"));
                     }

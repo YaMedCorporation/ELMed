@@ -326,21 +326,21 @@ namespace Yamed.Server
                 var directIpOrg = new[] {/*"460039",*/ "460003", "460064"};
 
                 //var conn = new SqlConnectionStringBuilder();
-                //conn.DataSource = directIpOrg.Contains(ProdSett.OrgCode)? @"imedonline.ru" : @"imedonline.ru,2866";
+                //conn.DataSource = directIpOrg.Contains(ProdSett.OrgCode)? @"91.240.209.114" : @"91.240.209.114,2866";
                 //conn.InitialCatalog = "ELMED_ONLINE_NEW";
                 //conn.UserID = "sa";
                 //conn.Password = "Gbljh:100";
                 //GlobalElmedOnLineConnectionString = conn.ConnectionString;
 
                 var conatt = new SqlConnectionStringBuilder();
-                conatt.DataSource = directIpOrg.Contains(ProdSett.OrgCode) ? @"imedonline.ru" : @"imedonline.ru,2866";
+                conatt.DataSource = directIpOrg.Contains(ProdSett.OrgCode) ? @"91.240.209.114" : @"91.240.209.114,2866";
                 conatt.InitialCatalog = "DocExchange";
                 conatt.UserID = "AttpSmo";
                 conatt.Password = @"VjuByjYt;Xby";
                 GlobalDocExchangeConnectionString = conatt.ConnectionString;
 
                 var srzcon = new SqlConnectionStringBuilder();
-                srzcon.DataSource = @"imedonline.ru,2866";
+                srzcon.DataSource = @"91.240.209.114,2866";
                 srzcon.ConnectTimeout = 2;
                 srzcon.InitialCatalog = "srz_mini";
                 srzcon.UserID = "sa";

@@ -83,6 +83,9 @@
     <Compile Include="ExpEditors\MeeAutoWindow.xaml.cs">
       <DependentUpon>MeeAutoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExpEditors\ExpControl.xaml.cs">
+      <DependentUpon>ExpControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExpEditors\MeeWindow.xaml.cs">
       <DependentUpon>MeeWindow.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExpEditors\MeeAutoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpEditors\ExpControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -410,7 +410,7 @@
 
                         <dxlc:LayoutGroup ItemLabelsAlignment="Local">
                             <dxlc:LayoutItem Label="Врач" IsRequired="True" >
-                                <Grid x:Name="DoctGrid">
+                                <Grid x:Name="DoctGrid" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="20" />
@@ -491,7 +491,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <dxe:ComboBoxEdit   x:Name="PCelEdit" ItemsSource="{Binding}"  EditValue="{Binding SelectedItem.P_CEL, ElementName=SlGridControl}"        DisplayMember="NameWithID" ValueMember="ID" />
+                                    <dxe:ComboBoxEdit   x:Name="PCelEdit" ItemsSource="{Binding}"  EditValue="{Binding SelectedItem.P_CEL25, ElementName=SlGridControl}"        DisplayMember="NameWithID" ValueMember="IDPC" />
                                     <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="PCelTypeTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>

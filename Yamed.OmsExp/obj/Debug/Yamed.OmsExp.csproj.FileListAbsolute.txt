@@ -1255,3 +1255,5 @@ D:\TFS_Codes\Git_Yamed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.g.resources
 D:\TFS_Codes\Git_Yamed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll.licenses
 D:\TFS_Codes\Git_Yamed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll
 D:\TFS_Codes\Git_Yamed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.pdb
+D:\TFS_Codes\Git_Yamed\Yamed.OmsExp\obj\Debug\ExpEditors\ExpControl.baml
+D:\TFS_Codes\Git_Yamed\Yamed.OmsExp\obj\Debug\ExpEditors\ExpControl.g.cs

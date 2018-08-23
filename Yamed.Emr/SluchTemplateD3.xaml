@@ -216,7 +216,7 @@
 
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup Header="Законченный случай (обращение)" View="GroupBox">
-                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" dxlc:LayoutControl.AllowHorizontalSizing="True">
                         <dxlc:LayoutItem Label="Усл. ок. пом." IsRequired="True" ToolTip="Условие оказания помощи">
                             <Grid x:Name="UslOkzGrid">
                                 <Grid.ColumnDefinitions>
@@ -264,7 +264,7 @@
                             </Grid>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Header="LayoutGroup" View="Group" Orientation="Vertical">
+                    <dxlc:LayoutGroup Header="LayoutGroup" View="Group" Orientation="Vertical" dxlc:LayoutControl.AllowHorizontalSizing="True">
                         <dxlc:LayoutItem Label="Дата начала" ToolTip="Дата начала законченного случая" IsRequired="True" >
                             <Grid x:Name="DateZ1Grid">
                                 <Grid.ColumnDefinitions>
@@ -306,7 +306,7 @@
                             </Grid>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Header="LayoutGroup" View="Group" Orientation="Vertical">
+                    <dxlc:LayoutGroup Header="LayoutGroup" View="Group" Orientation="Vertical" dxlc:LayoutControl.AllowHorizontalSizing="True">
                         <dxlc:LayoutItem Label="Способ опл." ToolTip="Код способа оплаты медицинской помощи" IsRequired="True" >
                             <Grid x:Name="IdspGrid">
                                 <Grid.ColumnDefinitions>
@@ -409,9 +409,9 @@
                             </dxg:GridColumn>
                         </dxg:GridControl>
                     </Grid>
-                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup" dxlc:LayoutControl.AllowHorizontalSizing="True">
                         <dxlc:LayoutGroup>
-                            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" dxlc:LayoutControl.AllowHorizontalSizing="True">
                                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                                     <dxlc:LayoutItem Label="Код МО" ToolTip="Код медицинской организации" >
                                         <Grid x:Name="LpuGrid">
@@ -543,7 +543,7 @@
                                 </dxlc:LayoutItem>
 
                             </dxlc:LayoutGroup>
-                            <dxlc:LayoutGroup Header="LayoutGroup" View="Group" Orientation="Vertical" Width="320">
+                            <dxlc:LayoutGroup Header="LayoutGroup" View="Group" Orientation="Vertical" Width="320" dxlc:LayoutControl.AllowHorizontalSizing="True">
                                 <dxlc:LayoutItem Label="Диагноз осн." ToolTip="Диагноз основной" IsRequired="True">
                                     <Grid x:Name="Ds1Grid">
                                         <Grid.ColumnDefinitions>

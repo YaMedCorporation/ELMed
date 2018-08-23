@@ -47,7 +47,7 @@ namespace Yamed.Control.Editors
             InitializeComponent();
 
             var conn = new SqlConnectionStringBuilder();
-            conn.DataSource = @"imedonline.ru,2866";
+            conn.DataSource = @"91.240.209.114,2866";
             conn.InitialCatalog = "FIAS";
             conn.UserID = "sa";
             conn.Password = "Gbljh:100";

@@ -26,7 +26,7 @@ namespace Yamed.Pattern
         public static object TablesSchema = null;
         private static object _row;
         private static readonly string _connectionString = SprClass.LocalConnectionString;
-        //private static readonly string _connectionString = "Data Source = imedonline.ru; Initial Catalog = DocExchange; User ID = sa; Password = Gbljh:100";
+        //private static readonly string _connectionString = "Data Source = 91.240.209.114; Initial Catalog = DocExchange; User ID = sa; Password = Gbljh:100";
         public SqlDbGUI()
         {
             
