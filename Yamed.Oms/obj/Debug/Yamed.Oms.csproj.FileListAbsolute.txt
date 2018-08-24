@@ -1140,7 +1140,6 @@ D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\EconomyTab.baml
 D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\ReestrChooseControl.baml
 D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\ReestrControl.baml
 D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\Yamed.Oms.g.resources
-D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\Yamed.Oms.dll.licenses
 D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\Yamed.Oms.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\Yamed.Oms.pdb
 E:\Apps\Yamed\Yamed.Oms\obj\Debug\ReestrChooseControl.g.cs

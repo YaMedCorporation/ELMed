@@ -97,6 +97,7 @@ namespace Yamed.Hospital
 
             UslOtdelColumnEdit.DataContext = SprClass.OtdelDbs;
             UslProfilColumnEdit.DataContext = SprClass.profile;
+
             UslDoctorColumnEdit.DataContext = SprClass.DoctList;
             UslDsColumnEdit.DataContext = SprClass.mkbSearching;
             UslVidVmeColumnEdit.DataContext = SprClass.SprUsl804;

@@ -1037,7 +1037,6 @@ D:\TFS_Codes\Git_Yamed\Yamed.Settings\bin\Debug\es\DevExpress.XtraPivotGrid.v16.
 D:\TFS_Codes\Git_Yamed\Yamed.Settings\bin\Debug\ja\DevExpress.XtraPivotGrid.v16.2.resources.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Settings\bin\Debug\ru\DevExpress.XtraPivotGrid.v16.2.resources.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.csprojResolveAssemblyReference.cache
-D:\TFS_Codes\Git_Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.dll.licenses
 D:\TFS_Codes\Git_Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.pdb
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Settings\obj\Debug\Yamed.Settings.csprojAssemblyReference.cache

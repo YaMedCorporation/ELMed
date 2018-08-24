@@ -16,5 +16,5 @@ DEBUG;TRACE
 25427416926
 Editors\NsiControl.xaml;Editors\UniSprEditControl.xaml;Editors\UniSprFullControl.xaml;Editors\UniSprControl.xaml;Editors\FiasControl.xaml;ErrorGlobalWindow.xaml;
 
-True
+False
 

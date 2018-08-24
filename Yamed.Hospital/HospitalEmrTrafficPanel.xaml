@@ -10,7 +10,7 @@
     xmlns:control="clr-namespace:Yamed.Control;assembly=Yamed.Control"
     xmlns:hospital="clr-namespace:Yamed.Hospital"
     x:Class="Yamed.Hospital.HospitalEmrTrafficPanel"
-        mc:Ignorable="d" control:EnterKeyTraversal.IsEnabled="True">
+        mc:Ignorable="d" control:EnterKeyTraversal.IsEnabled="True" >
     <UserControl.Resources>
         <hospital:DiagnosColorConverter x:Key="diagnosColorConverter" />
         <hospital:KsgColorConverter x:Key="ksgColorConverter" />
@@ -28,8 +28,11 @@
                             <dxe:ComboBoxEdit x:Name="OtdelBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="Id" EditValue="{Binding DataContext.PODR, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
+                    <dxlc:LayoutItem Label="Профиль койки">
+                        <dxe:ComboBoxEdit x:Name="ProfilKBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDK_PR" EditValue="{Binding DataContext.PROFIL_K, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
+                    </dxlc:LayoutItem>
                     <dxlc:LayoutGroup>
-                        <dxlc:LayoutItem Label="Профиль койки">
+                        <dxlc:LayoutItem Label="Профиль отд.">
                             <dxe:ComboBoxEdit x:Name="ProfilBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="Id" EditValue="{Binding DataContext.PROFIL, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="Детский">
@@ -42,7 +45,7 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutItem Label="Специальность">
-                            <dxe:ComboBoxEdit x:Name="SpecBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" EditValue="{Binding DataContext.MSPUID, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
+                            <dxe:ComboBoxEdit x:Name="SpecBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDSPEC" EditValue="{Binding DataContext.PRVS21, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutItem Label="Диагноз">

@@ -39,7 +39,7 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutItem Label="Специальность">
-                            <dxe:ComboBoxEdit x:Name="SpecBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" EditValue="{Binding DataContext.MSPUID, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
+                            <dxe:ComboBoxEdit x:Name="SpecBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDSPEC" EditValue="{Binding DataContext.PRVS21, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutGroup View="GroupBox" Header="Ассистенты" IsCollapsible="True" Padding="-7" Height="140">

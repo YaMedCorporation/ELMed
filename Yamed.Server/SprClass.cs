@@ -196,7 +196,7 @@ namespace Yamed.Server
         public static object DnList;
         public static object SpecV021List;
         public static object SpecAllList;
-
+        public static object Profil_V020;
 
         public static void SprLoad()
         {
@@ -251,6 +251,7 @@ namespace Yamed.Server
             DnList = Reader2List.CustomAnonymousSelect("Select * from Yamed_Spr_Dn", LocalConnectionString);
             SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
             SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
+            Profil_V020 = Reader2List.GetAnonymousTable("V020", LocalConnectionString);
 
             using (ElmedDataClassesDataContext elMed = new ElmedDataClassesDataContext(LocalConnectionString))
             {

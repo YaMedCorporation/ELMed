@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Oms\obj\Debug\
+D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\
 Yamed.Oms
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 41231273558
 
-71340428687
-331271300294
+7-1395341666
+34470682005
 EconomyControl.xaml;EconomyTab.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;
 
-True
+False
 

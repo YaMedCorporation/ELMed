@@ -24,8 +24,9 @@ namespace Yamed.Hospital
             ProfilBox.DataContext = SprClass.profile;
             DetBox.DataContext = SprClass.detProf;
             DoctorBox.DataContext = SprClass.DoctList;
-            SpecBox.DataContext = SprClass.specialityNew;
+            SpecBox.DataContext = SprClass.SpecV021List;
             DsBox.DataContext = SprClass.mkbSearching;
+            ProfilKBox.DataContext = SprClass.Profil_V020;
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

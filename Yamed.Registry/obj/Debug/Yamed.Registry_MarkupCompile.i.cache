@@ -16,5 +16,5 @@ DEBUG;TRACE
 57-406363785
 PacientReserveControl.xaml;PatientRegistration.xaml;ScheduleControl.xaml;ScheduleGen.xaml;ScheduleModelControl.xaml;ScheduleModelEditControl.xaml;Views\BookingItem.xaml;Views\BookingView.xaml;Views\HourBookingView.xaml;Views\ScheduleView.xaml;
 
-True
+False
 

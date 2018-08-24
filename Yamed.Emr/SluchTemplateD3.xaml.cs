@@ -158,7 +158,7 @@ namespace Yamed.Emr
             VidPomGrid.DataContext = SprClass.typeHelp;
             UslOkzGrid.DataContext = SprClass.conditionHelp;
             ProfilGrid.DataContext = SprClass.profile;
-            PrvsGrid.DataContext = SprClass.specialityNew;
+            PrvsGrid.DataContext = SprClass.SpecV021List;
             //SluchTypeGrid.DataContext = SprClass.typeSluch;
             PCelTypeGrid.DataContext = SprClass.SprPCelList;
             DetGrid.DataContext = SprClass.SprDetProfilList;
@@ -180,7 +180,7 @@ namespace Yamed.Emr
 
             UslOtdelColumnEdit.DataContext = SprClass.OtdelDbs;
             UslProfilColumnEdit.DataContext = SprClass.profile;
-            UslPrvsColumnEdit.DataContext = SprClass.specialityNew;
+            UslPrvsColumnEdit.DataContext = SprClass.SpecV021List;
             UslDoctorColumnEdit.DataContext = SprClass.MedicalEmployeeList;
             UslDsColumnEdit.DataContext = SprClass.mkbSearching;
             UslVidVmeColumnEdit.DataContext = SprClass.SprUsl804;
@@ -734,6 +734,11 @@ namespace Yamed.Emr
                 window.ShowDialog();
 
             }
+
+        }
+
+        private void PrvsEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
 
         }
     }

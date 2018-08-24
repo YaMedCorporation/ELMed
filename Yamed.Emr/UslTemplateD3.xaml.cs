@@ -37,7 +37,7 @@ namespace Yamed.Emr
             ProfilBox.DataContext = SprClass.profile;
             DetBox.DataContext = SprClass.SprDetProfilList;
             DoctorBox.DataContext = SprClass.MedicalEmployeeList;
-            SpecBox.DataContext = SprClass.specialityNew;
+            SpecBox.DataContext = SprClass.SpecV021List;
             DsBox.DataContext = SprClass.mkbSearching;
             //UslOslBox.DataContext = SprClass.OslList;
             //AnestBox.DataContext = SprClass.AnestList;

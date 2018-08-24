@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Ambulatory\obj\Debug\
+D:\TFS_Codes\Git_Yamed\Yamed.Ambulatory\obj\Debug\
 Yamed.Ambulatory
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 6-1311412578
 
 71006877359
-29-1885727625
+31-1825870385
 ReferralControl.xaml;SluchControl.xaml;UserControl1.xaml;ViewControl.xaml;WorkSpaceControl.xaml;WorkSpaceTile.xaml;
 
 False

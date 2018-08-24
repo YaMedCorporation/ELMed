@@ -1098,7 +1098,6 @@ D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\Yamed.Reports_MarkupCompile.cache
 D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\Yamed.Reports_MarkupCompile.lref
 D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\StatisticDesigner.baml
 D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\Yamed.Reports.g.resources
-D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\Yamed.Reports.dll.licenses
 D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\Yamed.Reports.dll
 D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\Yamed.Reports.pdb
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Report\obj\Debug\Yamed.Reports.csprojAssemblyReference.cache
