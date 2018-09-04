@@ -109,6 +109,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Background="#FFDA8615">
             <Grid.ColumnDefinitions>
@@ -211,6 +212,7 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <dxb:BarContainerControl >
@@ -257,15 +259,30 @@
                                 <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"/>
                             </dxg:GridControl.View>
                             <dxg:GridColumn FieldName="Name" Header="Наименование"/>
-                            <dxg:GridColumn FieldName="ReqDate" Header="Дата"/>
-                            <dxg:GridColumn FieldName="ReqNum" Header="Номер"/>
+                            <dxg:GridColumn FieldName="ReqDate" Header="Дата" Width="70"/>
+                            <dxg:GridColumn FieldName="ReqNum" Header="Номер" Width="70"/>
                             <dxg:GridColumn FieldName="UserID" Header="Пользователь"/>
                         </dxg:GridControl>
+                        <dxg:GridControl AutoGenerateColumns="None" EnableSmartColumnsGeneration="True" Grid.Row="2" ItemsSource="{Binding}" Name="ExpGridControl">
+                            <dxg:GridControl.View>
+                                <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridColumn FieldName="UMPNAME" Header="Условие ок. пом."/>
+                            <dxg:GridColumn FieldName="cnt_exp" Header="Заказано" Width="50"/>
+                            <dxg:GridColumn FieldName="mee" Header="МЭЭ" Width="55"/>
+                            <dxg:GridColumn FieldName="ekmp" Header="ЭКМП" Width="55"/>
+                        </dxg:GridControl>
+
                     </Grid>
                 </dxdo:LayoutPanel>
 
             </dxdo:LayoutGroup>
         </dxdo:DockLayoutManager>
+        <dxb:BarContainerControl Grid.Row="2" Visibility="Collapsed">
+            <dxb:StatusBarControl AllowCustomizationMenu="False" >
+                <dxb:BarStaticItem Name="ZaprosCountItem"/>
+            </dxb:StatusBarControl>
+        </dxb:BarContainerControl>
 
 
     </Grid>

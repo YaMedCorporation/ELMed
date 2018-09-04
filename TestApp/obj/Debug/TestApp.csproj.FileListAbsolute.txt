@@ -1041,7 +1041,6 @@ D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\Window1.baml
 D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\TestApp.g.resources
 D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\TestApp.Properties.Resources.resources
 D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\TestApp.csproj.GenerateResource.Cache
-D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\TestApp.exe.licenses
 D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\TestApp.exe
 D:\TFS_Codes\Git_Yamed\TestApp\obj\Debug\TestApp.pdb
 C:\Users\rshko\Source\Repos\Yamed\TestApp\bin\Debug\TestApp.exe.config

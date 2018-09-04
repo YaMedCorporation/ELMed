@@ -644,3 +644,5 @@ C:\Users\rshko\Source\Repos\Yamed\Yamed.Emr\obj\Debug\Yamed.Emr.csproj.CoreCompi
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Emr\obj\Debug\Yamed.Emr.csproj.CopyComplete
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Emr\obj\Debug\Yamed.Emr.dll
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Emr\obj\Debug\Yamed.Emr.pdb
+D:\TFS_Codes\Git_Yamed\Yamed.Emr\obj\Debug\SluchTemplateD31.baml
+D:\TFS_Codes\Git_Yamed\Yamed.Emr\obj\Debug\SluchTemplateD31.g.cs

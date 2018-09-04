@@ -31,10 +31,11 @@ namespace Yamed.OmsExp
             InitializeComponent();
         }
 
+        private List<int> _scids;
         public ReestrControl(List<int> scids)
         {
             InitializeComponent();
-
+            _scids = scids;
 
             ElReestrTabNew11.Scids = scids;
             ElReestrTabNew11.BindDataZsl(scids);
@@ -53,6 +54,8 @@ Select distinct r.* from YamedRequests r
 join D3_ZSL_OMS zsl on r.ID = zsl.ReqID
 where zsl.D3_SCID in {ids}";
                 ReqBind();
+
+                ZaprosCount();
             }
         }
 
@@ -470,6 +473,13 @@ where zsl.D3_SCID in {ids}";
         private void ReqEditItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        public void ZaprosCount()
+        {
+            var sc = ObjHelper.GetIds(_scids.ToArray());
+            var q = Reader2List.CustomAnonymousSelect($@"exec GetExpCount '{sc}'", SprClass.LocalConnectionString);
+            ExpGridControl.DataContext = q;
         }
     }
 }

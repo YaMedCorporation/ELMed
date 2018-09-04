@@ -140,7 +140,7 @@
                 <dxg:GridColumn x:Name="Column_MEK_COMENT" FieldName="MEK_COMENT" Header="Комментарий МЭК" FilterPopupMode="CheckedList"/>
                 <dxg:GridColumn x:Name="Column_OSP_COMENT" FieldName="OSP_COMENT" Header="Комментарий ОСП" FilterPopupMode="CheckedList"/>
 
-                <dxg:GridColumn x:Name="Column_USL_OK" FieldName="Z_USL_OK" Header="Условия оказания МП (Зак. Сл.)" FilterPopupMode="CheckedList">
+                <dxg:GridColumn x:Name="Column_USL_OK" FieldName="USL_OK" Header="Условия оказания МП" FilterPopupMode="CheckedList">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="ZUslOkEdit" DisplayMember="NameWithID" ValueMember="id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
@@ -164,12 +164,6 @@
                 </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column_USER_COMENT" FieldName="USER_COMENT" Header="Комментарий пользователя" FilterPopupMode="CheckedList"/>
 
-
-                    <dxg:GridColumn x:Name="Column__SL__USL_OK" FieldName="USL_OK" Header="Условия оказания МП" FilterPopupMode="CheckedList">
-                    <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="UslOkEdit" DisplayMember="NameWithID" ValueMember="id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
-                    </dxg:GridColumn.EditSettings>
-                </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__VID_HMP" FieldName="VID_HMP" Header="Вид ВМП" FilterPopupMode="CheckedList">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="VidHmpEdit" DisplayMember="NameWithID" ValueMember="IDHVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>

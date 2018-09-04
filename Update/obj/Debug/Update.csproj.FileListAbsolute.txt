@@ -42,9 +42,6 @@ F:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed.Entity.pdb
 F:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.csprojResolveAssemblyReference.cache
 F:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.exe
 F:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.pdb
-D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Update.exe.config
-D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Update.exe
-D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Update.pdb
 D:\TFS_Codes\Git_Yamed\Update\bin\Debug\DotNetZip.dll
 D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed.Core.dll
 D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed.Server.dll
@@ -54,8 +51,6 @@ D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed.Server.pdb
 D:\TFS_Codes\Git_Yamed\Update\bin\Debug\DotNetZip.xml
 D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed.Entity.pdb
 D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.csprojResolveAssemblyReference.cache
-D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.exe
-D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Update.pdb
 C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\DotNetZip.dll
 C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Core.dll
 C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Server.dll
@@ -73,3 +68,9 @@ C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed Update.pdb
 C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Yamed Update.exe
 C:\Users\rshko\Source\Repos\Yamed\Update\obj\Debug\Yamed Update.pdb
 C:\Users\rshko\Source\Repos\Yamed\Update\bin\Debug\Yamed.Entity.dll.config
+D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Yamed Update.exe
+D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed Update.exe.config
+D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed Update.exe
+D:\TFS_Codes\Git_Yamed\Update\bin\Debug\Yamed Update.pdb
+D:\TFS_Codes\Git_Yamed\Update\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\TFS_Codes\Git_Yamed\Update\obj\Debug\Yamed Update.pdb

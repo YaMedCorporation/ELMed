@@ -74,7 +74,6 @@ namespace Yamed.OmsExp
             IdspEdit.DataContext = SprClass.tarifUsl;
             VozrEdit.DataContext = SprClass.VozrList;
 
-            UslOkEdit.DataContext = SprClass.conditionHelp;
             ProfilEdit.DataContext = SprClass.profile;
             VidHmpEdit.DataContext = SprClass.VidVmpList;
             MetodHmpEdit.DataContext = SprClass.MetodVmpList;
@@ -141,7 +140,7 @@ namespace Yamed.OmsExp
                     zsl.SANK_IT,
                     zsl.MEK_COMENT,
                     zsl.OSP_COMENT,
-                    Z_USL_OK = zsl.USL_OK,
+                    zsl.USL_OK,
                     Z_P_CEL = zsl.P_CEL,
                     zsl.MEK_COUNT,
                     zsl.MEE_COUNT,
@@ -246,7 +245,7 @@ namespace Yamed.OmsExp
                               zsl.SANK_IT,
                               zsl.MEK_COMENT,
                               zsl.OSP_COMENT,
-                              Z_USL_OK = zsl.USL_OK,
+                              zsl.USL_OK,
                               zsl.MEK_COUNT,
                               zsl.MEE_COUNT,
                               zsl.EKMP_COUNT,
@@ -259,7 +258,6 @@ namespace Yamed.OmsExp
 
 
                               ///////////////////////////////////
-                              sl.USL_OK,
                               sl.VID_HMP,
                               sl.METOD_HMP,
                               sl.LPU_1,
@@ -365,7 +363,7 @@ namespace Yamed.OmsExp
                         zsl.SANK_IT,
                         zsl.MEK_COMENT,
                         zsl.OSP_COMENT,
-                        //zsl.USL_OK,
+                        zsl.USL_OK,
                         //zsl.P_CEL,
                         zsl.MEK_COUNT,
                         zsl.MEE_COUNT,
@@ -377,7 +375,6 @@ namespace Yamed.OmsExp
                         zsl.USER_COMENT,
                         zsl.USERID,
 
-                        sl.USL_OK,
                         sl.VID_HMP,
                         sl.METOD_HMP,
                         sl.LPU_1,
@@ -485,7 +482,7 @@ namespace Yamed.OmsExp
                               zsl.SANK_IT,
                               zsl.MEK_COMENT,
                               zsl.OSP_COMENT,
-                              //zsl.USL_OK,
+                              zsl.USL_OK,
                               //zsl.P_CEL,
                               zsl.MEK_COUNT,
                               zsl.MEE_COUNT,
@@ -497,7 +494,6 @@ namespace Yamed.OmsExp
                               zsl.USER_COMENT,
                               zsl.USERID,
 
-                              sl.USL_OK,
                               sl.VID_HMP,
                               sl.METOD_HMP,
                               sl.LPU_1,
@@ -581,7 +577,7 @@ namespace Yamed.OmsExp
                           join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                           where ((sc.MONTH >= m1 && sc.MONTH <= m2) || m1 == null || m2 == null) && ((sc.YEAR >= y1 && sc.YEAR <= y2) || y1 == null || y2 == null)
                           && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
-                          && (sl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl== null)
+                          && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl== null)
                           select new
                           {
                               sc.YEAR,
@@ -609,7 +605,7 @@ namespace Yamed.OmsExp
                               zsl.SANK_IT,
                               zsl.MEK_COMENT,
                               zsl.OSP_COMENT,
-                              //zsl.USL_OK,
+                              zsl.USL_OK,
                               //zsl.P_CEL,
                               zsl.MEK_COUNT,
                               zsl.MEE_COUNT,
@@ -621,7 +617,6 @@ namespace Yamed.OmsExp
                               zsl.USER_COMENT,
                               zsl.USERID,
 
-                              sl.USL_OK,
                               sl.VID_HMP,
                               sl.METOD_HMP,
                               sl.LPU_1,
