@@ -82,6 +82,9 @@
     <Compile Include="EmrPacient.xaml.cs">
       <DependentUpon>EmrPacient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SankControl.xaml.cs">
+      <DependentUpon>SankControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SluchTemplateD31.xaml.cs">
       <DependentUpon>SluchTemplateD31.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="EmrPacient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SankControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

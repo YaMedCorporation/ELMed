@@ -38,6 +38,8 @@ namespace Yamed.Core
 
         public static string GetIds(int[] collection)
         {
+            if (collection == null || collection.Count() == 0) return "0";
+
             StringBuilder sb = new StringBuilder();
             foreach (var item in collection)
             {

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ElmedicineNewSV" Class="ElmedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=ElmedicineNewSV;Integrated Security=True" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ElmedicineNewSVConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Elmed" Class="ElmedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ElmedConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AKT_EKMP_TBL" Member="AKT_EKMP_TBL">
     <Type Name="AKT_EKMP_TBL">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -231,8 +231,8 @@
       <Column Name="Id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="NameWithID" Type="System.String" DbType="NChar(15)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="DetProfilDb_USL" Member="USL" ThisKey="Id" OtherKey="DET" Type="USL" />
       <Association Name="DetProfilDb_SLUCH" Member="SLUCH" ThisKey="Id" OtherKey="DET" Type="SLUCH" />
+      <Association Name="DetProfilDb_USL" Member="USL" ThisKey="Id" OtherKey="DET" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.DISP_SPR" Member="DISP_SPR">
@@ -266,6 +266,7 @@
       <Association Name="DoctorBd_USL_ASSIST" Member="USL_ASSIST" ThisKey="id" OtherKey="IDDOCT" Type="USL_ASSIST" />
       <Association Name="DoctorBd_SLUCH" Member="SLUCH" ThisKey="id" OtherKey="IDDOKTO" Type="SLUCH" />
       <Association Name="DoctorBd_SLUCH1" Member="SLUCH1" ThisKey="id" OtherKey="IDDOKTP" Type="SLUCH" />
+      <Association Name="DoctorBd_USL" Member="USL" ThisKey="id" OtherKey="CODE_MDLPU" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.DoctorTbl" Member="DoctorTbl">
@@ -935,7 +936,6 @@
       <Column Name="KSG5" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KSG6" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KSG7" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Nomenclature_USL" Member="USL" ThisKey="Id" OtherKey="VID_VME" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.O001" Member="O001">
@@ -1106,8 +1106,8 @@
       <Association Name="F014_SANK" Member="F014" ThisKey="S_OSN" OtherKey="Osn" Type="F014" IsForeignKey="true" />
       <Association Name="SANK_IMPORT_TBL_SANK" Member="SANK_IMPORT_TBL" ThisKey="SANK_IMPORT_ID" OtherKey="ID" Type="SANK_IMPORT_TBL" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="SCHET_SMO_SANK" Member="SCHET_SMO" ThisKey="SCHET_SMO_ID" OtherKey="ID" Type="SCHET_SMO" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="SLUCH_SANK" Member="SLUCH" ThisKey="SLID" OtherKey="ID" Type="SLUCH" IsForeignKey="true" />
       <Association Name="SCHET_SANK" Member="SCHET" ThisKey="SCHET_ID" OtherKey="ID" Type="SCHET" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="SLUCH_SANK" Member="SLUCH" ThisKey="SLID" OtherKey="ID" Type="SLUCH" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SANK_AUTO" Member="SANK_AUTO">
@@ -1531,56 +1531,6 @@
       <Association Name="Users_SLUCH" Member="SLUCH" ThisKey="id" OtherKey="USERID" Type="SLUCH" />
     </Type>
   </Table>
-  <Table Name="dbo.USL" Member="USL">
-    <Type Name="USL">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SLID_TEMP" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
-      <Column Name="IDSERV" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LPU" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="LPU_1" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="PODR" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="PROFIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DET" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="DATE_IN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DATE_OUT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DS" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="CODE_USL" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="KOL_USL" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
-      <Column Name="TARIF" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="SUMV_USL" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="PRVS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CODE_MD" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="COMENTU" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="SCHET_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="USL_PRR" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="USL_OTK" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="SLID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MSPUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VID_VME" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="CODE_MDLPU" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OSL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ANEST" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OTKL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="IsImplemented" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="IDKSG" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="KDAY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DIFF_K" Type="System.Decimal" DbType="Decimal(6,4)" CanBeNull="true" />
-      <Column Name="UPR_K" Type="System.Decimal" DbType="Decimal(6,4)" CanBeNull="true" />
-      <Column Name="KSGOPLATA" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DIFF_N" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="USL_USL_ASSIST" Member="USL_ASSIST" ThisKey="ID" OtherKey="UID" Type="USL_ASSIST" />
-      <Association Name="SprANEST_USL" Member="SprANEST" ThisKey="ANEST" OtherKey="ID" Type="SprANEST" IsForeignKey="true" />
-      <Association Name="DetProfilDb_USL" Member="DetProfilDb" ThisKey="DET" OtherKey="Id" Type="DetProfilDb" IsForeignKey="true" />
-      <Association Name="SprKSGOPLATA_USL" Member="SprKSGOPLATA" ThisKey="KSGOPLATA" OtherKey="ID" Type="SprKSGOPLATA" IsForeignKey="true" />
-      <Association Name="Nomenclature_USL" Member="Nomenclature" ThisKey="VID_VME" OtherKey="Id" Type="Nomenclature" IsForeignKey="true" />
-      <Association Name="SprOSL_USL" Member="SprOSL" ThisKey="OSL" OtherKey="ID" Type="SprOSL" IsForeignKey="true" />
-      <Association Name="V002_USL" Member="V002" ThisKey="PROFIL" OtherKey="Id" Type="V002" IsForeignKey="true" />
-      <Association Name="V004_USL" Member="V004" ThisKey="PRVS" OtherKey="id" Type="V004" IsForeignKey="true" />
-      <Association Name="V015_USL" Member="V015" ThisKey="MSPUID" OtherKey="ID" Type="V015" IsForeignKey="true" />
-      <Association Name="SLUCH_USL" Member="SLUCH" ThisKey="SLID" OtherKey="ID" Type="SLUCH" IsForeignKey="true" />
-      <Association Name="SCHET_USL" Member="SCHET" ThisKey="SCHET_ID" OtherKey="ID" Type="SCHET" IsForeignKey="true" DeleteRule="CASCADE" />
-    </Type>
-  </Table>
   <Table Name="dbo.USL_ASSIST" Member="USL_ASSIST">
     <Type Name="USL_ASSIST">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1612,8 +1562,8 @@
       <Association Name="V002_LIC_TBL" Member="LIC_TBL" ThisKey="Id" OtherKey="PROFIL" Type="LIC_TBL" />
       <Association Name="V002_LicenseDb" Member="LicenseDb" ThisKey="Id" OtherKey="Profil" Type="LicenseDb" />
       <Association Name="V002_TARIF_PN" Member="TARIF_PN" ThisKey="Id" OtherKey="T_PROFIL" Type="TARIF_PN" />
-      <Association Name="V002_USL" Member="USL" ThisKey="Id" OtherKey="PROFIL" Type="USL" />
       <Association Name="V002_SLUCH" Member="SLUCH" ThisKey="Id" OtherKey="PROFIL" Type="SLUCH" />
+      <Association Name="V002_USL" Member="USL" ThisKey="Id" OtherKey="PROFIL" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.V003" Member="V003">
@@ -1634,8 +1584,8 @@
       <Column Name="DATEBEG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DATEEND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NameWithID" Type="System.String" DbType="NVarChar(109)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="V004_USL" Member="USL" ThisKey="id" OtherKey="PRVS" Type="USL" />
       <Association Name="V004_SLUCH" Member="SLUCH" ThisKey="id" OtherKey="PRVS" Type="SLUCH" />
+      <Association Name="V004_USL" Member="USL" ThisKey="id" OtherKey="PRVS" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.V005" Member="V005">
@@ -1729,8 +1679,8 @@
       <Column Name="DATEBEG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DATEEND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NameWithID" Type="System.String" DbType="NVarChar(261)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="V015_USL" Member="USL" ThisKey="ID" OtherKey="MSPUID" Type="USL" />
       <Association Name="V015_SLUCH" Member="SLUCH" ThisKey="ID" OtherKey="MSPID" Type="SLUCH" />
+      <Association Name="V015_USL" Member="USL" ThisKey="ID" OtherKey="MSPUID" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.V015_V002" Member="V015_V002">
@@ -1802,6 +1752,7 @@
       <Column Name="ID" Type="System.Boolean" DbType="Bit NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NAME" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="NameWithID" Type="System.String" DbType="NVarChar(23)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="YesNoTbl_USL" Member="USL" ThisKey="ID" OtherKey="OTKL" Type="USL" />
     </Type>
   </Table>
   <Table Name="dbo.YamedRegistry" Member="YamedRegistry">
@@ -1934,6 +1885,46 @@
       <Association Name="V005_PACIENT1" Member="V0051" ThisKey="W_P" OtherKey="Id" Type="V005" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.USL_KSLP" Member="USL_KSLP">
+    <Type Name="USL_KSLP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDSL" Type="System.Decimal" DbType="Decimal(4,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Z_SL" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SLID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SCHET" Member="SCHET">
+    <Type Name="SCHET">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CODE_MO" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="YEAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MONTH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NSCHET" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="DSCHET" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAT" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="SUMMAV" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="COMENTS" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="SUMMAP" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SANK_MEK" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SANK_MEE" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SANK_EKMP" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="COUNT_SL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NameWithID" Type="System.String" DbType="NVarChar(273)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DISP" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="ZAPFILENAME" Type="System.String" DbType="NVarChar(26)" CanBeNull="true" />
+      <Column Name="PERSFILENAME" Type="System.String" DbType="NVarChar(26)" CanBeNull="true" />
+      <Column Name="ZAPXMLFILE" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PERSXMLFILE" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SD_Z" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OmsFileName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="SCHET_FREP" Member="FREP" ThisKey="ID" OtherKey="SCHET_ID" Type="FREP" />
+      <Association Name="SCHET_SANK" Member="SANK" ThisKey="ID" OtherKey="SCHET_ID" Type="SANK" />
+      <Association Name="SCHET_SANK_RE" Member="SANK_RE" ThisKey="ID" OtherKey="SCHET_ID" Type="SANK_RE" />
+      <Association Name="SCHET_SCHET_OMS" Member="SCHET_OMS" ThisKey="ID" OtherKey="SCHET_ID" Type="SCHET_OMS" />
+      <Association Name="SCHET_SCHET_SMO" Member="SCHET_SMO" ThisKey="ID" OtherKey="SCHET_ID" Type="SCHET_SMO" />
+    </Type>
+  </Table>
   <Table Name="dbo.SLUCH" Member="SLUCH">
     <Type Name="SLUCH">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -2028,6 +2019,8 @@
       <Column Name="TER_ID" Type="System.Decimal" DbType="Decimal(1,0)" CanBeNull="true" />
       <Column Name="FOR_POM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KSG_DKK" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PROFIL_K" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRVS21" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="SLUCH_SANK" Member="SANK" ThisKey="ID" OtherKey="SLID" Type="SANK" />
       <Association Name="SLUCH_USL" Member="USL" ThisKey="ID" OtherKey="SLID" Type="USL" />
       <Association Name="SprDEFGOSP_SLUCH" Member="SprDEFGOSP" ThisKey="DEFGOSP" OtherKey="ID" Type="SprDEFGOSP" IsForeignKey="true" />
@@ -2065,49 +2058,58 @@
       <Association Name="VeteranDb_SLUCH" Member="VeteranDb" ThisKey="VETERAN" OtherKey="Id" Type="VeteranDb" IsForeignKey="true" />
       <Association Name="SprVozr_SLUCH" Member="SprVozr" ThisKey="VOZR" OtherKey="ID" Type="SprVozr" IsForeignKey="true" />
       <Association Name="WorkStatDb_SLUCH" Member="WorkStatDb" ThisKey="WORK_STAT" OtherKey="Id" Type="WorkStatDb" IsForeignKey="true" />
-      <Association Name="SCHET_SLUCH" Member="SCHET" ThisKey="SCHET_ID" OtherKey="ID" Type="SCHET" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.USL_KSLP" Member="USL_KSLP">
-    <Type Name="USL_KSLP">
+  <Table Name="dbo.USL" Member="USL">
+    <Type Name="USL">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IDSL" Type="System.Decimal" DbType="Decimal(4,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Z_SL" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
-      <Column Name="SLID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SCHET" Member="SCHET">
-    <Type Name="SCHET">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CODE_MO" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="YEAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MONTH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NSCHET" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="DSCHET" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="PLAT" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="SUMMAV" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="COMENTS" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="SUMMAP" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="SANK_MEK" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="SANK_MEE" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="SANK_EKMP" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="COUNT_SL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NameWithID" Type="System.String" DbType="NVarChar(273)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="DISP" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
-      <Column Name="ZAPFILENAME" Type="System.String" DbType="NVarChar(26)" CanBeNull="true" />
-      <Column Name="PERSFILENAME" Type="System.String" DbType="NVarChar(26)" CanBeNull="true" />
-      <Column Name="ZAPXMLFILE" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PERSXMLFILE" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="SD_Z" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OmsFileName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Association Name="SCHET_FREP" Member="FREP" ThisKey="ID" OtherKey="SCHET_ID" Type="FREP" />
-      <Association Name="SCHET_SANK" Member="SANK" ThisKey="ID" OtherKey="SCHET_ID" Type="SANK" />
-      <Association Name="SCHET_SANK_RE" Member="SANK_RE" ThisKey="ID" OtherKey="SCHET_ID" Type="SANK_RE" />
-      <Association Name="SCHET_SCHET_OMS" Member="SCHET_OMS" ThisKey="ID" OtherKey="SCHET_ID" Type="SCHET_OMS" />
-      <Association Name="SCHET_SCHET_SMO" Member="SCHET_SMO" ThisKey="ID" OtherKey="SCHET_ID" Type="SCHET_SMO" />
-      <Association Name="SCHET_USL" Member="USL" ThisKey="ID" OtherKey="SCHET_ID" Type="USL" />
-      <Association Name="SCHET_SLUCH" Member="SLUCH" ThisKey="ID" OtherKey="SCHET_ID" Type="SLUCH" />
+      <Column Name="SLID_TEMP" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="IDSERV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LPU" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="LPU_1" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="PODR" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="PROFIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DET" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DATE_IN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATE_OUT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CODE_USL" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="KOL_USL" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="TARIF" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SUMV_USL" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="PRVS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CODE_MD" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="COMENTU" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="SCHET_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USL_PRR" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="USL_OTK" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SLID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MSPUID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VID_VME" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="CODE_MDLPU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ANEST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OTKL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsImplemented" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IDKSG" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="KDAY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DIFF_K" Type="System.Decimal" DbType="Decimal(6,4)" CanBeNull="true" />
+      <Column Name="UPR_K" Type="System.Decimal" DbType="Decimal(6,4)" CanBeNull="true" />
+      <Column Name="KSGOPLATA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DIFF_N" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROFIL_K" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRVS21" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="USL_USL_ASSIST" Member="USL_ASSIST" ThisKey="ID" OtherKey="UID" Type="USL_ASSIST" />
+      <Association Name="SprANEST_USL" Member="SprANEST" ThisKey="ANEST" OtherKey="ID" Type="SprANEST" IsForeignKey="true" />
+      <Association Name="DoctorBd_USL" Member="DoctorBd" ThisKey="CODE_MDLPU" OtherKey="id" Type="DoctorBd" IsForeignKey="true" />
+      <Association Name="DetProfilDb_USL" Member="DetProfilDb" ThisKey="DET" OtherKey="Id" Type="DetProfilDb" IsForeignKey="true" />
+      <Association Name="SprKSGOPLATA_USL" Member="SprKSGOPLATA" ThisKey="KSGOPLATA" OtherKey="ID" Type="SprKSGOPLATA" IsForeignKey="true" />
+      <Association Name="SprOSL_USL" Member="SprOSL" ThisKey="OSL" OtherKey="ID" Type="SprOSL" IsForeignKey="true" />
+      <Association Name="YesNoTbl_USL" Member="YesNoTbl" ThisKey="OTKL" OtherKey="ID" Type="YesNoTbl" IsForeignKey="true" />
+      <Association Name="SLUCH_USL" Member="SLUCH" ThisKey="SLID" OtherKey="ID" Type="SLUCH" IsForeignKey="true" />
+      <Association Name="V002_USL" Member="V002" ThisKey="PROFIL" OtherKey="Id" Type="V002" IsForeignKey="true" />
+      <Association Name="V004_USL" Member="V004" ThisKey="PRVS" OtherKey="id" Type="V004" IsForeignKey="true" />
+      <Association Name="V015_USL" Member="V015" ThisKey="MSPUID" OtherKey="ID" Type="V015" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.Mek_Calc" Method="Mek_Calc">

@@ -87,9 +87,11 @@ namespace Yamed.OmsExp.ExpEditors
             sl.Sank.S_SUM = sl.AktMee.SUMNP;
             sl.Sank.S_SUM2 = sl.AktMee.SUM_MULCT;
             sl.Sank.S_DATE = sl.AktMee.AKT_DATE;
+            //sl.Sank.CODE_EXP = sl.AktMee.ExpertID;
             sl.Sank.S_COM = (sl.AktMee.ZAKL != null) ? Obrezka(sl.AktMee.ZAKL, 250) : null;
             sl.Sank.S_CODE = Guid.NewGuid().ToString();
             //sl.Sank.RESANK = _rsank;
+
         }
 
         public static string Obrezka(string str, int count)

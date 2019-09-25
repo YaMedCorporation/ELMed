@@ -14,8 +14,8 @@ using Yamed.Control;
 using Yamed.Core;
 using Yamed.Emr;
 using Yamed.Entity;
-using Yamed.OmsExp.MekEditor;
 using Yamed.Server;
+using System.Data.SqlClient;
 
 namespace Yamed.Oms
 {
@@ -26,7 +26,7 @@ namespace Yamed.Oms
     {
         private bool _isSaved;
         private D3_SCHET_OMS _sc;
-
+        
         public ReestrControl()
         {
             InitializeComponent();
@@ -35,14 +35,14 @@ namespace Yamed.Oms
         public ReestrControl(D3_SCHET_OMS sc)
         {
             InitializeComponent();
-
+            
             _sc = sc;
-            ElReestrTabNew11.Scids = new List<int> () {_sc.ID};
+            SchetRegisterGrid1.Scids = new List<int> () {_sc.ID};
         }
 
         private void ZslRefresh_OnClick(object sender, RoutedEventArgs e)
         {
-            ElReestrTabNew11._linqInstantFeedbackDataSource.Refresh();
+            SchetRegisterGrid1._linqInstantFeedbackDataSource.Refresh();
         }
 
         private void ZslAdd_OnClick(object sender, RoutedEventArgs e)
@@ -60,12 +60,12 @@ namespace Yamed.Oms
 
         private void ZslEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            var tab = ElReestrTabNew11;
+            var tab = SchetRegisterGrid1;
             //var sl = Reader2List.CustomSelect<SLUCH>($"Select * From D3_ZSL_OMS Where ID={ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID")}",
             //        SprClass.LocalConnectionString).Single();
 
             var id = tab.GetSelectedRowId();
-            var slt = new SluchTemplateD3();
+            var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
             slt.BindSluch(id, _sc);
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
@@ -80,24 +80,88 @@ namespace Yamed.Oms
         private void Zsl_OnClick(object sender, RoutedEventArgs e)
         {
             //throw new NotImplementedException();
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
 
-            MessageBoxResult result = MessageBox.Show("Удалить случай", "Удаление",
-MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            Task.Factory.StartNew(() =>
             {
-                var tab = ElReestrTabNew11;
-                var id = tab.GetSelectedRowId();
-                //var uid = Reader2List.CustomSelect<USL>($"Select TOP 1 * FROM USL WHERE SLID={id}", SprClass.LocalConnectionString).SingleOrDefault()?.ID;
-                //if (uid != null)
-                //    Reader2List.CustomExecuteQuery($"DELETE USL_ASSIST WHERE UID={uid}", SprClass.LocalConnectionString);
-                Reader2List.CustomExecuteQuery($"DELETE D3_USL_OMS WHERE D3_ZSLID={id}", SprClass.LocalConnectionString);
-                //Reader2List.CustomExecuteQuery($"DELETE SLUCH_DS2 WHERE SLID={id}", SprClass.LocalConnectionString);
-                //Reader2List.CustomExecuteQuery($"DELETE SLUCH_DS3 WHERE SLID={id}", SprClass.LocalConnectionString);
-                Reader2List.CustomExecuteQuery($"DELETE D3_SL_OMS WHERE D3_ZSLID={id}", SprClass.LocalConnectionString);
-                Reader2List.CustomExecuteQuery($"DELETE D3_ZSL_OMS WHERE ID={id}", SprClass.LocalConnectionString);
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
 
-                tab._linqInstantFeedbackDataSource.Refresh();
-            }
+            }).ContinueWith(lr =>
+            {
+                if (DxHelper.LoadedRows.Count > 0)
+                {
+                    var ids =
+                        DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID"))
+                            .OfType<int>()
+                            .Distinct()
+                            .ToArray();
+
+                    MessageBoxResult resdel = MessageBox.Show($"Удалить {ids.Length} записей?", "Удаление",
+MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (resdel == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            var tab = SchetRegisterGrid1;
+                            var idstr = ObjHelper.GetIds(ids);
+                            var connectionString = SprClass.LocalConnectionString;
+                            SqlConnection con = new SqlConnection(connectionString);
+                            SqlCommand comm = new SqlCommand($@"select convert(nvarchar, d3_pid)+',' from d3_zsl_oms where id in({idstr}) for xml path('') ", con);
+                            con.Open();
+                            string pacid=(string)comm.ExecuteScalar();
+                            con.Close();
+                            string pacids= pacid.Substring(0, pacid.Length - 1);
+                            Reader2List.CustomExecuteQuery($"DELETE D3_USL_OMS WHERE D3_ZSLID in({idstr})", SprClass.LocalConnectionString);
+                            //Reader2List.CustomExecuteQuery($"DELETE SLUCH_DS2 WHERE SLID={id}", SprClass.LocalConnectionString);
+                            //Reader2List.CustomExecuteQuery($"DELETE SLUCH_DS3 WHERE SLID={id}", SprClass.LocalConnectionString);
+                            Reader2List.CustomExecuteQuery($"DELETE D3_SL_OMS WHERE D3_ZSLID in({idstr})", SprClass.LocalConnectionString);
+                            
+                            Reader2List.CustomExecuteQuery($"DELETE D3_ZSL_OMS WHERE ID in({idstr})", SprClass.LocalConnectionString);
+                            Reader2List.CustomExecuteQuery($"DELETE D3_PACIENT_OMS WHERE ID in({pacids})", SprClass.LocalConnectionString);
+                            DXMessageBox.Show($"Удаление успешно выполнено. Удалено {ids.Length} записей");
+                            tab._linqInstantFeedbackDataSource.Refresh();
+                        }
+                        catch (Exception exception)
+                        {
+                            DXMessageBox.Show(exception.Message + Environment.NewLine +
+                                              exception.InnerException?.Message);
+                        }
+                        finally
+                        {
+                            SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                            DxHelper.LoadedRows.Clear();
+                        }
+                        
+
+
+                    }
+                   
+
+                }
+                else
+                {
+                    DXMessageBox.Show("Не выбрано ни одной записи");
+
+                }
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+
+            
         }
 
         private void ZslCompile_OnClick(object sender, RoutedEventArgs e)
@@ -250,10 +314,10 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
             }).ContinueWith(x =>
             {
                 DXMessageBox.Show("Загрузка успешно завершена");
-                ElReestrTabNew11._linqInstantFeedbackDataSource.Refresh();
-                //ElReestrTabNew11.gridControl1.ClearGrouping();
-                //ElReestrTabNew11.gridControl1.GroupBy("FLK_COMENT");
-                if (ft == "flk") ElReestrTabNew11.FlkGroup();
+                SchetRegisterGrid1._linqInstantFeedbackDataSource.Refresh();
+                //SchetRegisterGrid1.gridControl1.ClearGrouping();
+                //SchetRegisterGrid1.gridControl1.GroupBy("FLK_COMENT");
+                if (ft == "flk") SchetRegisterGrid1.FlkGroup();
 
                 ((Button)sender).IsEnabled = true;
 
@@ -264,9 +328,9 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
 
         private void Perenos_OnClick(object sender, RoutedEventArgs e)
         {
-            DxHelper.GetSelectedGridRowsAsync(ref ElReestrTabNew11.gridControl1);
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
             bool isLoaded = false;
-            ElReestrTabNew11.gridControl1.IsEnabled = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
 
             Task.Factory.StartNew(() =>
             {
@@ -274,7 +338,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 {
                     Dispatcher.BeginInvoke((Action) delegate()
                     {
-                        if (ElReestrTabNew11.gridControl1.IsAsyncOperationInProgress == false)
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
                         {
                             isLoaded = true;
                         }
@@ -289,15 +353,97 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                    Content = new ReestrChooseControl(),
+                    Content = new ReestrChooseControl(_sc),
                     Title = "Выбор реестра для переноса",
                     Width = 350, Height = 300
                 };
                 window.ShowDialog();
 
-                ElReestrTabNew11.gridControl1.IsEnabled = true;
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
                 DxHelper.LoadedRows.Clear();
             }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void TestAshurcov(object sender, RoutedEventArgs e)
+        {
+
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+
+            }).ContinueWith(lr =>
+            {
+                if (DxHelper.LoadedRows.Count > 0)
+                {
+                    var ids =
+                        DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID"))
+                            .OfType<int>()
+                            .Distinct()
+                            .ToArray();
+
+                    MessageBoxResult result = MessageBox.Show($"Объединить {ids.Length} записей в обращение?", "Объединение",
+MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            var idstr = ObjHelper.GetIds(ids);
+                            var q = $@"EXEC [dbo].[p_MergingEvents] '{idstr}'";
+                            Reader2List.CustomExecuteQuery(q, SprClass.LocalConnectionString);
+                        }
+                        catch (Exception exception)
+                        {
+                            DXMessageBox.Show(exception.Message + Environment.NewLine +
+                                              exception.InnerException?.Message);
+                        }
+                        finally
+                        {
+                            SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                            DxHelper.LoadedRows.Clear();
+                        }
+                        DXMessageBox.Show("Объединение успешно выполнено");
+
+
+                    }
+                    DXMessageBox.Show("Не выбрано ни одной записи");
+
+                }
+                else
+                {
+                    DXMessageBox.Show("Не выбрано ни одной записи");
+
+                }
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void ZslAdd31_OnClick(object sender, RoutedEventArgs e)
+        {
+            var zslTempl = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
+            zslTempl.BindEmptySluch2(_sc);
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            {
+                Header = "Случай поликлиники",
+                MyControl = zslTempl,
+                IsCloseable = "True"
+            });
         }
     }
 }

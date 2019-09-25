@@ -24,12 +24,12 @@ namespace Yamed.Emr
     /// </summary>
     public partial class UslUserTempl : UserControl
     {
-        private SluchTemplateD3 _sluchTemplateD3;
-        public UslUserTempl(SluchTemplateD3 sluchTemplateD3)
+        private SluchTemplateD31 _sluchTemplateD31;
+        public UslUserTempl(SluchTemplateD31 sluchTemplateD31)
         {
             InitializeComponent();
 
-            _sluchTemplateD3 = sluchTemplateD3;
+            _sluchTemplateD31 = sluchTemplateD31;
 
             Task.Factory.StartNew(() =>
             {
@@ -44,13 +44,18 @@ namespace Yamed.Emr
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var lpu = _sluchTemplateD3._zsl.LPU;
-            var slgid = ((D3_SL_OMS) _sluchTemplateD3.SlGridControl.SelectedItem).SL_ID;
+            if (_sluchTemplateD31._uslList == null)
+            {
+                _sluchTemplateD31.UslGrid.DataContext = _sluchTemplateD31._uslList = new List<D3_USL_OMS>();
+            }
+
+            var lpu = _sluchTemplateD31._zsl.LPU;
+            var slgid = ((D3_SL_OMS) _sluchTemplateD31.SlGridControl.SelectedItem).SL_ID;
 
             var ulist = UslUserTemplEdit.SelectedItems;
             foreach (DynamicBaseClass usl in ulist)
             {
-                _sluchTemplateD3._uslList.Add(new D3_USL_OMS
+                _sluchTemplateD31._uslList.Add(new D3_USL_OMS
                 {
                     COMENTU = (string)usl.GetValue("Name"),
                     CODE_USL = (string)usl.GetValue("Code"),

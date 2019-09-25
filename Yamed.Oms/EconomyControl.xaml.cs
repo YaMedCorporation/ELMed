@@ -61,8 +61,8 @@ namespace Yamed.Oms
         {
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
             var rc = new ReestrControl(sc);
-            rc.ElReestrTabNew11.Scids = new List<int> { sc.ID };
-            rc.ElReestrTabNew11.BindDataZsl(new List<int> {sc.ID});
+            rc.SchetRegisterGrid1.Scids = new List<int> { sc.ID };
+            rc.SchetRegisterGrid1.BindDataZsl();
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
@@ -76,153 +76,137 @@ namespace Yamed.Oms
         private void LoadOldPoliclinic_OnClick(object sender, RoutedEventArgs e)
         {
 
-            var ans = DXMessageBox.Show("Запустить конвертацию мая в выбранный счет?", "Конвертация", MessageBoxButton.YesNo);
-            if (ans != MessageBoxResult.Yes) return;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "OMS File |*.oms;*.zip";
+
+
+            var result = openFileDialog.ShowDialog();
+
+            var rfile = openFileDialog.FileName;
+            var omszfn = openFileDialog.SafeFileName;
+
+            string zapfn = "";
+            string persfn = "";
+            var zapms = new MemoryStream();
+            var persms = new MemoryStream();
+
+            if (result != true) return;
 
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
+            ((Button)sender).IsEnabled = false;
+            Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    using (ZipFile zip = ZipFile.Read(rfile))
+                    {
+                        foreach (ZipEntry zipEntry in zip)
+                        {
+                            if (zipEntry.FileName.StartsWith("HM") || zipEntry.FileName.StartsWith("D") ||
+                                zipEntry.FileName.StartsWith("T"))
+                            {
+                                zapfn = zipEntry.FileName;
+                                zipEntry.Extract(zapms);
+                                zapms.Position = 0;
+                            }
 
-            Reader2List.CustomExecuteQuery($@"
-            Update PacientVisit Set IDSLG = newid() where IDSLG in (
-            Select IDSLG from PacientVisit group by IDSLG having count(*) >1)
-            ", SprClass.LocalConnectionString);
-
-            Reader2List.CustomExecuteQuery($@"
---Delete D3_PACIENT_OMS
---WHERE ID_PAC in (
---Select IDSLG FROM [dbo].[PacientVisit] pv
---join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5)
-
-Delete D3_ZSL_OMS
-WHERE ZSL_ID in (
-Select IDSLG FROM [dbo].[PacientVisit] pv
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5)
-
-Delete D3_SL_OMS
-WHERE SL_ID in (
-Select IDSLG FROM [dbo].[PacientVisit] pv
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5)
-
-Delete D3_USL_OMS
-WHERE D3_SLGID in (
-Select IDSLG FROM [dbo].[PacientVisit] pv
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5)
-
-UPDATE pacientVisit SET COMENTP = null
-from PacientVisit pv 
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID
-WHERE R_YEAR=2018 and R_MONTH = 5
-", SprClass.LocalConnectionString);
-
-
-            Reader2List.CustomExecuteQuery($@"
-Update D3_PACIENT_OMS SET ID_PAC = NEWID()
-Where len(ID_PAC) < 36 or ID_PAC in (select ID_PAC from D3_PACIENT_OMS group by ID_PAC having COUNT(*)>1)
-", SprClass.LocalConnectionString);
+                            if (zipEntry.FileName.StartsWith("L"))
+                            {
+                                persfn = zipEntry.FileName;
+                                zipEntry.Extract(persms);
+                                persms.Position = 0;
+                            }
+                        }
+                    }
+                    //"0x" + BitConverter.ToString(arraytoinsert).Replace("-", "")
+                }
+                catch (Exception ex)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        DXMessageBox.Show(ex.Message + Environment.NewLine + ex.InnerException?.Message);
+                    });
+                    return;
+                }
 
 
-            Reader2List.CustomExecuteQuery($@"INSERT INTO [dbo].[D3_PACIENT_OMS]
-([FAM],[IM],[OT],[W],[DR],[FAM_P],[IM_P],[OT_P],[W_P],[DR_P]
-,[MR],[DOCTYPE],[DOCSER],[DOCNUM],[SNILS],[OKATOG],[OKATOP],[VPOLIS],[SPOLIS],[NPOLIS],[SMO],[SMO_OGRN],[SMO_OK],[SMO_NAM],[NOVOR],[SCHET_ID], ID_PAC)
-select fam, im, ot, w, dr, FAM_P, IM_P, OT_P, W_P, DR_P
-,mr, DOCTYPE, DOCSER, DOCNUM, SNILS, OKATOG, OKATOP, TypePolicy, SerPolis, Polis, q, Q_OGRN, OKATO_OMS, Q_Name,NOVOR,
-sc.ID, pv.IDSLG
-from PacientVisit pv 
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5
-join D3_SCHET_OMS sc on sc.ID = {sc.ID}
-WHERE pv.COMENTP is null
-", SprClass.LocalConnectionString);
+                var zapsr = new StreamReader(zapms, Encoding.Default);
+                string zapxml = zapsr.ReadToEnd();
+                zapms.Dispose();
+                zapms.Close();
+
+                var perssr = new StreamReader(persms, Encoding.Default);
+                string persxml = perssr.ReadToEnd();
+                persms.Dispose();
+                persms.Close();
+
+                if (string.IsNullOrEmpty(zapxml) || string.IsNullOrEmpty(persxml))
+                {
+                    //Reader2List.CustomExecuteQuery($@"Update DOX_SCHET SET DOX_STATUS=12 ", SprClass.LocalConnectionString);
+                }
+                else
+                {
+                    try
+                    {
+                        var q = $@"
+                            EXEC [dbo].[LoadFromMedialog] '{zapxml.Replace("'", "")}', '{persxml.Replace("'", "")}', '{zapfn}', '{persfn}'
+                        ";
+
+                        zapxml = null;
+                        persxml = null;
+                        Reader2List.CustomExecuteQuery(q, SprClass.LocalConnectionString);
+                        q = null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        Dispatcher.BeginInvoke((Action)delegate ()
+                        {
+                            DXMessageBox.Show(ex.Message + Environment.NewLine + ex.InnerException?.Message);
+                        });
+                    }
+                }
+                zapsr.Dispose();
+                zapsr.Close();
+                perssr.Dispose();
+                perssr.Close();
 
 
-            Reader2List.CustomExecuteQuery($@"INSERT INTO [dbo].[D3_ZSL_OMS] 
-([VIDPOM],[NPR_MO],[RSLT],[ISHOD]
- ,[FOR_POM]
- ,[DATE_Z_1],[DATE_Z_2]
-,[OS_SLUCH_REGION],[IDSP], LPU
-,[D3_SCID], [D3_PID], ZSL_ID
-)
-SELECT
-TypeHelp, [NPR_MO], HelpResult, HelpIshod
-,CASE
-WHEN TypeSluch = 3 and ConditionHelp = 3 THEN  '2'
-WHEN TypeSluch in (1,2) and ConditionHelp = 3 THEN  '3'
-WHEN TypeSluch = 3 and ConditionHelp = 4 THEN  '2'
-WHEN TypeSluch = 1 and ConditionHelp = 4 THEN  '1'
-ELSE 3
-END 
-,HelpStart, HelpEnd,
-OsobSluch, idsp, sc.CODE_MO,
-sc.ID, pa.ID, pv.IDSLG
-FROM [dbo].[PacientVisit] pv
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5
-join D3_PACIENT_OMS pa on pv.IDSLG = pa.ID_PAC
-join D3_SCHET_OMS sc on sc.ID = {sc.ID}
-WHERE pv.COMENTP is null
-", SprClass.LocalConnectionString);
+                //Console.WriteLine("Распакован " + id);
 
-            Reader2List.CustomExecuteQuery($@"INSERT INTO [dbo].[D3_SL_OMS] 
-([USL_OK],[LPU_1],[PODR],[PROFIL],[DET],[NHISTORY],[DATE_1],[DATE_2],[DS0],[DS1]
-,[P_CEL]
-,[PRVS]
-,[ED_COL]
-,IDDOKT
-,SL_ID
-,D3_ZSLID)
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
 
-SELECT
-ConditionHelp, LPU_1, PODR, pv.Profil, [DetProfil], ISNULL(NHISTORY, pv.ID), HelpStart, HelpEnd, DS0, mkb
-,CASE
-WHEN TypeSluch = 1 and ConditionHelp = 3 THEN  '1.3'
-WHEN TypeSluch = 2 and ConditionHelp = 3 THEN  '1.1'
-WHEN TypeSluch = 3 and ConditionHelp = 3 THEN  '2.0'
-END 
-,MSPID
-, ED_COL, 
-d.SNILS, 
-pv.IDSLG,
-zsl.ID
-FROM [dbo].[PacientVisit] pv
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID and R_YEAR=2018 and R_MONTH = 5
-join D3_SCHET_OMS sc on sc.ID = {sc.ID}
-join D3_ZSL_OMS zsl on zsl.ZSL_ID = pv.IDSLG
-left join DoctorBd d on pv.Doctor = d.id
-WHERE pv.COMENTP is null
-", SprClass.LocalConnectionString);
+            }).ContinueWith(x =>
+            {
+                EconomyWindow11.linqInstantFeedbackDataSource.Refresh();
 
-            Reader2List.CustomExecuteQuery($@"
-INSERT INTO [dbo].[D3_USL_OMS]
-([LPU_1],[PODR],[PROFIL],[DET],[DATE_IN],[DATE_OUT],[DS],[CODE_USL],[KOL_USL],[TARIF],[SUMV_USL],[PRVS],[CODE_MD]
-,[VID_VME], D3_ZSLID, D3_SLID, D3_SLGID, COMENTU)
-select [PodrMO], u.Otdelenie, u.Profil, u.DetProfil, DateStart, DateEnd, Diagnoz, DISP_CODE, KolUslugi, 0, 0, MSPUID, d.SNILS
-,[CodUslugi], zsl.ID, sl.ID, sl.SL_ID, ComentUslugi
-from Uslugi u
-join PacientVisit pv on u.SluchID = pv.id
-join D3_SL_OMS sl on sl.SL_ID = pv.IDSLG
-join D3_ZSL_OMS zsl on zsl.ZSL_ID = pv.IDSLG
-left join DoctorBd d on u.Doctor = d.id
-WHERE pv.COMENTP is null
-", SprClass.LocalConnectionString);
+                DXMessageBox.Show("Загрузка успешно завершена");
 
-            Reader2List.CustomExecuteQuery($@"UPDATE pacientVisit SET COMENTP = 'Выгружен'
-from PacientVisit pv 
-join ReestrMedOrgDb r on pv.ReestrMedOrgID = r.ID
-WHERE R_YEAR=2018 and R_MONTH = 5
-", SprClass.LocalConnectionString);
+                ((Button)sender).IsEnabled = true;
 
-            DXMessageBox.Show("Конвертация успешно завершена");
 
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void Calculate_OnClick(object sender, RoutedEventArgs e)
+
+    private void Calculate_OnClick(object sender, RoutedEventArgs e)
         {
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
 
             ((Button)sender).IsEnabled = false;
 
             Reader2List.CustomExecuteQuery($@"
-                        UPDATE D3_ZSL_OMS SET SUMV = NULL
-                        FROM D3_SL_OMS sl
-						JOIN D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is NULL
-                        where zsl.USL_OK in (3,4)
+                        UPDATE zsl SET SUMV = NULL
+						FROM D3_ZSL_OMS zsl 
+                        where zsl.D3_SCID = {sc.ID} and zsl.USL_OK in (3,4)
+", SprClass.LocalConnectionString);
+
+            Reader2List.CustomExecuteQuery($@"
+                        UPDATE sl SET SUM_M = NULL, TARIF = NULL
+						FROM D3_ZSL_OMS zsl 
+                        JOIN D3_SL_OMS sl on sl.D3_ZSLID = zsl.ID
+                        where zsl.D3_SCID = {sc.ID} and zsl.USL_OK in (3,4)
 ", SprClass.LocalConnectionString);
 
             Reader2List.CustomExecuteQuery($@"
@@ -231,6 +215,50 @@ WHERE R_YEAR=2018 and R_MONTH = 5
 
             Reader2List.CustomExecuteQuery($@"
                         EXEC [dbo].[p_fix] { sc.ID}", SprClass.LocalConnectionString);
+
+            Reader2List.CustomExecuteQuery($@"
+update zs set idsp = tt.idsp
+from [D3_ZSL_OMS] zs
+join (
+select distinct zs.id,
+     case
+when zs.USL_OK = 3 and sl.p_cel25 = '1.0' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '1.1' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '1.2' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '1.3' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '2.1' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '2.2' and ltrim(rtrim(p.smo)) not like '46%' then 30
+when zs.USL_OK = 3 and sl.p_cel25 = '2.3' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '2.5' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '2.6' and ltrim(rtrim(p.smo)) not like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '3.0' and ltrim(rtrim(p.smo)) not like '46%' then 30
+when zs.USL_OK = 3 and sl.p_cel25 = '3.1' and ltrim(rtrim(p.smo)) not like '46%' then 30
+
+when zs.USL_OK = 3 and sl.p_cel25 = '1.0' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '1.1' and ltrim(rtrim(p.smo)) like '46%' then 29
+when zs.USL_OK = 3 and sl.p_cel25 = '1.2' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '1.3' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '2.1' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '2.2' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '2.3' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '2.5' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '2.6' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '3.0' and ltrim(rtrim(p.smo)) like '46%' then 25
+when zs.USL_OK = 3 and sl.p_cel25 = '3.1' and ltrim(rtrim(p.smo)) like '46%' then 25
+
+when zs.USL_OK = 4 and ltrim(rtrim(p.smo)) not like '46%' then 24
+when zs.USL_OK = 4 and FOR_POM <> 1 and ltrim(rtrim(p.smo)) like '46%' then 24
+when zs.USL_OK = 4 and FOR_POM = 1 and ltrim(rtrim(p.smo)) like '46%' then 36
+	 end idsp
+FROM [D3_SCHET_OMS] sch
+    inner join [D3_PACIENT_OMS] p on sch.id=p.[D3_SCID]
+    inner join [D3_ZSL_OMS] zs on p.id=zs.[D3_PID] and zs.usl_ok in (3,4) and (os_sluch_region is null or OS_SLUCH_REGION in (8,12,14,16,18,23,48))
+	join D3_SL_OMS sl on zs.ID = sl.d3_zslid
+	left join MO_podush pod on zs.lpu = pod.KOD_MO
+				   where zs.D3_SCID = {sc.ID} and pod.KOD_MO is not null
+) as tt on tt.id = zs.id
+", SprClass.LocalConnectionString);
+
 
 
             Reader2List.CustomExecuteQuery($@"
@@ -297,7 +325,12 @@ UPDATE D3_ZSL_OMS SET VOZR =
 
             Reader2List.CustomExecuteQuery($@"
  Update USL SET
-					    --Select 
+					    KDAY = 
+							(CASE 
+							  WHEN sl.USL_OK = 1 THEN (CASE WHEN u.DATE_IN = u.DATE_OUT THEN 1 ELSE DATEDIFF(DAY, u.DATE_IN, u.DATE_OUT) END)
+							  WHEN sl.USL_OK = 2 THEN DATEDIFF(DAY, u.DATE_IN, u.DATE_OUT) + 1 -
+								(SELECT COUNT(*) FROM dbo.WORK_DAY wd WHERE wd.LPU = u.LPU and wd.PODR_ID = u.LPU_1 and H_DATE BETWEEN u.DATE_IN AND u.DATE_OUT)
+                            END),
 						SUMV_USL= 
                             CAST(
                             	ROUND(vmp.TARIF*ISNULL(u.KOL_USL, 1) ,2)
@@ -328,9 +361,9 @@ update usl set
                             (CASE 
 								WHEN (sl.RSLT in (102, 105, 106, 107, 108, 110)) THEN 
                             		(CASE
-									    WHEN tf.IDKSG in (1634, 1655, 1656) and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+									    WHEN tf.IDKSG in ('1634', '1655', '1656', 'st13.003') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
 											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
-									    WHEN tf.IDKSG in (1634, 1655, 1656) and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) >= 4
+									    WHEN tf.IDKSG in ('1634', '1655', '1656', 'st13.003') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) >= 4
 											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 1.00, 2)
 
                             			WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
@@ -339,9 +372,9 @@ update usl set
 									END)
 								WHEN (sl.RSLT not in (102, 105, 106, 107, 108, 110)) THEN 
                             		(CASE 
-									    WHEN tf.IDKSG in (1634, 1655, 1656) and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+									    WHEN tf.IDKSG in ('1634', '1655', '1656', 'st13.003') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
 											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
-									    WHEN tf.IDKSG in (1634, 1655, 1656) and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) >= 4
+									    WHEN tf.IDKSG in ('1634', '1655', '1656', 'st13.003') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) >= 4
 											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 1.00, 2)
 
                             			WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
@@ -445,18 +478,13 @@ update usl set
 ", SprClass.LocalConnectionString);
 
             Reader2List.CustomExecuteQuery($@"
-UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 29 WHERE IDSP = 9
-UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17,18,22,23)
-", SprClass.LocalConnectionString);
-
-            Reader2List.CustomExecuteQuery($@"
 					Update D3_SL_OMS 
                     SET ED_COL = st.uet_sum
 					from D3_SL_OMS sl
 					join (Select 
 					sum(
 					 case
-						when FLOOR(DATEDIFF(DAY,DR,DATE_2)/365.25) < 18 Then ISNULL(st.Child * u.KOL_USL, 0)
+						when FLOOR(DATEDIFF(DAY,DR,DATE_2)/365.25) < 18 Then ISNULL(st.Child * isnull(u.KOL_USL, 1), 0)
 						else ISNULL(st.Adult * ISNULL(u.KOL_USL, 1), 0)
 					 end) uet_sum, sl.ID
                     from D3_ZSL_OMS zsl 
@@ -467,55 +495,51 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					GROUP BY sl.ID) st on sl.ID = st.ID
                     ", SprClass.LocalConnectionString);
 
+
             Reader2List.CustomExecuteQuery($@"
 					Update D3_SL_OMS 
                     SET 
                         TARIF= 
                             (CASE 
-								WHEN (sl.P_CEL25 = '1.0' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif1
-								WHEN (sl.P_CEL25 = '1.1' ) THEN t.tarif2
-								WHEN (sl.P_CEL25 = '1.2' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif3
-								WHEN (sl.P_CEL25 = '1.3' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif4
-								WHEN (sl.P_CEL25 = '2.1' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif5
-								WHEN (sl.P_CEL25 = '2.2' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif6
-								WHEN (sl.P_CEL25 = '2.3' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif7
-								WHEN (sl.P_CEL25 = '2.5' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif8
-								WHEN (sl.P_CEL25 = '2.6' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif9
-								WHEN (sl.P_CEL25 = '3.0' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif10
-								WHEN (sl.P_CEL25 = '3.1' ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN t.tarif11
+								WHEN (sl.P_CEL25 = '1.0' )  THEN t.tarif1
+								WHEN (sl.P_CEL25 = '1.1' )  THEN t.tarif2
+								WHEN (sl.P_CEL25 = '1.2' )  THEN t.tarif3
+								WHEN (sl.P_CEL25 = '1.3' )  THEN t.tarif4
+								WHEN (sl.P_CEL25 = '2.1' )  THEN t.tarif5
+								WHEN (sl.P_CEL25 = '2.2' )  THEN t.tarif6
+								WHEN (sl.P_CEL25 = '2.3' )  THEN t.tarif7
+								WHEN (sl.P_CEL25 = '2.5' )  THEN t.tarif8
+								WHEN (sl.P_CEL25 = '2.6' )  THEN t.tarif9
+								WHEN (sl.P_CEL25 = '3.0' )  THEN t.tarif10
+								WHEN (sl.P_CEL25 = '3.1' )  THEN t.tarif11
 								ELSE 0.00
                             END),
                         SUM_M=
                             (CASE 
-								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL not in (63,85,86,87,88,89,90,171))																										   THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN 0.00  --ROUND(isnull(sl.ED_COL, 1.00) * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL not in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN 0.00  --ROUND(isnull(sl.ED_COL, 1.00) * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN 0.00  --ROUND(isnull(sl.ED_COL, 1.00) * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL not in (63,85,86,87,88,89,90,171))  THEN 0.00  --ROUND(isnull(sl.ED_COL, 1.00) * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
 
-								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90,171))																										   THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
-								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.0' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.1' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.2' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif6 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.3' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif7 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.5' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif8 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '2.6' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif9 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
+								WHEN (sl.P_CEL25 = '3.1' and sl.PROFIL in (63,85,86,87,88,89,90,171))  THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
 
-                                --WHEN (sl.P_CEL25 = '1.1' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-                                --WHEN (sl.P_CEL25 = '1.2' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
-                                --WHEN (sl.P_CEL25 = '1.3' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif3 * ISNULL(kf.KZMP, 1.00), 2)
-								--WHEN (sl.P_CEL25 = '2.0' and sl.PROFIL in (63,85,86,87,88,89,90,171)) THEN ROUND(isnull(sl.ED_COL, 1.00) / 4 * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
-								--WHEN (sl.P_CEL25 = '3.0' and sl.PROFIL in (63,85,86,87,88,89,90,171)) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) / 12 * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -527,12 +551,26 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
                     where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null", SprClass.LocalConnectionString);
 
             Reader2List.CustomExecuteQuery($@"
+					Update D3_SL_OMS SET
+                         ED_COL = ISNULL(ED_COL, 1.00),
+                         TARIF = t.tarif1,
+                         SUM_M = ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+
+                    from D3_ZSL_OMS zsl 
+                    JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
+					join D3_SL_OMS sl on zsl.ID = sl.D3_ZSLID --and zsl.USL_OK =3
+                    join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (sl.DATE_2 >= t.TBEG and sl.DATE_2 < t.TEND +1) 
+                    left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
+                    where zsl.D3_SCID = { sc.ID} and 
+					 OS_SLUCH_REGION = 6", SprClass.LocalConnectionString);
+
+            Reader2List.CustomExecuteQuery($@"
                         UPDATE D3_ZSL_OMS SET SUMV = slsum
                         FROM D3_ZSL_OMS zsl
                         Join (
                         SELECT zsl.ID, sum(sl.SUM_M) slsum, count(sl.ID) slcnt 
                         FROM D3_SL_OMS sl
-						JOIN D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is NULL
+						JOIN D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = {sc.ID} and (zsl.OS_SLUCH_REGION is NULL or zsl.OS_SLUCH_REGION = 6)
                         where zsl.USL_OK in (3,4)
                         GROUP BY zsl.ID) tt on zsl.ID = tt.ID
 ", SprClass.LocalConnectionString);
@@ -541,8 +579,8 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					Update D3_ZSL_OMS SET
                         SUMV=
                             (CASE 
-                                WHEN (zsl.FOR_POM = 1 ) and ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif5 * ISNULL(kf.KZMP, 1.00), 2)
-                                WHEN (zsl.FOR_POM = 2 ) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif4 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN (zsl.FOR_POM = 1 ) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN (zsl.FOR_POM = 2 ) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif2 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -551,8 +589,22 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
                     join (Select * From CalcAmbTarif where OS_SLUCH is null and USL_OK = 4) as t on --sl.Profil = t.Profil and
                         (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND +1) 
                     left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
-
                     where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
+
+update sl set sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID and zsl.USL_OK = 4
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
+
+
 ", SprClass.LocalConnectionString);
 
             
@@ -560,8 +612,8 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					Update D3_ZSL_OMS SET
                         SUMV=
                             (CASE 
-                                WHEN ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) and sl.P_CEL25 = '3.0' THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
-                                WHEN ((SMO is null or SMO not like '46%') or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) and sl.P_CEL25 = '3.1' THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN sl.P_CEL25 = '3.0' THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif10 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN sl.P_CEL25 = '3.1' THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif11 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE 0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -571,6 +623,20 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
 					and (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND +1) 
                     left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
                     where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
+
+update sl set sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID and zsl.USL_OK = 3 and sl.P_CEL25 in ('3.0', '3.1') and sl.PROFIL not in (63,85,86,87,88,89,90,171)
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
+
 ", SprClass.LocalConnectionString);
 
             Reader2List.CustomExecuteQuery($@"
@@ -580,45 +646,429 @@ UPDATE [dbo].[D3_ZSL_OMS] SET IDSP = 11 WHERE OS_SLUCH_REGION in (7,8,9,11,12,17
                                 WHEN VOZR in ('G00.M00', 'G00.M02', 'G00.M04', 'G00.M05', 'G00.M06','G00.M07', 'G00.M08', 'G00.M09', 'G00.M10', 'G00.M11', 'G01.M03', 'G01.M06') THEN t.tarif1
                                 WHEN VOZR in ('G00.M03','G02.M00', 'G04.M00', 'G05.M00', 'G08.M00','G09.M00','G11.M00','G12.M00')  THEN t.tarif2
                                 WHEN VOZR in ('G13.M00', 'G14.M00')  THEN t.tarif3
-                                //WHEN VOZR in ('G00.M01', 'G00.M12', 'G07.M00') THEN t.tarif4
+                                --WHEN VOZR in ('G00.M01', 'G00.M12', 'G07.M00') THEN t.tarif4
                                 WHEN VOZR in ('G00.M01', 'G07.M00') THEN t.tarif4
-                                //WHEN VOZR in ('G10.M00')  THEN t.tarif5
+                                --WHEN VOZR in ('G10.M00')  THEN t.tarif5
                                 WHEN VOZR in ('G10.M00', 'G00.M12')  THEN t.tarif5
                                 WHEN VOZR in ('G03.M00')  THEN t.tarif6
                                 WHEN VOZR in ('G06.M00')  THEN t.tarif7
                                 WHEN VOZR in ('G15.M00', 'G16.M00', 'G17.M00')  THEN t.tarif8
                             END)
-
                 from D3_ZSL_OMS zsl
 				JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
                 join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND + 1)
                     where zsl.D3_SCID = { sc.ID } and OS_SLUCH_REGION = 11
+
+update sl set sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where zsl.D3_SCID = { sc.ID } and OS_SLUCH_REGION = 11
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
 ", SprClass.LocalConnectionString);
+
+
+            Reader2List.CustomExecuteQuery($@"
+
+declare @t15 table (
+id int,
+is15 int )
+
+declare @t85 table (
+id int, 
+is85 int )
+
+declare @tt table (
+  id int,
+  code_mo nvarchar(6),
+  month int,
+  W int,
+  vozr int,
+  OS_SLUCH_REGION int,
+  [Real_Kol_Usl] int
+  )
+
+
+insert @t15
+select t.id, 1--*,gr.OkazRanee
+from
+(select zs.id,p.w,
+  year(zs.date_z_2)-year(p.dr) [vozr],
+  zs.OS_SLUCH_REGION,count(u.id)as kol_vo_ok_ran
+FROM [dbo].[D3_SCHET_OMS] sch
+    inner join [dbo].[D3_PACIENT_OMS] p on sch.id=p.[D3_SCID]
+                                and sch.id =  { sc.ID }  
+    inner join [dbo].[D3_ZSL_OMS] zs on p.id=zs.[D3_PID]
+                              and zs.OS_SLUCH_REGION=22
+    inner join [dbo].[D3_SL_OMS] sl on zs.id=sl.[D3_ZSLID]
+    inner join [dbo].[D3_USL_OMS] u on u.D3_SLID=sl.id
+                              and u.[NPL]  in (4) --нужно ли????????
+                              
+group by zs.id  ,p.w,
+  year(zs.date_z_2)-year(p.dr),
+  zs.OS_SLUCH_REGION  ) t
+  left join [dbo].[Kursk_DVN_1etap_Gr] Gr 
+    on gr.[RegPrizn]=t.OS_SLUCH_REGION
+    and gr.[Pol]=t.W
+    AND charindex(cast(t.[vozr] as nvarchar)+',',Gr.Age)<>0   
+where t.kol_vo_ok_ran>OkazRanee
+
+
+insert @tt
+select
+  k.id,
+  k.code_mo,
+  k.month,
+  K.W,
+  K.[vozr],
+  K.OS_SLUCH_REGION,
+  count (*) [Real_Kol_Usl]
+from
+(
+select
+  sch.code_mo,
+  sch.month,
+  zs.id,
+  p.w,
+  year(zs.date_z_1) - year(p.dr)  [vozr],
+  zs.OS_SLUCH_REGION,
+  u.[VID_VME]
+  ,DU.[Pol]
+    ,DU.[Age]
+FROM [dbo].[D3_SCHET_OMS] sch
+    inner join [dbo].[D3_PACIENT_OMS] p on sch.id=p.[D3_SCID]
+                                and sch.id =  { sc.ID } 
+    inner join [dbo].[D3_ZSL_OMS] zs on p.id=zs.[D3_PID]
+                              and zs.OS_SLUCH_REGION=22
+    inner join [dbo].[D3_SL_OMS] sl on zs.id=sl.[D3_ZSLID]
+    inner join [dbo].[D3_USL_OMS] u on u.D3_SLID=sl.id
+                              and (u.[NPL] not in (1,2) --нужно ли????????
+                                or u.[NPL] is null)
+    inner join [dbo].[Kursk_DVN_1etap_Uslugi] du 
+                      on du.[Pol]=p.w
+                      --AND charindex(cast(dbo.f_GetAge (p.dr,zs.date_z_1) as nvarchar)+',',DU.Age)<>0
+                                            AND charindex(cast(year(zs.date_z_2) - year(p.dr) as nvarchar(4))+',',DU.Age)<>0
+                      and ltrim(rtrim(du.Code_Usl))=ltrim(rtrim(u.[VID_VME]))
+)k
+group by
+  k.id,
+  k.code_mo,
+  k.month,
+  K.W,
+  K.[vozr],
+  K.OS_SLUCH_REGION
+
+
+ 
+insert @t85
+select
+  z.id, 1
+  --z.*, gr.[StandartKolUsl], GR.IdGr
+FROM @tt z LEFT JOIN [dbo].[Kursk_DVN_1etap_Gr] Gr 
+    on gr.[RegPrizn]=z.OS_SLUCH_REGION
+    and gr.[Pol]=z.W
+    AND charindex(cast(z.[vozr] as nvarchar)+',',Gr.Age)<>0 
+  inner join [dbo].[D3_ZSL_OMS] zs on z.id=zs.id
+where z.[Real_Kol_Usl]<gr.[StandartKolUsl]-gr.OkazRanee
+
+--select
+                    Update D3_ZSL_OMS SET 
+                    SUMV= 
+                            (CASE 
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (21, 24, 27, 30, 33) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (21, 24, 27) AND W = 2 ) THEN t.tarif1
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (36, 39, 42, 48, 54, 87, 90, 93, 96, 99) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (87, 90, 93, 96, 99) AND W = 2 ) THEN t.tarif2
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (60,66,72,75,78,81,84) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (72,75,78,81,84) AND W = 2 )THEN t.tarif3
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (30,33,36) AND W = 2 ) THEN t.tarif4
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (45,57) AND W = 1 ) THEN t.tarif5
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (63,66,69) AND W = 2 ) THEN t.tarif6
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (39,42) AND W = 2 ) THEN t.tarif7
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (63,69) AND W = 1 ) THEN t.tarif8
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (51) AND W = 1 ) THEN t.tarif9
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (45,48,51,54,57) AND W = 2 ) THEN t.tarif10
+                                WHEN t15.is15 is null and t85.is85 is null and (year(DATE_Z_2) - year(dr) in (60) AND W = 2 ) THEN t.tarif11
+
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (21, 24, 27, 30, 33) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (21, 24, 27) AND W = 2 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (36, 39, 42, 48, 54, 87, 90, 93, 96, 99) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (87, 90, 93, 96, 99) AND W = 2 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (60,66,72,75,78,81,84) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (72,75,78,81,84) AND W = 2 )THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (30,33,36) AND W = 2 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (45,57) AND W = 1 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (63,66,69) AND W = 2 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (39,42) AND W = 2 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (63,69) AND W = 1 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (51) AND W = 1 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (45,48,51,54,57) AND W = 2 ) THEN 0
+                                WHEN t85.is85 = 1 and (year(DATE_Z_2) - year(dr) in (60) AND W = 2 ) THEN 0
+
+WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (21, 24, 27, 30, 33) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (21, 24, 27) AND W = 2 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (36, 39, 42, 48, 54, 87, 90, 93, 96, 99) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (87, 90, 93, 96, 99) AND W = 2 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (60,66,72,75,78,81,84) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (72,75,78,81,84) AND W = 2 )THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (30,33,36) AND W = 2 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (45,57) AND W = 1 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (63,66,69) AND W = 2 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (39,42) AND W = 2 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (63,69) AND W = 1 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (51) AND W = 1 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (45,48,51,54,57) AND W = 2 ) THEN t.tarif12
+                                WHEN t15.is15 = 1 and (year(DATE_Z_2) - year(dr) in (60) AND W = 2 ) THEN t.tarif12
+                            END)
+
+                from D3_ZSL_OMS zsl
+        JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
+                join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND + 1)
+        left join @t15 t15 on zsl.id = t15.id
+        left join @t85 t85 on zsl.id = t85.id
+                    where zsl.D3_SCID =  { sc.ID }   and 
+          OS_SLUCH_REGION = 22
+
+update sl set sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where  zsl.D3_SCID =  { sc.ID }   and 
+          OS_SLUCH_REGION = 22
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
+", SprClass.LocalConnectionString);
+
+
+
+            Reader2List.CustomExecuteQuery($@"
+declare @Kursk_Usl_124N_Gr table(
+	[IdGr] [float] NULL,
+	[RegPrizn] [float] NULL,
+	[Pol] [float] NULL,
+	[Age] [nvarchar](255) NULL,
+	[StandartKolUsl] [float] NULL,
+	[OkazRanee] [float] NULL
+)
+
+declare @t15 table (
+id int,
+is15 int )
+
+declare @t85 table (
+id int, 
+is85 int )
+
+declare @tt table (
+  id int,
+  code_mo nvarchar(6),
+  month int,
+  W int,
+  vozr int,
+  OS_SLUCH_REGION int,
+  [Real_Kol_Usl] int
+  )
+
+  insert @Kursk_Usl_124N_Gr
+SELECT [ID_List_Group]
+      ,[OsSluchReg]
+      ,[Pol]
+      ,[Age]
+		,count (*) cnt, round(count(*) * 0.15, 0)
+  FROM [dbo].[Kursk_Usl_124N]
+  group by [ID_List_Group], [OsSluchReg], [Pol], [Age]
+
+insert @t15
+select t.id, 1--*,gr.OkazRanee
+from
+(select zs.id,p.w,
+  year(zs.date_z_2)-year(p.dr) [vozr],
+  zs.OS_SLUCH_REGION,count(u.id)as kol_vo_ok_ran
+FROM [dbo].[D3_SCHET_OMS] sch
+    inner join [dbo].[D3_PACIENT_OMS] p on sch.id=p.[D3_SCID]
+                                and sch.id =  { sc.ID}  
+    inner join [dbo].[D3_ZSL_OMS] zs on p.id=zs.[D3_PID]
+                              and zs.OS_SLUCH_REGION=47
+    inner join [dbo].[D3_SL_OMS] sl on zs.id=sl.[D3_ZSLID]
+    inner join [dbo].[D3_USL_OMS] u on u.D3_SLID=sl.id
+                              and u.[NPL]  in (4) --нужно ли????????
+                              
+group by zs.id  ,p.w,
+  year(zs.date_z_2)-year(p.dr),
+  zs.OS_SLUCH_REGION  ) t
+  left join @Kursk_Usl_124N_Gr Gr 
+    on gr.[RegPrizn]=t.OS_SLUCH_REGION
+    and gr.[Pol]=t.W
+    AND charindex(cast(t.[vozr] as nvarchar)+',',Gr.Age)<>0   
+where t.kol_vo_ok_ran>OkazRanee
+
+
+insert @tt
+select
+  k.id,
+  k.code_mo,
+  k.month,
+  K.W,
+  K.[vozr],
+  K.OS_SLUCH_REGION,
+  count (*) [Real_Kol_Usl]
+from
+(
+select
+  sch.code_mo,
+  sch.month,
+  zs.id,
+  p.w,
+  year(zs.date_z_1) - year(p.dr)  [vozr],
+  zs.OS_SLUCH_REGION,
+  u.[VID_VME]
+  ,DU.[Pol]
+    ,DU.[Age]
+FROM [dbo].[D3_SCHET_OMS] sch
+    inner join [dbo].[D3_PACIENT_OMS] p on sch.id=p.[D3_SCID]
+                                and sch.id =  { sc.ID} 
+    inner join [dbo].[D3_ZSL_OMS] zs on p.id=zs.[D3_PID]
+                              and zs.OS_SLUCH_REGION=47
+    inner join [dbo].[D3_SL_OMS] sl on zs.id=sl.[D3_ZSLID]
+    inner join [dbo].[D3_USL_OMS] u on u.D3_SLID=sl.id
+                              and (u.[NPL] not in (1,2) --нужно ли????????
+                                or u.[NPL] is null)
+    inner join [dbo].Kursk_Usl_124N du 
+                      on du.[Pol]=p.w
+                      --AND charindex(cast(dbo.f_GetAge (p.dr,zs.date_z_1) as nvarchar)+',',DU.Age)<>0
+                                            AND charindex(cast(year(zs.date_z_2) - year(p.dr) as nvarchar(4))+',',DU.Age)<>0
+                      and ltrim(rtrim(du.Code_Usl))=ltrim(rtrim(u.[VID_VME]))
+)k
+group by
+  k.id,
+  k.code_mo,
+  k.month,
+  K.W,
+  K.[vozr],
+  K.OS_SLUCH_REGION
+
+
+ 
+insert @t85
+select
+  z.id, 1
+  --z.*, gr.[StandartKolUsl], GR.IdGr
+FROM @tt z LEFT JOIN @Kursk_Usl_124N_Gr Gr 
+    on gr.[RegPrizn]=z.OS_SLUCH_REGION
+    and gr.[Pol]=z.W
+    AND charindex(cast(z.[vozr] as nvarchar)+',',Gr.Age)<>0 
+  inner join [dbo].[D3_ZSL_OMS] zs on z.id=zs.id
+where z.[Real_Kol_Usl]<gr.[StandartKolUsl]-gr.OkazRanee
+
+--select
+                    Update D3_ZSL_OMS SET 
+                    SUMV= 
+                            (CASE 
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39,41,43,47,49,51,53,57,59,61,63,76,77,78, 79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99) AND W = 1 THEN t.tarif1
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (40,42,44,46,48,52,54,56,58,62,65,66,67,68,69,70,71,72,73,74,75) AND W = 1 THEN t.tarif2
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (55) AND W = 1 THEN t.tarif3
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (50,60,64) AND W = 1 THEN t.tarif4
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (45) AND W = 1 THEN t.tarif5
+                                     /*                    */
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (41,43,47,49,53,55,59,61,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90, 91,92,93,94,95,96,97,98,99) AND W = 2 THEN t.tarif6
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39,51,57,63,65,67,69,71,73,75) AND W = 2 THEN t.tarif7
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (40,44,46,50,52,56,58,62,64,66,68,70,72,74) AND W = 2 THEN t.tarif8
+                                WHEN /*t15.is15 is null and*/ t85.is85 is null and year(DATE_Z_2) - year(dr) in (42,45,48,54,60) AND W = 2 THEN t.tarif9
+
+
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39,41,43,47,49,51,53,57,59,61,63,76,77,78, 79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99) AND W = 1 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (40,42,44,46,48,52,54,56,58,62,65,66,67,68,69,70,71,72,73,74,75) AND W = 1 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (55) AND W = 1 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (50,60,64) AND W = 1 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (45) AND W = 1 THEN 0
+
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (41,43,47,49,53,55,59,61,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90, 91,92,93,94,95,96,97,98,99) AND W = 2 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39,51,57,63,65,67,69,71,73,75) AND W = 2 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (40,44,46,50,52,56,58,62,64,66,68,70,72,74) AND W = 2 THEN 0
+                                WHEN t85.is85 = 1 and year(DATE_Z_2) - year(dr) in (42,45,48,54,60) AND W = 2 THEN 0
+
+
+								--WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39,41,43,47,49,51,53,57,59,61,63,76,77,78, 79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99) AND W = 1 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (40,42,44,46,48,52,54,56,58,62,65,66,67,68,69,70,71,72,73,74,75) AND W = 1 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (55) AND W = 1 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (50,60,64) AND W = 1 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (45) AND W = 1 THEN t.TARIF12
+                                --
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (41,43,47,49,53,55,59,61,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90, 91,92,93,94,95,96,97,98,99) AND W = 2 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39,51,57,63,65,67,69,71,73,75) AND W = 2 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (40,44,46,50,52,56,58,62,64,66,68,70,72,74) AND W = 2 THEN t.TARIF12
+                                --WHEN t15.is15 = 1 and year(DATE_Z_2) - year(dr) in (42,45,48,54,60) AND W = 2 THEN t.TARIF12
+
+                            END)
+
+                from D3_ZSL_OMS zsl
+        JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
+                join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND + 1)
+        left join @t15 t15 on zsl.id = t15.id
+        left join @t85 t85 on zsl.id = t85.id
+                    where zsl.D3_SCID =  { sc.ID}   and 
+          OS_SLUCH_REGION = 47
+
+update sl set 
+--select
+sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where  zsl.D3_SCID =  { sc.ID}   and 
+          OS_SLUCH_REGION = 47
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
+", SprClass.LocalConnectionString);
+
+
 
             Reader2List.CustomExecuteQuery($@"
                     Update D3_ZSL_OMS SET 
                     SUMV= 
                             (CASE 
-                                WHEN (year(DATE_Z_2) - year(dr) in (21, 24, 27, 30, 33) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (21, 24, 27) AND W = 2 ) THEN t.tarif1
-                                WHEN (year(DATE_Z_2) - year(dr) in (36, 39, 42, 48, 54, 87, 90, 93, 96, 99) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (87, 90, 93, 96, 99) AND W = 2 ) THEN t.tarif2
-                                WHEN (year(DATE_Z_2) - year(dr) in (60,66,72,75,78,81,84) AND W = 1 ) OR (year(DATE_Z_2) - year(dr) in (72,75,78,81,84) AND W = 2 )THEN t.tarif3
-                                WHEN (year(DATE_Z_2) - year(dr) in (30,33,36) AND W = 2 ) THEN t.tarif4
-                                WHEN (year(DATE_Z_2) - year(dr) in (45,57) AND W = 1 ) THEN t.tarif5
-                                WHEN (year(DATE_Z_2) - year(dr) in (63,66,69) AND W = 2 ) THEN t.tarif6
-                                WHEN (year(DATE_Z_2) - year(dr) in (39,42) AND W = 2 ) THEN t.tarif7
-                                WHEN (year(DATE_Z_2) - year(dr) in (63,69) AND W = 1 ) THEN t.tarif8
-                                WHEN (year(DATE_Z_2) - year(dr) in (51) AND W = 1 ) THEN t.tarif9
-                                WHEN (year(DATE_Z_2) - year(dr) in (45,48,51,54,57) AND W = 2 ) THEN t.tarif10
-                                WHEN (year(DATE_Z_2) - year(dr) in (60) AND W = 2 ) THEN t.tarif11
-                                WHEN (VETERAN is not null) THEN t.tarif11
+                                WHEN year(DATE_Z_2) - year(dr) in (19,20,22,23,25,26,28,29,31,32,34,35,37,38) AND W = 1 THEN t.tarif1
+                                WHEN year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39) AND W = 1 THEN t.tarif2
+                                WHEN year(DATE_Z_2) - year(dr) in (41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79,81,83,85,87,89,91,93,95,97,99) AND W = 1 THEN t.tarif3
+                                WHEN year(DATE_Z_2) - year(dr) in (40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98) AND W = 1 THEN t.tarif4
+                                     
+                                WHEN year(DATE_Z_2) - year(dr) in (19,20,22,23,25,26,28,29,31,32,34,35,37,38) AND W = 2 THEN t.tarif5
+                                WHEN year(DATE_Z_2) - year(dr) in (18,21,24,27,30,33,36,39) AND W = 2 THEN t.tarif6
+                                WHEN year(DATE_Z_2) - year(dr) in (41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79,81,83,85,87,89,91,93,95,97,99) AND W = 2 THEN t.tarif7
+                                WHEN year(DATE_Z_2) - year(dr) in (40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98) AND W = 2 THEN t.tarif8
                             END)
 
                 from D3_ZSL_OMS zsl
-				JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
+        JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
                 join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (zsl.DATE_Z_2 >= t.TBEG and zsl.DATE_Z_2 < t.TEND + 1)
-                    where zsl.D3_SCID = { sc.ID } and 
-					OS_SLUCH_REGION = 22
+                    where zsl.D3_SCID =  { sc.ID}   and 
+          OS_SLUCH_REGION = 49
+
+update sl set 
+--select
+sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where  zsl.D3_SCID =  { sc.ID}   and 
+          OS_SLUCH_REGION = 49
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
 ", SprClass.LocalConnectionString);
+
+
 
             Reader2List.CustomExecuteQuery($@"
 Update D3_SL_OMS SET ED_COL = 1
@@ -626,16 +1076,11 @@ from D3_SL_OMS sl
 join D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = { sc.ID}
 where zsl.OS_SLUCH_REGION in (4,5,7,9,17,21,29,31,32,33,34,35,36,37,38,39,40)
 
-Update D3_SL_OMS SET ED_COL = 1
-from D3_SL_OMS sl
-join D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = { sc.ID}
-where zsl.OS_SLUCH_REGION in (6,30) and ed_col is null
-
 					Update D3_ZSL_OMS SET
 					--select
                          SUMV = (CASE
-                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 4,5,6,7,9,17,21,29,30,31,32,33,34,35,36,37,38,39,40) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
-                                ELSE 0.00
+                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 4,5,7,9,17,21,29,30,31,32,33,34,35,36,37,38,39,40) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+                                ELSE ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2) --0.00
                             END)
                     from D3_ZSL_OMS zsl 
                     JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
@@ -643,9 +1088,73 @@ where zsl.OS_SLUCH_REGION in (6,30) and ed_col is null
                     join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and (sl.DATE_2 >= t.TBEG and sl.DATE_2 < t.TEND +1) 
                     left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
                     where zsl.D3_SCID = { sc.ID} and 
-					 OS_SLUCH_REGION not in (11,22)
+					 OS_SLUCH_REGION not in (11,22,6,47,49)
+
+update sl set sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where  zsl.D3_SCID = { sc.ID} and 
+					 OS_SLUCH_REGION not in (11,22,6,47,49)
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
 ", SprClass.LocalConnectionString);
 
+
+            Reader2List.CustomExecuteQuery($@"
+                    exec[dbo].[p_oms_calc_kslp_sum] {0}, { sc.ID}, 'scid'", SprClass.LocalConnectionString);
+
+            Reader2List.CustomExecuteQuery($@"
+                    exec[dbo].[p_oms_calc_ksg] {0}, { sc.ID}, 'scid'", SprClass.LocalConnectionString);
+
+
+            //            Reader2List.CustomExecuteQuery($@"
+            //UPDATE ksg SET	
+            //	ksg.sl_k=1,
+            //	--ksg.IT_SL=1+SUM(z_sl-floor(z_sl)) 
+            //	ksg.IT_SL=KSGNEW.new_kslp
+            //FROM D3_KSG_KPG_OMS KSG
+            //	INNER JOIN 
+            //(
+            //Select 
+            //	ksg.ID, 
+            //	1+SUM(z_sl-floor(z_sl)) AS new_kslp  
+            //	--, s.N_KSG, ksg.N_KSG, ksg.IT_SL, ksg.sl_k,z_sl,z_sl-floor(z_sl) AS dr--,dsko.*
+            //FROM [D3_SCHET_OMS] sch                  
+            //	join D3_PACIENT_OMS p on p.d3_scid=sch.id --
+            //		   AND p.D3_SCID = { sc.ID}
+            //		   --and sch.month=1 and sch.year=2019 --AND p.smo=46003
+            //	join D3_ZSL_OMS zs on zs.D3_PID=p.id
+            //	join D3_SL_OMS s on s.D3_ZSLID=zs.ID  --and s.DS_ONK=1
+            //	join D3_KSG_KPG_OMS ksg ON ksg.D3_SLID=s.id
+            //	LEFT JOIN D3_SL_KOEF_OMS AS dsko ON dsko.D3_KSGID=ksg.ID
+            //WHERE zs.id IN (
+            //					--zs.lpu,
+            //					select zs.id--,count(dsko.Z_SL)
+            //					FROM [D3_SCHET_OMS] sch                  
+            //					join D3_PACIENT_OMS p on p.d3_scid=sch.id --
+            //						   AND p.D3_SCID = { sc.ID}
+            //						   --and sch.month=1 and sch.year=2019 
+            //					join D3_ZSL_OMS zs on zs.D3_PID=p.id
+            //					join D3_SL_OMS s on s.D3_ZSLID=zs.ID  --and s.DS_ONK=1
+            //					join D3_KSG_KPG_OMS ksg ON ksg.D3_SLID=s.id
+            //					LEFT JOIN D3_SL_KOEF_OMS AS dsko ON dsko.D3_KSGID=ksg.ID
+            //					WHERE ksg.sl_k=0 AND idsl IS NOT NULL
+            //					GROUP BY zs.id
+            //				--HAVING count(dsko.Z_SL)=1
+            //				)
+            //GROUP BY 
+            //	ksg.ID
+            //	) KSGNEW ON KSG.ID=KSGNEW.ID
+            //	--zs.lpu,zs.id, ksg.IT_SL, ksg.sl_k
+            //--ORDER BY zs.LPU
+
+            //", SprClass.LocalConnectionString);
 
 
             DXMessageBox.Show("Расчет завершен.");
@@ -682,47 +1191,33 @@ where zsl.OS_SLUCH_REGION in (6,30) and ed_col is null
 
         void ExportOms30K(object schet)
         {
-            Reader2List.CustomExecuteQuery($@"
-                        UPDATE D3_ZSL_OMS SET ZSL_ID = newid() WHERE ZSL_ID IS NULL
-                        UPDATE D3_SL_OMS SET SL_ID = newid() WHERE SL_ID IS NULL
-                        UPDATE D3_PACIENT_OMS SET ID_PAC = newid() WHERE ID_PAC IS NULL
-                        UPDATE PACIENT SET ID_PAC = newid() WHERE ID_PAC IS NULL
-                        UPDATE SLUCH SET IDSLG = newid() WHERE IDSLG IS NULL
+      //      Reader2List.CustomExecuteQuery($@"
+      //                  UPDATE D3_ZSL_OMS SET ZSL_ID = newid() WHERE ZSL_ID IS NULL
+      //                  UPDATE D3_SL_OMS SET SL_ID = newid() WHERE SL_ID IS NULL
+      //                  UPDATE D3_PACIENT_OMS SET ID_PAC = newid() WHERE ID_PAC IS NULL
+      //                  UPDATE PACIENT SET ID_PAC = newid() WHERE ID_PAC IS NULL
+      //                  UPDATE SLUCH SET IDSLG = newid() WHERE IDSLG IS NULL
 
-						UPDATE D3_SL_OMS SET SL_ID = newid() where SL_ID in (
-						SELECT SL_ID FROM D3_SL_OMS GROUP by SL_ID HAVING count(*) > 1)
+						//UPDATE D3_SL_OMS SET SL_ID = newid() where SL_ID in (
+						//SELECT SL_ID FROM D3_SL_OMS GROUP by SL_ID HAVING count(*) > 1)
 
-						UPDATE D3_ZSL_OMS SET ZSL_ID = newid() where ZSL_ID in (
-						SELECT ZSL_ID FROM D3_ZSL_OMS GROUP by ZSL_ID HAVING count(*) > 1)
+						//UPDATE D3_ZSL_OMS SET ZSL_ID = newid() where ZSL_ID in (
+						//SELECT ZSL_ID FROM D3_ZSL_OMS GROUP by ZSL_ID HAVING count(*) > 1)
 
-						UPDATE D3_PACIENT_OMS SET ID_PAC = newid() where ID_PAC in (
-						SELECT ID_PAC FROM D3_PACIENT_OMS GROUP by ID_PAC HAVING count(*) > 1)
+						//UPDATE D3_PACIENT_OMS SET ID_PAC = newid() where ID_PAC in (
+						//SELECT ID_PAC FROM D3_PACIENT_OMS GROUP by ID_PAC HAVING count(*) > 1)
 
-						UPDATE SLUCH SET IDSLG = newid() where IDSLG in (
-						SELECT IDSLG FROM SLUCH GROUP by IDSLG HAVING count(*) > 1)
+						//UPDATE SLUCH SET IDSLG = newid() where IDSLG in (
+						//SELECT IDSLG FROM SLUCH GROUP by IDSLG HAVING count(*) > 1)
 
-						UPDATE D3_USL_OMS SET D3_SLGID = sl.SL_ID
-						FROM D3_SL_OMS sl
-                        join D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")}
-						join D3_USL_OMS u on sl.ID = u.D3_SLID
-						where SL_ID <> D3_SLGID
+						//UPDATE D3_USL_OMS SET D3_SLGID = sl.SL_ID
+						//FROM D3_SL_OMS sl
+      //                  join D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")}
+						//join D3_USL_OMS u on sl.ID = u.D3_SLID
+						//where SL_ID <> D3_SLGID
 
 
-                      ", SprClass.LocalConnectionString);
-
-            Reader2List.CustomExecuteQuery($@"
-                        UPDATE D3_SL_OMS SET PROFIL = 136 WHERE PROFIL = 2-- or PROFIL = 184
-                        UPDATE SLUCH SET PROFIL = 136 WHERE PROFIL = 2-- or PROFIL = 184
-                        UPDATE USL SET PROFIL = 136 WHERE PROFIL = 2-- or PROFIL = 184
-                        UPDATE D3_USL_OMS SET PROFIL = 136 WHERE PROFIL = 2-- or PROFIL = 184
-            ", SprClass.LocalConnectionString);
-
-            Reader2List.CustomExecuteQuery($@"
-                        UPDATE D3_SL_OMS SET PROFIL = 162 WHERE PROFIL = 64
-                        UPDATE SLUCH SET PROFIL = 162 WHERE PROFIL = 64
-                        UPDATE USL SET PROFIL = 162 WHERE PROFIL = 64
-                        UPDATE D3_USL_OMS SET PROFIL = 162 WHERE PROFIL = 64
-            ", SprClass.LocalConnectionString);
+      //                ", SprClass.LocalConnectionString);
 
             //Reader2List.CustomExecuteQuery($@"
             //            UPDATE D3_SL_OMS SET USL_OK = 3 WHERE USL_OK is null
@@ -730,106 +1225,106 @@ where zsl.OS_SLUCH_REGION in (6,30) and ed_col is null
             //            UPDATE D3_SL_OMS SET P_CEL = NULL WHERE USL_OK = 4
             //", SprClass.LocalConnectionString);
 
-            Reader2List.CustomExecuteQuery($@"
-            UPDATE SLUCH SET IDDOKT = d.SNILS 
-            FROM SLUCH sl
-            Join DoctorBd d on sl.IDDOKTO = d.id
-            where schet_id = {ObjHelper.GetAnonymousValue(schet, "ID")}
-            ", SprClass.LocalConnectionString);
+//            Reader2List.CustomExecuteQuery($@"
+//            UPDATE SLUCH SET IDDOKT = d.SNILS 
+//            FROM SLUCH sl
+//            Join DoctorBd d on sl.IDDOKTO = d.id
+//            where schet_id = {ObjHelper.GetAnonymousValue(schet, "ID")}
+//            ", SprClass.LocalConnectionString);
 
-            Reader2List.CustomExecuteQuery($@"
-            UPDATE USL SET CODE_MD = d.SNILS 
-            FROM USL u
-            Join DoctorBd d on u.CODE_MDLPU = d.id
-            where schet_id = {ObjHelper.GetAnonymousValue(schet, "ID")}
-            ", SprClass.LocalConnectionString);
+//            Reader2List.CustomExecuteQuery($@"
+//            UPDATE USL SET CODE_MD = d.SNILS 
+//            FROM USL u
+//            Join DoctorBd d on u.CODE_MDLPU = d.id
+//            where schet_id = {ObjHelper.GetAnonymousValue(schet, "ID")}
+//            ", SprClass.LocalConnectionString);
 
-            Reader2List.CustomExecuteQuery($@"
- UPDATE D3_USL_OMS
-            SET	LPU = z.LPU   
+//            Reader2List.CustomExecuteQuery($@"
+// UPDATE D3_USL_OMS
+//            SET	LPU = z.LPU   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.LPU is NULL
- UPDATE D3_USL_OMS
-            SET	PROFIL = s.PROFIL   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.LPU is NULL
+// UPDATE D3_USL_OMS
+//            SET	PROFIL = s.PROFIL   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.PROFIL is NULL
-UPDATE D3_USL_OMS
-            SET	DET = s.DET   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.PROFIL is NULL
+//UPDATE D3_USL_OMS
+//            SET	DET = s.DET   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DET is NULL
-UPDATE D3_USL_OMS
-            SET	DATE_IN = s.DATE_1  
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DET is NULL
+//UPDATE D3_USL_OMS
+//            SET	DATE_IN = s.DATE_1  
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DATE_IN is NULL
-UPDATE D3_USL_OMS
-            SET	DATE_OUT = s.DATE_2   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DATE_IN is NULL
+//UPDATE D3_USL_OMS
+//            SET	DATE_OUT = s.DATE_2   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DATE_OUT is NULL
-UPDATE D3_USL_OMS
-            SET	DS = s.DS1   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DATE_OUT is NULL
+//UPDATE D3_USL_OMS
+//            SET	DS = s.DS1   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DS is NULL
-UPDATE D3_USL_OMS
-            SET	CODE_USL = u.VID_VME   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.DS is NULL
+//UPDATE D3_USL_OMS
+//            SET	CODE_USL = u.VID_VME   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.CODE_USL is NULL
-UPDATE D3_USL_OMS
-            SET	PRVS = s.PRVS   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.CODE_USL is NULL
+//UPDATE D3_USL_OMS
+//            SET	PRVS = s.PRVS   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.PRVS is NULL
-UPDATE D3_USL_OMS
-            SET	CODE_MD = s.IDDOKT   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.PRVS is NULL
+//UPDATE D3_USL_OMS
+//            SET	CODE_MD = s.IDDOKT   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.CODE_MD is NULL
-UPDATE D3_USL_OMS
-            SET	KOL_USL = 1  
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.CODE_MD is NULL
+//UPDATE D3_USL_OMS
+//            SET	KOL_USL = 1  
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.KOL_USL is NULL
-UPDATE D3_USL_OMS
-            SET	TARIF = 0.00   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.KOL_USL is NULL
+//UPDATE D3_USL_OMS
+//            SET	TARIF = 0.00   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.TARIF is NULL
-UPDATE D3_USL_OMS
-            SET	SUMV_USL = 0.00   
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.TARIF is NULL
+//UPDATE D3_USL_OMS
+//            SET	SUMV_USL = 0.00   
             
-            FROM D3_SL_OMS AS s 
-            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
-			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
-            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.SUMV_USL is NULL
-            ", SprClass.LocalConnectionString);
+//            FROM D3_SL_OMS AS s 
+//            JOIN D3_USL_OMS AS u ON u.D3_SLID = s.ID
+//			JOIN D3_ZSL_OMS AS z ON s.D3_ZSLID = z.ID
+//            WHERE z.D3_SCID = {ObjHelper.GetAnonymousValue(schet, "ID")} and u.SUMV_USL is NULL
+//            ", SprClass.LocalConnectionString);
 
 
             var qxml = SqlReader.Select($@"
@@ -1873,14 +2368,15 @@ UPDATE D3_USL_OMS
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
+            var schets = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl)?.Select(x => ObjHelper.GetAnonymousValue(x, "ID")).ToArray();
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
                 Header = "Печатные формы",
-                MyControl = new StatisticReports(1, "46", new object[] { sc.ID } ),
+                MyControl = new StatisticReports(schets),
                 IsCloseable = "True",
             });
+
         }
     }
 }

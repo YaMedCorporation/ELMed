@@ -31,6 +31,9 @@ namespace Yamed.OmsExp.ExpEditors
         public decimal? S_SUMNP { get; set; }
         public decimal? S_SUMP { get; set; }
         public decimal? S_SANK { get; set; }
+        public decimal? S_TIP2 { get; set; }
+        public string ExpOrder { get; set; }
+
     }
 
 
@@ -44,7 +47,6 @@ namespace Yamed.OmsExp.ExpEditors
         D3_AKT_MEE_TBL _meeSank;
         private decimal? _sump;
         private ObservableCollection<DynamicBaseClass> _sankAutos;
-        private int? _rsank;
         private List<SLUPACSANK> _slpsList;
 
         private ElmedDataClassesDataContext _dc1;
@@ -53,17 +55,19 @@ namespace Yamed.OmsExp.ExpEditors
 
         private int? _sid;
         private object _row;
+        private int _re;
 
-        public MeeWindow(int stype, int? sid = null, object row = null)
+        public MeeWindow(int stype, int? sid = null, object row = null, int re = 0)
         {
             InitializeComponent();
             _stype = stype;
             _sid = sid;
             _row = row;
+            _re = re;
 
             _isNew = sid == null;
 
-            if (_stype == 3)
+            //if (_stype == 3)
             {
                 ExpertBoxEdit.IsEnabled = true;
                 Column_Expert.Visible = true;
@@ -74,6 +78,10 @@ namespace Yamed.OmsExp.ExpEditors
                     ExpertBoxEdit.DataContext = exp;
                 }
             }
+
+            var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
+            VidExpEdit.DataContext = videxp;
+            VidExpEditSettings.DataContext = videxp;
         }
 
         private void SancCreate(SLUPACSANK sl)
@@ -82,13 +90,24 @@ namespace Yamed.OmsExp.ExpEditors
                 sl.Sank = new D3_SANK_OMS();
             sl.Sank.D3_ZSLID = (int)ObjHelper.GetAnonymousValue(sl.Row, "ID");
             sl.Sank.D3_SCID = (int)ObjHelper.GetAnonymousValue(sl.Row, "D3_SCID");
-            sl.Sank.S_TIP = _stype;
+            sl.Sank.S_TIP = _re == 0 ? (int?)_stype : null;
+            sl.Sank.S_TIP2 = sl.S_TIP2;
+            sl.Sank.ExpOrder = sl.ExpOrder;
             sl.Sank.S_OSN = sl.AktMee.COD_PU;
             sl.Sank.S_SUM = sl.AktMee.SUMNP;
             sl.Sank.S_SUM2 = sl.AktMee.SUM_MULCT;
             sl.Sank.S_DATE = sl.AktMee.AKT_DATE;
             sl.Sank.S_COM = (sl.AktMee.ZAKL != null) ? Obrezka(sl.AktMee.ZAKL, 250) : null;
             sl.Sank.S_CODE = Guid.NewGuid().ToString();
+            if (ExpertBoxEdit.SelectedItem == null) return;
+            try
+            {
+                sl.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
+            }
+            catch
+            {
+
+            }
             //sl.Sank.RESANK = _rsank;
         }
 
@@ -107,7 +126,7 @@ namespace Yamed.OmsExp.ExpEditors
                 var sl1 = sl;
                 using (var dc = new YamedDataClassesDataContext(SprClass.LocalConnectionString))
                 {
-                    var isSankExist = dc.D3_SANK_OMS.Any(x => x.D3_ZSLID == (int)ObjHelper.GetAnonymousValue(sl1.Row, "ID") && x.S_TIP == _stype && _rsank == null);
+                    var isSankExist = dc.D3_SANK_OMS.Any(x => x.D3_ZSLID == (int)ObjHelper.GetAnonymousValue(sl1.Row, "ID") && x.S_TIP == _stype && _re == 0);
                     if (isSankExist)
                     {
                         i++;
@@ -235,14 +254,21 @@ namespace Yamed.OmsExp.ExpEditors
             }
 
             var scs = _slpsList.Select(x => ObjHelper.GetAnonymousValue(x.Row, "D3_SCID")).Distinct();
-            foreach (var sc in scs)
-            {
-                Reader2List.CustomExecuteQuery($@"
-EXEC p_oms_calc_sank {sc}
-EXEC p_oms_calc_schet {sc}
-", SprClass.LocalConnectionString);
-            }
 
+            if (_re == 0)
+            {
+                foreach (var sc in scs)
+                {
+                    Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
+                }
+            }
+            else
+            {
+                foreach (var sc in scs)
+                {
+                    Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank_ {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
+                }
+            }
             ((DXWindow) this.Parent).Close();
         }
 
@@ -252,38 +278,23 @@ EXEC p_oms_calc_schet {sc}
         {
             if (ShablonComboBoxEdit.SelectedItem == null) return;
 
-            if (_rsank == 1)
+            var rhs = sluchGridControl.GetSelectedRowHandles();
+            foreach (var rh in rhs)
             {
-                //for (int i = 0; i < sluchGridControl.VisibleRowCount; i++)
-                //{
-                //    if ((bool)sluchGridControl.GetCellValue(i, "SLP.CHECK_SL"))
-                //    {
-                //        var row = (SLUPACSANK)sluchGridControl.GetRow(i);
-                //        var sai = (int)PublicVoids.GetAnonymousValue(
-                //            ((IList)Reader2List.CustomAnonymousSelect($@"Select TOP 1 ID SANK_AUTO_ID FROM SANK_AUTO WHERE ISNULL(S_OSN, 'NULL_OSN') =
-                //                                                         (Select top 1 ISNULL(S_OSN, 'NULL_OSN') FROM SANK where SLID = {row.SLP.ID} AND S_TIP = 2 AND RESANK is null order by ID desc)",
-                //                SprClass.LocalConnectionString))[0], "SANK_AUTO_ID");
-                //        sluchGridControl.SetCellValue(i, "AktMee.SANK_AUTO_ID", sai);
-                //    }
-                //}
-            }
-            else
-            {
-                //for (int i = 0; i < sluchGridControl.VisibleRowCount; i++)
-                //{
-                //    if ((bool)sluchGridControl.GetCellValue(i, "SLP.CHECK_SL"))
-                //    {
-                //        sluchGridControl.SetCellValue(i, "AktMee.SANK_AUTO_ID", ((SQLTables.SankAutoClass)ShablonComboBoxEdit.SelectedItem).ID);
-                //    }
-                //}
-
-                var rhs = sluchGridControl.GetSelectedRowHandles();
-                foreach (var rh in rhs)
+                if (_re == 1 && (int)ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == -100)
+                {
+                    var row = (SLUPACSANK) sluchGridControl.GetRow(rh);
+                    var sai = (int) ObjHelper.GetAnonymousValue(((IList) Reader2List.CustomAnonymousSelect(
+                            $@"Select TOP 1 ID SANK_AUTO_ID FROM Yamed_ExpSpr_Sank WHERE ISNULL(OSN, 'NULL_OSN') =
+                                (Select top 1 ISNULL(S_OSN, 'NULL_OSN') FROM D3_SANK_OMS where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by ID desc)",
+                            SprClass.LocalConnectionString))[0], "SANK_AUTO_ID");
+                    sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID", sai);
+                }
+                else
                 {
                     sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID",
                         ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "ID"));
-                    //((SLUPACSANK) row).AktMee.SANK_AUTO_ID =
-                    //    (int) ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "ID");
+
                 }
             }
 
@@ -301,19 +312,6 @@ EXEC p_oms_calc_schet {sc}
                     ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "Id"));
             }
 
-        }
-
-
-        private bool _isOneLoaded;
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (_isOneLoaded || !_isNew) return;
-            if (_rsank != null && _rsank == 1)
-            {
-                SumnpEdit.EditValue = (decimal)0;
-                ZaklEdit.EditValue = "БЕЗ ИЗМЕНЕНИЙ";
-            }
-            _isOneLoaded = true;
         }
 
 
@@ -354,11 +352,23 @@ EXEC p_oms_calc_schet {sc}
 
                 slps.AktMee.SANK_AUTO_ID = (int?)auto.GetValue("ID");
                 slps.AktMee.SUM_PR = (int?)auto.GetValue("Penalty_1");
-                slps.AktMee.SUM_MULCT = (int?)auto.GetValue("Penalty_2") * 10145 / 100;
+
+                var today = DateTime.Today.ToString("yyyyMMdd");
+                var p2 = (decimal?)SqlReader.Select(
+    $@"SELECT TOP 1 [BASEST]
+  FROM [dbo].[Yamed_ExpSpr_Penalty]
+  where smocod = (SELECT TOP 1[Parametr]
+  FROM [dbo].[Settings] where[name] = 'CodeSMO')
+  and [d_begin] <= '{today}' and isnull([d_end], '20991231') >= '{today}'
+  order by ID desc",
+    SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("BASEST");
+
+
+                slps.AktMee.SUM_MULCT = (int?)auto.GetValue("Penalty_2") * p2 / 100;
                 //slps.AktMee.ZAKL = auto.S_ZAKL;
 
                 decimal ? sump;
-                if (_rsank == null || _rsank == 1)
+                if (_re == 0 || (_re == 0 && (decimal)ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == (decimal)-100))
                 {
                     if (ObjHelper.GetAnonymousValue(slps.Row, "SUMP") == null || (decimal)ObjHelper.GetAnonymousValue(slps.Row, "SUMP") == 0)
                         sump = slps.AktMee.SUMV;
@@ -377,16 +387,6 @@ EXEC p_oms_calc_schet {sc}
                     //slps.S_SUMNP = _sump * auto.S_PROCENT / 100 + auto.S_STRAF + auto.S_UMENS;
                     slps.AktMee.SUMP = sump - slps.AktMee.SUMNP;
                 }
-                //slps.Sank = new SQLTables.SankClass();
-                //slps.AktMee.ZAKL = auto.S_ZAKL;
-                //slps.Sank.SLID = slps.SLP.ID;
-                //slps.Sank.SCHET_ID = slps.SLP.SCHET_ID;
-                //slps.Sank.S_TIP = 2;
-                //slps.Sank.S_OSN = slps.AktMee.COD_PU;
-                //slps.Sank.S_SUM = slps.AktMee.SUMNP;
-                //slps.Sank.S_DATE = slps.AktMee.AKT_DATE;
-                //slps.Sank.S_COM = (slps.AktMee.ZAKL != null) ? EconomyWindow.Obrezka(slps.AktMee.ZAKL, 250) : null;
-                //slps.Sank.RESANK = _rsank;
 
                 sluchGridControl.DataController.RefreshData();
             }
@@ -463,6 +463,9 @@ EXEC p_oms_calc_schet {sc}
                         slupacsank.AktMee = new D3_AKT_MEE_TBL();
                         slupacsank.AktMee.USERID = user.FAM + " " + im + ". " + ot + ".";
                         slupacsank.AktMee.SLID = (int) ObjHelper.GetAnonymousValue(slupacsank.Row, "ID");
+                        if (_re == 1)
+                            slupacsank.S_SANK = dc.D3_SANK_OMS.First(x => x.D3_ZSLID == slupacsank.AktMee.SLID && x.S_TIP == _stype).S_SUM;
+
                         slupacsank.AktMee.CARD_NUM = (string) ObjHelper.GetAnonymousValue(slupacsank.Row, "NHISTORY");
                         slupacsank.AktMee.DOCT = (string) ObjHelper.GetAnonymousValue(slupacsank.Row, "IDDOKT");
                         slupacsank.AktMee.DS1 = (string) ObjHelper.GetAnonymousValue(slupacsank.Row, "DS1");
@@ -481,7 +484,7 @@ EXEC p_oms_calc_schet {sc}
                         slupacsank.AktMee.SCHET_NUM = (string) ObjHelper.GetAnonymousValue(sc[0], "NSCHET");
                             //sc.NSCHET;
 
-                        var usl = (int) ObjHelper.GetAnonymousValue(slupacsank.Row, "USL_OK");
+                        var usl = (int?) ObjHelper.GetAnonymousValue(slupacsank.Row, "USL_OK");
                         if ((usl == 3 || usl == 4) && (decimal) ObjHelper.GetAnonymousValue(slupacsank.Row, "SUMV") == 0)
                             slupacsank.AktMee.SUMV = SumpCalc(slupacsank.Row);
                         else slupacsank.AktMee.SUMV = (decimal) ObjHelper.GetAnonymousValue(slupacsank.Row, "SUMV");
@@ -543,6 +546,8 @@ EXEC p_oms_calc_schet {sc}
                 slupacsank.Row = _row;
                 slupacsank.AktMee = akt.First();
                 slupacsank.Sank = sank.First();
+                slupacsank.S_TIP2 = sank.First().S_TIP2;
+                slupacsank.ExpOrder = sank.First().ExpOrder;
                 _slpsList.Add(slupacsank);
             }
 
@@ -554,6 +559,18 @@ EXEC p_oms_calc_schet {sc}
             //{
             //    UserIdTextEdit.DataContext = dc.GetTable<ExpertsDB>().ToList();
             //}
+        }
+
+        private void VidExpEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)
+        {
+            if (VidExpEdit.SelectedItem == null) return;
+
+            var rhs = sluchGridControl.GetSelectedRowHandles();
+            foreach (var rh in rhs)
+            {
+                sluchGridControl.SetCellValue(rh, "S_TIP2",
+                    ObjHelper.GetAnonymousValue(VidExpEdit.SelectedItem, "IDVID"));
+            }
         }
     }
 }

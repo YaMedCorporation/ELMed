@@ -23,3 +23,79 @@ C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAsse
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
 C:\Users\rshko\Source\Repos\Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.xml
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+E:\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+E:\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+E:\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+E:\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.dll
+E:\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+E:\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.xml
+E:\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+E:\Git_Yamed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+E:\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojResolveAssemblyReference.cache
+E:\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+E:\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.dll
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.xml
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.dll
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.xml
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+E:\Новая папка (2)\220819\Git_Yamed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\EntityFramework.dll
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\EntityFramework.xml
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+E:\Новая папка (2)\300819\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+E:\Новая папка (2)\300819\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+E:\Новая папка (2)\300819\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+E:\Новая папка (2)\300819\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+E:\Новая папка (2)\300819\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+E:\Новая папка (2)\300819\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\EntityFramework.dll
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\EntityFramework.xml
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\WILD\Desktop\040919\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.pdb

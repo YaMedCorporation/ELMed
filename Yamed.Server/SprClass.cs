@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using ActiveQueryBuilder.Core;
+using ActiveQueryBuilder.View.WPF;
 using Yamed.Core;
 using Yamed.Entity;
 
@@ -78,7 +80,7 @@ namespace Yamed.Server
         public static bool FlcVerify;
         public static string Region;
 
-
+        public static QueryBuilder Qb = new QueryBuilder();
         /// <summary>
         /// Определитель статуса пн (какая вкладка открыта)
         /// </summary>
@@ -130,7 +132,6 @@ namespace Yamed.Server
         public static List<DetProfilDb> detProf;
         public static List<V010> tarifUsl;
         public static List<Nomenclature> S1664Ns;
-        public static List<OsobSluchDb> OsobSluchDbs;
         //public static List<UslugiShablon> Shablons;
         public static List<OtdelDb> OtdelDbs;
         //public static List<ProfilTOSpecCode> ProfilToSpecCodes;
@@ -176,11 +177,12 @@ namespace Yamed.Server
         public static object AnestList;
         public static List<DISP_SPR> DispSprList;
         public static object YesNoList;
-        public static object Payment;public static object KsgOplata;
+        public static object Payment;
+        public static object KsgOplata;
 
         public static List<SprDSGR> SprDsgrList;
         public static List<SprKSGR> SprKsgrList;
-        public static List<SprKsg> CalcKsgTarifList;
+        public static object CalcKsgTarifList;
         public static object VozrList;
         public static object DostList;
         public static object ForPomList;
@@ -188,6 +190,7 @@ namespace Yamed.Server
         public static object SprDetProfilList;
         public static object SprPCelList;
         public static object SprUsl804;
+        public static object SprUslCode;
         public static object SprBit;
         public static object SprNpl;
         public static object Spr79_F005;
@@ -197,6 +200,58 @@ namespace Yamed.Server
         public static object SpecV021List;
         public static object SpecAllList;
         public static object Profil_V020;
+        public static object OsobSluchDbs;
+        //public static object OsSlRegion;
+
+        public static object TypeExp2;
+
+        public static object N001;
+        public static object N002;
+        public static object N003;
+        public static object N004;
+        public static object N005;
+        public static object N006;
+        public static object N007;
+        public static object N008;
+        public static object N009;
+        public static object N010;
+        public static object N011;
+        public static object N012;
+        public static object N013;
+        public static object N014;
+        public static object N015;
+        public static object N016;
+        public static object N017;
+        public static object N018;
+        public static object N019;
+        public static object N020;
+
+        public static object N00_DiagTip;
+        public static object N007_010;
+        public static object N008_011;
+
+        public static object V017;
+        public static object V011;
+        public static object V024;
+
+        public static object V026;
+        public static object V027;
+        public static object V028;
+        public static object V029;
+
+        public static object NAZR;
+
+        public static object SchetType;
+        public static object DsType;
+        public static object Per;
+        public static object PrNov;
+
+        public static object rg004; // класс для справочника rg004 Иваново
+        public static object rg003;// класс для справочника rg003 Иваново
+        public static object rg001; // класс для справочника rg001 Иваново
+        public static object SprVizov; //класс для справочника Вид вызова Иваново
+        public static object SprBrigad; //класс для справочника Вид бригады Иваново
+        public static object SprGrafdn; //класс для справочника график дн. стац. Иваново
 
         public static void SprLoad()
         {
@@ -209,7 +264,7 @@ namespace Yamed.Server
                 OrgCode = GetOrgCode()
             };
 
-
+            var today = DateTime.Today.ToString("yyyyMMdd");
             
 
             FlcVerify = DbSettings.SingleOrDefault(x => x.Name == "FLC") == null
@@ -234,31 +289,89 @@ namespace Yamed.Server
             OslList = Reader2List.GetAnonymousTable("SprOSL", LocalConnectionString);
             AnestList = Reader2List.GetAnonymousTable("SprANEST", LocalConnectionString);
             YesNoList = Reader2List.GetAnonymousTable("YesNoTbl", LocalConnectionString);
-            Payment = Reader2List.GetAnonymousTable("SprPayment", LocalConnectionString);
+            //Payment = Reader2List.GetAnonymousTable("Yamed_Spr_Payment", LocalConnectionString);
+            Payment = Reader2List.CustomAnonymousSelect("Select * from Yamed_Spr_Payment where OrgType in (1,2)", LocalConnectionString);
             KsgOplata = Reader2List.GetAnonymousTable("SprKSGOPLATA", LocalConnectionString);
             VozrList = Reader2List.GetAnonymousTable("SprVozr", LocalConnectionString);
             DostList = Reader2List.GetAnonymousTable("SprDost", LocalConnectionString);
             ForPomList = Reader2List.GetAnonymousTable("V014", LocalConnectionString);
-            MedicalEmployeeList = Reader2List.GetAnonymousTable("View_Yamed_Spr_MedicalEmployee", LocalConnectionString);
+            MedicalEmployeeList = Reader2List.CustomAnonymousSelect("Select * from View_Yamed_Spr_MedicalEmployee order by NameWithID", LocalConnectionString);
             SprDetProfilList = Reader2List.GetAnonymousTable("SprDetProfil", LocalConnectionString);
             SprPCelList = Reader2List.GetAnonymousTable("V025", LocalConnectionString);
             SprUsl804 = Reader2List.GetAnonymousTable("Yamed_Spr_Usl804", LocalConnectionString);
+            SprUslCode = Reader2List.GetAnonymousTable("Yamed_Spr_UslCode", LocalConnectionString);
             SprBit = Reader2List.GetAnonymousTable("D3_Spr_BIT", LocalConnectionString);
             SprNpl = Reader2List.GetAnonymousTable("D3_Spr_NPL", LocalConnectionString);
             Spr79_F005 = Reader2List.GetAnonymousTable("SPR79_F005", LocalConnectionString);
             YamedUsers = Reader2List.GetAnonymousTable("Yamed_Users", LocalConnectionString);
-            KslpList = Reader2List.CustomAnonymousSelect("Select * from SprKSLP where DATEBEG >='20180101'", LocalConnectionString);
+            KslpList = Reader2List.CustomAnonymousSelect("Select * from SprKSLP where DATEBEG >='20190101'", LocalConnectionString);
             DnList = Reader2List.CustomAnonymousSelect("Select * from Yamed_Spr_Dn", LocalConnectionString);
             SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
             SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
             Profil_V020 = Reader2List.GetAnonymousTable("V020", LocalConnectionString);
+            OsobSluchDbs = Reader2List.CustomAnonymousSelect($"Select * from OsobSluchDb", LocalConnectionString);
+            //OsSlRegion = Reader2List.CustomAnonymousSelect($"Select * from OsobSluchDb where dbeg <= '{today}' and isnull(DEND, '20991231') >= '{today}'", LocalConnectionString);
+            TypeExp2 = Reader2List.CustomAnonymousSelect("SELECT * FROM [F006_NEW] where dateend is null", LocalConnectionString);
+            N001 = Reader2List.CustomAnonymousSelect($"Select * from N001 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N002 = Reader2List.CustomAnonymousSelect($"Select * from N002 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N003 = Reader2List.CustomAnonymousSelect($"Select * from N003 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N004 = Reader2List.CustomAnonymousSelect($"Select * from N004 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N005 = Reader2List.CustomAnonymousSelect($"Select * from N005 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N006 = Reader2List.CustomAnonymousSelect($"Select * from N006 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N007 = Reader2List.CustomAnonymousSelect($"Select * from N007 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N008 = Reader2List.CustomAnonymousSelect($"Select * from N008 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N009 = Reader2List.CustomAnonymousSelect($"Select * from N009 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N010 = Reader2List.CustomAnonymousSelect($"Select * from N010 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N011 = Reader2List.CustomAnonymousSelect($"Select * from N011 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N012 = Reader2List.CustomAnonymousSelect($"Select * from N012 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N013 = Reader2List.CustomAnonymousSelect($"Select * from N013 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N014 = Reader2List.CustomAnonymousSelect($"Select * from N014 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N015 = Reader2List.CustomAnonymousSelect($"Select * from N015 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N016 = Reader2List.CustomAnonymousSelect($"Select * from N016 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N017 = Reader2List.CustomAnonymousSelect($"Select * from N017 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N018 = Reader2List.CustomAnonymousSelect($"Select * from N018 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N019 = Reader2List.CustomAnonymousSelect($"Select * from N019 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N020 = Reader2List.CustomAnonymousSelect($"Select * from N020 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+
+            N00_DiagTip = Reader2List.CustomAnonymousSelect($"Select * from N00_DiagTip", LocalConnectionString);
+            N007_010 = Reader2List.CustomAnonymousSelect($"Select * from N007_010 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            N008_011 = Reader2List.CustomAnonymousSelect($"Select * from N008_011 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+
+            V017 = Reader2List.CustomAnonymousSelect($"Select * from V017 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            //V011 = Reader2List.CustomAnonymousSelect($"Select * from V011 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            V024 = Reader2List.CustomAnonymousSelect($"Select * from V024 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            V026 = Reader2List.CustomAnonymousSelect($"Select * from V026 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            V027 = Reader2List.CustomAnonymousSelect($"Select * from V027 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            V028 = Reader2List.CustomAnonymousSelect($"Select * from V028 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+            V029 = Reader2List.CustomAnonymousSelect($"Select * from V029 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+
+            NAZR = Reader2List.GetAnonymousTable("Yamed_Spr_NAZR", LocalConnectionString);
+
+            SchetType = Reader2List.GetAnonymousTable("Yamed_Spr_SchetType", LocalConnectionString);
+            DsType = Reader2List.GetAnonymousTable("Yamed_Spr_DsType", LocalConnectionString);
+            Per = Reader2List.GetAnonymousTable("Yamed_Spr_Per", LocalConnectionString);
+            PrNov = Reader2List.GetAnonymousTable("Yamed_Spr_PrNov", LocalConnectionString);
+
+            CalcKsgTarifList = Reader2List.GetAnonymousTable("SprKsg", LocalConnectionString);
+
+
+            //Справочники для работы полей Иваново, Андрей Insidious
+            rg001 = Reader2List.CustomAnonymousSelect($"Select * from rg001", LocalConnectionString);
+            rg003 = Reader2List.CustomAnonymousSelect($"Select * from rg003", LocalConnectionString);
+            rg004 = Reader2List.CustomAnonymousSelect($"Select * from rg004", LocalConnectionString);
+            SprVizov = Reader2List.CustomAnonymousSelect($"Select * from SprVizov", LocalConnectionString);
+            SprBrigad = Reader2List.CustomAnonymousSelect($"Select * from SprBrigad", LocalConnectionString);
+            SprGrafdn = Reader2List.CustomAnonymousSelect($"Select * from SprGrafdn", LocalConnectionString);
+
+
+
 
             using (ElmedDataClassesDataContext elMed = new ElmedDataClassesDataContext(LocalConnectionString))
             {
         
                 //SprDsgrList = elMed.GetTable<SprDSGR>().ToList();
                 //SprKsgrList = elMed.GetTable<SprKSGR>().ToList();
-                CalcKsgTarifList = elMed.GetTable<SprKsg>().ToList();
+
 
 
                 //IsTfoms = bool.Parse(elMed.Settings.SingleOrDefault(x => x.Name == "TFOMS")?.Parametr);
@@ -294,7 +407,6 @@ namespace Yamed.Server
                 detProf = elMed.GetTable<DetProfilDb>().ToList();
                 tarifUsl = elMed.GetTable<V010>().ToList();
                 S1664Ns = elMed.GetTable<Nomenclature>().ToList();
-                OsobSluchDbs = elMed.GetTable<OsobSluchDb>().ToList();
                 //Shablons = null;
                 mkbSearching = elMed.GetTable<M001_KSG>().OrderBy(x=>x.IDDS).ToList();
                 mkbSearching2 = mkbSearching.Select(x => x.IDDS).OrderBy(s => s).ToList();
@@ -324,7 +436,7 @@ namespace Yamed.Server
                         NAME = x.NAME
                     }).Distinct().ToList();
 
-                var directIpOrg = new[] {/*"460039",*/ "460003", "460064"};
+                var directIpOrg = new[] {/*"460039",*/ "46003", "460064"};
 
                 //var conn = new SqlConnectionStringBuilder();
                 //conn.DataSource = directIpOrg.Contains(ProdSett.OrgCode)? @"91.240.209.114" : @"91.240.209.114,2866";
@@ -335,17 +447,18 @@ namespace Yamed.Server
 
                 var conatt = new SqlConnectionStringBuilder();
                 conatt.DataSource = directIpOrg.Contains(ProdSett.OrgCode) ? @"91.240.209.114" : @"91.240.209.114,2866";
+                //conatt.DataSource = @"91.240.209.114";
                 conatt.InitialCatalog = "DocExchange";
                 conatt.UserID = "AttpSmo";
                 conatt.Password = @"VjuByjYt;Xby";
                 GlobalDocExchangeConnectionString = conatt.ConnectionString;
 
                 var srzcon = new SqlConnectionStringBuilder();
-                srzcon.DataSource = @"91.240.209.114,2866";
+                srzcon.DataSource = @"91.240.209.114,19450";
                 srzcon.ConnectTimeout = 2;
                 srzcon.InitialCatalog = "srz_mini";
-                srzcon.UserID = "sa";
-                srzcon.Password = @"Gbljh:100";
+                srzcon.UserID = "mo";
+                srzcon.Password = @"54Vtkrb[Gfrjcnys[J,zpmzyGjbvtkbDct[@Ufdy.rjd$";
                 GlobalSrzConnectionString = srzcon.ConnectionString;
 
 

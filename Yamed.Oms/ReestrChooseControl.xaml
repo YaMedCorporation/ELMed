@@ -72,7 +72,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="267"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Выберите операцию" VerticalAlignment="Top" Width="254" FontFamily="Times New Roman" FontSize="16" Height="20"/>
@@ -80,6 +80,6 @@
         </dxe:ComboBoxEdit>
         <TextBlock TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Выберите реестр для операции" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" Width="254" Height="21"/>
         <dxe:ComboBoxEdit DisplayMember="nameSchet" ValueMember="ID" x:Name="cbSchets" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="254" Margin="10,0,0,0" Height="23"/>
-        <Button x:Name="buttonStart" Content="Выполнить операцию" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="10" VerticalAlignment="Top" Width="254" FontFamily="Times New Roman" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Height="24" Click="buttonStart_Click"/>
+        <Button x:Name="buttonStart" Content="Выполнить операцию" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="10" VerticalAlignment="Top" Width="254" FontFamily="Times New Roman" FontSize="16" Height="24" Click="buttonStart_Click"/>
     </Grid>
 </UserControl>

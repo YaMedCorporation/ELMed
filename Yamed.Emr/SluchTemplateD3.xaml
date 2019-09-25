@@ -471,7 +471,7 @@
                                         </Grid.RowDefinitions>
                                         <dxg:LookUpEdit Validate="dxEdit_Validate" x:Name="PrvsEdit" 
                                             DisplayMember="NameWithID"
-                                            ValueMember="ID" 
+                                            ValueMember="IDSPEC" 
                                             AutoPopulateColumns="False"
                                         
                                             EditValue="{Binding SelectedItem.PRVS, ElementName=SlGridControl}"
@@ -849,7 +849,7 @@
                                                                   AllowDefaultButton="True"
                                                                   DisplayMember="NameWithID"
                                                                   ItemsSource="{Binding}"
-                                                                  ValueMember="ID" />
+                                                                  ValueMember="IDSPEC" />
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
 

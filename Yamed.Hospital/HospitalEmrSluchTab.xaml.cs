@@ -576,21 +576,22 @@ Insert @CalcBaseKoefDS VALUES (1, '20170101', '20170331')
 Insert @CalcBaseKoefDS VALUES (1, '20170401', '20170630')
 Insert @CalcBaseKoefDS VALUES (1, '20170701', '20171231')
 Insert @CalcBaseKoefDS VALUES (1, '20180101', '20181231')
+Insert @CalcBaseKoefDS VALUES (1, '20190101', '20191231')
 
 declare @temp_ksg table(
 	[USL_OK] int null,
 	[SLID] [int] NULL,
 	[ID] [int] NULL,
 	[vm_ID] [int] NULL,
-	[NKSG] [int] NULL,
-	[IDKSG] [int] NOT NULL,
+	[NKSG] [nvarchar](20) NULL,
+	[IDKSG] [nvarchar](20) NOT NULL,
 	[USL] [nvarchar](16) NULL,
 	[DS1] [nvarchar](10) NULL,
 	[DS2] [nvarchar](10) NULL,
 	[VOZR] [int] NULL,
 	[POL] [int] NULL,
 	[DLIT] [int] NULL,
-	[tf_idksg] [int] NULL,
+	[tf_idksg] [nvarchar](20) NULL,
 	[tf_ds] [nvarchar](10) NULL,
 	[sl_ds2] [nvarchar](10) NULL,
 	[vm_vid_vme] [nvarchar](16) NULL,
@@ -613,15 +614,15 @@ declare @temp_ksg_itog table(
 	[SLID] [int] NULL,
 	[ID] [int] NULL,
 	[vm_ID] [int] NULL,
-	[NKSG] [int] NULL,
-	[IDKSG] [int] NOT NULL,
+	[NKSG] [nvarchar](20) NULL,
+	[IDKSG] [nvarchar](20) NOT NULL,
 	[USL] [nvarchar](16) NULL,
 	[DS1] [nvarchar](10) NULL,
 	[DS2] [nvarchar](10) NULL,
 	[VOZR] [int] NULL,
 	[POL] [int] NULL,
 	[DLIT] [int] NULL,
-	[tf_idksg] [int] NULL,
+	[tf_idksg] [nvarchar](20) NULL,
 	[tf_ds] [nvarchar](10) NULL,
 	[sl_ds2] [nvarchar](10) NULL,
 	[vm_vid_vme] [nvarchar](16) NULL,
@@ -638,162 +639,6 @@ declare @temp_ksg_itog table(
 )
 
 Insert @temp_ksg
-select sl.USL_OK, tf.SLID, tf.ID, vm.ID vm_id, ksg.NKSG, t.ID as IDKSG, ksg.USL, ksg.DS1, ksg.DS2, ksg.VOZR as VOZR, ksg.POL, ksg.DLIT,
-	tf.idksg tf_idksg, tf.DS tf_ds, ds2.ds sl_ds2,  vm.VID_VME vm_vid_vme, tf.kday tf_kday, tf.sumv_usl tf_sumv_usl, tf.tarif tf_tarif, sl.sumv sl_sumv, tf.podr tf_podr,-- tf.DATE_IN tf_date_in, tf.DATE_OUT tf_date_out, 
-						KDAY = 
-							(CASE 
-							  WHEN sl.USL_OK = 1 THEN (CASE WHEN tf.DATE_IN = tf.DATE_OUT THEN 1 ELSE DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) END)
-							  WHEN sl.USL_OK = 2 THEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 -
-								(SELECT COUNT(*) FROM dbo.WORK_DAY wd WHERE wd.LPU = tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)
-                            END),
-						SUMV_USL =
-                            CAST(ROUND((CASE 
-                            WHEN sl.USL_OK = 1 and t2.[SSL] > 0 AND tf.IDKSG not in (766,788,789,1193,1634) THEN 
-                            (CASE WHEN (tf.KSGOPLATA = 1 or tf.KSGOPLATA is NULL) THEN 
-                            	(CASE 
-                            	WHEN ROUND(CAST(DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) AS NUMERIC(10,2))/t2.[SSL], 1) < 0.70
-									THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00), 2)*
-										(CASE 
-										WHEN ROUND(CAST(DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) AS NUMERIC(10,2))/t2.[SSL], 1) >= 0.10 AND
-												ROUND(CAST(DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) AS NUMERIC(10,2))/t2.[SSL], 1) < 0.50 
-											THEN ROUND(CAST(DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) AS NUMERIC(10,2))/t2.[SSL], 1)
-										WHEN ROUND(CAST(DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) AS NUMERIC(10,2))/t2.[SSL], 1) >= 0.50 THEN 0.50
-										ELSE 0.10 END)
-								ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2) END)
-									WHEN tf.KSGOPLATA = 2 THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2)
-                                END)
-
-                            WHEN sl.USL_OK = 1 AND tf.IDKSG in (766,788,789,1193,1634) THEN 
-                            (CASE 
-                            WHEN (tf.KSGOPLATA = 1 or tf.KSGOPLATA is NULL) THEN 
-                            	(CASE 
-                            	WHEN ROUND(CAST(DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) AS NUMERIC(10,2))/t2.[SSL], 1) < 0.70
-									THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
-								ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2) 
-								END)
-							WHEN tf.KSGOPLATA = 2 THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00), 2)
-                            END)
- 
-                            WHEN sl.USL_OK = 1 and t2.[SSL] = -3 THEN 
-                            (CASE 
-                            WHEN (tf.KSGOPLATA = 1 or tf.KSGOPLATA is NULL) THEN 
-                            	(CASE 
-                            	WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 3
-									THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
-								ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2) 
-								END)
- 							WHEN tf.KSGOPLATA = 2 THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00), 2)
-                            END)
-
-							WHEN sl.USL_OK = 1 and (t2.[SSL] = 0 OR t2.[SSL] < -3)
-							THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2)
-
-                            WHEN sl.USL_OK = 2 and t2.[SSL] > 0 and sl.OS_SLUCH_REGION is null THEN
-                            (CASE 
-                            WHEN (tf.KSGOPLATA = 1 or tf.KSGOPLATA is NULL) THEN 
-                               (CASE 
-                               WHEN ROUND(CAST((DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
-											(SELECT COUNT(*) FROM dbo.WORK_DAY wd
-											 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) AS NUMERIC(10,2))/t2.[SSL], 1) < 0.70
-									THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2) * 
-									(CASE WHEN ROUND(CAST((DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
-											(SELECT COUNT(*) FROM dbo.WORK_DAY wd
-											 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) AS NUMERIC(10,2))/t2.[SSL], 1) >= 0.10 AND 
-											 ROUND(CAST((DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
-											(SELECT COUNT(*) FROM dbo.WORK_DAY wd
-											 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) AS NUMERIC(10,2))/t2.[SSL], 1) < 0.50
-										  THEN ROUND(CAST((DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
-											(SELECT COUNT(*) FROM dbo.WORK_DAY wd
-											 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) AS NUMERIC(10,2))/t2.[SSL], 1)
-										WHEN ROUND(CAST((DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
-											(SELECT COUNT(*) FROM dbo.WORK_DAY wd
-											 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) AS NUMERIC(10,2))/t2.[SSL], 1) >= 0.50
-										  THEN 0.50
-										  ELSE 0.10 
-									END)
-									 ELSE ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2) 
-								END)
-							WHEN tf.KSGOPLATA = 2 THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2)
-                            END)
-
-                            --WHEN sl.USL_OK = 2 and sl.OS_SLUCH_REGION in (25,26,27,28) THEN 
-							--(CASE 
-							--	WHEN sl.OS_SLUCH_REGION = 25 THEN ROUND(t2.TARIF * bkds.baseKoefDS * ISNULL(upr.UPR, 1.00)* 0.43, 2)
-							--	WHEN sl.OS_SLUCH_REGION = 26 THEN ROUND(t2.TARIF * bkds.baseKoefDS * ISNULL(upr.UPR, 1.00)* 0.12, 2)
-							--	WHEN sl.OS_SLUCH_REGION = 27 THEN ROUND(t2.TARIF * bkds.baseKoefDS * ISNULL(upr.UPR, 1.00)* 0.35, 2, 1)
-							--	WHEN sl.OS_SLUCH_REGION = 28 THEN ROUND(t2.TARIF * bkds.baseKoefDS * ISNULL(upr.UPR, 1.00)* 0.10, 2)
-							--	ELSE ROUND(t2.TARIF * bkds.baseKoefDS * ISNULL(upr.UPR, 1.00), 2)
-                            --END)                         
-                           
-                            WHEN sl.USL_OK = 2 and t2.[SSL] = -3 and sl.OS_SLUCH_REGION is null THEN
-                            (CASE 
-                            WHEN (tf.KSGOPLATA = 1 or tf.KSGOPLATA is NULL) THEN 
-                               (CASE 
-                               WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
-											(SELECT COUNT(*) FROM dbo.WORK_DAY wd
-											 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT) < 3
-										THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 0.80, 2)
-									 ELSE ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2) 
-								END)
-							WHEN tf.KSGOPLATA = 2 THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2) 
-                            END)
-                            
-							WHEN sl.USL_OK = 2 and (t2.[SSL] = 0 OR t2.[SSL] < -3) and sl.OS_SLUCH_REGION is null
-                            THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2)
-
-                            WHEN sl.USL_OK = 2 and sl.OS_SLUCH_REGION = 19 THEN ksgsod.S_TARIF
-
-                            END),2) AS NUMERIC (10 ,2)),
-                        TARIF=
-                            CAST((CASE 
-                            WHEN sl.USL_OK = 1 THEN t2.TARIF
-                            WHEN sl.USL_OK = 2 and sl.OS_SLUCH_REGION is null THEN ROUND(t2.TARIF * bkds.baseKoefDS, 2)
-                            WHEN sl.USL_OK = 2 and sl.OS_SLUCH_REGION = 19 THEN ksgsod.S_TARIF
-                            WHEN sl.USL_OK = 2 and sl.OS_SLUCH_REGION in (25,26,27,28) THEN ROUND(t2.TARIF * bkds.baseKoefDS, 2)
-                            END) AS NUMERIC (10 ,2))
-from usl tf
-left join usl vm on tf.SLID = vm.SLID and tf.PODR = vm.PODR and vm.CODE_USL Like 'VM%'
-join SLUCH sl on tf.SLID = sl.ID
-left join SLUCH_DS2 ds2 on sl.ID = ds2.slid
-join pacient pa on sl.PID = pa.ID
-join SprKSGDecode ksg on sl.USL_OK = ksg.STYPE and (tf.DATE_OUT >= ksg.DBEG and tf.DATE_OUT < ksg.DEND +1)
-and (ksg.DS1 = tf.DS or ksg.DS1 = (left(tf.DS, 1)+'.') or ksg.DS1 is null)
-and (ksg.DS2 = ds2.DS or ksg.DS2 is null)
-and (ksg.USL = vm.VID_VME or ksg.USL is null)
-and (ksg.VOZR =
-case 
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 28 then 1
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 29 and 90 then 2
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 91 and 365 then 3
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*2 then 4
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*18 then 5
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) > 365.25*18 then 6
-end
-or ksg.VOZR =
-case 
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*2 then 4
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*18 then 5
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) > 365.25*18 then 6
-end
-or ksg.VOZR =
-case 
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*18 then 5
-	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) > 365.25*18 then 6
-end
-or ksg.VOZR is null)
-and (ksg.POL = pa.W or ksg.POL is null)
-and (ksg.DLIT = 
-case when cast(tf.DATE_OUT as date) = cast(tf.DATE_IN as date) or datediff(day, cast(tf.DATE_IN as date), cast(tf.DATE_OUT as date)) <= 3 then 1 else 0 end
-or ksg.DLIT is null)
-and (ksg.DOP_KR = sl.KSG_DKK or ksg.DOP_KR is null)
-join SprKsg t on ksg.NKSG = t.KSGNUM and ksg.STYPE = t.STYPE and ksg.DBEG >= t.DBEG
-join CalcKsgTarif t2 on t.ID = t2.IDKSG  and (tf.DATE_OUT >= t2.DBEG and tf.DATE_OUT < t2.DEND +1)
-left join KSG_SOD as ksgsod on (tf.DATE_OUT >= ksgsod.TarifDateStart and tf.DATE_OUT < ksgsod.TarifDateEnd +1)
-left join CalcUprk upr on t.ID = upr.IDKSG and (tf.DATE_OUT >= upr.TBEG and tf.DATE_OUT < upr.TEND +1)
-left join @CalcBaseKoefDS bkds on (tf.DATE_OUT >= bkds.TBEG and tf.DATE_OUT < bkds.TEND +1)
-left join CalcMok as kf on kf.KOD_LPU = sl.LPU AND (tf.DATE_OUT >= kf.DATESTART and (kf.DATEEND is NULL OR tf.DATE_OUT < kf.DATEEND +1))
-where tf.slid={_zsl.ID} and tf.CODE_USL Like 'TF%' and sl.METOD_HMP is null and tf.DATE_OUT < '20180301'  -- МО HospitalEmrSluchTab
-UNION ALL
 select sl.USL_OK, tf.SLID, tf.ID, vm.ID vm_id, ksg.NKSG, t.ID as IDKSG, ksg.USL, ksg.DS1, ksg.DS2, ksg.VOZR as VOZR, ksg.POL, ksg.DLIT,
 	tf.idksg tf_idksg, tf.DS tf_ds, ds2.ds sl_ds2,  vm.VID_VME vm_vid_vme, tf.kday tf_kday, tf.sumv_usl tf_sumv_usl, tf.tarif tf_tarif, sl.sumv sl_sumv, tf.podr tf_podr,-- tf.DATE_IN tf_date_in, tf.DATE_OUT tf_date_out, 
 						KDAY = 
@@ -939,7 +784,155 @@ left join CalcUprk upr on t.ID = upr.IDKSG and (tf.DATE_OUT >= upr.TBEG and tf.D
 left join @CalcBaseKoefDS bkds on (tf.DATE_OUT >= bkds.TBEG and tf.DATE_OUT < bkds.TEND +1)
 left join CalcMok as kf on kf.KOD_LPU = sl.LPU AND (tf.DATE_OUT >= kf.DATESTART and (kf.DATEEND is NULL OR tf.DATE_OUT < kf.DATEEND +1))
 where tf.slid = {_zsl.ID}
-  and tf.CODE_USL Like 'TF%' and sl.METOD_HMP is null and tf.DATE_OUT >= '20180301'
+  and tf.CODE_USL Like 'TF%' and sl.METOD_HMP is null and tf.DATE_OUT >= '20180301' and tf.DATE_OUT < '20190101'
+UNION ALL
+select sl.USL_OK, tf.SLID, tf.ID, vm.ID vm_id, ksg.NKSG, t.ID as IDKSG, ksg.USL, ksg.DS1, ksg.DS2, ksg.VOZR as VOZR, ksg.POL, ksg.DLIT,
+	tf.idksg tf_idksg, tf.DS tf_ds, ds2.ds sl_ds2,  vm.VID_VME vm_vid_vme, tf.kday tf_kday, tf.sumv_usl tf_sumv_usl, tf.tarif tf_tarif, sl.sumv sl_sumv, tf.podr tf_podr,-- tf.DATE_IN tf_date_in, tf.DATE_OUT tf_date_out, 
+						KDAY = 
+							(CASE 
+							  WHEN sl.USL_OK = 1 THEN (CASE WHEN tf.DATE_IN = tf.DATE_OUT THEN 1 ELSE DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) END)
+							  WHEN sl.USL_OK = 2 THEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 -
+								(SELECT COUNT(*) FROM dbo.WORK_DAY wd WHERE wd.LPU = tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)
+                            END),
+						SUMV_USL =
+                            CAST(ROUND((CASE 
+                            WHEN sl.USL_OK = 1 and t2.[SSL] > 0 THEN 
+                            (CASE 
+								WHEN (sl.RSLT in (102, 105, 106, 107, 108, 110)) THEN 
+                            		(CASE
+									    WHEN tf.IDKSG in ('1634', '1655', '1656') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
+									    WHEN tf.IDKSG in ('1634', '1655', '1656') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) >= 4
+											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 1.00, 2)
+
+                            			WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.20, 2)
+										ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.50, 2)
+									END)
+								WHEN (sl.RSLT not in (102, 105, 106, 107, 108, 110)) THEN 
+                            		(CASE 
+									    WHEN tf.IDKSG in ('1634', '1655', '1656') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
+									    WHEN tf.IDKSG in ('1634', '1655', '1656') and DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) >= 4
+											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 1.00, 2)
+
+                            			WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+											THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.20, 2)
+										ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 1.00, 2)
+									END)
+							END)
+ 
+                            WHEN sl.USL_OK = 1 and (t2.[SSL] = -4) THEN 
+                            (CASE 
+                            WHEN (sl.RSLT in (102, 105, 106, 107, 108, 110)) THEN 
+                            	(CASE 
+                            		WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+										THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
+									ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2) 
+								END)
+							WHEN (sl.RSLT not in (102, 105, 106, 107, 108, 110)) THEN 
+                            	(CASE 
+                            		WHEN DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) < 4
+										THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) * 0.80, 2)
+									ELSE ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2) 
+								END)
+							END)
+
+							WHEN sl.USL_OK = 1 and (t2.[SSL] = 0 OR t2.[SSL] < -4)
+							THEN ROUND(t2.TARIF*ISNULL(upr.UPR,1.00)*(CASE WHEN tf.IDKSG in (select [IDKSG] from [dbo].[CalNotKus] Where tf.DATE_OUT >= TBEG and tf.DATE_OUT < TEND +1) THEN 1.00 ELSE ISNULL(kf.KUS,1.00) END)*ISNULL(tf.DIFF_K,1.00) ,2)
+
+                            WHEN sl.USL_OK = 2 and t2.[SSL] > 0 THEN
+                            (CASE 
+								WHEN (sl.RSLT in (202, 205, 206, 207, 208)) THEN 
+								   (CASE 
+								   WHEN (DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
+												(SELECT COUNT(*) FROM dbo.WORK_DAY wd
+												 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) < 4
+											THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 0.20, 2)
+											ELSE ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 0.50, 2)
+									END)
+								WHEN (sl.RSLT not in (202, 205, 206, 207, 208)) THEN 
+								   (CASE 
+								   WHEN (DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
+												(SELECT COUNT(*) FROM dbo.WORK_DAY wd
+												 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) < 4
+											THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 0.20, 2)
+											ELSE ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 1.00, 2)
+									END)
+                            END)                        
+                           
+                            WHEN sl.USL_OK = 2 and t2.[SSL] = -4 THEN
+                            (CASE 
+								WHEN (sl.RSLT in (202, 205, 206, 207, 208)) THEN 
+								   (CASE 
+								   WHEN (DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
+												(SELECT COUNT(*) FROM dbo.WORK_DAY wd
+												 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) < 4
+											THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 0.80, 2)
+											ELSE ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 1.00, 2)
+									END)
+								WHEN (sl.RSLT not in (202, 205, 206, 207, 208)) THEN 
+								   (CASE 
+								   WHEN (DATEDIFF(DAY, tf.DATE_IN, tf.DATE_OUT) + 1 - 
+												(SELECT COUNT(*) FROM dbo.WORK_DAY wd
+												 WHERE wd.LPU = tf.LPU and LPU=tf.LPU and wd.PODR_ID = tf.LPU_1 and H_DATE BETWEEN tf.DATE_IN AND tf.DATE_OUT)) < 4
+											THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 0.80, 2)
+											ELSE ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00)* 1.00, 2)
+									END)
+                            END)
+
+							WHEN sl.USL_OK = 2 and (t2.[SSL] = 0 OR t2.[SSL] < -4)
+								THEN ROUND(t2.TARIF * ISNULL(tf.DIFF_K,1.00) * ISNULL(upr.UPR, 1.00), 2)
+                            END),2) AS NUMERIC (10 ,2)),
+                        TARIF=
+                            CAST((CASE 
+                            WHEN sl.USL_OK = 1 THEN t2.TARIF
+                            WHEN sl.USL_OK = 2 THEN t2.TARIF
+                            END) AS NUMERIC (10 ,2))
+from usl tf
+left join usl vm on tf.SLID = vm.SLID and tf.PODR = vm.PODR and vm.CODE_USL Like 'VM%'
+join SLUCH sl on tf.SLID = sl.ID
+left join SLUCH_DS2 ds2 on sl.ID = ds2.slid
+join pacient pa on sl.PID = pa.ID
+join SprKSGDecode ksg on sl.USL_OK = ksg.STYPE and (tf.DATE_OUT >= ksg.DBEG and tf.DATE_OUT < ksg.DEND +1)
+and (ksg.DS1 = tf.DS or ksg.DS1 = (left(tf.DS, 1)+'.') or ksg.DS1 is null)
+and (ksg.DS2 = ds2.DS or ksg.DS2 is null)
+and (ksg.USL = vm.VID_VME or ksg.USL is null)
+and (ksg.VOZR =
+case 
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 28 then 1
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 29 and 90 then 2
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 91 and 365 then 3
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*2 then 4
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*18 then 5
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) > 365.25*18 then 6
+end
+or ksg.VOZR =
+case 
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*2 then 4
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*18 then 5
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) > 365.25*18 then 6
+end
+or ksg.VOZR =
+case 
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) between 0 and 365.25*18 then 5
+	when DATEDIFF(DAY, pa.DR, tf.DATE_IN) > 365.25*18 then 6
+end
+or ksg.VOZR is null)
+and (ksg.POL = pa.W or ksg.POL is null)
+and (ksg.DLIT = 
+case when cast(tf.DATE_OUT as date) = cast(tf.DATE_IN as date) or datediff(day, cast(tf.DATE_IN as date), cast(tf.DATE_OUT as date)) <= 3 then 1 else 0 end
+or ksg.DLIT is null)
+and (ksg.DOP_KR = sl.KSG_DKK or ksg.DOP_KR is null)
+join SprKsg t on ksg.NKSG = t.ID and ksg.STYPE = t.STYPE and ksg.DBEG >= t.DBEG
+join CalcKsgTarif t2 on t.ID = t2.IDKSG  and (tf.DATE_OUT >= t2.DBEG and tf.DATE_OUT < t2.DEND +1)
+left join KSG_SOD as ksgsod on (tf.DATE_OUT >= ksgsod.TarifDateStart and tf.DATE_OUT < ksgsod.TarifDateEnd +1)
+left join CalcUprk upr on t.ID = upr.IDKSG and (tf.DATE_OUT >= upr.TBEG and tf.DATE_OUT < upr.TEND +1)
+left join @CalcBaseKoefDS bkds on (tf.DATE_OUT >= bkds.TBEG and tf.DATE_OUT < bkds.TEND +1)
+left join CalcMok as kf on kf.KOD_LPU = sl.LPU AND (tf.DATE_OUT >= kf.DATESTART and (kf.DATEEND is NULL OR tf.DATE_OUT < kf.DATEEND +1))
+where tf.slid = {_zsl.ID}
+  and tf.CODE_USL Like 'TF%' and sl.METOD_HMP is null and tf.DATE_OUT >= '20190101'
+
 Insert into @temp_ksg_itog
 			Select 0, * From(
 			Select ROW_NUMBER () OVER (partition by SLID, ID, vm_ID order by (CASE WHEN USL IS NULL THEN 0 ELSE 1 END ) desc, (CASE WHEN DS1 IS NULL THEN 0 ELSE 1 END ) desc, (CASE WHEN DS2 IS NULL THEN 0 ELSE 1 END ) desc, (CASE WHEN VOZR IS NULL THEN 10 ELSE VOZR END ), (CASE WHEN POL IS NULL THEN 0 ELSE 1 END ) desc, (CASE WHEN DLIT IS NULL THEN 0 ELSE 1 END ) desc, SUMV_USL desc) rn, *
@@ -977,71 +970,40 @@ INTO @slid
   
 WHILE @@FETCH_STATUS = 0  
 BEGIN  
- IF (select count(*) from @temp_ksg_itog where slid =@slid and 1135 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1133 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1135
- IF (select count(*) from @temp_ksg_itog where slid =@slid and 1136 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1133 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1136
- IF (select count(*) from @temp_ksg_itog where slid =@slid and 1135 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1134 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1135
- IF (select count(*) from @temp_ksg_itog where slid =@slid and 1198 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1142 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1198
- IF (select count(*) from @temp_ksg_itog where slid =@slid and 1199 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1142 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1199
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1248 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1290 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1248
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1411 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1410 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1411
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1411 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1318 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1411
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1356 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1353 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1356
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1158 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1355 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1158
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1367 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1382 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1367
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1445 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1440 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1445
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1446 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1441 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1446
 
 
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1912 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1907 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1912
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1913 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1908 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1913
-
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1574 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1572 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1574
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1575 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1572 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1575
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1574 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1573 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1574
-
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1639 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1581 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1639
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1640 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1581 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1640
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1736 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1742 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1736
-
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1864 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1863 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1864
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1864 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1770 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1864
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1808 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1805 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1808
-
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1598 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1807 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1598
-IF (select count(*) from @temp_ksg_itog where slid =@slid and 1819 in (select IDKSG from @temp_ksg_itog where slid =@slid) and 1834 in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
-	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 1819
-
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st02.010' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st02.008' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st02.010'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st02.011' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st02.008' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st02.011'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st02.010' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st02.009' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st02.010'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st14.001' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st04.002' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st14.001'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st14.002' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st04.002' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st14.002'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st21.001' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st21.007' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st21.001'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st34.002' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st34.001' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st34.002'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st34.002' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st26.001' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st34.002'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st30.006' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st30.003' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st30.006'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st09.001' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st30.005' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st09.001'
+ IF (select count(*) from @temp_ksg_itog where slid =@slid and 'st31.002' in (select IDKSG from @temp_ksg_itog where slid =@slid) and 'st31.017' in (select IDKSG from @temp_ksg_itog where slid =@slid)) > 0
+	UPDATE @temp_ksg_itog SET sur_ksg = 1 where slid =@slid and IDKSG = 'st31.002'
 
     FETCH NEXT FROM sur_cursor   
     INTO @slid 
 END   
 CLOSE sur_cursor;  
 DEALLOCATE sur_cursor;  
+
+
+-- выбор КСГ ДС по услуге
+UPDATE @temp_ksg_itog SET sur_ksg = 1 where usl_ok = 2 and USL is not null
 
 Select --*
  rn_itog, ID, IDKSG, KDAY, SUMV_USL SUMV, TARIF
@@ -1061,14 +1023,14 @@ Select --*
                     tf.KDAY = (int?) ObjHelper.GetAnonymousValue(k, "KDAY");
                     tf.SUMV_USL = (decimal?)ObjHelper.GetAnonymousValue(k, "SUMV");
                     tf.TARIF = (decimal?)ObjHelper.GetAnonymousValue(k, "TARIF");
-                    tf.IDKSG = (int?) ObjHelper.GetAnonymousValue(k, "IDKSG");
+                    tf.IDKSG = (string) ObjHelper.GetAnonymousValue(k, "IDKSG");
                 }
             }
 
-            if (_traffiList.Count(x => x.IDKSG == 1565 || x.IDKSG == 1567 || x.IDKSG == 1568) > 1)
+            if (_traffiList.Count(x => x.IDKSG == "1565" || x.IDKSG == "1567" || x.IDKSG == "1568" || x.IDKSG == "st02.001" || x.IDKSG == "st02.003" || x.IDKSG == "st02.004") > 1)
             {
                 string[] dss = new[] { "O14.1", "O34.2", "O36.3", "O36.4", "O42.2" };
-                var tf = _traffiList.SingleOrDefault(x => x.IDKSG == 1565);
+                var tf = _traffiList.SingleOrDefault(x => x.IDKSG == "1565" || x.IDKSG == "st02.001");
                 if (tf != null)
                 {
                     var day = tf.DATE_OUT - tf.DATE_IN;
@@ -1084,6 +1046,27 @@ Select --*
                     }
                 }
             }
+
+            //if (_traffiList.Count(x => x.IDKSG == "st02.001" || x.IDKSG == "st02.003" || x.IDKSG == "st02.004") > 1)
+            //{
+            //    string[] dss = new[] { "O14.1", "O34.2", "O36.3", "O36.4", "O42.2" };
+            //    var tf = _traffiList.SingleOrDefault(x => x.IDKSG == "st02.001");
+            //    if (tf != null)
+            //    {
+            //        var day = tf.DATE_OUT - tf.DATE_IN;
+            //        if (day?.Days > 1 && dss.Contains(tf.DS) || day?.Days > 5)
+            //        {
+
+            //        }
+            //        else
+            //        {
+            //            tf.IDKSG = null;
+            //            tf.SUMV_USL = 0;
+            //            tf.TARIF = 0;
+            //        }
+            //    }
+            //}
+
             SaveSluch();
         }
 

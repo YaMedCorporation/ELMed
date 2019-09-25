@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\
+E:\Git_Yamed\Yamed.Hospital\obj\Debug\
 Yamed.Hospital
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 71990225014
 
 11436714388
-30-1802110646
+30-651953754
 ElReestrTabNew.xaml;HospitalEmrPacientPanel.xaml;HospitalEmrSluchTab.xaml;HospitalEmrTrafficPanel.xaml;HospitalEmrUslugiPanel.xaml;ReestrControl1.xaml;UserControl1.xaml;
 
-True
+False
 

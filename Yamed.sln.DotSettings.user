@@ -2,4 +2,5 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Program Files (x86)\DevExpress 16.2\Components\Bin\Framework\DevExpress.Xpf.Printing.v16.2.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Windows\Microsoft.NET\assembly\GAC_MSIL\FastReport.Bars\v4.0_2018.3.17.0__db7e5ce63278458c\FastReport.Bars.dll" /&gt;&#xD;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:Int64 x:Key="/Default/Environment/SearchAndNavigation/DefaultOccurrencesGroupingIndex/@EntryValue">0</s:Int64></wpf:ResourceDictionary>

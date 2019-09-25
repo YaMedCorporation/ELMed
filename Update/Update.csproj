@@ -38,6 +38,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActiveQueryBuilder.Core, Version=3.5.4.1109, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Yamed\bin\Debug\ActiveQueryBuilder.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveQueryBuilder.MSSQLMetadataProvider">
+      <HintPath>..\Yamed\bin\Debug\ActiveQueryBuilder.MSSQLMetadataProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveQueryBuilder.View">
+      <HintPath>..\Yamed\bin\Debug\ActiveQueryBuilder.View.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveQueryBuilder.View.WPF, Version=3.5.4.1109, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Yamed\bin\Debug\ActiveQueryBuilder.View.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
       <Private>True</Private>

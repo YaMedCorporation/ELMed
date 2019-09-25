@@ -117,7 +117,14 @@
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource InformButton}" Click="ZslAdd_OnClick">
+                <!--<Button Style="{StaticResource InformButton}" Click="ZslAdd_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Yamed.Icons;component/Icons/Add_black-512.png" Width="48" Height="48"></Image>
+                        <TextBlock Text="Создать случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    </StackPanel>
+                </Button>-->
+
+                <Button Style="{StaticResource InformButton}" Click="ZslAdd31_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Yamed.Icons;component/Icons/Add_black-512.png" Width="48" Height="48"></Image>
                         <TextBlock Text="Создать случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
@@ -155,9 +162,14 @@
                         <TextBlock Text="Перенос" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
                     </StackPanel>
                 </Button>
+                <Button Style="{StaticResource InformButton}" Click="TestAshurcov" Margin="10,2,2,2">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Тест" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    </StackPanel>
+                </Button>                
             </StackPanel>
         </Grid>
-        <omsExp:ElReestrTabNew Grid.Row="1" Name="ElReestrTabNew11" ></omsExp:ElReestrTabNew>
+        <oms:SchetRegisterGrid Grid.Row="1" x:Name="SchetRegisterGrid1" ></oms:SchetRegisterGrid>
 
     </Grid>
 </UserControl>

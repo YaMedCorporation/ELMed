@@ -1,0 +1,14 @@
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\bin\Debug\DotPoint.exe.config
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\bin\Debug\DotPoint.exe
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\bin\Debug\DotPoint.pdb
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\obj\Debug\DotPoint.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\obj\Debug\DotPoint.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\obj\Debug\DotPoint.exe
+C:\Users\WILD\Desktop\Git_Yamed\DotPoint\obj\Debug\DotPoint.pdb
+C:\Users\WILD\Desktop\040919\DotPoint\bin\Debug\DotPoint.exe.config
+C:\Users\WILD\Desktop\040919\DotPoint\bin\Debug\DotPoint.exe
+C:\Users\WILD\Desktop\040919\DotPoint\bin\Debug\DotPoint.pdb
+C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.exe
+C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.pdb

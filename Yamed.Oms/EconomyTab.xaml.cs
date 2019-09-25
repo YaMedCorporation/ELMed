@@ -254,7 +254,7 @@ namespace Yamed.Oms
             var row = (D3_SCHET_SMO_OMS)gridControl2.SelectedItem;
             if (row == null) return;
 
-            Reader2List.CustomExecuteQuery($"DELETE FROM {"D3_SCHET_SMO_OMS"} WHERE {"CODE"}={row.CODE}", SprClass.LocalConnectionString);
+            Reader2List.CustomExecuteQuery($"DELETE FROM D3_SCHET_SMO_OMS WHERE {"CODE"}={row.CODE}", SprClass.LocalConnectionString);
             OmsList.Remove(row);
             gridControl2.RefreshData();
         }
@@ -362,7 +362,7 @@ namespace Yamed.Oms
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
                 Header = "Печатные формы",
-                MyControl = new StatisticReports(2, row.PLAT, new object[] { sc.ID }),
+                MyControl = new StatisticReports(new object[] { sc.ID }),
                 IsCloseable = "True",
             });
         }
@@ -387,7 +387,7 @@ namespace Yamed.Oms
                     return "Май";
                 case 6:
                     return "Июнь";
-                case 7:return "Июль";
+                case 7: return "Июль";
                 case 8:
                     return "Август";
                 case 9:

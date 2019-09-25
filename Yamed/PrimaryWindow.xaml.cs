@@ -12,6 +12,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using ActiveQueryBuilder.Core;
+using ActiveQueryBuilder.View.WPF;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.Native;
@@ -48,6 +50,15 @@ namespace Yamed
         {
             SprClass.LocalConnectionString = Properties.Settings.Default.ConnectionString;
             SprClass.SrzConnectionString = Properties.Settings.Default.SrzConnectionString;
+
+            BaseConnectionDescriptor connection = new MSSQLConnectionDescriptor();
+            connection.ConnectionString = SprClass.LocalConnectionString;
+
+            SprClass.Qb = new QueryBuilder {SyntaxProvider = new GenericSyntaxProvider()};
+            SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
+
+            
+            
             //"Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa;Password=Hospital6";
 
             //try
@@ -906,7 +917,7 @@ namespace Yamed
                 Header = "Реестры",
                 MyControl = new ExpControl(),
                 IsCloseable = "True",
-                TabLocalMenu = new Yamed.OmsExp.OmsExpMenu().MenuElements
+                TabLocalMenu = new OmsMenu().MenuElements
             });
 
             ((Button)sender).IsEnabled = true;
@@ -979,7 +990,7 @@ namespace Yamed
                 Header = "Реестры",
                 MyControl = new StatisticDesigner(),
                 IsCloseable = "True",
-                TabLocalMenu = new Yamed.OmsExp.OmsExpMenu().MenuElements
+                TabLocalMenu = new OmsMenu().MenuElements
             });
 
             ((Button) sender).IsEnabled = true;
@@ -990,7 +1001,7 @@ namespace Yamed
 //=======
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Yamed Update.exe"));
+            System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater.exe"));
         }
 //>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15
     }

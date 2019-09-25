@@ -139,18 +139,19 @@
                         <TextBlock Text="Импорт oms" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
                     </StackPanel>
                 </Button>
+                <Button Style="{StaticResource InformButton}" Click="LoadOldPoliclinic_OnClick" IsEnabled="True">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Yamed.Icons;component/Icons/cloud__folder__download__upload-256.png" Width="48" Height="48"></Image>
+                        <TextBlock Text="Загрузка Медиалог" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    </StackPanel>
+                </Button>
                 <Button Style="{StaticResource InformButton}" Click="ButtonBase_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Yamed.Icons;component/Icons/1472130348_134.png" Width="48" Height="48"></Image>
                         <TextBlock Text="Документы" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource InformButton}" Click="LoadOldPoliclinic_OnClick" IsEnabled="False">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/_round_menu_one-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Конвертация" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
-                    </StackPanel>
-                </Button>                
+
             </StackPanel>
         </Grid>
         <local:EconomyWindow Grid.Row="1" x:Name="EconomyWindow11"/>

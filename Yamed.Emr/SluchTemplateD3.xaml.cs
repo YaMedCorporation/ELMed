@@ -620,7 +620,7 @@ namespace Yamed.Emr
                 Width = 800,
                 Height = 600,
                 //SizeToContent = SizeToContent.Height,
-                Content = new UslUserTempl(this)
+                //Content = new UslUserTempl(this)
             };
             window.ShowDialog();
             UslGridControl.RefreshData();

@@ -335,7 +335,7 @@ namespace Yamed.Server
                         }
                 }
                 sb.Remove(sb.Length - 2, 2);
-                sb.AppendFormat(" WHERE {0} = {1}", id, propList.Single(x => x.Name == id).GetValue(obj, null));
+                sb.AppendFormat(" WHERE {0} = '{1}'", id, propList.Single(x => x.Name == id).GetValue(obj, null));
                 sbList.Add(sb);
             }
             StringBuilder updateBuilder = new StringBuilder();
@@ -541,7 +541,7 @@ namespace Yamed.Server
                 sb.Remove(sb.Length - 2, 2);
                 sb.Append(")");
 
-                //sb.AppendFormat(" WHERE {0} = {1}", id, propList.Single(x => x.Name == id).GetValue(obj, null));
+                //sb.AppendFormat(" WHERE {0} = '{1}'", id, propList.Single(x => x.Name == id).GetValue(obj, null));
                 sbList.Add(sb);
             }
             StringBuilder insertBuilder = new StringBuilder();
@@ -587,7 +587,7 @@ namespace Yamed.Server
             sb.AppendFormat("INSERT INTO {0} ( ", tableName);
             foreach (PropertyInfo prop in propList)
             {
-                var row = nullableList.SingleOrDefault(x => (string)ObjHelper.GetAnonymousValue(x, "COLUMN_NAME") == prop.Name);
+                var row = nullableList.SingleOrDefault(x => ((string)ObjHelper.GetAnonymousValue(x, "COLUMN_NAME")).ToUpper() == prop.Name.ToUpper());
                 var isNullable = (string) ObjHelper.GetAnonymousValue(row, "IS_NULLABLE") != "NO";
                 var def = !string.IsNullOrWhiteSpace((string)ObjHelper.GetAnonymousValue(row, "COLUMN_DEFAULT"));
 
@@ -603,7 +603,7 @@ namespace Yamed.Server
 
             foreach (PropertyInfo prop in propList)
             {
-                var row = nullableList.SingleOrDefault(x => (string)ObjHelper.GetAnonymousValue(x, "COLUMN_NAME") == prop.Name);
+                var row = nullableList.SingleOrDefault(x => ((string)ObjHelper.GetAnonymousValue(x, "COLUMN_NAME")).ToUpper() == prop.Name.ToUpper());
                 var isNullable = (string)ObjHelper.GetAnonymousValue(row, "IS_NULLABLE") != "NO";
                 var def = !string.IsNullOrWhiteSpace((string)ObjHelper.GetAnonymousValue(row, "COLUMN_DEFAULT"));
 
@@ -666,7 +666,7 @@ namespace Yamed.Server
             sb.Remove(sb.Length - 2, 2);
             sb.Append(")");
 
-            //sb.AppendFormat(" WHERE {0} = {1}", id, propList.Single(x => x.Name == id).GetValue(obj, null));
+            //sb.AppendFormat(" WHERE {0} = '{1}'", id, propList.Single(x => x.Name == id).GetValue(obj, null));
             sbList.Add(sb);
             //}
             StringBuilder insertBuilder = new StringBuilder();
@@ -695,7 +695,9 @@ namespace Yamed.Server
                 con.Close();
             }
             return Convert.ToInt32(idScope.First().ID);
-        }public class IDScope
+        }
+
+        public class IDScope
         {
             public decimal ID { get; set; }
         }
@@ -781,7 +783,7 @@ namespace Yamed.Server
                     }
                 }
                 sb.Remove(sb.Length - 2, 2);
-                sb.AppendFormat(" WHERE {0} = {1}", id, propList.Single(x => x.Name == id).GetValue(obj, null));
+                sb.AppendFormat(" WHERE {0} = '{1}'", id, propList.Single(x => x.Name == id).GetValue(obj, null));
                 sbList.Add(sb);
             }
             StringBuilder updateBuilder = new StringBuilder();
@@ -849,7 +851,7 @@ namespace Yamed.Server
                     }
                     else
                     {
-                        value = "'" + ((string) propValue).Replace("'", "''") + "'";
+                        value = "'" + Convert.ToString(propValue).Replace("'", "''") + "'";
                     }
 
                     sb.AppendFormat("{0} = {1}", prop.Name, value);
@@ -858,7 +860,7 @@ namespace Yamed.Server
             }
             sb.Remove(sb.Length - 2, 2);
 
-            sb.AppendFormat(" WHERE {0} = {1}", id, propList.Single(x => x.Name == id).GetValue(obj, null));
+            sb.AppendFormat(" WHERE {0} = '{1}'", id, propList.Single(x => x.Name == id).GetValue(obj, null));
                 sbList.Add(sb);
             //}
             StringBuilder updateBuilder = new StringBuilder();
@@ -877,7 +879,7 @@ namespace Yamed.Server
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("DELETE {0}", dbName);
-                sb.AppendFormat(" WHERE {0} = {1}", id, obj);
+                sb.AppendFormat(" WHERE {0} = '{1}'", id, obj);
                 sbList.Add(sb);
             }
             StringBuilder deleteBuilder = new StringBuilder();
@@ -896,7 +898,7 @@ namespace Yamed.Server
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("DELETE {0}", dbName);
-                sb.AppendFormat(" WHERE {0} = {1}", id, obj);
+                sb.AppendFormat(" WHERE {0} = '{1}'", id, obj);
                 sbList.Add(sb);
             }
 

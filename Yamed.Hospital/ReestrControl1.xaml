@@ -146,7 +146,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <hospital:ElReestrTabNew Grid.Row="1" x:Name="ElReestrTabNew11"></hospital:ElReestrTabNew>
+        <hospital:ElReestrTabNew Grid.Row="1" x:Name="SchetRegisterGrid1"></hospital:ElReestrTabNew>
 
     </Grid>
 </UserControl>

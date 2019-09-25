@@ -17,7 +17,8 @@ namespace Yamed.Hospital
         public HospitalEmrTrafficPanel(USL usl)
         {
             InitializeComponent();
-            _usl = usl;GridUsl.DataContext = _usl;
+            _usl = usl;
+            GridUsl.DataContext = _usl;
 
             PodrBox.DataContext = SprClass.Podr;
             OtdelBox.DataContext = SprClass.OtdelDbs;

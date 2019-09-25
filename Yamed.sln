@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yamed", "Yamed\Yamed.csproj", "{B8B23190-4F9F-41F2-A953-761A48F628EA}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yamed.OmsExp", "Yamed.OmsExp\Yamed.OmsExp.csproj", "{4E83E595-9166-44EE-BBB0-87B5A64C2F62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yamed.Reports", "Yamed.Report\Yamed.Reports.csproj", "{CAEA4890-0018-496B-98B4-37CBFD169075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotPoint", "DotPoint\DotPoint.csproj", "{635D2386-6D01-4F30-8B1D-F51153A7AA66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -396,71 +398,29 @@ Global
 		{CAEA4890-0018-496B-98B4-37CBFD169075}.Release451|Any CPU.Build.0 = Release|Any CPU
 		{CAEA4890-0018-496B-98B4-37CBFD169075}.Release452|Any CPU.ActiveCfg = Release|Any CPU
 		{CAEA4890-0018-496B-98B4-37CBFD169075}.Release452|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Debug35|Any CPU.ActiveCfg = Debug|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Debug35|Any CPU.Build.0 = Debug|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.R46|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.R46|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release35|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release35|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release40|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release40|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release45|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release45|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release451|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release451|Any CPU.Build.0 = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release452|Any CPU.ActiveCfg = Release|Any CPU
+		{635D2386-6D01-4F30-8B1D-F51153A7AA66}.Release452|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 20
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://192.168.0.111:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Yamed\\Yamed.csproj
-		SccProjectName1 = Yamed
-		SccLocalPath1 = Yamed
-		SccProjectUniqueName2 = Yamed.Icons\\Yamed.Icons.csproj
-		SccProjectName2 = Yamed.Icons
-		SccLocalPath2 = Yamed.Icons
-		SccProjectUniqueName3 = Yamed.Core\\Yamed.Core.csproj
-		SccProjectName3 = Yamed.Core
-		SccLocalPath3 = Yamed.Core
-		SccProjectUniqueName4 = Yamed.Registry\\Yamed.Registry.csproj
-		SccProjectName4 = Yamed.Registry
-		SccLocalPath4 = Yamed.Registry
-		SccProjectUniqueName5 = Yamed.Pattern\\Yamed.Pattern.csproj
-		SccProjectName5 = Yamed.Pattern
-		SccLocalPath5 = Yamed.Pattern
-		SccProjectUniqueName6 = Yamed.Ambulatory\\Yamed.Ambulatory.csproj
-		SccProjectName6 = Yamed.Ambulatory
-		SccLocalPath6 = Yamed.Ambulatory
-		SccProjectUniqueName7 = Yamed.Control\\Yamed.Control.csproj
-		SccProjectName7 = Yamed.Control
-		SccLocalPath7 = Yamed.Control
-		SccProjectUniqueName8 = Yamed.Server\\Yamed.Server.csproj
-		SccProjectName8 = Yamed.Server
-		SccLocalPath8 = Yamed.Server
-		SccProjectUniqueName9 = Yamed.Entity\\Yamed.Entity.csproj
-		SccProjectName9 = Yamed.Entity
-		SccLocalPath9 = Yamed.Entity
-		SccProjectUniqueName10 = Yamed.Emr\\Yamed.Emr.csproj
-		SccProjectName10 = Yamed.Emr
-		SccLocalPath10 = Yamed.Emr
-		SccProjectUniqueName11 = Yamed.Oms\\Yamed.Oms.csproj
-		SccProjectName11 = Yamed.Oms
-		SccLocalPath11 = Yamed.Oms
-		SccProjectUniqueName12 = Yamed.Hospital\\Yamed.Hospital.csproj
-		SccProjectName12 = Yamed.Hospital
-		SccLocalPath12 = Yamed.Hospital
-		SccProjectUniqueName13 = Update\\Update.csproj
-		SccProjectName13 = Update
-		SccLocalPath13 = Update
-		SccProjectUniqueName14 = MaterialMenu\\MaterialMenu.csproj
-		SccProjectName14 = MaterialMenu
-		SccLocalPath14 = MaterialMenu
-		SccProjectUniqueName15 = TestApp\\TestApp.csproj
-		SccProjectName15 = TestApp
-		SccLocalPath15 = TestApp
-		SccProjectUniqueName16 = WebUI\\WebUI.csproj
-		SccProjectName16 = WebUI
-		SccLocalPath16 = WebUI
-		SccProjectUniqueName17 = Yamed.Settings\\Yamed.Settings.csproj
-		SccProjectName17 = Yamed.Settings
-		SccLocalPath17 = Yamed.Settings
-		SccProjectUniqueName18 = Yamed.OmsExp\\Yamed.OmsExp.csproj
-		SccProjectName18 = Yamed.OmsExp
-		SccLocalPath18 = Yamed.OmsExp
-		SccProjectUniqueName19 = Yamed.Report\\Yamed.Reports.csproj
-		SccProjectName19 = Yamed.Report
-		SccLocalPath19 = Yamed.Report
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47A087FE-7D97-48A7-85D0-A59168680D0A}
 	EndGlobalSection
 EndGlobal

@@ -188,7 +188,7 @@
                 </dxg:GridControl>
             </Grid>
             <GridSplitter Grid.Row="1" Margin="5,1" Visibility="{Binding IsSmoTableVisible}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Grid Row="2" Visibility="{Binding IsSmoTableVisible}">
+            <Grid Row="2" Visibility="{Binding IsSmoTableVisible}" IsEnabled="False">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />

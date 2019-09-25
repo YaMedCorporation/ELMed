@@ -4,17 +4,17 @@
 library
 C#
 .cs
-D:\TFS_Codes\Git_Yamed\Yamed.Oms\obj\Debug\
+C:\Users\WILD\Desktop\040919\Yamed.Oms\obj\Debug\
 Yamed.Oms
 none
 false
 DEBUG;TRACE
 
-41231273558
+10-1191962674
 
-7-1395341666
-34470682005
-EconomyControl.xaml;EconomyTab.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;
+13-743137349
+38-1040595876
+EconomyControl.xaml;EconomyTab.xaml;EconomyTabOMS.xaml;ExpControl.xaml;SelectionControl.xaml;SchetRegisterControl.xaml;SchetRegisterGrid.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;SearchControl.xaml;
 
 True
 

@@ -35,6 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActiveQueryBuilder.Core, Version=3.5.4.1109, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\ActiveDBSoft\Active Query Builder 3 .NET Trial Edition\assemblies\ActiveQueryBuilder.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveQueryBuilder.View, Version=3.5.4.1109, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\ActiveDBSoft\Active Query Builder 3 .NET Trial Edition\assemblies\ActiveQueryBuilder.View.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveQueryBuilder.View.WPF, Version=3.5.4.1109, Culture=neutral, PublicKeyToken=3cbcbcc9bf57ecde, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\ActiveDBSoft\Active Query Builder 3 .NET Trial Edition\assemblies\ActiveQueryBuilder.View.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -60,15 +72,11 @@
     <Reference Include="ICSharpCode.AvalonEdit">
       <HintPath>..\..\Elmedicine\Elmedicine\bin\Debug\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,9 +91,6 @@
     <Compile Include="ExpEditors\AktMeeChoose.xaml.cs">
       <DependentUpon>AktMeeChoose.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExpEditors\MeeAutoWindow.xaml.cs">
-      <DependentUpon>MeeAutoWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ExpEditors\ExpControl.xaml.cs">
       <DependentUpon>ExpControl.xaml</DependentUpon>
     </Compile>
@@ -95,62 +100,42 @@
     <Compile Include="ExpEditors\ReqControl.xaml.cs">
       <DependentUpon>ReqControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExpEditors\SearchControl.xaml.cs">
-      <DependentUpon>SearchControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MekEditor\AutoMekControl.xaml.cs">
+    <Compile Include="SqlEditor\AutoMekControl.xaml.cs">
       <DependentUpon>AutoMekControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmrPacientControl.xaml.cs">
       <DependentUpon>EmrPacientControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExpControl.xaml.cs">
-      <DependentUpon>ExpControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EconomyTab.xaml.cs">
-      <DependentUpon>EconomyTab.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ElReestrTabNew.xaml.cs">
-      <DependentUpon>ElReestrTabNew.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LicSpr.xaml.cs">
       <DependentUpon>LicSpr.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MekEditor\AutoMekElement.xaml.cs">
+    <Compile Include="SqlEditor\AutoMekElement.xaml.cs">
       <DependentUpon>AutoMekElement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MekEditor\BindEditor.cs" />
-    <Compile Include="MekEditor\SqlEditorControl.xaml.cs">
-      <DependentUpon>SqlEditorControl.xaml</DependentUpon>
+    <Compile Include="SqlEditor\BindEditor.cs" />
+    <Compile Include="SqlEditor\ErrorBox.xaml.cs">
+      <DependentUpon>ErrorBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MekEditor\MekEditControl.xaml.cs">
-      <DependentUpon>MekEditControl.xaml</DependentUpon>
+    <Compile Include="SqlEditor\AlgEditControl.xaml.cs">
+      <DependentUpon>AlgEditControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MekEditor\SankControl.xaml.cs">
+    <Compile Include="SqlEditor\SqlEditControl.xaml.cs">
+      <DependentUpon>SqlEditControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpEditors\SankControl.xaml.cs">
       <DependentUpon>SankControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MekEditor\SankGroupDelete.xaml.cs">
+    <Compile Include="ExpEditors\SankGroupDelete.xaml.cs">
       <DependentUpon>SankGroupDelete.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MekEditor\SqlExecute.cs" />
+    <Compile Include="SqlEditor\SqlExecute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReestrControl.xaml.cs">
-      <DependentUpon>ReestrControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="OmsExpMenu.cs" />
-    <Compile Include="SluchTemplateD3.xaml.cs">
-      <DependentUpon>SluchTemplateD3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MekEditor\SmoReExpControl.xaml.cs">
+    <Compile Include="SqlEditor\SmoReExpControl.xaml.cs">
       <DependentUpon>SmoReExpControl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="ExpEditors\AktMeeChoose.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ExpEditors\MeeAutoWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -166,11 +151,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExpEditors\SearchControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MekEditor\AutoMekControl.xaml">
+    <Page Include="SqlEditor\AutoMekControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,51 +159,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ExpControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="EconomyTab.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ElReestrTabNew.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="LicSpr.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MekEditor\AutoMekElement.xaml">
+    <Page Include="SqlEditor\AutoMekElement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MekEditor\SqlEditorControl.xaml">
+    <Page Include="SqlEditor\ErrorBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MekEditor\MekEditControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MekEditor\SankControl.xaml">
+    <Page Include="SqlEditor\AlgEditControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MekEditor\SankGroupDelete.xaml">
+    <Page Include="SqlEditor\SqlEditControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpEditors\SankControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ReestrControl.xaml">
+    <Page Include="ExpEditors\SankGroupDelete.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SluchTemplateD3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MekEditor\SmoReExpControl.xaml">
+    <Page Include="SqlEditor\SmoReExpControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -235,6 +200,10 @@
     <ProjectReference Include="..\Yamed.Core\Yamed.Core.csproj">
       <Project>{450c1e64-a006-4f55-9990-6dc8064c504d}</Project>
       <Name>Yamed.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yamed.Emr\Yamed.Emr.csproj">
+      <Project>{a8f3ddf7-2b43-4731-ae6c-f549a1fcdc26}</Project>
+      <Name>Yamed.Emr</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yamed.Entity\Yamed.Entity.csproj">
       <Project>{d9ebda68-8b9b-4805-b4b9-4c073eba0707}</Project>
@@ -254,8 +223,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MekEditor\SqlSyntax.xshd" />
-    <None Include="MekEditor\SqlSyntax2.xshd" />
+    <EmbeddedResource Include="SqlEditor\SqlSyntax.xshd" />
+    <None Include="App.config" />
+    <None Include="SqlEditor\SqlSyntax2.xshd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

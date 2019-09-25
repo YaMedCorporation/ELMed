@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using FastReport;
+using FastReport.Data;
 using FastReport.Design;
 using FastReport.Design.StandardDesigner;
 using FastReport.DevComponents.DotNetBar;
@@ -65,10 +66,25 @@ namespace Yamed.Reports
 
                 stream.Close();
                 writer.Close();
+
+                if (_report.Dictionary.Connections.Count > 0)
+                {
+                    _report.Dictionary.Connections[0].ConnectionString = SprClass.LocalConnectionString;
+                    _report.Dictionary.Connections[0].CommandTimeout = 0;
+                }
+
             }
             else
             {
                 _report = new Report();
+
+                MsSqlDataConnection sqlConnection = new MsSqlDataConnection();
+                sqlConnection.ConnectionString = SprClass.LocalConnectionString;
+                sqlConnection.Name = "SqlConnection";
+                sqlConnection.CommandTimeout = 0;
+                
+                _report.Dictionary.Connections.Add(sqlConnection);
+
             }
 
 

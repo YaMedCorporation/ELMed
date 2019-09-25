@@ -95,3 +95,119 @@ C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.Cor
 C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
 C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
 C:\Users\rshko\Source\Repos\Yamed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.pdb
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.g.cs
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.g.cs
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.baml
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.baml
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
+C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+E:\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll
+E:\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.pdb
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csprojResolveAssemblyReference.cache
+E:\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.g.cs
+E:\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.g.cs
+E:\Git_Yamed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+E:\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.baml
+E:\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.baml
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.Cache
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
+E:\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.pdb
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.g.cs
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.g.cs
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.baml
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.baml
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+C:\Users\WILD\Desktop\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\bin\Debug\MaterialMenu.pdb
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.g.cs
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.g.cs
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MenuButton.baml
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\SideMenu.baml
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
+E:\Новая папка (2)\220819\Git_Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\Новая папка (2)\300819\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+E:\Новая папка (2)\300819\MaterialMenu\bin\Debug\MaterialMenu.dll
+E:\Новая папка (2)\300819\MaterialMenu\bin\Debug\MaterialMenu.pdb
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MenuButton.g.cs
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\SideMenu.g.cs
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MenuButton.baml
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\SideMenu.baml
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.dll
+E:\Новая папка (2)\300819\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\Новая папка (2)\040919\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+E:\Новая папка (2)\040919\MaterialMenu\bin\Debug\MaterialMenu.dll
+E:\Новая папка (2)\040919\MaterialMenu\bin\Debug\MaterialMenu.pdb
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MenuButton.g.cs
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\SideMenu.g.cs
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MenuButton.baml
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\SideMenu.baml
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.dll
+E:\Новая папка (2)\040919\MaterialMenu\obj\Debug\MaterialMenu.pdb
+C:\Users\WILD\Desktop\040919\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+C:\Users\WILD\Desktop\040919\MaterialMenu\bin\Debug\MaterialMenu.dll
+C:\Users\WILD\Desktop\040919\MaterialMenu\bin\Debug\MaterialMenu.pdb
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MenuButton.g.cs
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\SideMenu.g.cs
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MenuButton.baml
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\SideMenu.baml
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.dll
+C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.pdb

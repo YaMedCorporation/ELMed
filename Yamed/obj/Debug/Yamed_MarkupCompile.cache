@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\TFS_Codes\Git_Yamed\Yamed\obj\Debug\
+D:\040919\Yamed\obj\Debug\
 Yamed
 none
 false
 DEBUG;TRACE
-D:\TFS_Codes\Git_Yamed\Yamed\App.xaml
+D:\040919\Yamed\App.xaml
 3768519665
 
-7-1815985299
-87-1427264109
+8-1278362149
+90-1985381978
 DesktopControl.xaml;PasswordWindow.xaml;PrimaryWindow.xaml;
 splashscreen1.png
-False
+True
 

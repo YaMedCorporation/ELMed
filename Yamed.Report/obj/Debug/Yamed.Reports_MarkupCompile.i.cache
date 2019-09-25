@@ -4,17 +4,17 @@
 library
 C#
 .cs
-D:\TFS_Codes\Git_Yamed\Yamed.Report\obj\Debug\
+E:\Git_Yamed\Yamed.Report\obj\Debug\
 Yamed.Reports
 none
 false
 DEBUG;TRACE
 
-6-1095469986
+7-562482310
 
-9-1580480688
-57-1212637452
-FRDesignerControl.xaml;ParametrControl.xaml;PreviewControl.xaml;ReportControl.xaml;StatisticDesigner.xaml;StatisticReports.xaml;
+11429508714
+57-108056709
+FRDesignerControl.xaml;FRPreviewControl.xaml;ParametrControl.xaml;PreviewControl.xaml;ReportControl.xaml;StatisticDesigner.xaml;StatisticReports.xaml;
 
-True
+False
 
