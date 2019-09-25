@@ -82,7 +82,7 @@
                 </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column_SMO_OGRN" FieldName="SMO_OGRN" Header="ОГРН СМО" />
                 <dxg:GridColumn x:Name="Column_SMO_OK" FieldName="SMO_OK" Header="ОКАТО тер. страх." />
-                <dxg:GridColumn x:Name="Column_SMO_NAM" FieldName="SMO_NAM" Header="Нпименование СМО" />
+                <dxg:GridColumn x:Name="Column_SMO_NAM" FieldName="SMO_NAM" Header="Наименование СМО" />
                 <dxg:GridColumn x:Name="Column_NOVOR" FieldName="NOVOR" Header="Признак новорожденного" />
 
                 <dxg:GridColumn x:Name="Column_USL_OK" FilterPopupMode="CheckedList" FieldName="USL_OK" Header="Усл. оказ. пом." AutoFilterValue="{Binding ElementName=UslOkSearchEdit, Path=EditValue, Mode=TwoWay}" AutoFilterCondition="Equals">
@@ -139,9 +139,9 @@
                         <dxe:ComboBoxEditSettings Name="KsgEdit" DisplayMember="NAME" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn x:Name="Column_DET" FieldName="DET" Header="Приздак дет. профиля" />
+                <dxg:GridColumn x:Name="Column_DET" FieldName="DET" Header="Признак дет. профиля" />
                 <dxg:GridColumn x:Name="Column_NHISTORY" FieldName="NHISTORY" Header="№ истории бол." />
-                <dxg:GridColumn x:Name="Column_DATE_1" FieldName="DATE_1" Header="Дата наала лечения" />
+                <dxg:GridColumn x:Name="Column_DATE_1" FieldName="DATE_1" Header="Дата начала лечения" />
                 <dxg:GridColumn x:Name="Column_DATE_2" FieldName="DATE_2" Header="Дата окончания лечения" />
                 <dxg:GridColumn x:Name="Column_DS0" FilterPopupMode="CheckedList" FieldName="DS0" Header="Диагноз первичный">
                     <dxg:GridColumn.EditSettings>
@@ -165,7 +165,7 @@
                         <dxe:ComboBoxEditSettings Name="RsltEdit" DisplayMember="NameWithID" ValueMember="IDRMP" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn x:Name="Column_ISHOD" FilterPopupMode="CheckedList" FieldName="ISHOD" Header="Исход заболивания">
+                <dxg:GridColumn x:Name="Column_ISHOD" FilterPopupMode="CheckedList" FieldName="ISHOD" Header="Исход заболевания">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="IshodEdit" DisplayMember="NameWithID" ValueMember="id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
