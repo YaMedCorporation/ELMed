@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\040919\Yamed.Report\obj\Debug\
+E:\ELMed\Yamed.Report\obj\Debug\
 Yamed.Reports
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 7-562482310
 
 11494497586
-571189070214
+571332785487
 FRDesignerControl.xaml;FRPreviewControl.xaml;ParametrControl.xaml;PreviewControl.xaml;ReportControl.xaml;StatisticDesigner.xaml;StatisticReports.xaml;
 
 True

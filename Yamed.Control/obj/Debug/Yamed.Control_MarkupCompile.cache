@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\040919\Yamed.Control\obj\Debug\
+E:\ELMed\Yamed.Control\obj\Debug\
 Yamed.Control
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 6-1299930593
 
 14-1036963301
-251160029242
+251458752558
 Editors\NsiControl.xaml;Editors\UniSprEditControl.xaml;Editors\UniSprFullControl.xaml;Editors\UniSprControl.xaml;Editors\FiasControl.xaml;ErrorGlobalWindow.xaml;
 
 True
