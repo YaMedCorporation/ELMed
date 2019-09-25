@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\040919\Yamed.Hospital\obj\Debug\
+E:\ELMed\Yamed.Hospital\obj\Debug\
 Yamed.Hospital
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 71990225014
 
-11501703260
-30116078593
+10-35919890
+301733624286
 ElReestrTabNew.xaml;HospitalEmrPacientPanel.xaml;HospitalEmrSluchTab.xaml;HospitalEmrTrafficPanel.xaml;HospitalEmrUslugiPanel.xaml;ReestrControl1.xaml;UserControl1.xaml;
 
 True
