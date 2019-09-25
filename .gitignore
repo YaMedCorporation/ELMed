@@ -1,3 +1,4 @@
 *.pdb
 *.dll
 *.lock
+/.vs/Yamed/v15/Server/sqlite3
