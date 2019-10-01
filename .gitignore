@@ -1,3 +1,6 @@
+*.dll
 *.pdb
 *.lock
 /.vs/Yamed/v15/Server/sqlite3
+/Yamed/*.dll
+/Yamed/*.pdb
