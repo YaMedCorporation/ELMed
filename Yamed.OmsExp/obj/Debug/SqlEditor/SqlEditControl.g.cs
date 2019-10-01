@@ -9,11 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using ActiveQueryBuilder.Core;
-using ActiveQueryBuilder.View.WPF.DatabaseSchemaView;
-using ActiveQueryBuilder.View.WPF.ExpressionEditor;
-using ActiveQueryBuilder.View.WPF.NavigationBar;
-using ActiveQueryBuilder.View.WPF.QueryView;
 using DevExpress.Core;
 using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Core;
@@ -22,24 +17,6 @@ using DevExpress.Xpf.Core.DataSources;
 using DevExpress.Xpf.Core.Serialization;
 using DevExpress.Xpf.Core.ServerMode;
 using DevExpress.Xpf.DXBinding;
-using DevExpress.Xpf.Docking;
-using DevExpress.Xpf.Editors;
-using DevExpress.Xpf.Editors.DataPager;
-using DevExpress.Xpf.Editors.DateNavigator;
-using DevExpress.Xpf.Editors.ExpressionEditor;
-using DevExpress.Xpf.Editors.Filtering;
-using DevExpress.Xpf.Editors.Flyout;
-using DevExpress.Xpf.Editors.Popups;
-using DevExpress.Xpf.Editors.Popups.Calendar;
-using DevExpress.Xpf.Editors.RangeControl;
-using DevExpress.Xpf.Editors.Settings;
-using DevExpress.Xpf.Editors.Settings.Extension;
-using DevExpress.Xpf.Editors.Validation;
-using DevExpress.Xpf.Grid;
-using DevExpress.Xpf.Grid.ConditionalFormatting;
-using DevExpress.Xpf.Grid.LookUp;
-using DevExpress.Xpf.Grid.TreeList;
-using DevExpress.Xpf.LayoutControl;
 using System;
 using System.Diagnostics;
 using System.Windows;

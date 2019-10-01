@@ -40,3 +40,9 @@ C:\Users\WILD\Desktop\040919\WebUI\bin\Debug\WebUI.pdb
 C:\Users\WILD\Desktop\040919\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
 C:\Users\WILD\Desktop\040919\WebUI\obj\Debug\WebUI.dll
 C:\Users\WILD\Desktop\040919\WebUI\obj\Debug\WebUI.pdb
+C:\Users\WILD\Desktop\git_exp\WebUI\bin\Debug\WebUI.dll
+C:\Users\WILD\Desktop\git_exp\WebUI\bin\Debug\WebUI.pdb
+C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.dll
+C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.pdb

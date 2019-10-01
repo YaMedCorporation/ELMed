@@ -285,8 +285,10 @@ namespace Yamed.OmsExp.ExpEditors
                 {
                     var row = (SLUPACSANK) sluchGridControl.GetRow(rh);
                     var sai = (int) ObjHelper.GetAnonymousValue(((IList) Reader2List.CustomAnonymousSelect(
-                            $@"Select TOP 1 ID SANK_AUTO_ID FROM Yamed_ExpSpr_Sank WHERE ISNULL(OSN, 'NULL_OSN') =
-                                (Select top 1 ISNULL(S_OSN, 'NULL_OSN') FROM D3_SANK_OMS where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by ID desc)",
+    $@"Select top 1 ISNULL(ak.SANK_AUTO_ID, sa.MODEL_ID) SANK_AUTO_ID
+	FROM D3_SANK_OMS sa
+	left join D3_AKT_MEE_TBL ak on sa.ID = ak.SANKID
+		where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by ID desc)",
                             SprClass.LocalConnectionString))[0], "SANK_AUTO_ID");
                     sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID", sai);
                 }
@@ -294,11 +296,8 @@ namespace Yamed.OmsExp.ExpEditors
                 {
                     sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID",
                         ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "ID"));
-
                 }
             }
-
-
         }
 
         private void ExpertBoxEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)

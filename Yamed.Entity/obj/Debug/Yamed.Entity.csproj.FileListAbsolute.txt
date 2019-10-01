@@ -99,3 +99,16 @@ C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreComp
 C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
 C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.dll
 C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\EntityFramework.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\EntityFramework.xml
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
