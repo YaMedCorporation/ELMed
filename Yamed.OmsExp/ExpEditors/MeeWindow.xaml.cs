@@ -288,7 +288,7 @@ namespace Yamed.OmsExp.ExpEditors
     $@"Select top 1 ISNULL(ak.SANK_AUTO_ID, sa.MODEL_ID) SANK_AUTO_ID
 	FROM D3_SANK_OMS sa
 	left join D3_AKT_MEE_TBL ak on sa.ID = ak.SANKID
-		where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by ID desc)",
+		where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by sa.ID desc)",
                             SprClass.LocalConnectionString))[0], "SANK_AUTO_ID");
                     sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID", sai);
                 }
@@ -367,7 +367,7 @@ namespace Yamed.OmsExp.ExpEditors
                 //slps.AktMee.ZAKL = auto.S_ZAKL;
 
                 decimal ? sump;
-                if (_re == 0 || (_re == 0 && (decimal)ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == (decimal)-100))
+                if (_re == 0 || (_re == 1 && (decimal)ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == (decimal)-100))
                 {
                     if (ObjHelper.GetAnonymousValue(slps.Row, "SUMP") == null || (decimal)ObjHelper.GetAnonymousValue(slps.Row, "SUMP") == 0)
                         sump = slps.AktMee.SUMV;
