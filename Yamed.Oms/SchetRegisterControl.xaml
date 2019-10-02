@@ -325,16 +325,21 @@
                                            ToolTip="Печатная форма" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/_80ui-512.png"
                                            ItemClick="RepReqItem_OnItemClick" />
-                                <dxb:BarButtonItem x:Name="RepReReqItem" Alignment="Near"
+                                <!--<dxb:BarButtonItem x:Name="RepReReqItem" Alignment="Near"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Печатная форма (повторная)" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/_80ui-512.png"
-                                           ItemClick="RepReReqItem_OnItemClick" />
+                                           ItemClick="RepReReqItem_OnItemClick" />-->
                                 <dxb:BarButtonItem x:Name="RepReqCustomItem" Alignment="Near"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Печатная форма " GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/_80ui-512.png"
                                            ItemClick="RepReqCustomItem_OnItemClick" />
+                                <dxb:BarButtonItem x:Name="Spisok_Form" Alignment="Near"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Список форм " GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" ItemClick="Spisok_Form_ItemClick"
+                                            />
 
                                 <dxb:BarButtonItem x:Name="ReqAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"

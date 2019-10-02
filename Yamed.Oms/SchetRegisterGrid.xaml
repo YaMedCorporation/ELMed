@@ -64,6 +64,8 @@
                 <dxg:GridColumn x:Name="Column_MONTH" FieldName="MONTH" Header="Месяц" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_DSCHET" FieldName="DSCHET" Header="Дата счета" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_NSCHET" FieldName="NSCHET" Header="Номер счета" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column_SchetType" FieldName="SchetType" Header="Тип счета" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column_OmsFileName" FieldName="OmsFileName" Header="Имя файла ОМС" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
 
                 <dxg:GridColumn x:Name="Column_FAM" FieldName="FAM" Header="Фамилия" FilterPopupMode="CheckedList" />
                 <dxg:GridColumn x:Name="Column_IM" FieldName="IM" Header="Имя"  />

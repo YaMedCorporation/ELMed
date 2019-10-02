@@ -3889,3 +3889,5 @@ E:\ELMed\Yamed.Report\obj\Debug\Yamed.Reports.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed.Report\obj\Debug\Yamed.Reports.csproj.CopyComplete
 E:\ELMed\Yamed.Report\obj\Debug\Yamed.Reports.dll
 E:\ELMed\Yamed.Report\obj\Debug\Yamed.Reports.pdb
+E:\ELMed\Yamed.Report\obj\Debug\StatisticReportsRequest.baml
+E:\ELMed\Yamed.Report\obj\Debug\StatisticReportsRequest.g.cs
