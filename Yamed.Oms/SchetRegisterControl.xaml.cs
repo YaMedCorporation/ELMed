@@ -709,19 +709,26 @@ where zsl.D3_SCID in {ids}";
 
         private void Spisok_Form_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var sc = ReqGridControl.SelectedItem;
-            var ReqID = (int)ObjHelper.GetAnonymousValue(sc, "ID");
-            var window = new DXWindow
+            try
             {
-                ShowIcon = false,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                Content = new StatisticReportsRequest(ReqID, 2000),
-                Title = "Печатные формы",
-                SizeToContent = SizeToContent.Width,
-                Height = 600
-            };
-            window.ShowDialog();
-            ReqBind();
+                var sc = ReqGridControl.SelectedItem;
+                var ReqID = (int)ObjHelper.GetAnonymousValue(sc, "ID");
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    Content = new StatisticReportsRequest(ReqID, 2000),
+                    Title = "Печатные формы",
+                    SizeToContent = SizeToContent.Width,
+                    Height = 600
+                };
+                window.ShowDialog();
+                ReqBind();
+            }
+            catch
+            {
+                MessageBox.Show("Не выбран запрос");
+            }
         }
     }
 }
