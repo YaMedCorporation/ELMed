@@ -138,3 +138,16 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCom
 C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
 C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.pdb
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+E:\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
+E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
+E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb
