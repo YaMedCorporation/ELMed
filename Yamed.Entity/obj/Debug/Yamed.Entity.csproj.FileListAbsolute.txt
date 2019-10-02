@@ -112,3 +112,16 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCom
 C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
 C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+E:\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+E:\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+E:\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+E:\ELMed\Yamed.Entity\bin\Debug\EntityFramework.dll
+E:\ELMed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+E:\ELMed\Yamed.Entity\bin\Debug\EntityFramework.xml
+E:\ELMed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+E:\ELMed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+E:\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+E:\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+E:\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+E:\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+E:\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb

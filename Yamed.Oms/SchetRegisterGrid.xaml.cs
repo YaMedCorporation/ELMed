@@ -131,15 +131,17 @@ namespace Yamed.Oms
             _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
                 join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID 
                 join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
+                join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                          //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                          where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
                 select new
                 {
                     sc.YEAR,
                     sc.MONTH,
                     sc.NSCHET,
                     sc.DSCHET,
-
+                    SchetType = sprsc.NameWithID,
+                    sc.OmsFileName,
 
                     zsl.PR_NOV,
                     KeyID = zsl.ID,
@@ -250,6 +252,7 @@ namespace Yamed.Oms
                           join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                           join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                           join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
                           join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                           from ksg in tmpksg.DefaultIfEmpty()
                           where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
@@ -260,6 +263,8 @@ namespace Yamed.Oms
                               sc.NSCHET,
                               sc.DSCHET,
                               zsl.PR_NOV,
+                              SchetType = sprsc.NameWithID,
+                              sc.OmsFileName,
 
                               KeyID = sl.ID,
                               zsl.D3_SCID,
@@ -397,13 +402,16 @@ namespace Yamed.Oms
                     join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                     join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                     join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                    where (pa.FAM.StartsWith(fam) || fam == null) && (pa.IM.StartsWith(im) || im == null) && (pa.OT.StartsWith(ot) || ot == null) && (pa.DR == dr || dr ==null) && (pa.NPOLIS == npol || npol == null)
+                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                          where (pa.FAM.StartsWith(fam) || fam == null) && (pa.IM.StartsWith(im) || im == null) && (pa.OT.StartsWith(ot) || ot == null) && (pa.DR == dr || dr ==null) && (pa.NPOLIS == npol || npol == null)
                           select new
                     {
                         sc.YEAR,
                         sc.MONTH,
                               sc.NSCHET,
                               sc.DSCHET,
+                              SchetType = sprsc.NameWithID,
+                              sc.OmsFileName,
                               zsl.PR_NOV,
                               KeyID = sl.ID,
 
@@ -563,6 +571,7 @@ namespace Yamed.Oms
                           join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                           join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                           join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
                           where exq.QUID == ui
                           select new
                           {
@@ -570,6 +579,8 @@ namespace Yamed.Oms
                               sc.MONTH,
                               sc.NSCHET,
                               sc.DSCHET,
+                              SchetType = sprsc.NameWithID,
+                              sc.OmsFileName,
                               zsl.PR_NOV,
 
                               KeyID = sl.ID,
@@ -706,6 +717,7 @@ namespace Yamed.Oms
                           join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                           join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                           join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
                           where ((sc.MONTH >= m1 && sc.MONTH <= m2) || m1 == null || m2 == null) && ((sc.YEAR >= y1 && sc.YEAR <= y2) || y1 == null || y2 == null)
                           && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
                           && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl== null) && (sc.SchetType == st || st == null)
@@ -715,6 +727,8 @@ namespace Yamed.Oms
                               sc.MONTH,
                               sc.NSCHET,
                               sc.DSCHET,
+                              SchetType = sprsc.NameWithID,
+                              sc.OmsFileName,
                               zsl.PR_NOV,
 
                               KeyID = sl.ID,
@@ -1108,6 +1122,7 @@ FROM [D3_SCHET_OMS] sch
                           join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                           join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                           join usl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals usl.D3_SLID
+                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
                           join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                           from ksg in tmpksg.DefaultIfEmpty()
                           //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
@@ -1119,6 +1134,8 @@ FROM [D3_SCHET_OMS] sch
                               sc.MONTH,
                               sc.NSCHET,
                               sc.DSCHET,
+                              SchetType = sprsc.NameWithID,
+                              sc.OmsFileName,
                               zsl.PR_NOV,
 
                               //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
@@ -1267,10 +1284,11 @@ FROM [D3_SCHET_OMS] sch
                           join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                           //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                           join sa in _ElmedDataClassesDataContext.D3_SANK_OMS on zsl.ID equals sa.D3_ZSLID
+                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
                           //join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                           //from ksg in tmpksg.DefaultIfEmpty()
-                              //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
-                              //from usl in tmpusl.DefaultIfEmpty()
+                          //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
+                          //from usl in tmpusl.DefaultIfEmpty()
                           where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
                           select new
                           {
@@ -1278,6 +1296,8 @@ FROM [D3_SCHET_OMS] sch
                               sc.MONTH,
                               sc.NSCHET,
                               sc.DSCHET,
+                              SchetType = sprsc.NameWithID,
+                              sc.OmsFileName,
                               zsl.PR_NOV,
 
                               //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,

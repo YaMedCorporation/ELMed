@@ -706,5 +706,29 @@ where zsl.D3_SCID in {ids}";
                 SchetRegisterGrid1.BindDataSank();
             }
         }
+
+        private void Spisok_Form_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var sc = ReqGridControl.SelectedItem;
+                var ReqID = (int)ObjHelper.GetAnonymousValue(sc, "ID");
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    Content = new StatisticReportsRequest(ReqID, 2000),
+                    Title = "Печатные формы",
+                    SizeToContent = SizeToContent.Width,
+                    Height = 600
+                };
+                window.ShowDialog();
+                ReqBind();
+            }
+            catch
+            {
+                MessageBox.Show("Не выбран запрос");
+            }
+        }
     }
 }
