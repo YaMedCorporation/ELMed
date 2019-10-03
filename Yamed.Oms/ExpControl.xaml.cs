@@ -36,7 +36,7 @@ namespace Yamed.Oms
 
         private void Amb_OnClick(object sender, RoutedEventArgs e)
         {
-            DxHelper.GetSelectedGridRowsAsync(ref EconomyWindow11.gridControl);
+            DxHelper.GetSelectedGridRowsAsync(ref EconomyTabOMS1.gridControl);
             bool isLoaded = false;
             Task.Factory.StartNew(() =>
             {
@@ -44,7 +44,7 @@ namespace Yamed.Oms
                 {
                     Dispatcher.BeginInvoke((Action)delegate ()
                     {
-                        if (EconomyWindow11.gridControl.IsAsyncOperationInProgress == false)
+                        if (EconomyTabOMS1.gridControl.IsAsyncOperationInProgress == false)
                         {
                             isLoaded = true;
                         }
@@ -56,7 +56,7 @@ namespace Yamed.Oms
             }).ContinueWith(lr =>
             {
                 List<int> sc = new List<int>();
-                var rows = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl);
+                var rows = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl);
                 if (rows != null)
                 {
                     foreach (var row in rows)
@@ -668,7 +668,7 @@ namespace Yamed.Oms
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var schets = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl)?.Select(x=> ObjHelper.GetAnonymousValue(x, "ID")).ToArray();
+            var schets = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl)?.Select(x=> ObjHelper.GetAnonymousValue(x, "ID")).ToArray();
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
@@ -680,11 +680,11 @@ namespace Yamed.Oms
 
         private void SchetRep_OnClick(object sender, RoutedEventArgs e)
         {
-            var schets = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl).Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray();
+            var schets = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl).Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray();
 
             var yr = SqlReader.Select($"Select * from YamedReports where RepName = '_schetReport'", SprClass.LocalConnectionString);
             var rl = (string)ObjHelper.GetAnonymousValue(yr[0], "Template");
-            var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
+            var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyTabOMS1.gridControl));
 
             var rp = new ReportParams {ID = sc.ID, IDS = ObjHelper.GetIds(schets)};
 
@@ -699,7 +699,7 @@ namespace Yamed.Oms
 
         private void AutoMek_OnClick(object sender, RoutedEventArgs e)
         {
-            var schets = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl).ToArray();
+            var schets = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl).ToArray();
 
             //СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             //{
@@ -722,7 +722,7 @@ namespace Yamed.Oms
 
         private void AutoMee_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            var schets = DxHelper.GetSelectedGridRows(EconomyWindow11.gridControl).ToArray();
+            var schets = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl).ToArray();
 
             //СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             //{

@@ -57,6 +57,6 @@
             </dxb:MainMenuControl>
         </dxb:BarContainerControl>
 
-        <oms:EconomyWindow Grid.Row="1" x:Name="EconomyWindow11"/>
+        <oms:EconomyTabOMS Grid.Row="1" x:Name="EconomyTabOMS1"/>
     </Grid>
 </UserControl>
