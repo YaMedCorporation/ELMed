@@ -211,7 +211,7 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
 
             rp.ID = id?? _sc?.First();
             rp.IDS = ObjHelper.GetIds(_sc);
-
+            rp.ReqID = id ?? _sc.First();
             return rp;
         }
 
