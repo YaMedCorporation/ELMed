@@ -284,13 +284,18 @@ namespace Yamed.OmsExp.ExpEditors
                 if (_re == 1 && (int)ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == -100)
                 {
                     var row = (SLUPACSANK) sluchGridControl.GetRow(rh);
-                    var sai = (int) ObjHelper.GetAnonymousValue(((IList) Reader2List.CustomAnonymousSelect(
-    $@"Select top 1 ISNULL(ak.SANK_AUTO_ID, sa.MODEL_ID) SANK_AUTO_ID
+                    var result = (IList) Reader2List.CustomAnonymousSelect(
+                        $@"Select top 1 ISNULL(ak.SANK_AUTO_ID, sa.MODEL_ID) SANK_AUTO_ID
 	FROM D3_SANK_OMS sa
 	left join D3_AKT_MEE_TBL ak on sa.ID = ak.SANKID
-		where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by sa.ID desc)",
-                            SprClass.LocalConnectionString))[0], "SANK_AUTO_ID");
-                    sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID", sai);
+		where D3_ZSLID = {ObjHelper.GetAnonymousValue(row.Row, "ID")} AND S_TIP = {_stype} order by sa.ID desc",
+                        SprClass.LocalConnectionString);
+                    var sai = (int?) ObjHelper.GetAnonymousValue(result[0], "SANK_AUTO_ID");
+
+                    if (sai != null)
+                    {
+                        sluchGridControl.SetCellValue(rh, "AktMee.SANK_AUTO_ID", sai);
+                    }
                 }
                 else
                 {
@@ -367,14 +372,20 @@ namespace Yamed.OmsExp.ExpEditors
                 //slps.AktMee.ZAKL = auto.S_ZAKL;
 
                 decimal ? sump;
-                if (_re == 0 || (_re == 1 && (decimal)ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == (decimal)-100))
+                if (_re == 0)
                 {
                     if (ObjHelper.GetAnonymousValue(slps.Row, "SUMP") == null || (decimal)ObjHelper.GetAnonymousValue(slps.Row, "SUMP") == 0)
                         sump = slps.AktMee.SUMV;
                     else
                         sump = (decimal)ObjHelper.GetAnonymousValue(slps.Row, "SUMP");
+
                     slps.AktMee.SUMNP = Math.Round((decimal)sump * (int)auto.GetValue("Penalty_1") / 100, 2, MidpointRounding.AwayFromZero);
                     slps.AktMee.SUMP = (decimal)ObjHelper.GetAnonymousValue(slps.Row, "SUMV") - slps.AktMee.SUMNP;
+                }
+                else if (_re == 1 && (int) ObjHelper.GetAnonymousValue(ShablonComboBoxEdit.SelectedItem, "Penalty_1") == -100)
+                {
+                    slps.AktMee.SUMNP = 0;
+                    slps.AktMee.SUMP = (decimal) ObjHelper.GetAnonymousValue(slps.Row, "SUMP");
                 }
                 else
                 {
