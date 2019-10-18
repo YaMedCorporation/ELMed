@@ -152,17 +152,18 @@ where zsl.D3_SCID in {ids}";
                 bool isMek = false;
                 var sluids = new List<int>();//gridControl1.SelectedItems.OfType<SluPacClass>().Select(x=>x.ID).ToArray();
                 var rows = (IEnumerable<object>)DxHelper.LoadedRows;
-                Parallel.ForEach(rows, (x) =>
+                foreach (var row in DxHelper.LoadedRows)
+                // Parallel.ForEach(rows, (x) =>
                 {
-                    if ((int?)ObjHelper.GetAnonymousValue(x, "OPLATA") == 1 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                    if ((int?)ObjHelper.GetAnonymousValue(row, "OPLATA") == 1 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                     {
-                        sluids.Add((int)ObjHelper.GetAnonymousValue(x, "ID"));
+                        sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
                     }
                     else
                     {
                         isMek = true;
                     }
-                });
+                }//});
                 
                 if (!sluids.Any())
                 {
