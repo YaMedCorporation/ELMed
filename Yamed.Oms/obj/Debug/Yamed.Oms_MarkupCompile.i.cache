@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\WILD\Desktop\040919\Yamed.Oms\obj\Debug\
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\
 Yamed.Oms
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 10-1191962674
 
 13-743137349
-38-1040595876
+38512549068
 EconomyControl.xaml;EconomyTab.xaml;EconomyTabOMS.xaml;ExpControl.xaml;SelectionControl.xaml;SchetRegisterControl.xaml;SchetRegisterGrid.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;SearchControl.xaml;
 
-True
+False
 

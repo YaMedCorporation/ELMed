@@ -9,7 +9,7 @@ using Yamed.Core;
 using Yamed.Entity;
 using Yamed.Server;
 
-namespace Yamed.OmsExp.ExpEditors
+namespace Yamed.Emr
 {
     /// <summary>
     /// Логика взаимодействия для SankWindow.xaml

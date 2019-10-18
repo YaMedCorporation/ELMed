@@ -1,0 +1,211 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="MeeWindow_OnLoaded"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+        x:Class="Yamed.OmsExp.ExpEditors.MedicExpControl">
+    <!--Loaded="UserControl_Loaded"-->
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem x:Name="barButtonItem1" Content="Сохранить" BarItemDisplayMode="ContentAndGlyph" GlyphAlignment="Left" Glyph="/Yamed.Icons;component/Icons/3floppy_unmount_9290.png" Alignment="Far" ItemClick="Save_OnItemClick"/>
+        </dxb:BarManager.Items>
+        <dxb:BarManager.Bars>
+            <dxb:Bar x:Name="mainMenuBar" Caption="Main Menu" IsMainMenu="True" GlyphSize="Large" UseWholeRow="True">
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Top" />
+                </dxb:Bar.DockInfo>
+                <dxb:BarButtonItemLink BarItemName="barButtonItem1" />
+            </dxb:Bar>
+            <dxb:Bar x:Name="statusBar" Caption="Status Bar" IsStatusBar="True">
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Bottom" />
+                </dxb:Bar.DockInfo>
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+        <Grid Name="ExpLayGr">
+            <Grid.Resources>
+                <Style TargetType="{x:Type dxlc:LayoutItem}">
+                    <Setter Property="LabelPosition" Value="Top" />
+                </Style>
+
+            </Grid.Resources>
+            <dxlc:LayoutControl Padding="2" >
+                <dxlc:LayoutGroup Orientation="Vertical" >
+                    <dxlc:LayoutGroup Orientation="Vertical" >
+                        <dxlc:LayoutGroup Header="Закончанные случаи" View="GroupBox" >
+                            <dxg:GridControl Name="sluchGridControl" SelectionMode="Row" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" Margin="-10" SelectedItemChanged="SluchGridControl_OnSelectedItemChanged">
+                                <dxg:GridControl.Resources>
+
+                                </dxg:GridControl.Resources>
+                                <dxg:GridControl.Columns>
+                                    <dxg:GridColumn x:Name="Column_FAM" FieldName="Row.FAM" Header="Фамилия" Width="90" />
+                                    <dxg:GridColumn x:Name="Column_IM" FieldName="Row.IM" Header="Имя" Width="70" />
+                                    <dxg:GridColumn x:Name="Column_OT" FieldName="Row.OT" Header="Очество" Width="120" />
+                                    <dxg:GridColumn x:Name="Column_DR" FieldName="Row.DR" Header="Дата рождеия" Width="80" />
+
+                                    <!--<dxg:GridColumn x:Name="Column_USL_OK" FilterPopupMode="CheckedList" FieldName="Row.USL_OK" Header="Усл. оказ. пом." Width="40" SortOrder="Ascending" SortIndex="0" >
+                                        <dxg:GridColumn.EditSettings>
+                                            <dxe:ComboBoxEditSettings Name="UslOkEdit" DisplayMember="NameWithID" ValueMember="id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                                        </dxg:GridColumn.EditSettings>
+                                    </dxg:GridColumn>-->
+
+                                    <!--<dxg:GridColumn x:Name="Column_PROFIL" FilterPopupMode="CheckedList" FieldName="Row.PROFIL" Header="Профиль" Width="40" />-->
+                                    <!--<dxg:GridColumn x:Name="Column_OS_SLUCH_REGION" FilterPopupMode="CheckedList" FieldName="SLP.OS_SLUCH_REGION" Header="Особый случай регион." Width="40" />-->
+                                    <!--<dxg:GridColumn x:Name="Column_DATE_1" FieldName="Row.DATE_Z_1" Header="Дата начала лечения" Width="75" />-->
+                                    <dxg:GridColumn x:Name="Column_DATE_2" FieldName="Row.DATE_Z_2" Header="Дата окончания лечения" Width="75" />
+
+                                    <!--<dxg:GridColumn x:Name="Column_SANK_AUTO_ID" FieldName="AktMee.SANK_AUTO_ID" Header="Код санкции" Width="75">
+                                        <dxg:GridColumn.EditSettings>
+                                            <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" x:Name="ShablonComboBoxEditSettings" DisplayMember="Name" ValueMember="ID" ItemsSource="{Binding}" />
+                                        </dxg:GridColumn.EditSettings>
+                                    </dxg:GridColumn>-->
+                                    <!--<dxg:GridColumn x:Name="Column_Expert" FieldName="AktMee.ExpertID" Header="Эксперт" Width="150" Visible="True" ShowInColumnChooser="False">
+                                        <dxg:GridColumn.EditSettings>
+                                            <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" x:Name="ExpertComboBoxEditSettings" DisplayMember="NameWithID" ValueMember="Id" ItemsSource="{Binding}" />
+                                        </dxg:GridColumn.EditSettings>
+                                    </dxg:GridColumn>-->
+                                    <dxg:GridColumn x:Name="Column_SUMV" FieldName="Row.SUMV" Header="Сумма принятая" Width="100" />
+                                    <dxg:GridColumn x:Name="Column_SANK_IT" FieldName="Row.SANK_IT" Header="Сумма удержанная" Width="100"/>
+                                    <dxg:GridColumn x:Name="Column_SUMP" FieldName="Row.SUMP" Header="Сумма принятая" Width="100" />
+
+                                </dxg:GridControl.Columns>
+                                <dxg:GridControl.TotalSummary>
+                                    <dxg:GridSummaryItem FieldName="AktMee.SUMNP" SummaryType="Sum" />
+                                    <dxg:GridSummaryItem FieldName="AktMee.SUMP" SummaryType="Sum" />
+                                </dxg:GridControl.TotalSummary>
+
+                                <dxg:GridControl.View>
+                                    <dxg:TableView ShowTotalSummary="True" ShowGroupPanel="False" x:Name="view1" RetainSelectionOnClickOutsideCheckBoxSelector="False" ShowCheckBoxSelectorColumn="True" ShowCheckBoxSelectorInGroupRow="True"/>
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup Header="Экспертиза" View="GroupBox" >
+                            <dxlc:LayoutGroup Orientation="Vertical">
+                                <dxlc:LayoutGroup Orientation="Vertical" >
+                                    <dxlc:LayoutItem Label="Вид экспертизы">
+                                        <dxe:ComboBoxEdit NullValueButtonPlacement="EditBox" x:Name="VidExpEdit" DisplayMember="NameWithID" ValueMember="IDVID" EditValue="{Binding DataContext.S_TIP2, ElementName=ExpLayGr, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding}"  />
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutGroup>
+                                        <dxlc:LayoutItem Label="Дата акта">
+                                            <dxe:DateEdit EditValue="{Binding DATE_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktDateEdit" />
+                                        </dxlc:LayoutItem>
+                                        <dxlc:LayoutItem Label="Экспертное поручение">
+                                            <dxe:TextEdit EditValue="{Binding ExpOrder, UpdateSourceTrigger=PropertyChanged}" x:Name="ExpOrderEdit" />
+                                        </dxlc:LayoutItem>
+                                    </dxlc:LayoutGroup>
+                                    <dxlc:LayoutItem Label="Номер акта">
+                                        <dxe:TextEdit EditValue="{Binding NUM_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktNumEdit" />
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutItem Label="Шаблон нарушения">
+                                    <dxe:ComboBoxEdit PopupOpening="ShablonEdit_OnPopupOpening" SelectedIndexChanged="ShablonEdit_OnSelectedIndexChanged" NullValueButtonPlacement="EditBox" Name="ShablonEdit" DisplayMember="Name" ValueMember="ID" EditValue="{Binding DataContext.MODEL_ID, UpdateSourceTrigger=PropertyChanged, ElementName=ExpLayGr}" ItemsSource="{Binding}"  />
+                                </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+                            <dxlc:LayoutItem Label="Эксперты"  >
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <dxb:BarContainerControl >
+                                        <dxb:ToolBarControl
+                                        AllowCustomizationMenu="False"
+                                        AllowHide="False"
+                                        AllowQuickCustomization="False"
+                                        IsCollapsed="False"
+                                        IsTabStop="False"
+                                        ShowDragWidget="False"
+                                        UseWholeRow="True">
+                                            <dxb:BarButtonItem x:Name="ExpertAddItem"
+                                            BarItemDisplayMode="ContentAndGlyph"
+                                            Content="Добавить запись"
+                                            Glyph="pack://application:,,,/Yamed.Icons;component/Icons/plus_orange.png"
+                                            ItemClick="ExpertAddItem_ItemClick" />
+                                            <dxb:BarButtonItem x:Name="ExpertDelItem"
+                                            BarItemDisplayMode="ContentAndGlyph"
+                                            Content="Удалить запись"
+                                            Glyph="pack://application:,,,/Yamed.Icons;component/Icons/deletered.png"
+                                            ItemClick="ExpertDelItem_ItemClick"/>
+                                        </dxb:ToolBarControl>
+                                    </dxb:BarContainerControl>
+
+                                    <dxg:GridControl x:Name="ExpertGridControl" Height="175"
+                                    Grid.Row="1"
+                                    AutoGenerateColumns="None"
+                                    EnableSmartColumnsGeneration="True"
+                                    ItemsSource="{Binding}">
+                                        <dxg:GridControl.View>
+                                            <dxg:TableView AllowPerPixelScrolling="True"
+                                            AutoWidth="True"
+                                            ShowGroupPanel="False"
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
+                                        </dxg:GridControl.View>
+                                        <dxg:GridColumn x:Name="PrConsColumn"
+                                        FieldName="ExpertCode"
+                                        Header="Код эксперта" Width="350">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:ComboBoxEditSettings x:Name="ExpertColumnEdit"
+                                                AutoComplete="True"
+                                                DisplayMember="NameWithID"
+                                                FilterCondition="Contains"
+                                                ImmediatePopup="True"
+                                                IncrementalFiltering="True"
+                                                ItemsSource="{Binding}"
+                                                NullValueButtonPlacement="EditBox"
+                                                ValueMember="Id" />
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
+                                    </dxg:GridControl>
+                                </Grid>
+
+
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Orientation="Vertical" View="GroupBox" Header="Экспертное заключение" MinWidth="500">
+                    <dxlc:LayoutGroup Orientation="Vertical">
+                        <dxlc:LayoutItem Label="СБОР ИНФОРМАЦИИ">
+                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_INFO, UpdateSourceTrigger=PropertyChanged}" Name="InfoEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Диагноз основной">
+                            <dxe:TextEdit EditValue="{Binding Z_DS1, UpdateSourceTrigger=PropertyChanged}" Name="Zds1Edit" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Диагноз осложнения">
+                            <dxe:TextEdit EditValue="{Binding Z_DS3, UpdateSourceTrigger=PropertyChanged}" Name="Zds3Edit" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Диагноз сопутствующий">
+                            <dxe:TextEdit EditValue="{Binding Z_DS2, UpdateSourceTrigger=PropertyChanged}" Name="Zds2Edit" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup Orientation="Vertical">
+                        <dxlc:LayoutItem Label="ОКАЗАНИЕ МП">
+                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OKAZ_MP, UpdateSourceTrigger=PropertyChanged}" x:Name="OkazMpEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Негативные последствия">
+                            <dxe:TextEdit EditValue="{Binding Z_NEG_POS, UpdateSourceTrigger=PropertyChanged}" Name="NegPosEdit" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="ПРЕЕМСТВЕННОСТЬ">
+                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PREEM, UpdateSourceTrigger=PropertyChanged}" x:Name="PreemEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                        </dxlc:LayoutItem>
+
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup Orientation="Vertical">
+                        <dxlc:LayoutItem Label="Обоснованность объемов">
+                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OBOSN_OB, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklObEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Профильность госпитализации">
+                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PROF_GOSP, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklPrEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutItem Label="Заключение">
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    </dxlc:LayoutItem>
+
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutControl>
+
+        </Grid>
+    </dxb:BarManager>
+
+</UserControl>

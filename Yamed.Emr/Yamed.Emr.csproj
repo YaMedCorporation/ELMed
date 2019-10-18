@@ -64,7 +64,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -81,9 +80,6 @@
     </Compile>
     <Compile Include="EmrPacient.xaml.cs">
       <DependentUpon>EmrPacient.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SankControl.xaml.cs">
-      <DependentUpon>SankControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="SluchTemplateD31.xaml.cs">
       <DependentUpon>SluchTemplateD31.xaml</DependentUpon>
@@ -128,10 +124,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="EmrPacient.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SankControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -188,6 +180,10 @@
     <ProjectReference Include="..\Yamed.Icons\Yamed.Icons.csproj">
       <Project>{35d4f927-361d-4e76-9569-b5e4dc1f4880}</Project>
       <Name>Yamed.Icons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yamed.OmsExp\Yamed.OmsExp.csproj">
+      <Project>{4e83e595-9166-44ee-bbb0-87b5a64c2f62}</Project>
+      <Name>Yamed.OmsExp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yamed.Server\Yamed.Server.csproj">
       <Project>{a389be52-c439-4f66-bc27-9a8c4cda0cec}</Project>

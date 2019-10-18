@@ -1994,6 +1994,10 @@ namespace Yamed.Emr
                 };
                 window.ShowDialog();
             }
+            else
+            {
+                
+            }
 
             SankGridControl.RefreshData();
             ZslUpdate();

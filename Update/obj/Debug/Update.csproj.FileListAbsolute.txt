@@ -185,3 +185,25 @@ C:\Users\WILD\Desktop\040919\Update\obj\Debug\Update.csproj.CoreCompileInputs.ca
 C:\Users\WILD\Desktop\040919\Update\obj\Debug\Update.csproj.CopyComplete
 C:\Users\WILD\Desktop\040919\Update\obj\Debug\Yamed Update.exe
 C:\Users\WILD\Desktop\040919\Update\obj\Debug\Yamed Update.pdb
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed Update.exe.config
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed Update.exe
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed Update.pdb
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\ActiveQueryBuilder.Core.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\ActiveQueryBuilder.MSSQLMetadataProvider.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\ActiveQueryBuilder.View.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\DotNetZip.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Core.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Server.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Entity.dll
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Core.pdb
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Server.pdb
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Server.dll.config
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\DotNetZip.xml
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Entity.pdb
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\Yamed.Entity.dll.config
+C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Update.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Update.csproj.CoreCompileInputs.cache
+C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Update.csproj.CopyComplete
+C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Yamed Update.exe
+C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Yamed Update.pdb
