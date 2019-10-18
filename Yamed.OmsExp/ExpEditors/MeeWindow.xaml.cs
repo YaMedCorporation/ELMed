@@ -564,7 +564,7 @@ namespace Yamed.OmsExp.ExpEditors
 
             sluchGridControl.DataContext = _slpsList;//_elKard = elKard;
             //OsnComboBoxEdit.DataContext = SprClass.Otkazs;
-            KsgBoxEdit.DataContext = SprClass.KsgGroups.OrderBy(x => x.ORDERID).ToList();
+            //KsgBoxEdit.DataContext = SprClass.KsgGroups.OrderBy(x => x.ORDERID).ToList();
             //using (ElmedDataClassesDataContext dc = new ElmedDataClassesDataContext(SprClass.LocalConnectionString))
             //{
             //    UserIdTextEdit.DataContext = dc.GetTable<ExpertsDB>().ToList();

@@ -192,7 +192,7 @@ where zsl.OS_SLUCH_REGION in (1,2,22,23,9, 37, 38, 47,48,49)", SprClass.LocalCon
                         // закрыли
 
                         // открыли
-                        //writer1.WriteStartElement("SLUCH");
+                        writer1.WriteStartElement("SLUCH");
                         writer1.WriteElementString("IDCASE", q.GetValue("IDCASE")?.ToString());
                         writer1.WriteElementString("LPU", q.GetValue("LPU")?.ToString());
                         writer1.WriteElementString("VBR", q.GetValue("VBR")?.ToString());
@@ -208,9 +208,7 @@ where zsl.OS_SLUCH_REGION in (1,2,22,23,9, 37, 38, 47,48,49)", SprClass.LocalCon
                         writer1.WriteElementString("PR_D_N", q.GetValue("PR_D_N")?.ToString());
                         writer1.WriteElementString("NAZ_R", q.GetValue("NAZ_R")?.ToString());
                         writer1.WriteElementString("OPLATA", q.GetValue("OPLATA")?.ToString());
-
-
-                        //writer1.WriteEndElement();
+                        writer1.WriteEndElement();
                         // закрыли
 
 

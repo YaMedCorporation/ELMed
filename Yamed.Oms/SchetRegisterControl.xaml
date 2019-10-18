@@ -286,6 +286,11 @@
 
                 <dxb:BarItemSeparator/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                   ToolTip="Тест" Content="Тест" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                   LargeGlyph="{dx:DXImageGrayscale Image=Parameters_32x32.png}"
+                                   ItemClick="TestItem_OnItemClick" />
+
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Экспорт" Content="Экспорт" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"
                                            LargeGlyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png" ItemClick="ExcelButtonBase_OnClick"/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
@@ -325,21 +330,21 @@
                                            ToolTip="Печатная форма" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/_80ui-512.png"
                                            ItemClick="RepReqItem_OnItemClick" />
-                                <!--<dxb:BarButtonItem x:Name="RepReReqItem" Alignment="Near"
+                                <dxb:BarButtonItem x:Name="RepReReqItem" Alignment="Near"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Печатная форма (повторная)" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/_80ui-512.png"
-                                           ItemClick="RepReReqItem_OnItemClick" />-->
+                                           ItemClick="RepReReqItem_OnItemClick" />
                                 <dxb:BarButtonItem x:Name="RepReqCustomItem" Alignment="Near"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Печатная форма " GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/_80ui-512.png"
                                            ItemClick="RepReqCustomItem_OnItemClick" />
                                 <dxb:BarButtonItem x:Name="Spisok_Form" Alignment="Near"
-                                           BarItemDisplayMode="ContentAndGlyph"
-                                           ToolTip="Список форм " GlyphAlignment="Top"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" ItemClick="Spisok_Form_ItemClick"
-                                            />
+                                                   BarItemDisplayMode="ContentAndGlyph"
+                                                   ToolTip="Список форм " GlyphAlignment="Top"
+                                                   LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" ItemClick="Spisok_Form_ItemClick"
+                                />
 
                                 <dxb:BarButtonItem x:Name="ReqAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"

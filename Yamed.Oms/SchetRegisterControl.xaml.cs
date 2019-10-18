@@ -269,7 +269,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.Manual,
-                    Content = new MeeWindow(2),
+                    Content = new MedicExpControl(2),
                     Title = "Акт МЭЭ"
                 };
                 window.ShowDialog();
@@ -308,7 +308,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.Manual,
-                    Content = new MeeWindow(3),
+                    Content = new MedicExpControl(3),
                     Title = "Акт ЭКМП"
                 };
                 window.ShowDialog();
@@ -346,7 +346,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.Manual,
-                    Content = new MeeWindow(2, re: 1),
+                    Content = new MedicExpControl(2, re: 1),
                     Title = "Акт МЭЭ"
                 };
                 window.ShowDialog();
@@ -385,7 +385,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.Manual,
-                    Content = new MeeWindow(3, re:1),
+                    Content = new MedicExpControl(3, re:1),
                     Title = "Акт ЭКМП"
                 };
                 window.ShowDialog();
@@ -730,6 +730,45 @@ where zsl.D3_SCID in {ids}";
             {
                 MessageBox.Show("Не выбран запрос");
             }
+        }
+
+        private void TestItem_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+            }).ContinueWith(lr =>
+            {
+
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    Content = new MedicExpControl(2),
+                    Title = "Акт МЭЭ"
+                };
+                window.ShowDialog();
+
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+
         }
     }
 }

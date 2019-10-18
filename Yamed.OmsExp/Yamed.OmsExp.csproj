@@ -91,8 +91,8 @@
     <Compile Include="ExpEditors\AktMeeChoose.xaml.cs">
       <DependentUpon>AktMeeChoose.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExpEditors\ExpControl.xaml.cs">
-      <DependentUpon>ExpControl.xaml</DependentUpon>
+    <Compile Include="ExpEditors\MedicExpControl.xaml.cs">
+      <DependentUpon>MedicExpControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExpEditors\MeeWindow.xaml.cs">
       <DependentUpon>MeeWindow.xaml</DependentUpon>
@@ -139,7 +139,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ExpEditors\ExpControl.xaml">
+    <Page Include="ExpEditors\MedicExpControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -200,10 +200,6 @@
     <ProjectReference Include="..\Yamed.Core\Yamed.Core.csproj">
       <Project>{450c1e64-a006-4f55-9990-6dc8064c504d}</Project>
       <Name>Yamed.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Yamed.Emr\Yamed.Emr.csproj">
-      <Project>{a8f3ddf7-2b43-4731-ae6c-f549a1fcdc26}</Project>
-      <Name>Yamed.Emr</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yamed.Entity\Yamed.Entity.csproj">
       <Project>{d9ebda68-8b9b-4805-b4b9-4c073eba0707}</Project>

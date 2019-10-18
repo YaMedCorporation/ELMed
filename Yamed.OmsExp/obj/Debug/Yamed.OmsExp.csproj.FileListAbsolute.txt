@@ -3741,7 +3741,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\ja\DevExpress.Xpo.v16.2.res
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\ru\DevExpress.Xpo.v16.2.resources.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csprojAssemblyReference.cache
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\AktMeeChoose.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\ExpControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\MeeWindow.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\EmrPacientControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\LicSpr.baml
@@ -3751,7 +3750,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\SankControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\SankGroupDelete.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\SqlEditor\SmoReExpControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\AktMeeChoose.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\ExpControl.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\MeeWindow.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\ReqControl.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\SqlEditor\AutoMekControl.g.cs
@@ -4080,3 +4078,5 @@ E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csproj.CopyComplete
 E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll
 E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\MedicExpControl.baml
+C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\MedicExpControl.g.cs
