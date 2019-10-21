@@ -206,9 +206,10 @@ namespace Yamed.OmsExp.ExpEditors
             var pe2 = (decimal?)SqlReader.Select(
                 $@"EXEC	[dbo].[p_oms_calc_medexp]
             		@model = {ex.Sank.MODEL_ID},
-            		@date = '{ex.Sank.DATE_ACT.Value.ToString("yyyyMMdd")}'",
+            		@date = '{ex.Sank.DATE_ACT.Value.ToString("yyyyMMdd")}',
+                    @zsl = {ex.Sank.D3_ZSLID}",
                 SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("s_sum2");
-            ex.Sank.S_SUM2 = pe2;
+                ex.Sank.S_SUM2 = pe2;
 
             decimal? sump, sum_np, sum_p;
 

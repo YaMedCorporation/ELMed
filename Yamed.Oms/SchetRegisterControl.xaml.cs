@@ -510,7 +510,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.Manual,
-                    Content = new Yamed.OmsExp.ExpEditors.SankControl(true),
+                    Content = new SankControl(true),
                     Title = "Акт ЭКМП"
                 };
                 window.ShowDialog();

@@ -285,10 +285,10 @@
                 </dxb:BarSubItem>
 
                 <dxb:BarItemSeparator/>
-                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                <!--<dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                    ToolTip="Тест" Content="Тест" GlyphAlignment="Left" AllowGlyphTheming="True"
                                    LargeGlyph="{dx:DXImageGrayscale Image=Parameters_32x32.png}"
-                                   ItemClick="TestItem_OnItemClick" />
+                                   ItemClick="TestItem_OnItemClick" />-->
 
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Экспорт" Content="Экспорт" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"

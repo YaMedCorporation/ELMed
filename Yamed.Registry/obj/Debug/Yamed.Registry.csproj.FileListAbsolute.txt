@@ -5228,3 +5228,8 @@ E:\ELMed\Yamed.Registry\obj\Debug\Yamed.Registry.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed.Registry\obj\Debug\Yamed.Registry.csproj.CopyComplete
 E:\ELMed\Yamed.Registry\obj\Debug\Yamed.Registry.dll
 E:\ELMed\Yamed.Registry\obj\Debug\Yamed.Registry.pdb
+E:\ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.dll
+E:\ELMed\Yamed.Registry\bin\Debug\ICSharpCode.AvalonEdit.dll
+E:\ELMed\Yamed.Registry\bin\Debug\ActiveQueryBuilder.View.dll
+E:\ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.pdb
+E:\ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.dll.config
