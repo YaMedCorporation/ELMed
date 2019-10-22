@@ -3786,7 +3786,6 @@ E:\ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\DotNetZip.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Control.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Core.dll
-E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Emr.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Entity.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Icons.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Reports.dll
@@ -3836,8 +3835,6 @@ E:\ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Xpo.v16.2.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\DevExpress.XtraDiagram.v16.2.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Control.pdb
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Core.pdb
-E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Emr.pdb
-E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Emr.dll.config
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Entity.pdb
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Entity.dll.config
 E:\ELMed\Yamed.OmsExp\bin\Debug\Yamed.Icons.pdb
@@ -4040,7 +4037,6 @@ E:\ELMed\Yamed.OmsExp\bin\Debug\ja\DevExpress.Xpo.v16.2.resources.dll
 E:\ELMed\Yamed.OmsExp\bin\Debug\ru\DevExpress.Xpo.v16.2.resources.dll
 E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csprojAssemblyReference.cache
 E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\AktMeeChoose.baml
-E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\ExpControl.baml
 E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\MeeWindow.baml
 E:\ELMed\Yamed.OmsExp\obj\Debug\EmrPacientControl.baml
 E:\ELMed\Yamed.OmsExp\obj\Debug\LicSpr.baml
@@ -4050,7 +4046,6 @@ E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\SankControl.baml
 E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\SankGroupDelete.baml
 E:\ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\SmoReExpControl.baml
 E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\AktMeeChoose.g.cs
-E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\ExpControl.g.cs
 E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\MeeWindow.g.cs
 E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\ReqControl.g.cs
 E:\ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoMekControl.g.cs
@@ -4077,3 +4072,5 @@ E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll
 E:\ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.pdb
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\MedicExpControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\obj\Debug\ExpEditors\MedicExpControl.g.cs
+E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\MedicExpControl.baml
+E:\ELMed\Yamed.OmsExp\obj\Debug\ExpEditors\MedicExpControl.g.cs
