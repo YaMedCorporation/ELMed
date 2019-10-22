@@ -86,16 +86,21 @@
                                             <dxe:ComboBoxEdit NullValueButtonPlacement="EditBox" x:Name="VidExpEdit" DisplayMember="NameWithID" ValueMember="IDVID" EditValue="{Binding DataContext.S_TIP2, ElementName=ExpLayGr, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding}"  />
                                         </dxlc:LayoutItem>
                                         <dxlc:LayoutGroup>
-                                            <dxlc:LayoutItem Label="Дата акта">
-                                                <dxe:DateEdit EditValue="{Binding DATE_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktDateEdit" />
+                                            <dxlc:LayoutItem Label="Дата экспертизы">
+                                                <dxe:DateEdit EditValue="{Binding S_DATE, UpdateSourceTrigger=PropertyChanged}" x:Name="SdateEdit" />
                                             </dxlc:LayoutItem>
                                             <dxlc:LayoutItem Label="Экспертное поручение">
                                                 <dxe:TextEdit EditValue="{Binding ExpOrder, UpdateSourceTrigger=PropertyChanged}" x:Name="ExpOrderEdit" />
                                             </dxlc:LayoutItem>
                                         </dxlc:LayoutGroup>
-                                        <dxlc:LayoutItem Label="Номер акта">
-                                            <dxe:TextEdit EditValue="{Binding NUM_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktNumEdit" />
-                                        </dxlc:LayoutItem>
+                                        <dxlc:LayoutGroup>
+                                            <dxlc:LayoutItem Label="Дата акта">
+                                                <dxe:DateEdit EditValue="{Binding DATE_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktDateEdit" />
+                                            </dxlc:LayoutItem>
+                                            <dxlc:LayoutItem Label="Номер акта">
+                                                <dxe:TextEdit EditValue="{Binding NUM_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktNumEdit" />
+                                            </dxlc:LayoutItem>
+                                        </dxlc:LayoutGroup>
                                         <dxlc:LayoutItem Label="Шаблон нарушения">
                                             <dxe:ComboBoxEdit PopupOpening="ShablonEdit_OnPopupOpening" SelectedIndexChanged="ShablonEdit_OnSelectedIndexChanged" NullValueButtonPlacement="EditBox" x:Name="ShablonEdit" DisplayMember="Name" ValueMember="ID" EditValue="{Binding DataContext.MODEL_ID, ElementName=ExpLayGr, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding}"  />
                                         </dxlc:LayoutItem>

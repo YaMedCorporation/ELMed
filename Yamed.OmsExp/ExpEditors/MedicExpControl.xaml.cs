@@ -147,7 +147,7 @@ namespace Yamed.OmsExp.ExpEditors
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {
-                    sluchGridControl.SelectAll();
+                    sluchGridControl.SelectRange(0,0);
                 }));
 
         }
