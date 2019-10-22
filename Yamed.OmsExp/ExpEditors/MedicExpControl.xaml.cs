@@ -41,13 +41,13 @@ namespace Yamed.OmsExp.ExpEditors
 
         private ElmedDataClassesDataContext _dc1;
 
-        private int _stype;
+        private int? _stype;
 
         private int? _sid;
         private object _row;
         private int _re;
 
-        public MedicExpControl(int stype, int? sid = null, object row = null, int re = 0)
+        public MedicExpControl(int? stype, int? sid = null, object row = null, int re = 0)
         {
             InitializeComponent();
             _stype = stype;
@@ -76,7 +76,6 @@ namespace Yamed.OmsExp.ExpEditors
 
         private void MeeWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            sluchGridControl.SelectRange(0,0);
 
             _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
 
@@ -139,7 +138,13 @@ namespace Yamed.OmsExp.ExpEditors
 
 
             sluchGridControl.DataContext = _slpsList;
-            
+
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
+                new Action(delegate ()
+                {
+                    sluchGridControl.SelectAll();
+                }));
+
         }
 
 
@@ -187,7 +192,7 @@ namespace Yamed.OmsExp.ExpEditors
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
         {
             var sa = ((ExpClass)sluchGridControl.SelectedItem).Sank;
-            if (sa.S_TIP2 == null && sa.DATE_ACT == null)
+            if (sa.S_TIP2 == null || sa.DATE_ACT == null)
             {
                 DXMessageBox.Show("Заполнены не все обязательные поля (дата акта, вид экспертизы)");
                 e.Cancel = true;
@@ -197,24 +202,26 @@ namespace Yamed.OmsExp.ExpEditors
 
         private void ShablonEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)
         {
+            var sh = (DynamicBaseClass)ShablonEdit.SelectedItem;
+            if (sh == null) return;
+
             var ex = ((ExpClass)sluchGridControl.SelectedItem);
-            var sh = (DynamicBaseClass) ShablonEdit.SelectedItem;
             var pe1 = (int)sh.GetValue("Penalty_1");
             var osn = (string)sh.GetValue("Osn");
             ex.Sank.S_OSN = osn;
 
             var pe2 = (decimal?)SqlReader.Select(
                 $@"EXEC	[dbo].[p_oms_calc_medexp]
-            		@model = {ex.Sank.MODEL_ID},
+            		@zslid = {ex.Sank.D3_ZSLID},
+                    @model = {ex.Sank.MODEL_ID},
             		@date = '{ex.Sank.DATE_ACT.Value.ToString("yyyyMMdd")}'",
                 SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("s_sum2");
-            ex.Sank.S_SUM2 = pe2;
 
-            decimal? sump, sum_np, sum_p;
+            decimal? sump, sum_np;
 
             if (_re == 0)
             {
-                if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null || (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0)
+                if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null || (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
                     sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                 else
                     sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
@@ -226,6 +233,7 @@ namespace Yamed.OmsExp.ExpEditors
             else if (_re == 1 && pe1 == -100)
             {
                 sum_np = 0;
+                pe2 = 0;
                 ex.Sank.S_OSN = ex.ReSank.S_OSN;
             }
             else
@@ -240,6 +248,7 @@ namespace Yamed.OmsExp.ExpEditors
             sluchGridControl.DataController.RefreshData();
 
             ex.Sank.S_SUM = sum_np;
+            ex.Sank.S_SUM2 = pe2;
 
         }
 
@@ -256,8 +265,8 @@ namespace Yamed.OmsExp.ExpEditors
             {
                 if (obj.ID == 0)
                 {
-                    var slid = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
-                    obj.ID = (int)slid;
+                    var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
+                    obj.ID = (int)id;
                 }
                 else
                 {
@@ -265,6 +274,24 @@ namespace Yamed.OmsExp.ExpEditors
                     Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                 }
             }
+
+            if (_expertList != null)
+                foreach (var obj in _expertList)
+                {
+                    if (obj.ID == 0)
+                    {
+                        var id = Reader2List.ObjectInsertCommand("D3_SANK_EXPERT_OMS", obj, "ID",
+                            SprClass.LocalConnectionString);
+                        obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
+
+                        obj.ID = (int) id;
+                    }
+                    else
+                    {
+                        var upd = Reader2List.CustomUpdateCommand("D3_SANK_EXPERT_OMS", obj, "ID");
+                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                    }
+                }
 
             var scs = _slpsList.Select(x => ObjHelper.GetAnonymousValue(x.Row, "D3_SCID")).Distinct();
             if (_re == 0)

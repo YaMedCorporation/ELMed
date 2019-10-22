@@ -1736,7 +1736,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\ru\DevExpress.Office.v16.2.Cor
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\Yamed.Emr.csprojAssemblyReference.cache
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\EmrPacientControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\EmrPacient.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\SankControl.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\ReferralTemplate.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\SluchTemplateD3.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\SluchTemplate.baml
@@ -1744,7 +1743,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\ClinicEmrPacient.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\EmrFullControl.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\EmrPacientControl.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\EmrPacient.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\SankControl.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\SluchTemplateD31.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\UslTemplateD3.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\OphtTestTemplate.g.cs
@@ -1910,3 +1908,8 @@ E:\ELMed\Yamed.Emr\obj\Debug\Yamed.Emr.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed.Emr\obj\Debug\Yamed.Emr.csproj.CopyComplete
 E:\ELMed\Yamed.Emr\obj\Debug\Yamed.Emr.dll
 E:\ELMed\Yamed.Emr\obj\Debug\Yamed.Emr.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\Yamed.OmsExp.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\ActiveQueryBuilder.View.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\Yamed.OmsExp.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\Yamed.OmsExp.dll.config

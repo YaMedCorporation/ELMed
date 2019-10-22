@@ -3487,7 +3487,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\DevExpress.Xpf.LayoutContro
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\DotNetZip.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Control.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Emr.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Entity.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Icons.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Reports.dll
@@ -3537,8 +3536,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\DevExpress.Xpo.v16.2.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\DevExpress.XtraDiagram.v16.2.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Control.pdb
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Emr.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Emr.dll.config
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Entity.pdb
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Entity.dll.config
 C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\Yamed.Icons.pdb
