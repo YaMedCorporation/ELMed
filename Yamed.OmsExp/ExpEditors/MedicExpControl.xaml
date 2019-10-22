@@ -134,7 +134,7 @@
                                                 EnableSmartColumnsGeneration="True"
                                                 ItemsSource="{Binding}">
                                                 <dxg:GridControl.View>
-                                                    <dxg:TableView AllowPerPixelScrolling="True"
+                                                    <dxg:TableView AllowPerPixelScrolling="True" CellValueChanging="GridViewBase_OnCellValueChanging"
                                                         AutoWidth="True"
                                                         ShowGroupPanel="False"
                                                         ShowTotalSummary="False" ShowFilterPanelMode="Never" />

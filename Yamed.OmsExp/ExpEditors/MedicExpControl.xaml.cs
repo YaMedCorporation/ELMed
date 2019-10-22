@@ -134,6 +134,11 @@ namespace Yamed.OmsExp.ExpEditors
                 slupacsank.Row = _row;
                 slupacsank.Sank = sank.First();
                 _slpsList.Add(slupacsank);
+
+                ExpertGridControl.DataContext = _expertList =
+                    Reader2List.CustomSelect<D3_SANK_EXPERT_OMS>($@"Select * From D3_SANK_EXPERT_OMS where D3_SANKID={slupacsank.Sank.ID}",
+                        SprClass.LocalConnectionString);
+
             }
 
 
@@ -186,7 +191,11 @@ namespace Yamed.OmsExp.ExpEditors
 
         private void SluchGridControl_OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
-            ExpLayGr.DataContext = ((ExpClass) e.NewItem).Sank;
+            var sa = ((ExpClass)e.NewItem).Sank;
+            ExpLayGr.DataContext = sa;
+
+            ExpertGridControl.FilterString = $"([D3_SANKGID] = '{sa.S_CODE}')";
+
         }
 
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
@@ -280,10 +289,9 @@ namespace Yamed.OmsExp.ExpEditors
                 {
                     if (obj.ID == 0)
                     {
+                        obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
                         var id = Reader2List.ObjectInsertCommand("D3_SANK_EXPERT_OMS", obj, "ID",
                             SprClass.LocalConnectionString);
-                        obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
-
                         obj.ID = (int) id;
                     }
                     else
@@ -312,6 +320,11 @@ namespace Yamed.OmsExp.ExpEditors
             ((DXWindow)this.Parent).Close();
 
 
+        }
+
+        private void GridViewBase_OnCellValueChanging(object sender, CellValueChangedEventArgs e)
+        {
+            (sender as TableView).PostEditor();
         }
     }
 }
