@@ -16669,8 +16669,6 @@ namespace Yamed.Entity
 		
 		private string _ExpOrder;
 		
-		private System.Nullable<System.DateTime> _SysDtCreate;
-		
 		private string _Z_INFO;
 		
 		private string _Z_DS1;
@@ -16745,8 +16743,6 @@ namespace Yamed.Entity
     partial void OnMODEL_IDChanged();
     partial void OnExpOrderChanging(string value);
     partial void OnExpOrderChanged();
-    partial void OnSysDtCreateChanging(System.Nullable<System.DateTime> value);
-    partial void OnSysDtCreateChanged();
     partial void OnZ_INFOChanging(string value);
     partial void OnZ_INFOChanged();
     partial void OnZ_DS1Changing(string value);
@@ -17239,26 +17235,6 @@ namespace Yamed.Entity
 					this._ExpOrder = value;
 					this.SendPropertyChanged("ExpOrder");
 					this.OnExpOrderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysDtCreate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> SysDtCreate
-		{
-			get
-			{
-				return this._SysDtCreate;
-			}
-			set
-			{
-				if ((this._SysDtCreate != value))
-				{
-					this.OnSysDtCreateChanging(value);
-					this.SendPropertyChanging();
-					this._SysDtCreate = value;
-					this.SendPropertyChanged("SysDtCreate");
-					this.OnSysDtCreateChanged();
 				}
 			}
 		}

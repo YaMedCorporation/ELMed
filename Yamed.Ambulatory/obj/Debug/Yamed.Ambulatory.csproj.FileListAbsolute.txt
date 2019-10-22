@@ -1817,3 +1817,8 @@ E:\ELMed\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.csproj.CoreCompileInputs.ca
 E:\ELMed\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.csproj.CopyComplete
 E:\ELMed\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.dll
 E:\ELMed\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.Ambulatory\bin\Debug\Yamed.OmsExp.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Ambulatory\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Ambulatory\bin\Debug\ActiveQueryBuilder.View.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Ambulatory\bin\Debug\Yamed.OmsExp.pdb
+C:\Users\WILD\Desktop\git_exp\Yamed.Ambulatory\bin\Debug\Yamed.OmsExp.dll.config

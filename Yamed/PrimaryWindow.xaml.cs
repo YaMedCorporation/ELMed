@@ -57,8 +57,8 @@ namespace Yamed
             SprClass.Qb = new QueryBuilder {SyntaxProvider = new GenericSyntaxProvider()};
             SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
 
-            
-            
+
+
             //"Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa;Password=Hospital6";
 
             //try

@@ -4,7 +4,7 @@
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        x:Class="Yamed.Emr.SankControl" >
+        x:Class="Yamed.OmsExp.ExpEditors.SankControl" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

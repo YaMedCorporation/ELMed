@@ -25,6 +25,7 @@ using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Collections;
+using Yamed.OmsExp.ExpEditors;
 
 namespace Yamed.Emr
 {
@@ -105,7 +106,7 @@ namespace Yamed.Emr
             _gc = gc;
 
             rowIndex = _gc.GetSelectedRowHandles().Where(x => x >= 0).FirstOrDefault();
-            var row = _gc.GetRow(rowIndex);
+            //var row = _gc.GetRow(rowIndex);
 
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
         }
@@ -1964,7 +1965,6 @@ namespace Yamed.Emr
                 S_CODE = Guid.NewGuid().ToString(),
                 D3_ZSLGID = _zsl.ZSL_ID
             };
-            _sankList.Add(sank);
 
             var window = new DXWindow
             {
@@ -1975,6 +1975,9 @@ namespace Yamed.Emr
                 Content = new SankControl(sank)
             };
             window.ShowDialog();
+            if (sank.ID != 0)
+                _sankList.Add(sank);
+
             SankGridControl.RefreshData();
             ZslUpdate();
         }
@@ -1996,11 +1999,52 @@ namespace Yamed.Emr
             }
             else
             {
-                
+                var st = sank.S_TIP ?? (sank.S_TIP2 >= 20 && sank.S_TIP2 < 30 ? 2 : 3);
+                var re = sank.S_TIP == null ? 1 : 0;
+
+                var row = _gc.GetRow(rowIndex);
+                if (row == null) return;
+
+                if (row is NotLoadedObject)
+                {
+                    _gc.GetRowAsync(rowIndex).ContinueWith((x) =>
+                    {
+                        _row = ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)x.Result).OriginalRow;
+                        var window = new DXWindow
+                        {
+                            ShowIcon = false,
+                            WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                            Content = new MedicExpControl(st, sank.ID, _row, re),
+                            Title = "Акт МЭЭ",
+                            SizeToContent = SizeToContent.Height,
+                            Width = 1450
+                        };
+                        window.ShowDialog();
+                        SankGridControl.RefreshData();
+                        ZslUpdate();
+
+                    }, TaskScheduler.FromCurrentSynchronizationContext());
+                }
+                else
+                {
+                    _row = ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)row).OriginalRow;
+                    var window = new DXWindow
+                    {
+                        ShowIcon = false,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        Content = new MedicExpControl(st, sank.ID, _row, re),
+                        Title = "Акт МЭЭ",
+                        SizeToContent = SizeToContent.Height,
+                        Width = 1450
+                    };
+                    window.ShowDialog();
+                    SankGridControl.RefreshData();
+                    ZslUpdate();
+
+                }
+
             }
 
-            SankGridControl.RefreshData();
-            ZslUpdate();
 
         }
 
