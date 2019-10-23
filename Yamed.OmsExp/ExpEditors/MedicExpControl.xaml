@@ -231,7 +231,7 @@
                     <dxlc:LayoutItem Label="ПРЕЕМСТВЕННОСТЬ">
                         <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PREEM, UpdateSourceTrigger=PropertyChanged}" x:Name="PreemEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
                     </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="ОКАЗАНИЕ МП. Негативные последствия">
+                    <dxlc:LayoutItem Label="ПРЕЕМСТВЕННОСТЬ. Негативные последствия">
                         <dxe:TextEdit EditValue="{Binding Z_PREEM_NP, UpdateSourceTrigger=PropertyChanged}" Name="PreemNegPosEdit" />
                     </dxlc:LayoutItem>
 
