@@ -196,8 +196,8 @@ where zsl.OS_SLUCH_REGION in (1,2,22,23,9, 37, 38, 47,48,49)", SprClass.LocalCon
                         writer1.WriteElementString("IDCASE", q.GetValue("IDCASE")?.ToString());
                         writer1.WriteElementString("LPU", q.GetValue("LPU")?.ToString());
                         writer1.WriteElementString("VBR", q.GetValue("VBR")?.ToString());
-                        writer1.WriteElementString("DATE_1", ((DateTime?)q.GetValue("DATE_Z_1"))?.ToString("yyyy-MM-dd"));
-                        writer1.WriteElementString("DATE_2", ((DateTime?)q.GetValue("DATE_Z_2"))?.ToString("yyyy-MM-dd"));
+                        writer1.WriteElementString("DATE_1", ((DateTime?)q.GetValue("DATE_1"))?.ToString("yyyy-MM-dd"));
+                        writer1.WriteElementString("DATE_2", ((DateTime?)q.GetValue("DATE_2"))?.ToString("yyyy-MM-dd"));
                         writer1.WriteElementString("DISP", q.GetValue("DISP")?.ToString());
                         writer1.WriteElementString("RSLT_D", q.GetValue("RSLT_D")?.ToString());
 

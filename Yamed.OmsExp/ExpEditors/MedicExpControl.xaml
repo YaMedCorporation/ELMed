@@ -2,24 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="MeeWindow_OnLoaded"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
         x:Class="Yamed.OmsExp.ExpEditors.MedicExpControl">
-    <!--Loaded="UserControl_Loaded"-->
-    <dxb:BarManager>
-        <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="barButtonItem1" Content="Сохранить" BarItemDisplayMode="ContentAndGlyph" GlyphAlignment="Left" Glyph="/Yamed.Icons;component/Icons/3floppy_unmount_9290.png" Alignment="Far" ItemClick="Save_OnItemClick"/>
-        </dxb:BarManager.Items>
-        <dxb:BarManager.Bars>
-            <dxb:Bar x:Name="mainMenuBar" Caption="Main Menu" IsMainMenu="True" GlyphSize="Large" UseWholeRow="True">
-                <dxb:Bar.DockInfo>
-                    <dxb:BarDockInfo ContainerType="Top" />
-                </dxb:Bar.DockInfo>
-                <dxb:BarButtonItemLink BarItemName="barButtonItem1" />
-            </dxb:Bar>
-            <dxb:Bar x:Name="statusBar" Caption="Status Bar" IsStatusBar="True">
-                <dxb:Bar.DockInfo>
-                    <dxb:BarDockInfo ContainerType="Bottom" />
-                </dxb:Bar.DockInfo>
-            </dxb:Bar>
-        </dxb:BarManager.Bars>
         <Grid Name="ExpLayGr">
             <Grid.Resources>
                 <Style TargetType="{x:Type dxlc:LayoutItem}">
@@ -27,7 +9,32 @@
                 </Style>
 
             </Grid.Resources>
-            <dxlc:LayoutControl Padding="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <dxb:BarContainerControl Grid.Row="0">
+                <dxb:MainMenuControl AllowCustomizationMenu="False" AllowHide="False" FontWeight="SemiBold" FontSize="16" >
+
+                    <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Пакетные операции" Content="Пакетные операции" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png">
+                        <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Применить текущую экспертизу ко всем выбранным записям" Content="Применить экспертизу для всех выбранных" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
+                                           GlyphSize="Default" ItemClick="PacketItem_OnItemClick"/>
+
+                    </dxb:BarSubItem>
+
+                    <dxb:BarItemSeparator/>
+
+                    <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Сохранить" Content="Сохранить" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/storage_drive_disk_flash_usb_check-512.png" ItemClick="Save_OnItemClick"/>
+
+                </dxb:MainMenuControl>
+            </dxb:BarContainerControl>
+
+            <dxlc:LayoutControl Padding="2" Grid.Row="1" >
                 <dxlc:LayoutGroup Orientation="Vertical" >
                     <dxlc:LayoutGroup Orientation="Vertical" >
                         <dxlc:LayoutGroup Header="Закончанные случаи" View="GroupBox" >
@@ -102,7 +109,11 @@
                                             </dxlc:LayoutItem>
                                         </dxlc:LayoutGroup>
                                         <dxlc:LayoutItem Label="Шаблон нарушения">
-                                            <dxe:ComboBoxEdit PopupOpening="ShablonEdit_OnPopupOpening" SelectedIndexChanged="ShablonEdit_OnSelectedIndexChanged" NullValueButtonPlacement="EditBox" x:Name="ShablonEdit" DisplayMember="Name" ValueMember="ID" EditValue="{Binding DataContext.MODEL_ID, ElementName=ExpLayGr, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding}"  />
+                                            <dxe:ComboBoxEdit PopupOpening="ShablonEdit_OnPopupOpening" SelectedIndexChanged="ShablonEdit_OnSelectedIndexChanged" NullValueButtonPlacement="EditBox" x:Name="ShablonEdit" DisplayMember="Name" ValueMember="ID" EditValue="{Binding DataContext.MODEL_ID, ElementName=ExpLayGr, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding}"  >
+                                                <dxe:ComboBoxEdit.Buttons>
+                                                    <dxe:ButtonInfo Content="РАСЧЁТ" Click="CalcButtonInfo_OnClick"/>
+                                                </dxe:ComboBoxEdit.Buttons>
+                                            </dxe:ComboBoxEdit>
                                         </dxlc:LayoutItem>
                                     </dxlc:LayoutGroup>
                                     <dxlc:LayoutItem Label="Эксперты"  >
@@ -228,13 +239,13 @@
                     </dxlc:LayoutGroup>
 
                     <dxlc:LayoutItem Label="Заключение">
-                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding S_ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
                     </dxlc:LayoutItem>
 
                 </dxlc:LayoutGroup>
             </dxlc:LayoutControl>
 
         </Grid>
-    </dxb:BarManager>
+
 
 </UserControl>

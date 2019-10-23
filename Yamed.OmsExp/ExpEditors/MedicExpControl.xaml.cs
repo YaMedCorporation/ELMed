@@ -191,6 +191,7 @@ namespace Yamed.OmsExp.ExpEditors
 
         private void SluchGridControl_OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.NewItem == null) return;
             var sa = ((ExpClass)e.NewItem).Sank;
             ExpLayGr.DataContext = sa;
 
@@ -211,53 +212,7 @@ namespace Yamed.OmsExp.ExpEditors
 
         private void ShablonEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-            var sh = (DynamicBaseClass)ShablonEdit.SelectedItem;
-            if (sh == null) return;
 
-            var ex = ((ExpClass)sluchGridControl.SelectedItem);
-            var pe1 = (int)sh.GetValue("Penalty_1");
-            var osn = (string)sh.GetValue("Osn");
-            ex.Sank.S_OSN = osn;
-
-            var pe2 = (decimal?)SqlReader.Select(
-                $@"EXEC	[dbo].[p_oms_calc_medexp]
-            		@zslid = {ex.Sank.D3_ZSLID},
-                    @model = {ex.Sank.MODEL_ID},
-            		@date = '{ex.Sank.DATE_ACT.Value.ToString("yyyyMMdd")}'",
-                SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("s_sum2");
-
-            decimal? sump, sum_np;
-
-            if (_re == 0)
-            {
-                if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null || (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
-                    sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
-                else
-                    sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
-
-                sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
-                    MidpointRounding.AwayFromZero);
-
-            }
-            else if (_re == 1 && pe1 == -100)
-            {
-                sum_np = 0;
-                pe2 = 0;
-                ex.Sank.S_OSN = ex.ReSank.S_OSN;
-            }
-            else
-            {
-                sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
-                var rsum = sump * pe1 / 100;
-                if (ex.ReSank.S_SUM > rsum)
-                    sum_np = -(ex.ReSank.S_SUM - rsum);
-                else sum_np = rsum - ex.ReSank.S_SUM;
-            }
-
-            sluchGridControl.DataController.RefreshData();
-
-            ex.Sank.S_SUM = sum_np;
-            ex.Sank.S_SUM2 = pe2;
 
         }
 
@@ -268,7 +223,6 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
-            //sl.Sank.S_DATE = sl.AktMee.AKT_DATE;
 
             foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
             {
@@ -325,6 +279,109 @@ namespace Yamed.OmsExp.ExpEditors
         private void GridViewBase_OnCellValueChanging(object sender, CellValueChangedEventArgs e)
         {
             (sender as TableView).PostEditor();
+        }
+
+
+
+        void CalcSank(ExpClass ex)
+        {
+            var sh = (DynamicBaseClass) ShablonEdit.SelectedItem;
+            if (sh == null) return;
+
+            var pe1 = (int) sh.GetValue("Penalty_1");
+            var osn = (string) sh.GetValue("Osn");
+            ex.Sank.S_OSN = osn;
+
+            var pe2 = (decimal?) SqlReader.Select(
+                $@"EXEC	[dbo].[p_oms_calc_medexp]
+            		@zslid = {ex.Sank.D3_ZSLID},
+                    @model = {ex.Sank.MODEL_ID},
+            		@date = '{ex.Sank.DATE_ACT.Value.ToString("yyyyMMdd")}'",
+                SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("s_sum2");
+
+            decimal? sump, sum_np;
+
+            if (_re == 0)
+            {
+                if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null ||
+                    (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
+                    sump = (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+                else
+                    sump = (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
+
+                sum_np = Math.Round((decimal) sump * pe1 / 100, 2,
+                    MidpointRounding.AwayFromZero);
+
+            }
+            else if (_re == 1 && pe1 == -100)
+            {
+                sum_np = 0;
+                pe2 = 0;
+                ex.Sank.S_OSN = ex.ReSank.S_OSN;
+            }
+            else
+            {
+                sump = (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+                var rsum = sump * pe1 / 100;
+                if (ex.ReSank.S_SUM > rsum)
+                    sum_np = -(ex.ReSank.S_SUM - rsum);
+                else sum_np = rsum - ex.ReSank.S_SUM;
+            }
+
+            sluchGridControl.DataController.RefreshData();
+
+            ex.Sank.S_SUM = sum_np;
+            ex.Sank.S_SUM2 = pe2;
+        }
+
+        private void CalcButtonInfo_OnClick(object sender, RoutedEventArgs e)
+        {
+
+            CalcSank((ExpClass)sluchGridControl.SelectedItem);
+
+        }
+
+        private void PacketItem_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            var sa = ((ExpClass)sluchGridControl.SelectedItem).Sank;
+
+            foreach (var ex in sluchGridControl.SelectedItems.OfType<ExpClass>())
+            {
+                ex.Sank.S_TIP2 = sa.S_TIP2;
+                ex.Sank.S_DATE = sa.S_DATE;
+                ex.Sank.ExpOrder = sa.ExpOrder;
+                ex.Sank.DATE_ACT = sa.DATE_ACT;
+                ex.Sank.NUM_ACT = sa.NUM_ACT;
+                ex.Sank.MODEL_ID = sa.MODEL_ID;
+
+                CalcSank(ex);
+
+                ex.Sank.Z_INFO = sa.Z_INFO;
+                ex.Sank.Z_DS1 = sa.Z_DS1;
+                ex.Sank.Z_DS2 = sa.Z_DS2;
+                ex.Sank.Z_DS3 = sa.Z_DS3;
+                ex.Sank.Z_OKAZ_MP = sa.Z_OKAZ_MP;
+                ex.Sank.Z_NEG_POS = sa.Z_NEG_POS;
+                ex.Sank.Z_PREEM = sa.Z_PREEM;
+                ex.Sank.Z_OBOSN_OB = sa.Z_OBOSN_OB;
+                ex.Sank.Z_PROF_GOSP = sa.Z_PROF_GOSP;
+                ex.Sank.S_ZAKL = sa.S_ZAKL;
+
+                if (_expertList != null)
+                    foreach (var expert in _expertList.Where(x => x.D3_SANKGID == sa.S_CODE).ToList())
+                    {
+                        D3_SANK_EXPERT_OMS nexpert = new D3_SANK_EXPERT_OMS()
+                        {
+                            D3_SANKGID = ex.Sank.S_CODE,
+                            ExpertCode = expert.ExpertCode
+                        };
+                        if (!_expertList.Any(x =>
+                            x.D3_SANKGID == nexpert.D3_SANKGID && x.ExpertCode == nexpert.ExpertCode))
+                            _expertList.Add(nexpert);
+                    }
+
+            }
+
         }
     }
 }
