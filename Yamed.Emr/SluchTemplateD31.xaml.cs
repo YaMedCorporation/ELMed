@@ -621,6 +621,7 @@ namespace Yamed.Emr
             KodTerEdit.DataContext = SprClass.KodTers;
             SocStatBox.DataContext = SprClass.SocStats;
             KatLgotBox.DataContext = SprClass.KatLgots;
+            WorkStEdit.DataContext = SprClass.WorkStatDbs;
             //DostEdit.ItemsSource = SprClass.DostList;
 
             DoctGrid.DataContext = SprClass.MedicalEmployeeList;

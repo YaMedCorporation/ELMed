@@ -477,16 +477,16 @@
                                 <dxe:TextEdit EditValue="{Binding VNOV_D, UpdateSourceTrigger=PropertyChanged}" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Группа инв." ToolTip="Группа инвалидности">
-                                <dxe:ComboBoxEdit  x:Name="InvEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.INV, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
+                                <dxe:ComboBoxEdit  x:Name="InvEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.INV, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="МСЭ">
-                                <dxe:ComboBoxEdit  x:Name="MseEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.MSE, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
+                                <dxe:ComboBoxEdit  x:Name="MseEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.MSE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Ветеран">
-                                <dxe:ComboBoxEdit  x:Name="VetEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.VETERAN, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
+                                <dxe:ComboBoxEdit  x:Name="VetEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.VETERAN, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Статус зан." ToolTip="Статус занятости">
-                                <dxe:ComboBoxEdit  x:Name="WorkStEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.WORK_STAT, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
+                                <dxe:ComboBoxEdit  x:Name="WorkStEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.WORK_STAT, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Житель">
                                 <dxe:ComboBoxEdit EditValue="{Binding DataContext.KOD_TER, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" x:Name="KodTerEdit" ItemsSource="{Binding}" DisplayMember="NameWithId" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" Validate="Information_OnValidate"/>
