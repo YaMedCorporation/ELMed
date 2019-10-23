@@ -62,6 +62,11 @@ namespace Yamed.OmsExp.ExpEditors
 
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
             VidExpEdit.DataContext = videxp;
+
+            if (stype == 2)
+                ExpEkmpLayGr.Visibility = Visibility.Collapsed;
+            if (stype == 3)
+                ExpMeeLayGr.Visibility = Visibility.Collapsed;
         }
 
 
@@ -366,6 +371,10 @@ namespace Yamed.OmsExp.ExpEditors
                 ex.Sank.Z_OBOSN_OB = sa.Z_OBOSN_OB;
                 ex.Sank.Z_PROF_GOSP = sa.Z_PROF_GOSP;
                 ex.Sank.S_ZAKL = sa.S_ZAKL;
+                ex.Sank.Z_INFO_NP = sa.Z_INFO_NP;
+                ex.Sank.Z_DS_NP = sa.Z_DS_NP;
+                ex.Sank.Z_PREEM_NP = sa.Z_PREEM_NP;
+
 
                 if (_expertList != null)
                     foreach (var expert in _expertList.Where(x => x.D3_SANKGID == sa.S_CODE).ToList())

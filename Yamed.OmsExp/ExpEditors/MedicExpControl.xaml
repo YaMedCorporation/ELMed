@@ -203,46 +203,54 @@
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup Orientation="Vertical" View="GroupBox" Header="Экспертное заключение" MinWidth="500">
-                    <dxlc:LayoutGroup Orientation="Vertical">
-                        <dxlc:LayoutItem Label="СБОР ИНФОРМАЦИИ">
-                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_INFO, UpdateSourceTrigger=PropertyChanged}" Name="InfoEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="Диагноз основной">
-                            <dxe:TextEdit EditValue="{Binding Z_DS1, UpdateSourceTrigger=PropertyChanged}" Name="Zds1Edit" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="Диагноз осложнения">
-                            <dxe:TextEdit EditValue="{Binding Z_DS3, UpdateSourceTrigger=PropertyChanged}" Name="Zds3Edit" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="Диагноз сопутствующий">
-                            <dxe:TextEdit EditValue="{Binding Z_DS2, UpdateSourceTrigger=PropertyChanged}" Name="Zds2Edit" />
-                        </dxlc:LayoutItem>
-                    </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Orientation="Vertical">
-                        <dxlc:LayoutItem Label="ОКАЗАНИЕ МП">
-                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OKAZ_MP, UpdateSourceTrigger=PropertyChanged}" x:Name="OkazMpEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="Негативные последствия">
-                            <dxe:TextEdit EditValue="{Binding Z_NEG_POS, UpdateSourceTrigger=PropertyChanged}" Name="NegPosEdit" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="ПРЕЕМСТВЕННОСТЬ">
-                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PREEM, UpdateSourceTrigger=PropertyChanged}" x:Name="PreemEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
-                        </dxlc:LayoutItem>
-
-                    </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Orientation="Vertical">
-                        <dxlc:LayoutItem Label="Обоснованность объемов">
-                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OBOSN_OB, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklObEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
-                        </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="Профильность госпитализации">
-                            <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PROF_GOSP, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklPrEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
-                        </dxlc:LayoutItem>
-                    </dxlc:LayoutGroup>
-
-                    <dxlc:LayoutItem Label="Заключение">
-                    <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding S_ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                <dxlc:LayoutGroup Orientation="Vertical" Name="ExpEkmpLayGr">
+                    <dxlc:LayoutItem Label="СБОР ИНФОРМАЦИИ">
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_INFO, UpdateSourceTrigger=PropertyChanged}" Name="InfoEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="СБОР ИНФОРМАЦИИ. Негативные последствия">
+                        <dxe:TextEdit EditValue="{Binding Z_INFO_NP, UpdateSourceTrigger=PropertyChanged}" Name="InfoNegPosEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ДИАГНОЗЫ. Диагноз основной">
+                        <dxe:TextEdit EditValue="{Binding Z_DS1, UpdateSourceTrigger=PropertyChanged}" Name="Zds1Edit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ДИАГНОЗЫ. Диагноз осложнения">
+                        <dxe:TextEdit EditValue="{Binding Z_DS3, UpdateSourceTrigger=PropertyChanged}" Name="Zds3Edit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ДИАГНОЗЫ. Диагноз сопутствующий">
+                        <dxe:TextEdit EditValue="{Binding Z_DS2, UpdateSourceTrigger=PropertyChanged}" Name="Zds2Edit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ДИАГНОЗЫ. Негативные последствия">
+                        <dxe:TextEdit EditValue="{Binding Z_DS_NP, UpdateSourceTrigger=PropertyChanged}" Name="DsNegPosEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ОКАЗАНИЕ МП">
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OKAZ_MP, UpdateSourceTrigger=PropertyChanged}" x:Name="OkazMpEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ОКАЗАНИЕ МП. Негативные последствия">
+                        <dxe:TextEdit EditValue="{Binding Z_NEG_POS, UpdateSourceTrigger=PropertyChanged}" Name="NegPosEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ПРЕЕМСТВЕННОСТЬ">
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PREEM, UpdateSourceTrigger=PropertyChanged}" x:Name="PreemEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="ОКАЗАНИЕ МП. Негативные последствия">
+                        <dxe:TextEdit EditValue="{Binding Z_PREEM_NP, UpdateSourceTrigger=PropertyChanged}" Name="PreemNegPosEdit" />
                     </dxlc:LayoutItem>
 
                 </dxlc:LayoutGroup>
+
+                <dxlc:LayoutGroup Orientation="Vertical" Name="ExpMeeLayGr">
+                    <dxlc:LayoutItem Label="Обоснованность объемов">
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OBOSN_OB, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklObEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Профильность госпитализации">
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_PROF_GOSP, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklPrEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+
+                <dxlc:LayoutItem Label="Заключение">
+                    <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding S_ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />
+                </dxlc:LayoutItem>
+
+            </dxlc:LayoutGroup>
             </dxlc:LayoutControl>
 
         </Grid>

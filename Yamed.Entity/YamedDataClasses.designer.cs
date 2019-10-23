@@ -111,16 +111,16 @@ namespace Yamed.Entity
     partial void InsertD3_SL_OMS(D3_SL_OMS instance);
     partial void UpdateD3_SL_OMS(D3_SL_OMS instance);
     partial void DeleteD3_SL_OMS(D3_SL_OMS instance);
-    partial void InsertD3_SANK_OMS(D3_SANK_OMS instance);
-    partial void UpdateD3_SANK_OMS(D3_SANK_OMS instance);
-    partial void DeleteD3_SANK_OMS(D3_SANK_OMS instance);
     partial void InsertD3_SANK_EXPERT_OMS(D3_SANK_EXPERT_OMS instance);
     partial void UpdateD3_SANK_EXPERT_OMS(D3_SANK_EXPERT_OMS instance);
     partial void DeleteD3_SANK_EXPERT_OMS(D3_SANK_EXPERT_OMS instance);
+    partial void InsertD3_SANK_OMS(D3_SANK_OMS instance);
+    partial void UpdateD3_SANK_OMS(D3_SANK_OMS instance);
+    partial void DeleteD3_SANK_OMS(D3_SANK_OMS instance);
     #endregion
 		
 		public YamedDataClassesDataContext() : 
-				base(global::Yamed.Entity.Properties.Settings.Default.ELMEDICINENEWFONDConnectionString1, mappingSource)
+				base(global::Yamed.Entity.Properties.Settings.Default.ELMEDICINENEWFONDConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -381,19 +381,19 @@ namespace Yamed.Entity
 			}
 		}
 		
-		public System.Data.Linq.Table<D3_SANK_OMS> D3_SANK_OMS
-		{
-			get
-			{
-				return this.GetTable<D3_SANK_OMS>();
-			}
-		}
-		
 		public System.Data.Linq.Table<D3_SANK_EXPERT_OMS> D3_SANK_EXPERT_OMS
 		{
 			get
 			{
 				return this.GetTable<D3_SANK_EXPERT_OMS>();
+			}
+		}
+		
+		public System.Data.Linq.Table<D3_SANK_OMS> D3_SANK_OMS
+		{
+			get
+			{
+				return this.GetTable<D3_SANK_OMS>();
 			}
 		}
 	}
@@ -16617,6 +16617,140 @@ namespace Yamed.Entity
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.D3_SANK_EXPERT_OMS")]
+	public partial class D3_SANK_EXPERT_OMS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _D3_SANKID;
+		
+		private string _D3_SANKGID;
+		
+		private string _ExpertCode;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnD3_SANKIDChanging(int value);
+    partial void OnD3_SANKIDChanged();
+    partial void OnD3_SANKGIDChanging(string value);
+    partial void OnD3_SANKGIDChanged();
+    partial void OnExpertCodeChanging(string value);
+    partial void OnExpertCodeChanged();
+    #endregion
+		
+		public D3_SANK_EXPERT_OMS()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_D3_SANKID", DbType="Int NOT NULL")]
+		public int D3_SANKID
+		{
+			get
+			{
+				return this._D3_SANKID;
+			}
+			set
+			{
+				if ((this._D3_SANKID != value))
+				{
+					this.OnD3_SANKIDChanging(value);
+					this.SendPropertyChanging();
+					this._D3_SANKID = value;
+					this.SendPropertyChanged("D3_SANKID");
+					this.OnD3_SANKIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_D3_SANKGID", DbType="NVarChar(36)")]
+		public string D3_SANKGID
+		{
+			get
+			{
+				return this._D3_SANKGID;
+			}
+			set
+			{
+				if ((this._D3_SANKGID != value))
+				{
+					this.OnD3_SANKGIDChanging(value);
+					this.SendPropertyChanging();
+					this._D3_SANKGID = value;
+					this.SendPropertyChanged("D3_SANKGID");
+					this.OnD3_SANKGIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpertCode", DbType="NVarChar(8)")]
+		public string ExpertCode
+		{
+			get
+			{
+				return this._ExpertCode;
+			}
+			set
+			{
+				if ((this._ExpertCode != value))
+				{
+					this.OnExpertCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ExpertCode = value;
+					this.SendPropertyChanged("ExpertCode");
+					this.OnExpertCodeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.D3_SANK_OMS")]
 	public partial class D3_SANK_OMS : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -16669,6 +16803,8 @@ namespace Yamed.Entity
 		
 		private string _ExpOrder;
 		
+		private System.Nullable<System.DateTime> _SysDtCreate;
+		
 		private string _Z_INFO;
 		
 		private string _Z_DS1;
@@ -16686,6 +16822,12 @@ namespace Yamed.Entity
 		private string _Z_OBOSN_OB;
 		
 		private string _Z_PROF_GOSP;
+		
+		private string _Z_INFO_NP;
+		
+		private string _Z_DS_NP;
+		
+		private string _Z_PREEM_NP;
 		
 		private EntitySet<D3_AKT_MEE_TBL> _D3_AKT_MEE_TBL;
 		
@@ -16743,6 +16885,8 @@ namespace Yamed.Entity
     partial void OnMODEL_IDChanged();
     partial void OnExpOrderChanging(string value);
     partial void OnExpOrderChanged();
+    partial void OnSysDtCreateChanging(System.Nullable<System.DateTime> value);
+    partial void OnSysDtCreateChanged();
     partial void OnZ_INFOChanging(string value);
     partial void OnZ_INFOChanged();
     partial void OnZ_DS1Changing(string value);
@@ -16761,6 +16905,12 @@ namespace Yamed.Entity
     partial void OnZ_OBOSN_OBChanged();
     partial void OnZ_PROF_GOSPChanging(string value);
     partial void OnZ_PROF_GOSPChanged();
+    partial void OnZ_INFO_NPChanging(string value);
+    partial void OnZ_INFO_NPChanged();
+    partial void OnZ_DS_NPChanging(string value);
+    partial void OnZ_DS_NPChanged();
+    partial void OnZ_PREEM_NPChanging(string value);
+    partial void OnZ_PREEM_NPChanged();
     #endregion
 		
 		public D3_SANK_OMS()
@@ -17119,7 +17269,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODE_EXP", DbType="NVarChar(8)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODE_EXP", DbType="NVarChar(250)")]
 		public string CODE_EXP
 		{
 			get
@@ -17235,6 +17385,26 @@ namespace Yamed.Entity
 					this._ExpOrder = value;
 					this.SendPropertyChanged("ExpOrder");
 					this.OnExpOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysDtCreate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SysDtCreate
+		{
+			get
+			{
+				return this._SysDtCreate;
+			}
+			set
+			{
+				if ((this._SysDtCreate != value))
+				{
+					this.OnSysDtCreateChanging(value);
+					this.SendPropertyChanging();
+					this._SysDtCreate = value;
+					this.SendPropertyChanged("SysDtCreate");
+					this.OnSysDtCreateChanged();
 				}
 			}
 		}
@@ -17419,6 +17589,66 @@ namespace Yamed.Entity
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Z_INFO_NP", DbType="NVarChar(4000)")]
+		public string Z_INFO_NP
+		{
+			get
+			{
+				return this._Z_INFO_NP;
+			}
+			set
+			{
+				if ((this._Z_INFO_NP != value))
+				{
+					this.OnZ_INFO_NPChanging(value);
+					this.SendPropertyChanging();
+					this._Z_INFO_NP = value;
+					this.SendPropertyChanged("Z_INFO_NP");
+					this.OnZ_INFO_NPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Z_DS_NP", DbType="NVarChar(4000)")]
+		public string Z_DS_NP
+		{
+			get
+			{
+				return this._Z_DS_NP;
+			}
+			set
+			{
+				if ((this._Z_DS_NP != value))
+				{
+					this.OnZ_DS_NPChanging(value);
+					this.SendPropertyChanging();
+					this._Z_DS_NP = value;
+					this.SendPropertyChanged("Z_DS_NP");
+					this.OnZ_DS_NPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Z_PREEM_NP", DbType="NVarChar(4000)")]
+		public string Z_PREEM_NP
+		{
+			get
+			{
+				return this._Z_PREEM_NP;
+			}
+			set
+			{
+				if ((this._Z_PREEM_NP != value))
+				{
+					this.OnZ_PREEM_NPChanging(value);
+					this.SendPropertyChanging();
+					this._Z_PREEM_NP = value;
+					this.SendPropertyChanged("Z_PREEM_NP");
+					this.OnZ_PREEM_NPChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SANK_OMS_D3_AKT_MEE_TBL", Storage="_D3_AKT_MEE_TBL", ThisKey="ID", OtherKey="SANKID")]
 		public EntitySet<D3_AKT_MEE_TBL> D3_AKT_MEE_TBL
 		{
@@ -17530,140 +17760,6 @@ namespace Yamed.Entity
 		{
 			this.SendPropertyChanging();
 			entity.D3_SANK_OMS = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.D3_SANK_EXPERT_OMS")]
-	public partial class D3_SANK_EXPERT_OMS : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _D3_SANKID;
-		
-		private string _D3_SANKGID;
-		
-		private string _ExpertCode;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnD3_SANKIDChanging(int value);
-    partial void OnD3_SANKIDChanged();
-    partial void OnD3_SANKGIDChanging(string value);
-    partial void OnD3_SANKGIDChanged();
-    partial void OnExpertCodeChanging(string value);
-    partial void OnExpertCodeChanged();
-    #endregion
-		
-		public D3_SANK_EXPERT_OMS()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_D3_SANKID", DbType="Int NOT NULL")]
-		public int D3_SANKID
-		{
-			get
-			{
-				return this._D3_SANKID;
-			}
-			set
-			{
-				if ((this._D3_SANKID != value))
-				{
-					this.OnD3_SANKIDChanging(value);
-					this.SendPropertyChanging();
-					this._D3_SANKID = value;
-					this.SendPropertyChanged("D3_SANKID");
-					this.OnD3_SANKIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_D3_SANKGID", DbType="NVarChar(36)")]
-		public string D3_SANKGID
-		{
-			get
-			{
-				return this._D3_SANKGID;
-			}
-			set
-			{
-				if ((this._D3_SANKGID != value))
-				{
-					this.OnD3_SANKGIDChanging(value);
-					this.SendPropertyChanging();
-					this._D3_SANKGID = value;
-					this.SendPropertyChanged("D3_SANKGID");
-					this.OnD3_SANKGIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpertCode", DbType="NVarChar(8)")]
-		public string ExpertCode
-		{
-			get
-			{
-				return this._ExpertCode;
-			}
-			set
-			{
-				if ((this._ExpertCode != value))
-				{
-					this.OnExpertCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ExpertCode = value;
-					this.SendPropertyChanged("ExpertCode");
-					this.OnExpertCodeChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
