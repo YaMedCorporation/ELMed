@@ -160,7 +160,7 @@
                                                     Header="Код эксперта" Width="300">
                                                     <dxg:GridColumn.EditSettings>
                                                         <dxe:ComboBoxEditSettings x:Name="ExpertColumnEdit"
-                                                            AutoComplete="True"
+                                                            AutoComplete="True" ValidateOnTextInput="False"
                                                             DisplayMember="NameWithID"
                                                             FilterCondition="Contains"
                                                             ImmediatePopup="True"
