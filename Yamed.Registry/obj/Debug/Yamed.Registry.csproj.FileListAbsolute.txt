@@ -5233,3 +5233,8 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Registry\bin\Debug\ICSharpCode.AvalonEdit.dl
 C:\Users\WILD\Desktop\git_exp\Yamed.Registry\bin\Debug\ActiveQueryBuilder.View.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Registry\bin\Debug\Yamed.OmsExp.pdb
 C:\Users\WILD\Desktop\git_exp\Yamed.Registry\bin\Debug\Yamed.OmsExp.dll.config
+E:\ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.dll
+E:\ELMed\Yamed.Registry\bin\Debug\ICSharpCode.AvalonEdit.dll
+E:\ELMed\Yamed.Registry\bin\Debug\ActiveQueryBuilder.View.dll
+E:\ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.pdb
+E:\ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.dll.config

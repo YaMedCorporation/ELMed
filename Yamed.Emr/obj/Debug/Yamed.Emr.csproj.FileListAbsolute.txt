@@ -1874,7 +1874,6 @@ E:\ELMed\Yamed.Emr\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
 E:\ELMed\Yamed.Emr\obj\Debug\Yamed.Emr.csprojAssemblyReference.cache
 E:\ELMed\Yamed.Emr\obj\Debug\EmrPacientControl.baml
 E:\ELMed\Yamed.Emr\obj\Debug\EmrPacient.baml
-E:\ELMed\Yamed.Emr\obj\Debug\SankControl.baml
 E:\ELMed\Yamed.Emr\obj\Debug\ReferralTemplate.baml
 E:\ELMed\Yamed.Emr\obj\Debug\SluchTemplateD3.baml
 E:\ELMed\Yamed.Emr\obj\Debug\SluchTemplate.baml
@@ -1882,7 +1881,6 @@ E:\ELMed\Yamed.Emr\obj\Debug\ClinicEmrPacient.g.cs
 E:\ELMed\Yamed.Emr\obj\Debug\EmrFullControl.g.cs
 E:\ELMed\Yamed.Emr\obj\Debug\EmrPacientControl.g.cs
 E:\ELMed\Yamed.Emr\obj\Debug\EmrPacient.g.cs
-E:\ELMed\Yamed.Emr\obj\Debug\SankControl.g.cs
 E:\ELMed\Yamed.Emr\obj\Debug\SluchTemplateD31.g.cs
 E:\ELMed\Yamed.Emr\obj\Debug\UslTemplateD3.g.cs
 E:\ELMed\Yamed.Emr\obj\Debug\OphtTestTemplate.g.cs
@@ -1913,3 +1911,8 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\ICSharpCode.AvalonEdit.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\ActiveQueryBuilder.View.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\Yamed.OmsExp.pdb
 C:\Users\WILD\Desktop\git_exp\Yamed.Emr\bin\Debug\Yamed.OmsExp.dll.config
+E:\ELMed\Yamed.Emr\bin\Debug\Yamed.OmsExp.dll
+E:\ELMed\Yamed.Emr\bin\Debug\ICSharpCode.AvalonEdit.dll
+E:\ELMed\Yamed.Emr\bin\Debug\ActiveQueryBuilder.View.dll
+E:\ELMed\Yamed.Emr\bin\Debug\Yamed.OmsExp.pdb
+E:\ELMed\Yamed.Emr\bin\Debug\Yamed.OmsExp.dll.config
