@@ -275,9 +275,16 @@ namespace Yamed.OmsExp.ExpEditors
                     Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank_ {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
                 }
             }
+            if (_re == 0 && Sum2Edit.Text== "")
+            {
+                DXMessageBox.Show("Не произведен расчет");
+            }
+            else
+            {
+                ((DXWindow)this.Parent).Close();
+            }
 
-            ((DXWindow)this.Parent).Close();
-
+           
 
         }
 
@@ -309,12 +316,12 @@ namespace Yamed.OmsExp.ExpEditors
             if (_re == 0)
             {
                 if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null ||
-                    (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
-                    sump = (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+                    (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
+                    sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                 else
-                    sump = (decimal) ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
+                    sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
 
-                sum_np = Math.Round((decimal) sump * pe1 / 100, 2,
+                sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                     MidpointRounding.AwayFromZero);
 
             }
