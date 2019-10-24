@@ -113,7 +113,9 @@ namespace Yamed.Emr
 
         public void BindPacient(int pid)
         {
-            Task.Factory.StartNew(() => _pacient = PacientData(pid)).ContinueWith(x => PacientGroup.DataContext = _pacient, TaskScheduler.FromCurrentSynchronizationContext());
+
+                Task.Factory.StartNew(() => _pacient = PacientData(pid)).ContinueWith(x => PacientGroup.DataContext = _pacient, TaskScheduler.FromCurrentSynchronizationContext());
+
         }
 
         public void BindEmptyPacient()
@@ -134,10 +136,11 @@ namespace Yamed.Emr
 
         public D3_PACIENT_OMS PacientData(int pid)
         {
+            
             return Reader2List.CustomSelect<D3_PACIENT_OMS>($"SELECT top 1 * FROM D3_PACIENT_OMS WHERE ID = {pid}", SprClass.LocalConnectionString).Single();
             //Dost = SqlReader.Select($"SELECT * FROM PACIENT_DOST WHERE PID = {pid}", SprClass.LocalConnectionString).ToArray();
             //Dostp = SqlReader.Select($"SELECT * FROM PACIENT_DOSTP WHERE PID = {pid}", SprClass.LocalConnectionString);
-
+            
         }
 
         //public void BindSluch(int slid, D3_SCHET_OMS sc = null)
@@ -598,7 +601,10 @@ namespace Yamed.Emr
 
         void GetSpr()
         {
+
             // для тестирования заполнения полей Иваново, Андрей insidious
+          
+                
             Socstatus.DataContext = SprClass.rg001; //заполнение поля Socstatus для Иваново
             Povodobr.DataContext = SprClass.rg003; //заполнение поля Povod obr для Иваново
             ProfilkEditreg.DataContext = SprClass.rg004; //заполнение поля profil_reg для Иваново
@@ -617,11 +623,11 @@ namespace Yamed.Emr
 
             policyTypeBox.DataContext = SprClass.policyType;
             smoBox.DataContext = SprClass.smo;
-
+            SocStatBox.DataContext = SprClass.SocStatsnew;
             KodTerEdit.DataContext = SprClass.KodTers;
-            SocStatBox.DataContext = SprClass.SocStats;
             KatLgotBox.DataContext = SprClass.KatLgots;
             WorkStEdit.DataContext = SprClass.WorkStatDbs;
+            InvEdit.DataContext = SprClass.INV;
             //DostEdit.ItemsSource = SprClass.DostList;
 
             DoctGrid.DataContext = SprClass.MedicalEmployeeList;
@@ -648,12 +654,13 @@ namespace Yamed.Emr
             OtdelGrid.DataContext = SprClass.OtdelDbs;
             PodrGrid.DataContext = SprClass.Podr;
             ForPomGrid.DataContext = SprClass.ForPomList;
-            Ds1PrEdit.DataContext = SprClass.SprBit;
+            Ds1PrEdit.DataContext = SprClass.SprBit; 
             VozrEdit.DataContext = SprClass.VozrList;
             VetEdit.DataContext = SprClass.VeteranDbs;
             ReabnEdit.DataContext = SprClass.SprBit;
             DnEdit.DataContext = SprClass.DnList;
             OplataEdit.DataContext = SprClass.Spr79_F005;
+            VbrBox.DataContext = SprClass.SprBit;
             VbpEdit.DataContext = SprClass.SprBit;
             PrNovEdit.DataContext = SprClass.PrNov;
 
@@ -707,7 +714,7 @@ namespace Yamed.Emr
             NksgEdit.DataContext = SprClass.CalcKsgTarifList;
             KslpCodeColumnEdit.DataContext = SprClass.KslpList;
             CritColumn.DataContext = SprClass.V024;
-
+            RsltdBox.DataContext = SprClass.V017;
             NazrColumnEdit.DataContext = SprClass.NAZR;
             NazSpColumnEdit.DataContext = SprClass.SpecV021List;
             NazvColumnEdit.DataContext = SprClass.V029;
@@ -1500,6 +1507,8 @@ namespace Yamed.Emr
             _zsl.DATE_Z_2 = _zslLock.DATE_Z_2;
             _zsl.RSLT = _zslLock.RSLT;
             _zsl.ISHOD = _zslLock.ISHOD;
+            _zsl.VB_P = _zslLock.VB_P;
+            _zsl.NPR_DATE = _zslLock.NPR_DATE;
         }
 
         void SlEditDefault()
@@ -1522,6 +1531,8 @@ namespace Yamed.Emr
             ((D3_SL_OMS)SlGridControl.SelectedItem).DS_ONK = _slLock.DS_ONK;
             ((D3_SL_OMS)SlGridControl.SelectedItem).DS1_PR = _slLock.DS1_PR;
             ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD = _slLock.POVOD;
+            ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER = _slLock.P_PER;
+            ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K = _slLock.PROFIL_K;
         }
 
         void ZSlEditLock()
@@ -1540,6 +1551,9 @@ namespace Yamed.Emr
             _zslLock.DATE_Z_2 = DateZ2Tb.IsChecked == true ? _zsl.DATE_Z_2 : null;
             _zslLock.RSLT = RsltTb.IsChecked == true ? _zsl.RSLT : null;
             _zslLock.ISHOD = IshodTb.IsChecked == true ? _zsl.ISHOD : null;
+            _zslLock.NPR_DATE = NaprDateTb.IsChecked == true ? _zsl.NPR_DATE : null;
+            _zslLock.VB_P = VbpTb.IsChecked == true ? _zsl.VB_P : null;
+            
         }
 
         void SlEditLock()
@@ -1563,6 +1577,8 @@ namespace Yamed.Emr
             _slLock.DS_ONK = DsOnkTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS_ONK : null;
             _slLock.DS1_PR = Ds1PrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS1_PR : null;
             _slLock.POVOD = povodobrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD : null;
+            _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
+            _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
         }
 
         private void EmrPacient_OnClick(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -246,6 +247,9 @@ namespace Yamed.Server
         public static object Per;
         public static object PrNov;
 
+        public static object SocStatsnew;
+        public static object INV;
+
         public static object rg004; // класс для справочника rg004 Иваново
         public static object rg003;// класс для справочника rg003 Иваново
         public static object rg001; // класс для справочника rg001 Иваново
@@ -354,8 +358,11 @@ namespace Yamed.Server
 
             CalcKsgTarifList = Reader2List.GetAnonymousTable("SprKsg", LocalConnectionString);
 
+            INV = Reader2List.CustomAnonymousSelect($"Select * from SprINV", LocalConnectionString);
 
             //Справочники для работы полей Иваново, Андрей Insidious
+
+            SocStatsnew = Reader2List.CustomAnonymousSelect($"Select * from SocStat", LocalConnectionString);
             rg001 = Reader2List.CustomAnonymousSelect($"Select * from rg001", LocalConnectionString);
             rg003 = Reader2List.CustomAnonymousSelect($"Select * from rg003", LocalConnectionString);
             rg004 = Reader2List.CustomAnonymousSelect($"Select * from rg004", LocalConnectionString);
