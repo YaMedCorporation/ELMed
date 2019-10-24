@@ -220,8 +220,6 @@ C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\SideMenu.g.cs
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
-C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MenuButton.baml
-C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\SideMenu.baml
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu.g.resources
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
