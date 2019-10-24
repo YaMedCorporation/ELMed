@@ -191,5 +191,16 @@ namespace Yamed.Entity.Properties {
                 return ((string)(this["ElmedicineNewConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.0.112;Initial Catalog=SMO_SpassGate;User ID=sa;Password=Gbljh" +
+            ":100")]
+        public string SMO_SpassGateConnectionString2 {
+            get {
+                return ((string)(this["SMO_SpassGateConnectionString2"]));
+            }
+        }
     }
 }
