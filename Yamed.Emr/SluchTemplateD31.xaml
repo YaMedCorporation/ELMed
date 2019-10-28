@@ -790,7 +790,7 @@
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />
                                 <dxg:GridColumn FieldName="S_SUM2" Header="Штраф" />
                                 <dxg:GridColumn FieldName="S_DATE" Header="Дата" />
-                                <dxg:GridColumn FieldName="S_COM" Header="Комментарий" />
+                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий" />
 
                             </dxg:GridControl>
                             <dxlc:LayoutItem Grid.Row="3" Label="ФЛК" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="LPU">
