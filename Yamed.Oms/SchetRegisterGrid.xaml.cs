@@ -87,6 +87,7 @@ namespace Yamed.Oms
             MetodHmpEdit.DataContext = SprClass.MetodVmpList;
             KsgEdit.DataContext = SprClass.CalcKsgTarifList;
             Ds1Edit.DataContext = SprClass.mkbSearching;
+            Ds0Edit.DataContext = SprClass.mkbSearching;
             PrvsEdit.DataContext = SprClass.SpecAllList;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
