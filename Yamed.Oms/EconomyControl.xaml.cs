@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -2377,6 +2378,32 @@ UPDATE D3_USL_OMS
                 IsCloseable = "True",
             });
 
+        }
+
+        private void LoadMis_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
+                var idSchet = (int)ObjHelper.GetAnonymousValue(sc, "ID");
+                var month = (int)ObjHelper.GetAnonymousValue(sc, "MONTH");
+                var year = (int)ObjHelper.GetAnonymousValue(sc, "YEAR");
+                var lpu = (string)ObjHelper.GetAnonymousValue(sc, "CODE_MO");
+                StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "\\run.cmd");
+                file.Write("RegistryUpload.SlashScreenYamed.exe" + " -reestruploadYamed" + " -lpu=" + lpu + " -year=" + year + " -month=" + month + " -idSchet=" + idSchet);
+                file.Close();
+                ProcessStartInfo startInfo = new ProcessStartInfo(Environment.CurrentDirectory + "\\run.cmd");
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(startInfo).WaitForExit();
+                if (Process.GetProcessesByName("RegistryUpload.SlashScreenYamed").Length == 0)
+                {
+                    DXMessageBox.Show("Данные загружены!");
+                }
+            }
+            catch
+            {
+                DXMessageBox.Show("Не выбран счет для загрузки МИС");
+            }
         }
     }
 }

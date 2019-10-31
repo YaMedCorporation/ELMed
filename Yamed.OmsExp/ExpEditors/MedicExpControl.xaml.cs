@@ -105,7 +105,8 @@ namespace Yamed.OmsExp.ExpEditors
                             D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID"),
                             D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID"),
                             S_TIP = _re == 0 ? (int?)_stype : null,
-                            S_CODE = Guid.NewGuid().ToString()
+                            S_CODE = Guid.NewGuid().ToString(),
+                            S_DATE = DateTime.Today
                         };
                         
                         _slpsList.Add(expList);
