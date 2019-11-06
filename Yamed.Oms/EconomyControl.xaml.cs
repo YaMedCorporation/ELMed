@@ -608,7 +608,7 @@ where zsl.D3_SCID = {sc.ID} and zsl.OS_SLUCH_REGION is null
 
 ", SprClass.LocalConnectionString);
 
-            
+
             Reader2List.CustomExecuteQuery($@"
 					Update D3_ZSL_OMS SET
                         SUMV=
@@ -1069,18 +1069,16 @@ where  zsl.D3_SCID =  { sc.ID}   and
 ) tt1 on sl.ID = tt1.ID
 ", SprClass.LocalConnectionString);
 
-
-
             Reader2List.CustomExecuteQuery($@"
 Update D3_SL_OMS SET ED_COL = 1
 from D3_SL_OMS sl
 join D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = { sc.ID}
-where zsl.OS_SLUCH_REGION in (4,5,7,9,17,21,29,31,32,33,34,35,36,37,38,39,40)
+where zsl.OS_SLUCH_REGION in (4,5,7,9,17,21,29,32,33,34,35,36,37,38,40)
 
 					Update D3_ZSL_OMS SET
 					--select
                          SUMV = (CASE
-                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 4,5,7,9,17,21,29,30,31,32,33,34,35,36,37,38,39,40) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 4,5,7,9,17,21,29,30,32,33,34,35,36,37,38,40) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
                                 ELSE ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2) --0.00
                             END)
                     from D3_ZSL_OMS zsl 
@@ -1090,6 +1088,42 @@ where zsl.OS_SLUCH_REGION in (4,5,7,9,17,21,29,31,32,33,34,35,36,37,38,39,40)
                     left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
                     where zsl.D3_SCID = { sc.ID} and 
 					 OS_SLUCH_REGION not in (11,22,6,47,49)
+
+update sl set sum_m = tt1.sumv, tarif = tt1.tarif
+from d3_sl_oms sl
+join ( select case when RN = 1 then sumv else 0.00 end sumv, sumv tarif, ID from
+(
+select ROW_NUMBER() OVER (PARTITION BY zsl.ID  ORDER BY sl.date_2 desc) RN,
+sl.*, zsl.sumv
+from D3_ZSL_OMS zsl
+join d3_sl_oms sl on zsl.ID = sl.D3_ZSLID
+join d3_schet_oms sc on zsl.D3_SCID = sc.ID
+where  zsl.D3_SCID = { sc.ID} and 
+					 OS_SLUCH_REGION not in (11,22,6,47,49,31,39)
+) tt --where tt.RN = 1
+) tt1 on sl.ID = tt1.ID
+", SprClass.LocalConnectionString);
+
+
+            Reader2List.CustomExecuteQuery($@"
+Update D3_SL_OMS SET ED_COL = 1
+from D3_SL_OMS sl
+join D3_ZSL_OMS zsl on sl.D3_ZSLID = zsl.ID and zsl.D3_SCID = { sc.ID}
+where zsl.OS_SLUCH_REGION in (31, 39)
+
+					Update D3_ZSL_OMS SET
+					--select
+                         SUMV = (CASE
+                                WHEN ((SMO is null or SMO not like '46%') or OS_SLUCH_REGION in ( 31, 39) or (SELECT Parametr From Settings Where Name = 'SoulNorm') = 0) THEN ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2)
+                                ELSE ROUND(isnull(sl.ED_COL, 1.00) * t.tarif1 * ISNULL(kf.KZMP, 1.00), 2) --0.00
+                            END)
+                    from D3_ZSL_OMS zsl 
+                    JOIN D3_PACIENT_OMS pa on zsl.D3_PID = pa.ID
+					join D3_SL_OMS sl on zsl.ID = sl.D3_ZSLID --and zsl.USL_OK =3
+                    join CalcAmbTarif t on zsl.OS_SLUCH_REGION = t.OS_SLUCH and sl.Profil = t.Profil and (sl.DATE_2 >= t.TBEG and sl.DATE_2 < t.TEND +1) 
+                    left join CalcMok as kf on kf.KOD_LPU = zsl.LPU AND (zsl.DATE_Z_2 >= kf.DATESTART and (kf.DATEEND is NULL OR zsl.DATE_Z_2 < kf.DATEEND +1))
+                    where zsl.D3_SCID = { sc.ID} and 
+					 OS_SLUCH_REGION in (31,39)
 
 update sl set sum_m = tt1.sumv, tarif = tt1.tarif
 from d3_sl_oms sl
