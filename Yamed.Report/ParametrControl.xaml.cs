@@ -56,6 +56,8 @@ namespace Yamed.Reports
                     SDatesLGroup.Visibility = Visibility.Collapsed;
                     PayerLGroup.Visibility = Visibility.Collapsed;
                     DocTypeEdit.Visibility = Visibility.Collapsed;
+                    AktDatesLGroup.Visibility = Visibility.Collapsed;
+                    SpisokAktLGroup.Visibility = Visibility.Collapsed;
                 }
 
                 if (IsSDates)
@@ -63,6 +65,8 @@ namespace Yamed.Reports
                     PDatesLGroup.Visibility = Visibility.Collapsed;
                     PayerLGroup.Visibility = Visibility.Collapsed;
                     DocTypeEdit.Visibility = Visibility.Collapsed;
+                    AktDatesLGroup.Visibility = Visibility.Collapsed;
+                    SpisokAktLGroup.Visibility = Visibility.Collapsed;
                 }
 
                 if (IsAktDates)
@@ -78,6 +82,8 @@ namespace Yamed.Reports
                 {
                     SDatesLGroup.Visibility = Visibility.Collapsed;
                     PDatesLGroup.Visibility = Visibility.Collapsed;
+                    AktDatesLGroup.Visibility = Visibility.Collapsed;
+                    SpisokAktLGroup.Visibility = Visibility.Collapsed;
 
                     if (IsDocType)
                     {
@@ -212,9 +218,11 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
             if (IsSDates || IsAllDates)
                 rp.s_dates = DateListBoxEdit.SelectedItems.Any() ? GetStringOfDates(DateListBoxEdit.SelectedItems) : null;
 
-            if (IsAktDates || IsAllDates)
+            if (IsAktDates)
+            {
                 rp.s_dates = DateActListBoxEdit.SelectedItems.Any() ? GetStringOfDatesAkt(DateActListBoxEdit.SelectedItems) : null;
-            rp.num_act = (string)NomerAktEdit.EditValue ?? "";
+                rp.num_act = (string)NomerAktEdit.EditValue ?? "";
+            }
 
             if (IsPDates || IsAllDates)
             {
