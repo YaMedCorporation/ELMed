@@ -16,6 +16,20 @@
                             </dxe:ListBoxEdit.StyleSettings>
                         </dxe:ListBoxEdit>
                 </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Orientation="Vertical"  View="GroupBox" Header="Даты актов" Name="AktDatesLGroup">
+                    <dxe:ListBoxEdit Name="DateActListBoxEdit" ItemsSource="{Binding}" SelectedIndexChanged="getnomerAkt" SelectionMode="Extended" DisplayMember="DATE_ACT_RUS" ValueMember="DATE_ACT" Height="200" >
+                        <dxe:ListBoxEdit.StyleSettings>
+                            <dxe:CheckedListBoxEditStyleSettings />
+                        </dxe:ListBoxEdit.StyleSettings>
+                    </dxe:ListBoxEdit>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Name="SpisokAktLGroup">
+                    <dxlc:LayoutGroup Orientation="Vertical">
+                        <dxlc:LayoutItem Label="Номер акта">
+                            <dxe:ComboBoxEdit x:Name="NomerAktEdit" ItemsSource="{Binding}" EditValue="NUM_ACT" ValueMember="NUM_ACT" DisplayMember="NUM_ACT" HorizontalScrollBarVisibility="Disabled"  AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" EditValueChanged="PayerEdit_OnEditValueChanged"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup Header="Период отчета" View="GroupBox" Name="PDatesLGroup">
                     <dxlc:LayoutItem Label="C">
                         <dxe:DateEdit Name="BeginDateEdit"

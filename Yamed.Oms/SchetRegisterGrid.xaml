@@ -79,6 +79,44 @@
                 <dxg:GridColumn x:Name="Column_SNILS" FieldName="SNILS" Header="СНИЛС" />
                 <dxg:GridColumn x:Name="Column_VPOLIS" FieldName="VPOLIS" Header="Тип полиса" />
                 <dxg:GridColumn x:Name="Column_NPOLIS" FieldName="NPOLIS" Header="Номер полиса"  />
+                <dxg:GridColumn x:Name="Column_MSE" FieldName="MSE" Header="МСЭ"/>
+                <dxg:GridColumn x:Name="Column_KOD_TER" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="KOD_TER" Header="Житель" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="KodTEdit" DisplayMember="NameWithId" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn x:Name="Column_KAT_LGOT" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="KAT_LGOT" Header="Категория льготн." >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="KatLgotEdit" DisplayMember="NameWithId" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn x:Name="Column_WORK_STAT" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="WORK_STAT" Header="Статус занятости" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="WorkStEdit" DisplayMember="NameWithID" ValueMember="Id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn x:Name="Column_VETERAN" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="VETERAN" Header="Ветеран" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="VetEdit" DisplayMember="NameWithID" ValueMember="Id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn x:Name="Column_VBR" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="VBR" Header="Признак моб. бригады" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="VbrEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn x:Name="Column_INV" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="INV" Header="Группа инвалидности" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="INVEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+
                 <dxg:GridColumn x:Name="Column_SMO" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="SMO" Header="СМО" >
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="SmoEdit" DisplayMember="NameWithID" ValueMember="smocod" ItemsSource="{Binding}" AllowDefaultButton="False"/>
@@ -256,6 +294,11 @@
                         <dxe:ComboBoxEditSettings Name="Ds1Edit" DisplayMember="NameWithID" ValueMember="IDDS" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column__SL__DS0" FieldName="DS0" Header="Диагноз первичный" FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="Ds0Edit" DisplayMember="NameWithID" ValueMember="IDDS" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__DS1_PR" FieldName="DS1_PR" Header="Диагноз выявлен впервые" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__CODE_MES1" FieldName="CODE_MES1" Header="Код МЭС1" />
                 <dxg:GridColumn x:Name="Column__SL__CODE_MES2" FieldName="CODE_MES2" Header="Код МЭС2" />
@@ -329,9 +372,14 @@
                 <dxg:GridColumn x:Name="Column__SL__KSKP" FieldName="KSKP" Header="Коэфф. сложности лечения пациента" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SOCSTATUS" FieldName="SOCSTATUS" Header="Категория населения (соц. статус)" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="SOCSTATUS" DisplayMember="NameWithID" ValueMember="KATEGOR" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="SOCSTATUS" DisplayMember="NameWithID" ValueMember="KATEGOR" ItemsSource="{Binding}" AllowDefaultButton="False" />
                     </dxg:GridColumn.EditSettings>
-                </dxg:GridColumn>  
+                </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column__SL__SOCSTATUSK" FieldName="SOC_STAT" Header="Социальный статус" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="SocStatBox" DisplayMember="NameWithId" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
 
                 <dxg:GridColumn x:Name="Column__SL__AdressP" FieldName="AdressP" Header="Адрес регистрации" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/> <!-- добавил поле Андрей insidious -->
             </dxg:GridControl.Columns>

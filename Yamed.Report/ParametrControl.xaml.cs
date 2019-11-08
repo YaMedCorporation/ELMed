@@ -31,6 +31,7 @@ namespace Yamed.Reports
         public bool IsAllDates;
         public bool IsPayer;
         public bool IsDocType;
+        public bool IsAktDates;
 
         public ParametrControl(int[] sc, object row, int isExport)
         {
@@ -39,11 +40,12 @@ namespace Yamed.Reports
             _row = row;
             var rtype = (int) ObjHelper.GetAnonymousValue(_row, "RepType");
 
-            IsSDates = new int[] { 101, 102, 103, 104 }.Contains(rtype);
+            IsSDates = new int[] { 101, 102, 103/*, 104*/ }.Contains(rtype);
             IsPDates = new int[] { 110, 120 }.Contains(rtype);
             IsAllDates = new int[] { 111, 112, 113 }.Contains(rtype);
             IsPayer = new int[] { 900, 901 }.Contains(rtype);
             IsDocType = new int[] { 901 }.Contains(rtype);
+            IsAktDates = new int[] { 104 }.Contains(rtype);
 
             if (rtype > 99)
             {
@@ -54,6 +56,8 @@ namespace Yamed.Reports
                     SDatesLGroup.Visibility = Visibility.Collapsed;
                     PayerLGroup.Visibility = Visibility.Collapsed;
                     DocTypeEdit.Visibility = Visibility.Collapsed;
+                    AktDatesLGroup.Visibility = Visibility.Collapsed;
+                    SpisokAktLGroup.Visibility = Visibility.Collapsed;
                 }
 
                 if (IsSDates)
@@ -61,12 +65,25 @@ namespace Yamed.Reports
                     PDatesLGroup.Visibility = Visibility.Collapsed;
                     PayerLGroup.Visibility = Visibility.Collapsed;
                     DocTypeEdit.Visibility = Visibility.Collapsed;
+                    AktDatesLGroup.Visibility = Visibility.Collapsed;
+                    SpisokAktLGroup.Visibility = Visibility.Collapsed;
+                }
+
+                if (IsAktDates)
+                {
+                    SDatesLGroup.Visibility = Visibility.Collapsed;
+                    PDatesLGroup.Visibility = Visibility.Collapsed;
+                    PayerLGroup.Visibility = Visibility.Collapsed;
+                    DocTypeEdit.Visibility = Visibility.Collapsed;
+                    DocTypeLGroup.Visibility = Visibility.Collapsed;
                 }
 
                 if (IsPayer)
                 {
                     SDatesLGroup.Visibility = Visibility.Collapsed;
                     PDatesLGroup.Visibility = Visibility.Collapsed;
+                    AktDatesLGroup.Visibility = Visibility.Collapsed;
+                    SpisokAktLGroup.Visibility = Visibility.Collapsed;
 
                     if (IsDocType)
                     {
@@ -129,10 +146,10 @@ namespace Yamed.Reports
                 if (st == 4)
                 {
                     dates = Reader2List.CustomAnonymousSelect($@"
-Select S_DATE, convert(nvarchar(10), S_DATE, 104) S_DATE_RUS FROM D3_SANK_OMS
+Select DATE_ACT, convert(nvarchar(10), DATE_ACT, 104) DATE_ACT_RUS FROM D3_SANK_OMS
 WHERE D3_SCID in ({ObjHelper.GetIds(_sc)}) and S_TIP is NULL
-group by S_DATE
-ORDER BY S_DATE", SprClass.LocalConnectionString);
+group by DATE_ACT
+ORDER BY DATE_ACT", SprClass.LocalConnectionString);
                 }
                 else
                 {
@@ -154,6 +171,7 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
 
             DateListBoxEdit.DataContext = dates;
             DateListBoxEdit.SelectedIndex = ((IList) dates).Count - 1;
+            DateActListBoxEdit.DataContext = dates;
         }
 
         string GetStringOfDates(ObservableCollection<object> collection)
@@ -172,6 +190,21 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
             return dates;
         }
 
+        string GetStringOfDatesAkt(ObservableCollection<object> collection)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in collection.Select(x => ObjHelper.GetAnonymousValue(x, "DATE_ACT")))
+            {
+                //sb.Append("'");
+                sb.Append(((DateTime)item).ToString("yyyyMMdd"));
+                //sb.Append("'");
+                sb.Append(",");
+            }
+
+            var dates = sb.ToString();
+            dates = dates.Remove(dates.Length - 1);
+            return dates;
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -184,6 +217,13 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
             var rp = new ReportParams();
             if (IsSDates || IsAllDates)
                 rp.s_dates = DateListBoxEdit.SelectedItems.Any() ? GetStringOfDates(DateListBoxEdit.SelectedItems) : null;
+
+            if (IsAktDates)
+            {
+                rp.s_dates = DateActListBoxEdit.SelectedItems.Any() ? GetStringOfDatesAkt(DateActListBoxEdit.SelectedItems) : null;
+                rp.num_act = (string)NomerAktEdit.EditValue ?? "";
+            }
+
             if (IsPDates || IsAllDates)
             {
                 rp.beg_date = (DateTime) BeginDateEdit.EditValue;
@@ -420,6 +460,19 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
         private void PayerEdit_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
             ReportsClass.PaymentId = (string) PayerEdit.EditValue;
+        }
+        private string numdates;
+        private void getnomerAkt(object sender, RoutedEventArgs e)
+        {
+            numdates = DateActListBoxEdit.SelectedItems.Any() ? GetStringOfDatesAkt(DateActListBoxEdit.SelectedItems) : null;
+            if (numdates != null)
+            {
+                NomerAktEdit.DataContext = Reader2List.CustomAnonymousSelect($@"
+Select NUM_ACT FROM D3_SANK_OMS
+WHERE DATE_ACT in ('{numdates}')
+group by num_act,date_act
+ORDER BY DATE_ACT", SprClass.LocalConnectionString);
+            }
         }
     }
 }

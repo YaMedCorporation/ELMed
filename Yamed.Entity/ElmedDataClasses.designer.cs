@@ -22,7 +22,7 @@ namespace Yamed.Entity
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Elmed")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ElmedicineNew")]
 	public partial class ElmedDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -417,7 +417,7 @@ namespace Yamed.Entity
     #endregion
 		
 		public ElmedDataClassesDataContext() : 
-				base(global::Yamed.Entity.Properties.Settings.Default.ElmedConnectionString1, mappingSource)
+				base(global::Yamed.Entity.Properties.Settings.Default.ElmedicineNewConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

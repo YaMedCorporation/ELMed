@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -60,8 +61,7 @@ namespace Yamed.Oms
                     gridControl1.ClearSorting();
                 }));
 
-
-
+           
             ZUslOkEdit.DataContext = SprClass.conditionHelp;
             SmoEdit.DataContext = SprClass.smo;
             VidPomEdit.DataContext = SprClass.typeHelp;
@@ -75,12 +75,19 @@ namespace Yamed.Oms
             IdspEdit.DataContext = SprClass.tarifUsl;
             VozrEdit.DataContext = SprClass.VozrList;
             VbpEdit.DataContext = SprClass.SprBit;
+            KodTEdit.DataContext = SprClass.KodTers;
+            KatLgotEdit.DataContext = SprClass.KatLgots;
+            WorkStEdit.DataContext = SprClass.WorkStatDbs;
+            VetEdit.DataContext = SprClass.VeteranDbs;
+            VbrEdit.DataContext = SprClass.SprBit;
+            INVEdit.DataContext = SprClass.INV;
 
             ProfilEdit.DataContext = SprClass.profile;
             VidHmpEdit.DataContext = SprClass.VidVmpList;
             MetodHmpEdit.DataContext = SprClass.MetodVmpList;
             KsgEdit.DataContext = SprClass.CalcKsgTarifList;
             Ds1Edit.DataContext = SprClass.mkbSearching;
+            Ds0Edit.DataContext = SprClass.mkbSearching;
             PrvsEdit.DataContext = SprClass.SpecAllList;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
@@ -99,7 +106,7 @@ namespace Yamed.Oms
             VID_VIZ.DataContext = SprClass.SprVizov;
             VID_BRIG.DataContext = SprClass.SprBrigad;
 
-
+            SocStatBox.DataContext = SprClass.SocStatsnew;
             ProfilkEdit.DataContext = SprClass.Profil_V020;
             PperEdit.DataContext = SprClass.Per;
             CzabEdit.DataContext = SprClass.V027;
@@ -122,6 +129,7 @@ namespace Yamed.Oms
             gridControl1.DataContext = _linqInstantFeedbackDataSource;
 
         }
+
 
         private IQueryable _pQueryable;
         public void BindDataZsl()
@@ -181,6 +189,7 @@ namespace Yamed.Oms
                     zsl.KD_Z,
                     zsl.VB_P,
                     zsl.RSLT_D,
+                    zsl.VBR,
 
                     pa.FAM,
                     pa.IM,
@@ -208,6 +217,14 @@ namespace Yamed.Oms
                     pa.SMO_OK,
                     pa.SMO_NAM,
                     pa.NOVOR,
+                    pa.SOC_STAT,
+                    pa.KOD_TER,
+                    pa.KAT_LGOT,
+                    pa.MSE,
+                    pa.INV,
+                    pa.VETERAN,
+                    pa.WORK_STAT,
+                    
                     zsl.VOZR,
                     pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
 
@@ -303,7 +320,7 @@ namespace Yamed.Oms
                               zsl.KD_Z,
                               zsl.VB_P,
                               zsl.RSLT_D,
-
+                              zsl.VBR,
                               ///////////////////////////////////
                               sl.VID_HMP,
                               sl.METOD_HMP,
@@ -336,6 +353,7 @@ namespace Yamed.Oms
                               sl.POVOD,
                               sl.PROFIL_REG,
                               pa.SOCSTATUS,
+                              
 
 
                               //sl.N_KSG,
@@ -388,6 +406,13 @@ namespace Yamed.Oms
                               pa.SMO_NAM,
                               pa.NOVOR,
                               zsl.VOZR,
+                              pa.SOC_STAT,
+                              pa.KOD_TER,
+                              pa.KAT_LGOT,
+                              pa.MSE,
+                              pa.INV,
+                              pa.VETERAN,
+                              pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
@@ -452,7 +477,7 @@ namespace Yamed.Oms
                               zsl.KD_Z,
                               zsl.VB_P,
                               zsl.RSLT_D,
-
+                              zsl.VBR,
 
                               sl.VID_HMP,
                         sl.METOD_HMP,
@@ -531,7 +556,14 @@ namespace Yamed.Oms
                         pa.SMO_NAM,
                         pa.NOVOR,
                         zsl.VOZR,
-                        pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              pa.SOC_STAT,
+                              pa.KOD_TER,
+                              pa.KAT_LGOT,
+                              pa.MSE,
+                              pa.INV,
+                              pa.VETERAN,
+                              pa.WORK_STAT,
+                              pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
 
@@ -622,7 +654,7 @@ namespace Yamed.Oms
                               zsl.KD_Z,
                               zsl.VB_P,
                               zsl.RSLT_D,
-
+                              zsl.VBR,
                               sl.VID_HMP,
                               sl.METOD_HMP,
                               sl.LPU_1,
@@ -700,7 +732,14 @@ namespace Yamed.Oms
                               pa.SMO_OK,
                               pa.SMO_NAM,
                               pa.NOVOR,
+                              pa.SOC_STAT,
+                              pa.KOD_TER,
+                              pa.KAT_LGOT,
+                              pa.MSE,
                               zsl.VOZR,
+                              pa.INV,
+                              pa.VETERAN,
+                              pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
@@ -755,6 +794,7 @@ namespace Yamed.Oms
                               zsl.MEK_COMENT,
                               zsl.OSP_COMENT,
                               zsl.USL_OK,
+                              zsl.VBR,
                               //zsl.P_CEL,
                               zsl.MEK_COUNT,
                               zsl.MEE_COUNT,
@@ -848,6 +888,13 @@ namespace Yamed.Oms
                               pa.SMO_NAM,
                               pa.NOVOR,
                               zsl.VOZR,
+                              pa.SOC_STAT,
+                              pa.KOD_TER,
+                              pa.KAT_LGOT,
+                              pa.MSE,
+                              pa.INV,
+                              pa.VETERAN,
+                              pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
@@ -1176,7 +1223,7 @@ FROM [D3_SCHET_OMS] sch
                               zsl.KD_Z,
                               zsl.VB_P,
                               zsl.RSLT_D,
-                              
+                              zsl.VBR,
 
                               ///////////////////////////////////
                               sl.VID_HMP,
@@ -1271,6 +1318,13 @@ FROM [D3_SCHET_OMS] sch
                               pa.SMO_NAM,
                               pa.NOVOR,
                               zsl.VOZR,
+                              pa.SOC_STAT,
+                              pa.KOD_TER,
+                              pa.KAT_LGOT,
+                              pa.MSE,
+                              pa.INV,
+                              pa.VETERAN,
+                              pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
@@ -1338,7 +1392,7 @@ FROM [D3_SCHET_OMS] sch
                               zsl.KD_Z,
                               zsl.VB_P,
                               zsl.RSLT_D,
-
+                              zsl.VBR,
 
                               ///////////////////////////////////
                               //для отображения полей Иваново, Андрей insidious
@@ -1391,6 +1445,13 @@ FROM [D3_SCHET_OMS] sch
                               pa.SMO_NAM,
                               pa.NOVOR,
                               zsl.VOZR,
+                              pa.SOC_STAT,
+                              pa.KOD_TER,
+                              pa.KAT_LGOT,
+                              pa.MSE,
+                              pa.INV,
+                              pa.VETERAN,
+                              pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
