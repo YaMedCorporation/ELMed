@@ -364,7 +364,7 @@ namespace Yamed.Server
             INV = Reader2List.CustomAnonymousSelect($"Select * from SprINV", LocalConnectionString);
             sankname = Reader2List.CustomAnonymousSelect($@"Select 
 (case when sank.S_OSN is null then s.Name else spr.NameWithId end) as NameID,
-isnull(sank.S_OSN,'') S_OSN
+S_OSN
 from D3_SANK_OMS sank
 left join f014 spr on spr.Osn=sank.S_OSN
 left join Yamed_ExpSpr_Sank s on s.id=sank.MODEL_ID and s.ID in (92)
