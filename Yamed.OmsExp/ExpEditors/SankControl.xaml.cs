@@ -24,10 +24,9 @@ namespace Yamed.OmsExp.ExpEditors
             InitializeComponent();
 
             _sank = sank;
-            
-
-            KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
+            KodOtkazaBox.DataContext = SprClass.sankMek; //SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
+
         }
 
         private bool _isGroupProcess;
@@ -38,7 +37,7 @@ namespace Yamed.OmsExp.ExpEditors
             _sank = new D3_SANK_OMS() {S_DATE = SprClass.WorkDate};
             SankSumBox.IsEnabled = false;
 
-            KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
+            KodOtkazaBox.DataContext = SprClass.sankMek;//SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
         }
 
@@ -88,6 +87,7 @@ EXEC p_oms_calc_schet {_sank.D3_SCID}
                             sank.D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID");
                             sank.D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID");
                             sank.S_TIP = 1;
+                            sank.S_TIP2 = 1;
                             sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", sank, "ID",
         SprClass.LocalConnectionString);
                             Reader2List.CustomExecuteQuery($@"

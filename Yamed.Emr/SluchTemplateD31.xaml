@@ -512,7 +512,7 @@
                             <dxlc:LayoutItem Label="График дн. стац." Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
                                 <dxe:ComboBoxEdit x:Name="Grafdn" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.GRAF_DN, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" Width="Auto" HorizontalAlignment="Stretch" />
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Моб. пригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
+                            <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
                                 <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Признак отказа" ToolTip="Признак отказа">
@@ -790,7 +790,11 @@
                                         <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" Name="VidExp2ColumnEdit" DisplayMember="NameWithID" ValueMember="IDVID" ItemsSource="{Binding}" />
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
-                                <dxg:GridColumn FieldName="S_OSN" Header="Основание"/>
+                                <dxg:GridColumn FieldName="S_OSN" Header="Основание">
+                                <dxg:GridColumn.EditSettings>
+                                        <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" Name="sanknameColumnEdit" DisplayMember="NameID" ValueMember="S_OSN" ItemsSource="{Binding}" />
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />
                                 <dxg:GridColumn FieldName="S_SUM2" Header="Штраф" />
                                 <dxg:GridColumn FieldName="S_DATE" Header="Дата" />

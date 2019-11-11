@@ -37,7 +37,7 @@
             <dxlc:LayoutControl Padding="2" Grid.Row="1" >
                 <dxlc:LayoutGroup Orientation="Vertical" >
                     <dxlc:LayoutGroup Orientation="Vertical" >
-                        <dxlc:LayoutGroup Header="Закончанные случаи" View="GroupBox" >
+                        <dxlc:LayoutGroup Header="Законченные случаи" View="GroupBox" >
                             <dxg:GridControl Name="sluchGridControl" SelectionMode="Row" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" Margin="-10" SelectedItemChanged="SluchGridControl_OnSelectedItemChanged">
                                 <dxg:GridControl.Resources>
 

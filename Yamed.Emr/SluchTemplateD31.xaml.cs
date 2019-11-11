@@ -630,6 +630,8 @@ namespace Yamed.Emr
             InvEdit.DataContext = SprClass.INV;
             //DostEdit.ItemsSource = SprClass.DostList;
 
+
+
             DoctGrid.DataContext = SprClass.MedicalEmployeeList;
             RsltGrid.DataContext = SprClass.helpResult;
             IshodGrid.DataContext = SprClass.helpExit;
@@ -731,6 +733,7 @@ namespace Yamed.Emr
             HVidBox.DataContext = SprClass.VidVmpList;
             HMetodBox.DataContext = SprClass.MetodVmpList;
 
+            sanknameColumnEdit.DataContext = SprClass.sankname;
             VidExpColumnEdit.DataContext = SprClass.TypeExp;
             VidExp2ColumnEdit.DataContext = SprClass.TypeExp2;
         }
