@@ -25,6 +25,7 @@ namespace Yamed.Reports
         public DateTime? beg_date { get; set; }
         public DateTime? end_date { get; set; }
         public int? ReqID { get; set; }
+        public string num_act { get; set; }
 
         // LPU
         public string smo { get; set; }

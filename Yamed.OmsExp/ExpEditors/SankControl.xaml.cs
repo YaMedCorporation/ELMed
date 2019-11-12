@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,10 +24,9 @@ namespace Yamed.OmsExp.ExpEditors
             InitializeComponent();
 
             _sank = sank;
-            
-
             KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
+
         }
 
         private bool _isGroupProcess;
@@ -75,31 +75,35 @@ EXEC p_oms_calc_schet {_sank.D3_SCID}
             {
                 Task.Factory.StartNew(() =>
                 {
+                    List<int> zslid = new List<int>();
                     foreach (var row in DxHelper.LoadedRows)
                     {
-                        var sank = ObjHelper.ClassConverter<D3_SANK_OMS>(_sank);
-                        sank.S_CODE = Guid.NewGuid().ToString();
-                        //sank.S_DATE = SprClass.WorkDate;
-                        sank.S_SUM = (decimal) ObjHelper.GetAnonymousValue(row, "SUMV");
-                        sank.D3_ZSLID = (int) ObjHelper.GetAnonymousValue(row, "ID");
-                        sank.D3_SCID =  (int) ObjHelper.GetAnonymousValue(row, "D3_SCID");
-                        sank.S_TIP = 1;
-
-                        sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", sank, "ID",
-    SprClass.LocalConnectionString);
-                        Reader2List.CustomExecuteQuery($@"
+                        if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
+                        {
+                            var sank = ObjHelper.ClassConverter<D3_SANK_OMS>(_sank);
+                            sank.S_CODE = Guid.NewGuid().ToString();
+                            //sank.S_DATE = SprClass.WorkDate;
+                            sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(row, "SUMV");
+                            sank.D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID");
+                            sank.D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID");
+                            sank.S_TIP = 1;
+                            sank.S_TIP2 = 1;
+                            sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", sank, "ID",
+        SprClass.LocalConnectionString);
+                            Reader2List.CustomExecuteQuery($@"
 EXEC p_oms_calc_sank {sank.D3_SCID}
 EXEC p_oms_calc_schet {sank.D3_SCID}
 ", SprClass.LocalConnectionString);
-
+                            zslid.Add(sank.D3_ZSLID);
+                        }
                     }
-
-
                 }).ContinueWith(x =>
                 {
                     (this.Parent as DXWindow)?.Close();
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
+                
+                
 
                 //cmd.AppendLine(
                 //    String.IsNullOrWhiteSpace((string) ReqTextEdit.EditValue)

@@ -46,3 +46,9 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyRefe
 C:\Users\WILD\Desktop\git_exp\Yamed.Core\obj\Debug\Yamed.Core.csproj.CoreCompileInputs.cache
 C:\Users\WILD\Desktop\git_exp\Yamed.Core\obj\Debug\Yamed.Core.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Core\obj\Debug\Yamed.Core.pdb
+E:\ELMed\Yamed.Core\bin\Debug\Yamed.Core.dll
+E:\ELMed\Yamed.Core\bin\Debug\Yamed.Core.pdb
+E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache
+E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.csproj.CoreCompileInputs.cache
+E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.dll
+E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.pdb

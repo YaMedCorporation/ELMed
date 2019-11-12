@@ -517,7 +517,6 @@ namespace Yamed.Emr
         }
 
         private Task _task;
-
         public D3_SCHET_OMS _sc;
         public void BindEmptySluch2(D3_SCHET_OMS sc = null)
         {
@@ -598,7 +597,7 @@ namespace Yamed.Emr
             //    _zsl.SetValue("IDDOKTO", data.GetValue("DID"));
             //});
         }
-
+        
         void GetSpr()
         {
 
@@ -629,6 +628,8 @@ namespace Yamed.Emr
             WorkStEdit.DataContext = SprClass.WorkStatDbs;
             InvEdit.DataContext = SprClass.INV;
             //DostEdit.ItemsSource = SprClass.DostList;
+
+
 
             DoctGrid.DataContext = SprClass.MedicalEmployeeList;
             RsltGrid.DataContext = SprClass.helpResult;
@@ -731,6 +732,11 @@ namespace Yamed.Emr
             HVidBox.DataContext = SprClass.VidVmpList;
             HMetodBox.DataContext = SprClass.MetodVmpList;
 
+            if (_sankList.Count == 0) return;
+            sankdate = _sankList[0].S_DATE.Value;
+            
+            sanknameColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from f014 where '{sankdate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
+
             VidExpColumnEdit.DataContext = SprClass.TypeExp;
             VidExp2ColumnEdit.DataContext = SprClass.TypeExp2;
         }
@@ -741,7 +747,7 @@ namespace Yamed.Emr
                 SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue).ToList();
         }
 
-
+        private DateTime sankdate;
         private void mkbBox_GotFocus(object sender, RoutedEventArgs e)
         {
             InputLanguageManager.Current.CurrentInputLanguage = new CultureInfo("en-US");
@@ -2013,6 +2019,7 @@ namespace Yamed.Emr
                     Content = new SankControl(sank)
                 };
                 window.ShowDialog();
+                SankGridControl.RefreshData();            
             }
             else
             {
@@ -2039,7 +2046,6 @@ namespace Yamed.Emr
                         window.ShowDialog();
                         SankGridControl.RefreshData();
                         ZslUpdate();
-
                     }, TaskScheduler.FromCurrentSynchronizationContext());
                 }
                 else
@@ -2057,12 +2063,9 @@ namespace Yamed.Emr
                     window.ShowDialog();
                     SankGridControl.RefreshData();
                     ZslUpdate();
-
                 }
-
             }
-
-
+            BindSluch((int)ObjHelper.GetAnonymousValue(_row, "ID"));
         }
 
         private void SankDelItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -2368,6 +2371,8 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
             CritGridControl.RefreshData();
         }
+
+
     }
 
     public class RoleVisibility : IValueConverter

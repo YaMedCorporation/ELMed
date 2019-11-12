@@ -294,6 +294,11 @@
                         <dxe:ComboBoxEditSettings Name="Ds1Edit" DisplayMember="NameWithID" ValueMember="IDDS" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column__SL__DS0" FieldName="DS0" Header="Диагноз первичный" FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="Ds0Edit" DisplayMember="NameWithID" ValueMember="IDDS" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__DS1_PR" FieldName="DS1_PR" Header="Диагноз выявлен впервые" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__CODE_MES1" FieldName="CODE_MES1" Header="Код МЭС1" />
                 <dxg:GridColumn x:Name="Column__SL__CODE_MES2" FieldName="CODE_MES2" Header="Код МЭС2" />

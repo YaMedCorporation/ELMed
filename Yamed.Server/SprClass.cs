@@ -250,6 +250,9 @@ namespace Yamed.Server
         public static object SocStatsnew;
         public static object INV;
 
+        public static object sankname;
+        public static object sankMek;
+
         public static object rg004; // класс для справочника rg004 Иваново
         public static object rg003;// класс для справочника rg003 Иваново
         public static object rg001; // класс для справочника rg001 Иваново
@@ -359,7 +362,6 @@ namespace Yamed.Server
             CalcKsgTarifList = Reader2List.GetAnonymousTable("SprKsg", LocalConnectionString);
 
             INV = Reader2List.CustomAnonymousSelect($"Select * from SprINV", LocalConnectionString);
-
             //Справочники для работы полей Иваново, Андрей Insidious
 
             SocStatsnew = Reader2List.CustomAnonymousSelect($"Select * from SocStat", LocalConnectionString);
