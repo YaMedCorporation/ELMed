@@ -229,7 +229,6 @@ C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu.pdb
 E:\ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
 E:\ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll
 E:\ELMed\MaterialMenu\bin\Debug\MaterialMenu.pdb
-E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
 E:\ELMed\MaterialMenu\obj\Debug\MenuButton.g.cs
 E:\ELMed\MaterialMenu\obj\Debug\SideMenu.g.cs
 E:\ELMed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs

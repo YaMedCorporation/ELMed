@@ -362,14 +362,6 @@ namespace Yamed.Server
             CalcKsgTarifList = Reader2List.GetAnonymousTable("SprKsg", LocalConnectionString);
 
             INV = Reader2List.CustomAnonymousSelect($"Select * from SprINV", LocalConnectionString);
-            sankname = Reader2List.CustomAnonymousSelect($@"Select 
-(case when sank.S_OSN is null then s.Name else spr.NameWithId end) as NameID,
-S_OSN
-from D3_SANK_OMS sank
-left join f014 spr on spr.Osn=sank.S_OSN
-left join Yamed_ExpSpr_Sank s on s.id=sank.MODEL_ID and s.ID in (92)
-where (sank.s_date between datebeg and isnull(dateend,'21000101') or sank.MODEL_ID in (92))", LocalConnectionString);
-            sankMek = Reader2List.CustomAnonymousSelect($"Select * from Yamed_ExpSpr_Sank where osn like '5%'",LocalConnectionString);
             //Справочники для работы полей Иваново, Андрей Insidious
 
             SocStatsnew = Reader2List.CustomAnonymousSelect($"Select * from SocStat", LocalConnectionString);

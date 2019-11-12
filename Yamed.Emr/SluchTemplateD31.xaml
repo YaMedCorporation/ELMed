@@ -792,7 +792,7 @@
                                 </dxg:GridColumn>
                                 <dxg:GridColumn FieldName="S_OSN" Header="Основание">
                                 <dxg:GridColumn.EditSettings>
-                                        <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" Name="sanknameColumnEdit" DisplayMember="NameID" ValueMember="S_OSN" ItemsSource="{Binding}" />
+                                        <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" Name="sanknameColumnEdit" DisplayMember="NameWithId" ValueMember="Osn" ItemsSource="{Binding}" />
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />

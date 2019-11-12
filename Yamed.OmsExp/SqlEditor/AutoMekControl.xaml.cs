@@ -273,9 +273,13 @@ namespace Yamed.OmsExp.SqlEditor
                                         sank.S_SUM = mekGuid.SUMV;
                                         sank.S_OSN = (string)mek.GetValue("MekOsn");
                                         sank.S_TIP = 1;
+                                        sank.S_TIP2 = 1;
                                         sank.S_IST = 1;
                                         sank.S_DATE = SprClass.WorkDate;
                                         sank.S_COM = !string.IsNullOrEmpty(mekGuid.Com)
+                                            ? (string)mek.GetValue("AlgComment") + Environment.NewLine + mekGuid.Com
+                                            : (string)mek.GetValue("AlgComment");
+                                        sank.S_ZAKL = !string.IsNullOrEmpty(mekGuid.Com)
                                             ? (string)mek.GetValue("AlgComment") + Environment.NewLine + mekGuid.Com
                                             : (string)mek.GetValue("AlgComment");
                                         sank.D3_SCID = rid.ID;
@@ -704,8 +708,10 @@ EXEC p_oms_calc_schet {rid.ID}
                             S_SUM = p.Sumv,
                             S_OSN = "5.2.3.",
                             S_TIP = 1,
+                            S_TIP2 = 1,
                             S_IST = 1,
                             S_COM = coment,
+                            S_ZAKL = coment,
                             S_DATE = DateTime.Today,
                             D3_SCID = reestrId
                         });
@@ -1055,8 +1061,10 @@ EXEC p_oms_calc_schet {rid.ID}
                             S_SUM = p.Sumv,
                             S_OSN = polisOsn,
                             S_TIP = 1,
+                            S_TIP2 = 1,
                             S_IST = 1,
                             S_COM = coment,
+                            S_ZAKL = coment,
                             S_DATE = DateTime.Today,
                             D3_SCID = reestrId
                         });
@@ -1234,8 +1242,10 @@ EXEC p_oms_calc_schet {rid.ID}
                             S_SUM = p.Sumv,
                             S_OSN = polisOsn,
                             S_TIP = 1,
+                            S_TIP2 = 1,
                             S_IST = 1,
                             S_COM = coment,
+                            S_ZAKL = coment,
                             S_DATE = DateTime.Today,
                             D3_SCID = reestrId
                         });
@@ -1604,8 +1614,10 @@ EXEC p_oms_calc_schet {rid.ID}
                             S_SUM = p.Sumv,
                             S_OSN = polisOsn,
                             S_TIP = 1,
+                            S_TIP2 = 1,
                             S_IST = 1,
                             S_COM = coment,
+                            S_ZAKL = coment,
                             S_DATE = DateTime.Today,
                             D3_SCID = reestrId
                         });
@@ -1669,13 +1681,15 @@ EXEC p_oms_calc_schet {rid.ID}
             switch (smoCod)
             {
                 case "46001":
-                    return "РОСМЕДСТРАХ-К";
+                    return "Недействующий полис";
                 case "46002":
-                    return "РОСНО-МС";
+                    return "ВТБ МС";
                 case "46003":
                     return "ИНГОССТРАХ-М";
                 case "46004":
                     return "СПАССКИЕ ВОРОТА-М";
+                case "46006":
+                    return "ИНКО-МЕД";
                 default:
                     return smoCod;
             }

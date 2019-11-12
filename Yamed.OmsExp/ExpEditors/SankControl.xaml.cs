@@ -24,7 +24,7 @@ namespace Yamed.OmsExp.ExpEditors
             InitializeComponent();
 
             _sank = sank;
-            KodOtkazaBox.DataContext = SprClass.sankMek; //SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
+            KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
 
         }
@@ -37,7 +37,7 @@ namespace Yamed.OmsExp.ExpEditors
             _sank = new D3_SANK_OMS() {S_DATE = SprClass.WorkDate};
             SankSumBox.IsEnabled = false;
 
-            KodOtkazaBox.DataContext = SprClass.sankMek;//SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
+            KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
         }
 
@@ -102,6 +102,8 @@ EXEC p_oms_calc_schet {sank.D3_SCID}
                     (this.Parent as DXWindow)?.Close();
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
+                
+                
 
                 //cmd.AppendLine(
                 //    String.IsNullOrWhiteSpace((string) ReqTextEdit.EditValue)
