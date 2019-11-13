@@ -242,3 +242,4 @@ E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.dll
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
