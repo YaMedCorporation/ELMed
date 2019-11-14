@@ -729,6 +729,7 @@ namespace Yamed.Emr
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
 
+            MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = SprClass.VidVmpList;
             HMetodBox.DataContext = SprClass.MetodVmpList;
 
@@ -1515,6 +1516,8 @@ namespace Yamed.Emr
             _zsl.ISHOD = _zslLock.ISHOD;
             _zsl.VB_P = _zslLock.VB_P;
             _zsl.NPR_DATE = _zslLock.NPR_DATE;
+            _zsl.RSLT_D = _zslLock.RSLT_D;
+            _zsl.VBR = _zslLock.VBR;
         }
 
         void SlEditDefault()
@@ -1559,6 +1562,8 @@ namespace Yamed.Emr
             _zslLock.ISHOD = IshodTb.IsChecked == true ? _zsl.ISHOD : null;
             _zslLock.NPR_DATE = NaprDateTb.IsChecked == true ? _zsl.NPR_DATE : null;
             _zslLock.VB_P = VbpTb.IsChecked == true ? _zsl.VB_P : null;
+            _zslLock.VBR = MobTb.IsChecked == true ? _zsl.VBR : null;
+            _zslLock.RSLT_D = RsTb.IsChecked == true ? _zsl.RSLT_D : null;
             
         }
 
