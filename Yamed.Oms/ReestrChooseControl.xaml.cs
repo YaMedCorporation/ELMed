@@ -75,17 +75,8 @@ where id in (select d3_pid from d3_zsl_oms where id in({ids}))
                 con.Open();
                 comm.ExecuteNonQuery();
                 con.Close();
-                //updObj.ForEach(x=> x.SetValue("D3_SCID", _id));
-                //foreach (var row in updObj)
-                //{
-                //    var r = row;
-                //    ObjHelper.SetAnonymousValue(ref r, _id, "D3_SCID");
-                //}
-
-                //var upd = Reader2List.CustomUpdateCommand("D3_ZSL_OMS", updObj, "ID");
-                //Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                 MessageBox.Show("Перенос записей выполнен успешно.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                
+
             }
             if (selectCbOne == 0 & warn != 460000)
             {
@@ -237,31 +228,17 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                     var idstr = ObjHelper.GetIds(ids);
                     var connectionString = SprClass.LocalConnectionString;
                     SqlConnection con = new SqlConnection(connectionString);
-                    SqlCommand comm2 = new SqlCommand($@"DECLARE @schnew INT = {_id}
+                    SqlCommand comm2 = new SqlCommand($@"DECLARE @newsc INT = {_id}
 DECLARE @schold INT = {_osc.ID}
-DECLARE @zid INT, @scom NVARCHAR(500)
-DECLARE vendor_cursor CURSOR FOR 
-  SELECT  dzo.id, p.fam
-  FROM D3_ZSL_OMS AS dzo
-  left join D3_PACIENT_OMS p
 
-  ON p.id = dzo.D3_PID  
-  WHERE dzo.D3_SCID = @schold and dzo.ID in({idstr})
-  
-OPEN vendor_cursor
+if object_id('tempdb..##tabid') is not null  
+	drop table ##tabid
 
-FETCH NEXT FROM vendor_cursor INTO @zid, @scom
+select id into ##tabid from D3_ZSL_OMS where D3_SCID=@schold and id in ({idstr})	
 
-WHILE @@FETCH_STATUS = 0
-BEGIN
-  PRINT @zid  
-  EXEC p_oms_copy_zap @schnew, @schold, @zid
-  
-  
-  FETCH NEXT FROM vendor_cursor INTO @zid, @scom
-END;
-CLOSE vendor_cursor;
-DEALLOCATE vendor_cursor;", con);
+exec p_oms_copy_allzsl @newsc,@schold,0 		
+
+	", con);
                     comm2.CommandTimeout = 0;
                     con.Open();
 
@@ -276,88 +253,46 @@ DEALLOCATE vendor_cursor;", con);
             }
             if (selectCbOne == 3 & warn != 460000)
             {
-                
+
                 var connectionString = SprClass.LocalConnectionString;
                 SqlConnection con = new SqlConnection(connectionString);
                 OpenFileDialog OF = new OpenFileDialog();
                 OF.InitialDirectory = @"c:\";
                 bool res = OF.ShowDialog().Value;
                 string fname = OF.FileName;
-                string xml = File.ReadAllText(fname,Encoding.GetEncoding(1251));
-                
-                
+                string xml = File.ReadAllText(fname, Encoding.GetEncoding(1251));
+
+
 
                 if (res == true)
                 {
-                    
-                    SqlCommand comm = new SqlCommand($@" 
-    declare @SankXml xml
-  if object_id ('ztemp_SankXml') is not null drop table ztemp_SankXml
-  CREATE TABLE ztemp_SankXml (SankXml xml)
-  insert into ztemp_SankXml (SankXml) values('{xml}');
 
-  set @SankXml = (select SankXml from ztemp_sankxml)
-
- 
-    if OBJECT_ID('ztemp_Sank532') is not null drop table ztemp_Sank532
-  
-  select 
-    sank.m.value('(./CODE_MO    )[1]','nvarchar(6)') CODE_MO,
-    sank.m.value('(./YEAR    )[1]','int') YEAR,
-    sank.m.value('(./MONTH    )[1]','int') MONTH,
-    sank.m.value('(./SMO    )[1]','nvarchar(5)') SMO,
-    sank.m.value('(./NPOLIS    )[1]','nvarchar(16)') NPOLIS,
-    sank.m.value('(./FAM    )[1]','nvarchar(40)') FAM,
-    sank.m.value('(./IM    )[1]','nvarchar(40)') IM,
-    sank.m.value('(./OT    )[1]','nvarchar(40)') OT,
-    --sank.m.value('(./DR    )[1]','nvarchar(10)'),
-    convert(date,sank.m.value('(./DR    )[1]','nvarchar(10)'),120) DR,
-    sank.m.value('(./ZSL_ID    )[1]','uniqueidentifier') ZSL_ID,
-    sank.m.value('(./USL_OK    )[1]','int') USL_OK,
-    sank.m.value('(./IDSP    )[1]','int') IDSP,
-    sank.m.value('(./SUMV    )[1]','numeric(17,2)') SUMV,
-    convert(date,sank.m.value('(./DATE_Z_1    )[1]','nvarchar(10)'),120) DATE_Z_1,
-    convert(date,sank.m.value('(./DATE_Z_2    )[1]','nvarchar(10)'),120) DATE_Z_2
-  into ztemp_Sank532
-  from @SankXml.nodes('/SANKINFO/SANK') sank (m)", con);
-                    con.Open();
-                    comm.ExecuteNonQuery();
-                    con.Close();
-                    SqlCommand comm1 = new SqlCommand($@"DECLARE @schnew INT = {_id}
+                    SqlCommand comm1 = new SqlCommand($@"DECLARE @newsc INT = {_id}
 DECLARE @schold INT = {_osc.ID}
-DECLARE @zid INT, @scom NVARCHAR(500)
-DECLARE vendor_cursor CURSOR FOR 
-  SELECT  dzo.id, dso.fam
-  FROM D3_ZSL_OMS AS dzo
-  JOIN ztemp_Sank532 AS dso ON dso.ZSL_ID = dzo.ZSL_ID  
-  WHERE dzo.D3_SCID = @schold
-  
-OPEN vendor_cursor
 
-FETCH NEXT FROM vendor_cursor INTO @zid, @scom
+if object_id('tempdb..##tabid') is not null  
+	drop table ##tabid
+	
+declare @Nxml xml ='{xml}'
 
-WHILE @@FETCH_STATUS = 0
-BEGIN
-  PRINT @zid  
-  EXEC p_oms_copy_zap @schnew, @schold, @zid
-  
-  
-  FETCH NEXT FROM vendor_cursor INTO @zid, @scom
-END;
-CLOSE vendor_cursor;
-DEALLOCATE vendor_cursor;", con);
+select zsl.id	into ##tabid from @Nxml.nodes( '/SANKINFO/SANK/ZSL_ID' ) sl(m)
+	 join d3_zsl_oms zsl on zsl.ZSL_ID=sl.m.value('(.)[1]','nvarchar(254)')
+
+exec p_oms_copy_allzsl @newsc,@schold,1 	
+
+", con);
                     comm1.CommandTimeout = 0;
                     con.Open();
-                    
+
                     comm1.ExecuteNonQuery();
                     con.Close();
-                    
+                    DXMessageBox.Show($"Переподача из файла выполнена");
                 }
                 else
                 {
                     return;
                 }
-                
+
             }
         }
 
@@ -365,9 +300,9 @@ DEALLOCATE vendor_cursor;", con);
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             ObservableCollection<string> list = new ObservableCollection<string>();
-            list.Add("1 Копирование");
+            list.Add("1 Копирование (только 3х таблиц)");
             list.Add("2 Перенос");
-            list.Add("3 Переподача");
+            list.Add("3 Копирование+признак переподачи ");
             list.Add("4 Массовая переподача из файла");
             cbOperation.ItemsSource = list;
             //using (SqlConnection sc = new SqlConnection(SprClass.LocalConnectionString))

@@ -597,13 +597,13 @@ namespace Yamed.Emr
             //    _zsl.SetValue("IDDOKTO", data.GetValue("DID"));
             //});
         }
-        
+
         void GetSpr()
         {
 
             // для тестирования заполнения полей Иваново, Андрей insidious
-          
-                
+
+
             Socstatus.DataContext = SprClass.rg001; //заполнение поля Socstatus для Иваново
             Povodobr.DataContext = SprClass.rg003; //заполнение поля Povod obr для Иваново
             ProfilkEditreg.DataContext = SprClass.rg004; //заполнение поля profil_reg для Иваново
@@ -655,7 +655,7 @@ namespace Yamed.Emr
             OtdelGrid.DataContext = SprClass.OtdelDbs;
             PodrGrid.DataContext = SprClass.Podr;
             ForPomGrid.DataContext = SprClass.ForPomList;
-            Ds1PrEdit.DataContext = SprClass.SprBit; 
+            Ds1PrEdit.DataContext = SprClass.SprBit;
             VozrEdit.DataContext = SprClass.VozrList;
             VetEdit.DataContext = SprClass.VeteranDbs;
             ReabnEdit.DataContext = SprClass.SprBit;
@@ -733,7 +733,9 @@ namespace Yamed.Emr
             HVidBox.DataContext = SprClass.VidVmpList;
             HMetodBox.DataContext = SprClass.MetodVmpList;
 
+            if (_sankList == null) return;
             if (_sankList.Count == 0) return;
+
             sankdate = _sankList[0].S_DATE.Value;
             
             sanknameColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from f014 where '{sankdate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
