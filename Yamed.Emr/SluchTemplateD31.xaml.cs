@@ -2270,12 +2270,13 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             var pol = _pacient.W;
             var os = _zsl.OS_SLUCH_REGION;
             var lpu = _zsl.LPU;
+            var datez2 = _zsl.DATE_Z_2; 
             var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
 
             
             Task.Factory.StartNew(() =>
             {
-                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where OsSluchReg = {os} and Pol = {pol} and Age like '%{vozr},%'", SprClass.LocalConnectionString);
+                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{vozr},%'", SprClass.LocalConnectionString);
 
                 if (autoTempl.Count == 0)
                 {
