@@ -445,10 +445,12 @@
                                             <ToggleButton Grid.Column="1" x:Name="VbpTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                         </Grid>
                                     </dxlc:LayoutItem>
+                                    
                                     <dxlc:LayoutItem Label="Прод. г-ии" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)">
                                         <dxe:TextEdit EditValue="{Binding DataContext.KD_Z, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}"/>
                                     </dxlc:LayoutItem>
                                 </dxlc:LayoutGroup>
+                                
                                 <dxlc:LayoutGroup>
                                     <dxlc:LayoutItem Label="Сумма выст." ToolTip="Сумма выставленная">
                                         <dxe:TextEdit EditValue="{Binding DataContext.SUMV, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}"/>
@@ -480,7 +482,7 @@
                                 <dxe:ComboBoxEdit  x:Name="InvEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.INV, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="ID" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="МСЭ">
-                                <dxe:ComboBoxEdit  x:Name="MseEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.MSE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
+                                <dxe:ComboBoxEdit  x:Name="MseEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.MSE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="ID" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Ветеран">
                                 <dxe:ComboBoxEdit  x:Name="VetEdit" VerticalAlignment="Top"  ItemsSource="{Binding}" EditValue="{Binding DataContext.VETERAN, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="Id" />
@@ -512,16 +514,12 @@
                             <dxlc:LayoutItem Label="График дн. стац." Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
                                 <dxe:ComboBoxEdit x:Name="Grafdn" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.GRAF_DN, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" Width="Auto" HorizontalAlignment="Stretch" />
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
-                                <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
-                            </dxlc:LayoutItem>
+                            
                             <dxlc:LayoutItem Label="Признак отказа" ToolTip="Признак отказа">
                                 <dxe:ComboBoxEdit EditValue="{Binding DataContext.P_OTK, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="PtkBox" ItemsSource="{Binding}" DisplayMember="NameWithId" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
                             </dxlc:LayoutItem>
 
-                            <dxlc:LayoutItem Label="Результат дисп." ToolTip="Результат диспансеризации">
-                                <dxe:ComboBoxEdit EditValue="{Binding DataContext.RSLT_D, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="RsltdBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDDR" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
-                            </dxlc:LayoutItem>
+                           
                             <!--<dxlc:LayoutItem Label="Тип дисп." ToolTip="Тип диспансеризации">
                                 <dxe:ComboBoxEdit EditValue="{Binding DataContext.DISP, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="DispBox" ItemsSource="{Binding}" DisplayMember="NameWithId" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
                             </dxlc:LayoutItem>-->
@@ -846,6 +844,7 @@
                             <dxlc:LayoutItem Label="Профиль койки (региональный)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
                                 <dxe:ComboBoxEdit x:Name="ProfilkEditreg" DisplayMember="NameWithID" ValueMember="KOD" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.PROFIL_REG, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"/>
                             </dxlc:LayoutItem>
+                            
                             <dxlc:LayoutItem Label="Профиль койки" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
                                 <Grid x:Name="ProfK">
                                     <Grid.ColumnDefinitions>
@@ -1103,6 +1102,29 @@
                                     <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="DnTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Результат дисп." ToolTip="Результат диспансеризации">
+                                <Grid x:Name="DispGrid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <dxe:ComboBoxEdit EditValue="{Binding DataContext.RSLT_D, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="RsltdBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDDR" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
+                                    <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="RsTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
+                                </Grid>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
+                                    <Grid x:Name="MobGrid" HorizontalAlignment="Left">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" HorizontalAlignment="Left"/>
+                                        <ToggleButton Grid.Column="1" x:Name="MobTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
+                                    </Grid>
+                                </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Реабилитация" ToolTip="Признак реабилитации">
                                 <Grid x:Name="ReabnGrid">
                                     <Grid.ColumnDefinitions>

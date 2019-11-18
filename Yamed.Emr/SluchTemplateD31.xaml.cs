@@ -597,13 +597,13 @@ namespace Yamed.Emr
             //    _zsl.SetValue("IDDOKTO", data.GetValue("DID"));
             //});
         }
-        
+
         void GetSpr()
         {
 
             // для тестирования заполнения полей Иваново, Андрей insidious
-          
-                
+
+
             Socstatus.DataContext = SprClass.rg001; //заполнение поля Socstatus для Иваново
             Povodobr.DataContext = SprClass.rg003; //заполнение поля Povod obr для Иваново
             ProfilkEditreg.DataContext = SprClass.rg004; //заполнение поля profil_reg для Иваново
@@ -655,7 +655,7 @@ namespace Yamed.Emr
             OtdelGrid.DataContext = SprClass.OtdelDbs;
             PodrGrid.DataContext = SprClass.Podr;
             ForPomGrid.DataContext = SprClass.ForPomList;
-            Ds1PrEdit.DataContext = SprClass.SprBit; 
+            Ds1PrEdit.DataContext = SprClass.SprBit;
             VozrEdit.DataContext = SprClass.VozrList;
             VetEdit.DataContext = SprClass.VeteranDbs;
             ReabnEdit.DataContext = SprClass.SprBit;
@@ -729,10 +729,13 @@ namespace Yamed.Emr
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
 
+            MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = SprClass.VidVmpList;
             HMetodBox.DataContext = SprClass.MetodVmpList;
 
+            if (_sankList == null) return;
             if (_sankList.Count == 0) return;
+
             sankdate = _sankList[0].S_DATE.Value;
             
             sanknameColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from f014 where '{sankdate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
@@ -1515,6 +1518,8 @@ namespace Yamed.Emr
             _zsl.ISHOD = _zslLock.ISHOD;
             _zsl.VB_P = _zslLock.VB_P;
             _zsl.NPR_DATE = _zslLock.NPR_DATE;
+            _zsl.RSLT_D = _zslLock.RSLT_D;
+            _zsl.VBR = _zslLock.VBR;
         }
 
         void SlEditDefault()
@@ -1559,6 +1564,8 @@ namespace Yamed.Emr
             _zslLock.ISHOD = IshodTb.IsChecked == true ? _zsl.ISHOD : null;
             _zslLock.NPR_DATE = NaprDateTb.IsChecked == true ? _zsl.NPR_DATE : null;
             _zslLock.VB_P = VbpTb.IsChecked == true ? _zsl.VB_P : null;
+            _zslLock.VBR = MobTb.IsChecked == true ? _zsl.VBR : null;
+            _zslLock.RSLT_D = RsTb.IsChecked == true ? _zsl.RSLT_D : null;
             
         }
 
@@ -1944,6 +1951,7 @@ namespace Yamed.Emr
             PrevButton.IsEnabled = false;
 
             GetZslRowId(--rowIndex);
+            GetSpr();
         }
 
         private void NextButton_OnClick(object sender, RoutedEventArgs e)
@@ -1952,6 +1960,7 @@ namespace Yamed.Emr
             PrevButton.IsEnabled = false;
 
             GetZslRowId(++rowIndex);
+            GetSpr();
         }
 
         private object _row;
@@ -2265,12 +2274,13 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             var pol = _pacient.W;
             var os = _zsl.OS_SLUCH_REGION;
             var lpu = _zsl.LPU;
+            var datez2 = _zsl.DATE_Z_2; 
             var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
 
             
             Task.Factory.StartNew(() =>
             {
-                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where OsSluchReg = {os} and Pol = {pol} and Age like '%{vozr},%'", SprClass.LocalConnectionString);
+                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{vozr},%'", SprClass.LocalConnectionString);
 
                 if (autoTempl.Count == 0)
                 {

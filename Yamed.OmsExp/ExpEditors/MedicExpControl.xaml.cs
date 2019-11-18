@@ -99,9 +99,7 @@ namespace Yamed.OmsExp.ExpEditors
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
                         expList.Sank = new D3_SANK_OMS()
-
                         {
-
                             D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID"),
                             D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID"),
                             S_TIP = _re == 0 ? (int?)_stype : null,
@@ -345,6 +343,7 @@ namespace Yamed.OmsExp.ExpEditors
                 sluchGridControl.DataController.RefreshData();
                 ex.Sank.S_SUM = sum_np;
                 ex.Sank.S_SUM2 = pe2;
+                ex.Sank.USER_ID = SprClass.userId;
         }
 
         private void CalcButtonInfo_OnClick(object sender, RoutedEventArgs e)
@@ -365,7 +364,7 @@ namespace Yamed.OmsExp.ExpEditors
                     ex.Sank.MODEL_ID = sa.MODEL_ID;
 
                     CalcSank(ex);
-
+                    ex.Sank.USER_ID= SprClass.userId;
                     ex.Sank.Z_INFO = sa.Z_INFO;
                     ex.Sank.Z_DS1 = sa.Z_DS1;
                     ex.Sank.Z_DS2 = sa.Z_DS2;
