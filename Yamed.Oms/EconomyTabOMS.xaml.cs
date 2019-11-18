@@ -85,6 +85,7 @@ namespace Yamed.Oms
                                         sc.OmsFileName,
                                         sc.ZapFileName,
                                         sc.PersFileName,
+
                                         SchetType = sprsc.NameWithID, // добавил Андрей insidious
                                         sc.Status 
                                     };

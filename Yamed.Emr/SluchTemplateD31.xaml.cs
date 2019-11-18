@@ -1951,6 +1951,7 @@ namespace Yamed.Emr
             PrevButton.IsEnabled = false;
 
             GetZslRowId(--rowIndex);
+            GetSpr();
         }
 
         private void NextButton_OnClick(object sender, RoutedEventArgs e)
@@ -1959,6 +1960,7 @@ namespace Yamed.Emr
             PrevButton.IsEnabled = false;
 
             GetZslRowId(++rowIndex);
+            GetSpr();
         }
 
         private object _row;
