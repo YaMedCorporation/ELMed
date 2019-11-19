@@ -177,7 +177,6 @@ namespace Yamed.OmsExp.ExpEditors
             
             var add = new D3_SANK_EXPERT_OMS() { D3_SANKGID =  ((D3_SANK_OMS)ExpLayGr.DataContext).S_CODE};
             _expertList.Add(add);
-
             ExpertGridControl.RefreshData();
 
         }
@@ -207,7 +206,6 @@ namespace Yamed.OmsExp.ExpEditors
             var sa = ((ExpClass)e.NewItem).Sank;
             ExpLayGr.DataContext = sa;
             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{sa.S_CODE}')";
-
         }
 
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
@@ -234,7 +232,7 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
-
+            
             foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
             {
                 if (obj.ID == 0)
@@ -283,7 +281,11 @@ namespace Yamed.OmsExp.ExpEditors
             }
             if (_re == 0 && Sum2Edit.Text== "")
             {
-                DXMessageBox.Show("Не произведен расчет");
+                DXMessageBox.Show("Не произведен расчет");   
+            }
+            else if (checkEditItem.EditValue.ToString() == "False")
+            { 
+                DXMessageBox.Show("Не выбран эксперт или не стоит отметка 'Без эксперта'");
             }
             else
             {
