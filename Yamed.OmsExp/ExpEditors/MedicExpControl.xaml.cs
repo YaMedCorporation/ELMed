@@ -83,6 +83,8 @@ namespace Yamed.OmsExp.ExpEditors
         {
             List<int> zslid = new List<int>();
             _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
+            
+
 
             ShablonEdit.DataContext = _sankAutos;
 
@@ -150,12 +152,11 @@ namespace Yamed.OmsExp.ExpEditors
                 ExpertGridControl.DataContext = _expertList =
                     Reader2List.CustomSelect<D3_SANK_EXPERT_OMS>($@"Select * From D3_SANK_EXPERT_OMS where D3_SANKID={slupacsank.Sank.ID}",
                         SprClass.LocalConnectionString);
-
+                
             }
 
 
             sluchGridControl.DataContext = _slpsList;
-
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {

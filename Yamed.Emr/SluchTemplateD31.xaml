@@ -356,7 +356,7 @@
                                     <ToggleButton Grid.Column="1" x:Name="IshodTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>
-
+                           
                         </dxlc:LayoutGroup>
                         <dxlc:LayoutGroup Orientation="Vertical">
                             <dxlc:LayoutGroup x:Name="Zsl3LayoutGroup" Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
@@ -434,6 +434,29 @@
                                         <ToggleButton Grid.Column="1" x:Name="NaprDateTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                     </Grid>
                                 </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="Результат дисп." ToolTip="Результат диспансеризации">
+                                    <Grid x:Name="DispGrid">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.RSLT_D, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="RsltdBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDDR" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
+                                        <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="RsTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
+                                    </Grid>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
+                                    <Grid x:Name="MobGrid" HorizontalAlignment="Left">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" HorizontalAlignment="Left"/>
+                                        <ToggleButton Grid.Column="1" x:Name="MobTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
+                                    </Grid>
+                                </dxlc:LayoutItem>
                                 <dxlc:LayoutGroup>
                                     <dxlc:LayoutItem Label="Перевод"  ToolTip="Признак внутрибольничного перевода">
                                         <Grid x:Name="VbpGrid">
@@ -470,6 +493,7 @@
                                 </dxlc:LayoutItem>
 
                             </dxlc:LayoutGroup>
+
                         </dxlc:LayoutGroup>
                     </dxlc:LayoutGroup>
 
@@ -1102,29 +1126,8 @@
                                     <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="DnTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Результат дисп." ToolTip="Результат диспансеризации">
-                                <Grid x:Name="DispGrid">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="20" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <dxe:ComboBoxEdit EditValue="{Binding DataContext.RSLT_D, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="RsltdBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDDR" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
-                                    <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="RsTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
-                                </Grid>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
-                                    <Grid x:Name="MobGrid" HorizontalAlignment="Left">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="20" />
-                                        </Grid.ColumnDefinitions>
-                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" HorizontalAlignment="Left"/>
-                                        <ToggleButton Grid.Column="1" x:Name="MobTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
-                                    </Grid>
-                                </dxlc:LayoutItem>
+
+                            
                             <dxlc:LayoutItem Label="Реабилитация" ToolTip="Признак реабилитации">
                                 <Grid x:Name="ReabnGrid">
                                     <Grid.ColumnDefinitions>
