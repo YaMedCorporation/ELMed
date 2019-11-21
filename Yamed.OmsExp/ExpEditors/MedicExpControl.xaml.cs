@@ -324,7 +324,7 @@ namespace Yamed.OmsExp.ExpEditors
                         (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
                         sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                     else
-                        sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
+                        sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
 
                     sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                         MidpointRounding.AwayFromZero);
