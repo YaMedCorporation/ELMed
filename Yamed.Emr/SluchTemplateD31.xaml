@@ -578,7 +578,10 @@
                                     <dxe:TextEdit EditValue="{Binding DOCNUM, UpdateSourceTrigger=PropertyChanged}" x:Name="udlNumberBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Дата выдачи">
-                                    <dxe:TextEdit/>
+                                    <dxe:DateEdit MaskType="DateTimeAdvancingCaret" Mask="d" EditValue="{Binding DOCDATE, UpdateSourceTrigger=PropertyChanged}" x:Name="docdateBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" />
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="Организация выд. документ">
+                                    <dxe:TextEdit EditValue="{Binding DOCORG, UpdateSourceTrigger=PropertyChanged}" x:Name="docorgBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Место рождения">
                                     <dxe:TextEdit EditValue="{Binding MR, UpdateSourceTrigger=PropertyChanged}" x:Name="mrBox" />
@@ -587,7 +590,7 @@
                                     <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Телефон пациента">
-                                    <dxe:TextEdit/>
+                                    <dxe:TextEdit EditValue="{Binding TEL, UpdateSourceTrigger=PropertyChanged}" x:Name="telBox" />
                                 </dxlc:LayoutItem>
 
                             </dxlc:LayoutGroup>
