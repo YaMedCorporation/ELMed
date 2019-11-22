@@ -64,7 +64,15 @@ namespace Yamed.OmsExp.ExpEditors
             VidExpEdit.DataContext = videxp;
 
             if (stype == 2)
+            {
                 ExpEkmpLayGr.Visibility = Visibility.Collapsed;
+                ExpertGridControl.Visibility = Visibility.Collapsed;
+                checkEditItem.IsVisible = false;
+                ExpertAddItem.IsVisible = false;
+                ExpertDelItem.IsVisible = false;
+                experts.Visibility = Visibility.Collapsed;
+                exporuch.Visibility = Visibility.Collapsed;
+            }
             if (stype == 3)
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
         }
@@ -284,7 +292,7 @@ namespace Yamed.OmsExp.ExpEditors
             {
                 DXMessageBox.Show("Не произведен расчет");   
             }
-            else if (checkEditItem.EditValue.ToString() == "False")
+            else if (checkEditItem.EditValue.ToString() == "False" && PrConsColumn.DataContext.ToString() == "Yamed.Entity.D3_SANK_OMS" && _stype == 3)
             { 
                 DXMessageBox.Show("Не выбран эксперт или не стоит отметка 'Без эксперта'");
             }

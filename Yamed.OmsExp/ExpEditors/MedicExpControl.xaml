@@ -96,7 +96,7 @@
                                         <dxlc:LayoutItem Label="Дата экспертизы">
                                             <dxe:DateEdit EditValue="{Binding S_DATE, UpdateSourceTrigger=PropertyChanged}" x:Name="SdateEdit" />
                                         </dxlc:LayoutItem>
-                                        <dxlc:LayoutItem Label="Экспертное поручение">
+                                        <dxlc:LayoutItem x:Name="exporuch" Label="Экспертное поручение">
                                             <dxe:TextEdit EditValue="{Binding ExpOrder, UpdateSourceTrigger=PropertyChanged}" x:Name="ExpOrderEdit" />
                                         </dxlc:LayoutItem>
                                     </dxlc:LayoutGroup>
@@ -117,7 +117,7 @@
                                     </dxlc:LayoutItem>
                                 </dxlc:LayoutGroup>
                                     
-                                <dxlc:LayoutItem Label="Эксперты">
+                                <dxlc:LayoutItem x:Name="experts" Label="Эксперты">
                                     <Grid >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
