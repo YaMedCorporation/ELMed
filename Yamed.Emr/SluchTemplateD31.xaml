@@ -578,7 +578,7 @@
                                     <dxe:TextEdit EditValue="{Binding DOCNUM, UpdateSourceTrigger=PropertyChanged}" x:Name="udlNumberBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Дата выдачи">
-                                    <dxe:DateEdit MaskType="DateTimeAdvancingCaret" Mask="d" EditValue="{Binding DOCDATE, UpdateSourceTrigger=PropertyChanged}" x:Name="docdateBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" />
+                                    <dxe:DateEdit MaskType="DateTimeAdvancingCaret" Mask="d" EditValue="{Binding DOCDATE, UpdateSourceTrigger=PropertyChanged}" x:Name="docdateBox" InvalidValueBehavior="AllowLeaveEditor" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Организация выд. документ">
                                     <dxe:TextEdit EditValue="{Binding DOCORG, UpdateSourceTrigger=PropertyChanged}" x:Name="docorgBox" />
