@@ -89,6 +89,7 @@ EXEC p_oms_calc_schet {_sank.D3_SCID}
                             sank.S_TIP = 1;
                             sank.S_TIP2 = 1;
                             sank.USER_ID = SprClass.userId;
+                            sank.S_COM = sank.S_ZAKL;
                             sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", sank, "ID",
         SprClass.LocalConnectionString);
                             Reader2List.CustomExecuteQuery($@"

@@ -215,6 +215,7 @@ namespace Yamed.OmsExp.ExpEditors
             var sa = ((ExpClass)e.NewItem).Sank;
             ExpLayGr.DataContext = sa;
             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{sa.S_CODE}')";
+            sa.S_COM = sa.S_ZAKL;
         }
 
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
@@ -244,13 +245,16 @@ namespace Yamed.OmsExp.ExpEditors
             
             foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
             {
+                
                 if (obj.ID == 0)
                 {
+                    obj.S_COM = obj.S_ZAKL;
                     var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
                     obj.ID = (int)id;
                 }
                 else
                 {
+                    obj.S_COM = obj.S_ZAKL;
                     var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", obj, "ID");
                     Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                 }
@@ -300,9 +304,6 @@ namespace Yamed.OmsExp.ExpEditors
             {
                 ((DXWindow)this.Parent).Close();
             }
-
-           
-
         }
 
         private void GridViewBase_OnCellValueChanging(object sender, CellValueChangedEventArgs e)
@@ -373,7 +374,6 @@ namespace Yamed.OmsExp.ExpEditors
                     ex.Sank.DATE_ACT = sa.DATE_ACT;
                     ex.Sank.NUM_ACT = sa.NUM_ACT;
                     ex.Sank.MODEL_ID = sa.MODEL_ID;
-
                     CalcSank(ex);
                     ex.Sank.USER_ID= SprClass.userId;
                     ex.Sank.Z_INFO = sa.Z_INFO;
@@ -386,6 +386,7 @@ namespace Yamed.OmsExp.ExpEditors
                     ex.Sank.Z_OBOSN_OB = sa.Z_OBOSN_OB;
                     ex.Sank.Z_PROF_GOSP = sa.Z_PROF_GOSP;
                     ex.Sank.S_ZAKL = sa.S_ZAKL;
+                    ex.Sank.S_COM = sa.S_ZAKL;
                     ex.Sank.Z_INFO_NP = sa.Z_INFO_NP;
                     ex.Sank.Z_DS_NP = sa.Z_DS_NP;
                     ex.Sank.Z_PREEM_NP = sa.Z_PREEM_NP;
