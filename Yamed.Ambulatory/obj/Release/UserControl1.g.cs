@@ -9,8 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using DevExpress.Xpf.DXBinding;
-using DevExpress.Xpf.WindowsUI;
 using System;
 using System.Diagnostics;
 using System.Windows;

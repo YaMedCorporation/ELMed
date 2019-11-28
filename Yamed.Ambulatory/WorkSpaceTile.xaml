@@ -10,13 +10,13 @@
              d:DesignHeight="300" d:DesignWidth="800">
     <Grid>
         <dxlc:TileLayoutControl>
-            <dxlc:Tile Header="Посещение "  navigation:Navigation.NavigateTo="SluchControl" Size="Small" Background="#FFDA8615">
+            <dxlc:Tile Header="Посещение "   Size="Small" Background="#FFDA8615" Click="Tile_Click">
                 <Image Source="/Yamed.Icons;component/Icons/stethoscope-512.png" Width="64" />
             </dxlc:Tile>
-            <dxlc:Tile Size="Small" Header="Направление" navigation:Navigation.NavigateTo="ReferralControl" Background="#FF0072C6">
+            <dxlc:Tile Size="Small" Header="Направление" Click="reg_open" Background="#FF0072C6">
                 <Image Source="/Yamed.Icons;component/Icons/Referals-512.png" Width="64"/>
             </dxlc:Tile>
-            <dxlc:Tile Size="Small" Header="Осмотры" navigation:Navigation.NavigateTo="ViewControl" Background="#FF55B00E">
+            <dxlc:Tile Size="Small" Header="ЭМК" Click="emk_click" Background="#FF55B00E">
                 <Image Source="/Yamed.Icons;component/Icons/1481287340_Medical_Book.png" Width="64"/>
             </dxlc:Tile>
 

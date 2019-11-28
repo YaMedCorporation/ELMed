@@ -107,9 +107,10 @@ namespace Yamed
 
         private void EmrPacientTile_OnClick(object sender, EventArgs e)
         {
+            var pid = 0;
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
-                Header = "ЭМК Пациента",MyControl = new ClinicEmrPacient(),
+                Header = "ЭМК Пациента",MyControl = new ClinicEmrPacient(pid),
                 IsCloseable = "True"
             });
         }

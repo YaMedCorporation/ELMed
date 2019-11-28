@@ -12,14 +12,16 @@ namespace Yamed.Registry.ViewModels
             this.PacientName = pacientName;
             this.PacientContact = pacientContact;
             this.PacientComent = pacientComent;
-            this.StartTime = DateTime.Today.AddHours(hour).AddMinutes(minute);
+            this.StartTime = new DateTime(2019,9,24).AddHours(hour).AddMinutes(minute);
+            //this.StartTime = DateTime.Today.AddHours(hour).AddMinutes(minute);
             this.PatientFullName = null;
         }
 
         public BookingViewModel(int id, bool reserve, string pacientName, string pacientContact, string pacientComent, int hour, int minute, string patientName)
             : this(id, reserve, pacientName, pacientContact, pacientComent, hour, minute)
         {
-            this.PatientFullName = patientName;
+            this.PatientFullName = pacientName;
+            //this.PatientFullName = patientName;
         }
 
         public int Id { get; private set; }

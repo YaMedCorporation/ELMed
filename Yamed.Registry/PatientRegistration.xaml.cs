@@ -25,8 +25,10 @@ namespace Yamed.Registry
     /// <summary>
     /// Логика взаимодействия для Patient_Registration.xaml
     /// </summary>
+    
     public partial class PatientRegistration : UserControl
     {
+        
         private BookingViewModel _bv;
         public PatientRegistration(BookingViewModel bv)
         {
@@ -50,7 +52,7 @@ namespace Yamed.Registry
         {
             EmrPacientGrid.FilterString = $"([FAM] like '{FamEdit.EditValue}%' and [IM] like '{ImEdit.EditValue}%' and [OT] like '{OtEdit.EditValue}%')";
         }
-
+        
         private void AcceptPatient_OnClick(object sender, RoutedEventArgs e)
         {
             var row = DxHelper.GetSelectedGridRow(EmrPacientGrid);
@@ -58,9 +60,9 @@ namespace Yamed.Registry
             var fam = (string)ObjHelper.GetAnonymousValue(row, "FAM");
             var im = (string)ObjHelper.GetAnonymousValue(row, "IM");
             var ot = (string)ObjHelper.GetAnonymousValue(row, "OT");
-
+            RegReg.reg_id = pid;
             Reader2List.CustomExecuteQuery($@"
-                UPDATE [dbo].[YamedRegistry] SET [PID] = {pid} --,[SLID] = 1
+                UPDATE [dbo].[YamedRegistry] SET [PID] = {pid} ,pacientname='{fam}'+' '+'{im}'+' '+'{ot}'--,[SLID] = 1
                 WHERE ID = {_bv.Id}" , SprClass.LocalConnectionString);
             _bv.SetPatient(fam+" "+im+" "+ot);
 

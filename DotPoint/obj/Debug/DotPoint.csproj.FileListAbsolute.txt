@@ -12,3 +12,10 @@ C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.csprojAssemblyReference
 C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.csproj.CoreCompileInputs.cache
 C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.exe
 C:\Users\WILD\Desktop\040919\DotPoint\obj\Debug\DotPoint.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\bin\Debug\DotPoint.exe.config
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\bin\Debug\DotPoint.exe
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\bin\Debug\DotPoint.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\obj\Debug\DotPoint.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\obj\Debug\DotPoint.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\obj\Debug\DotPoint.exe
+C:\Users\User\source\repos\Новая папка\ELMed\DotPoint\obj\Debug\DotPoint.pdb

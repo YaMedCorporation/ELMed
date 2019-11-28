@@ -17,10 +17,11 @@ namespace Yamed.Emr
     /// </summary>
     public partial class ClinicEmrPacient : UserControl
     {
-        public ClinicEmrPacient()
+        private int? pid_;
+        public ClinicEmrPacient(int? pid)
         {
             InitializeComponent();
-
+            pid_ = pid;
             PacientGridControl.view.RowDoubleClick += PccientViewOnRowDoubleClick;
         }
 
@@ -61,14 +62,21 @@ namespace Yamed.Emr
 
         private void PacientGridControl_OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
+            int? id=pid_;
             var item = e.NewItem as DevExpress.Data.Async.Helpers.ReadonlyThreadSafeProxyForObjectFromAnotherThread;
             if (item == null) return;
+            if(pid_==null)
+            {
+                id = (int)ObjHelper.GetAnonymousValue(item.OriginalRow, "ID");
 
-            var id = (int)ObjHelper.GetAnonymousValue(item.OriginalRow, "ID");
-
+            }
+            else
+            {
+                id = pid_;
+            }
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                SluchGridControl.DataContext = Reader2List.CustomSelect<SLUCH>($"Select * from SLUCH where PID = {id}",
+                SluchGridControl.DataContext = Reader2List.CustomSelect<D3_ZSL_OMS>($"Select * from D3_ZSL_OMS where D3_PID = {id}",
                     SprClass.LocalConnectionString);
 
             }), System.Windows.Threading.DispatcherPriority.Background);
@@ -83,7 +91,7 @@ namespace Yamed.Emr
 
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                UslGridControl.DataContext = Reader2List.CustomSelect<USL>($"Select * from USL where SLID = {id}",
+                UslGridControl.DataContext = Reader2List.CustomSelect<D3_SL_OMS>($"Select * from D3_SL_OMS where ID = {id}",
                     SprClass.LocalConnectionString);
 
                 AnalysisFormList.DataContext =Reader2List.CustomAnonymousSelect("Select * from settingstables where TableType = 3",
@@ -94,6 +102,32 @@ namespace Yamed.Emr
                         SprClass.LocalConnectionString);
 
             }), System.Windows.Threading.DispatcherPriority.Background);
+        }
+        private D3_SCHET_OMS _sc;
+        private void BarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var zslTempl = new SluchTemplateD31(SluchGridControl);
+            int z_id = (int)SluchGridControl.GetFocusedRowCellValue("ID");
+            if (z_id != 0)
+            {
+
+                zslTempl.BindSluch(z_id, _sc);
+            }
+            else
+            {
+
+                return;
+            }
+            //int pppid=
+            //_sc = ;
+
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            {
+
+                Header = "Случай поликлиники",
+                MyControl = zslTempl,
+                IsCloseable = "True"
+            });
         }
     }
 }

@@ -252,9 +252,9 @@ Select 0 ID, 'ОБЩИЕ' Name, null, null, CAST (0 as Bit) Checked where (Selec
                 };
 
             schedules.AddRange(from sch in groupSchedule
-                let pacientDatas = (from p in sch.list where ObjHelper.GetAnonymousValue(p, "PACID") != null select p)
-                let bookingModels = BookingModelGenerator.GetBookingModels(pacientDatas)
-                select new ScheduleViewModel(bookingModels, sch.list));
+                               let pacientDatas = (from p in sch.list where ObjHelper.GetAnonymousValue(p, "PACID") != null select p)
+                               let bookingModels = BookingModelGenerator.GetBookingModels(pacientDatas)
+                               select new ScheduleViewModel(bookingModels, sch.list));
 
             #region old variant
             //foreach (var sch in groupSchedule)
@@ -301,14 +301,13 @@ Select 0 ID, 'ОБЩИЕ' Name, null, null, CAST (0 as Bit) Checked where (Selec
                                             b.ReserveName((string)row.GetValue("PacientName"), (string)row.GetValue("PacientContact"), (string)row.GetValue("PacientComent"));
                                         }
 
-                                        if (row.GetValue("PACID") == null)
+                                        if (row.GetValue("PID") == null)
                                         {
                                             b.RemovePatient();
                                         }
                                         else
                                         {
-                                            b.SetPatient((string) row.GetValue("FAM") + " " + row.GetValue("IM") + " " +
-                                                         row.GetValue("OT"));
+                                            b.SetPatient((string) row.GetValue("PacientName"));
                                         }
                                     }
                                 }

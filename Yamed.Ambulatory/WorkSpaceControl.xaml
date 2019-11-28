@@ -22,15 +22,15 @@
                                 ItemsSource="{Binding}" 
                                 DisplayMember="NameWithID"
                                 ValueMember="ID" PopupMaxWidth="1024"
-                                x:Name="DoctorEdit"/>
+                                x:Name="DoctorEdit" EditValueChanged="DoctorEdit_EditValueChanged"/>
                     </dxlc:LayoutItem >
                     <dxlc:LayoutItem Label="Дата" LabelPosition="Left">
-                        <dxe:DateEdit IsTextEditable="False" Name="WorkDateEdit"/>
+                        <dxe:DateEdit IsTextEditable="False" Name="WorkDateEdit" EditValueChanged="WorkDateEdit_EditValueChanged"/>
                     </dxlc:LayoutItem>
                     <Button Name="tempButton" Width="150" Height="28" HorizontalAlignment="Right" Margin="10,4" Content="отобрать" Click="tempButton_Click"/>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup View="GroupBox" Header="Пациенты" Orientation="Vertical" ScrollBars="Auto">
-                    <dxe:ListBoxEdit Name="PacientBookingEdit" ValueMember="ID" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding}" ShowBorder="False">
+                    <dxe:ListBoxEdit Name="PacientBookingEdit" ValueMember="ID" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding}" ShowBorder="False" SelectedIndexChanged="get_pid" >
                         <dxe:ListBoxEdit.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="2,5,2,5" BorderThickness="2,1" BorderBrush="#FF0072C6" Width="260" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">

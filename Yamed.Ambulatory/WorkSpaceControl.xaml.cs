@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DevExpress.Xpf.WindowsUI.Navigation;
 using Yamed.Core;
 using Yamed.Server;
+
 using NavigationEventArgs = DevExpress.Xpf.WindowsUI.Navigation.NavigationEventArgs;
 
 namespace Yamed.Ambulatory
@@ -32,9 +33,16 @@ namespace Yamed.Ambulatory
 
         }
 
+        private void get_pid(object sender, RoutedEventArgs e)
+        {
+
+            Yamed.Emr.RegReg.reg_id = Convert.ToInt32(PacientBookingEdit.EditValue);
+        }
+        public static string wdedit;
         private void tempButton_Click(object sender, RoutedEventArgs e)
         {
             var date = ((DateTime?) WorkDateEdit.EditValue)?.ToString("yyyyMMdd") ?? DateTime.Today.ToString("yyyyMMdd");
+            
             var doct = DoctorEdit.EditValue;
 
             var sqlToStartNew = $@"
@@ -65,6 +73,17 @@ namespace Yamed.Ambulatory
             {
                 ControlPanelGrid.IsEnabled = true;
             }
+        }
+
+        private void WorkDateEdit_EditValueChanged(object sender, DevExpress.Xpf.Editors.EditValueChangedEventArgs e)
+        {
+            var date = ((DateTime?)WorkDateEdit.EditValue)?.ToString("yyyyMMdd") ?? DateTime.Today.ToString("yyyyMMdd");
+            wdedit = date;
+        }
+        public static int docid;
+        private void DoctorEdit_EditValueChanged(object sender, DevExpress.Xpf.Editors.EditValueChangedEventArgs e)
+        {
+            docid = Convert.ToInt32(DoctorEdit.EditValue);
         }
     }
 }

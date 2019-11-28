@@ -211,3 +211,37 @@ C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.csproj.Generate
 C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
 C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.dll
 C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\bin\Debug\MaterialMenu.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MenuButton.g.cs
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\SideMenu.g.cs
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MenuButton.baml
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\SideMenu.baml
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\bin\Debug\MaterialMenu.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MenuButton.g.cs
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\SideMenu.g.cs
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.cache
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu_MarkupCompile.lref
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MenuButton.baml
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\SideMenu.baml
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.g.resources
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resources
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.dll
+C:\Users\User\source\repos\Новая папка\ELMed\MaterialMenu\obj\Debug\MaterialMenu.pdb

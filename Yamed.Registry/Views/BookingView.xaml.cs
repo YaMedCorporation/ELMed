@@ -93,13 +93,14 @@ namespace Yamed.Registry.Views
                 Task.Factory.StartNew(() =>
                     {
                         Reader2List.CustomExecuteQuery($@"
-                           declare @pid int
+                           declare @pid int,@fio nvarchar(250)
                            select @pid = pid from [dbo].[YamedRegistry] WHERE ID = {dragged.Id}
+                           select @fio = PacientName from [dbo].[YamedRegistry] WHERE ID = {dragged.Id}
 
-                           UPDATE [dbo].[YamedRegistry] SET [PID] = NULL
+                           UPDATE [dbo].[YamedRegistry] SET [PID] = NULL, [PacientName]=null 
                            WHERE ID = {dragged.Id}
 
-                           UPDATE [dbo].[YamedRegistry] SET [PID] = @pid
+                           UPDATE [dbo].[YamedRegistry] SET [PID] = @pid, [PacientName] = @fio
                            WHERE ID = {vm.Id}", SprClass.LocalConnectionString);
 
                     })
@@ -237,7 +238,7 @@ namespace Yamed.Registry.Views
                 {
                     Reader2List.CustomExecuteQuery($@"
                            
-                           UPDATE [dbo].[YamedRegistry] SET PID = NULL
+                           UPDATE [dbo].[YamedRegistry] SET PID = NULL, PacientName = null 
                            WHERE ID = {vm.Id}", SprClass.LocalConnectionString);
                 })
                 .ContinueWith(x =>

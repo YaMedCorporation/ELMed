@@ -95,7 +95,7 @@
                             <dxb:BarContainerControl Grid.Column="0" >
                                 <dxb:ToolBarControl AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" IsCollapsed="False" ShowDragWidget="False" UseWholeRow="False" HorizontalAlignment="Stretch" Orientation="Vertical">
                                     <dxb:BarButtonItem Content="Добавить" Glyph="/Yamed.Icons;component/Icons/user-add_blue.png" LargeGlyph="/Yamed.Icons;component/Icons/user-add_blue.png" BarItemDisplayMode="Default"/>
-                                    <dxb:BarButtonItem Content="Просмотр" Glyph="/Yamed.Icons;component/Icons/user-pen_blue.png" LargeGlyph="/Yamed.Icons;component/Icons/user-pen_blue.png" BarItemDisplayMode="Default"/>
+                                    <dxb:BarButtonItem Content="Просмотр" Glyph="/Yamed.Icons;component/Icons/user-pen_blue.png" LargeGlyph="/Yamed.Icons;component/Icons/user-pen_blue.png" BarItemDisplayMode="Default" ItemClick="BarButtonItem_ItemClick" />
                                     <dxb:BarButtonItem Content="Удалить"  Glyph="/Yamed.Icons;component/Icons/user-exclude_blue.png" LargeGlyph="/Yamed.Icons;component/Icons/user-exclude_blue.png" BarItemDisplayMode="Default"/>
                                 </dxb:ToolBarControl>
                             </dxb:BarContainerControl>

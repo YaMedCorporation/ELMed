@@ -211,7 +211,7 @@
                                         </Grid>
                                     </Button>
 
-                                <Button Click="WorkSpace_OnClick" Style="{StaticResource InformButton}" IsEnabled="False" Tag="LPU" Visibility="Collapsed">
+                                <Button Click="WorkSpace_OnClick" Style="{StaticResource InformButton}" IsEnabled="True" Tag="LPU" Visibility="Collapsed">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>

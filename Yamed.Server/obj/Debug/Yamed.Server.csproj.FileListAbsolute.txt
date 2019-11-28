@@ -125,3 +125,29 @@ C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreComp
 C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
 C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.dll
 C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb

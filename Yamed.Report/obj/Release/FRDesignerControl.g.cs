@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using DevExpress.Xpf.DXBinding;
 using FastReport.Design;
 using System;
 using System.Diagnostics;

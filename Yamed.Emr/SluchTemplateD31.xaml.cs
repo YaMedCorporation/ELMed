@@ -25,6 +25,8 @@ using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Collections;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 
 namespace Yamed.Emr
 {
@@ -51,7 +53,13 @@ namespace Yamed.Emr
     //    public decimal? ED_COL { get; set; }
     //    public decimal? SUM_M { get; set; }
     //}
-
+    public  class SPR_SOST
+    {
+        
+        public  string SOKR { get; set; }
+        public  string NAME { get; set; }
+        public  string NameWithSokr { get; set; }
+    }
 
     /// <summary>
     /// Логика взаимодействия для SluchTemplate.xaml
@@ -98,14 +106,39 @@ namespace Yamed.Emr
         private List<D3_CRIT_OMS> _crit_delList;
         public List<D3_USL_OMS> _usl_delList;
 
+        public ObservableCollection<string> list0 = new ObservableCollection<string>();
+        private int ppid;
         public SluchTemplateD31(GridControl gc)
         {
             InitializeComponent();
-
+           ppid = RegReg.reg_id;
             _gc = gc;
 
-            rowIndex = _gc.GetSelectedRowHandles().Where(x => x >= 0).FirstOrDefault();
-            var row = _gc.GetRow(rowIndex);
+            //rowIndex = _gc.GetSelectedRowHandles().Where(x => x >= 0).FirstOrDefault();
+            //var row = _gc.GetRow(rowIndex);
+            int row=0;
+            list0.Add("I");
+            list0.Add("II");
+            list0.Add("III");
+
+            var spr_teeth_sost = Reader2List.CustomSelect<SPR_SOST>($@"select SOKR,NAME,NameWithSokr from STOMAT_SPR_F43U_SOST order by id", SprClass.LocalConnectionString);
+            s_18.DataContext = spr_teeth_sost; s_17.DataContext = spr_teeth_sost; s_16.DataContext = spr_teeth_sost; s_15.DataContext = spr_teeth_sost; s_14.DataContext = spr_teeth_sost; s_13.DataContext = spr_teeth_sost; s_12.DataContext = spr_teeth_sost; s_11.DataContext = spr_teeth_sost;
+            s_18.SelectedIndex = -1; s_17.SelectedIndex = -1; s_16.SelectedIndex = -1; s_15.SelectedIndex = -1; s_14.SelectedIndex = -1; s_13.SelectedIndex = -1; s_12.SelectedIndex = -1; s_11.SelectedIndex = -1;
+            s_28.DataContext = spr_teeth_sost; s_27.DataContext = spr_teeth_sost; s_26.DataContext = spr_teeth_sost; s_25.DataContext = spr_teeth_sost; s_24.DataContext = spr_teeth_sost; s_23.DataContext = spr_teeth_sost; s_22.DataContext = spr_teeth_sost; s_21.DataContext = spr_teeth_sost;
+            s_28.SelectedIndex = -1; s_27.SelectedIndex = -1; s_26.SelectedIndex = -1; s_25.SelectedIndex = -1; s_24.SelectedIndex = -1; s_23.SelectedIndex = -1; s_22.SelectedIndex = -1; s_21.SelectedIndex = -1;
+            s_48.DataContext = spr_teeth_sost; s_47.DataContext = spr_teeth_sost; s_46.DataContext = spr_teeth_sost; s_45.DataContext = spr_teeth_sost; s_44.DataContext = spr_teeth_sost; s_43.DataContext = spr_teeth_sost; s_42.DataContext = spr_teeth_sost; s_41.DataContext = spr_teeth_sost;
+            s_48.SelectedIndex = -1; s_47.SelectedIndex = -1; s_46.SelectedIndex = -1; s_45.SelectedIndex = -1; s_44.SelectedIndex = -1; s_43.SelectedIndex = -1; s_42.SelectedIndex = -1; s_41.SelectedIndex = -1;
+            s_38.DataContext = spr_teeth_sost; s_37.DataContext = spr_teeth_sost; s_36.DataContext = spr_teeth_sost; s_35.DataContext = spr_teeth_sost; s_34.DataContext = spr_teeth_sost; s_33.DataContext = spr_teeth_sost; s_32.DataContext = spr_teeth_sost; s_31.DataContext = spr_teeth_sost;
+            s_38.SelectedIndex = -1; s_37.SelectedIndex = -1; s_36.SelectedIndex = -1; s_35.SelectedIndex = -1; s_34.SelectedIndex = -1; s_33.SelectedIndex = -1; s_32.SelectedIndex = -1; s_31.SelectedIndex = -1;
+
+            p_18.ItemsSource = list0; p_17.ItemsSource = list0; p_16.ItemsSource = list0; p_15.ItemsSource = list0; p_14.ItemsSource = list0; p_13.ItemsSource = list0; p_12.ItemsSource = list0; p_11.ItemsSource = list0;
+            p_18.SelectedIndex = -1; p_17.SelectedIndex = -1; p_16.SelectedIndex = -1; p_15.SelectedIndex = -1; p_14.SelectedIndex = -1; p_13.SelectedIndex = -1; p_12.SelectedIndex = -1; p_11.SelectedIndex = -1;
+            p_28.ItemsSource = list0; p_27.ItemsSource = list0; p_26.ItemsSource = list0; p_25.ItemsSource = list0; p_24.ItemsSource = list0; p_23.ItemsSource = list0; p_22.ItemsSource = list0; p_21.ItemsSource = list0;
+            p_28.SelectedIndex = -1; p_27.SelectedIndex = -1; p_26.SelectedIndex = -1; p_25.SelectedIndex = -1; p_24.SelectedIndex = -1; p_23.SelectedIndex = -1; p_22.SelectedIndex = -1; p_21.SelectedIndex = -1;
+            p_48.ItemsSource = list0; p_47.ItemsSource = list0; p_46.ItemsSource = list0; p_45.ItemsSource = list0; p_44.ItemsSource = list0; p_43.ItemsSource = list0; p_42.ItemsSource = list0; p_41.ItemsSource = list0;
+            p_48.SelectedIndex = -1; p_47.SelectedIndex = -1; p_46.SelectedIndex = -1; p_45.SelectedIndex = -1; p_44.SelectedIndex = -1; p_43.SelectedIndex = -1; p_42.SelectedIndex = -1; p_41.SelectedIndex = -1;
+            p_38.ItemsSource = list0; p_37.ItemsSource = list0; p_36.ItemsSource = list0; p_35.ItemsSource = list0; p_34.ItemsSource = list0; p_33.ItemsSource = list0; p_32.ItemsSource = list0; p_31.ItemsSource = list0;
+            p_38.SelectedIndex = -1; p_37.SelectedIndex = -1; p_36.SelectedIndex = -1; p_35.SelectedIndex = -1; p_34.SelectedIndex = -1; p_33.SelectedIndex = -1; p_32.SelectedIndex = -1; p_31.SelectedIndex = -1;
 
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
         }
@@ -133,7 +166,17 @@ namespace Yamed.Emr
 
         public D3_PACIENT_OMS PacientData(int pid)
         {
-            return Reader2List.CustomSelect<D3_PACIENT_OMS>($"SELECT top 1 * FROM D3_PACIENT_OMS WHERE ID = {pid}", SprClass.LocalConnectionString).Single();
+            if(ppp !=0)
+            {
+                return Reader2List.CustomSelect<D3_PACIENT_OMS>($"SELECT top 1 * FROM D3_PACIENT_OMS WHERE ID = {ppp}", SprClass.LocalConnectionString).Single();
+
+            }
+            else
+            {
+                
+                return Reader2List.CustomSelect<D3_PACIENT_OMS>($"SELECT top 1 * FROM D3_PACIENT_OMS WHERE ID = {pid}", SprClass.LocalConnectionString).Single();
+
+            }
             //Dost = SqlReader.Select($"SELECT * FROM PACIENT_DOST WHERE PID = {pid}", SprClass.LocalConnectionString).ToArray();
             //Dostp = SqlReader.Select($"SELECT * FROM PACIENT_DOSTP WHERE PID = {pid}", SprClass.LocalConnectionString);
 
@@ -513,14 +556,22 @@ namespace Yamed.Emr
         }
 
         private Task _task;
-
+        private int ppp;
         public D3_SCHET_OMS _sc;
         public void BindEmptySluch2(D3_SCHET_OMS sc = null)
         {
+            var constr = SprClass.LocalConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            SqlCommand comm = new SqlCommand($@"select id from d3_schet_oms where id=(select max(id) from d3_schet_oms)", con);
+            con.Open();
+            int sc0 = (int)comm.ExecuteScalar();
+            con.Close();
             if (_sc == null) _sc = sc;
             _zsl = new D3_ZSL_OMS();
-            _zsl.D3_SCID = _sc.ID;
-            _zsl.LPU = _sc.CODE_MO;
+            _zsl.D3_SCID = sc0; //Добавил 17.10.2019 Алекс
+            //_zsl.D3_SCID = _sc.ID; закомментил 17.10.2019 Алекс
+            _zsl.LPU = "460104"; //добавил 17.10.2019 Алекс
+            //_zsl.LPU = _sc.CODE_MO; закомментил 17.10.2019 Алекс
             ZSlGrid.DataContext = _zsl;
 
             _slList = new List<D3_SL_OMS>();
@@ -573,8 +624,27 @@ namespace Yamed.Emr
             //    SluchGrid.DataContext = _zsl;
             //    x.Dispose();
             //}, TaskScheduler.FromCurrentSynchronizationContext());
-
-            BindEmptyPacient();
+            SqlCommand comm1 = new SqlCommand($@"select npolis from d3_pacient_oms where id=(select pid from yamedregistry where id={ppid})", con);
+            SqlCommand comm2 = new SqlCommand($@"select pid from yamedregistry where id={ppid}", con);
+            con.Open();
+            string npolis = (string)comm1.ExecuteScalar();
+            //var ppp1 = comm2.ExecuteScalar();
+            //ppp = Convert.ToInt32(ppp1 ?? 0);
+            ppp = (int)(comm2.ExecuteScalar() ?? 0); 
+            con.Close();
+            RoutedEventArgs e=null;
+            polisBox.EditValue = npolis;
+            PolisSearch_OnClick(this,e);
+            if(ppp==0)
+            {
+                BindEmptyPacient();
+            }
+            else
+            {
+                BindPacient(ppp);
+            }
+            //BindEmptyPacient(); закомментил 17.10.2019 Алекс
+            //BindPacient(ppp);
         }
 
 
@@ -719,6 +789,9 @@ namespace Yamed.Emr
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
 
+            stom_mkb0.DataContext = SprClass.mkbSearching;
+            stom_mkb.DataContext = SprClass.mkbSearching;
+
             HVidBox.DataContext = SprClass.VidVmpList;
             HMetodBox.DataContext = SprClass.MetodVmpList;
 
@@ -753,10 +826,11 @@ namespace Yamed.Emr
             }
             else
             {
-                var upd = Reader2List.CustomUpdateCommand("D3_PACIENT_OMS", _pacient, "ID");
-                Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
-            }
 
+                var upd = Reader2List.CustomUpdateCommand("D3_PACIENT_OMS", _pacient, "ID"); //закомментил Алекс 21.11.2019
+                Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString); //закомментил Алекс 21.11.2019
+            }
+            _zsl.D3_SCID = _sc.ID;
             _zsl.D3_PID = pid;
             _zsl.EXP_COMENT = null;
             _zsl.USERID = SprClass.userId;
@@ -1276,9 +1350,10 @@ namespace Yamed.Emr
                 var srz = SqlReader.Select(
                     $@"SELECT [FAM],[IM],[OT],[W],[DR],[DS],[Q],[SPOL],[NPOL],[ENP],[OPDOC]  FROM [dbo].[PEOPLE] where npol = '{polisBox.EditValue}' or enp = '{polisBox.EditValue}' order by ID desc",
                     SprClass.GlobalSrzConnectionString);
-
+                
                 if (srz.Any())
                 {
+                    _pacient = ObjHelper.ClassConverter<D3_PACIENT_OMS>(srz[0]);
                     _pacient.FAM = (string)srz[0].GetValue("FAM");
                     _pacient.IM = (string)srz[0].GetValue("IM");
                     _pacient.OT = (string)srz[0].GetValue("OT");
@@ -1290,6 +1365,14 @@ namespace Yamed.Emr
                         (int?)srz[0].GetValue("OPDOC") == 3
                             ? (string)srz[0].GetValue("ENP")
                             : (string)srz[0].GetValue("NPOL");
+                    //polisBox.Text = _pacient.NPOLIS;
+                    //FamBox.Text = _pacient.FAM;
+                    //ImBox.Text = _pacient.IM;
+                    //OtBox.Text = _pacient.OT;
+                    //wBox.EditValue = _pacient.W;
+                    //drBox1.EditValue = _pacient.DR;
+                    //smoBox.EditValue = _pacient.SMO;
+
                 }
                 else
                 {
@@ -1341,7 +1424,7 @@ namespace Yamed.Emr
 
             if (pac.Any())
             {
-                //_pacient = ObjHelper.ClassConverter<D3_PACIENT_OMS>(pac[0]);
+                _pacient = ObjHelper.ClassConverter<D3_PACIENT_OMS>(pac[0]);
                 //_pacient.ID_PAC = Guid.NewGuid().ToString();
                 //_pacient.ID = 0;
 
@@ -1363,7 +1446,42 @@ namespace Yamed.Emr
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            SaveSluch();
+            _sc = new D3_SCHET_OMS();
+            if (DateZ2Edit.EditValue != null)
+            {
+                var new_schet = SqlReader.Select(
+                $@"SELECT top 1 * FROM [dbo].[D3_SCHET_OMS] where MONTH = {DateZ2Edit.DateTime.Month} and [YEAR]={DateZ2Edit.DateTime.Year} and SchetType='H' order by ID desc",
+                SprClass.LocalConnectionString);
+                if (new_schet.Count == 0)
+                {
+                    DateTime now = DateTime.Today;
+                    DateTime last = new DateTime(now.Year, now.Month + 1, 1).AddDays(-1);
+
+                    using (SqlConnection con = new SqlConnection(SprClass.LocalConnectionString))
+                    {
+                        con.Open();
+                        SqlCommand comm = new SqlCommand($@"insert into d3_schet_oms (code_mo,year,month,nschet,dschet,schettype) values ((select parametr from settings where name='MedicalOrganization'),
+{DateZ2Edit.DateTime.Year},{DateZ2Edit.DateTime.Month},'000','{last}','H')
+ select id  from d3_schet_oms where id=SCOPE_IDENTITY()", con);
+                        
+                        _sc.ID = (int)comm.ExecuteScalar();
+                    }
+                    
+                }
+
+            }
+            else
+            {
+                _sc.ID = 0;
+            }
+            
+            if(Zf_checking()==0)
+            {
+                SaveSluch();
+                DXMessageBox.Show("Запись сохранена!");
+            }
+            
+            
         }
 
         private void PolisBox_OnKeyUp(object sender, KeyEventArgs e)
@@ -1650,6 +1768,7 @@ namespace Yamed.Emr
 
         private void SluchTemplateD31_OnInitialized(object sender, EventArgs e)
         {
+            
         }
 
         private void NaprAddItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -2302,6 +2421,226 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             }
 
             CritGridControl.RefreshData();
+        }
+        public static int f43_open = 0;
+        private void F43_GotFocus(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Anamnez_GotFocus(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private int Zf_checking()
+        {
+            List<int> lp = new List<int>();
+            List<int> lp1 = new List<int>();
+            List<int> ls = new List<int>();
+            List<int> ls1 = new List<int>();
+
+            for (int y = 1; y < ZF_p_top_l.Children.Count; y++)
+            {
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_p_l = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_p_top_l.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_p1_l = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_p_low_l.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_s_l = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_s_top_l.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_s1_l = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_s_low_l.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_p_r = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_p_top_r.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_p1_r = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_p_low_r.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_s_r = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_s_top_r.Children[y];
+                DevExpress.Xpf.LayoutControl.LayoutItem combo_s1_r = (DevExpress.Xpf.LayoutControl.LayoutItem)ZF_s_low_r.Children[y];
+                if (combo_p_l.Content != null)
+                {
+                    if (combo_p_l.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_p_l.Content;
+                        if (c.EditValue != null)
+                        {
+                            lp.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            lp.Add(0);
+                        }
+                    }
+                }
+                if (combo_p_r.Content != null)
+                {
+                    if (combo_p_r.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_p_r.Content;
+                        if (c.EditValue != null)
+                        {
+                            lp.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            lp.Add(0);
+                        }
+                    }
+                }
+                if (combo_p1_l.Content != null)
+                {
+                    if (combo_p1_l.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_p1_l.Content;
+                        if (c.EditValue != null)
+                        {
+                            lp1.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            lp1.Add(0);
+                        }
+                    }
+                }
+                if (combo_p1_r.Content != null)
+                {
+                    if (combo_p1_r.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_p1_r.Content;
+                        if (c.EditValue != null)
+                        {
+                            lp1.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            lp1.Add(0);
+                        }
+                    }
+                }
+                if (combo_s_l.Content != null)
+                {
+                    if (combo_s_l.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_s_l.Content;
+                        if (c.EditValue != null)
+                        {
+                            ls.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            ls.Add(0);
+                        }
+                    }
+                }
+                if (combo_s_r.Content != null)
+                {
+                    if (combo_s_r.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_s_r.Content;
+                        if (c.EditValue != null)
+                        {
+                            ls.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            ls.Add(0);
+                        }
+                    }
+                }
+                if (combo_s1_l.Content != null)
+                {
+                    if (combo_s1_l.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_s1_l.Content;
+                        if (c.EditValue != null)
+                        {
+                            ls1.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            ls1.Add(0);
+                        }
+                    }
+                }
+                if (combo_s1_r.Content != null)
+                {
+                    if (combo_s1_r.Content.ToString().Contains("ComboBoxEdit"))
+                    {
+                        ComboBoxEdit c = (ComboBoxEdit)combo_s1_r.Content;
+                        if (c.EditValue != null)
+                        {
+                            ls1.Add(1);
+                            //goto forward;
+                        }
+                        else
+                        {
+                            ls1.Add(0);
+                        }
+                    }
+                }
+
+            }
+
+
+            int zap_zf = lp.Count;
+            int sbros = 0;
+            if (f43_open == 1)
+            {
+                for (int i = 0; i < lp.Count; i++)
+                {
+                    //zap_zf = lp.Count-1;
+                    if (lp[i] != ls[i] || lp1[i] != ls1[i])
+                    {
+                        zap_zf = zap_zf - 1;
+
+                    }
+                    else if (lp[i] == 0 && ls[i] == 0 && lp1[i] == 0 && ls1[i] == 0)
+                    {
+                        sbros = sbros + 1;
+                    }
+                    else
+                    {
+
+                    }
+                }
+                if (zap_zf != 16 || sbros == 16)
+                {
+                    DXMessageBox.Show("Заполните зубную формулу!");
+                    //sbros = 0;
+                    //zap_zf = lp.Count;
+                    F43.SelectTab(ZF);
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private void F43_SelectedTabChildChanged(object sender, ValueChangedEventArgs<FrameworkElement> e)
+        {
+
+            if(F43.SelectedTabChild!=ZF)
+            {
+                Zf_checking();
+            }
+        }
+
+        private void Main_SelectedTabChildChanged(object sender, ValueChangedEventArgs<FrameworkElement> e)
+        {
+            if (main.SelectedTabChild == F43)
+            {
+                f43_open=1;
+            }
+            else
+            {
+                f43_open = 0;
+            }
         }
     }
 

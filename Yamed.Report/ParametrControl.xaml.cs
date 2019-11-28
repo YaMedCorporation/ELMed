@@ -176,6 +176,7 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ReportCreate();
+            ((DXWindow)this.Parent).Close();
         }
 
 

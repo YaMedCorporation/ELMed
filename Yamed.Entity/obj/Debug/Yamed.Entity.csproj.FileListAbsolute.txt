@@ -99,3 +99,29 @@ C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreComp
 C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
 C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.dll
 C:\Users\WILD\Desktop\040919\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\EntityFramework.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\EntityFramework.xml
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\User\Source\Repos\YaMedCorporation\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.dll.config
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\Yamed.Entity.pdb
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.csproj.CopyComplete
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.dll
+C:\Users\User\source\repos\Новая папка\ELMed\Yamed.Entity\obj\Debug\Yamed.Entity.pdb
