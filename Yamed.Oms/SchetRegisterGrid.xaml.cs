@@ -1404,7 +1404,6 @@ FROM [D3_SCHET_OMS] sch
                               //sl.PROFIL_REG,
                               pa.SOCSTATUS,
                               ////////////////////////////////
-
                               sa.CODE_EXP,
                               sa.DATE_ACT,
                               sa.NUM_ACT,

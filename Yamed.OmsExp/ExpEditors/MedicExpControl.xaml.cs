@@ -190,6 +190,8 @@ namespace Yamed.OmsExp.ExpEditors
 
         }
 
+
+
         private void ExpertDelItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             var del = (D3_SANK_EXPERT_OMS)ExpertGridControl.SelectedItem;
@@ -249,16 +251,37 @@ namespace Yamed.OmsExp.ExpEditors
                 if (obj.ID == 0)
                 {
                     obj.S_COM = obj.S_ZAKL;
+                    if (obj.CODE_EXP == null && _stype==3 && checkEditItem.EditValue.ToString() == "False" && _expertList != null && _expertList.Count != 0 && _expert_delList == null)
+                    {
+                        obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                    }
+                    else
+                    {
+                        obj.CODE_EXP = null;
+                    }
                     var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
                     obj.ID = (int)id;
                 }
                 else
                 {
                     obj.S_COM = obj.S_ZAKL;
+                    if (obj.CODE_EXP == null && _stype == 3 && _expertList.Count == 0 && _expertList != null)
+                    {
+                        obj.CODE_EXP = null;
+                    }
+                    else if (_stype==3 && _expertList != null && _expertList.Count !=0 )
+                    {
+                        obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                    }
                     var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", obj, "ID");
                     Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                 }
             }
+            if (_expert_delList != null)
+                foreach (var obj in _expert_delList)
+                {
+                   Reader2List.CustomExecuteQuery($@"Delete D3_SANK_EXPERT_OMS where id = {obj.ID}", SprClass.LocalConnectionString);
+                }
 
             if (_expertList != null)
                 foreach (var obj in _expertList)
