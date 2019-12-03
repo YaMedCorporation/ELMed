@@ -218,6 +218,7 @@ namespace Yamed.OmsExp.ExpEditors
             ExpLayGr.DataContext = sa;
             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{sa.S_CODE}')";
             sa.S_COM = sa.S_ZAKL;
+            
         }
 
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
@@ -251,9 +252,12 @@ namespace Yamed.OmsExp.ExpEditors
                 if (obj.ID == 0)
                 {
                     obj.S_COM = obj.S_ZAKL;
-                    if (obj.CODE_EXP == null && _stype==3 && checkEditItem.EditValue.ToString() == "False" && _expertList != null && _expertList.Count != 0 && _expert_delList == null)
+
+                    if (_stype==3 && _expertList != null && _expertList.Count != 0 && _expert_delList == null && checkEditItem.EditValue.ToString() == "False")
                     {
+                        ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
                         obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                        obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
                     }
                     else
                     {
@@ -265,13 +269,15 @@ namespace Yamed.OmsExp.ExpEditors
                 else
                 {
                     obj.S_COM = obj.S_ZAKL;
-                    if (obj.CODE_EXP == null && _stype == 3 && _expertList.Count == 0 && _expertList != null)
+                    if ( _stype == 3 && checkEditItem.EditValue.ToString() == "True")
                     {
                         obj.CODE_EXP = null;
                     }
-                    else if (_stype==3 && _expertList != null && _expertList.Count !=0 )
+                    else if (_stype ==3 && _expertList != null && _expertList.Count !=0 && checkEditItem.EditValue.ToString() == "False")
                     {
+                        ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
                         obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                        obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
                     }
                     var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", obj, "ID");
                     Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
