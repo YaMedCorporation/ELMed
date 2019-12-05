@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <dxlc:LayoutControl HorizontalAlignment="Left" Padding="2" Visibility="Collapsed">
+        <dxlc:LayoutControl x:Name="forLPU" HorizontalAlignment="Left" Padding="2" Visibility="Collapsed">
             <dxlc:LayoutGroup >
                 <dxlc:LayoutItem Width="150" Label="Иногородние">
                     <dxe:CheckEdit EditValueChanged="MtrCheck_OnEditValueChanged"/>

@@ -114,6 +114,8 @@ namespace Yamed.Oms
             ReabEdit.DataContext = SprClass.SprBit;
             DsOnkEdit.DataContext = SprClass.SprBit;
 
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+                (forLPU).Visibility = Visibility.Visible;
 
             _ElmedDataClassesDataContext = new YamedDataClassesDataContext()
             {
