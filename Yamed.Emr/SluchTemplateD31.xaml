@@ -356,7 +356,7 @@
                                     <ToggleButton Grid.Column="1" x:Name="IshodTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>
-
+                           
                         </dxlc:LayoutGroup>
                         <dxlc:LayoutGroup Orientation="Vertical">
                             <dxlc:LayoutGroup x:Name="Zsl3LayoutGroup" Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
@@ -434,6 +434,29 @@
                                         <ToggleButton Grid.Column="1" x:Name="NaprDateTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                     </Grid>
                                 </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="Результат дисп." ToolTip="Результат диспансеризации">
+                                    <Grid x:Name="DispGrid">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.RSLT_D, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="RsltdBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDDR" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
+                                        <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="RsTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
+                                    </Grid>
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
+                                    <Grid x:Name="MobGrid" HorizontalAlignment="Left">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" HorizontalAlignment="Left"/>
+                                        <ToggleButton Grid.Column="1" x:Name="MobTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
+                                    </Grid>
+                                </dxlc:LayoutItem>
                                 <dxlc:LayoutGroup>
                                     <dxlc:LayoutItem Label="Перевод"  ToolTip="Признак внутрибольничного перевода">
                                         <Grid x:Name="VbpGrid">
@@ -470,6 +493,7 @@
                                 </dxlc:LayoutItem>
 
                             </dxlc:LayoutGroup>
+
                         </dxlc:LayoutGroup>
                     </dxlc:LayoutGroup>
 
@@ -554,7 +578,10 @@
                                     <dxe:TextEdit EditValue="{Binding DOCNUM, UpdateSourceTrigger=PropertyChanged}" x:Name="udlNumberBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Дата выдачи">
-                                    <dxe:TextEdit/>
+                                    <dxe:DateEdit MaskType="DateTimeAdvancingCaret" Mask="d" EditValue="{Binding DOCDATE, UpdateSourceTrigger=PropertyChanged}" x:Name="docdateBox" InvalidValueBehavior="AllowLeaveEditor" />
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutItem Label="Организация выд. документ">
+                                    <dxe:TextEdit EditValue="{Binding DOCORG, UpdateSourceTrigger=PropertyChanged}" x:Name="docorgBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Место рождения">
                                     <dxe:TextEdit EditValue="{Binding MR, UpdateSourceTrigger=PropertyChanged}" x:Name="mrBox" />
@@ -563,7 +590,7 @@
                                     <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Телефон пациента">
-                                    <dxe:TextEdit/>
+                                    <dxe:TextEdit EditValue="{Binding TEL, UpdateSourceTrigger=PropertyChanged}" x:Name="telBox" />
                                 </dxlc:LayoutItem>
 
                             </dxlc:LayoutGroup>
@@ -1102,29 +1129,8 @@
                                     <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="DnTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Результат дисп." ToolTip="Результат диспансеризации">
-                                <Grid x:Name="DispGrid">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="20" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <dxe:ComboBoxEdit EditValue="{Binding DataContext.RSLT_D, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="RsltdBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDDR" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor"/>
-                                    <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="RsTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
-                                </Grid>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Моб. бригада" ToolTip="Признак мобильной медицинской бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
-                                    <Grid x:Name="MobGrid" HorizontalAlignment="Left">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="20" />
-                                        </Grid.ColumnDefinitions>
-                                        <dxe:ComboBoxEdit EditValue="{Binding DataContext.VBR, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" x:Name="VbrBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" HorizontalAlignment="Left"/>
-                                        <ToggleButton Grid.Column="1" x:Name="MobTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
-                                    </Grid>
-                                </dxlc:LayoutItem>
+
+                            
                             <dxlc:LayoutItem Label="Реабилитация" ToolTip="Признак реабилитации">
                                 <Grid x:Name="ReabnGrid">
                                     <Grid.ColumnDefinitions>
@@ -1970,12 +1976,12 @@
                                             <dxe:TextEdit EditValue="{Binding DataContext.K_FR, ElementName=OnkSlGroup, UpdateSourceTrigger=PropertyChanged}" />
                                         </dxlc:LayoutItem>
                                         <dxlc:LayoutItem Label="Масса" ToolTip="Масса тела (кг)">
-                                            <dxe:SpinEdit EditValue="{Binding DataContext.WEI, ElementName=OnkSlGroup, UpdateSourceTrigger=PropertyChanged}" />
+                                            <dxe:SpinEdit EditValue="{Binding DataContext.WEI, ElementName=OnkSlGroup, UpdateSourceTrigger=PropertyChanged}" Mask="##0.00"/>
                                         </dxlc:LayoutItem>
                                     </dxlc:LayoutGroup>
                                     <dxlc:LayoutGroup>
                                         <dxlc:LayoutItem Label="Рост" ToolTip="Рост (см)">
-                                            <dxe:TextEdit EditValue="{Binding DataContext.HEI, ElementName=OnkSlGroup, UpdateSourceTrigger=PropertyChanged}" />
+                                            <dxe:TextEdit EditValue="{Binding DataContext.HEI, ElementName=OnkSlGroup, UpdateSourceTrigger=PropertyChanged}" MaskType="RegEx" Mask="([1-9]{1}|[1-9]{1}[0-9]{1}|[1][0-9][0-9]|[2][0-5][0-9]|260)" MaskAutoComplete="Default"/>
                                         </dxlc:LayoutItem>
                                         <dxlc:LayoutItem Label="Площадь" ToolTip="Площадь поверхности тела (м2)">
                                             <dxe:SpinEdit EditValue="{Binding DataContext.BSA, ElementName=OnkSlGroup, UpdateSourceTrigger=PropertyChanged}" />
