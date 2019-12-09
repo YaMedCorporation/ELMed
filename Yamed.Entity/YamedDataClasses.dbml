@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SMO_SpassGate" Class="YamedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.0.112;Initial Catalog=SMO_SpassGate;User ID=sa" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="SMO_SpassGateConnectionString2" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ELMEDICINENEWFOND" Class="YamedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=77.241.17.98,1416;Initial Catalog=ELMEDICINENEWFOND;User ID=Vasilenko" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ELMEDICINENEWFONDConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.F003" Member="D3_F003">
     <Type Name="D3_F003">
       <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -217,7 +217,7 @@
       <Column Name="PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="COD_PU_TS" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="ExpertID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="D3_SANK_OMS1_D3_AKT_MEE_TBL" Member="D3_SANK_OMS" ThisKey="SANKID" OtherKey="ID" Type="D3_SANK_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SANK_OMS_D3_AKT_MEE_TBL" Member="D3_SANK_OMS" ThisKey="SANKID" OtherKey="ID" Type="D3_SANK_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_CONS_OMS" Member="D3_CONS_OMS">
@@ -546,8 +546,8 @@
       <Column Name="ZipFile" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="D3_SCHET_OMS_D3_ZSL_OMS" Member="D3_ZSL_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_ZSL_OMS" />
+      <Association Name="D3_SCHET_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_SANK_OMS" />
       <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS" Member="D3_PACIENT_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_PACIENT_OMS" />
-      <Association Name="D3_SCHET_OMS_D3_SANK_OMS1" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_SANK_OMS" />
       <Association Name="Yamed_Spr_SchetType_D3_SCHET_OMS" Member="Yamed_Spr_SchetType" ThisKey="SchetType" OtherKey="ID" Type="Yamed_Spr_SchetType" IsForeignKey="true" />
     </Type>
   </Table>
@@ -605,7 +605,7 @@
       <Column Name="St_IDCASE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="D3_ZSL_OMS_D3_USL_OMS" Member="D3_USL_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_USL_OMS" />
       <Association Name="D3_ZSL_OMS_D3_SL_OMS" Member="D3_SL_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SL_OMS" />
-      <Association Name="D3_ZSL_OMS_D3_SANK_OMS1" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SANK_OMS" />
+      <Association Name="D3_ZSL_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SANK_OMS" />
       <Association Name="D3_SCHET_OMS_D3_ZSL_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="D3_PACIENT_OMS_D3_ZSL_OMS" Member="D3_PACIENT_OMS" ThisKey="D3_PID" OtherKey="ID" Type="D3_PACIENT_OMS" IsForeignKey="true" />
     </Type>
@@ -694,6 +694,48 @@
       <Column Name="ExpertCode" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.D3_SANK_OMS" Member="D3_SANK_OMS">
+    <Type Name="D3_SANK_OMS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="S_CODE" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="S_SUM" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
+      <Column Name="S_SUM2" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
+      <Column Name="S_TIP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="S_OSN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="S_COM" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="S_ZAKL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="S_IST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="S_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="D3_ZSLID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="D3_ZSLGID" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="D3_SCID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IMP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="S_TIP2" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+      <Column Name="CODE_EXP" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DATE_ACT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NUM_ACT" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="USER_ID" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+      <Column Name="MODEL_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpOrder" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="S_KOD" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="S_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Z_INFO" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS1" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS2" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS3" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_OKAZ_MP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_NEG_POS" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_PREEM" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_OBOSN_OB" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_PROF_GOSP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_INFO_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_PREEM_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Association Name="D3_SANK_OMS_D3_AKT_MEE_TBL" Member="D3_AKT_MEE_TBL" ThisKey="ID" OtherKey="SANKID" Type="D3_AKT_MEE_TBL" />
+      <Association Name="D3_SCHET_OMS_D3_SANK_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" />
+      <Association Name="D3_ZSL_OMS_D3_SANK_OMS" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.D3_PACIENT_OMS" Member="D3_PACIENT_OMS">
     <Type Name="D3_PACIENT_OMS">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -739,57 +781,13 @@
       <Column Name="LPU_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="UID" Type="System.Data.Linq.Binary" DbType="VarBinary(20)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="St_ID_PAC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AdressP" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
       <Column Name="SOCSTATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DOST" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DOST_P" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdressP" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
       <Column Name="KOD_TER" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KAT_LGOT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SOC_STAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="D3_PACIENT_OMS_D3_ZSL_OMS" Member="D3_ZSL_OMS" ThisKey="ID" OtherKey="D3_PID" Type="D3_ZSL_OMS" />
       <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.D3_SANK_OMS" Member="D3_SANK_OMS">
-    <Type Name="D3_SANK_OMS">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="S_CODE" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
-      <Column Name="S_SUM" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
-      <Column Name="S_SUM2" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
-      <Column Name="S_TIP" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="S_OSN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="S_COM" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
-      <Column Name="S_ZAKL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="S_IST" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="S_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="D3_ZSLID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="D3_ZSLGID" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
-      <Column Name="D3_SCID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IMP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="S_TIP2" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
-      <Column Name="CODE_EXP" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="DATE_ACT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NUM_ACT" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="USER_ID" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
-      <Column Name="MODEL_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExpOrder" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="S_KOD" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
-      <Column Name="S_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Z_INFO" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS1" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS2" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS3" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_OKAZ_MP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_NEG_POS" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_PREEM" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_OBOSN_OB" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_PROF_GOSP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_INFO_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_PREEM_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Association Name="D3_SANK_OMS1_D3_AKT_MEE_TBL" Member="D3_AKT_MEE_TBL" ThisKey="ID" OtherKey="SANKID" Type="D3_AKT_MEE_TBL" />
-      <Association Name="D3_SCHET_OMS_D3_SANK_OMS1" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" />
-      <Association Name="D3_ZSL_OMS_D3_SANK_OMS1" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>
