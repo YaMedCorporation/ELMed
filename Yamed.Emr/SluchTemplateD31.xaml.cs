@@ -1990,6 +1990,7 @@ namespace Yamed.Emr
             var sank = new D3_SANK_OMS
             {
                 S_TIP = 1,
+                S_TIP2 = 1,
                 S_DATE = SprClass.WorkDate,
                 S_SUM = _zsl.SUMV,
                 D3_ZSLID = _zsl.ID,
