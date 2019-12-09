@@ -406,7 +406,7 @@ namespace Yamed.Emr
                     }
 
                     //Услуги
-                    _uslList = Reader2List.CustomSelect<D3_USL_OMS>($"Select * from D3_USL_OMS where D3_SLID = {slids}",
+                    _uslList = Reader2List.CustomSelect<D3_USL_OMS>($"Select * from D3_USL_OMS where D3_SLID in ({slids})",
         SprClass.LocalConnectionString);
 
                     //Диагнозы
