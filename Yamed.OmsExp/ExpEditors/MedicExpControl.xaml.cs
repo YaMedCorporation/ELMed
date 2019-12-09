@@ -245,10 +245,27 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
-            
-            foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
+            if ((AktNumEdit.Text != null || AktNumEdit.Text == "") && _isNew == true)
             {
-                
+                var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS", SprClass.LocalConnectionString);
+                foreach (var nums in num)
+                {
+                    if (AktNumEdit.Text == (string)ObjHelper.GetAnonymousValue(nums, "NUM_ACT"))
+                    {
+                        MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            break;   
+                        }
+                    }
+                }
+            }
+            foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
+            {              
                 if (obj.ID == 0)
                 {
                     obj.S_COM = obj.S_ZAKL;
@@ -263,6 +280,7 @@ namespace Yamed.OmsExp.ExpEditors
                     {
                         obj.CODE_EXP = null;
                     }
+
                     var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
                     obj.ID = (int)id;
                 }

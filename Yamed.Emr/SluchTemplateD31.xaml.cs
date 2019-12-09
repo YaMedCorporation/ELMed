@@ -2074,7 +2074,7 @@ namespace Yamed.Emr
                     ZslUpdate();
                 }
             }
-            BindSluch((int)ObjHelper.GetAnonymousValue(_row, "ID"));
+            //BindSluch((int)ObjHelper.GetAnonymousValue(_row, "ID"));
         }
 
         private void SankDelItem_OnItemClick(object sender, ItemClickEventArgs e)

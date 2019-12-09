@@ -56,6 +56,7 @@ namespace Yamed.OmsExp.ExpEditors
                     }
                     else
                     {
+                        
                         var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", _sank, "ID");
                         Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                     }
