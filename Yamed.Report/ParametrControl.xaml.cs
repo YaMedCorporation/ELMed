@@ -207,8 +207,9 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        {         
             ReportCreate();
+            ((DXWindow)this.Parent).Close();
         }
 
 
@@ -251,7 +252,7 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
 
             rp.ID = id?? _sc?.First();
             rp.IDS = ObjHelper.GetIds(_sc);
-            rp.ReqID = id ?? _sc.First();
+            rp.ReqID = id?? _sc?.First();
             return rp;
         }
 
@@ -274,6 +275,7 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
                         IsCloseable = "True",
                         //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
                     });
+                    
                 }
                 else
                 {
@@ -284,8 +286,9 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
                         IsCloseable = "True",
                         //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
                     });
-
+                    
                 }
+                
             }
             else
             {

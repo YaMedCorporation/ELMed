@@ -64,7 +64,15 @@ namespace Yamed.OmsExp.ExpEditors
             VidExpEdit.DataContext = videxp;
 
             if (stype == 2)
+            {
                 ExpEkmpLayGr.Visibility = Visibility.Collapsed;
+                ExpertGridControl.Visibility = Visibility.Collapsed;
+                checkEditItem.IsVisible = false;
+                ExpertAddItem.IsVisible = false;
+                ExpertDelItem.IsVisible = false;
+                experts.Visibility = Visibility.Collapsed;
+                exporuch.Visibility = Visibility.Collapsed;
+            }
             if (stype == 3)
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
         }
@@ -83,6 +91,8 @@ namespace Yamed.OmsExp.ExpEditors
         {
             List<int> zslid = new List<int>();
             _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
+            
+
 
             ShablonEdit.DataContext = _sankAutos;
 
@@ -99,9 +109,7 @@ namespace Yamed.OmsExp.ExpEditors
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
                         expList.Sank = new D3_SANK_OMS()
-
                         {
-
                             D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID"),
                             D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID"),
                             S_TIP = _re == 0 ? (int?)_stype : null,
@@ -152,12 +160,11 @@ namespace Yamed.OmsExp.ExpEditors
                 ExpertGridControl.DataContext = _expertList =
                     Reader2List.CustomSelect<D3_SANK_EXPERT_OMS>($@"Select * From D3_SANK_EXPERT_OMS where D3_SANKID={slupacsank.Sank.ID}",
                         SprClass.LocalConnectionString);
-
+                
             }
 
 
             sluchGridControl.DataContext = _slpsList;
-
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {
@@ -179,10 +186,11 @@ namespace Yamed.OmsExp.ExpEditors
             
             var add = new D3_SANK_EXPERT_OMS() { D3_SANKGID =  ((D3_SANK_OMS)ExpLayGr.DataContext).S_CODE};
             _expertList.Add(add);
-
             ExpertGridControl.RefreshData();
 
         }
+
+
 
         private void ExpertDelItem_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -209,7 +217,8 @@ namespace Yamed.OmsExp.ExpEditors
             var sa = ((ExpClass)e.NewItem).Sank;
             ExpLayGr.DataContext = sa;
             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{sa.S_CODE}')";
-
+            sa.S_COM = sa.S_ZAKL;
+            
         }
 
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
@@ -236,20 +245,67 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
-
-            foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
+            if ((AktNumEdit.Text != null || AktNumEdit.Text == "") && _isNew == true)
             {
+                var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS", SprClass.LocalConnectionString);
+                foreach (var nums in num)
+                {
+                    if (AktNumEdit.Text == (string)ObjHelper.GetAnonymousValue(nums, "NUM_ACT"))
+                    {
+                        MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            break;   
+                        }
+                    }
+                }
+            }
+            foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
+            {              
                 if (obj.ID == 0)
                 {
+                    obj.S_COM = obj.S_ZAKL;
+
+                    if (_stype==3 && _expertList != null && _expertList.Count != 0 && _expert_delList == null && checkEditItem.EditValue.ToString() == "False")
+                    {
+                        ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
+                        obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                        obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
+                    }
+                    else
+                    {
+                        obj.CODE_EXP = null;
+                    }
+
                     var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
                     obj.ID = (int)id;
                 }
                 else
                 {
+                    obj.S_COM = obj.S_ZAKL;
+                    if ( _stype == 3 && checkEditItem.EditValue.ToString() == "True")
+                    {
+                        obj.CODE_EXP = null;
+                    }
+                    else if (_stype ==3 && _expertList != null && _expertList.Count !=0 && checkEditItem.EditValue.ToString() == "False")
+                    {
+                        ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
+                        obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                        obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
+                    }
                     var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", obj, "ID");
                     Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                 }
             }
+            if (_expert_delList != null)
+                foreach (var obj in _expert_delList)
+                {
+                   Reader2List.CustomExecuteQuery($@"Delete D3_SANK_EXPERT_OMS where id = {obj.ID}", SprClass.LocalConnectionString);
+                }
 
             if (_expertList != null)
                 foreach (var obj in _expertList)
@@ -285,15 +341,16 @@ namespace Yamed.OmsExp.ExpEditors
             }
             if (_re == 0 && Sum2Edit.Text== "")
             {
-                DXMessageBox.Show("Не произведен расчет");
+                DXMessageBox.Show("Не произведен расчет");   
+            }
+            else if (checkEditItem.EditValue.ToString() == "False" && PrConsColumn.DataContext.ToString() == "Yamed.Entity.D3_SANK_OMS" && _stype == 3)
+            { 
+                DXMessageBox.Show("Не выбран эксперт или не стоит отметка 'Без эксперта'");
             }
             else
             {
                 ((DXWindow)this.Parent).Close();
             }
-
-           
-
         }
 
         private void GridViewBase_OnCellValueChanging(object sender, CellValueChangedEventArgs e)
@@ -323,7 +380,7 @@ namespace Yamed.OmsExp.ExpEditors
                         (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
                         sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                     else
-                        sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP");
+                        sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
 
                     sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                         MidpointRounding.AwayFromZero);
@@ -345,6 +402,7 @@ namespace Yamed.OmsExp.ExpEditors
                 sluchGridControl.DataController.RefreshData();
                 ex.Sank.S_SUM = sum_np;
                 ex.Sank.S_SUM2 = pe2;
+                ex.Sank.USER_ID = SprClass.userId;
         }
 
         private void CalcButtonInfo_OnClick(object sender, RoutedEventArgs e)
@@ -363,9 +421,8 @@ namespace Yamed.OmsExp.ExpEditors
                     ex.Sank.DATE_ACT = sa.DATE_ACT;
                     ex.Sank.NUM_ACT = sa.NUM_ACT;
                     ex.Sank.MODEL_ID = sa.MODEL_ID;
-
                     CalcSank(ex);
-
+                    ex.Sank.USER_ID= SprClass.userId;
                     ex.Sank.Z_INFO = sa.Z_INFO;
                     ex.Sank.Z_DS1 = sa.Z_DS1;
                     ex.Sank.Z_DS2 = sa.Z_DS2;
@@ -376,6 +433,7 @@ namespace Yamed.OmsExp.ExpEditors
                     ex.Sank.Z_OBOSN_OB = sa.Z_OBOSN_OB;
                     ex.Sank.Z_PROF_GOSP = sa.Z_PROF_GOSP;
                     ex.Sank.S_ZAKL = sa.S_ZAKL;
+                    ex.Sank.S_COM = sa.S_ZAKL;
                     ex.Sank.Z_INFO_NP = sa.Z_INFO_NP;
                     ex.Sank.Z_DS_NP = sa.Z_DS_NP;
                     ex.Sank.Z_PREEM_NP = sa.Z_PREEM_NP;

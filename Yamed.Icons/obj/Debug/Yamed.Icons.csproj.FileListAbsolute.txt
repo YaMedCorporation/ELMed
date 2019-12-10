@@ -68,3 +68,10 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 C:\Users\WILD\Desktop\git_exp\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
 C:\Users\WILD\Desktop\git_exp\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 C:\Users\WILD\Desktop\git_exp\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+E:\ELMed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+E:\ELMed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojAssemblyReference.cache
+E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
+E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb

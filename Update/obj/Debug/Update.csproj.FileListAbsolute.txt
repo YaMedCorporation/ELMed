@@ -207,3 +207,25 @@ C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Update.csproj.CoreCompileInputs.c
 C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Update.csproj.CopyComplete
 C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Yamed Update.exe
 C:\Users\WILD\Desktop\git_exp\Update\obj\Debug\Yamed Update.pdb
+E:\ELMed\Update\bin\Debug\Yamed Update.exe.config
+E:\ELMed\Update\bin\Debug\Yamed Update.exe
+E:\ELMed\Update\bin\Debug\Yamed Update.pdb
+E:\ELMed\Update\bin\Debug\ActiveQueryBuilder.Core.dll
+E:\ELMed\Update\bin\Debug\ActiveQueryBuilder.MSSQLMetadataProvider.dll
+E:\ELMed\Update\bin\Debug\ActiveQueryBuilder.View.dll
+E:\ELMed\Update\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+E:\ELMed\Update\bin\Debug\DotNetZip.dll
+E:\ELMed\Update\bin\Debug\Yamed.Core.dll
+E:\ELMed\Update\bin\Debug\Yamed.Server.dll
+E:\ELMed\Update\bin\Debug\Yamed.Entity.dll
+E:\ELMed\Update\bin\Debug\Yamed.Core.pdb
+E:\ELMed\Update\bin\Debug\Yamed.Server.pdb
+E:\ELMed\Update\bin\Debug\Yamed.Server.dll.config
+E:\ELMed\Update\bin\Debug\DotNetZip.xml
+E:\ELMed\Update\bin\Debug\Yamed.Entity.pdb
+E:\ELMed\Update\bin\Debug\Yamed.Entity.dll.config
+E:\ELMed\Update\obj\Debug\Update.csprojAssemblyReference.cache
+E:\ELMed\Update\obj\Debug\Update.csproj.CoreCompileInputs.cache
+E:\ELMed\Update\obj\Debug\Update.csproj.CopyComplete
+E:\ELMed\Update\obj\Debug\Yamed Update.exe
+E:\ELMed\Update\obj\Debug\Yamed Update.pdb

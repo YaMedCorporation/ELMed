@@ -107,62 +107,57 @@
         <Grid Background="#FFDA8615">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,2,5,2">
                 <Button Style="{StaticResource InformButton}" Click="Hosp_OnClick">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/patient-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Стационар" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Стационар" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="Amb_OnClick">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/1481287271_Medical_Report-2.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Поликлиника" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Поликлиника" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 
                 <Button Style="{StaticResource InformButton}" Click="Calculate_OnClick" IsEnabled="True">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/investor_money-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Расчет" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Расчет" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource InformButton}" Click="ExportOms_OnClick" IsEnabled="True">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/49-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Экспорт oms" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Экспорт&#10;   oms" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource InformButton}" Click="ImportOms_OnClick" IsEnabled="True">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/folder_blue_open_2087.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Импорт oms" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Импорт&#10;   oms" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="LoadOldPoliclinic_OnClick" IsEnabled="True">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/cloud__folder__download__upload-256.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Загрузка Медиалог" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Загрузка&#10;Медиалог" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="LoadMis_OnClick" IsEnabled="True">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/folder_web.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Загрузка МИС" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Загрузка&#10;    МИС" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="ButtonBase_OnClick">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Yamed.Icons;component/Icons/1472130348_134.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Документы" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                        <TextBlock Text="Документы" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource InformButton}"  IsEnabled="False">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/1481912020_file_delete.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Удаление промежуточных данных МИС" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
-                    </StackPanel>
-                </Button>
+                
             </StackPanel>
         </Grid>
         <local:EconomyWindow Grid.Row="1" x:Name="EconomyWindow11"/>

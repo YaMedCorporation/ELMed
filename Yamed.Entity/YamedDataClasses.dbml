@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ELMEDICINENEWFOND" Class="YamedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=77.241.17.98,1416;Initial Catalog=ELMEDICINENEWFOND;User ID=Vasilenko" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ELMEDICINENEWFONDConnectionString1" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ElmedicineSV_demo" Class="YamedDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MED\SQLEXPRESS01;Initial Catalog=ElmedicineSV_demo;Integrated Security=True" SettingsObjectName="Yamed.Entity.Properties.Settings" SettingsPropertyName="ElmedicineSV_demoConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.F003" Member="D3_F003">
     <Type Name="D3_F003">
       <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -547,7 +547,7 @@
       <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="D3_SCHET_OMS_D3_ZSL_OMS" Member="D3_ZSL_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_ZSL_OMS" />
       <Association Name="D3_SCHET_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_SANK_OMS" />
-      <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS" Member="D3_PACIENT_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_PACIENT_OMS" />
+      <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS1" Member="D3_PACIENT_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_PACIENT_OMS" />
       <Association Name="Yamed_Spr_SchetType_D3_SCHET_OMS" Member="Yamed_Spr_SchetType" ThisKey="SchetType" OtherKey="ID" Type="Yamed_Spr_SchetType" IsForeignKey="true" />
     </Type>
   </Table>
@@ -607,7 +607,7 @@
       <Association Name="D3_ZSL_OMS_D3_SL_OMS" Member="D3_SL_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SL_OMS" />
       <Association Name="D3_ZSL_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SANK_OMS" />
       <Association Name="D3_SCHET_OMS_D3_ZSL_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="D3_PACIENT_OMS_D3_ZSL_OMS" Member="D3_PACIENT_OMS" ThisKey="D3_PID" OtherKey="ID" Type="D3_PACIENT_OMS" IsForeignKey="true" />
+      <Association Name="D3_PACIENT_OMS1_D3_ZSL_OMS" Member="D3_PACIENT_OMS" ThisKey="D3_PID" OtherKey="ID" Type="D3_PACIENT_OMS" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Yamed_Spr_SchetType" Member="Yamed_Spr_SchetType">
@@ -781,13 +781,17 @@
       <Column Name="LPU_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="UID" Type="System.Data.Linq.Binary" DbType="VarBinary(20)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="St_ID_PAC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SOCSTATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AdressP" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="SOCSTATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DOST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DOST_P" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KOD_TER" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KAT_LGOT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SOC_STAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="D3_PACIENT_OMS_D3_ZSL_OMS" Member="D3_ZSL_OMS" ThisKey="ID" OtherKey="D3_PID" Type="D3_ZSL_OMS" />
-      <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Column Name="DOCDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DOCORG" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="D3_PACIENT_OMS1_D3_ZSL_OMS" Member="D3_ZSL_OMS" ThisKey="ID" OtherKey="D3_PID" Type="D3_ZSL_OMS" />
+      <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS1" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

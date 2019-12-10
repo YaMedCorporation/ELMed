@@ -46,3 +46,9 @@ C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cach
 C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
 C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.dll
 C:\Users\WILD\Desktop\git_exp\WebUI\obj\Debug\WebUI.pdb
+E:\ELMed\WebUI\bin\Debug\WebUI.dll
+E:\ELMed\WebUI\bin\Debug\WebUI.pdb
+E:\ELMed\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
+E:\ELMed\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
+E:\ELMed\WebUI\obj\Debug\WebUI.dll
+E:\ELMed\WebUI\obj\Debug\WebUI.pdb

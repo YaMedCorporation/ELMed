@@ -22,7 +22,7 @@ namespace Yamed.Entity
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ELMEDICINENEWFOND")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ElmedicineSV_demo")]
 	public partial class YamedDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -120,7 +120,7 @@ namespace Yamed.Entity
     #endregion
 		
 		public YamedDataClassesDataContext() : 
-				base(global::Yamed.Entity.Properties.Settings.Default.ELMEDICINENEWFONDConnectionString1, mappingSource)
+				base(global::Yamed.Entity.Properties.Settings.Default.ElmedicineSV_demoConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -12169,7 +12169,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS", Storage="_D3_PACIENT_OMS", ThisKey="ID", OtherKey="D3_SCID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS1", Storage="_D3_PACIENT_OMS", ThisKey="ID", OtherKey="D3_SCID")]
 		public EntitySet<D3_PACIENT_OMS> D3_PACIENT_OMS
 		{
 			get
@@ -13586,7 +13586,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS_D3_ZSL_OMS", Storage="_D3_PACIENT_OMS", ThisKey="D3_PID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS1_D3_ZSL_OMS", Storage="_D3_PACIENT_OMS", ThisKey="D3_PID", OtherKey="ID", IsForeignKey=true)]
 		public D3_PACIENT_OMS D3_PACIENT_OMS
 		{
 			get
@@ -16644,15 +16644,23 @@ namespace Yamed.Entity
 		
 		private System.Nullable<int> _St_ID_PAC;
 		
+		private string _AdressP;
+		
 		private System.Nullable<int> _SOCSTATUS;
 		
-		private string _AdressP;
+		private System.Nullable<int> _DOST;
+		
+		private System.Nullable<int> _DOST_P;
 		
 		private System.Nullable<int> _KOD_TER;
 		
 		private System.Nullable<int> _KAT_LGOT;
 		
 		private System.Nullable<int> _SOC_STAT;
+		
+		private System.Nullable<System.DateTime> _DOCDATE;
+		
+		private string _DOCORG;
 		
 		private EntitySet<D3_ZSL_OMS> _D3_ZSL_OMS;
 		
@@ -16748,16 +16756,24 @@ namespace Yamed.Entity
     partial void OnUIDChanged();
     partial void OnSt_ID_PACChanging(System.Nullable<int> value);
     partial void OnSt_ID_PACChanged();
-    partial void OnSOCSTATUSChanging(System.Nullable<int> value);
-    partial void OnSOCSTATUSChanged();
     partial void OnAdressPChanging(string value);
     partial void OnAdressPChanged();
+    partial void OnSOCSTATUSChanging(System.Nullable<int> value);
+    partial void OnSOCSTATUSChanged();
+    partial void OnDOSTChanging(System.Nullable<int> value);
+    partial void OnDOSTChanged();
+    partial void OnDOST_PChanging(System.Nullable<int> value);
+    partial void OnDOST_PChanged();
     partial void OnKOD_TERChanging(System.Nullable<int> value);
     partial void OnKOD_TERChanged();
     partial void OnKAT_LGOTChanging(System.Nullable<int> value);
     partial void OnKAT_LGOTChanged();
     partial void OnSOC_STATChanging(System.Nullable<int> value);
     partial void OnSOC_STATChanged();
+    partial void OnDOCDATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnDOCDATEChanged();
+    partial void OnDOCORGChanging(string value);
+    partial void OnDOCORGChanged();
     #endregion
 		
 		public D3_PACIENT_OMS()
@@ -17631,6 +17647,26 @@ namespace Yamed.Entity
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdressP", DbType="NVarChar(254)")]
+		public string AdressP
+		{
+			get
+			{
+				return this._AdressP;
+			}
+			set
+			{
+				if ((this._AdressP != value))
+				{
+					this.OnAdressPChanging(value);
+					this.SendPropertyChanging();
+					this._AdressP = value;
+					this.SendPropertyChanged("AdressP");
+					this.OnAdressPChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOCSTATUS", DbType="Int")]
 		public System.Nullable<int> SOCSTATUS
 		{
@@ -17651,22 +17687,42 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdressP", DbType="NVarChar(254)")]
-		public string AdressP
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOST", DbType="Int")]
+		public System.Nullable<int> DOST
 		{
 			get
 			{
-				return this._AdressP;
+				return this._DOST;
 			}
 			set
 			{
-				if ((this._AdressP != value))
+				if ((this._DOST != value))
 				{
-					this.OnAdressPChanging(value);
+					this.OnDOSTChanging(value);
 					this.SendPropertyChanging();
-					this._AdressP = value;
-					this.SendPropertyChanged("AdressP");
-					this.OnAdressPChanged();
+					this._DOST = value;
+					this.SendPropertyChanged("DOST");
+					this.OnDOSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOST_P", DbType="Int")]
+		public System.Nullable<int> DOST_P
+		{
+			get
+			{
+				return this._DOST_P;
+			}
+			set
+			{
+				if ((this._DOST_P != value))
+				{
+					this.OnDOST_PChanging(value);
+					this.SendPropertyChanging();
+					this._DOST_P = value;
+					this.SendPropertyChanged("DOST_P");
+					this.OnDOST_PChanged();
 				}
 			}
 		}
@@ -17731,7 +17787,47 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS_D3_ZSL_OMS", Storage="_D3_ZSL_OMS", ThisKey="ID", OtherKey="D3_PID")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOCDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DOCDATE
+		{
+			get
+			{
+				return this._DOCDATE;
+			}
+			set
+			{
+				if ((this._DOCDATE != value))
+				{
+					this.OnDOCDATEChanging(value);
+					this.SendPropertyChanging();
+					this._DOCDATE = value;
+					this.SendPropertyChanged("DOCDATE");
+					this.OnDOCDATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOCORG", DbType="NVarChar(1000)")]
+		public string DOCORG
+		{
+			get
+			{
+				return this._DOCORG;
+			}
+			set
+			{
+				if ((this._DOCORG != value))
+				{
+					this.OnDOCORGChanging(value);
+					this.SendPropertyChanging();
+					this._DOCORG = value;
+					this.SendPropertyChanged("DOCORG");
+					this.OnDOCORGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS1_D3_ZSL_OMS", Storage="_D3_ZSL_OMS", ThisKey="ID", OtherKey="D3_PID")]
 		public EntitySet<D3_ZSL_OMS> D3_ZSL_OMS
 		{
 			get
@@ -17744,7 +17840,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS", Storage="_D3_SCHET_OMS", ThisKey="D3_SCID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS1", Storage="_D3_SCHET_OMS", ThisKey="D3_SCID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public D3_SCHET_OMS D3_SCHET_OMS
 		{
 			get

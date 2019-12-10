@@ -109,11 +109,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Background="#FFDA8615">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,2,5,2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,2,5,2" >
                 <Button Style="{StaticResource InformButton}" Click="ZslRefresh_OnClick">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/refresh-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Обновить" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/refresh-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="Обновить" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
 
@@ -125,46 +125,46 @@
                 </Button>-->
 
                 <Button Style="{StaticResource InformButton}" Click="ZslAdd31_OnClick">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/Add_black-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Создать случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/Add_black-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="Создать&#10;случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource InformButton}" Click="ZslEdit_OnClick">
-                    <StackPanel Orientation="Horizontal" >
-                        <Image Source="/Yamed.Icons;component/Icons/Edit_black-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Редактировать случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical" >
+                        <Image Source="/Yamed.Icons;component/Icons/Edit_black-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="Редактировать&#10;      случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button Style="{StaticResource InformButton}" Click="Zsl_OnClick">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/delete-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Удалить случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/delete-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="Удалить&#10; случай" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="ZslCompile_OnClick" Margin="10,2,2,2">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/Leader-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Объединить обр." VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/Leader-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text=" Объединить&#10;в обращения" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="FlkLoad_OnClick" Margin="10,2,2,2">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/cloud__folder__download__upload-256.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="ФЛК/ОСП" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/cloud__folder__download__upload-256.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="ФЛК/&#10;ОСП" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="Perenos_OnClick" Margin="10,2,2,2">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Yamed.Icons;component/Icons/527-512.png" Width="48" Height="48"></Image>
-                        <TextBlock Text="Перенос" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/527-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="Перенос" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Style="{StaticResource InformButton}" Click="TestAshurcov" Margin="10,2,2,2">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Тест" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Тест" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>                
             </StackPanel>

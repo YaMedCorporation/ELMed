@@ -15,11 +15,11 @@
                 <TextBlock Text="Дата выставления санкции"></TextBlock>
                 <dxe:DateEdit Name="DateBox" EditValue="{Binding S_DATE}" ValidateOnTextInput="False" InvalidValueBehavior="AllowLeaveEditor"/>
                 <TextBlock Text="Код причины отказа оплаты"></TextBlock>
-                <dxe:ComboBoxEdit x:Name="KodOtkazaBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.S_OSN, ElementName=MekGrid}" DisplayMember="NameWithId" ValueMember="Osn" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor"/>
+                <dxe:ComboBoxEdit x:Name="KodOtkazaBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.S_OSN,ElementName=MekGrid}" DisplayMember="NameWithId" ValueMember="Osn" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor"/>
                 <TextBlock Text="Финансовая санкция"></TextBlock>
                 <dxe:SpinEdit Name="SankSumBox" EditValue="{Binding S_SUM}"/>
                 <TextBlock Text="Комментарий"></TextBlock>
-                <dxe:TextEdit Name="CommentBox" Height="100" EditValue="{Binding S_COM}" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
+                <dxe:TextEdit Name="CommentBox" Height="100" EditValue="{Binding S_ZAKL}" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
             </StackPanel>
         </Grid>
         <Button Width="150" Grid.Row="1" Height="25" Content="Сохранить" Margin="10" HorizontalAlignment="Right" Click="Button_Click"></Button>
