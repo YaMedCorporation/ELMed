@@ -100,7 +100,7 @@
                              ItemsSource="{Binding Data,
                                                    Source={StaticResource LinqInstantFeedbackDataSource}}"
                              SelectionChanged="GridControl_OnSelectionChanged"
-                             SelectionMode="Row" >
+                             SelectionMode="Row" Margin="0,4,0,-4" >
                     <dxg:GridControl.Columns>
                         <dxg:GridColumn Width="60"
                                     FieldName="ID"
