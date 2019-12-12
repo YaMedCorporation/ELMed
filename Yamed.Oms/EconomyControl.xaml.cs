@@ -193,7 +193,7 @@ namespace Yamed.Oms
 
         private void Calculate_OnClick(object sender, RoutedEventArgs e)
         {
-            var region = SprClass.ProdSett.Region;
+            var region = SprClass.Region;
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
             ((Button) sender).IsEnabled = false;
 
@@ -204,7 +204,7 @@ namespace Yamed.Oms
             foreach (var calc in calcs)
             {
                 Reader2List.CustomExecuteQuery($@"
-                    exec [dbo].[{calc.GetValue("name")}] {sc.ID}, 'scid'", SprClass.LocalConnectionString);
+                    exec [dbo].[{calc.GetValue("name")}] {sc.ID}", SprClass.LocalConnectionString);
             }
 
 
