@@ -35,7 +35,6 @@ SELECT [id]
             {
                     SprClass.userId = user.ID;
                     SprClass.UserFIO = user.FAM + " " + user.IM.Substring(0, 1) + ". " + user.OT.Substring(0, 1) + ".";
-
                 this.DialogResult = true;
                 this.Close();
             }
