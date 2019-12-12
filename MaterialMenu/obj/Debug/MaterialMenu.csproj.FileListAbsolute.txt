@@ -243,3 +243,5 @@ E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.dll
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.pdb
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
+C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MenuButton.baml
+C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\SideMenu.baml

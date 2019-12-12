@@ -87,6 +87,7 @@
     <Compile Include="ExpControl.xaml.cs">
       <DependentUpon>ExpControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="old_calc.cs" />
     <Compile Include="SelectionControl.xaml.cs">
       <DependentUpon>SelectionControl.xaml</DependentUpon>
     </Compile>

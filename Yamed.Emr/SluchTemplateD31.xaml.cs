@@ -217,7 +217,7 @@ namespace Yamed.Emr
         //                u.Dispose();
         //            }, TaskScheduler.FromCurrentSynchronizationContext());
 
-
+            
         //            //Диагнозы
         //            Task.Factory.StartNew(() =>
         //            {
