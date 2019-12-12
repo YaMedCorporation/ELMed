@@ -229,12 +229,12 @@ namespace Yamed.OmsExp.ExpEditors
                 DXMessageBox.Show("Заполнены не все обязательные поля (дата акта, вид экспертизы)");
                 e.Cancel = true;
             }
-
+           
         }
 
         private void ShablonEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-
+          
 
         }
 
@@ -366,7 +366,15 @@ namespace Yamed.OmsExp.ExpEditors
             if (sh == null) return;
                 var pe1 = (int)sh.GetValue("Penalty_1");
                 var osn = (string)sh.GetValue("Osn");
-                ex.Sank.S_OSN = osn;
+            if (osn == "4.6.1.") //по запросу ТФОМС Курск
+            {
+                Sum1Edit.IsEnabled = true;
+            }
+            else
+            {
+                Sum1Edit.IsEnabled = false;
+            }
+            ex.Sank.S_OSN = osn;
                 var pe2 = (decimal?)SqlReader.Select(
                     $@"EXEC	[dbo].[p_oms_calc_medexp]
             		@zslid = {ex.Sank.D3_ZSLID},
@@ -451,5 +459,7 @@ namespace Yamed.OmsExp.ExpEditors
                         }
             }
         }
+
+
     }
 }
