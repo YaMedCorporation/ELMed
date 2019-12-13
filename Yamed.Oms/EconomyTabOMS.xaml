@@ -100,7 +100,7 @@
                              ItemsSource="{Binding Data,
                                                    Source={StaticResource LinqInstantFeedbackDataSource}}"
                              SelectionChanged="GridControl_OnSelectionChanged"
-                             SelectionMode="Row" >
+                             SelectionMode="Row" Margin="0,4,0,-4" >
                     <dxg:GridControl.Columns>
                         <dxg:GridColumn Width="60"
                                     FieldName="ID"
@@ -146,7 +146,7 @@
                                     Header="Статус"
                                     ReadOnly="True"/>
                         <dxg:GridColumn Width="40"
-                                    FieldName="SchetType"
+                                    FieldName="SchetTypeName"
                                     Header="Тип счета"
                                     ReadOnly="True"/>
                         <dxg:GridColumn Width="40"

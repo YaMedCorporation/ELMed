@@ -406,7 +406,7 @@ namespace Yamed.Emr
                     }
 
                     //Услуги
-                    _uslList = Reader2List.CustomSelect<D3_USL_OMS>($"Select * from D3_USL_OMS where D3_SLID = {slids}",
+                    _uslList = Reader2List.CustomSelect<D3_USL_OMS>($"Select * from D3_USL_OMS where D3_SLID in ({slids})",
         SprClass.LocalConnectionString);
 
                     //Диагнозы
@@ -1990,6 +1990,7 @@ namespace Yamed.Emr
             var sank = new D3_SANK_OMS
             {
                 S_TIP = 1,
+                S_TIP2 = 1,
                 S_DATE = SprClass.WorkDate,
                 S_SUM = _zsl.SUMV,
                 D3_ZSLID = _zsl.ID,
@@ -2074,7 +2075,7 @@ namespace Yamed.Emr
                     ZslUpdate();
                 }
             }
-            BindSluch((int)ObjHelper.GetAnonymousValue(_row, "ID"));
+            //BindSluch((int)ObjHelper.GetAnonymousValue(_row, "ID"));
         }
 
         private void SankDelItem_OnItemClick(object sender, ItemClickEventArgs e)
