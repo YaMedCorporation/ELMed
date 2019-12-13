@@ -26,7 +26,6 @@ namespace Yamed.OmsExp.ExpEditors
             _sank = sank;
             KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
-
         }
 
         private bool _isGroupProcess;
@@ -51,12 +50,13 @@ namespace Yamed.OmsExp.ExpEditors
                 {
                     if (_sank.ID == 0)
                     {
+                        _sank.S_COM = _sank.S_ZAKL; 
                         _sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", _sank, "ID",
                             SprClass.LocalConnectionString);
                     }
                     else
                     {
-                        
+                        _sank.S_COM = _sank.S_ZAKL;
                         var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", _sank, "ID");
                         Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                     }

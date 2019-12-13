@@ -1931,11 +1931,13 @@
                                         ShowDragWidget="False"
                                         UseWholeRow="True">
                                             <dxb:BarButtonItem
+                                                x:Name="OnkslAddItem"
                                             BarItemDisplayMode="ContentAndGlyph"
                                             Content="Добавить запись"
                                             Glyph="pack://application:,,,/Yamed.Icons;component/Icons/plus_orange.png"
                                              ItemClick="OnkSlAddItem_Click"/>
                                             <dxb:BarButtonItem 
+                                                x:Name="OnkslDelItem"
                                             BarItemDisplayMode="ContentAndGlyph"
                                             Content="Удалить запись"
                                             Glyph="pack://application:,,,/Yamed.Icons;component/Icons/deletered.png"

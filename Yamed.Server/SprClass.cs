@@ -76,6 +76,13 @@ namespace Yamed.Server
             return DbSettings.SingleOrDefault(x => x.Name == "OrgCode")?.Parametr;
         }
 
+        private static string GetRegiobCode()
+        {
+            return Region = Region = DbSettings.SingleOrDefault(x => x.Name == "REGION") == null
+                ? "46"
+                : DbSettings.SingleOrDefault(x => x.Name == "REGION").Parametr;
+
+        }
 
         public static ProductSettings ProdSett;
         public static bool FlcVerify;
@@ -268,7 +275,9 @@ namespace Yamed.Server
             ProdSett = new ProductSettings()
             {
                 OrgTypeStatus = GetOrgType(),
-                OrgCode = GetOrgCode()
+                OrgCode = GetOrgCode(),
+                Region = GetRegiobCode()
+
             };
 
             var today = DateTime.Today.ToString("yyyyMMdd");
@@ -278,8 +287,7 @@ namespace Yamed.Server
                 ? false
                 : bool.Parse(DbSettings.SingleOrDefault(x => x.Name == "FLC").Parametr);
 
-            Region = DbSettings.SingleOrDefault(x => x.Name == "REGION") == null
-                ? "46": DbSettings.SingleOrDefault(x => x.Name == "REGION").Parametr;
+            Region = GetRegiobCode();
 
             //KDostList = Reader2List.GetAnonymousTable("sluch", LocalConnectionString);
             KDostList = Reader2List.GetAnonymousTable("SprKDOST", LocalConnectionString);
