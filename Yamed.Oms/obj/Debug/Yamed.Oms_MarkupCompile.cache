@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Elmedicine\ELMed\Yamed.Oms\obj\Debug\
+E:\ELMed\Yamed.Oms\obj\Debug\
 Yamed.Oms
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 10-1191962674
 
-14-148141329
-38-200552560
+13-620775607
+381608783100
 EconomyControl.xaml;EconomyTab.xaml;EconomyTabOMS.xaml;ExpControl.xaml;SelectionControl.xaml;SchetRegisterControl.xaml;SchetRegisterGrid.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;SearchControl.xaml;
 
-True
+False
 

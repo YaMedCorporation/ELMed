@@ -201,6 +201,8 @@ namespace Yamed.Oms
                 $@"select [name] from sys.procedures where [name] like '%p_autocalc_0{region}%' order by [name]",
                 SprClass.LocalConnectionString);
 
+            Reader2List.CustomExecuteQuery($@"
+                    exec [dbo].[p_fix] {sc.ID}", SprClass.LocalConnectionString);
             foreach (var calc in calcs)
             {
                 Reader2List.CustomExecuteQuery($@"
