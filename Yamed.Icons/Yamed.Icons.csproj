@@ -316,6 +316,9 @@
   <ItemGroup>
     <Resource Include="Icons\b505320b084d91f06e18509d1c95860d.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\unload_new.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
