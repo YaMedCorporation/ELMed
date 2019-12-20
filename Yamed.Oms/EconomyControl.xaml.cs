@@ -204,7 +204,7 @@ namespace Yamed.Oms
             foreach (var calc in calcs)
             {
                 Reader2List.CustomExecuteQuery($@"
-                    exec [dbo].[{calc.GetValue("name")}] {sc.ID}, 'scid'", SprClass.LocalConnectionString);
+                    exec [dbo].[{calc.GetValue("name")}] {sc.ID}", SprClass.LocalConnectionString);
             }
 
 
