@@ -698,3 +698,5 @@ E:\ELMed\Yamed\obj\Debug\Yamed.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed\obj\Debug\Yamed.csproj.CopyComplete
 E:\ELMed\Yamed\obj\Debug\Yamed.exe
 E:\ELMed\Yamed\obj\Debug\Yamed.pdb
+E:\ELMed\Yamed\bin\Debug\Elmedicine.Data.dll
+E:\ELMed\Yamed\bin\Debug\Elmedicine.Core.dll

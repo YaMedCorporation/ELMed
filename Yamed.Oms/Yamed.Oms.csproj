@@ -55,6 +55,12 @@
       <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Elmedicine.Core">
+      <HintPath>..\..\Новая папка (2)\040919\Yamed\bin\Debug\Elmedicine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmedicine.Data">
+      <HintPath>..\..\Новая папка (2)\040919\Yamed\bin\Debug\Elmedicine.Data.dll</HintPath>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight.WPF4, Version=3.0.0.30125, Culture=neutral, PublicKeyToken=6fcde8ddc3781e3e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Yamed\Yamed\bin\Debug\GalaSoft.MvvmLight.WPF4.dll</HintPath>
@@ -88,6 +94,9 @@
       <DependentUpon>ExpControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="old_calc.cs" />
+    <Compile Include="Period_unload.xaml.cs">
+      <DependentUpon>Period_unload.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectionControl.xaml.cs">
       <DependentUpon>SelectionControl.xaml</DependentUpon>
     </Compile>
@@ -123,6 +132,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExpControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Period_unload.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

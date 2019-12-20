@@ -109,6 +109,38 @@ namespace Yamed.Emr
             //var row = _gc.GetRow(rowIndex);
 
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            {
+                SlAddItem.IsEnabled = false;
+                SlDelItem.IsEnabled = false;
+                UslAddItem.IsEnabled = false;
+                UslDelItem.IsEnabled = false;
+                UslAutoTemplateItem.IsEnabled = false;
+                UslEditItem.IsEnabled = false;
+                UslTemplateItem.IsEnabled = false;
+                Ds2AddItem.IsEnabled = false;
+                Ds2DelItem.IsEnabled = false;
+                KslpAddItem.IsEnabled = false;
+                KslpDelItem.IsEnabled = false;
+                CritAddItem.IsEnabled = false;
+                CritDelItem.IsEnabled = false;
+                NaprAddItem.IsEnabled = false;
+                NaprDelItem.IsEnabled = false;
+                NaznAddItem.IsEnabled = false;
+                NaznDelItem.IsEnabled = false;
+                BdiagAddItem.IsEnabled = false;
+                BdiagDelItem.IsEnabled = false;
+                BprotAddItem.IsEnabled = false;
+                BprotDelItem.IsEnabled = false;
+                OnkslAddItem.IsEnabled = false;
+                OnkslDelItem.IsEnabled = false;
+                OnkUslAddItem.IsEnabled = false;
+                OnkUslDelItem.IsEnabled = false;
+                LekprAddItem.IsEnabled = false;
+                LekprDelItem.IsEnabled = false;
+                ConsAddItem.IsEnabled = false;
+                ConsDelItem.IsEnabled = false;
+            }
         }
 
         public void BindPacient(int pid)
@@ -1996,7 +2028,8 @@ namespace Yamed.Emr
                 D3_ZSLID = _zsl.ID,
                 D3_SCID = _zsl.D3_SCID,
                 S_CODE = Guid.NewGuid().ToString(),
-                D3_ZSLGID = _zsl.ZSL_ID
+                D3_ZSLGID = _zsl.ZSL_ID,
+                USER_ID = SprClass.userId
             };
 
             var window = new DXWindow
@@ -2013,6 +2046,7 @@ namespace Yamed.Emr
 
             SankGridControl.RefreshData();
             ZslUpdate();
+            GetSpr();
         }
 
         private void SankEditItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -2035,7 +2069,11 @@ namespace Yamed.Emr
             {
                 var st = sank.S_TIP ?? (sank.S_TIP2 >= 20 && sank.S_TIP2 < 30 ? 2 : 3);
                 var re = sank.S_TIP == null ? 1 : 0;
-
+                if (sank.USER_ID.ToString() != null && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
+                {
+                    DXMessageBox.Show("Вы не можете редактировать эту санкцию, она проведена другим пользователем");
+                    return;
+                }
                 var row = _gc.GetRow(rowIndex);
                 if (row == null) return;
 
@@ -2073,18 +2111,24 @@ namespace Yamed.Emr
                     window.ShowDialog();
                     SankGridControl.RefreshData();
                     ZslUpdate();
+                    
                 }
             }
+            GetSpr();
             //BindSluch((int)ObjHelper.GetAnonymousValue(_row, "ID"));
         }
 
         private void SankDelItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
+            
             var result = DXMessageBox.Show("Удалить санкцию?", "Удаление", MessageBoxButton.YesNo);
             if (result != MessageBoxResult.Yes) return;
-
             var s = (D3_SANK_OMS)SankGridControl.SelectedItem;
-
+            if (s.USER_ID.ToString() != null && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
+            {
+                DXMessageBox.Show("Вы не можете удалить эту санкцию, она проведена другим пользователем");
+                return;
+            }
             Task.Factory.StartNew(() =>
             {
                 Reader2List.CustomExecuteQuery($"DELETE D3_SANK_OMS WHERE ID = {s.ID}", SprClass.LocalConnectionString);
@@ -2101,6 +2145,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 SankGridControl.RefreshData();
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
+            GetSpr();
         }
 
         public void ZslUpdate()
