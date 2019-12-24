@@ -94,6 +94,9 @@
       <DependentUpon>ExpControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="old_calc.cs" />
+    <Compile Include="Period.xaml.cs">
+      <DependentUpon>Period.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Period_unload.xaml.cs">
       <DependentUpon>Period_unload.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExpControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Period.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

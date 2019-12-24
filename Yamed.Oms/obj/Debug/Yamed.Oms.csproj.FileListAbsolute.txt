@@ -612,3 +612,5 @@ E:\ELMed\Yamed.Oms\obj\Debug\Period_unload.g.cs
 E:\ELMed\Yamed.Oms\bin\Debug\Elmedicine.Core.dll
 E:\ELMed\Yamed.Oms\bin\Debug\Elmedicine.Data.dll
 E:\ELMed\Yamed.Oms\obj\Debug\Period_unload.baml
+E:\ELMed\Yamed.Oms\obj\Debug\Period.baml
+E:\ELMed\Yamed.Oms\obj\Debug\Period.g.cs
