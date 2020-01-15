@@ -244,7 +244,7 @@ namespace Yamed.Oms
                 {
                     gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ForEach(x =>
                     {
-                        x.Width = (GridColumnWidth) x.Tag;
+                            x.Width = (GridColumnWidth)x.Tag;
                     });
                 }));
         }
@@ -595,7 +595,6 @@ namespace Yamed.Oms
             }
             qlist.Clear();
             ids.Clear();
-
 
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;

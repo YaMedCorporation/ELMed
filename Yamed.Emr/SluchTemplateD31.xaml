@@ -899,7 +899,8 @@
                                           ItemsSource="{Binding}"
                                           NullValueButtonPlacement="EditBox"
                                           ValidateOnTextInput="False"
-                                          ValueMember="IDHVID" />
+                                          ValueMember="IDHVID" 
+                                                   />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Метод ВМП">
                                 <dxe:ComboBoxEdit x:Name="HMetodBox"

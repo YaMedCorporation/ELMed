@@ -114,7 +114,7 @@ namespace Yamed.OmsExp.ExpEditors
                             D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID"),
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
-                            S_DATE = DateTime.Today
+                            S_DATE = SprClass.WorkDate
                         };
                         
                         _slpsList.Add(expList);

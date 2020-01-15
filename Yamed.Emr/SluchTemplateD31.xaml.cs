@@ -99,6 +99,7 @@ namespace Yamed.Emr
         private List<D3_CRIT_OMS> _crit_delList;
         public List<D3_USL_OMS> _usl_delList;
 
+
         public SluchTemplateD31(GridControl gc)
         {
             InitializeComponent();
@@ -107,7 +108,10 @@ namespace Yamed.Emr
 
             rowIndex = _gc.GetSelectedRowHandles().Where(x => x >= 0).FirstOrDefault();
             //var row = _gc.GetRow(rowIndex);
-
+            //if (SprClass.Region.ToString() == "46" && SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            //{
+            //    SlAddItem.IsEnabled = false;
+            //}
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
             {
@@ -629,7 +633,7 @@ namespace Yamed.Emr
             //    _zsl.SetValue("IDDOKTO", data.GetValue("DID"));
             //});
         }
-
+        public DateTime? dvmp;
         void GetSpr()
         {
 
@@ -760,11 +764,11 @@ namespace Yamed.Emr
             Ds2PrColumnEdit.DataContext = SprClass.SprBit;
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
-
+            dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
             MseEdit.DataContext = SprClass.SprBit;
-            HVidBox.DataContext = SprClass.VidVmpList;
-            HMetodBox.DataContext = SprClass.MetodVmpList;
-
+            HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
+            HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
+           
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
@@ -778,8 +782,8 @@ namespace Yamed.Emr
 
         private void HVidBox_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            HMetodBox.DataContext =
-                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue).ToList();
+            HMetodBox.DataContext = 
+                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp || x.DATEEND >= new DateTime(2019,1,1))).ToList();
         }
 
         private DateTime sankdate;
@@ -2069,7 +2073,7 @@ namespace Yamed.Emr
             {
                 var st = sank.S_TIP ?? (sank.S_TIP2 >= 20 && sank.S_TIP2 < 30 ? 2 : 3);
                 var re = sank.S_TIP == null ? 1 : 0;
-                if (sank.USER_ID.ToString() != null && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
+                if (sank.USER_ID.ToString() != "" && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
                 {
                     DXMessageBox.Show("Вы не можете редактировать эту санкцию, она проведена другим пользователем");
                     return;

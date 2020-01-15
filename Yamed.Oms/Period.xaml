@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="Yamed.Control.Editors.Period"
              mc:Ignorable="d" 
-             Height="267.38" Width="654.28" Loaded="UserControl_Loaded">
+             Height="295.38" Width="654.28" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style x:Key="myButtonStyle1" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="{Binding Width}" />
@@ -49,7 +49,7 @@
             <dxe:DateEdit x:Name="Per2" HorizontalAlignment="Left" Margin="447,139,0,0" VerticalAlignment="Top" Width="150" Mask="y"
                                   MaskUseAsDisplayFormat="True"
                                   AllowRoundOutOfRangeValue="true" />
-        <dxe:ComboBoxEdit x:Name="Prikaz" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" Margin="124,93,0,0" VerticalAlignment="Top" Width="281" NullValueButtonPlacement="EditBox" Height="22" />
+        <dxe:ComboBoxEdit x:Name="Prikaz" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" Margin="124,93,0,0" VerticalAlignment="Top" Width="281" NullValueButtonPlacement="EditBox" Height="22"  EditValueChanged="Prikaz_EditValueChanged" />
             <Label x:Name="s" Content="С" HorizontalAlignment="Left" Margin="253,139,0,0" VerticalAlignment="Top" FontWeight="Bold" />
             <Label x:Name="po" Content="По" HorizontalAlignment="Left" Margin="427,139,0,0" VerticalAlignment="Top" FontWeight="Bold" />
             <Label x:Name="vibor" Content="Выберите период подготовки данных" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="236" FontWeight="Bold" Height="22" />
@@ -87,6 +87,7 @@
             AllowRoundOutOfRangeValue="true" />
             <TextBox x:Name="npp" HorizontalAlignment="Left" Height="23" Margin="209,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
             <Label Content="Номер версии для имени файла" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="194" FontWeight="Bold"/>
-       
+            <Label x:Name="vibor_slekmp" Content="Выберите тип выгрузки (случаи, ЭКМП)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="236" FontWeight="Bold" Margin="10,263,0,0" />
+            <dxe:ComboBoxEdit x:Name="sluch_ekmp" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" NullValueButtonPlacement="EditBox" Height="22" Margin="257,263,0,0" />
     </Grid>
 </UserControl>
