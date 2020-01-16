@@ -2128,7 +2128,7 @@ namespace Yamed.Emr
             var result = DXMessageBox.Show("Удалить санкцию?", "Удаление", MessageBoxButton.YesNo);
             if (result != MessageBoxResult.Yes) return;
             var s = (D3_SANK_OMS)SankGridControl.SelectedItem;
-            if (s.USER_ID.ToString() != null && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
+            if (s.USER_ID.ToString() != "" && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
             {
                 DXMessageBox.Show("Вы не можете удалить эту санкцию, она проведена другим пользователем");
                 return;

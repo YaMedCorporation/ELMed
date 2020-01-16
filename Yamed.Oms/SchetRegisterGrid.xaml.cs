@@ -68,6 +68,7 @@ namespace Yamed.Oms
             ForPomEdit.DataContext = SprClass.ForPomList;
             MoEdit.DataContext = SprClass.LpuList;
             NprMoEdit.DataContext = SprClass.LpuList;
+            Mo_AttEdit.DataContext = SprClass.LpuList;
             RsltEdit.DataContext = SprClass.helpResult;
             RsltdEdit.DataContext = SprClass.V017;
             IshodEdit.DataContext = SprClass.helpExit;
@@ -196,6 +197,7 @@ namespace Yamed.Oms
                     pa.FAM,
                     pa.IM,
                     pa.OT,
+                    pa.MO_ATT,
                     pa.W,
                     pa.DR,
                     pa.FAM_P,
