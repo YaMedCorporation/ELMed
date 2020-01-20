@@ -324,6 +324,7 @@ namespace Yamed.Server
             SpecV021List = Reader2List.CustomAnonymousSelect("Select * from V021", LocalConnectionString);
             SpecAllList = Reader2List.CustomAnonymousSelect("Select * from View_Spr_SPEC", LocalConnectionString);
             Profil_V020 = Reader2List.GetAnonymousTable("V020", LocalConnectionString);
+
             OsobSluchDbs = Reader2List.CustomAnonymousSelect($"Select * from OsobSluchDb", LocalConnectionString);
             //OsSlRegion = Reader2List.CustomAnonymousSelect($"Select * from OsobSluchDb where dbeg <= '{today}' and isnull(DEND, '20991231') >= '{today}'", LocalConnectionString);
             TypeExp2 = Reader2List.CustomAnonymousSelect("SELECT * FROM [F006_NEW] where dateend is null", LocalConnectionString);
@@ -432,8 +433,8 @@ namespace Yamed.Server
                 TypeOplaty = elMed.GetTable<F005>().ToList();
                 TypeExp = elMed.GetTable<F006>().ToList();
                 Otkazs = elMed.GetTable<F014>().ToList();
-                VidVmpList = elMed.V018.Where(x => x.DATEEND == null || x.DATEEND >= DateTime.Today).ToList();
-                MetodVmpList = elMed.V019.Where(x=> x.DATEEND == null || x.DATEEND >= DateTime.Today).ToList();
+                VidVmpList = elMed.V018.ToList();
+                MetodVmpList = elMed.V019.ToList();
 
                 GrZdorovDbs = elMed.GetTable<GrZdorovDb>().ToList();
                 VeteranDbs = elMed.GetTable<VeteranDb>().ToList();

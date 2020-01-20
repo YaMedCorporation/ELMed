@@ -99,6 +99,7 @@ namespace Yamed.Emr
         private List<D3_CRIT_OMS> _crit_delList;
         public List<D3_USL_OMS> _usl_delList;
 
+
         public SluchTemplateD31(GridControl gc)
         {
             InitializeComponent();
@@ -107,7 +108,10 @@ namespace Yamed.Emr
 
             rowIndex = _gc.GetSelectedRowHandles().Where(x => x >= 0).FirstOrDefault();
             //var row = _gc.GetRow(rowIndex);
-
+            //if (SprClass.Region.ToString() == "46" && SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            //{
+            //    SlAddItem.IsEnabled = false;
+            //}
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
             {
@@ -629,7 +633,8 @@ namespace Yamed.Emr
             //    _zsl.SetValue("IDDOKTO", data.GetValue("DID"));
             //});
         }
-
+        public DateTime? dvmp;
+        public int? usl_ok;
         void GetSpr()
         {
 
@@ -744,7 +749,7 @@ namespace Yamed.Emr
             CodeShColumnEdit.DataContext = SprClass.V024;
 
 
-            NksgEdit.DataContext = SprClass.CalcKsgTarifList;
+            
             KslpCodeColumnEdit.DataContext = SprClass.KslpList;
             CritColumn.DataContext = SprClass.V024;
             RsltdBox.DataContext = SprClass.V017;
@@ -760,11 +765,14 @@ namespace Yamed.Emr
             Ds2PrColumnEdit.DataContext = SprClass.SprBit;
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
+            usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
+            dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump={usl_ok} and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
 
             MseEdit.DataContext = SprClass.SprBit;
-            HVidBox.DataContext = SprClass.VidVmpList;
-            HMetodBox.DataContext = SprClass.MetodVmpList;
-
+            HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
+            HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
+           
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
@@ -778,8 +786,8 @@ namespace Yamed.Emr
 
         private void HVidBox_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            HMetodBox.DataContext =
-                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue).ToList();
+            HMetodBox.DataContext = 
+                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp || x.DATEEND >= new DateTime(2019,1,1))).ToList();
         }
 
         private DateTime sankdate;
@@ -2069,7 +2077,7 @@ namespace Yamed.Emr
             {
                 var st = sank.S_TIP ?? (sank.S_TIP2 >= 20 && sank.S_TIP2 < 30 ? 2 : 3);
                 var re = sank.S_TIP == null ? 1 : 0;
-                if (sank.USER_ID.ToString() != null && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
+                if (sank.USER_ID.ToString() != "" && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
                 {
                     DXMessageBox.Show("Вы не можете редактировать эту санкцию, она проведена другим пользователем");
                     return;
@@ -2124,7 +2132,7 @@ namespace Yamed.Emr
             var result = DXMessageBox.Show("Удалить санкцию?", "Удаление", MessageBoxButton.YesNo);
             if (result != MessageBoxResult.Yes) return;
             var s = (D3_SANK_OMS)SankGridControl.SelectedItem;
-            if (s.USER_ID.ToString() != null && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
+            if (s.USER_ID.ToString() != "" && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
             {
                 DXMessageBox.Show("Вы не можете удалить эту санкцию, она проведена другим пользователем");
                 return;
@@ -2428,7 +2436,16 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             CritGridControl.RefreshData();
         }
 
+        private void DateZ2Edit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump={usl_ok} and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+        }
 
+        private void UslOkzEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            usl_ok = (int)UslOkzEdit.EditValue;
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump={usl_ok} and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+        }
     }
 
     public class RoleVisibility : IValueConverter

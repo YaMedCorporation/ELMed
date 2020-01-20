@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\
+E:\ELMed\Yamed.Oms\obj\Debug\
 Yamed.Oms
 none
 false
 DEBUG;TRACE
 
-10-1191962674
+121834897666
 
-14-148141329
-38512549068
-EconomyControl.xaml;EconomyTab.xaml;EconomyTabOMS.xaml;ExpControl.xaml;SelectionControl.xaml;SchetRegisterControl.xaml;SchetRegisterGrid.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;SearchControl.xaml;
+16-561217208
+40-85025544
+EconomyControl.xaml;EconomyTab.xaml;EconomyTabOMS.xaml;ExpControl.xaml;Period.xaml;Period_unload.xaml;SelectionControl.xaml;SchetRegisterControl.xaml;SchetRegisterGrid.xaml;ReestrChooseControl.xaml;ReestrControl.xaml;SearchControl.xaml;
 
-True
+False
 

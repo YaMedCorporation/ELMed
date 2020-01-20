@@ -79,6 +79,11 @@
                 <dxg:GridColumn x:Name="Column_SNILS" FieldName="SNILS" Header="СНИЛС" />
                 <dxg:GridColumn x:Name="Column_VPOLIS" FieldName="VPOLIS" Header="Тип полиса" />
                 <dxg:GridColumn x:Name="Column_NPOLIS" FieldName="NPOLIS" Header="Номер полиса"  />
+                <dxg:GridColumn x:Name="Column_MO_ATT" FieldName="MO_ATT" Header="Прикрепление">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="Mo_AttEdit" DisplayMember="NameWithID" ValueMember="mcod" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column_MSE" FieldName="MSE" Header="МСЭ"/>
                 <dxg:GridColumn x:Name="Column_KOD_TER" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="KOD_TER" Header="Житель" >
                     <dxg:GridColumn.EditSettings>

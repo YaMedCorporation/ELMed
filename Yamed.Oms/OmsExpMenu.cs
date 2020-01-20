@@ -14,6 +14,9 @@ using Yamed.Control;
 using Yamed.OmsExp;
 using Yamed.OmsExp.SqlEditor;
 using Yamed.Server;
+using Elmedicine.Core;
+using Elmedicine.Data;
+using System.Collections;
 
 namespace Yamed.Oms
 {
@@ -23,9 +26,11 @@ namespace Yamed.Oms
 
         public OmsMenu()
         {
+           
             MenuElements = new ObservableCollection<MenuElement>()
             {
-                new MenuElement
+                 
+            new MenuElement
                 {
                     Content = "Алгоритмы МЭК",
                     Glyph = new Uri("/Yamed.Icons;component/Icons/1472140320_settings-24.png", UriKind.Relative),
@@ -89,9 +94,23 @@ namespace Yamed.Oms
                         },
                         () => true)
                 },
-            };
 
-    }
+            new MenuElement
+                {
+            Content = "Выгрузка сведений в ТФОМС",
+                    Glyph = new Uri("/Yamed.Icons;component/Icons/unload_new.png", UriKind.Relative),
+                    Command = new RelayCommand(() =>
+                        {
+                               test333();
+                        },
+                        () => true)
+                },
+            };
+            if (Yamed.Server.SprClass.Region != "75")
+            {
+                MenuElements.RemoveAt(4);
+            }
+        }
         private void SankExport_OnClick()
         {
             ExportToXml(ExportExp(2019, "1,2,3,4,5,6,7,8,9,10,11,12"));
@@ -116,7 +135,7 @@ JOIN D3_SANK_OMS s ON s.D3_ZSLID = sl.ID --and s.S_TIP = 1
 LEFT JOIN D3_AKT_MEE_TBL k ON k.SANKID = s.ID
 WHERE sc.YEAR in (2018, {0}) AND sc.MONTH in ({1})
 SELECT * FROM SANK_EXP_TT", year, month);
-            return Reader2List.CustomAnonymousSelect(tempQuery, SprClass.LocalConnectionString);
+            return Yamed.Server.Reader2List.CustomAnonymousSelect(tempQuery, Yamed.Server.SprClass.LocalConnectionString);
         }
 
         static void ExportToXml(object sankExpList)
@@ -222,6 +241,78 @@ SELECT * FROM SANK_EXP_TT", year, month);
 
 
         }
+        public static string y1_;
+        public static string m1_;
+        public static string y2_;
+        public static string m2_;
+        static void test333()
+        {
+            var per = new Period_unload();
+            var window = new DXWindow
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                Content = per,
+                Title = "Параметры выгрузки",
+                SizeToContent = SizeToContent.WidthAndHeight
+            };
+            window.ShowDialog();
+            var rlist = Elmedicine.Data.Reader2List.CustomAnonymousSelect($@"
+select sc.year, sc.month, sc.ID,
+convert(nvarchar, year(sa.S_DATE)) y, 
+case when month(sa.S_DATE) <10 then '0' + convert(nvarchar, month(sa.S_DATE)) else convert(nvarchar, month(sa.S_DATE)) end m,
+count(*) cnt
+ from D3_SANK_OMS sa
+join D3_ZSL_OMS z on sa.D3_ZSLID = z.ID
+join D3_SCHET_OMS sc on z.D3_SCID = sc.ID 
+where sa.S_TIP in (2,3) and convert(nvarchar, year(sa.S_DATE))>={y1_} and convert(nvarchar, year(sa.S_DATE))<={y2_} and convert(nvarchar, month(sa.S_DATE))>={m1_} and convert(nvarchar, month(sa.S_DATE))<={m2_}    --and S_COM like 'Импортированные данные пакет-2%'
+group by sc.year, sc.month, sc.ID, year(sa.S_DATE), month(sa.S_DATE)
+order by y, m
 
+
+", _connectionString);
+            SaveFileDialog SF = new SaveFileDialog();
+            SF.InitialDirectory = "C:\\";
+            SF.FileName = "Unload";
+            SF.ShowDialog();
+            way = SF.FileName.Replace(SF.SafeFileName, "");
+            foreach (var r in (IList)rlist)
+            {
+                int ver;
+                if ((int)PublicVoids.GetAnonymousValue(r, "year") >= 2019)
+                    ver = 31;
+                else if ((int)PublicVoids.GetAnonymousValue(r, "month") > 3 && (int)PublicVoids.GetAnonymousValue(r, "year") == 2018)
+                    ver = 30;
+                else ver = 21;
+                XmlStreemMtr3((int)PublicVoids.GetAnonymousValue(r, "ID"), ver, (string)PublicVoids.GetAnonymousValue(r, "y") + (string)PublicVoids.GetAnonymousValue(r, "m") + "01");
+            }
+            DXMessageBox.Show("Выгрузка завершена.");
+        }
+        private static readonly string _connectionString = Yamed.Server.SprClass.LocalConnectionString;
+        public static string way;
+        static public void XmlStreemMtr3(int schet, int vers, string sdate)
+        {
+
+            var qxml = Yamed.Server.SqlReader.Select($@"select * from [f_reestr{vers}_test] ({schet}, 'M', 2, '{sdate}')"
+            , _connectionString);
+
+
+
+            string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("FileXML");
+            string result2 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("LFileXML");
+            using (ZipFile zip = new ZipFile(Encoding.GetEncoding("windows-1251")))
+            {
+                zip.AddEntry((string)qxml[0].GetValue("FileName") + ".xml", result1);
+                zip.AddEntry((string)qxml[0].GetValue("LFileName") + ".xml", result2);
+
+                if (!Directory.Exists(way + $@"\Out\{sdate}"))
+                    Directory.CreateDirectory(way + $@"\Out\{sdate}");
+
+                var zipFile = way + $@"\Out\{sdate}\" + (string)qxml[0].GetValue("FileName") + ".zip";
+                zip.Save(zipFile);
+
+
+            }
+            //LoadingDecorator1.IsSplashScreenShown = false;
+        }
     }
 }

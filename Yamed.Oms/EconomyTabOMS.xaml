@@ -69,7 +69,12 @@
                                            ToolTip="Экспорт oms 3.0K" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/700048-icon-89-document-file-sql-512.png"
                                            ItemClick="ScExport3Item_OnItemClick" />
-
+                        <dxb:BarButtonItem Name="ScExportEis"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Экспорт ЕИССОИ" GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/1472127383_46.png"
+                                           ItemClick="ScExportEis_OnItemClick"
+                                           IsVisible="False"/>
                         <dxb:BarButtonItem Name="ScAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Добавить" GlyphAlignment="Top"

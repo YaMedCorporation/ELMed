@@ -52,7 +52,10 @@ namespace Yamed.Oms
             //IsSmoTableVisible = SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu ? Visibility.Visible : Visibility.Collapsed;
             //if (IsSmoTableVisible == Visibility.Collapsed)
             //    Grid1.RowDefinitions[2].Height = GridLength.Auto;
-
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+            {
+                ScExportEis.IsVisible = true;
+            }
             linqInstantFeedbackDataSource = (LinqInstantFeedbackDataSource)FindResource("LinqInstantFeedbackDataSource");
             var edc =  new YamedDataClassesDataContext()
             {
@@ -1552,7 +1555,18 @@ SELECT [ID]
             }
             //LoadingDecorator1.IsSplashScreenShown = false;
         }
-
+        private void ScExportEis_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            var per = new Period();
+            var window = new DXWindow
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                Content = per,
+                Title = "Выгрузка в ЕИССОИ",
+                SizeToContent = SizeToContent.WidthAndHeight
+            };
+            window.ShowDialog();
+        }
 
     }
 
