@@ -288,7 +288,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <dxe:ComboBoxEdit Validate="dxEdit_Validate" HorizontalAlignment="Stretch" x:Name="UslOkzEdit" VerticalAlignment="Top" ItemsSource="{Binding}" EditValue="{Binding DataContext.USL_OK, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="id" />
+                                    <dxe:ComboBoxEdit Validate="dxEdit_Validate" HorizontalAlignment="Stretch" x:Name="UslOkzEdit" VerticalAlignment="Top" ItemsSource="{Binding}" EditValue="{Binding DataContext.USL_OK, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="id" EditValueChanged="UslOkzEdit_EditValueChanged" />
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="UslOkzTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
@@ -332,7 +332,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="20" />
                                     </Grid.ColumnDefinitions>
-                                    <dxe:DateEdit Validate="dxEdit_Validate"   x:Name="DateZ2Edit" NullValueButtonPlacement="EditBox" EditValue="{Binding DataContext.DATE_Z_2, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}"  MaskType="DateTimeAdvancingCaret"  Mask="d" />
+                                    <dxe:DateEdit Validate="dxEdit_Validate"   x:Name="DateZ2Edit" NullValueButtonPlacement="EditBox" EditValue="{Binding DataContext.DATE_Z_2, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}"  MaskType="DateTimeAdvancingCaret"  Mask="d" EditValueChanged="DateZ2Edit_EditValueChanged" />
                                     <ToggleButton Grid.Column="1" x:Name="DateZ2Tb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>
@@ -1484,7 +1484,7 @@
 
                         <dxlc:LayoutGroup Orientation="Vertical">
                             <dxlc:LayoutItem Label="Номер КСГ">
-                                <dxe:ComboBoxEdit Validate="dxEdit_Validate" x:Name="NksgEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" EditValue="{Binding DataContext.N_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}"/>
+                                <dxe:ComboBoxEdit Validate="dxEdit_Validate" x:Name="NksgEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="K_KSG" EditValue="{Binding DataContext.N_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}"/>
                             </dxlc:LayoutItem>
                             <dxlc:LayoutGroup>
                                 <dxlc:LayoutItem Label="Модель" ToolTip="Модель определения КСГ">

@@ -86,7 +86,7 @@ namespace Yamed.Oms
             ProfilEdit.DataContext = SprClass.profile;
             VidHmpEdit.DataContext = SprClass.VidVmpList;
             MetodHmpEdit.DataContext = SprClass.MetodVmpList;
-            KsgEdit.DataContext = SprClass.CalcKsgTarifList;
+            KsgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
             PrvsEdit.DataContext = SprClass.SpecAllList;
