@@ -92,7 +92,7 @@ namespace Yamed.Hospital
             DoctorColumnEdit.DataContext = SprClass.DoctList;
             //SpecColumnEdit.DataContext = SprClass.specialityNew;
             DsColumnEdit.DataContext = SprClass.mkbSearching;
-            KsgColumnEdit.DataContext = SprClass.CalcKsgTarifList;
+            KsgColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023", SprClass.LocalConnectionString);
             OplataTypeColumnEdit.DataContext = SprClass.KsgOplata;
 
             UslOtdelColumnEdit.DataContext = SprClass.OtdelDbs;

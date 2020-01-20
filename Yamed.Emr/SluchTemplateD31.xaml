@@ -332,7 +332,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="20" />
                                     </Grid.ColumnDefinitions>
-                                    <dxe:DateEdit Validate="dxEdit_Validate"   x:Name="DateZ2Edit" NullValueButtonPlacement="EditBox" EditValue="{Binding DataContext.DATE_Z_2, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}"  MaskType="DateTimeAdvancingCaret"  Mask="d" EditValueChanged="DateZ2Edit_EditValueChanged" />
+                                    <dxe:DateEdit Validate="dxEdit_Validate"   x:Name="DateZ2Edit" NullValueButtonPlacement="EditBox" EditValue="{Binding DataContext.DATE_Z_2, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}"  MaskType="DateTimeAdvancingCaret"  Mask="d" EditValueChanged="DateZ2Edit_EditValueChanged"  />
                                     <ToggleButton Grid.Column="1" x:Name="DateZ2Tb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>

@@ -767,7 +767,7 @@ namespace Yamed.Emr
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
-            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump={usl_ok} and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
 
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
@@ -2438,13 +2438,14 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
         private void DateZ2Edit_EditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump={usl_ok} and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+            dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
         }
 
         private void UslOkzEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            usl_ok = (int)UslOkzEdit.EditValue;
-            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump={usl_ok} and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+            usl_ok = (int?)UslOkzEdit.EditValue;
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
         }
     }
 
