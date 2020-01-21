@@ -39,7 +39,7 @@ namespace Yamed.Control
             handles = handles.Where(x => x >= 0).Select(x => x).ToArray();
             var count = handles.Count();
             object[] obj = new object[count];
-            if (count > 500) LoadedRows = gridControl.DataController.GetAllFilteredAndSortedRows().OfType<ReadonlyThreadSafeProxyForObjectFromAnotherThread>().Select(x => x.OriginalRow).ToList();
+            if (count > 15) LoadedRows = gridControl.DataController.GetAllFilteredAndSortedRows().OfType<ReadonlyThreadSafeProxyForObjectFromAnotherThread>().Select(x => x.OriginalRow).ToList();
             else
             {
                 LoadedRows = new List<object>();

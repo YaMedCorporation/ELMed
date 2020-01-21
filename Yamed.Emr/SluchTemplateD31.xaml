@@ -266,7 +266,9 @@
                             <dxlc:LayoutItem Label="Новорожд." IsRequired="True" >
                                 <dxe:TextEdit x:Name="novorBox" EditValue="{Binding NOVOR, UpdateSourceTrigger=PropertyChanged}" ToolTip="Указывается в случае оказания медицин-ской помощи ребёнку до государственной регистрации рожде-ния.&#xA;                                          0 – признак отсут-ствует.&#xA;                                          Если значение при-знака отлично от ну-ля, он заполняется по следующему шабло-ну:&#xA;                                          ПДДММГГН, где&#xA;                                          П – пол ребёнка в со-ответствии с класси-фикатором V005 Приложения А;&#xA;                                          ДД – день рождения;&#xA;                                          ММ – месяц рожде-ния;&#xA;                                          ГГ – последние две цифры года рожде-ния;&#xA;                                          Н – порядковый но-мер ребёнка (до двух знаков)." />
                             </dxlc:LayoutItem>
+                            
                         </dxlc:LayoutGroup>
+                        
                         <dxlc:LayoutGroup dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
                             <dxlc:LayoutItem Label="Мед. орг." ToolTip="Код медицинской организации" >
                                 <Grid x:Name="LpuGrid">
@@ -816,7 +818,7 @@
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
                                 <dxg:GridColumn FieldName="S_OSN" Header="Основание">
-                                <dxg:GridColumn.EditSettings>
+                                    <dxg:GridColumn.EditSettings>
                                         <dxe:ComboBoxEditSettings NullValueButtonPlacement="EditBox" Name="sanknameColumnEdit" DisplayMember="NameWithId" ValueMember="Osn" ItemsSource="{Binding}" />
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
@@ -835,18 +837,20 @@
                 <dxlc:LayoutGroup Header="LayoutGroup" View="Tabs" dxlc:LayoutControl.AllowVerticalSizing="True">
                     <dxlc:LayoutGroup View="Group" Header="Сведения о случае" >
                         <dxlc:LayoutGroup Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
-
+                            <dxlc:LayoutItem Label="ФАП" >
+                                <dxe:CheckEdit x:Name="fap" EditValueChanged="Fap_EditValueChanged" ></dxe:CheckEdit>
+                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Подразделение" ToolTip="Подразделение медицинской организации" >
                                 <Grid x:Name="PodrGrid">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
                                     <dxe:ComboBoxEdit HorizontalAlignment="Stretch" x:Name="PodrEdit" VerticalAlignment="Top"  ItemsSource="{Binding}"  DisplayMember="NameWithID" ValueMember="Id" EditValue="{Binding SelectedItem.LPU_1, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"/>
                                     <ToggleButton Grid.Column="1" x:Name="PodrTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
-
                             </dxlc:LayoutItem>
+                            
                             <dxlc:LayoutItem Label="Отделение" >
                                 <Grid x:Name="OtdelGrid">
                                     <Grid.ColumnDefinitions>

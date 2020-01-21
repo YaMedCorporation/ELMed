@@ -635,6 +635,7 @@ namespace Yamed.Emr
         }
         public DateTime? dvmp;
         public int? usl_ok;
+        public string fap_lpu;
         void GetSpr()
         {
 
@@ -690,7 +691,7 @@ namespace Yamed.Emr
             NaprMoGrid.DataContext = SprClass.medOrg;
             //NaprGrid.DataContext = SprClass.ExtrDbs;
             OtdelGrid.DataContext = SprClass.OtdelDbs;
-            PodrGrid.DataContext = SprClass.Podr;
+            
             ForPomGrid.DataContext = SprClass.ForPomList;
             Ds1PrEdit.DataContext = SprClass.SprBit;
             VozrEdit.DataContext = SprClass.VozrList;
@@ -765,6 +766,7 @@ namespace Yamed.Emr
             Ds2PrColumnEdit.DataContext = SprClass.SprBit;
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
+            PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
             NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
@@ -772,7 +774,16 @@ namespace Yamed.Emr
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
             HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
-           
+            fap_lpu = _slList[0].LPU_1;
+            if ((fap_lpu ?? "3").Length == 8)
+            {
+                fap.IsChecked = true;             
+            }
+            else
+            {
+                fap.IsChecked = false;
+                PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
+            }
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
@@ -1504,6 +1515,7 @@ namespace Yamed.Emr
         private void NewZSluch_OnClick(object sender, RoutedEventArgs e)
         {
             NewZsl();
+            fap.IsChecked = false;
         }
 
         void NewZsl()
@@ -2446,6 +2458,18 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
         {
             usl_ok = (int?)UslOkzEdit.EditValue;
             NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+        }
+
+        private void Fap_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if (fap.IsChecked == false)
+            {
+                PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
+            }
+            else
+            {
+                PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
+            } 
         }
     }
 
