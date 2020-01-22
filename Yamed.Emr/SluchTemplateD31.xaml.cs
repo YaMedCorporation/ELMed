@@ -1515,21 +1515,19 @@ namespace Yamed.Emr
         private void NewZSluch_OnClick(object sender, RoutedEventArgs e)
         {
             NewZsl();
-            fap.IsChecked = false;
         }
 
         void NewZsl()
         {
             ZSlEditLock();
             SlEditLock();
-
+            
             BindEmptySluch2();
             //polisBox.EditValue = null;
             //PacientGroup.Header = "Пациент:";
 
             ZSlEditDefault();
             SlEditDefault();
-
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(delegate ()
                 {
@@ -1573,9 +1571,10 @@ namespace Yamed.Emr
             _zsl.RSLT_D = _zslLock.RSLT_D;
             _zsl.VBR = _zslLock.VBR;
         }
-
+        public bool fapcheck;
         void SlEditDefault()
         {
+            fap.IsChecked = fapcheck;
             ((D3_SL_OMS)SlGridControl.SelectedItem).USL_OK = _slLock.USL_OK;
             ((D3_SL_OMS)SlGridControl.SelectedItem).LPU_1 = _slLock.LPU_1;
             ((D3_SL_OMS)SlGridControl.SelectedItem).PODR = _slLock.PODR;
@@ -1644,6 +1643,15 @@ namespace Yamed.Emr
             _slLock.POVOD = povodobrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD : null;
             _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
             _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
+
+            if (fapTb.IsChecked == true && fap.IsChecked == true)
+            {
+                fapcheck = true;
+            }
+            else if (fapTb.IsChecked == true && fap.IsChecked == false)
+            {
+                fapcheck = false;
+            }
         }
 
         private void EmrPacient_OnClick(object sender, RoutedEventArgs e)

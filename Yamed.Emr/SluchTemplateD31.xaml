@@ -838,7 +838,14 @@
                     <dxlc:LayoutGroup View="Group" Header="Сведения о случае" >
                         <dxlc:LayoutGroup Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
                             <dxlc:LayoutItem Label="ФАП" >
-                                <dxe:CheckEdit x:Name="fap" EditValueChanged="Fap_EditValueChanged" ></dxe:CheckEdit>
+                                <Grid x:Name="FapGrid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:CheckEdit x:Name="fap" EditValueChanged="Fap_EditValueChanged" ></dxe:CheckEdit>
+                                    <ToggleButton Grid.Column="1" x:Name="fapTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
+                                </Grid>
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Подразделение" ToolTip="Подразделение медицинской организации" >
                                 <Grid x:Name="PodrGrid">
