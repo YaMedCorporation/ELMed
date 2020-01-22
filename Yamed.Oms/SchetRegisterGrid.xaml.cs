@@ -68,6 +68,7 @@ namespace Yamed.Oms
             ForPomEdit.DataContext = SprClass.ForPomList;
             MoEdit.DataContext = SprClass.LpuList;
             NprMoEdit.DataContext = SprClass.LpuList;
+            Mo_AttEdit.DataContext = SprClass.LpuList;
             RsltEdit.DataContext = SprClass.helpResult;
             RsltdEdit.DataContext = SprClass.V017;
             IshodEdit.DataContext = SprClass.helpExit;
@@ -85,7 +86,7 @@ namespace Yamed.Oms
             ProfilEdit.DataContext = SprClass.profile;
             VidHmpEdit.DataContext = SprClass.VidVmpList;
             MetodHmpEdit.DataContext = SprClass.MetodVmpList;
-            KsgEdit.DataContext = SprClass.CalcKsgTarifList;
+            KsgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
             PrvsEdit.DataContext = SprClass.SpecAllList;
@@ -196,6 +197,7 @@ namespace Yamed.Oms
                     pa.FAM,
                     pa.IM,
                     pa.OT,
+                    pa.MO_ATT,
                     pa.W,
                     pa.DR,
                     pa.FAM_P,
@@ -244,7 +246,7 @@ namespace Yamed.Oms
                 {
                     gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ForEach(x =>
                     {
-                        x.Width = (GridColumnWidth) x.Tag;
+                            x.Width = (GridColumnWidth)x.Tag;
                     });
                 }));
         }
@@ -595,7 +597,6 @@ namespace Yamed.Oms
             }
             qlist.Clear();
             ids.Clear();
-
 
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;

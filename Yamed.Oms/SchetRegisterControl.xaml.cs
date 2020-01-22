@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -8,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Core;
+using Ionic.Zip;
 using Microsoft.Win32;
 using Yamed.Control;
 using Yamed.Core;
@@ -36,6 +40,11 @@ namespace Yamed.Oms
         public SchetRegisterControl(List<int> scids)
         {
             InitializeComponent();
+            if (SprClass.Region != "22")
+            {
+                Export22.IsVisible = false;
+                Load22.IsVisible = false;
+            }
             _scids = scids;
 
             SchetRegisterGrid1.Scids = scids;
@@ -741,6 +750,115 @@ where zsl.D3_SCID in {ids}";
             catch
             {
                 MessageBox.Show("Не выбран запрос");
+            }
+        }
+        private void TestBarnaul(object sender, RoutedEventArgs e)
+        {
+            string fname1 = $@"IS{SprClass.DbSettings[8].Parametr}T{SprClass.Region}_{DateTime.Today.Year.ToString().Substring(0, 2) + (DateTime.Today.Month.ToString().Length < 2 ? "0" + DateTime.Today.Month.ToString() : DateTime.Today.Month.ToString())}1.csv";
+            SaveFileDialog SF = new SaveFileDialog();
+            SF.FileName = fname1;
+            SF.DefaultExt = ".csv";
+            SF.Filter = "Файлы CSV (.csv)|*.csv";
+            bool res = SF.ShowDialog().Value;
+            string fname = SF.FileName;
+            string scs = String.Join(", ", _scids.ToArray());
+
+
+            if (res == true)
+            {
+                var connectionString = SprClass.LocalConnectionString;
+                SqlConnection con = new SqlConnection(connectionString);
+
+                SqlCommand comm = new SqlCommand($@"declare @r char='|';
+            SELECT convert(nvarchar(36), newid()) + @r + isnull(fam, '') + @r + isnull(im, '') + @r + isnull(ot, '') + @r + convert(nvarchar, isnull(cast(dr as date), '')) + @r
+            + convert(nvarchar, isnull(w, '')) + @r + convert(nvarchar, isnull(DOCTYPE, '')) + @r + isnull(DOCSER, '') + @r + isnull(DOCNUM, '') + @r + isnull(SNILS, '') + @r
+            + '1027739449913' + @r + '01000' + @r + npolis + @r + convert(nvarchar, isnull(vpolis, '')) + @r + '0' + @r + '0' + @r
+            + convert(nvarchar, DATE_Z_1, 23) + @r + convert(nvarchar, DATE_Z_2, 23) + @r + '1022200897840' + @r + '0'
+from D3_PACIENT_OMS p
+left
+join D3_ZSL_OMS z on p.id = z.D3_PID
+where z.D3_SCID in({scs})", con);
+                con.Open();
+                SqlDataReader dr = comm.ExecuteReader();
+                StreamWriter sr = new StreamWriter(fname, false, Encoding.GetEncoding(1251));
+
+                while (dr.Read())
+                {
+
+                    sr.Write("{0}", dr[0]);
+                    sr.WriteLine();
+
+                }
+
+                sr.Close();
+                con.Close();
+                string fnamezip = fname.Replace(".csv", "");
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.AddFile(fname, "");
+
+                    zip.Save(fnamezip + ".zip");
+
+                }
+                DXMessageBox.Show("Выгрузка завершена");
+                File.Delete(fname);
+            }
+
+        }
+        private DataTable tb;
+        private void TestBarnaul1(object sender, RoutedEventArgs e)
+        {
+            string scs = String.Join(", ", _scids.ToArray());
+            OpenFileDialog OF = new OpenFileDialog();
+            OF.Multiselect = false;
+            bool res = OF.ShowDialog().Value;
+            string ex_path = OF.FileName;
+            string polis_up_file = OF.SafeFileName;
+            ZipFile zip = new ZipFile(ex_path);
+            if (res == true)
+            {
+                zip.ExtractAll(ex_path.Replace(OF.SafeFileName, ""), ExtractExistingFileAction.OverwriteSilently);
+                ex_path = ex_path.Replace(OF.SafeFileName, zip.EntryFileNames.First());
+
+
+                //Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                //    new Action(delegate ()
+                //    {
+                tb = new DataTable();
+
+                    string filename = ex_path;
+                    string[] attache = File.ReadAllLines(filename);
+                    var cls0 = attache[0].Split('|');
+                    for (int i = 0; i < cls0.Count(); i++)
+                    {
+                        tb.Columns.Add("Column" + i.ToString(), typeof(string));
+                    }
+                    //tb.Columns.AddRange();
+                    foreach (string row in attache)
+                    {
+                        // получаем все ячейки строки
+
+                        var cls = row.Split('|');
+
+                        tb.LoadDataRow(cls, LoadOption.Upsert);
+                        //Attache_mo.Add(new ATTACHED_MO { GUID = cls[0], OKATO = cls[1], SMO = cls[2], DPFS = cls[3], SER = cls[4], NUM = cls[5], ENP = cls[6], MO = cls[7] });
+                    }
+                //}));
+                var connectionString = SprClass.LocalConnectionString;
+                SqlConnection con = new SqlConnection(connectionString);
+
+                SqlCommand comm = new SqlCommand($@"update d3_pacient_oms set mo_att=amo.MO, OMS_STATUS=1 from @AttachedMO amo where d3_pacient_oms.npolis=amo.ENP and d3_pacient_oms.d3_scid in({scs})", con);
+
+                SqlParameter Att_Mo = comm.Parameters.AddWithValue("@AttachedMO", tb);
+                Att_Mo.SqlDbType = SqlDbType.Structured;
+                Att_Mo.TypeName = "dbo.AttacheTableType";
+                con.Open();
+                comm.CommandTimeout = 0;
+                comm.ExecuteNonQuery();
+
+                con.Close();
+                File.Delete(ex_path);
+                DXMessageBox.Show("Прикрепление успешно загружено");
             }
         }
 

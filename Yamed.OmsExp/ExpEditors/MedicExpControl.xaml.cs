@@ -114,7 +114,7 @@ namespace Yamed.OmsExp.ExpEditors
                             D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID"),
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
-                            S_DATE = DateTime.Today
+                            S_DATE = SprClass.WorkDate
                         };
                         
                         _slpsList.Add(expList);
@@ -264,84 +264,11 @@ namespace Yamed.OmsExp.ExpEditors
                     }
                 }
             }
-            foreach (var obj in _slpsList.Select(x=>x.Sank).Where(x=>x.MODEL_ID != null))
-            {              
-                if (obj.ID == 0)
-                {
-                    obj.S_COM = obj.S_ZAKL;
 
-                    if (_stype==3 && _expertList != null && _expertList.Count != 0 && _expert_delList == null && checkEditItem.EditValue.ToString() == "False")
-                    {
-                        ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
-                        obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
-                        obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
-                    }
-                    else
-                    {
-                        obj.CODE_EXP = null;
-                    }
-
-                    var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
-                    obj.ID = (int)id;
-                }
-                else
-                {
-                    obj.S_COM = obj.S_ZAKL;
-                    if ( _stype == 3 && checkEditItem.EditValue.ToString() == "True")
-                    {
-                        obj.CODE_EXP = null;
-                    }
-                    else if (_stype ==3 && _expertList != null && _expertList.Count !=0 && checkEditItem.EditValue.ToString() == "False")
-                    {
-                        ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
-                        obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
-                        obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
-                    }
-                    var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", obj, "ID");
-                    Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
-                }
-            }
-            if (_expert_delList != null)
-                foreach (var obj in _expert_delList)
-                {
-                   Reader2List.CustomExecuteQuery($@"Delete D3_SANK_EXPERT_OMS where id = {obj.ID}", SprClass.LocalConnectionString);
-                }
-
-            if (_expertList != null)
-                foreach (var obj in _expertList)
-                {
-                    if (obj.ID == 0)
-                    {
-                        obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
-                        var id = Reader2List.ObjectInsertCommand("D3_SANK_EXPERT_OMS", obj, "ID",
-                            SprClass.LocalConnectionString);
-                        obj.ID = (int) id;
-                    }
-                    else
-                    {
-                        var upd = Reader2List.CustomUpdateCommand("D3_SANK_EXPERT_OMS", obj, "ID");
-                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
-                    }
-                }
-
-            var scs = _slpsList.Select(x => ObjHelper.GetAnonymousValue(x.Row, "D3_SCID")).Distinct();
-            if (_re == 0)
-            {
-                foreach (var sc in scs)
-                {
-                    Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
-                }
-            }
-            else
-            {
-                foreach (var sc in scs)
-                {
-                    Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank_ {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
-                }
-            }
             if (_re == 0 && Sum2Edit.Text== "")
             {
-                DXMessageBox.Show("Не произведен расчет");   
+                DXMessageBox.Show("Не произведен расчет");
+                return;
             }
             else if (checkEditItem.EditValue.ToString() == "False" && PrConsColumn.DataContext.ToString() == "Yamed.Entity.D3_SANK_OMS" && _stype == 3)
             { 
@@ -349,6 +276,80 @@ namespace Yamed.OmsExp.ExpEditors
             }
             else
             {
+                foreach (var obj in _slpsList.Select(x => x.Sank).Where(x => x.MODEL_ID != null))
+                {
+                    if (obj.ID == 0)
+                    {
+                        obj.S_COM = obj.S_ZAKL;
+
+                        if (_stype == 3 && _expertList != null && _expertList.Count != 0 && _expert_delList == null && checkEditItem.EditValue.ToString() == "False")
+                        {
+                            ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
+                            obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                            obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
+                        }
+                        else
+                        {
+                            obj.CODE_EXP = null;
+                        }
+
+                        var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
+                        obj.ID = (int)id;
+                    }
+                    else
+                    {
+                        obj.S_COM = obj.S_ZAKL;
+                        if (_stype == 3 && checkEditItem.EditValue.ToString() == "True")
+                        {
+                            obj.CODE_EXP = null;
+                        }
+                        else if (_stype == 3 && _expertList != null && _expertList.Count != 0 && checkEditItem.EditValue.ToString() == "False")
+                        {
+                            ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
+                            obj.CODE_EXP = (string)ObjHelper.GetAnonymousValue(ExpertGridControl.GetRow(0), "ExpertCode");
+                            obj.CODE_EXP = _expertList.First(x => x.ExpertCode == obj.CODE_EXP).ExpertCode;
+                        }
+                        var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", obj, "ID");
+                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                    }
+                }
+                if (_expert_delList != null)
+                    foreach (var obj in _expert_delList)
+                    {
+                        Reader2List.CustomExecuteQuery($@"Delete D3_SANK_EXPERT_OMS where id = {obj.ID}", SprClass.LocalConnectionString);
+                    }
+
+                if (_expertList != null)
+                    foreach (var obj in _expertList)
+                    {
+                        if (obj.ID == 0)
+                        {
+                            obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
+                            var id = Reader2List.ObjectInsertCommand("D3_SANK_EXPERT_OMS", obj, "ID",
+                                SprClass.LocalConnectionString);
+                            obj.ID = (int)id;
+                        }
+                        else
+                        {
+                            var upd = Reader2List.CustomUpdateCommand("D3_SANK_EXPERT_OMS", obj, "ID");
+                            Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                        }
+                    }
+                var scs = _slpsList.Select(x => ObjHelper.GetAnonymousValue(x.Row, "D3_SCID")).Distinct();
+                if (_re == 0)
+                {
+                    foreach (var sc in scs)
+                    {
+                        Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
+                    }
+                }
+                else
+                {
+                    foreach (var sc in scs)
+                    {
+                        Reader2List.CustomExecuteQuery($@"EXEC p_oms_calc_sank_ {sc}; EXEC p_oms_calc_schet {sc};", SprClass.LocalConnectionString);
+                    }
+                }
                 ((DXWindow)this.Parent).Close();
             }
         }

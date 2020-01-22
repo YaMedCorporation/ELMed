@@ -282,10 +282,20 @@
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Создать повторную ЭКМП" Content="Повторная ЭКМП" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                            ItemClick="AddREkmp_OnClick" GlyphSize="Large"/>
+
                 </dxb:BarSubItem>
 
                 <dxb:BarItemSeparator/>
-
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Выгрузка для проверки через ресурс ТФОМС" Content="Выгрузка" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/49-512.png"
+                                           ItemClick="TestBarnaul"
+                                           Name="Export22"/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Загрузка ответа от ТФОМС" Content="Загрузка" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/update.png"
+                                           ItemClick="TestBarnaul1"
+                                           Name="Load22"/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Экспорт" Content="Экспорт" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"
                                            LargeGlyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png" ItemClick="ExcelButtonBase_OnClick"/>
