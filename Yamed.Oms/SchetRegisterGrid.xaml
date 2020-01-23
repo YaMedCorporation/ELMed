@@ -310,15 +310,15 @@
                 <dxg:GridColumn x:Name="Column__SL__KSG_DKK" FieldName="KSG_DKK" Header="ДКК" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__N_KSG" FieldName="N_KSG" Header="КСГ" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="KsgEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="KsgEdit" DisplayMember="NameWithID" ValueMember="K_KSG" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__KSG_PG" FieldName="KSG_PG" Header="Поргруппа КСГ" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SL_K" FieldName="SL_K" Header="КСЛП" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__IT_SL" FieldName="IT_SL" Header="Итог КСЛП" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-                <dxg:GridColumn x:Name="Column__SL__PRVS" FieldName="PRVS_VERS" Header="Специальность" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
+                <dxg:GridColumn x:Name="Column__SL__PRVS" FieldName="PRVS" Header="Специальность" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="PrvsEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="PrvsEdit" DisplayMember="NameWithID" ValueMember="IDSPEC" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
 

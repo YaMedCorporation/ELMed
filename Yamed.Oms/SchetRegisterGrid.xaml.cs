@@ -89,7 +89,7 @@ namespace Yamed.Oms
             KsgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
-            PrvsEdit.DataContext = SprClass.SpecAllList;
+            PrvsEdit.DataContext = SprClass.SpecV021List;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
             UserEdit.DataContext = SprClass.YamedUsers;

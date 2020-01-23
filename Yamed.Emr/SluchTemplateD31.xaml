@@ -1284,7 +1284,7 @@
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
                                 <dxg:GridColumn x:Name="UslPrvsColumn"
-                                                FieldName="PRVS_VERS"
+                                                FieldName="PRVS"
                                                 Header="Специальность"
                                                 ReadOnly="False">
                                     <dxg:GridColumn.EditSettings>
@@ -1292,7 +1292,7 @@
                                                                   AllowDefaultButton="True"
                                                                   DisplayMember="NameWithID"
                                                                   ItemsSource="{Binding}"
-                                                                  ValueMember="ID" />
+                                                                  ValueMember="IDSPEC" />
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
 

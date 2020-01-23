@@ -708,7 +708,7 @@ namespace Yamed.Emr
 
             UslOtdelColumnEdit.DataContext = SprClass.OtdelDbs;
             UslProfilColumnEdit.DataContext = SprClass.profile;
-            UslPrvsColumnEdit.DataContext = SprClass.SpecAllList;
+            UslPrvsColumnEdit.DataContext = SprClass.SpecV021List;
             UslDoctorColumnEdit.DataContext = SprClass.MedicalEmployeeList;
             UslDsColumnEdit.DataContext = SprClass.mkbSearching;
             UslVidVmeColumnEdit.DataContext = SprClass.SprUsl804;
