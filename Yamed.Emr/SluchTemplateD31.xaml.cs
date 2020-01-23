@@ -769,7 +769,7 @@ namespace Yamed.Emr
             PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
-            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
 
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
@@ -798,7 +798,7 @@ namespace Yamed.Emr
         private void HVidBox_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
             HMetodBox.DataContext = 
-                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp || x.DATEEND >= new DateTime(2019,1,1))).ToList();
+                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp)).ToList().OrderBy(x => x.IDHM);
         }
 
         private DateTime sankdate;

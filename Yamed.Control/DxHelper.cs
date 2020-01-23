@@ -39,40 +39,40 @@ namespace Yamed.Control
             handles = handles.Where(x => x >= 0).Select(x => x).ToArray();
             var count = handles.Count();
             object[] obj = new object[count];
-            if (count > 15) LoadedRows = gridControl.DataController.GetAllFilteredAndSortedRows().OfType<ReadonlyThreadSafeProxyForObjectFromAnotherThread>().Select(x => x.OriginalRow).ToList();
+            if (count > 500) LoadedRows = gridControl.DataController.GetAllFilteredAndSortedRows().OfType<ReadonlyThreadSafeProxyForObjectFromAnotherThread>().Select(x => x.OriginalRow).ToList();
             else
             {
                 LoadedRows = new List<object>();
                 for (int index = 0; index < count; index++)
-            {
-                var handle = handles[index];
-                //obj[index] =
-                //    ((DevExpress.Data.Async.Helpers.ReadonlyThreadSafeProxyForObjectFromAnotherThread)
-                //        gridControl.GetRow(handle)).OriginalRow;
-                var row = gridControl.GetRow(handle);
-
-                if (row is NotLoadedObject)
                 {
-                    if (!isAsyncLoader)
+                    var handle = handles[index];
+                    //obj[index] =
+                    //    ((DevExpress.Data.Async.Helpers.ReadonlyThreadSafeProxyForObjectFromAnotherThread)
+                    //        gridControl.GetRow(handle)).OriginalRow;
+                    var row = gridControl.GetRow(handle);
+
+                    if (row is NotLoadedObject)
                     {
-                        gridControl.AsyncOperationCompleted += GridControlOnAsyncOperationCompleted;
-                        isAsyncLoader = true;
+                        if (!isAsyncLoader)
+                        {
+                            gridControl.AsyncOperationCompleted += GridControlOnAsyncOperationCompleted;
+                            isAsyncLoader = true;
+                        }
+                        gridControl.GetRowAsync(handle).ContinueWith((x) =>
+                        {
+                            LoadedRows.Add(
+                                ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)
+                                    x.Result)?.OriginalRow);
+                        });
                     }
-                    gridControl.GetRowAsync(handle).ContinueWith((x) =>
-                    {
+                    else
                         LoadedRows.Add(
                             ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)
-                                x.Result)?.OriginalRow);
-                    });
+                                row).OriginalRow);
                 }
-                else
-                    LoadedRows.Add(
-                        ((ReadonlyThreadSafeProxyForObjectFromAnotherThread)
-                            row).OriginalRow);
-            }
 
-            IsLoaded = !isAsyncLoader;
-        }
+                IsLoaded = !isAsyncLoader;
+            }
             return obj = LoadedRows.ToArray();
         }
 
