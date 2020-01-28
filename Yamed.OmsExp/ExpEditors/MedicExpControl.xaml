@@ -139,12 +139,12 @@
                                                 </dxb:BarEditItem>
                                                 <dxb:BarButtonItem x:Name="ExpertAddItem"
                                                         BarItemDisplayMode="ContentAndGlyph"
-                                                        Content="Добавить запись"
+                                                        Content="Добавить"
                                                         Glyph="pack://application:,,,/Yamed.Icons;component/Icons/plus_orange.png"
                                                         ItemClick="ExpertAddItem_ItemClick" />
                                                 <dxb:BarButtonItem x:Name="ExpertDelItem"
                                                         BarItemDisplayMode="ContentAndGlyph"
-                                                        Content="Удалить запись"
+                                                        Content="Удалить"
                                                         Glyph="pack://application:,,,/Yamed.Icons;component/Icons/deletered.png"
                                                         ItemClick="ExpertDelItem_ItemClick"/>
                                             </dxb:ToolBarControl>
