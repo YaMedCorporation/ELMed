@@ -154,6 +154,10 @@
                                     FieldName="SchetTypeName"
                                     Header="Тип счета"
                                     ReadOnly="True"/>
+                        <!--<dxg:GridColumn Width="40"
+                                    FieldName="DISP"
+                                    Header="Тип диспансеризации"
+                                    ReadOnly="True"/>-->
                         <dxg:GridColumn Width="40"
                                     FieldName="NSCHET"
                                     Header="Номер счета"
