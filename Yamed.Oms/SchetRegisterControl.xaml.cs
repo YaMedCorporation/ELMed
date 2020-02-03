@@ -862,5 +862,45 @@ where z.D3_SCID in({scs})", con);
             }
         }
 
+        private void AddRMek_OnClick(object sender, ItemClickEventArgs e)
+        {
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+            }).ContinueWith(lr =>
+            {
+
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    Content = new MedicExpControl(1, re: 1),
+                    Title = "Акт МЭК",
+                    SizeToContent = SizeToContent.Height,
+                    Width = 1450
+
+                };
+                window.ShowDialog();
+
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
     }
 }

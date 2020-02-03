@@ -101,10 +101,10 @@
                                         </dxlc:LayoutItem>
                                     </dxlc:LayoutGroup>
                                     <dxlc:LayoutGroup>
-                                        <dxlc:LayoutItem Label="Дата акта">
+                                        <dxlc:LayoutItem Label="Дата акта" Name="date_act">
                                             <dxe:DateEdit EditValue="{Binding DATE_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktDateEdit" />
                                         </dxlc:LayoutItem>
-                                        <dxlc:LayoutItem Label="Номер акта">
+                                        <dxlc:LayoutItem Label="Номер акта" Name="num_act">
                                             <dxe:TextEdit EditValue="{Binding NUM_ACT, UpdateSourceTrigger=PropertyChanged}" x:Name="AktNumEdit" />
                                         </dxlc:LayoutItem>
                                     </dxlc:LayoutGroup>
