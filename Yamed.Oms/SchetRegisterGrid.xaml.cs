@@ -246,7 +246,7 @@ namespace Yamed.Oms
                 {
                     gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ForEach(x =>
                     {
-                            x.Width = (GridColumnWidth)x.Tag;
+                        x.Width = (GridColumnWidth)x.Tag;
                     });
                 }));
         }
@@ -597,7 +597,7 @@ namespace Yamed.Oms
             }
             qlist.Clear();
             ids.Clear();
-
+            
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;
 
@@ -1166,6 +1166,7 @@ FROM [D3_SCHET_OMS] sch
 
         public void BindDataUsl()
         {
+            
             ShowSlColumn();
             _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
                           join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID

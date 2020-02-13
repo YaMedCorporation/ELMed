@@ -432,7 +432,7 @@ namespace Yamed.Server
                 //ProfilToSpecCodes = elMed.GetTable<ProfilTOSpecCode>().ToList();
                 TypeOplaty = elMed.GetTable<F005>().ToList();
                 TypeExp = elMed.GetTable<F006>().ToList();
-                Otkazs = elMed.GetTable<F014>().ToList();
+                Otkazs = elMed.GetTable<F014>().OrderBy( x=> x.Osn).ToList();
                 VidVmpList = elMed.V018.ToList();
                 MetodVmpList = elMed.V019.ToList();
 

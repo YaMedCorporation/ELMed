@@ -34,6 +34,11 @@ namespace Yamed.Oms
         public SchetRegisterControl()
         {
             InitializeComponent();
+            if (SprClass.Region != "22")
+            {
+                Export22.IsVisible = false;
+                Load22.IsVisible = false;
+            }
         }
 
         private List<int> _scids;
