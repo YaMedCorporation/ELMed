@@ -376,20 +376,7 @@
                                         <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="IdspTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
                                     </Grid>
                                 </dxlc:LayoutItem>
-                                <dxlc:LayoutItem Label="Повод обращения" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="37"  VerticalAlignment="Top">
-                                    <Grid x:Name="PovodGrid">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="20"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <dxe:ComboBoxEdit x:Name="Povodobr"  DisplayMember="NameWithID" ValueMember="KC" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.POVOD, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"/>
-                                        <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="povodobrTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
-                                    </Grid>
-                                </dxlc:LayoutItem>
-                                <dxlc:LayoutItem Label="Рег. код опл." ToolTip="Региональный код способа оплаты МП" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="all">
+                                <dxlc:LayoutItem Label="Рег. код опл." ToolTip="Региональный код способа оплаты МП">
                                     <Grid x:Name="SluchOsRegionGrid">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -837,6 +824,19 @@
                 <dxlc:LayoutGroup Header="LayoutGroup" View="Tabs" dxlc:LayoutControl.AllowVerticalSizing="True">
                     <dxlc:LayoutGroup View="Group" Header="Сведения о случае" >
                         <dxlc:LayoutGroup Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
+                            <dxlc:LayoutItem Label="Повод обращения" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="37"  VerticalAlignment="Top">
+                                <Grid x:Name="PovodGrid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <dxe:ComboBoxEdit x:Name="Povodobr"  DisplayMember="NameWithID" ValueMember="KC" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.POVOD, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ToggleButton  Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="povodobrTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
+                                </Grid>
+                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="ФАП" >
                                 <Grid x:Name="FapGrid">
                                     <Grid.ColumnDefinitions>

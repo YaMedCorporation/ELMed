@@ -2059,14 +2059,14 @@ namespace Yamed.Emr
                 D3_ZSLGID = _zsl.ZSL_ID,
                 USER_ID = SprClass.userId
             };
-
+            var sumv = _zsl.SUMV;
             var window = new DXWindow
             {
                 ShowIcon = false,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
                 SizeToContent = SizeToContent.Height,
                 Width = 500,
-                Content = new SankControl(sank)
+                Content = new SankControl(sank,sumv)
             };
             window.ShowDialog();
             if (sank.ID != 0)
@@ -2080,18 +2080,25 @@ namespace Yamed.Emr
         private void SankEditItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             var sank = (D3_SANK_OMS)SankGridControl.SelectedItem;
+            
             if (sank.S_TIP == 1)
             {
+                var sumv = _zsl.SUMV;
+                if (sank.S_OSN != "5.3.2.")
+                {
+                    sank.S_SUM = sumv;
+                }
                 var window = new DXWindow
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     SizeToContent = SizeToContent.Height,
                     Width = 500,
-                    Content = new SankControl(sank)
+                    Content = new SankControl(sank,sumv)
                 };
                 window.ShowDialog();
-                SankGridControl.RefreshData();            
+                SankGridControl.RefreshData();
+                ZslUpdate();
             }
             else
             {

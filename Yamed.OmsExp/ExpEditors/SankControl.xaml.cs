@@ -18,14 +18,27 @@ namespace Yamed.OmsExp.ExpEditors
     public partial class SankControl : UserControl
     {
         private D3_SANK_OMS _sank;
-
-        public SankControl(D3_SANK_OMS sank)
+        public D3_ZSL_OMS _zsl;
+        public decimal? sum;
+        public decimal? _sumv;
+        public SankControl(D3_SANK_OMS sank,decimal? sumv)
         {
             InitializeComponent();
-
-            _sank = sank;
-            KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
+            
+            _sank = sank;         
+            KodOtkazaBox.DataContext = SprClass.Otkazs.Distinct().Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
+            _sumv = sumv;
+            sum = _sank.S_SUM;
+            if (sank.S_OSN == "5.3.2.")
+            {
+                SankSumBox.IsEnabled = true;
+            }
+            else
+            {
+                SankSumBox.IsEnabled = false;
+                //SankSumBox.EditValue = 
+            }
         }
 
         private bool _isGroupProcess;
@@ -36,7 +49,7 @@ namespace Yamed.OmsExp.ExpEditors
             _sank = new D3_SANK_OMS() {S_DATE = SprClass.WorkDate};
             SankSumBox.IsEnabled = false;
 
-            KodOtkazaBox.DataContext = SprClass.Otkazs.Where(x=>x.Osn.StartsWith("5"));
+            KodOtkazaBox.DataContext = SprClass.Otkazs.Distinct().Where(x=>x.Osn.StartsWith("5"));
             MekGrid.DataContext = _sank;
         }
 
@@ -50,18 +63,45 @@ namespace Yamed.OmsExp.ExpEditors
                 {
                     if (_sank.ID == 0)
                     {
-                        _sank.S_COM = _sank.S_ZAKL; 
-                        _sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", _sank, "ID",
-                            SprClass.LocalConnectionString);
+                        Dispatcher.Invoke(new Action(() => { 
+                     
+                        if (SankSumBox.IsEnabled == true)
+                        {
+                            _sank.S_COM = _sank.S_ZAKL;
+                            _sank.S_SUM = (decimal)SankSumBox.EditValue;
+                            _sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", _sank, "ID",
+                                SprClass.LocalConnectionString);
+                        }
+                        else
+                        {
+                            _sank.S_COM = _sank.S_ZAKL;
+                            _sank.S_SUM = _sumv;
+                                _sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", _sank, "ID",
+                                SprClass.LocalConnectionString);
+                        }
+                        }));
                     }
                     else
                     {
-                        _sank.S_COM = _sank.S_ZAKL;
-                        var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", _sank, "ID");
-                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                        Dispatcher.Invoke(new Action(() => {
+                            if (SankSumBox.IsEnabled == true)
+                        {
+                            _sank.S_COM = _sank.S_ZAKL;
+                            _sank.S_SUM = (decimal)SankSumBox.EditValue;
+                            var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", _sank, "ID");
+                            Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                        }
+                        else
+                        {
+                            _sank.S_COM = _sank.S_ZAKL;
+                            _sank.S_SUM = _sumv;
+                            var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", _sank, "ID");
+                            Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                        }
+                        }));
                     }
-
-                    Reader2List.CustomExecuteQuery($@"
+                        
+                Reader2List.CustomExecuteQuery($@"
 EXEC p_oms_calc_sank {_sank.D3_SCID}
 EXEC p_oms_calc_schet {_sank.D3_SCID}
 ", SprClass.LocalConnectionString);
@@ -84,7 +124,15 @@ EXEC p_oms_calc_schet {_sank.D3_SCID}
                             var sank = ObjHelper.ClassConverter<D3_SANK_OMS>(_sank);
                             sank.S_CODE = Guid.NewGuid().ToString();
                             //sank.S_DATE = SprClass.WorkDate;
-                            sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(row, "SUMV");
+                            if (SankSumBox.IsEnabled == true)
+                            {
+                                sank.S_SUM = (decimal)SankSumBox.EditValue;
+                            }
+                            else
+                            {
+                                sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(row, "SUMV");
+                            }
+                            
                             sank.D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID");
                             sank.D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID");
                             sank.S_TIP = 1;
@@ -117,6 +165,20 @@ EXEC p_oms_calc_schet {sank.D3_SCID}
             }
 
 
+        }
+
+        private void KodOtkazaBox_EditValueChanged(object sender, DevExpress.Xpf.Editors.EditValueChangedEventArgs e)
+        {
+            if (KodOtkazaBox.EditValue.ToString() == "5.3.2.")
+            {
+                SankSumBox.IsEnabled = true;
+                SankSumBox.EditValue = sum;
+            }
+            else
+            {
+                SankSumBox.IsEnabled = false;
+                SankSumBox.EditValue = _sumv;
+            }
         }
     }
 }
