@@ -40,6 +40,7 @@ namespace Yamed.OmsExp.SqlEditor
         {
             var item = (DynamicBaseClass)listBoxEdit.SelectedItem;
             item.SetValue("AlgName", (string)item.GetValue("AlgName") + " (копия)");
+            item.SetValue("AlgGuid", Guid.NewGuid());
             Reader2List.ObjectInsertCommand("Yamed_ExpSpr_SqlAlg", listBoxEdit.SelectedItem, "ID", SprClass.LocalConnectionString);
             UpdateData(listBoxEdit);
             listBoxEdit.SelectItem(((IList)listBoxEdit.DataContext).Count - 1);
