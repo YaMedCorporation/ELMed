@@ -362,7 +362,11 @@
                         <dxe:ComboBoxEditSettings Name="VID_BRIG" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn x:Name="Column__SL__KOD_SP" FieldName="KOD_SP" Header="Код должности" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__KOD_SP" FieldName="KOD_SP" Header="Код должности" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ComboBoxEditSettings Name="KODSP" DisplayMember="NameWithID" ValueMember="KOD_SP" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SL__FORMUL" FieldName="FORMUL" Header="Зубная формула" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__PROFIL_REG" FieldName="PROFIL_REG" Header="Профиль койки (региональный)" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>

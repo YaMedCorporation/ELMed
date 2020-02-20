@@ -44,7 +44,9 @@
                             <dxe:ComboBoxEdit x:Name="SpecBox" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDSPEC" EditValue="{Binding DataContext.PRVS, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" AddNewButtonPlacement="None" FindButtonPlacement="None" />
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
-
+                    <dxlc:LayoutItem Label="Код должности">
+                        <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="DoljnostBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="KOD_SP" EditValue="{Binding DataContext.KOD_SP, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" />
+                    </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="Диагноз">
                         <dxg:LookUpEdit x:Name="DsBox" 
                                         DisplayMember="IDDS" DisplayTextConverter="{StaticResource diagnosShowConverter}"

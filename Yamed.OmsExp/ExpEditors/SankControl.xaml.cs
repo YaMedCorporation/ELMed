@@ -37,7 +37,6 @@ namespace Yamed.OmsExp.ExpEditors
             else
             {
                 SankSumBox.IsEnabled = false;
-                //SankSumBox.EditValue = 
             }
         }
 

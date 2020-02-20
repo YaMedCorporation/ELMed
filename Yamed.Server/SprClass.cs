@@ -263,6 +263,7 @@ namespace Yamed.Server
         public static object rg004; // класс для справочника rg004 Иваново
         public static object rg003;// класс для справочника rg003 Иваново
         public static object rg001; // класс для справочника rg001 Иваново
+        public static object rg012; // класс для справочника rg012 Иваново
         public static object SprVizov; //класс для справочника Вид вызова Иваново
         public static object SprBrigad; //класс для справочника Вид бригады Иваново
         public static object SprGrafdn; //класс для справочника график дн. стац. Иваново
@@ -377,6 +378,7 @@ namespace Yamed.Server
             rg001 = Reader2List.CustomAnonymousSelect($"Select * from rg001", LocalConnectionString);
             rg003 = Reader2List.CustomAnonymousSelect($"Select * from rg003", LocalConnectionString);
             rg004 = Reader2List.CustomAnonymousSelect($"Select * from rg004", LocalConnectionString);
+            rg012 = Reader2List.CustomAnonymousSelect($"Select * from rg012", LocalConnectionString);
             SprVizov = Reader2List.CustomAnonymousSelect($"Select * from SprVizov", LocalConnectionString);
             SprBrigad = Reader2List.CustomAnonymousSelect($"Select * from SprBrigad", LocalConnectionString);
             SprGrafdn = Reader2List.CustomAnonymousSelect($"Select * from SprGrafdn", LocalConnectionString);

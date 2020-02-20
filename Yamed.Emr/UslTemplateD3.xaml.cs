@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,13 +17,14 @@ namespace Yamed.Emr
     public partial class UslTemplateD3 : UserControl
     {
         private D3_USL_OMS _usl;
+        public DateTime? dvmp;
         //private List<USL_ASSIST> _assists;
         public UslTemplateD3(D3_USL_OMS usl)
         {
             InitializeComponent();
 
             _usl = usl;
-
+            dvmp = _usl.DATE_OUT == null ? SprClass.WorkDate : _usl.DATE_OUT;
             //if (_usl.ID != 0)
             //    _assists = Reader2List.CustomSelect<USL_ASSIST> ($"SELECT * FROM USL_ASSIST WHERE UID = {_usl.ID}", SprClass.LocalConnectionString);
             //else
@@ -39,6 +41,10 @@ namespace Yamed.Emr
             DoctorBox.DataContext = SprClass.MedicalEmployeeList;
             SpecBox.DataContext = SprClass.SpecV021List;
             DsBox.DataContext = SprClass.mkbSearching;
+            if (SprClass.Region == "37")
+            {
+                DoljnostBox.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where '{dvmp}' between dt_beg and isnull(dt_fin,'20530101') and kod_lpu='{usl.LPU}'", SprClass.LocalConnectionString);
+            }
             //UslOslBox.DataContext = SprClass.OslList;
             //AnestBox.DataContext = SprClass.AnestList;
             //AssistColumnEdit.DataContext = SprClass.DoctList;

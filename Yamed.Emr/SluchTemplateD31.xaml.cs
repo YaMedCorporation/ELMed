@@ -145,6 +145,15 @@ namespace Yamed.Emr
                 ConsAddItem.IsEnabled = false;
                 ConsDelItem.IsEnabled = false;
             }
+            if (SprClass.Region != "37")
+            {
+                UslGridControl.Columns.Remove(UslCodeUslColumnIv);
+            }
+            if (SprClass.Region == "37")
+            {
+                UslGridControl.Columns.Remove(UslCodeUslColumn);
+            }
+            
         }
 
         public void BindPacient(int pid)
@@ -636,6 +645,7 @@ namespace Yamed.Emr
         public DateTime? dvmp;
         public int? usl_ok;
         public string fap_lpu;
+        public string zsl_lpu;
         void GetSpr()
         {
 
@@ -712,7 +722,12 @@ namespace Yamed.Emr
             UslDoctorColumnEdit.DataContext = SprClass.MedicalEmployeeList;
             UslDsColumnEdit.DataContext = SprClass.mkbSearching;
             UslVidVmeColumnEdit.DataContext = SprClass.SprUsl804;
-            UslCodeUslColumn.DataContext = SprClass.SprUslCode;
+            if (SprClass.Region != "37")
+            {
+                UslCodeUslColumn.DataContext = SprClass.SprUslCode;
+            }
+            
+
             UslPOtkColumnEdit.DataContext = SprClass.SprBit;
             UslNplEdit.DataContext = SprClass.SprNpl;
 
@@ -769,6 +784,8 @@ namespace Yamed.Emr
             PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
+            
+           
             NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
 
             MseEdit.DataContext = SprClass.SprBit;
@@ -784,6 +801,10 @@ namespace Yamed.Emr
                 fap.IsChecked = false;
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
             }
+            zsl_lpu = _zsl.LPU == null ? "370001" : _zsl.LPU;
+            NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+            KODSPColumn.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+            UslCodeUslColumnIv.DataContext = Reader2List.CustomAnonymousSelect($@"Select KOD_LPU,convert(nvarchar,KODUSL) as KODUSL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
@@ -1595,6 +1616,7 @@ namespace Yamed.Emr
             ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD = _slLock.POVOD;
             ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER = _slLock.P_PER;
             ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K = _slLock.PROFIL_K;
+            ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG = _slLock.PROFIL_REG;
         }
 
         void ZSlEditLock()
@@ -1643,6 +1665,7 @@ namespace Yamed.Emr
             _slLock.POVOD = povodobrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD : null;
             _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
             _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
+            _slLock.PROFIL_REG = ProfKrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG : null;
 
             if (fapTb.IsChecked == true && fap.IsChecked == true)
             {
