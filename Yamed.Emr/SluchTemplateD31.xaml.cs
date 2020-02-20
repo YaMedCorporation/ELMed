@@ -148,6 +148,7 @@ namespace Yamed.Emr
             if (SprClass.Region != "37")
             {
                 UslGridControl.Columns.Remove(UslCodeUslColumnIv);
+                UslGridControl.Columns.Remove(KODSPColumn);
             }
             if (SprClass.Region == "37")
             {
@@ -725,6 +726,7 @@ namespace Yamed.Emr
             if (SprClass.Region != "37")
             {
                 UslCodeUslColumn.DataContext = SprClass.SprUslCode;
+                
             }
             
 
@@ -2366,7 +2368,6 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
             Ds2GridControl.RefreshData();
         }
-
         private void UslAutoTemplateItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (_zsl.DATE_Z_2 == null || _pacient.DR == null || _pacient.W == null || _zsl.OS_SLUCH_REGION == null)
@@ -2374,17 +2375,68 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 DXMessageBox.Show("Не заполнены поля для определения стандарта");
                 return;
             }
-            var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
+            //var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
+            string v = "";
+            string s;
             var pol = _pacient.W;
             var os = _zsl.OS_SLUCH_REGION;
             var lpu = _zsl.LPU;
             var datez2 = _zsl.DATE_Z_2; 
             var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
+            if (os == 47 || os == 49 && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year)>=18)
+            {
+                v = (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year).ToString();
+            }
+            else if (os == 11)
+            {
+                var mm = Math.Floor((_zsl.DATE_Z_2 - _pacient.DR).Value.Days / 365.25 * 12);
+                var mg = Math.Floor((_zsl.DATE_Z_2 - _pacient.DR).Value.Days / 365.25);
+                var ms = "";
+                if (mg == 0)
+                {
 
-            
+                    if (mm % 12 < 10)
+                    {
+                        s = "0";
+                        ms = (mm % 12).ToString();
+                    }
+                    else
+                    {
+                        s = "";
+                    }
+                }
+                else if (mg > 0 && mg < 2)
+                {
+                    if (mm % 12 < 3)
+                    {
+                        s = "00";
+                    }
+                    else if (mm % 12 > 2 && mm % 12 < 6)
+                    {
+                        s = "03";
+                    }
+                    else
+                    {
+                        s = "06";
+                    }
+                }
+                else
+                {
+                    s = "00";
+
+                }
+                v = "G0" + Math.Floor(mm / 12) + "." + "M" + s + ms;
+                
+            }
+            else
+            {
+                return;
+            }
+
             Task.Factory.StartNew(() =>
             {
-                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{vozr},%'", SprClass.LocalConnectionString);
+               
+                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{v},%'", SprClass.LocalConnectionString);
 
                 if (autoTempl.Count == 0)
                 {

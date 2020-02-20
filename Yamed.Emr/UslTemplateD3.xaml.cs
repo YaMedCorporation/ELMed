@@ -43,6 +43,8 @@ namespace Yamed.Emr
             DsBox.DataContext = SprClass.mkbSearching;
             if (SprClass.Region == "37")
             {
+                DoljnostBox.Visibility = Visibility.Visible;
+                dolj.Visibility = Visibility.Visible;
                 DoljnostBox.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where '{dvmp}' between dt_beg and isnull(dt_fin,'20530101') and kod_lpu='{usl.LPU}'", SprClass.LocalConnectionString);
             }
             //UslOslBox.DataContext = SprClass.OslList;
