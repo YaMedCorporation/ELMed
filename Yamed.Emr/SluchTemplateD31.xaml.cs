@@ -2378,12 +2378,13 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             //var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
             string v = "";
             string s;
+            string sg = "0";
             var pol = _pacient.W;
             var os = _zsl.OS_SLUCH_REGION;
             var lpu = _zsl.LPU;
-            var datez2 = _zsl.DATE_Z_2; 
+            var datez2 = _zsl.DATE_Z_2;
             var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
-            if (os == 47 || os == 49 && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year)>=18)
+            if (os == 47 || os == 49 && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year) >= 18)
             {
                 v = (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year).ToString();
             }
@@ -2403,6 +2404,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                     else
                     {
                         s = "";
+                        ms = mm.ToString();
                     }
                 }
                 else if (mg > 0 && mg < 2)
@@ -2422,11 +2424,15 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 }
                 else
                 {
+                    mg = (double)(_zsl.DATE_Z_2?.Year - _pacient.DR?.Year);
                     s = "00";
-
+                    if (mg > 9)
+                    {
+                        sg = "";
+                    }
                 }
-                v = "G0" + Math.Floor(mm / 12) + "." + "M" + s + ms;
-                
+                v = "G"+sg + mg + "." + "M" + s + ms;
+
             }
             else
             {
