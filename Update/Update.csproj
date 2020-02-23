@@ -60,7 +60,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\Git_Yamed\Update\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

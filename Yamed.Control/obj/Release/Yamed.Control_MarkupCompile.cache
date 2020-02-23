@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Elmedicine\ELMed\Yamed.Control\obj\Release\
+C:\Users\WILD\Desktop\git_exp\Yamed.Control\obj\Release\
 Yamed.Control
 none
 false
@@ -13,8 +13,8 @@ TRACE
 6-1299930593
 
 13-1574586451
-251036327101
+25-251137728
 Editors\NsiControl.xaml;Editors\UniSprEditControl.xaml;Editors\UniSprFullControl.xaml;Editors\UniSprControl.xaml;Editors\FiasControl.xaml;ErrorGlobalWindow.xaml;
 
-True
+False
 

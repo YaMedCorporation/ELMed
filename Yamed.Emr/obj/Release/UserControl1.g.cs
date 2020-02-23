@@ -36,10 +36,8 @@ using DevExpress.Xpf.Editors.Validation;
 using DevExpress.Xpf.Grid;
 using DevExpress.Xpf.Grid.ConditionalFormatting;
 using DevExpress.Xpf.Grid.LookUp;
-using DevExpress.Xpf.Grid.Themes;
 using DevExpress.Xpf.Grid.TreeList;
 using DevExpress.Xpf.LayoutControl;
-using DevExpress.Xpf.LayoutControl.Serialization;
 using DevExpress.Xpf.WindowsUI;
 using System;
 using System.Diagnostics;
@@ -61,7 +59,6 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using Yamed.Control;
 using Yamed.Emr;
 
 

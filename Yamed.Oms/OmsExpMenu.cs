@@ -14,9 +14,8 @@ using Yamed.Control;
 using Yamed.OmsExp;
 using Yamed.OmsExp.SqlEditor;
 using Yamed.Server;
-using Elmedicine.Core;
-using Elmedicine.Data;
 using System.Collections;
+using Yamed.Core;
 
 namespace Yamed.Oms
 {
@@ -256,7 +255,7 @@ SELECT * FROM SANK_EXP_TT", year, month);
                 SizeToContent = SizeToContent.WidthAndHeight
             };
             window.ShowDialog();
-            var rlist = Elmedicine.Data.Reader2List.CustomAnonymousSelect($@"
+            var rlist = Reader2List.CustomAnonymousSelect($@"
 select sc.year, sc.month, sc.ID,
 convert(nvarchar, year(sa.S_DATE)) y, 
 case when month(sa.S_DATE) <10 then '0' + convert(nvarchar, month(sa.S_DATE)) else convert(nvarchar, month(sa.S_DATE)) end m,
@@ -278,12 +277,12 @@ order by y, m
             foreach (var r in (IList)rlist)
             {
                 int ver;
-                if ((int)PublicVoids.GetAnonymousValue(r, "year") >= 2019)
+                if ((int)ObjHelper.GetAnonymousValue(r, "year") >= 2019)
                     ver = 31;
-                else if ((int)PublicVoids.GetAnonymousValue(r, "month") > 3 && (int)PublicVoids.GetAnonymousValue(r, "year") == 2018)
+                else if ((int)ObjHelper.GetAnonymousValue(r, "month") > 3 && (int)ObjHelper.GetAnonymousValue(r, "year") == 2018)
                     ver = 30;
                 else ver = 21;
-                XmlStreemMtr3((int)PublicVoids.GetAnonymousValue(r, "ID"), ver, (string)PublicVoids.GetAnonymousValue(r, "y") + (string)PublicVoids.GetAnonymousValue(r, "m") + "01");
+                XmlStreemMtr3((int)ObjHelper.GetAnonymousValue(r, "ID"), ver, (string)ObjHelper.GetAnonymousValue(r, "y") + (string)ObjHelper.GetAnonymousValue(r, "m") + "01");
             }
             DXMessageBox.Show("Выгрузка завершена.");
         }

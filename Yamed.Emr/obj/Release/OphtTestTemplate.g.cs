@@ -9,13 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using DevExpress.Core;
-using DevExpress.Xpf.Bars;
-using DevExpress.Xpf.Core;
-using DevExpress.Xpf.Core.ConditionalFormatting;
-using DevExpress.Xpf.Core.DataSources;
-using DevExpress.Xpf.Core.Serialization;
-using DevExpress.Xpf.Core.ServerMode;
 using DevExpress.Xpf.DXBinding;
 using DevExpress.Xpf.Editors;
 using DevExpress.Xpf.Editors.DataPager;
@@ -29,11 +22,6 @@ using DevExpress.Xpf.Editors.RangeControl;
 using DevExpress.Xpf.Editors.Settings;
 using DevExpress.Xpf.Editors.Settings.Extension;
 using DevExpress.Xpf.Editors.Validation;
-using DevExpress.Xpf.Grid;
-using DevExpress.Xpf.Grid.ConditionalFormatting;
-using DevExpress.Xpf.Grid.LookUp;
-using DevExpress.Xpf.Grid.Themes;
-using DevExpress.Xpf.Grid.TreeList;
 using DevExpress.Xpf.LayoutControl;
 using System;
 using System.Diagnostics;
@@ -55,7 +43,6 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using Yamed.Control;
 using Yamed.Emr;
 
 
