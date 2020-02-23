@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-             xmlns:dxb="clr-namespace:DevExpress.Xpf.Bars;assembly=DevExpress.Xpf.Core.v16.2" 
+             xmlns:dxb="clr-namespace:DevExpress.Xpf.Bars;assembly=DevExpress.Xpf.Core.v19.2" 
                                     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking">
     <!--<dxb:BarManager>
         <dxb:BarManager.Items>
@@ -75,14 +75,14 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <dxe:ListBoxEdit DisplayMember="AlgName" Name="MeeList" ValueMember="AlgSql" ItemsSource="{Binding}" >
+        <dxe:ListBoxEdit DisplayMember="AlgName" Name="MeeList" ValueMember="AlgSql" ItemsSource="{Binding}">
             <dxe:ListBoxEdit.StyleSettings>
                 <dxe:CheckedListBoxEditStyleSettings />
             </dxe:ListBoxEdit.StyleSettings>

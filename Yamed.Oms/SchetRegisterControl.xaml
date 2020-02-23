@@ -273,9 +273,9 @@
                 <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Повторные экспертизы (МЭК, МЭЭ, ЭКМП)" Content="Реэкспертизы" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png">
-                    <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" IsEnabled="False"
+                    <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Создать повторный МЭК" Content="Повторный МЭК" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
-                                           GlyphSize="Large"/>
+                                           ItemClick="AddRMek_OnClick" GlyphSize="Large"/>
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Создать повторную МЭЭ" Content="Повторная МЭЭ" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                            ItemClick="AddRMee_OnClick" GlyphSize="Large"/>

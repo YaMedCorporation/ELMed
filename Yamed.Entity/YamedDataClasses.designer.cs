@@ -12169,7 +12169,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS1", Storage="_D3_PACIENT_OMS", ThisKey="ID", OtherKey="D3_SCID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS", Storage="_D3_PACIENT_OMS", ThisKey="ID", OtherKey="D3_SCID")]
 		public EntitySet<D3_PACIENT_OMS> D3_PACIENT_OMS
 		{
 			get
@@ -13586,7 +13586,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS1_D3_ZSL_OMS", Storage="_D3_PACIENT_OMS", ThisKey="D3_PID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS_D3_ZSL_OMS", Storage="_D3_PACIENT_OMS", ThisKey="D3_PID", OtherKey="ID", IsForeignKey=true)]
 		public D3_PACIENT_OMS D3_PACIENT_OMS
 		{
 			get
@@ -17851,7 +17851,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS1_D3_ZSL_OMS", Storage="_D3_ZSL_OMS", ThisKey="ID", OtherKey="D3_PID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_PACIENT_OMS_D3_ZSL_OMS", Storage="_D3_ZSL_OMS", ThisKey="ID", OtherKey="D3_PID")]
 		public EntitySet<D3_ZSL_OMS> D3_ZSL_OMS
 		{
 			get
@@ -17864,7 +17864,7 @@ namespace Yamed.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS1", Storage="_D3_SCHET_OMS", ThisKey="D3_SCID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="D3_SCHET_OMS_D3_PACIENT_OMS", Storage="_D3_SCHET_OMS", ThisKey="D3_SCID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public D3_SCHET_OMS D3_SCHET_OMS
 		{
 			get

@@ -15,7 +15,7 @@
                 <TextBlock Text="Дата выставления санкции"></TextBlock>
                 <dxe:DateEdit Name="DateBox" EditValue="{Binding S_DATE}" ValidateOnTextInput="False" InvalidValueBehavior="AllowLeaveEditor"/>
                 <TextBlock Text="Код причины отказа оплаты"></TextBlock>
-                <dxe:ComboBoxEdit x:Name="KodOtkazaBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.S_OSN,ElementName=MekGrid}" DisplayMember="NameWithId" ValueMember="Osn" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor"/>
+                <dxe:ComboBoxEdit x:Name="KodOtkazaBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.S_OSN,ElementName=MekGrid}" DisplayMember="NameWithId" ValueMember="Osn" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor" EditValueChanged="KodOtkazaBox_EditValueChanged"/>
                 <TextBlock Text="Финансовая санкция"></TextBlock>
                 <dxe:SpinEdit Name="SankSumBox" EditValue="{Binding S_SUM}"/>
                 <TextBlock Text="Комментарий"></TextBlock>

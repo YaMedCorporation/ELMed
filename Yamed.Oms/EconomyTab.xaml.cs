@@ -68,6 +68,7 @@ namespace Yamed.Oms
 
             IQueryable pQueryable = from sc in edc.D3_SCHET_OMS
                                     join f3 in edc.D3_F003 on sc.CODE_MO equals f3.mcod
+                                    join sprsc in edc.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
                                     select new
                                     {                                        
                                         ID = sc.ID,
@@ -86,9 +87,12 @@ namespace Yamed.Oms
                                         COMENTS = sc.COMENTS,
                                         COUNT_SL = sc.SD_Z,
                                         sc.OmsFileName,
-                                        //sc.ZapFileName,
-                                        //sc.PersFileName
-                                        
+                                        //sc.DISP,
+                                        sc.SchetType,
+                                        SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
+                                                                          //sc.ZapFileName,
+                                                                          //sc.PersFileName
+
                                     };
 
             linqInstantFeedbackDataSource.QueryableSource = pQueryable;

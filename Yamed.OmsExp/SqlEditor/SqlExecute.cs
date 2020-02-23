@@ -28,7 +28,7 @@ namespace Yamed.OmsExp.SqlEditor
                 SprClass.LocalConnectionString);
             var obj = Activator.CreateInstance(empty.GetDynamicType());
             ((DynamicBaseClass)obj).SetValue("AlgName", "Новая запись");
-            //((DynamicBaseClass)obj).SetValue("ExpType", 1);
+            ((DynamicBaseClass)obj).SetValue("AlgGuid", Guid.NewGuid());
 
             Reader2List.ObjectInsertCommand("Yamed_ExpSpr_SqlAlg", obj, "ID", SprClass.LocalConnectionString);
             UpdateData(listBoxEdit);
@@ -40,6 +40,7 @@ namespace Yamed.OmsExp.SqlEditor
         {
             var item = (DynamicBaseClass)listBoxEdit.SelectedItem;
             item.SetValue("AlgName", (string)item.GetValue("AlgName") + " (копия)");
+            item.SetValue("AlgGuid", Guid.NewGuid());
             Reader2List.ObjectInsertCommand("Yamed_ExpSpr_SqlAlg", listBoxEdit.SelectedItem, "ID", SprClass.LocalConnectionString);
             UpdateData(listBoxEdit);
             listBoxEdit.SelectItem(((IList)listBoxEdit.DataContext).Count - 1);
