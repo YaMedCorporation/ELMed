@@ -244,7 +244,7 @@ namespace Yamed.Oms
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(delegate()
                 {
-                    gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ForEach(x =>
+                    gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ToList().ForEach(x =>
                     {
                         x.Width = (GridColumnWidth)x.Tag;
                     });
@@ -256,7 +256,7 @@ namespace Yamed.Oms
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(delegate ()
                 {
-                    gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ForEach(x =>
+                    gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ToList().ForEach(x =>
                     {
                         x.Tag = x.Width;
                         x.Width = 0;
@@ -913,7 +913,7 @@ namespace Yamed.Oms
                     {
                         if (!(bool) SlCheckEdit.EditValue)
                         {
-                            gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ForEach(x =>
+                            gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ToList().ForEach(x =>
                             {
                                 if (x.Tag != null)
                                     x.Width = (GridColumnWidth) x.Tag;

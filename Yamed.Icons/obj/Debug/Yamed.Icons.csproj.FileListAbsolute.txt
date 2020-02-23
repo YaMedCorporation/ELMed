@@ -75,3 +75,9 @@ E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 E:\ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+D:\!!!_Code\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+D:\!!!_Code\Yamed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+D:\!!!_Code\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojAssemblyReference.cache
+D:\!!!_Code\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+D:\!!!_Code\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+D:\!!!_Code\Yamed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb

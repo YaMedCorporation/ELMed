@@ -189,8 +189,8 @@
                     <dxb:BarButtonItem x:Name="NewItem"
                                         BarItemDisplayMode="ContentAndGlyph" AllowGlyphTheming="True"
                                         Content="Создать новый случай (F7)" Alignment="Far"
-                                        Glyph="pack://application:,,,/DevExpress.Images.v16.2;component/DevAV/Actions/NewEmployee_32x32.png"
-                                        ItemClick="NewZSluch_OnClick" LargeGlyph="pack://application:,,,/DevExpress.Images.v16.2;component/DevAV/Actions/NewEmployee_32x32.png" />
+                                        Glyph="pack://application:,,,/DevExpress.Images.v19.2;component/DevAV/Actions/NewEmployee_32x32.png"
+                                        ItemClick="NewZSluch_OnClick" LargeGlyph="pack://application:,,,/DevExpress.Images.v19.2;component/DevAV/Actions/NewEmployee_32x32.png" />
 
                     <dxb:BarButtonItem Name="PrevButton" Content="Предыдущая запись" ItemClick="PrevButton_OnClick" Glyph="{dx:DXImage Image=Prev_32x32.png}" LargeGlyph="{dx:DXImage Image=Prev_32x32.png}" BarItemDisplayMode="ContentAndGlyph" AllowGlyphTheming="True" GlyphAlignment="Right"/>
                     <dxb:BarButtonItem Name="NextButton" Content="Следующая запись" ItemClick="NextButton_OnClick" Glyph="{dx:DXImage Image=Next_32x32.png}" LargeGlyph="{dx:DXImage Image=Next_32x32.png}" BarItemDisplayMode="ContentAndGlyph" AllowGlyphTheming="True" />
