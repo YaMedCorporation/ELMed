@@ -712,6 +712,7 @@ where zsl.D3_SCID in {ids}";
 
         private void ViewCheckItem_CheckedChanged(object sender, ItemClickEventArgs e)
         {
+
             if (SchetRegisterGrid1 == null) return;
 
             var tag = (string)((BarCheckItem)sender).Tag;

@@ -57,7 +57,7 @@ namespace Yamed.OmsExp.ExpEditors
 
             _isNew = sid == null;
 
-            ExpertColumnEdit.DataContext = SprClass.ExpertDbs;
+            ExpertColumnEdit.DataContext = Reader2List.CustomAnonymousSelect("Select * from ExpertsDB order by FAM",SprClass.LocalConnectionString);//SprClass.ExpertDbs;
 
 
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();

@@ -32,7 +32,7 @@ namespace Yamed.Oms
         private readonly YamedDataClassesDataContext _ElmedDataClassesDataContext;
         //public List<SQLTables.SluPacClass> _zsls;
         public List<int> Scids;
-
+        public List<int> zslid;
         public SchetRegisterGrid()
         {
             InitializeComponent();
@@ -101,6 +101,7 @@ namespace Yamed.Oms
 
             //заполнение полей для Иваново, Андрей insidious
             SOCSTATUS.DataContext = SprClass.rg001;
+            KODSP.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct KOD_LPU,convert(int,rg.KOD_SP) as KOD_SP,convert(nvarchar,rg.KOD_SP)+' '+NSP as NameWithID from rg012 rg left join d3_usl_oms usl on usl.KOD_SP=rg.KOD_SP where KOD_LPU=usl.LPU", SprClass.LocalConnectionString);
             POVOD.DataContext = SprClass.rg003;
             ProfilkEditReg.DataContext = SprClass.rg004;
             GRAF_DN.DataContext = SprClass.SprGrafdn;
@@ -138,105 +139,208 @@ namespace Yamed.Oms
         public void BindDataZsl()
         {
             HideSlColumn();
+            if (zslid != null)
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
 
-            _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
-                join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID 
-                join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                          //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                          where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
-                select new
-                {
-                    sc.YEAR,
-                    sc.MONTH,
-                    sc.NSCHET,
-                    sc.DSCHET,
-                    SchetType = sprsc.NameWithID,
-                    sc.OmsFileName,
+                                  zsl.PR_NOV,
+                                  KeyID = zsl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
 
-                    zsl.PR_NOV,
-                    KeyID = zsl.ID,
-                    zsl.D3_SCID,
-                    zsl.ID,
-                    zsl.ZSL_ID,
-                    IDCASE = (Int64?)zsl.IDCASE,
-                    zsl.VIDPOM,
-                    zsl.NPR_MO,
-                    zsl.LPU,
-                    zsl.FOR_POM,
-                    zsl.DATE_Z_1,
-                    zsl.DATE_Z_2,
-                    zsl.RSLT,
-                    zsl.ISHOD,
-                    zsl.OS_SLUCH,
-                    zsl.OS_SLUCH_REGION,
-                    zsl.IDSP,
-                    zsl.SUMV,
-                    zsl.OPLATA,
-                    zsl.SUMP,
-                    zsl.SANK_IT,
-                    zsl.MEK_COMENT,
-                    zsl.OSP_COMENT,
-                    zsl.USL_OK,
-                    Z_P_CEL = zsl.P_CEL,
-                    zsl.MEK_COUNT,
-                    zsl.MEE_COUNT,
-                    zsl.EKMP_COUNT,
-                    zsl.EXP_COMENT,
-                    zsl.EXP_TYPE,
-                    zsl.EXP_DATE,
-                    zsl.ReqID,
-                    zsl.USER_COMENT,
-                    zsl.USERID,
-                    zsl.NPR_DATE,
-                    zsl.KD_Z,
-                    zsl.VB_P,
-                    zsl.RSLT_D,
-                    zsl.VBR,
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.MO_ATT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
 
-                    pa.FAM,
-                    pa.IM,
-                    pa.OT,
-                    pa.MO_ATT,
-                    pa.W,
-                    pa.DR,
-                    pa.FAM_P,
-                    pa.IM_P,
-                    pa.OT_P,
-                    pa.W_P,
-                    pa.DR_P,
-                    pa.MR,
-                    pa.DOCTYPE,
-                    pa.DOCSER,
-                    pa.DOCNUM,
-                    pa.SNILS,
-                    pa.OKATOG,
-                    pa.OKATOP,
-                    pa.COMENTP,
-                    pa.VPOLIS,
-                    pa.SPOLIS,
-                    pa.NPOLIS,
-                    pa.SMO,
-                    pa.SMO_OGRN,
-                    pa.SMO_OK,
-                    pa.SMO_NAM,
-                    pa.NOVOR,
-                    pa.SOC_STAT,
-                    pa.KOD_TER,
-                    pa.KAT_LGOT,
-                    pa.MSE,
-                    pa.INV,
-                    pa.VETERAN,
-                    pa.WORK_STAT,
-                    
-                    zsl.VOZR,
-                    pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  zsl.VOZR,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
 
-                    //для отображения в Иваново
-                    pa.SOCSTATUS
-                };
+                                  //для отображения в Иваново
+                                  pa.SOCSTATUS
+                              };
 
-            _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
+            else
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+
+                                  zsl.PR_NOV,
+                                  KeyID = zsl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.MO_ATT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+
+                                  zsl.VOZR,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+
+                                  //для отображения в Иваново
+                                  pa.SOCSTATUS
+                              };
+
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
         }
 
         void ShowSlColumn()
@@ -246,7 +350,8 @@ namespace Yamed.Oms
                 {
                     gridControl1.Columns.Where(x => x.Name.StartsWith("Column__SL__")).ToList().ForEach(x =>
                     {
-                        x.Width = (GridColumnWidth)x.Tag;
+                        if (x.Tag != null)
+                            x.Width = (GridColumnWidth)x.Tag;
                     });
                 }));
         }
@@ -267,159 +372,315 @@ namespace Yamed.Oms
 
         public void BindDataSl()
         {
-            ShowSlColumn();
+             ShowSlColumn();
+            if (zslid != null)
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              from ksg in tmpksg.DefaultIfEmpty()
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  zsl.PR_NOV,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
 
-            _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
-                          join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
-                          join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                          join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                          join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
-                          from ksg in tmpksg.DefaultIfEmpty()
-                          where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
-                          select new
-                          {
-                              sc.YEAR,
-                              sc.MONTH,
-                              sc.NSCHET,
-                              sc.DSCHET,
-                              zsl.PR_NOV,
-                              SchetType = sprsc.NameWithID,
-                              sc.OmsFileName,
+                                  KeyID = sl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+                                  ///////////////////////////////////
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
 
-                              KeyID = sl.ID,
-                              zsl.D3_SCID,
-                              zsl.ID,
-                              zsl.ZSL_ID,
-                              IDCASE = (Int64?)zsl.IDCASE,
-                              zsl.VIDPOM,
-                              zsl.NPR_MO,
-                              zsl.LPU,
-                              zsl.FOR_POM,
-                              zsl.DATE_Z_1,
-                              zsl.DATE_Z_2,
-                              zsl.RSLT,
-                              zsl.ISHOD,
-                              zsl.OS_SLUCH,
-                              zsl.OS_SLUCH_REGION,
-                              zsl.IDSP,
-                              zsl.SUMV,
-                              zsl.OPLATA,
-                              zsl.SUMP,
-                              zsl.SANK_IT,
-                              zsl.MEK_COMENT,
-                              zsl.OSP_COMENT,
-                              zsl.USL_OK,
-                              zsl.MEK_COUNT,
-                              zsl.MEE_COUNT,
-                              zsl.EKMP_COUNT,
-                              zsl.EXP_COMENT,
-                              zsl.EXP_TYPE,
-                              zsl.EXP_DATE,
-                              zsl.ReqID,
-                              zsl.USER_COMENT,
-                              zsl.USERID,
-                              Z_P_CEL = zsl.P_CEL,
-                              zsl.NPR_DATE,
-                              zsl.KD_Z,
-                              zsl.VB_P,
-                              zsl.RSLT_D,
-                              zsl.VBR,
-                              ///////////////////////////////////
-                              sl.VID_HMP,
-                              sl.METOD_HMP,
-                              sl.LPU_1,
-                              sl.PODR,
-                              sl.PROFIL,
-                              sl.DET,
-                              sl.P_CEL25,
-                              sl.TAL_NUM,
-                              sl.TAL_D,
-                              sl.TAL_P,
-                              sl.NHISTORY,
-                              sl.P_PER,
-                              sl.DATE_1,
-                              sl.DATE_2,
-                              sl.KD,
-                              sl.DS0,
-                              sl.DS1,
-                              sl.DS1_PR,
-                              sl.DN,
-                              sl.CODE_MES1,
-                              sl.CODE_MES2,
-                              sl.KSG_DKK,
-
-                              //для отображения полей Иваново, Андрей insidious
-                              sl.GRAF_DN,
-                              sl.KSKP,
-                              sl.VID_BRIG,
-                              sl.VID_VIZ,
-                              sl.POVOD,
-                              sl.PROFIL_REG,
-                              pa.SOCSTATUS,
-                              
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
 
 
-                              //sl.N_KSG,
-                              //sl.KSG_PG,
-                              //sl.SL_K,
-                              //sl.IT_SL,
-                              ksg.N_KSG,
-                              ksg.KSG_PG,
-                              ksg.SL_K,
-                              ksg.IT_SL,
 
-                              sl.REAB,
-                              sl.PRVS,
-                              sl.VERS_SPEC,
-                              sl.PRVS_VERS,
-                              sl.IDDOKT,
-                              sl.ED_COL,
-                              sl.TARIF,
-                              sl.SUM_M,
-                              sl.COMENTSL,
-                              sl.PROFIL_K,
-                              sl.C_ZAB,
-                              sl.DS_ONK,
-                              ////////////////////////////////
+                                  //sl.N_KSG,
+                                  //sl.KSG_PG,
+                                  //sl.SL_K,
+                                  //sl.IT_SL,
+                                  ksg.N_KSG,
+                                  ksg.KSG_PG,
+                                  ksg.SL_K,
+                                  ksg.IT_SL,
 
-                              pa.FAM,
-                              pa.IM,
-                              pa.OT,
-                              pa.W,
-                              pa.DR,
-                              pa.FAM_P,
-                              pa.IM_P,
-                              pa.OT_P,
-                              pa.W_P,
-                              pa.DR_P,
-                              pa.MR,
-                              pa.DOCTYPE,
-                              pa.DOCSER,
-                              pa.DOCNUM,
-                              pa.SNILS,
-                              pa.OKATOG,
-                              pa.OKATOP,
-                              pa.COMENTP,
-                              pa.VPOLIS,
-                              pa.SPOLIS,
-                              pa.NPOLIS,
-                              pa.SMO,
-                              pa.SMO_OGRN,
-                              pa.SMO_OK,
-                              pa.SMO_NAM,
-                              pa.NOVOR,
-                              zsl.VOZR,
-                              pa.SOC_STAT,
-                              pa.KOD_TER,
-                              pa.KAT_LGOT,
-                              pa.MSE,
-                              pa.INV,
-                              pa.VETERAN,
-                              pa.WORK_STAT,
-                              pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-                          };
-            _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
+                                  ////////////////////////////////
+
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
+            else
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              from ksg in tmpksg.DefaultIfEmpty()
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  zsl.PR_NOV,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+
+                                  KeyID = sl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+                                  ///////////////////////////////////
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
+
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
+
+
+
+                                  //sl.N_KSG,
+                                  //sl.KSG_PG,
+                                  //sl.SL_K,
+                                  //sl.IT_SL,
+                                  ksg.N_KSG,
+                                  ksg.KSG_PG,
+                                  ksg.SL_K,
+                                  ksg.IT_SL,
+
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
+                                  ////////////////////////////////
+
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
         }
 
         public void BindDataPacient(string fam, string im, string ot, DateTime? dr, string npol = null)
@@ -596,11 +857,12 @@ namespace Yamed.Oms
                 bulkCopy.WriteToServer(qlist.AsDataReader());
             }
             qlist.Clear();
-            ids.Clear();
+            zslid = ids;
+            //ids.Clear();
             
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;
-
+            
             _pQueryable = from exq in _ElmedDataClassesDataContext.D3_EXP_QUERY
                           join zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS on exq.D3_ZSLID equals zsl.ID
                           join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
@@ -746,6 +1008,14 @@ namespace Yamed.Oms
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            var sci = (from exq in _ElmedDataClassesDataContext.D3_EXP_QUERY
+                       join zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS on exq.D3_ZSLID equals zsl.ID
+                       where exq.QUID == ui
+                       select new
+                       {
+                           zsl.D3_SCID,
+                       }).ToList();
+            Scids = sci.Select(x => x.D3_SCID).ToList();
         }
 
 
@@ -754,154 +1024,152 @@ namespace Yamed.Oms
         {
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              where ((sc.MONTH >= m1 && sc.MONTH <= m2) || m1 == null || m2 == null) && ((sc.YEAR >= y1 && sc.YEAR <= y2) || y1 == null || y2 == null)
+                              && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
+                              && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl == null) && (sc.SchetType == st || st == null)
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+                                  zsl.PR_NOV,
 
-            _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
-                          join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
-                          join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                          join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                          where ((sc.MONTH >= m1 && sc.MONTH <= m2) || m1 == null || m2 == null) && ((sc.YEAR >= y1 && sc.YEAR <= y2) || y1 == null || y2 == null)
-                          && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
-                          && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl== null) && (sc.SchetType == st || st == null)
-                          select new
-                          {
-                              sc.YEAR,
-                              sc.MONTH,
-                              sc.NSCHET,
-                              sc.DSCHET,
-                              SchetType = sprsc.NameWithID,
-                              sc.OmsFileName,
-                              zsl.PR_NOV,
+                                  KeyID = sl.ID,
 
-                              KeyID = sl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.VBR,
+                                  //zsl.P_CEL,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
 
-                              zsl.D3_SCID,
-                              zsl.ID,
-                              zsl.ZSL_ID,
-                              IDCASE = (Int64?)zsl.IDCASE,
-                              zsl.VIDPOM,
-                              zsl.NPR_MO,
-                              zsl.LPU,
-                              zsl.FOR_POM,
-                              zsl.DATE_Z_1,
-                              zsl.DATE_Z_2,
-                              zsl.RSLT,
-                              zsl.ISHOD,
-                              zsl.OS_SLUCH,
-                              zsl.OS_SLUCH_REGION,
-                              zsl.IDSP,
-                              zsl.SUMV,
-                              zsl.OPLATA,
-                              zsl.SUMP,
-                              zsl.SANK_IT,
-                              zsl.MEK_COMENT,
-                              zsl.OSP_COMENT,
-                              zsl.USL_OK,
-                              zsl.VBR,
-                              //zsl.P_CEL,
-                              zsl.MEK_COUNT,
-                              zsl.MEE_COUNT,
-                              zsl.EKMP_COUNT,
-                              zsl.EXP_COMENT,
-                              zsl.EXP_TYPE,
-                              zsl.EXP_DATE,
-                              zsl.ReqID,
-                              zsl.USER_COMENT,
-                              zsl.USERID,
-                              Z_P_CEL = zsl.P_CEL,
-                              zsl.NPR_DATE,
-                              zsl.KD_Z,
-                              zsl.VB_P,
-                              zsl.RSLT_D,
-
-                              sl.VID_HMP,
-                              sl.METOD_HMP,
-                              sl.LPU_1,
-                              sl.PODR,
-                              sl.PROFIL,
-                              sl.DET,
-                              sl.P_CEL25,
-                              sl.TAL_NUM,
-                              sl.TAL_D,
-                              sl.TAL_P,
-                              sl.NHISTORY,
-                              sl.P_PER,
-                              sl.DATE_1,
-                              sl.DATE_2,
-                              sl.KD,
-                              sl.DS0,
-                              sl.DS1,
-                              sl.DS1_PR,
-                              sl.DN,
-                              sl.CODE_MES1,
-                              sl.CODE_MES2,
-                              sl.KSG_DKK,
-                              sl.N_KSG,
-                              sl.KSG_PG,
-                              sl.SL_K,
-                              sl.IT_SL,
-                              sl.REAB,
-                              sl.PRVS,
-                              sl.VERS_SPEC,
-                              sl.PRVS_VERS,
-                              sl.IDDOKT,
-                              sl.ED_COL,
-                              sl.TARIF,
-                              sl.SUM_M,
-                              sl.COMENTSL,
-                              sl.PROFIL_K,
-                              sl.C_ZAB,
-                              sl.DS_ONK,
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
+                                  sl.N_KSG,
+                                  sl.KSG_PG,
+                                  sl.SL_K,
+                                  sl.IT_SL,
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
 
 
-                              //для отображения полей Иваново, Андрей insidious
-                              sl.GRAF_DN,
-                              sl.KSKP,
-                              sl.VID_BRIG,
-                              sl.VID_VIZ,
-                              sl.POVOD,
-                              sl.PROFIL_REG,
-                              pa.SOCSTATUS,
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
 
-                              ////////////////////////////////
-                              pa.FAM,
-                              pa.IM,
-                              pa.OT,
-                              pa.W,
-                              pa.DR,
-                              pa.FAM_P,
-                              pa.IM_P,
-                              pa.OT_P,
-                              pa.W_P,
-                              pa.DR_P,
-                              pa.MR,
-                              pa.DOCTYPE,
-                              pa.DOCSER,
-                              pa.DOCNUM,
-                              pa.SNILS,
-                              pa.OKATOG,
-                              pa.OKATOP,
-                              pa.COMENTP,
-                              pa.VPOLIS,
-                              pa.SPOLIS,
-                              pa.NPOLIS,
-                              pa.SMO,
-                              pa.SMO_OGRN,
-                              pa.SMO_OK,
-                              pa.SMO_NAM,
-                              pa.NOVOR,
-                              zsl.VOZR,
-                              pa.SOC_STAT,
-                              pa.KOD_TER,
-                              pa.KAT_LGOT,
-                              pa.MSE,
-                              pa.INV,
-                              pa.VETERAN,
-                              pa.WORK_STAT,
-                              pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-                          };
-            _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
-
+                                  ////////////////////////////////
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
         }
 
 
@@ -1166,298 +1434,595 @@ FROM [D3_SCHET_OMS] sch
 
         public void BindDataUsl()
         {
-            
             ShowSlColumn();
-            _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
-                          join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
-                          join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                          join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                          join usl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals usl.D3_SLID
-                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                          join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
-                          from ksg in tmpksg.DefaultIfEmpty()
-                          //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
-                          //from usl in tmpusl.DefaultIfEmpty()
-                          where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
-                          select new
-                          {
-                              sc.YEAR,
-                              sc.MONTH,
-                              sc.NSCHET,
-                              sc.DSCHET,
-                              SchetType = sprsc.NameWithID,
-                              sc.OmsFileName,
-                              zsl.PR_NOV,
+            if (zslid != null)
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join usl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals usl.D3_SLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              from ksg in tmpksg.DefaultIfEmpty()
+                                  //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
+                                  //from usl in tmpusl.DefaultIfEmpty()
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+                                  zsl.PR_NOV,
 
-                              //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
-                              KeyID = usl.ID,
-                              zsl.D3_SCID,
-                              zsl.ID,
-                              zsl.ZSL_ID,
-                              IDCASE = (Int64?)zsl.IDCASE,
-                              zsl.VIDPOM,
-                              zsl.NPR_MO,
-                              zsl.LPU,
-                              zsl.FOR_POM,
-                              zsl.DATE_Z_1,
-                              zsl.DATE_Z_2,
-                              zsl.RSLT,
-                              zsl.ISHOD,
-                              zsl.OS_SLUCH,
-                              zsl.OS_SLUCH_REGION,
-                              zsl.IDSP,
-                              zsl.SUMV,
-                              zsl.OPLATA,
-                              zsl.SUMP,
-                              zsl.SANK_IT,
-                              zsl.MEK_COMENT,
-                              zsl.OSP_COMENT,
-                              zsl.USL_OK,
-                              zsl.MEK_COUNT,
-                              zsl.MEE_COUNT,
-                              zsl.EKMP_COUNT,
-                              zsl.EXP_COMENT,
-                              zsl.EXP_TYPE,
-                              zsl.EXP_DATE,
-                              zsl.ReqID,
-                              zsl.USER_COMENT,
-                              zsl.USERID,
-                              Z_P_CEL = zsl.P_CEL,
-                              zsl.NPR_DATE,
-                              zsl.KD_Z,
-                              zsl.VB_P,
-                              zsl.RSLT_D,
-                              zsl.VBR,
+                                  //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
+                                  KeyID = usl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
 
-                              ///////////////////////////////////
-                              sl.VID_HMP,
-                              sl.METOD_HMP,
-                              sl.LPU_1,
-                              sl.PODR,
-                              sl.PROFIL,
-                              sl.DET,
-                              sl.P_CEL25,
-                              sl.TAL_NUM,
-                              sl.TAL_D,
-                              sl.TAL_P,
-                              sl.NHISTORY,
-                              sl.P_PER,
-                              sl.DATE_1,
-                              sl.DATE_2,
-                              sl.KD,
-                              sl.DS0,
-                              sl.DS1,
-                              sl.DS1_PR,
-                              sl.DN,
-                              sl.CODE_MES1,
-                              sl.CODE_MES2,
-                              sl.KSG_DKK,
-                              //sl.N_KSG,
-                              //sl.KSG_PG,
-                              //sl.SL_K,
-                              //sl.IT_SL,
-                              ksg.N_KSG,
-                              ksg.KSG_PG,
-                              ksg.SL_K,
-                              ksg.IT_SL,
-
-
-                              //для отображения полей Иваново, Андрей insidious
-                              sl.GRAF_DN,
-                              sl.KSKP,
-                              sl.VID_BRIG,
-                              sl.VID_VIZ,
-                              sl.POVOD,
-                              sl.PROFIL_REG,
-                              pa.SOCSTATUS,
+                                  ///////////////////////////////////
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
+                                  //sl.N_KSG,
+                                  //sl.KSG_PG,
+                                  //sl.SL_K,
+                                  //sl.IT_SL,
+                                  ksg.N_KSG,
+                                  ksg.KSG_PG,
+                                  ksg.SL_K,
+                                  ksg.IT_SL,
 
 
-                              sl.REAB,
-                              sl.PRVS,
-                              sl.VERS_SPEC,
-                              sl.PRVS_VERS,
-                              sl.IDDOKT,
-                              sl.ED_COL,
-                              sl.TARIF,
-                              sl.SUM_M,
-                              sl.COMENTSL,
-                              sl.PROFIL_K,
-                              sl.C_ZAB,
-                              sl.DS_ONK,
-                              ////////////////////////////////
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
 
-                              usl.VID_VME,
-                              usl.CODE_USL,
-                              TARIF_USL = usl.TARIF,
-                              usl.KOL_USL,
-                              usl.SUMV_USL,
-                              usl.DATE_IN,
-                              usl.DATE_OUT,
 
-                              ////////////////////////////////
-                              pa.FAM,
-                              pa.IM,
-                              pa.OT,
-                              pa.W,
-                              pa.DR,
-                              pa.FAM_P,
-                              pa.IM_P,
-                              pa.OT_P,
-                              pa.W_P,
-                              pa.DR_P,
-                              pa.MR,
-                              pa.DOCTYPE,
-                              pa.DOCSER,
-                              pa.DOCNUM,
-                              pa.SNILS,
-                              pa.OKATOG,
-                              pa.OKATOP,
-                              pa.COMENTP,
-                              pa.VPOLIS,
-                              pa.SPOLIS,
-                              pa.NPOLIS,
-                              pa.SMO,
-                              pa.SMO_OGRN,
-                              pa.SMO_OK,
-                              pa.SMO_NAM,
-                              pa.NOVOR,
-                              zsl.VOZR,
-                              pa.SOC_STAT,
-                              pa.KOD_TER,
-                              pa.KAT_LGOT,
-                              pa.MSE,
-                              pa.INV,
-                              pa.VETERAN,
-                              pa.WORK_STAT,
-                              pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-                          };
-            _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
+                                  ////////////////////////////////
+
+                                  usl.VID_VME,
+                                  usl.CODE_USL,
+                                  TARIF_USL = usl.TARIF,
+                                  usl.KOL_USL,
+                                  usl.SUMV_USL,
+                                  usl.DATE_IN,
+                                  usl.DATE_OUT,
+                                  usl.KOD_SP,
+
+                                  ////////////////////////////////
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
+            else
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join usl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals usl.D3_SLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              from ksg in tmpksg.DefaultIfEmpty()
+                                  //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
+                                  //from usl in tmpusl.DefaultIfEmpty()
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+                                  zsl.PR_NOV,
+
+                                  //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
+                                  KeyID = usl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+
+                                  ///////////////////////////////////
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
+                                  //sl.N_KSG,
+                                  //sl.KSG_PG,
+                                  //sl.SL_K,
+                                  //sl.IT_SL,
+                                  ksg.N_KSG,
+                                  ksg.KSG_PG,
+                                  ksg.SL_K,
+                                  ksg.IT_SL,
+
+
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
+
+
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
+                                  ////////////////////////////////
+
+                                  usl.VID_VME,
+                                  usl.CODE_USL,
+                                  TARIF_USL = usl.TARIF,
+                                  usl.KOL_USL,
+                                  usl.SUMV_USL,
+                                  usl.DATE_IN,
+                                  usl.DATE_OUT,
+                                  usl.KOD_SP,
+                                  ////////////////////////////////
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
         }
 
         public void BindDataSank()
         {
             HideSlColumn();
-            _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
-                          join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
-                          join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                          //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                          join sa in _ElmedDataClassesDataContext.D3_SANK_OMS on zsl.ID equals sa.D3_ZSLID
-                          join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                          //join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
-                          //from ksg in tmpksg.DefaultIfEmpty()
-                          //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
-                          //from usl in tmpusl.DefaultIfEmpty()
-                          where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
-                          select new
-                          {
-                              sc.YEAR,
-                              sc.MONTH,
-                              sc.NSCHET,
-                              sc.DSCHET,
-                              SchetType = sprsc.NameWithID,
-                              sc.OmsFileName,
-                              zsl.PR_NOV,
+            if (zslid != null)
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sa in _ElmedDataClassesDataContext.D3_SANK_OMS on zsl.ID equals sa.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              //join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              //from ksg in tmpksg.DefaultIfEmpty()
+                              //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
+                              //from usl in tmpusl.DefaultIfEmpty()
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+                                  zsl.PR_NOV,
 
-                              //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
-                              KeyID = sa.ID,
-                              zsl.D3_SCID,
-                              zsl.ID,
-                              zsl.ZSL_ID,
-                              IDCASE = (Int64?)zsl.IDCASE,
-                              zsl.VIDPOM,
-                              zsl.NPR_MO,
-                              zsl.LPU,
-                              zsl.FOR_POM,
-                              zsl.DATE_Z_1,
-                              zsl.DATE_Z_2,
-                              zsl.RSLT,
-                              zsl.ISHOD,
-                              zsl.OS_SLUCH,
-                              zsl.OS_SLUCH_REGION,
-                              zsl.IDSP,
-                              zsl.SUMV,
-                              zsl.OPLATA,
-                              zsl.SUMP,
-                              zsl.SANK_IT,
-                              zsl.MEK_COMENT,
-                              zsl.OSP_COMENT,
-                              zsl.USL_OK,
-                              zsl.MEK_COUNT,
-                              zsl.MEE_COUNT,
-                              zsl.EKMP_COUNT,
-                              zsl.EXP_COMENT,
-                              zsl.EXP_TYPE,
-                              zsl.EXP_DATE,
-                              zsl.ReqID,
-                              zsl.USER_COMENT,
-                              zsl.USERID,
-                              Z_P_CEL = zsl.P_CEL,
-                              zsl.NPR_DATE,
-                              zsl.KD_Z,
-                              zsl.VB_P,
-                              zsl.RSLT_D,
-                              zsl.VBR,
+                                  //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
+                                  KeyID = sa.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
 
-                              ///////////////////////////////////
-                              //для отображения полей Иваново, Андрей insidious
-                              //sl.GRAF_DN,
-                              //sl.KSKP,
-                              //sl.VID_BRIG,
-                              //sl.VID_VIZ,
-                              //sl.POVOD,
-                              //sl.PROFIL_REG,
-                              pa.SOCSTATUS,
-                              ////////////////////////////////
-                              sa.CODE_EXP,
-                              sa.DATE_ACT,
-                              sa.NUM_ACT,
-                              sa.MODEL_ID,
-                              sa.S_DATE,
-                              sa.S_OSN,
-                              sa.S_SUM,
-                              sa.S_SUM2,
-                              sa.S_TIP,
-                              sa.S_TIP2,
+                                  ///////////////////////////////////
+                                  //для отображения полей Иваново, Андрей insidious
+                                  //sl.GRAF_DN,
+                                  //sl.KSKP,
+                                  //sl.VID_BRIG,
+                                  //sl.VID_VIZ,
+                                  //sl.POVOD,
+                                  //sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
+                                  ////////////////////////////////
+                                  sa.CODE_EXP,
+                                  sa.DATE_ACT,
+                                  sa.NUM_ACT,
+                                  sa.MODEL_ID,
+                                  sa.S_DATE,
+                                  sa.S_OSN,
+                                  sa.S_SUM,
+                                  sa.S_SUM2,
+                                  sa.S_TIP,
+                                  sa.S_TIP2,
 
 
-                              ////////////////////////////////
-                              pa.FAM,
-                              pa.IM,
-                              pa.OT,
-                              pa.W,
-                              pa.DR,
-                              pa.FAM_P,
-                              pa.IM_P,
-                              pa.OT_P,
-                              pa.W_P,
-                              pa.DR_P,
-                              pa.MR,
-                              pa.DOCTYPE,
-                              pa.DOCSER,
-                              pa.DOCNUM,
-                              pa.SNILS,
-                              pa.OKATOG,
-                              pa.OKATOP,
-                              pa.COMENTP,
-                              pa.VPOLIS,
-                              pa.SPOLIS,
-                              pa.NPOLIS,
-                              pa.SMO,
-                              pa.SMO_OGRN,
-                              pa.SMO_OK,
-                              pa.SMO_NAM,
-                              pa.NOVOR,
-                              zsl.VOZR,
-                              pa.SOC_STAT,
-                              pa.KOD_TER,
-                              pa.KAT_LGOT,
-                              pa.MSE,
-                              pa.INV,
-                              pa.VETERAN,
-                              pa.WORK_STAT,
-                              pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-                          };
-            _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+                                  ////////////////////////////////
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
+            else
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sa in _ElmedDataClassesDataContext.D3_SANK_OMS on zsl.ID equals sa.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              //join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              //from ksg in tmpksg.DefaultIfEmpty()
+                              //join lusl in _ElmedDataClassesDataContext.D3_USL_OMS on sl.ID equals lusl.D3_SLID into tmpusl
+                              //from usl in tmpusl.DefaultIfEmpty()
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+                                  zsl.PR_NOV,
+
+                                  //KeyID = usl.ID == null ? "_" + sl.ID: "_" + sl.ID + "_" + usl.ID,
+                                  KeyID = sa.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+
+                                  ///////////////////////////////////
+                                  //для отображения полей Иваново, Андрей insidious
+                                  //sl.GRAF_DN,
+                                  //sl.KSKP,
+                                  //sl.VID_BRIG,
+                                  //sl.VID_VIZ,
+                                  //sl.POVOD,
+                                  //sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
+                                  ////////////////////////////////
+                                  sa.CODE_EXP,
+                                  sa.DATE_ACT,
+                                  sa.NUM_ACT,
+                                  sa.MODEL_ID,
+                                  sa.S_DATE,
+                                  sa.S_OSN,
+                                  sa.S_SUM,
+                                  sa.S_SUM2,
+                                  sa.S_TIP,
+                                  sa.S_TIP2,
+
+
+                                  ////////////////////////////////
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
         }
 
     }
