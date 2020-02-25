@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\!!!_Code\Yamed\Yamed.Emr\obj\Debug\
+C:\Users\WILD\Desktop\git_exp\Yamed.Emr\obj\Debug\
 Yamed.Emr
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 131446892005
 
-16743799424
-301862189911
+16447333735
+341564867147
 ClinicEmrPacient.xaml;EmrFullControl.xaml;EmrPacientControl.xaml;EmrPacient.xaml;SluchTemplateD31.xaml;UslTemplateD3.xaml;OphtTestTemplate.xaml;PacientTest.xaml;ReferralTemplate.xaml;SluchTemplateD3.xaml;SluchTemplate.xaml;UserControl1.xaml;UslUserTempl.xaml;
 
 False

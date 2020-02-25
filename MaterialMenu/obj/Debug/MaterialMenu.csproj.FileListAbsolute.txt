@@ -214,7 +214,6 @@ C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.pdb
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\bin\Debug\MaterialMenu.dll.config
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\bin\Debug\MaterialMenu.dll
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\bin\Debug\MaterialMenu.pdb
-C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MenuButton.g.cs
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\SideMenu.g.cs
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs

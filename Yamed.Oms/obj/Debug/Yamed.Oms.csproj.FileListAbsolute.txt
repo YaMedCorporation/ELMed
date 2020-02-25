@@ -618,3 +618,4 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period_unload.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period_unload.baml
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\bin\Debug\GalaSoft.MvvmLight.WPF4.dll

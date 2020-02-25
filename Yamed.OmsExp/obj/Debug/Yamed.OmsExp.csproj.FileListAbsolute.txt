@@ -4390,3 +4390,7 @@ D:\!!!_Code\Yamed\Yamed.OmsExp\bin\Debug\de\DevExpress.Xpf.PropertyGrid.v19.2.re
 D:\!!!_Code\Yamed\Yamed.OmsExp\bin\Debug\es\DevExpress.Xpf.PropertyGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.OmsExp\bin\Debug\ja\DevExpress.Xpf.PropertyGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.OmsExp\bin\Debug\ru\DevExpress.Xpf.PropertyGrid.v19.2.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\ActiveQueryBuilder.Core.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\ActiveQueryBuilder.View.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.OmsExp\bin\Debug\ICSharpCode.AvalonEdit.dll

@@ -1062,3 +1062,4 @@ D:\!!!_Code\Yamed\Yamed\bin\Debug\de\DevExpress.XtraPivotGrid.v19.2.resources.dl
 D:\!!!_Code\Yamed\Yamed\bin\Debug\es\DevExpress.XtraPivotGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed\bin\Debug\ja\DevExpress.XtraPivotGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed\bin\Debug\ru\DevExpress.XtraPivotGrid.v19.2.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed\bin\Debug\GalaSoft.MvvmLight.WPF4.dll
