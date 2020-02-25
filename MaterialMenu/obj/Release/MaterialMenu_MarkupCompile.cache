@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Elmedicine\ELMed\MaterialMenu\obj\Release\
+C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Release\
 MaterialMenu
 none
 false
@@ -16,5 +16,5 @@ TRACE
 121654848548
 MenuButton.xaml;SideMenu.xaml;
 
-True
+False
 

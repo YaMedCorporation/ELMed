@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Elmedicine\ELMed\Yamed.Emr\obj\Debug\
+D:\!!!_Code\Yamed\Yamed.Emr\obj\Debug\
 Yamed.Emr
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 131446892005
 
-16447333735
-321223015849
+15-25300543
+36818375761
 ClinicEmrPacient.xaml;EmrFullControl.xaml;EmrPacientControl.xaml;EmrPacient.xaml;SluchTemplateD31.xaml;UslTemplateD3.xaml;OphtTestTemplate.xaml;PacientTest.xaml;ReferralTemplate.xaml;SluchTemplateD3.xaml;SluchTemplate.xaml;UserControl1.xaml;UslUserTempl.xaml;
 
-True
+False
 

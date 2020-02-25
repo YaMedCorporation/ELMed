@@ -60,7 +60,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <CheckBox Name="CheckBox4" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        <dxe:ComboBoxEdit Name="DsComboBoxEdit" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox4}"/>
+                        <dxe:ComboBoxEdit Name="DsComboBoxEdit" DisplayMember="NameWithID" ImmediatePopup="True" IncrementalFiltering="True" AutoComplete="True" ItemsSource="{Binding}" NullValueButtonPlacement="EditBox" ValueMember="IDDS" FilterCondition="Contains" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox4}"/>
                     </Grid>
                     <TextBlock Text="Тип случая" Margin="30,0,0,0"/>
                     <Grid Margin="5">

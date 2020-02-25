@@ -36,25 +36,25 @@ namespace Yamed.Oms
 
         private void Amb_OnClick(object sender, RoutedEventArgs e)
         {
-            //DxHelper.GetSelectedGridRowsAsync(ref EconomyTabOMS1.gridControl);
-            //bool isLoaded = false;
-            //Task.Factory.StartNew(() =>
-            //{
-            //    while (true)
-            //    {
-            //        Dispatcher.BeginInvoke((Action)delegate ()
-            //        {
-            //            if (EconomyTabOMS1.gridControl.IsAsyncOperationInProgress == false)
-            //            {
-            //                isLoaded = true;
-            //            }
-            //        });
-            //        if (isLoaded) break;
-            //        Thread.Sleep(200);
-            //    }
+            DxHelper.GetSelectedGridRowsAsync(ref EconomyTabOMS1.gridControl);
+            bool isLoaded = false;
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (EconomyTabOMS1.gridControl.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
 
-            //}).ContinueWith(lr =>
-            //{
+            }).ContinueWith(lr =>
+            {
                 List<int> sc = new List<int>();
                 var rows = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl);
                 if (rows != null)
@@ -75,7 +75,7 @@ namespace Yamed.Oms
 
                 DxHelper.LoadedRows.Clear();
 
-            //}, TaskScheduler.FromCurrentSynchronizationContext());
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         public void XmlStreem2(object schet, bool isTfomsSchet, bool isLoop = false, int loopCount = 1)

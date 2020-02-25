@@ -17,6 +17,7 @@ using DevExpress.Xpf.Core.Serialization;
 using DevExpress.Xpf.Core.ServerMode;
 using DevExpress.Xpf.DXBinding;
 using DevExpress.Xpf.Docking;
+using DevExpress.Xpf.Docking.Base;
 using DevExpress.Xpf.LayoutControl;
 using System;
 using System.Diagnostics;

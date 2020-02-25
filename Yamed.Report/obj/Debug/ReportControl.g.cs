@@ -19,6 +19,7 @@ using DevExpress.Xpf.Core.ServerMode;
 using DevExpress.Xpf.DXBinding;
 using DevExpress.Xpf.Printing.PreviewControl.Bars;
 using DevExpress.Xpf.Reports.UserDesigner;
+using DevExpress.Xpf.Reports.UserDesigner.Localization;
 using DevExpress.Xpf.Ribbon;
 using System;
 using System.Diagnostics;

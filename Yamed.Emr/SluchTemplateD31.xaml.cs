@@ -145,6 +145,16 @@ namespace Yamed.Emr
                 ConsAddItem.IsEnabled = false;
                 ConsDelItem.IsEnabled = false;
             }
+            if (SprClass.Region != "37")
+            {
+                UslGridControl.Columns.Remove(UslCodeUslColumnIv);
+                UslGridControl.Columns.Remove(KODSPColumn);
+            }
+            if (SprClass.Region == "37")
+            {
+                UslGridControl.Columns.Remove(UslCodeUslColumn);
+            }
+            
         }
 
         public void BindPacient(int pid)
@@ -636,6 +646,7 @@ namespace Yamed.Emr
         public DateTime? dvmp;
         public int? usl_ok;
         public string fap_lpu;
+        public string zsl_lpu;
         void GetSpr()
         {
 
@@ -708,11 +719,17 @@ namespace Yamed.Emr
 
             UslOtdelColumnEdit.DataContext = SprClass.OtdelDbs;
             UslProfilColumnEdit.DataContext = SprClass.profile;
-            UslPrvsColumnEdit.DataContext = SprClass.SpecAllList;
+            UslPrvsColumnEdit.DataContext = SprClass.SpecV021List;
             UslDoctorColumnEdit.DataContext = SprClass.MedicalEmployeeList;
             UslDsColumnEdit.DataContext = SprClass.mkbSearching;
             UslVidVmeColumnEdit.DataContext = SprClass.SprUsl804;
-            UslCodeUslColumn.DataContext = SprClass.SprUslCode;
+            if (SprClass.Region != "37")
+            {
+                UslCodeUslColumn.DataContext = SprClass.SprUslCode;
+                
+            }
+            
+
             UslPOtkColumnEdit.DataContext = SprClass.SprBit;
             UslNplEdit.DataContext = SprClass.SprNpl;
 
@@ -769,7 +786,9 @@ namespace Yamed.Emr
             PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
-            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+            
+           
+            NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
 
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
@@ -784,6 +803,10 @@ namespace Yamed.Emr
                 fap.IsChecked = false;
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
             }
+            zsl_lpu = _zsl.LPU == null ? "370001" : _zsl.LPU;
+            NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+            KODSPColumn.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+            UslCodeUslColumnIv.DataContext = Reader2List.CustomAnonymousSelect($@"Select KOD_LPU,convert(nvarchar,KODUSL) as KODUSL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
@@ -798,7 +821,7 @@ namespace Yamed.Emr
         private void HVidBox_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
             HMetodBox.DataContext = 
-                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp || x.DATEEND >= new DateTime(2019,1,1))).ToList();
+                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp)).ToList().OrderBy(x => x.IDHM);
         }
 
         private DateTime sankdate;
@@ -1595,6 +1618,7 @@ namespace Yamed.Emr
             ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD = _slLock.POVOD;
             ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER = _slLock.P_PER;
             ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K = _slLock.PROFIL_K;
+            ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG = _slLock.PROFIL_REG;
         }
 
         void ZSlEditLock()
@@ -1643,6 +1667,7 @@ namespace Yamed.Emr
             _slLock.POVOD = povodobrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD : null;
             _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
             _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
+            _slLock.PROFIL_REG = ProfKrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG : null;
 
             if (fapTb.IsChecked == true && fap.IsChecked == true)
             {
@@ -2059,14 +2084,14 @@ namespace Yamed.Emr
                 D3_ZSLGID = _zsl.ZSL_ID,
                 USER_ID = SprClass.userId
             };
-
+            var sumv = _zsl.SUMV;
             var window = new DXWindow
             {
                 ShowIcon = false,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
                 SizeToContent = SizeToContent.Height,
                 Width = 500,
-                Content = new SankControl(sank)
+                Content = new SankControl(sank,sumv)
             };
             window.ShowDialog();
             if (sank.ID != 0)
@@ -2080,18 +2105,25 @@ namespace Yamed.Emr
         private void SankEditItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             var sank = (D3_SANK_OMS)SankGridControl.SelectedItem;
+            
             if (sank.S_TIP == 1)
             {
+                var sumv = _zsl.SUMV;
+                if (sank.S_OSN != "5.3.2.")
+                {
+                    sank.S_SUM = sumv;
+                }
                 var window = new DXWindow
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     SizeToContent = SizeToContent.Height,
                     Width = 500,
-                    Content = new SankControl(sank)
+                    Content = new SankControl(sank,sumv)
                 };
                 window.ShowDialog();
-                SankGridControl.RefreshData();            
+                SankGridControl.RefreshData();
+                ZslUpdate();
             }
             else
             {
@@ -2336,7 +2368,6 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
             Ds2GridControl.RefreshData();
         }
-
         private void UslAutoTemplateItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (_zsl.DATE_Z_2 == null || _pacient.DR == null || _pacient.W == null || _zsl.OS_SLUCH_REGION == null)
@@ -2344,17 +2375,74 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 DXMessageBox.Show("Не заполнены поля для определения стандарта");
                 return;
             }
-            var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
+            //var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
+            string v = "";
+            string s;
+            string sg = "0";
             var pol = _pacient.W;
             var os = _zsl.OS_SLUCH_REGION;
             var lpu = _zsl.LPU;
-            var datez2 = _zsl.DATE_Z_2; 
+            var datez2 = _zsl.DATE_Z_2;
             var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
+            if (os == 47 || os == 49 && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year) >= 18)
+            {
+                v = (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year).ToString();
+            }
+            else if (os == 11)
+            {
+                var mm = Math.Floor((_zsl.DATE_Z_2 - _pacient.DR).Value.Days / 365.25 * 12);
+                var mg = Math.Floor((_zsl.DATE_Z_2 - _pacient.DR).Value.Days / 365.25);
+                var ms = "";
+                if (mg == 0)
+                {
 
-            
+                    if (mm % 12 < 10)
+                    {
+                        s = "0";
+                        ms = (mm % 12).ToString();
+                    }
+                    else
+                    {
+                        s = "";
+                        ms = mm.ToString();
+                    }
+                }
+                else if (mg > 0 && mg < 2)
+                {
+                    if (mm % 12 < 3)
+                    {
+                        s = "00";
+                    }
+                    else if (mm % 12 > 2 && mm % 12 < 6)
+                    {
+                        s = "03";
+                    }
+                    else
+                    {
+                        s = "06";
+                    }
+                }
+                else
+                {
+                    mg = (double)(_zsl.DATE_Z_2?.Year - _pacient.DR?.Year);
+                    s = "00";
+                    if (mg > 9)
+                    {
+                        sg = "";
+                    }
+                }
+                v = "G"+sg + mg + "." + "M" + s + ms;
+
+            }
+            else
+            {
+                return;
+            }
+
             Task.Factory.StartNew(() =>
             {
-                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{vozr},%'", SprClass.LocalConnectionString);
+               
+                var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{v},%'", SprClass.LocalConnectionString);
 
                 if (autoTempl.Count == 0)
                 {

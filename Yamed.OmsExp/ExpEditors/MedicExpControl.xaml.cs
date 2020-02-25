@@ -57,7 +57,7 @@ namespace Yamed.OmsExp.ExpEditors
 
             _isNew = sid == null;
 
-            ExpertColumnEdit.DataContext = SprClass.ExpertDbs;
+            ExpertColumnEdit.DataContext = Reader2List.CustomAnonymousSelect("Select * from ExpertsDB order by FAM",SprClass.LocalConnectionString);//SprClass.ExpertDbs;
 
 
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
@@ -75,6 +75,21 @@ namespace Yamed.OmsExp.ExpEditors
             }
             if (stype == 3)
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
+            if (stype == 1)
+            {
+                AktDateEdit.Visibility = Visibility.Collapsed;
+                AktNumEdit.Visibility = Visibility.Collapsed;
+                ExpEkmpLayGr.Visibility = Visibility.Collapsed;
+                ExpertGridControl.Visibility = Visibility.Collapsed;
+                checkEditItem.IsVisible = false;
+                ExpertAddItem.IsVisible = false;
+                ExpertDelItem.IsVisible = false;
+                experts.Visibility = Visibility.Collapsed;
+                exporuch.Visibility = Visibility.Collapsed;
+                ExpMeeLayGr.Visibility = Visibility.Collapsed;
+                date_act.Visibility = Visibility.Collapsed;
+                num_act.Visibility = Visibility.Collapsed;
+            }
         }
 
 
@@ -90,10 +105,14 @@ namespace Yamed.OmsExp.ExpEditors
         private void MeeWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             List<int> zslid = new List<int>();
-            _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
-            
-
-
+            if (_re==1 && _stype==1)
+            {
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or name like '%без замечаний%' order by Name", SprClass.LocalConnectionString);
+            }
+            else
+            {
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
+            }
             ShablonEdit.DataContext = _sankAutos;
 
             _slpsList = new List<ExpClass>();
@@ -128,7 +147,15 @@ namespace Yamed.OmsExp.ExpEditors
                             if (reSank.Count > 0)
                                 expList.ReSank = reSank[0];
                         }
-                    
+                    if (_re == 1 && _stype==1)
+                    {
+                        var reSank =
+                            Reader2List.CustomSelect<D3_SANK_OMS>($@"Select * From D3_SANK_OMS where D3_ZSLID={(int)ObjHelper.GetAnonymousValue(row, "ID")} and S_TIP2 = {_stype}",
+                                SprClass.LocalConnectionString);
+                        if (reSank.Count > 0)
+                            expList.ReSank = reSank[0];
+                    }
+
                 }
             }
             else
@@ -224,7 +251,7 @@ namespace Yamed.OmsExp.ExpEditors
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
         {
             var sa = ((ExpClass)sluchGridControl.SelectedItem).Sank;
-            if (sa.S_TIP2 == null || sa.DATE_ACT == null)
+            if (sa.S_TIP2 == null || sa.DATE_ACT == null && _stype!= 1)
             {
                 DXMessageBox.Show("Заполнены не все обязательные поля (дата акта, вид экспертизы)");
                 e.Cancel = true;
@@ -363,10 +390,10 @@ namespace Yamed.OmsExp.ExpEditors
 
         void CalcSank(ExpClass ex)
         {
-            var sh = (DynamicBaseClass) ShablonEdit.SelectedItem;
+            var sh = (DynamicBaseClass)ShablonEdit.SelectedItem;
             if (sh == null) return;
-                var pe1 = (int)sh.GetValue("Penalty_1");
-                var osn = (string)sh.GetValue("Osn");
+            var pe1 = (int)sh.GetValue("Penalty_1");
+            var osn = (string)sh.GetValue("Osn");
             if (osn == "4.6.1.") //по запросу ТФОМС Курск
             {
                 Sum1Edit.IsEnabled = true;
@@ -376,12 +403,16 @@ namespace Yamed.OmsExp.ExpEditors
                 Sum1Edit.IsEnabled = false;
             }
             ex.Sank.S_OSN = osn;
+            if (_stype != 1)
+            {
                 var pe2 = (decimal?)SqlReader.Select(
                     $@"EXEC	[dbo].[p_oms_calc_medexp]
             		@zslid = {ex.Sank.D3_ZSLID},
                     @model = {ex.Sank.MODEL_ID},
             		@date = '{ex.Sank.DATE_ACT.Value.ToString("yyyyMMdd")}'",
                     SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("s_sum2");
+
+
                 decimal? sump, sum_np;
                 if (_re == 0)
                 {
@@ -412,10 +443,39 @@ namespace Yamed.OmsExp.ExpEditors
                 ex.Sank.S_SUM = sum_np;
                 ex.Sank.S_SUM2 = pe2;
                 ex.Sank.USER_ID = SprClass.userId;
+            }
+            else
+            {
+                decimal? sump, sum_np;
+                if (_re == 0)
+                {
+                    if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null ||
+                        (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
+                        sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+                    else
+                        sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+
+                    sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
+                        MidpointRounding.AwayFromZero);
+                }
+                else
+                {
+                    sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+                    var rsum = sump * pe1 / 100;
+                    if (ex.ReSank.S_SUM > rsum)
+                        sum_np = -(ex.ReSank.S_SUM - rsum);
+                    else sum_np = rsum - ex.ReSank.S_SUM;
+                    sluchGridControl.DataController.RefreshData();
+                    ex.Sank.S_SUM = sum_np;
+                    //ex.Sank.S_SUM2 = pe2;
+                    ex.Sank.USER_ID = SprClass.userId;
+                }
+            }
+
         }
 
         private void CalcButtonInfo_OnClick(object sender, RoutedEventArgs e)
-        {
+        {           
             CalcSank((ExpClass)sluchGridControl.SelectedItem);
         }
 
