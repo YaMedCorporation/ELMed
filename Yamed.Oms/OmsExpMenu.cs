@@ -14,9 +14,8 @@ using Yamed.Control;
 using Yamed.OmsExp;
 using Yamed.OmsExp.SqlEditor;
 using Yamed.Server;
-using Elmedicine.Core;
-using Elmedicine.Data;
 using System.Collections;
+using Yamed.Core;
 
 namespace Yamed.Oms
 {
@@ -113,15 +112,13 @@ namespace Yamed.Oms
         }
         private void SankExport_OnClick()
         {
-            ExportToXml(ExportExp(2020, "1,2,3,4,5,6,7,8,9,10,11,12"));
+            ExportToXml(ExportExp(2019, "1,2,3,4,5,6,7,8,9,10,11,12"));
         }
 
         static object ExportExp(int year, string month)
         {
             string tempQuery = String.Format(@"
-
 DROP TABLE SANK_EXP_TT
-
 SELECT sl.LPU CODE_MO, sc.[YEAR], sc.[MONTH], sc.NSCHET, sc.DSCHET, sc.PLAT,
 pa.NPOLIS, sl.USL_OK, OS_SLUCH_REGION,
 sl.ZSL_ID, s.S_CODE, (CASE WHEN s.S_TIP = 3 THEN (SELECT TOP 1 KOD FROM ExpertsDB WHERE id = k.ExpertID) ELSE NULL END)S_EXP_CODE,
@@ -129,13 +126,13 @@ s.S_SUM S_SUM,
 s.S_SUM2 SUM_MULCT,
 s.S_TIP, s.S_TIP2, (CASE WHEN s.S_OSN IS NOT NULL THEN (SELECT TOP 1 Kod FROM F014 WHERE Osn = s.S_OSN) ELSE NULL END) S_OSN, S_OSN S_OSN_TS,
 s.S_COM, s.S_DATE, (CASE WHEN s.S_TIP = 3 THEN k.ZAKL WHEN s.S_TIP = 2 THEN k.ZAKL ELSE NULL END) S_ZAKL, EXP_TYPE S_IST
-into SANK_EXP_TT
+--into SANK_EXP_TT
 FROM D3_ZSL_OMS sl
 JOIN D3_PACIENT_OMS pa ON sl.D3_PID = pa.ID
 JOIN D3_SCHET_OMS sc ON sc.ID = sl.D3_SCID
 JOIN D3_SANK_OMS s ON s.D3_ZSLID = sl.ID --and s.S_TIP = 1
 LEFT JOIN D3_AKT_MEE_TBL k ON k.SANKID = s.ID
-WHERE sc.YEAR in (2019, {0}) AND sc.MONTH in ({1})
+WHERE sc.YEAR in (2018, {0}) AND sc.MONTH in ({1})
 SELECT * FROM SANK_EXP_TT", year, month);
             return Yamed.Server.Reader2List.CustomAnonymousSelect(tempQuery, Yamed.Server.SprClass.LocalConnectionString);
         }
@@ -258,7 +255,7 @@ SELECT * FROM SANK_EXP_TT", year, month);
                 SizeToContent = SizeToContent.WidthAndHeight
             };
             window.ShowDialog();
-            var rlist = Elmedicine.Data.Reader2List.CustomAnonymousSelect($@"
+            var rlist = Reader2List.CustomAnonymousSelect($@"
 select sc.year, sc.month, sc.ID,
 convert(nvarchar, year(sa.S_DATE)) y, 
 case when month(sa.S_DATE) <10 then '0' + convert(nvarchar, month(sa.S_DATE)) else convert(nvarchar, month(sa.S_DATE)) end m,
@@ -280,12 +277,12 @@ order by y, m
             foreach (var r in (IList)rlist)
             {
                 int ver;
-                if ((int)PublicVoids.GetAnonymousValue(r, "year") >= 2019)
+                if ((int)ObjHelper.GetAnonymousValue(r, "year") >= 2019)
                     ver = 31;
-                else if ((int)PublicVoids.GetAnonymousValue(r, "month") > 3 && (int)PublicVoids.GetAnonymousValue(r, "year") == 2018)
+                else if ((int)ObjHelper.GetAnonymousValue(r, "month") > 3 && (int)ObjHelper.GetAnonymousValue(r, "year") == 2018)
                     ver = 30;
                 else ver = 21;
-                XmlStreemMtr3((int)PublicVoids.GetAnonymousValue(r, "ID"), ver, (string)PublicVoids.GetAnonymousValue(r, "y") + (string)PublicVoids.GetAnonymousValue(r, "m") + "01");
+                XmlStreemMtr3((int)ObjHelper.GetAnonymousValue(r, "ID"), ver, (string)ObjHelper.GetAnonymousValue(r, "y") + (string)ObjHelper.GetAnonymousValue(r, "m") + "01");
             }
             DXMessageBox.Show("Выгрузка завершена.");
         }

@@ -55,6 +55,7 @@ namespace Yamed
             connection.ConnectionString = SprClass.LocalConnectionString;
 
             SprClass.Qb = new QueryBuilder {SyntaxProvider = new GenericSyntaxProvider()};
+            
             SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
 
 
@@ -914,7 +915,7 @@ namespace Yamed
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
-                Header = "Реестры",
+                Header = "Реестр счетов",
                 MyControl = new ExpControl(),
                 IsCloseable = "True",
                 TabLocalMenu = new OmsMenu().MenuElements
@@ -922,7 +923,22 @@ namespace Yamed
 
             ((Button)sender).IsEnabled = true;
         }
+        private void OmsExpAktRegistr_OnClick(object sender, RoutedEventArgs e)
+        {
+            Menu.Hide();
+            ((Button)sender).IsEnabled = false;
+            Decorator.IsSplashScreenShown = true;
 
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            {
+                Header = "Реестр экспертиз",
+                MyControl = new ExpControl(),
+                IsCloseable = "True",
+                TabLocalMenu = new OmsMenu().MenuElements
+            });
+
+            ((Button)sender).IsEnabled = true;
+        }
         private void Nsi_OnClick(object sender, RoutedEventArgs e)
         {
             Menu.Hide();

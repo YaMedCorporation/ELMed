@@ -52,3 +52,8 @@ E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache
 E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.csproj.CoreCompileInputs.cache
 E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.dll
 E:\ELMed\Yamed.Core\obj\Debug\Yamed.Core.pdb
+D:\!!!_Code\Yamed\Yamed.Core\bin\Debug\Yamed.Core.dll
+D:\!!!_Code\Yamed\Yamed.Core\bin\Debug\Yamed.Core.pdb
+D:\!!!_Code\Yamed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache
+D:\!!!_Code\Yamed\Yamed.Core\obj\Debug\Yamed.Core.dll
+D:\!!!_Code\Yamed\Yamed.Core\obj\Debug\Yamed.Core.pdb

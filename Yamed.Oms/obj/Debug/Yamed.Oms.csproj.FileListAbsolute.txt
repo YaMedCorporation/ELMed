@@ -614,3 +614,7 @@ E:\ELMed\Yamed.Oms\bin\Debug\Elmedicine.Data.dll
 E:\ELMed\Yamed.Oms\obj\Debug\Period_unload.baml
 E:\ELMed\Yamed.Oms\obj\Debug\Period.baml
 E:\ELMed\Yamed.Oms\obj\Debug\Period.g.cs
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period.baml
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period.g.cs
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period_unload.g.cs
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period_unload.baml
