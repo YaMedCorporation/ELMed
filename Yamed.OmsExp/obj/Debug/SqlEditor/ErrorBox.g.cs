@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using DevExpress.Xpf.DXBinding;
+using DevExpress.Xpf.Bars;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -30,6 +30,10 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using Yamed.Control.Editors;
+using Yamed.OmsExp;
+using Yamed.OmsExp.ExpEditors;
+using Yamed.OmsExp.SqlEditor;
 
 
 namespace Yamed.OmsExp.SqlEditor {
