@@ -5593,3 +5593,4 @@ D:\!!!_Code\Yamed\Yamed.Pattern\bin\Debug\de\DevExpress.Diagram.v19.2.Core.resou
 D:\!!!_Code\Yamed\Yamed.Pattern\bin\Debug\es\DevExpress.Diagram.v19.2.Core.resources.dll
 D:\!!!_Code\Yamed\Yamed.Pattern\bin\Debug\ja\DevExpress.Diagram.v19.2.Core.resources.dll
 D:\!!!_Code\Yamed\Yamed.Pattern\bin\Debug\ru\DevExpress.Diagram.v19.2.Core.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Pattern\bin\Debug\ActiveQueryBuilder.View.dll

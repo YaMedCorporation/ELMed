@@ -4,7 +4,7 @@ using DevExpress.Xpf.Bars;
 using Yamed.Control;
 using Yamed.Server;
 using System.Linq;
-
+using Yamed.Core;
 
 namespace Yamed.Oms
 {
@@ -17,7 +17,6 @@ namespace Yamed.Oms
         {
             InitializeComponent();
 
-            InitializeComponent();
             LpuComboBoxEdit.DataContext = SprClass.LpuList;
             ProfilComboBoxEdit.DataContext = SprClass.profile;
             PCelEdit.DataContext = SprClass.SprPCelList;
@@ -37,25 +36,25 @@ namespace Yamed.Oms
         private void SearchItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             var rc = new SchetRegisterControl();
-            if (TabItem1.IsSelected)
-            {
-                rc.SchetRegisterGrid1.BindDataSearch((string)LpuComboBoxEdit.EditValue, (int?)StartMonthComboBoxEdit.EditValue, (int?)EndMonthComboBoxEdit.EditValue,
-                    (int?)StartYearComboBoxEdit.EditValue, (int?)EndYearComboBoxEdit.EditValue, (int?)ProfilComboBoxEdit.EditValue, (string)DsComboBoxEdit.EditValue,
-                    (string)PCelEdit.EditValue, (int?)UslOkEdit.EditValue, (int?)OsSluchEdit.EditValue, (string)TypeSchetEdit.EditValue);
-            }
+                if (TabItem1.IsSelected)
+                {
+                    rc.SchetRegisterGrid1.BindDataSearch((string)LpuComboBoxEdit.EditValue, (int?)StartMonthComboBoxEdit.EditValue, (int?)EndMonthComboBoxEdit.EditValue,
+                        (int?)StartYearComboBoxEdit.EditValue, (int?)EndYearComboBoxEdit.EditValue, (int?)ProfilComboBoxEdit.EditValue, (string)DsComboBoxEdit.EditValue,
+                        (string)PCelEdit.EditValue, (int?)UslOkEdit.EditValue, (int?)OsSluchEdit.EditValue, (string)TypeSchetEdit.EditValue);
+                }
 
-            if (TabItem2.IsSelected)
-            {
-                rc.SchetRegisterGrid1.BindDataPacient((string)FamBoxEdit.EditValue, (string)ImBoxEdit.EditValue, (string)OtBoxEdit.EditValue, (DateTime?)DrBoxEdit.EditValue, (string)PolisBoxEdit.EditValue);
-            }
+                if (TabItem2.IsSelected)
+                {
+                    rc.SchetRegisterGrid1.BindDataPacient((string)FamBoxEdit.EditValue, (string)ImBoxEdit.EditValue, (string)OtBoxEdit.EditValue, (DateTime?)DrBoxEdit.EditValue, (string)PolisBoxEdit.EditValue);
+                }
 
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
-            {
-                Header = "Реестр счета",
-                MyControl = rc,
-                IsCloseable = "True",
-                //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
-            });
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Реестр счета",
+                    MyControl = rc,
+                    IsCloseable = "True",
+                    //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                });
         }
     }
 }

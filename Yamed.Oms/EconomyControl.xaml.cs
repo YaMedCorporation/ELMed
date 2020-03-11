@@ -40,28 +40,28 @@ namespace Yamed.Oms
             InitializeComponent();
         }
 
-        private void Hosp_OnClick(object sender, RoutedEventArgs e)
-        {
-            //Menu.Hide();
-            //((Button)sender).IsEnabled = false;
-            //Decorator.IsSplashScreenShown = true;
-            var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
+        //private void Hosp_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    //Menu.Hide();
+        //    //((Button)sender).IsEnabled = false;
+        //    //Decorator.IsSplashScreenShown = true;
+        //    var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
 
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
-            {
-                Header = "Реестр Стационар",
-                MyControl = new ReestrControl1(sc),
-                IsCloseable = "True",
-                //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
-            });
+        //    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+        //    {
+        //        Header = "Реестр Стационар",
+        //        MyControl = new ReestrControl1(sc),
+        //        IsCloseable = "True",
+        //        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+        //    });
 
-            //((Button)sender).IsEnabled = true;
-        }
+        //    //((Button)sender).IsEnabled = true;
+        //}
 
         private void Amb_OnClick(object sender, RoutedEventArgs e)
         {
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
-            var rc = new ReestrControl(sc);
+            var rc = new SchetRegisterControl(sc);
             rc.SchetRegisterGrid1.Scids = new List<int> { sc.ID };
             rc.SchetRegisterGrid1.BindDataZsl();
 

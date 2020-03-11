@@ -3932,3 +3932,4 @@ D:\!!!_Code\Yamed\Yamed.Settings\bin\Debug\de\DevExpress.XtraPivotGrid.v19.2.res
 D:\!!!_Code\Yamed\Yamed.Settings\bin\Debug\es\DevExpress.XtraPivotGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Settings\bin\Debug\ja\DevExpress.XtraPivotGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Settings\bin\Debug\ru\DevExpress.XtraPivotGrid.v19.2.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Settings\bin\Debug\ActiveQueryBuilder.View.dll

@@ -81,7 +81,8 @@ where id in (select d3_pid from d3_zsl_oms where id in({ids}))
             if (selectCbOne == 0 & warn != 460000)
             {
                 var ids = ObjHelper.GetIds(DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID")).OfType<int>().ToArray());
-                var copyQuery = $@"IF OBJECT_ID(N'tempdb..#t_pac', N'U') IS NOT NULL 
+                var copyQuery = $@"
+IF OBJECT_ID(N'tempdb..#t_pac', N'U') IS NOT NULL 
 DROP TABLE #t_pac;
 
 IF OBJECT_ID(N'tempdb..#t_zsl', N'U') IS NOT NULL 
@@ -93,11 +94,27 @@ DROP TABLE #t_sl;
 IF OBJECT_ID(N'tempdb..#t_usl', N'U') IS NOT NULL 
 DROP TABLE #t_usl;
 
+IF OBJECT_ID(N'tempdb..#t_naz', N'U') IS NOT NULL 
+DROP TABLE #t_naz;
+
+IF OBJECT_ID(N'tempdb..#t_dss', N'U') IS NOT NULL 
+DROP TABLE #t_dss;
+
+IF OBJECT_ID(N'tempdb..#t_ksg', N'U') IS NOT NULL 
+DROP TABLE #t_ksg;
+
+IF OBJECT_ID(N'tempdb..#t_koeff', N'U') IS NOT NULL 
+DROP TABLE #t_koeff;
+
+IF OBJECT_ID(N'tempdb..#t_crit', N'U') IS NOT NULL 
+DROP TABLE #t_crit;
 
 
 
-declare @cols varchar(max),@cols1 varchar(max), @query varchar(max), @id varchar(max),@cols2 varchar(max),@cols3 varchar(max);
+declare @cols varchar(max),@cols1 varchar(max), @query varchar(max), @id varchar(max),@cols2 varchar(max),@cols3 varchar(max),@cols4 varchar(max),
+@cols5 varchar(max),@cols6 varchar(max),@cols7 varchar(max),@cols8 varchar(max);
 set @id='{ids} '
+
 SELECT  @cols = STUFF
    (
         ( 
@@ -108,12 +125,12 @@ SELECT  @cols = STUFF
                 where name = 'D3_PACIENT_OMS'
             ) 
             and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_PACIENT_OMS')
-			and name!='rn'
+      and name!='rn'
             FOR XML PATH('')
         ), 1, 2, ''
     ) + ']';
 
-	SELECT  @cols1 = STUFF
+  SELECT  @cols1 = STUFF
    (
         ( 
             SELECT  '], [' + name
@@ -123,12 +140,12 @@ SELECT  @cols = STUFF
                 where name = 'D3_ZSL_OMS'
             ) 
             and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_ZSL_OMS')
-			and name!='rn' and name!='rnp'
+      and name!='rn' and name!='rnp'
             FOR XML PATH('')
         ), 1, 2, ''
     ) + ']';
 
-	SELECT  @cols2 = STUFF
+  SELECT  @cols2 = STUFF
    (
         ( 
             SELECT  '], [' + name
@@ -138,12 +155,12 @@ SELECT  @cols = STUFF
                 where name = 'D3_SL_OMS'
             ) 
             and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_SL_OMS')
-			and name!='rn' and name!='rnz'
+      and name!='rn' and name!='rnz'
             FOR XML PATH('')
         ), 1, 2, ''
     ) + ']';
 
-	SELECT  @cols3 = STUFF
+SELECT  @cols3 = STUFF
    (
         ( 
             SELECT  '], [' + name
@@ -153,40 +170,152 @@ SELECT  @cols = STUFF
                 where name = 'D3_USL_OMS'
             ) 
             and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_USL_OMS')
-			and name!='rn' and name!='rns' 
+      and name!='rn' and name!='rns' 
+            FOR XML PATH('')
+        ), 1, 2, ''
+    ) + ']';
+  SELECT  @cols4 = STUFF
+   (
+        ( 
+            SELECT  '], [' + name
+            FROM sys.columns
+            where object_id = (
+                select  object_id from sys.objects
+                where name = 'D3_NAZ_OMS'
+            ) 
+            and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_NAZ_OMS')
+      and name!='rn' and name!='rns' 
+            FOR XML PATH('')
+        ), 1, 2, ''
+    ) + ']';
+  SELECT  @cols5 = STUFF
+   (
+        ( 
+            SELECT  '], [' + name
+            FROM sys.columns
+            where object_id = (
+                select  object_id from sys.objects
+                where name = 'D3_DSS_OMS'
+            ) 
+            and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_DSS_OMS')
+      and name!='rn' and name!='rns' 
+            FOR XML PATH('')
+        ), 1, 2, ''
+    ) + ']';
+  SELECT  @cols6 = STUFF
+   (
+        ( 
+            SELECT  '], [' + name
+            FROM sys.columns
+            where object_id = (
+                select  object_id from sys.objects
+                where name = 'D3_KSG_KPG_OMS'
+            ) 
+            and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_KSG_KPG_OMS')
+      and name!='rn' and name!='rns' 
+            FOR XML PATH('')
+        ), 1, 2, ''
+    ) + ']';  
+  SELECT  @cols7 = STUFF
+   (
+        ( 
+            SELECT  '], [' + name
+            FROM sys.columns
+            where object_id = (
+                select  object_id from sys.objects
+                where name = 'D3_SL_KOEF_OMS'
+            ) 
+            and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_SL_KOEF_OMS')
+      and name!='rn' and name!='rns' 
+            FOR XML PATH('')
+        ), 1, 2, ''
+    ) + ']';
+  SELECT  @cols8 = STUFF
+   (
+        ( 
+            SELECT  '], [' + name
+            FROM sys.columns
+            where object_id = (
+                select  object_id from sys.objects
+                where name = 'D3_CRIT_OMS'
+            ) 
+            and name not in (SELECT  Name  FROM    sys.computed_columns where OBJECT_NAME(object_id)='D3_CRIT_OMS')
+      and name!='rn' and name!='rns' 
             FOR XML PATH('')
         ), 1, 2, ''
     ) + ']';
 
-	declare @cols10 varchar(max);
-	set @cols10=replace(@cols,'[ID],','');
-	declare @cols11 varchar(max);
-	set @cols11=replace(@cols1,'[ID],','');
-	declare @cols12 varchar(max);
-	set @cols12=replace(@cols2,'[ID],','');
-	declare @cols13 varchar(max);
-	set @cols13=replace(@cols3,'[ID],','');
+  declare @cols10 varchar(max);
+  set @cols10=replace(@cols,'[ID],','');
+  declare @cols11 varchar(max);
+  set @cols11=replace(@cols1,'[ID],','');
+  declare @cols12 varchar(max);
+  set @cols12=replace(@cols2,'[ID],','');
+  declare @cols13 varchar(max);
+  set @cols13=replace(@cols3,'[ID],','');
+  declare @cols14 varchar(max);
+  set @cols14=replace(@cols4,'[ID],','');
+  declare @cols15 varchar(max);
+  set @cols15=replace(@cols5,'[ID],','');
+  declare @cols16 varchar(max);
+  set @cols16=replace(@cols6,'[ID],','');
+  declare @cols17 varchar(max);
+  set @cols17=replace(@cols7,'[ID],','');
+  declare @cols18 varchar(max);
+  set @cols18=replace(@cols8,'[ID],','');
+  
 
 SELECT @query = 'select ROW_NUMBER ( ) OVER (order by id ) as RN,' + @cols + 'into #t_pac from D3_PACIENT_OMS where  id in (select d3_pid from d3_zsl_oms where id in ('+@id+')) 
 update #t_pac set ID_PAC=newid(),D3_SCID={_id}
 
 select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rnp,' + @cols1 + 'into #t_zsl from D3_ZSL_OMS where  id in ('+@id+')
 update #t_zsl set #t_zsl.ZSL_ID=NEWID() 
-	  
-	  update #t_zsl  set #t_zsl.rnp=#t_pac.RN from #t_pac where #t_zsl.D3_PID=#t_pac.ID
-	  update #t_zsl set #t_zsl.D3_PGID=#t_pac.ID_PAC,D3_SCID={_id} from #t_pac where #t_zsl.D3_PID=#t_pac.ID
-
+    
+    update #t_zsl  set #t_zsl.rnp=#t_pac.RN from #t_pac where #t_zsl.D3_PID=#t_pac.ID
+    update #t_zsl set #t_zsl.D3_PGID=#t_pac.ID_PAC,D3_SCID={_id} from #t_pac where #t_zsl.D3_PID=#t_pac.ID
 
 select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rnz,' + @cols2 + 'into #t_sl from D3_SL_OMS where D3_ZSLID in (select id from #t_zsl)
 update #t_sl  set #t_sl.rnz=#t_zsl.RN from #t_zsl where #t_sl.D3_zslID=#t_zsl.ID
-	  update #t_sl set #t_sl.D3_ZSLGID=#t_zsl.ZSL_ID from #t_zsl where #t_sl.D3_ZSLID=#t_zsl.ID
-	  update #t_sl set #t_sl.SL_ID=NEWID()
+    update #t_sl set #t_sl.D3_ZSLGID=#t_zsl.ZSL_ID from #t_zsl where #t_sl.D3_ZSLID=#t_zsl.ID
+    update #t_sl set #t_sl.SL_ID=NEWID()
 
 
 select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rns,' + @cols3 + 'into #t_usl from D3_USL_OMS where D3_ZSLID in (select id from #t_zsl)
 
 update #t_usl  set #t_usl.rns=#t_sl.RN from #t_sl where #t_usl.D3_slID=#t_sl.ID
-	  update #t_usl set #t_usl.D3_SLGID=#t_sl.SL_ID from  #t_sl where #t_usl.D3_SLID=#t_sl.ID
+    update #t_usl set #t_usl.D3_SLGID=#t_sl.SL_ID from  #t_sl where #t_usl.D3_SLID=#t_sl.ID
+
+
+select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rns,' + @cols4 + 'into #t_naz from D3_NAZ_OMS where D3_SLID in (select id from #t_sl)
+
+update #t_naz  set #t_naz.rns=#t_sl.RN from #t_sl where #t_naz.D3_slID=#t_sl.ID
+    update #t_naz set #t_naz.D3_SLGID=#t_sl.SL_ID from  #t_sl where #t_naz.D3_SLID=#t_sl.ID
+
+
+select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rns,' + @cols5 + 'into #t_dss from D3_DSS_OMS where D3_SLID in (select id from #t_sl)
+
+update #t_dss  set #t_dss.rns=#t_sl.RN from #t_sl where #t_dss.D3_slID=#t_sl.ID
+    update #t_dss set #t_dss.D3_SLGID=#t_sl.SL_ID from  #t_sl where #t_dss.D3_SLID=#t_sl.ID
+
+
+select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rns,' + @cols6 + 'into #t_ksg from D3_KSG_KPG_OMS where D3_SLID in (select id from #t_sl)
+
+update #t_ksg  set #t_ksg.rns=#t_sl.RN from #t_sl where #t_ksg.D3_slID=#t_sl.ID
+    update #t_ksg set #t_ksg.D3_SLGID=#t_sl.SL_ID from  #t_sl where #t_ksg.D3_SLID=#t_sl.ID
+    update #t_ksg set #t_ksg.KSG_ID=NEWID()
+
+
+select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rns,' + @cols7 + 'into #t_koeff from D3_SL_KOEF_OMS where D3_KSGID in (select id from #t_ksg)
+
+update #t_koeff  set #t_koeff.rns=#t_ksg.RN from #t_ksg where #t_koeff.D3_KSGID=#t_ksg.ID
+    update #t_koeff set #t_koeff.D3_KSGGID=#t_ksg.KSG_ID from  #t_ksg where #t_koeff.D3_KSGID=#t_ksg.ID
+
+
+select ROW_NUMBER ( ) OVER (order by id ) as RN,0 as rns,' + @cols8 + 'into #t_crit from D3_CRIT_OMS where D3_KSGID in (select id from #t_ksg)
+
+update #t_crit  set #t_crit.rns=#t_ksg.RN from #t_ksg where #t_crit.D3_KSGID=#t_ksg.ID
+    update #t_crit set #t_crit.D3_KSGGID=#t_ksg.KSG_ID from  #t_ksg where #t_crit.D3_KSGID=#t_ksg.ID
+
 
 
 
@@ -204,9 +333,30 @@ update D3_SL_OMS set D3_ZSLID= d3_zsl_oms.ID from D3_ZSL_OMS where D3_SL_OMS.D3_
 insert into D3_USL_OMS ('+@cols13+') 
 select '+@cols13+' from #t_usl
 update D3_USL_OMS set D3_ZSLID= d3_sl_oms.D3_ZSLID from D3_SL_OMS where D3_uSL_OMS.D3_SLGID=D3_SL_OMS.SL_ID
-	  update D3_USL_OMS set D3_SLID= d3_sl_oms.ID from D3_SL_OMS where D3_uSL_OMS.D3_SLGID=D3_SL_OMS.SL_ID
-	  update D3_USL_OMS set D3_SLGID= d3_sl_oms.SL_ID from D3_SL_OMS where D3_uSL_OMS.D3_SLGID=D3_SL_OMS.SL_ID
-	  
+    update D3_USL_OMS set D3_SLID= d3_sl_oms.ID from D3_SL_OMS where D3_uSL_OMS.D3_SLGID=D3_SL_OMS.SL_ID
+    update D3_USL_OMS set D3_SLGID= d3_sl_oms.SL_ID from D3_SL_OMS where D3_uSL_OMS.D3_SLGID=D3_SL_OMS.SL_ID
+
+insert into D3_NAZ_OMS ('+@cols14+') 
+select '+@cols14+' from #t_naz
+update D3_NAZ_OMS set D3_SLID= d3_sl_oms.ID from D3_SL_OMS where D3_NAZ_OMS.D3_SLGID=D3_SL_OMS.SL_ID
+
+insert into D3_DSS_OMS ('+@cols15+') 
+select '+@cols15+' from #t_dss
+update D3_DSS_OMS set D3_SLID= d3_sl_oms.ID from D3_SL_OMS where D3_DSS_OMS.D3_SLGID=D3_SL_OMS.SL_ID
+
+insert into D3_KSG_KPG_OMS ('+@cols16+') 
+select '+@cols16+' from #t_ksg
+update D3_KSG_KPG_OMS set D3_SLID= d3_sl_oms.ID from D3_SL_OMS where D3_KSG_KPG_OMS.D3_SLGID=D3_SL_OMS.SL_ID
+
+insert into D3_SL_KOEF_OMS ('+@cols17+') 
+select '+@cols17+' from #t_koeff
+update D3_SL_KOEF_OMS set D3_KSGID= D3_KSG_KPG_OMS.ID from D3_KSG_KPG_OMS where D3_SL_KOEF_OMS.D3_KSGGID=D3_KSG_KPG_OMS.KSG_ID
+
+
+insert into D3_CRIT_OMS ('+@cols18+') 
+select '+@cols18+' from #t_crit
+update D3_CRIT_OMS set D3_KSGID= D3_KSG_KPG_OMS.ID from D3_KSG_KPG_OMS where D3_CRIT_OMS.D3_KSGGID=D3_KSG_KPG_OMS.KSG_ID
+    
 '; 
 EXEC (@query) ;
 ";
@@ -300,7 +450,7 @@ exec p_oms_copy_allzsl @newsc,@schold,1
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             ObservableCollection<string> list = new ObservableCollection<string>();
-            list.Add("1 Копирование (только 3х таблиц)");
+            list.Add("1 Копирование (кроме (онко - C) реестров)");
             list.Add("2 Перенос");
             list.Add("3 Копирование+признак переподачи ");
             list.Add("4 Массовая переподача из файла");

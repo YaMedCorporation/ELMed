@@ -190,7 +190,7 @@
                                         <TextBlock Grid.Column="1" Text="Реестр счетов" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
                                     </Grid>
                                 </Button>
-                                    <Button Click="OmsExpAktRegistr_OnClick" Style="{StaticResource InformButton}" IsEnabled="True" Visibility="Collapsed" Tag="OMS">
+                                    <!--<Button Click="OmsExpAktRegistr_OnClick" Style="{StaticResource InformButton}" IsEnabled="True" Visibility="Collapsed" Tag="OMS">
                                         <Grid HorizontalAlignment="Left">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="75"></ColumnDefinition>
@@ -199,7 +199,7 @@
                                         <Image Source="/Yamed.Icons;component/Icons/1481287271_Medical_Report-2.png" Width="48" Height="48"></Image>
                                             <TextBlock Grid.Column="1" Text="Реестр экспертиз" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
                                         </Grid>
-                                    </Button>
+                                    </Button>-->
                                 <!--<Button Click="Stat_OnClick" Style="{StaticResource InformButton}" IsEnabled="True">
                                     <Grid HorizontalAlignment="Left">
                                         <Grid.ColumnDefinitions>

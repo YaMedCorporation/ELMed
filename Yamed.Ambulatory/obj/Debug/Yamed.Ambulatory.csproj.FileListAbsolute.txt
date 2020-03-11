@@ -1958,3 +1958,4 @@ D:\!!!_Code\Yamed\Yamed.Ambulatory\bin\Debug\de\DevExpress.Xpf.Docking.v19.2.res
 D:\!!!_Code\Yamed\Yamed.Ambulatory\bin\Debug\es\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Ambulatory\bin\Debug\ja\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Ambulatory\bin\Debug\ru\DevExpress.Xpf.Docking.v19.2.resources.dll
+E:\ELMed\Yamed.Ambulatory\bin\Debug\ICSharpCode.AvalonEdit.xml

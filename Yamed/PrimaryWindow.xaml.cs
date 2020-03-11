@@ -923,22 +923,22 @@ namespace Yamed
 
             ((Button)sender).IsEnabled = true;
         }
-        private void OmsExpAktRegistr_OnClick(object sender, RoutedEventArgs e)
-        {
-            Menu.Hide();
-            ((Button)sender).IsEnabled = false;
-            Decorator.IsSplashScreenShown = true;
+        //private void OmsExpAktRegistr_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    Menu.Hide();
+        //    ((Button)sender).IsEnabled = false;
+        //    Decorator.IsSplashScreenShown = true;
 
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
-            {
-                Header = "Реестр экспертиз",
-                MyControl = new ExpControl(),
-                IsCloseable = "True",
-                TabLocalMenu = new OmsMenu().MenuElements
-            });
+        //    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+        //    {
+        //        Header = "Реестр экспертиз",
+        //        MyControl = new ExpControl(),
+        //        IsCloseable = "True",
+        //        TabLocalMenu = new OmsMenu().MenuElements
+        //    });
 
-            ((Button)sender).IsEnabled = true;
-        }
+        //    ((Button)sender).IsEnabled = true;
+        //}
         private void Nsi_OnClick(object sender, RoutedEventArgs e)
         {
             Menu.Hide();
@@ -1017,7 +1017,14 @@ namespace Yamed
 //=======
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater.exe"));
+            if (SprClass.Region == "37")
+            {
+                System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Updater Imed.exe"));
+            }
+            else
+            {
+                System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater.exe"));
+            }
         }
 //>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15
     }

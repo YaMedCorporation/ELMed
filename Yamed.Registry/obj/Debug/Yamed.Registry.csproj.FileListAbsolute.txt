@@ -5531,3 +5531,4 @@ D:\!!!_Code\Yamed\Yamed.Registry\bin\Debug\de\DevExpress.Diagram.v19.2.Core.reso
 D:\!!!_Code\Yamed\Yamed.Registry\bin\Debug\es\DevExpress.Diagram.v19.2.Core.resources.dll
 D:\!!!_Code\Yamed\Yamed.Registry\bin\Debug\ja\DevExpress.Diagram.v19.2.Core.resources.dll
 D:\!!!_Code\Yamed\Yamed.Registry\bin\Debug\ru\DevExpress.Diagram.v19.2.Core.resources.dll
+E:\ELMed\Yamed.Registry\bin\Debug\ICSharpCode.AvalonEdit.xml

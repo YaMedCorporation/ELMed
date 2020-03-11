@@ -144,17 +144,7 @@ namespace Yamed.Emr
                 LekprDelItem.IsEnabled = false;
                 ConsAddItem.IsEnabled = false;
                 ConsDelItem.IsEnabled = false;
-            }
-            if (SprClass.Region != "37")
-            {
-                UslGridControl.Columns.Remove(UslCodeUslColumnIv);
-                UslGridControl.Columns.Remove(KODSPColumn);
-            }
-            if (SprClass.Region == "37")
-            {
-                UslGridControl.Columns.Remove(UslCodeUslColumn);
-            }
-            
+            }            
         }
 
         public void BindPacient(int pid)
@@ -646,21 +636,8 @@ namespace Yamed.Emr
         public DateTime? dvmp;
         public int? usl_ok;
         public string fap_lpu;
-        public string zsl_lpu;
         void GetSpr()
         {
-
-            // для тестирования заполнения полей Иваново, Андрей insidious
-
-
-            Socstatus.DataContext = SprClass.rg001; //заполнение поля Socstatus для Иваново
-            Povodobr.DataContext = SprClass.rg003; //заполнение поля Povod obr для Иваново
-            ProfilkEditreg.DataContext = SprClass.rg004; //заполнение поля profil_reg для Иваново
-            Vidviz.DataContext = SprClass.SprVizov; //заполнение поля vid_viz для Иваново
-            Vidbrig.DataContext = SprClass.SprBrigad; //заполнение поля vid_brig для Иваново
-            Grafdn.DataContext = SprClass.SprGrafdn; // заполнение поля graf_dn для Иваново
-
-
             typeUdlBox.DataContext = SprClass.passport;
             //smoOkatoBox.DataContext = SprClass.smoOkato;
             okatoTerBox.DataContext = SprClass.smoOkato;
@@ -723,13 +700,7 @@ namespace Yamed.Emr
             UslDoctorColumnEdit.DataContext = SprClass.MedicalEmployeeList;
             UslDsColumnEdit.DataContext = SprClass.mkbSearching;
             UslVidVmeColumnEdit.DataContext = SprClass.SprUsl804;
-            if (SprClass.Region != "37")
-            {
-                UslCodeUslColumn.DataContext = SprClass.SprUslCode;
-                
-            }
-            
-
+            UslCodeUslColumn.DataContext = SprClass.SprUslCode;
             UslPOtkColumnEdit.DataContext = SprClass.SprBit;
             UslNplEdit.DataContext = SprClass.SprNpl;
 
@@ -786,27 +757,20 @@ namespace Yamed.Emr
             PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
-            
-           
             NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
-
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
             HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
             fap_lpu = _slList[0].LPU_1;
             if ((fap_lpu ?? "3").Length == 8)
             {
-                fap.IsChecked = true;             
+                fap.IsChecked = true;
             }
             else
             {
                 fap.IsChecked = false;
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
             }
-            zsl_lpu = _zsl.LPU == null ? "370001" : _zsl.LPU;
-            NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
-            KODSPColumn.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
-            UslCodeUslColumnIv.DataContext = Reader2List.CustomAnonymousSelect($@"Select KOD_LPU,convert(nvarchar,KODUSL) as KODUSL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
@@ -1618,7 +1582,6 @@ namespace Yamed.Emr
             ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD = _slLock.POVOD;
             ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER = _slLock.P_PER;
             ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K = _slLock.PROFIL_K;
-            ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG = _slLock.PROFIL_REG;
         }
 
         void ZSlEditLock()
@@ -1663,11 +1626,9 @@ namespace Yamed.Emr
             _slLock.DN = DnTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DN : null;
             _slLock.REAB = ReabnTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).REAB : null;
             _slLock.DS_ONK = DsOnkTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS_ONK : null;
-            _slLock.DS1_PR = Ds1PrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS1_PR : null;
-            _slLock.POVOD = povodobrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD : null;
+            _slLock.DS1_PR = Ds1PrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS1_PR : null;      
             _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
             _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
-            _slLock.PROFIL_REG = ProfKrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG : null;
 
             if (fapTb.IsChecked == true && fap.IsChecked == true)
             {
@@ -2390,8 +2351,8 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             }
             else if (os == 11)
             {
-                var mm = Math.Floor((_zsl.DATE_Z_2 - _pacient.DR).Value.Days / 365.25 * 12);
-                var mg = Math.Floor((_zsl.DATE_Z_2 - _pacient.DR).Value.Days / 365.25);
+                var mm = Math.Floor((_zsl.DATE_Z_1 - _pacient.DR).Value.Days / 365.25 * 12);
+                var mg = Math.Floor((_zsl.DATE_Z_1 - _pacient.DR).Value.Days / 365.25);
                 var ms = "";
                 if (mg == 0)
                 {
@@ -2424,14 +2385,14 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 }
                 else
                 {
-                    mg = (double)(_zsl.DATE_Z_2?.Year - _pacient.DR?.Year);
+                    mg = (double)(_zsl.DATE_Z_1?.Year - _pacient.DR?.Year);
                     s = "00";
                     if (mg > 9)
                     {
                         sg = "";
                     }
                 }
-                v = "G"+sg + mg + "." + "M" + s + ms;
+                v = "G" + sg + mg + "." + "M" + s + ms;
 
             }
             else
@@ -2567,6 +2528,8 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
             } 
         }
+
+
     }
 
     public class RoleVisibility : IValueConverter

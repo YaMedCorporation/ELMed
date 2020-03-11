@@ -4188,3 +4188,7 @@ D:\!!!_Code\Yamed\Yamed.Report\bin\Debug\de\DevExpress.XtraPivotGrid.v19.2.resou
 D:\!!!_Code\Yamed\Yamed.Report\bin\Debug\es\DevExpress.XtraPivotGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Report\bin\Debug\ja\DevExpress.XtraPivotGrid.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Report\bin\Debug\ru\DevExpress.XtraPivotGrid.v19.2.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Report\bin\Debug\FastReport.Bars.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Report\bin\Debug\FastReport.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Report\bin\Debug\FastReport.Editor.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Report\bin\Debug\ActiveQueryBuilder.View.dll

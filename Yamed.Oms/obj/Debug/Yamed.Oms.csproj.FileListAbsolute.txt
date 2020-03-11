@@ -609,8 +609,6 @@ E:\ELMed\Yamed.Oms\obj\Debug\Yamed.Oms.csproj.CopyComplete
 E:\ELMed\Yamed.Oms\obj\Debug\Yamed.Oms.dll
 E:\ELMed\Yamed.Oms\obj\Debug\Yamed.Oms.pdb
 E:\ELMed\Yamed.Oms\obj\Debug\Period_unload.g.cs
-E:\ELMed\Yamed.Oms\bin\Debug\Elmedicine.Core.dll
-E:\ELMed\Yamed.Oms\bin\Debug\Elmedicine.Data.dll
 E:\ELMed\Yamed.Oms\obj\Debug\Period_unload.baml
 E:\ELMed\Yamed.Oms\obj\Debug\Period.baml
 E:\ELMed\Yamed.Oms\obj\Debug\Period.g.cs
@@ -618,3 +616,6 @@ C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period.baml
 C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period_unload.g.cs
 C:\Users\WILD\Desktop\git_exp\Yamed.Oms\obj\Debug\Period_unload.baml
+C:\Users\WILD\Desktop\git_exp\Yamed.Oms\bin\Debug\GalaSoft.MvvmLight.WPF4.dll
+E:\ELMed\Yamed.Oms\bin\Debug\GalaSoft.MvvmLight.WPF4.dll
+E:\ELMed\Yamed.Oms\bin\Debug\ICSharpCode.AvalonEdit.xml

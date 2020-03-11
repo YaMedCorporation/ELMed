@@ -25,6 +25,7 @@ namespace Yamed.Emr
     public partial class UslUserTempl : UserControl
     {
         private SluchTemplateD31 _sluchTemplateD31;
+        private SluchTemplateD31Ivanovo _sluchTemplateD31Iv;
         public UslUserTempl(SluchTemplateD31 sluchTemplateD31)
         {
             InitializeComponent();
@@ -41,36 +42,83 @@ namespace Yamed.Emr
 
 
         }
+        public UslUserTempl(SluchTemplateD31Ivanovo sluchTemplateD31)
+        {
+            InitializeComponent();
 
+            _sluchTemplateD31Iv = sluchTemplateD31;
+
+            Task.Factory.StartNew(() =>
+            {
+                return Reader2List.GetAnonymousTable("Yamed_Spr_UslCategory", SprClass.LocalConnectionString);
+            }).ContinueWith(x =>
+            {
+                UslCategoryEdit.DataContext = x.Result;
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+
+
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (_sluchTemplateD31._uslList == null)
+            if (SprClass.Region != "37")
             {
-                _sluchTemplateD31.UslGrid.DataContext = _sluchTemplateD31._uslList = new List<D3_USL_OMS>();
-            }
-
-            var lpu = _sluchTemplateD31._zsl.LPU;
-            var slgid = ((D3_SL_OMS) _sluchTemplateD31.SlGridControl.SelectedItem).SL_ID;
-
-            var ulist = UslUserTemplEdit.SelectedItems;
-            foreach (DynamicBaseClass usl in ulist)
-            {
-                _sluchTemplateD31._uslList.Add(new D3_USL_OMS
+                if (_sluchTemplateD31._uslList == null)
                 {
-                    COMENTU = (string)usl.GetValue("Name"),
-                    CODE_USL = (string)usl.GetValue("Code"),
-                    VID_VME = (string)usl.GetValue("VM_Code"),
-                    KOL_USL = (decimal?)usl.GetValue("Kol"),
-                    TARIF = (decimal?)usl.GetValue("Tarif"),
-                    PROFIL = (int?)usl.GetValue("Profil"),
-                    DET = (int?)usl.GetValue("Det"),
-                    PRVS = (int?)usl.GetValue("Spec"),
-                    LPU = lpu,
-                    D3_SLGID = slgid
-                });
-            }
+                    _sluchTemplateD31.UslGrid.DataContext = _sluchTemplateD31._uslList = new List<D3_USL_OMS>();
+                }
 
-            ((DXWindow) this.Parent).Close();
+                var lpu = _sluchTemplateD31._zsl.LPU;
+                var slgid = ((D3_SL_OMS)_sluchTemplateD31.SlGridControl.SelectedItem).SL_ID;
+
+                var ulist = UslUserTemplEdit.SelectedItems;
+                foreach (DynamicBaseClass usl in ulist)
+                {
+                    _sluchTemplateD31._uslList.Add(new D3_USL_OMS
+                    {
+                        COMENTU = (string)usl.GetValue("Name"),
+                        CODE_USL = (string)usl.GetValue("Code"),
+                        VID_VME = (string)usl.GetValue("VM_Code"),
+                        KOL_USL = (decimal?)usl.GetValue("Kol"),
+                        TARIF = (decimal?)usl.GetValue("Tarif"),
+                        PROFIL = (int?)usl.GetValue("Profil"),
+                        DET = (int?)usl.GetValue("Det"),
+                        PRVS = (int?)usl.GetValue("Spec"),
+                        LPU = lpu,
+                        D3_SLGID = slgid
+                    });
+                }
+            ((DXWindow)this.Parent).Close();
+            }
+            else if (SprClass.Region == "37")
+            {
+                if (_sluchTemplateD31Iv._uslList == null)
+                {
+                    _sluchTemplateD31Iv.UslGrid.DataContext = _sluchTemplateD31Iv._uslList = new List<D3_USL_OMS>();
+                }
+
+                var lpu = _sluchTemplateD31Iv._zsl.LPU;
+                var slgid = ((D3_SL_OMS)_sluchTemplateD31Iv.SlGridControl.SelectedItem).SL_ID;
+
+                var ulist = UslUserTemplEdit.SelectedItems;
+                foreach (DynamicBaseClass usl in ulist)
+                {
+                    _sluchTemplateD31Iv._uslList.Add(new D3_USL_OMS
+                    {
+                        COMENTU = (string)usl.GetValue("Name"),
+                        CODE_USL = (string)usl.GetValue("Code"),
+                        VID_VME = (string)usl.GetValue("VM_Code"),
+                        KOL_USL = (decimal?)usl.GetValue("Kol"),
+                        TARIF = (decimal?)usl.GetValue("Tarif"),
+                        PROFIL = (int?)usl.GetValue("Profil"),
+                        DET = (int?)usl.GetValue("Det"),
+                        PRVS = (int?)usl.GetValue("Spec"),
+                        LPU = lpu,
+                        D3_SLGID = slgid
+                    });
+                }
+
+            ((DXWindow)this.Parent).Close();
+            }
         }
 
         private void UslCategoryEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)

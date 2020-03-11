@@ -428,3 +428,6 @@ D:\!!!_Code\Yamed\Yamed.Emr\bin\Debug\de\DevExpress.Xpf.Docking.v19.2.resources.
 D:\!!!_Code\Yamed\Yamed.Emr\bin\Debug\es\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Emr\bin\Debug\ja\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Emr\bin\Debug\ru\DevExpress.Xpf.Docking.v19.2.resources.dll
+E:\ELMed\Yamed.Emr\bin\Debug\ICSharpCode.AvalonEdit.xml
+E:\ELMed\Yamed.Emr\obj\Debug\SluchTemplateD31Ivanovo.g.cs
+E:\ELMed\Yamed.Emr\obj\Debug\SluchTemplateD31Ivanovo.baml

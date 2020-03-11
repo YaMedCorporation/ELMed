@@ -48,6 +48,21 @@ namespace Yamed.Server
             }
             return objList;
         }
+        public static object SelectScalar(string selectCmd, string connectionString)
+        {
+            object objList = new object();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand(selectCmd, connection))
+                {
+                    command.CommandTimeout = 0;
+                    connection.Open();
+                    objList = command.ExecuteScalar();
+                    connection.Close();
+                }
+            }
+            return objList;
+        }
         public static object CustomAnonymousSelect(string selectCmd, string connectionString)
         {
             object objList = new object();

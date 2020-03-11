@@ -1836,3 +1836,4 @@ D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v19.2.resou
 D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v19.2.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll

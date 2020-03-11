@@ -116,8 +116,8 @@ namespace Yamed.Oms
             ReabEdit.DataContext = SprClass.SprBit;
             DsOnkEdit.DataContext = SprClass.SprBit;
 
-            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
-                (forLPU).Visibility = Visibility.Visible;
+            //if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            //    (forLPU).Visibility = Visibility.Visible;
 
             _ElmedDataClassesDataContext = new YamedDataClassesDataContext()
             {
@@ -1021,7 +1021,10 @@ namespace Yamed.Oms
 
         public void BindDataSearch(string lpu, int? m1, int? m2, int? y1, int? y2,
             int? profil, string ds, string pcel, int? uslOk, int? osSl, string st)
-        {
+        {           
+            var id1 = Reader2List.SelectScalar($@"select isnull(min(id),1) from d3_schet_oms where month = {m1 ?? 1} and year={y1 ?? 2099}", SprClass.LocalConnectionString);
+            var id2 = Reader2List.SelectScalar($@"select isnull(max(id),100000) from d3_schet_oms where month = {m2 ?? 12} and year={y2 ?? 2099}", SprClass.LocalConnectionString);
+
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;
                 _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
@@ -1029,7 +1032,7 @@ namespace Yamed.Oms
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              where ((sc.MONTH >= m1 && sc.MONTH <= m2) || m1 == null || m2 == null) && ((sc.YEAR >= y1 && sc.YEAR <= y2) || y1 == null || y2 == null)
+                              where (sc.ID >= (int?)id1 && sc.ID <= (int?)id2)  /*((sc.MONTH >= m1_ && sc.MONTH <= m2_) || m1_ == null || m2_ == null) && ((sc.YEAR >= y1_ && sc.YEAR <= y2_) || y1_ == null || y2_ == null)*/
                               && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
                               && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl == null) && (sc.SchetType == st || st == null)
                               select new

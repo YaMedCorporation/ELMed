@@ -67,7 +67,7 @@ namespace Yamed.OmsExp.ExpEditors
                         if (SankSumBox.IsEnabled == true)
                         {
                             _sank.S_COM = _sank.S_ZAKL;
-                            _sank.S_SUM = (decimal)SankSumBox.EditValue;
+                            _sank.S_SUM = (decimal?)SankSumBox.EditValue;
                             _sank.ID = Reader2List.ObjectInsertCommand("D3_SANK_OMS", _sank, "ID",
                                 SprClass.LocalConnectionString);
                         }
@@ -86,7 +86,7 @@ namespace Yamed.OmsExp.ExpEditors
                             if (SankSumBox.IsEnabled == true)
                         {
                             _sank.S_COM = _sank.S_ZAKL;
-                            _sank.S_SUM = (decimal)SankSumBox.EditValue;
+                            _sank.S_SUM = (decimal?)SankSumBox.EditValue;
                             var upd = Reader2List.CustomUpdateCommand("D3_SANK_OMS", _sank, "ID");
                             Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                         }
@@ -115,6 +115,7 @@ EXEC p_oms_calc_schet {_sank.D3_SCID}
             {
                 Task.Factory.StartNew(() =>
                 {
+                   
                     List<int> zslid = new List<int>();
                     foreach (var row in DxHelper.LoadedRows)
                     {
@@ -123,15 +124,8 @@ EXEC p_oms_calc_schet {_sank.D3_SCID}
                             var sank = ObjHelper.ClassConverter<D3_SANK_OMS>(_sank);
                             sank.S_CODE = Guid.NewGuid().ToString();
                             //sank.S_DATE = SprClass.WorkDate;
-                            if (SankSumBox.IsEnabled == true)
-                            {
-                                sank.S_SUM = (decimal)SankSumBox.EditValue;
-                            }
-                            else
-                            {
-                                sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(row, "SUMV");
-                            }
-                            
+
+                            sank.S_SUM = (decimal?)SankSumBox.EditValue == null ? (decimal)ObjHelper.GetAnonymousValue(row, "SUMV") : (decimal?)SankSumBox.EditValue;
                             sank.D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID");
                             sank.D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID");
                             sank.S_TIP = 1;
@@ -147,6 +141,7 @@ EXEC p_oms_calc_schet {sank.D3_SCID}
                             zslid.Add(sank.D3_ZSLID);
                         }
                     }
+
                 }).ContinueWith(x =>
                 {
                     (this.Parent as DXWindow)?.Close();

@@ -229,3 +229,4 @@ E:\ELMed\Update\obj\Debug\Update.csproj.CoreCompileInputs.cache
 E:\ELMed\Update\obj\Debug\Update.csproj.CopyComplete
 E:\ELMed\Update\obj\Debug\Yamed Update.exe
 E:\ELMed\Update\obj\Debug\Yamed Update.pdb
+C:\Users\WILD\Desktop\git_exp\Update\bin\Debug\ICSharpCode.SharpZipLib.dll

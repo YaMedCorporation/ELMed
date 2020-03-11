@@ -214,7 +214,6 @@ C:\Users\WILD\Desktop\040919\MaterialMenu\obj\Debug\MaterialMenu.pdb
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\bin\Debug\MaterialMenu.dll.config
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\bin\Debug\MaterialMenu.dll
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\bin\Debug\MaterialMenu.pdb
-C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MenuButton.g.cs
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\SideMenu.g.cs
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -242,7 +241,6 @@ E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csproj.CoreCompileInputs.cache
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.dll
 E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.pdb
-E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\MenuButton.baml
 C:\Users\WILD\Desktop\git_exp\MaterialMenu\obj\Debug\SideMenu.baml
 D:\!!!_Code\Yamed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
@@ -261,3 +259,4 @@ D:\!!!_Code\Yamed\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.resou
 D:\!!!_Code\Yamed\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
 D:\!!!_Code\Yamed\MaterialMenu\obj\Debug\MaterialMenu.dll
 D:\!!!_Code\Yamed\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache

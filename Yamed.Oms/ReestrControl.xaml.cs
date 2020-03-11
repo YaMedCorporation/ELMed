@@ -63,18 +63,34 @@ namespace Yamed.Oms
             var tab = SchetRegisterGrid1;
             //var sl = Reader2List.CustomSelect<SLUCH>($"Select * From D3_ZSL_OMS Where ID={ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID")}",
             //        SprClass.LocalConnectionString).Single();
-
-            var id = tab.GetSelectedRowId();
-            var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
-            slt.BindSluch(id, _sc);
-
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            if (SprClass.Region != "37")
             {
-                Header = "Поликлиника",
-                MyControl = slt,
-                IsCloseable = "True",
-                //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
-            });
+                var id = tab.GetSelectedRowId();
+                var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
+                slt.BindSluch(id, _sc);
+
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Поликлиника",
+                    MyControl = slt,
+                    IsCloseable = "True",
+                    //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                });
+            }
+            else if (SprClass.Region == "37")
+            {
+                var id = tab.GetSelectedRowId();
+                var slt = new SluchTemplateD31Ivanovo(SchetRegisterGrid1.gridControl1);
+                slt.BindSluch(id, _sc);
+
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Поликлиника",
+                    MyControl = slt,
+                    IsCloseable = "True",
+                    //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                });
+            }
         }
 
         private void Zsl_OnClick(object sender, RoutedEventArgs e)
@@ -436,14 +452,37 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
 
         private void ZslAdd31_OnClick(object sender, RoutedEventArgs e)
         {
-            var zslTempl = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
-            zslTempl.BindEmptySluch2(_sc);
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            if (SprClass.Region != "37")
             {
-                Header = "Случай поликлиники",
-                MyControl = zslTempl,
-                IsCloseable = "True"
-            });
+                var zslTempl = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
+                zslTempl.BindEmptySluch2(_sc);
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Случай поликлиники",
+                    MyControl = zslTempl,
+                    IsCloseable = "True"
+                });
+            }
+            else if (SprClass.Region == "37")
+            {
+                var zslTempl = new SluchTemplateD31Ivanovo(SchetRegisterGrid1.gridControl1);
+                zslTempl.BindEmptySluch2(_sc);
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Случай поликлиники",
+                    MyControl = zslTempl,
+                    IsCloseable = "True"
+                });
+            }
+        }
+
+        private void ExcelButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel File (*.xlsx)|*.xlsx";
+
+            if (saveFileDialog.ShowDialog() == true)
+                SchetRegisterGrid1.gridControl1.View.ExportToXlsx(saveFileDialog.FileName);
         }
     }
 }

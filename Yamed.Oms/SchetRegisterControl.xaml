@@ -231,22 +231,47 @@
                                            ToolTip="Вид отображения записей счета" Content="Вид счета" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/b505320b084d91f06e18509d1c95860d.png" >
 
-                    <dxb:BarCheckItem Content="Только иногородние" GroupIndex="0" CheckedChanged="MtrCheckItem_CheckedChanged"/>
+                    <dxb:BarCheckItem Tag="inogorodnie" Content="Только иногородние" AllowUncheckInGroup="True" GroupIndex="0" CheckedChanged="MtrCheckItem_CheckedChanged"/>
                     <dxb:BarItemSeparator/>
                     <dxb:BarCheckItem Tag="ZSL" Content="Зак. случаи" GroupIndex="1" IsChecked="True" CheckedChanged="ViewCheckItem_CheckedChanged"/>
                     <dxb:BarCheckItem Tag="SL" Content="Случаи" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                     <dxb:BarCheckItem Tag="USL" Content="Только услуги" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
-                    <dxb:BarCheckItem Tag="SANK" Content="Только санкции" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
+                    <dxb:BarCheckItem Tag="SANK" x:Name="sank" Content="Только санкции" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                 </dxb:BarSubItem>
-
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Создать случай" Content="Создать" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/Add_black-512.png"
+                                            x:Name="add_sl" ItemClick="Add_sl_ItemClick"/>
+                <dxb:BarItemSeparator/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Редактор карты пациента" Content="Редактор" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/1481287340_Medical_Book.png"
-                                           ItemClick="Zsl31Edit_OnClick" />
+                                           ItemClick="Zsl31Edit_OnClick" x:Name="zsledit"/>
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Удалить случай" Content="Удалить" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/delete-512.png"
+                                           x:Name="sl_del" ItemClick="Sl_del_ItemClick"/>
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Объединить в обращения" Content="Объединить&#10;в обращения" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/Leader-512.png"
+                                           x:Name="compilezsl" ItemClick="Compilezsl_ItemClick"/>
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="ФЛК/ОСП" Content="ФЛК/&#10;ОСП" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/cloud__folder__download__upload-256.png"
+                                           x:Name="flk_osp" ItemClick="Flk_osp_ItemClick" />
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Перенос" Content="Перенос" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/527-512.png"
+                                           x:Name="perenos" ItemClick="Perenos_ItemClick"  />
                 <dxb:BarItemSeparator/>
                 <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Запросы первичной документации" Content="Запросы ПД" GlyphAlignment="Left" AllowGlyphTheming="True"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" >
+                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" x:Name="zapPD">
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Добавить запрос ПД" Content="Добавить" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                            ItemClick="Req_OnClick" GlyphSize="Large" />
@@ -256,7 +281,7 @@
                 </dxb:BarSubItem>
                 <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Экспертизы (МЭК, МЭЭ, ЭКМП)" Content="Экспертизы" GlyphAlignment="Left" AllowGlyphTheming="True"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png">
+                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" x:Name="expertise">
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Создать МЭК" Content="МЭК" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                            ItemClick="AddMek_OnClick" GlyphSize="Large"/>
@@ -272,7 +297,7 @@
                 </dxb:BarSubItem>
                 <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Повторные экспертизы (МЭК, МЭЭ, ЭКМП)" Content="Реэкспертизы" GlyphAlignment="Left" AllowGlyphTheming="True"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png">
+                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" x:Name="reexpertise">
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Создать повторный МЭК" Content="Повторный МЭК" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                            ItemClick="AddRMek_OnClick" GlyphSize="Large"/>
@@ -300,7 +325,7 @@
                                            ToolTip="Экспорт" Content="Экспорт" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"
                                            LargeGlyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png" ItemClick="ExcelButtonBase_OnClick"/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
-                                           ToolTip="Печатные формы" Content="Документы" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"
+                                           ToolTip="Печатные формы" Content="Документы" GlyphAlignment="Left" x:Name="docs" AllowGlyphTheming="True" Alignment="Far"
                                            LargeGlyph="/Yamed.Icons;component/Icons/Copy_Printer-256.png" ItemClick="ButtonBase_OnClick"/>
 
                 <!--<Button Style="{StaticResource InformButton}" Click="MtrExport_OnClick">

@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\!!!_Code\Yamed\Yamed.Registry\obj\Debug\
+E:\ELMed\Yamed.Registry\obj\Debug\
 Yamed.Registry
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 10516491175
 159977419
 22512047244
-59421082813
+571054140894
 PacientReserveControl.xaml;PatientRegistration.xaml;ScheduleControl.xaml;ScheduleGen.xaml;ScheduleModelControl.xaml;ScheduleModelEditControl.xaml;Views\BookingItem.xaml;Views\BookingView.xaml;Views\HourBookingView.xaml;Views\ScheduleView.xaml;
 
 False

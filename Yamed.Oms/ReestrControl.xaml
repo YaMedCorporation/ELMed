@@ -162,6 +162,12 @@
                         <TextBlock Text="Перенос" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
                     </StackPanel>
                 </Button>
+                <Button Style="{StaticResource InformButton}" Click="ExcelButtonBase_OnClick" Margin="10,2,2,2">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png" Width="38" Height="38"></Image>
+                        <TextBlock Text="Экспорт" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>
+                    </StackPanel>
+                </Button>
                 <Button Style="{StaticResource InformButton}" Click="TestAshurcov" Margin="10,2,2,2">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="Тест" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"></TextBlock>

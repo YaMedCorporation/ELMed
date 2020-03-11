@@ -34,8 +34,7 @@ namespace Yamed.Control
         {
             bool isAsyncLoader = false;
             var handles = gridControl.GetSelectedRowHandles();
-            if (handles == null || !handles.Any()) return null;
-
+            if (handles == null || !handles.Any()) return null;    
             handles = handles.Where(x => x >= 0).Select(x => x).ToArray();
             var count = handles.Count();
             object[] obj = new object[count];

@@ -1787,3 +1787,4 @@ D:\!!!_Code\Yamed\Yamed.Control\bin\Debug\de\DevExpress.Xpf.Docking.v19.2.resour
 D:\!!!_Code\Yamed\Yamed.Control\bin\Debug\es\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Control\bin\Debug\ja\DevExpress.Xpf.Docking.v19.2.resources.dll
 D:\!!!_Code\Yamed\Yamed.Control\bin\Debug\ru\DevExpress.Xpf.Docking.v19.2.resources.dll
+C:\Users\WILD\Desktop\git_exp\Yamed.Control\bin\Debug\ActiveQueryBuilder.View.dll
