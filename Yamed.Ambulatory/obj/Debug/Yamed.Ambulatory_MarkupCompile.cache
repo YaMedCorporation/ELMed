@@ -4,7 +4,7 @@
 library
 C#
 .cs
-E:\ELMed\Yamed.Ambulatory\obj\Debug\
+D:\Elmedicine\ELMed\Yamed.Ambulatory\obj\Debug\
 Yamed.Ambulatory
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 6-1311412578
 
-71006877359
-33-275840846
+81479511637
+33-1142315559
 ReferralControl.xaml;SluchControl.xaml;UserControl1.xaml;ViewControl.xaml;WorkSpaceControl.xaml;WorkSpaceTile.xaml;
 
-False
+True
 

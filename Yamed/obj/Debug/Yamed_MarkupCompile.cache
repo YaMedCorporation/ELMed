@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\ELMed\Yamed\obj\Debug\
+D:\Elmedicine\ELMed\Yamed\obj\Debug\
 Yamed
 none
 false
 DEBUG;TRACE
-E:\ELMed\Yamed\App.xaml
+D:\Elmedicine\ELMed\Yamed\App.xaml
 3768519665
 
-7-1815985299
-91-1038963230
+8-1343351021
+91-257787967
 DesktopControl.xaml;PasswordWindow.xaml;PrimaryWindow.xaml;
 splashscreen1.png
-False
+True
 
