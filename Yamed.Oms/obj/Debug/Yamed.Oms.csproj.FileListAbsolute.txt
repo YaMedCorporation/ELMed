@@ -643,3 +643,5 @@ D:\!!!_Code\ELMed-ELMed\Yamed.Oms\obj\Debug\Yamed.Oms_MarkupCompile.cache
 D:\!!!_Code\ELMed-ELMed\Yamed.Oms\obj\Debug\Yamed.Oms_MarkupCompile.lref
 D:\!!!_Code\ELMed-ELMed\Yamed.Oms\obj\Debug\Yamed.Oms.dll
 D:\!!!_Code\ELMed-ELMed\Yamed.Oms\obj\Debug\Yamed.Oms.pdb
+E:\ELMed\Yamed.Oms\obj\Debug\AktRegisterGrid.baml
+E:\ELMed\Yamed.Oms\obj\Debug\AktRegisterGrid.g.cs
