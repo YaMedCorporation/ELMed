@@ -991,15 +991,28 @@ where z.D3_SCID in({scs})", con);
 
         private void Add_sl_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var zslTempl = new SluchTemplateD3();
-            zslTempl.BindEmptySluch2(_sc);
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            if (SprClass.Region != "37")
             {
-                Header = "Случай поликлиники",
-                MyControl = zslTempl,
-                IsCloseable = "True",
-                //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
-            });
+                var zslTempl = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
+                zslTempl.BindEmptySluch2(_sc);
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Случай поликлиники",
+                    MyControl = zslTempl,
+                    IsCloseable = "True"
+                });
+            }
+            else if (SprClass.Region == "37")
+            {
+                var zslTempl = new SluchTemplateD31Ivanovo(SchetRegisterGrid1.gridControl1);
+                zslTempl.BindEmptySluch2(_sc);
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Случай поликлиники",
+                    MyControl = zslTempl,
+                    IsCloseable = "True"
+                });
+            }
         }
 
         private void Compilezsl_ItemClick(object sender, ItemClickEventArgs e)

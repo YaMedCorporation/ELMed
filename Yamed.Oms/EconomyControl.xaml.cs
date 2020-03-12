@@ -195,7 +195,7 @@ namespace Yamed.Oms
         {
             var region = SprClass.Region;
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
-            ((Button) sender).IsEnabled = false;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = false;
 
             var calcs = SqlReader.Select(
                 $@"select [name] from sys.procedures where [name] like '%p_autocalc_0{region}%' order by [name]",
@@ -221,7 +221,7 @@ namespace Yamed.Oms
 
             DXMessageBox.Show("Расчет завершен.");
 
-            ((Button) sender).IsEnabled = true;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = true;
 
         }
 
@@ -233,18 +233,18 @@ namespace Yamed.Oms
         {
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
 
-            ((Button) sender).IsEnabled = false;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = false;
 
             //Task.Factory.StartNew(() =>
             //{
-                
-                //XmlStreem2(sc, true);
+
+            //XmlStreem2(sc, true);
             ExportOms30K(sc);
             //}).ContinueWith(x =>
             //{
-                ((Button)sender).IsEnabled = true;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = true;
 
-                //DXMessageBox.Show("Невозможно выполнить экспорт, не все случаи просчитаны, проверте случаи с пустыми суммами и выполните расчет.");
+            //DXMessageBox.Show("Невозможно выполнить экспорт, не все случаи просчитаны, проверте случаи с пустыми суммами и выполните расчет.");
             //}, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
@@ -1255,7 +1255,7 @@ UPDATE D3_USL_OMS
             if (result != true) return;
 
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
-            ((Button) sender).IsEnabled = false;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = false;
             Task.Factory.StartNew(() =>
             {
                 try
@@ -1423,7 +1423,7 @@ UPDATE D3_USL_OMS
 
                 DXMessageBox.Show("Загрузка успешно завершена");
 
-                ((Button)sender).IsEnabled = true;
+                ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = true;
 
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
