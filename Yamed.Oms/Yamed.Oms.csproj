@@ -75,6 +75,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AktRegisterGrid.xaml.cs">
+      <DependentUpon>AktRegisterGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EconomyControl.xaml.cs">
       <DependentUpon>EconomyControl.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AktRegisterGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EconomyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
