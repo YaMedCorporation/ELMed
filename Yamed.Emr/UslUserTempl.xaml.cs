@@ -58,18 +58,19 @@ namespace Yamed.Emr
 
 
         }
+        public DateTime? datez;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             if (SprClass.Region != "37")
             {
                 if (_sluchTemplateD31._uslList == null)
                 {
                     _sluchTemplateD31.UslGrid.DataContext = _sluchTemplateD31._uslList = new List<D3_USL_OMS>();
                 }
-
                 var lpu = _sluchTemplateD31._zsl.LPU;
                 var slgid = ((D3_SL_OMS)_sluchTemplateD31.SlGridControl.SelectedItem).SL_ID;
-
+                
                 var ulist = UslUserTemplEdit.SelectedItems;
                 foreach (DynamicBaseClass usl in ulist)
                 {
@@ -123,10 +124,11 @@ namespace Yamed.Emr
 
         private void UslCategoryEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)
         {
+            datez = _sluchTemplateD31._zsl.DATE_Z_2;
             var cid = ObjHelper.GetAnonymousValue(UslCategoryEdit.SelectedItem, "ID");
             Task.Factory.StartNew(() =>
             {
-                return SqlReader.Select2($"Select * From Yamed_Spr_UslTemplate where CategoryID = {cid}", SprClass.LocalConnectionString);
+                return SqlReader.Select2($"Select * From Yamed_Spr_UslTemplate where CategoryID = {cid} and isnull('{datez}','21000101') between date1 and date2", SprClass.LocalConnectionString);
             }).ContinueWith(x =>
             {
                 UslUserTemplEdit.DataContext = x.Result;

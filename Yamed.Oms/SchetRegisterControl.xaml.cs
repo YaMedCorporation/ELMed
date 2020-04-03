@@ -14,6 +14,7 @@ using DevExpress.Xpf.Core;
 using Ionic.Zip;
 using Microsoft.Win32;
 using Yamed.Control;
+using Yamed.Control.Editors;
 using Yamed.Core;
 using Yamed.Emr;
 using Yamed.Entity;
@@ -32,6 +33,7 @@ namespace Yamed.Oms
         private bool _isSaved;
         private string _reqCmd;
         private D3_SCHET_OMS _sc;
+        public int? _arid;
 
         public SchetRegisterControl(D3_SCHET_OMS sc)
         {
@@ -45,7 +47,8 @@ namespace Yamed.Oms
             {
                 zaprosPD.Visibility = Visibility.Collapsed;
                 zapPD.IsVisible = false;
-                expertise.IsVisible = false;
+                aktExp.IsVisible = false;
+                mek.IsVisible = false;
                 reexpertise.IsVisible = false;
                 docs.IsVisible = false;
                 sank.IsVisible = false;
@@ -73,7 +76,8 @@ namespace Yamed.Oms
             {
                 zaprosPD.Visibility = Visibility.Collapsed;
                 zapPD.IsVisible = false;
-                expertise.IsVisible = false;
+                aktExp.IsVisible = false;
+                mek.IsVisible = false;
                 reexpertise.IsVisible = false;
                 docs.IsVisible = false;
                 sank.IsVisible = false;
@@ -105,7 +109,8 @@ namespace Yamed.Oms
             {
                 zaprosPD.Visibility = Visibility.Collapsed;
                 zapPD.IsVisible = false;
-                expertise.IsVisible = false;
+                aktExp.IsVisible = false;
+                mek.IsVisible = false;
                 reexpertise.IsVisible = false;
                 docs.IsVisible = false;
                 sank.IsVisible = false;
@@ -347,7 +352,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                    Content = new MedicExpControl(2),
+                    Content = new MedicExpControl(2, arid:_arid),
                     Title = "Акт МЭЭ",
                     SizeToContent = SizeToContent.Height,
                     Width = 1450
@@ -388,7 +393,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                    Content = new MedicExpControl(3),
+                    Content = new MedicExpControl(3, arid:_arid),
                     Title = "Акт ЭКМП",
                     SizeToContent = SizeToContent.Height,
                     Width = 1450
@@ -727,14 +732,14 @@ where zsl.D3_SCID in {ids}";
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void Zsl31Edit_OnClick(object sender, RoutedEventArgs e)
+        private void Zsl31Edit_OnClickMO()
         {
             var tab = SchetRegisterGrid1;
             if (SprClass.Region != "37")
             {
                 var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
                 var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
-                slt.BindSluch(id, new Entity.D3_SCHET_OMS());
+                slt.BindSluch(id, _sc);
                 СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
                 {
                     Header = "Карта пациента",
@@ -747,7 +752,7 @@ where zsl.D3_SCID in {ids}";
             {
                 var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
                 var slt = new SluchTemplateD31Ivanovo(SchetRegisterGrid1.gridControl1);
-                slt.BindSluch(id, new Entity.D3_SCHET_OMS());
+                slt.BindSluch(id, _sc);
                 СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
                 {
                     Header = "Карта пациента",
@@ -757,6 +762,44 @@ where zsl.D3_SCID in {ids}";
                 });
             }
 
+        }
+
+        private void Zsl31Edit_OnClick(object sender, RoutedEventArgs e)
+        {
+            var tab = SchetRegisterGrid1;
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            {
+                Zsl31Edit_OnClickMO();
+            }
+            else
+            {
+                if (SprClass.Region != "37")
+                {
+                    var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
+                    var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
+                    slt.BindSluch(id, new Entity.D3_SCHET_OMS());
+                    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                    {
+                        Header = "Карта пациента",
+                        MyControl = slt,
+                        IsCloseable = "True",
+                        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                    });
+                }
+                else if (SprClass.Region == "37")
+                {
+                    var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
+                    var slt = new SluchTemplateD31Ivanovo(SchetRegisterGrid1.gridControl1);
+                    slt.BindSluch(id, new Entity.D3_SCHET_OMS());
+                    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                    {
+                        Header = "Карта пациента",
+                        MyControl = slt,
+                        IsCloseable = "True",
+                        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                    });
+                }
+            }
         }
 
         private void MtrCheckItem_CheckedChanged(object sender, ItemClickEventArgs e)
@@ -1037,7 +1080,7 @@ where z.D3_SCID in({scs})", con);
 
             if (result != true) return;
 
-            ((Button)sender).IsEnabled = false;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = false;
             Task.Factory.StartNew(() =>
             {
                 try
@@ -1125,7 +1168,7 @@ where z.D3_SCID in({scs})", con);
                 //SchetRegisterGrid1.gridControl1.GroupBy("FLK_COMENT");
                 if (ft == "flk") SchetRegisterGrid1.FlkGroup();
 
-                ((Button)sender).IsEnabled = true;
+                ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = true;
 
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -1252,6 +1295,101 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 DxHelper.LoadedRows.Clear();
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void AddAktExp_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+
+            }).ContinueWith(lr =>
+            {
+                bool isMek = false;
+                var sluids = new List<int>();
+                foreach (var row in DxHelper.LoadedRows)
+                {
+                    if ((int?)ObjHelper.GetAnonymousValue(row, "OPLATA") == 1 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                    {
+                        sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
+                    }
+                    else
+                    {
+                        isMek = true;
+                    }
+                }
+
+                if (!sluids.Any())
+                {
+                    DXMessageBox.Show("Не выбрано ни одной записи или записи имеют некорректный статус оплаты");
+                    SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                    DxHelper.LoadedRows.Clear();
+                    return;
+                }
+
+                if (isMek)
+                {
+                    DXMessageBox.Show("Внимание выбраны записи с некорректным статусом оплаты, которые не могут быть включены в акт экспертизы");
+                }
+
+
+                var item = new D3_AKT_REGISTR_OMS();
+                item.USERID_NOTEDIT = SprClass.userId;
+                var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", item, false, SprClass.LocalConnectionString);
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    SizeToContent = SizeToContent.Height,
+                    Width = 600,
+                    Content = sprEditWindow,
+                    Title = "Новый акт экспертизы"
+                };
+
+                if (window.ShowDialog() == true)
+                {
+                    var arid = item.ID;
+                    List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
+
+                    foreach (int slid in sluids.ToArray())
+                    {
+                        var rq = new D3_REQ_OMS()
+                        {
+                            D3_ARID = arid,
+                            D3_ZSLID = slid
+                        };
+                        rlist.Add(rq);
+                    }
+                    Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
+                }
+
+
+
+
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void EditAktExp_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            DXMessageBox.Show("Не реализовано");
         }
     }
 }

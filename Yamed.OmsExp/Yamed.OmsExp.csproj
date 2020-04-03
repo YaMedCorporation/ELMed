@@ -38,13 +38,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiveQueryBuilder.Core">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.Core.dll</HintPath>
+      <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveQueryBuilder.MSSQLMetadataProvider">
+      <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.MSSQLMetadataProvider.dll</HintPath>
     </Reference>
     <Reference Include="ActiveQueryBuilder.View">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.View.dll</HintPath>
+      <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.View.dll</HintPath>
     </Reference>
     <Reference Include="ActiveQueryBuilder.View.WPF">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.View.WPF.dll</HintPath>
+      <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.View.WPF.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -70,11 +73,8 @@
       <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GalaSoft.MvvmLight.WPF4">
-      <HintPath>..\..\Elmedicine\Elmedicine\bin\Debug\GalaSoft.MvvmLight.WPF4.dll</HintPath>
-    </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\ICSharpCode.AvalonEdit.dll</HintPath>
+      <HintPath>C:\Users\WILD\Desktop\usb_ssd\TFS_Codes\Git_Yamed\Yamed.OmsExp\bin\Debug\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

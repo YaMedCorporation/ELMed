@@ -112,7 +112,7 @@ namespace Yamed.Oms
         }
         private void SankExport_OnClick()
         {
-            ExportToXml(ExportExp(2019, "1,2,3,4,5,6,7,8,9,10,11,12"));
+            ExportToXml(ExportExp(2020, "1,2,3,4,5,6,7,8,9,10,11,12"));
         }
 
         static object ExportExp(int year, string month)
@@ -132,7 +132,7 @@ JOIN D3_PACIENT_OMS pa ON sl.D3_PID = pa.ID
 JOIN D3_SCHET_OMS sc ON sc.ID = sl.D3_SCID
 JOIN D3_SANK_OMS s ON s.D3_ZSLID = sl.ID --and s.S_TIP = 1
 LEFT JOIN D3_AKT_MEE_TBL k ON k.SANKID = s.ID
-WHERE sc.YEAR in (2018, {0}) AND sc.MONTH in ({1})
+WHERE sc.YEAR in (2019, {0}) AND sc.MONTH in ({1})
 SELECT * FROM SANK_EXP_TT", year, month);
             return Yamed.Server.Reader2List.CustomAnonymousSelect(tempQuery, Yamed.Server.SprClass.LocalConnectionString);
         }

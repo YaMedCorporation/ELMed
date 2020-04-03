@@ -268,6 +268,8 @@ namespace Yamed.Server
         public static object SprBrigad; //класс для справочника Вид бригады Иваново
         public static object SprGrafdn; //класс для справочника график дн. стац. Иваново
 
+        public static object SprTypeMp; //тип МП в Акте экспертизы
+
         public static void SprLoad()
         {
 
@@ -328,7 +330,7 @@ namespace Yamed.Server
 
             OsobSluchDbs = Reader2List.CustomAnonymousSelect($"Select * from OsobSluchDb", LocalConnectionString);
             //OsSlRegion = Reader2List.CustomAnonymousSelect($"Select * from OsobSluchDb where dbeg <= '{today}' and isnull(DEND, '20991231') >= '{today}'", LocalConnectionString);
-            TypeExp2 = Reader2List.CustomAnonymousSelect("SELECT * FROM [F006_NEW] where dateend is null", LocalConnectionString);
+            TypeExp2 = Reader2List.CustomAnonymousSelect("SELECT * FROM [F006_NEW] where dateend is null ", LocalConnectionString);
             N001 = Reader2List.CustomAnonymousSelect($"Select * from N001 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N002 = Reader2List.CustomAnonymousSelect($"Select * from N002 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N003 = Reader2List.CustomAnonymousSelect($"Select * from N003 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
@@ -383,6 +385,7 @@ namespace Yamed.Server
             SprBrigad = Reader2List.CustomAnonymousSelect($"Select * from SprBrigad", LocalConnectionString);
             SprGrafdn = Reader2List.CustomAnonymousSelect($"Select * from SprGrafdn", LocalConnectionString);
 
+            SprTypeMp = Reader2List.CustomAnonymousSelect($"Select * from Yamed_Spr_TypeMP", LocalConnectionString);
 
 
 

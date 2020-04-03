@@ -1175,6 +1175,108 @@ namespace Yamed.Oms
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
         }
 
+        public void BindAktExp(int arid)
+        {
+            HideSlColumn();
+
+            _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                join req in _ElmedDataClassesDataContext.D3_REQ_OMS on zsl.ID equals req.D3_ZSLID
+                where req.D3_ARID == arid
+                select new
+                {
+                    sc.YEAR,
+                    sc.MONTH,
+                    sc.NSCHET,
+                    sc.DSCHET,
+                    sc.OmsFileName,
+
+                    zsl.PR_NOV,
+                    KeyID = req.ID,
+                    zsl.D3_SCID,
+                    zsl.ID,
+                    zsl.ZSL_ID,
+                    IDCASE = (Int64?) zsl.IDCASE,
+                    zsl.VIDPOM,
+                    zsl.NPR_MO,
+                    zsl.LPU,
+                    zsl.FOR_POM,
+                    zsl.DATE_Z_1,
+                    zsl.DATE_Z_2,
+                    zsl.RSLT,
+                    zsl.ISHOD,
+                    zsl.OS_SLUCH,
+                    zsl.OS_SLUCH_REGION,
+                    zsl.IDSP,
+                    zsl.SUMV,
+                    zsl.OPLATA,
+                    zsl.SUMP,
+                    zsl.SANK_IT,
+                    zsl.MEK_COMENT,
+                    zsl.OSP_COMENT,
+                    zsl.USL_OK,
+                    Z_P_CEL = zsl.P_CEL,
+                    zsl.MEK_COUNT,
+                    zsl.MEE_COUNT,
+                    zsl.EKMP_COUNT,
+                    zsl.EXP_COMENT,
+                    zsl.EXP_TYPE,
+                    zsl.EXP_DATE,
+                    zsl.ReqID,
+                    zsl.USER_COMENT,
+                    zsl.USERID,
+                    zsl.NPR_DATE,
+                    zsl.KD_Z,
+                    zsl.VB_P,
+                    zsl.RSLT_D,
+                    zsl.VBR,
+
+                    pa.FAM,
+                    pa.IM,
+                    pa.OT,
+                    pa.MO_ATT,
+                    pa.W,
+                    pa.DR,
+                    pa.FAM_P,
+                    pa.IM_P,
+                    pa.OT_P,
+                    pa.W_P,
+                    pa.DR_P,
+                    pa.MR,
+                    pa.DOCTYPE,
+                    pa.DOCSER,
+                    pa.DOCNUM,
+                    pa.SNILS,
+                    pa.OKATOG,
+                    pa.OKATOP,
+                    pa.COMENTP,
+                    pa.VPOLIS,
+                    pa.SPOLIS,
+                    pa.NPOLIS,
+                    pa.SMO,
+                    pa.SMO_OGRN,
+                    pa.SMO_OK,
+                    pa.SMO_NAM,
+                    pa.NOVOR,
+                    pa.SOC_STAT,
+                    pa.KOD_TER,
+                    pa.KAT_LGOT,
+                    pa.MSE,
+                    pa.INV,
+                    pa.VETERAN,
+                    pa.WORK_STAT,
+
+                    zsl.VOZR,
+                    pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+
+                    //для отображения в Иваново
+                    pa.SOCSTATUS
+                };
+
+            _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+
+        }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {

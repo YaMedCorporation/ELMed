@@ -1,1962 +1,255 @@
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojResolveAssemblyReference.cache
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-F:\TFS_Codes\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-E:\Apps\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojResolveAssemblyReference.cache
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojResolveAssemblyReference.cache
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\EntityFramework.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\EntityFramework.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Hospital\bin\Debug\ru\EntityFramework.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojResolveAssemblyReference.cache
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-E:\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\UserControl1.baml
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-E:\Новая папка (2)\300819\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\UserControl1.baml
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-E:\Новая папка (2)\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\UserControl1.baml
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\040919\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\UserControl1.baml
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-E:\ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-E:\ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\UserControl1.baml
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-E:\ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\UserControl1.baml
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v19.2.Export.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.CodeView.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Images.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v19.2.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v19.2.Core.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Data.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Office.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v19.2.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v19.2.Core.xml
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v19.2.Core.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v19.2.resources.dll
-D:\!!!_Code\Yamed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v19.2.resources.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\UserControl1.baml
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
-D:\!!!_Code\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\UserControl1.baml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Hospital.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.CodeParser.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Entity.dll.config
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Icons.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.pdb
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Server.dll.config
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Data.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Mvvm.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Office.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Printing.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Core.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Data.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Data.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Office.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Office.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Office.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Office.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.RichEdit.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.RichEdit.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.RichEdit.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.RichEdit.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Printing.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Printing.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Printing.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Printing.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Core.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Core.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Core.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Core.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Printing.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Printing.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Printing.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Printing.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Grid.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.LayoutControl.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Controls.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Controls.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Controls.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Controls.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Pdf.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Pdf.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Pdf.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Pdf.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Ribbon.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.DocumentViewer.v16.2.Core.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Xpf.Docking.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Xpf.Docking.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ja\DevExpress.Xpf.Docking.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ru\DevExpress.Xpf.Docking.v16.2.resources.dll
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csprojAssemblyReference.cache
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\ElReestrTabNew.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrPacientPanel.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\UserControl1.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.cache
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital_MarkupCompile.lref
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrSluchTab.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrTrafficPanel.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\HospitalEmrUslugiPanel.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\ReestrControl1.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\UserControl1.baml
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.g.resources
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CoreCompileInputs.cache
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.csproj.CopyComplete
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.dll
+E:\ELMed-ELMed\Yamed.Hospital\obj\Debug\Yamed.Hospital.pdb

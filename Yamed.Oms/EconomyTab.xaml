@@ -106,10 +106,10 @@
                                     FieldName="SchetTypeName"
                                     Header="Тип счета"
                                     ReadOnly="True"/>
-                        <!--<dxg:GridColumn Width="40"
+                        <dxg:GridColumn Width="40"
                                     FieldName="DISP"
                                     Header="Тип диспансеризации"
-                                    ReadOnly="True"/>-->
+                                    ReadOnly="True"/>
                         <dxg:GridColumn Width="75"
                                     FieldName="DSCHET"
                                     Header="Дата выставления счета"

@@ -78,13 +78,13 @@
     <Reference Include="DevExpress.XtraReports.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v16.2.Extensions, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="FastReport">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\FastReport.dll</HintPath>
+      <HintPath>..\..\..\Yamed\Yamed.Report\bin\Debug\FastReport.dll</HintPath>
     </Reference>
     <Reference Include="FastReport.Bars">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\FastReport.Bars.dll</HintPath>
+      <HintPath>..\..\..\Yamed\Yamed.Report\bin\Debug\FastReport.Bars.dll</HintPath>
     </Reference>
     <Reference Include="FastReport.Editor">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\FastReport.Editor.dll</HintPath>
+      <HintPath>..\..\..\Yamed\Yamed.Report\bin\Debug\FastReport.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

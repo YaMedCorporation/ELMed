@@ -87,7 +87,8 @@ namespace Yamed.Oms
                                         COMENTS = sc.COMENTS,
                                         COUNT_SL = sc.SD_Z,
                                         sc.OmsFileName,
-                                        //sc.DISP,
+                                        DISP = sc.DISP,
+
                                         sc.SchetType,
                                         SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
                                                                           //sc.ZapFileName,

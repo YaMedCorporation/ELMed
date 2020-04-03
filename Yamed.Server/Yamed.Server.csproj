@@ -38,10 +38,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiveQueryBuilder.Core">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.Core.dll</HintPath>
+      <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.Core.dll</HintPath>
     </Reference>
     <Reference Include="ActiveQueryBuilder.View.WPF">
-      <HintPath>..\..\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.View.WPF.dll</HintPath>
+      <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.View.WPF.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>

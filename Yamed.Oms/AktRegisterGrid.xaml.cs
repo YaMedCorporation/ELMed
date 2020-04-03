@@ -52,13 +52,12 @@ namespace Yamed.Oms
 
             gridControl1.DataContext = _linqInstantFeedbackDataSource;
 
-
-
+            
             LpuEdit.DataContext = SprClass.medOrg;
             TypeMpEdit.DataContext = SprClass.SprTypeMp;
             SType2Edit.DataContext = SprClass.TypeExp2;
             UserEdit.DataContext = SprClass.YamedUsers;
-
+            kol();
         }
 
 
@@ -96,7 +95,6 @@ namespace Yamed.Oms
 
         private void AddItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
             var item = new D3_AKT_REGISTR_OMS();
             item.USERID_NOTEDIT = SprClass.userId;
 
@@ -177,7 +175,7 @@ namespace Yamed.Oms
                         LoadingDecorator1.IsSplashScreenShown = false;
 
                         _linqInstantFeedbackDataSource.Refresh();
-                        ErrorGlobalWindow.ShowError("Счет удален");
+                        ErrorGlobalWindow.ShowError("Акт удален");
                     }
                 }, uiScheduler);
 
@@ -213,7 +211,53 @@ namespace Yamed.Oms
         }
 
 
+        private void ScRegisterItem_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            var row = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(DxHelper.GetSelectedGridRow(gridControl1));
 
+
+            var rc = new SchetRegisterControl();
+            rc.scVid.IsVisible = false;
+            //rc.aktExp.IsVisible = false;
+            rc.zapPD.IsVisible = false;
+            //rc.reexpertise.IsVisible = true;
+            rc.add_mek.IsVisible = false;
+            rc.re_mek.IsVisible = false;
+            rc.mek.Content = "Экспертизы";
+            rc._arid = row.ID;
+            rc.SchetRegisterGrid1.BindAktExp(row.ID);
+
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            {
+                Header = "Акт экспертиз " + row.PERIOD_EXP_NOTEDIT + " номер " + row.NUM_ACT + " от " + row.DATE_ACT?.ToShortDateString(), 
+                MyControl = rc,
+                IsCloseable = "True",
+                //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+            });
+        }
+        private void kol()
+        {
+            var kol = Reader2List.CustomAnonymousSelect($@"Select D3_ARID,count(D3_ARID) as kol_zap from D3_REQ_OMS group by d3_arid", SprClass.LocalConnectionString);
+            kolzap.DataContext = kol;
+            var exp = Reader2List.CustomAnonymousSelect($@"Select D3_ARID,count(D3_ARID) as kol_exp from D3_SANK_OMS group by d3_arid", SprClass.LocalConnectionString);
+            kolexp.DataContext = exp;
+        }
+        private void GridControl1_OnSelectionChanged(object sender, GridSelectionChangedEventArgs e)
+        {
+            var row = DxHelper.GetSelectedGridRow(gridControl1);
+            if (row == null) return;
+
+            var id = ObjHelper.GetAnonymousValue(row, "ID");
+            var sankList =
+                Reader2List.CustomAnonymousSelect($@"
+select sa.ID, FAM, IM, OT, DR, NPOLIS, SUMV, OPLATA, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+from D3_SANK_OMS sa
+join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
+join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
+where sa.D3_ARID = {id}", SprClass.LocalConnectionString);
+
+            sankGridControl.DataContext = (object)sankList;
+        }
     }
 
 }

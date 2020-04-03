@@ -1,168 +1,35 @@
-F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-F:\TFS_Codes\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-F:\TFS_Codes\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojResolveAssemblyReference.cache
-F:\TFS_Codes\Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-F:\TFS_Codes\Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-F:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojResolveAssemblyReference.cache
-F:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-F:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojResolveAssemblyReference.cache
-D:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-C:\Users\rshko\Source\Repos\Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.dll
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.xml
-D:\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\EntityFramework.dll
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\EntityFramework.xml
-C:\Users\WILD\Desktop\TFS_Codes\Git_Yamed\Yamed.Server\bin\Debug\ru\EntityFramework.resources.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-E:\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.dll
-E:\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-E:\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-E:\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.xml
-E:\Git_Yamed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.xml
-E:\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojResolveAssemblyReference.cache
-E:\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-E:\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-E:\Новая папка (2)\220819\Git_Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Server.dll
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Server.pdb
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Core.dll
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Entity.dll
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Core.pdb
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-E:\Новая папка (2)\300819\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-E:\Новая папка (2)\300819\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-E:\Новая папка (2)\300819\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-E:\Новая папка (2)\300819\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-E:\Новая папка (2)\300819\Yamed.Server\obj\Debug\Yamed.Server.dll
-E:\Новая папка (2)\300819\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\040919\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\040919\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Entity.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Core.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\obj\Debug\Yamed.Server.pdb
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-E:\ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
-E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
-E:\ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Server.dll
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Server.pdb
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Core.dll
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Core.pdb
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
-D:\!!!_Code\Yamed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-D:\!!!_Code\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
-D:\!!!_Code\Yamed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
-D:\!!!_Code\Yamed\Yamed.Server\obj\Debug\Yamed.Server.dll
-D:\!!!_Code\Yamed\Yamed.Server\obj\Debug\Yamed.Server.pdb
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.dll
-C:\Users\WILD\Desktop\git_exp\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.xml
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
+D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll.config
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.dll
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.xml
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.xml
+E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.xml
+E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
+E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
+E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb

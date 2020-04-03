@@ -118,7 +118,10 @@ namespace Yamed.Control.Editors
             if (_isEdit == false)
             {
                 if (_is_identity)
-                    Reader2List.ObjectInsertCommand(_tableName, _obj, _pkCol.Column_Name, _connectionString);
+                {
+                   var id = Reader2List.ObjectInsertCommand(_tableName, _obj, _pkCol.Column_Name, _connectionString);
+                   _obj.GetType().GetProperty(_pkCol.Column_Name).SetValue(_obj, id, null);
+                }
                 else
                     Reader2List.ObjectInsertCommand(_tableName, _obj, "not_identity", _connectionString);
             }
@@ -210,6 +213,7 @@ namespace Yamed.Control.Editors
             control.IncrementalFiltering = true;
             control.AutoComplete = true;
             control.FilterCondition = FilterCondition.Contains;
+            
             e.Item.Content = control;
 
             if (_columnsInformationSchema.Single(x => x.COLUMN_NAME == e.PropertyName).IS_NULLABLE == "NO")
@@ -239,7 +243,14 @@ namespace Yamed.Control.Editors
             });
             mekTask.ContinueWith(x =>
             {
-                control.ItemsSource = x.Result;
+                if (_tableName == "D3_AKT_REGISTR_OMS" && rtName == "F006_NEW")
+                {
+                    control.ItemsSource = Reader2List.CustomAnonymousSelect($@"select * from f006_new where dateend is null and idvid not in (1,2,3) and exp_re!=1", SprClass.LocalConnectionString);
+                }
+                else
+                {
+                    control.ItemsSource = x.Result;
+                }
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
         }

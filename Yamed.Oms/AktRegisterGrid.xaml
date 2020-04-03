@@ -30,20 +30,23 @@
                             <dxb:BarButtonItem Name="ScRefreshItem"
                                            BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Обновить" GlyphAlignment="Top"
+                                           Content="Обновить"
                                            LargeGlyph="/Yamed.Icons;component/Icons/reload.png"
                                            ItemClick="RefreshItem_OnItemClick" />
                             <dxb:BarItemSeparator BarItemDisplayMode="ContentAndGlyph" />
 
-                            <dxb:BarButtonItem Name="ScImportItem"
+                            <dxb:BarButtonItem Name="ScRegisterItem"
                                            BarItemDisplayMode="ContentAndGlyph"
-                                           ToolTip="" GlyphAlignment="Top"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/698928-icon-95-folder-512.png"
-                                            IsEnabled="False"/>
-                            <dxb:BarButtonItem Name="ScExportItem"
+                                           AllowGlyphTheming="True"
+                                           ToolTip="Просмотр акта" GlyphAlignment="Top"
+                                           Content="Просмотр"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/1481287271_Medical_Report-2.png"
+                                           ItemClick="ScRegisterItem_OnItemClick"/>
+                            <!--<dxb:BarButtonItem Name="ScExportItem"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/700048-icon-89-document-file-sql-512.png"
-                                            IsEnabled="False"/>
+                                           IsEnabled="False"/>-->
                             <dxb:BarButtonItem Name="ScAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Добавить" GlyphAlignment="Top"
@@ -70,7 +73,8 @@
                     </dxb:BarContainerControl>
 
 
-                    <dxg:GridControl Name="gridControl1" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public">
+                    <dxg:GridControl Name="gridControl1" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public"
+                                     SelectionChanged="GridControl1_OnSelectionChanged">
                         <dxg:GridControl.Columns>
                             <dxg:GridColumn Name="Column_ID" Width="45" FieldName="ID" Header="ИД" ReadOnly="True" />
                             <dxg:GridColumn Name="Column_LOCK" Width="45" FieldName="LOCK" Header="Блок" ReadOnly="True"  />
@@ -85,7 +89,17 @@
                                     <dxe:ComboBoxEditSettings Name="TypeMpEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn Name="Column_S_TIP2" FieldName="S_TIP2" Header="Тип санкции" ReadOnly="True" >
+                        <dxg:GridColumn Name="Column_KOLZAP" FieldName="ID" Header="Кол-во записей"  ReadOnly="True" >
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:ComboBoxEditSettings Name="kolzap" DisplayMember="kol_zap" ValueMember="D3_ARID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn Name="Column_KOLEXP" FieldName="ID" Header="Кол-во экспертиз"  ReadOnly="True" >
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:ComboBoxEditSettings Name="kolexp" DisplayMember="kol_exp" ValueMember="D3_ARID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn Name="Column_S_TIP2" FieldName="S_TIP2" Header="Тип санкции" ReadOnly="True" >
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:ComboBoxEditSettings Name="SType2Edit" DisplayMember="NameWithID" ValueMember="IDVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>

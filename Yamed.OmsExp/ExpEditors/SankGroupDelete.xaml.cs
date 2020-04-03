@@ -112,8 +112,8 @@ EXEC p_oms_calc_schet {sc}
             }).ContinueWith(a1 =>
             {
                 DelListBoxEdit.Items.Add(new ListBoxEditItem {Name = "delMekListBoxEditItem", Content = "Удалить МЭК (" + ((IEnumerable<dynamic>)sanks).Count(x => (int)ObjHelper.GetAnonymousValue(x, "S_TIP") == 1) + ")" });
-                DelListBoxEdit.Items.Add(new ListBoxEditItem { Name = "delMeeListBoxEditItem", Content = "Удалить МЭЭ (" + ((IEnumerable<dynamic>)sanks).Count(x => (int)ObjHelper.GetAnonymousValue(x, "S_TIP") == 2) + ")" });
-                DelListBoxEdit.Items.Add(new ListBoxEditItem { Name = "delEkmpListBoxEditItem", Content = "Удалить ЭКМП (" + ((IEnumerable<dynamic>)sanks).Count(x => (int)ObjHelper.GetAnonymousValue(x, "S_TIP") == 3) + ")" });
+                DelListBoxEdit.Items.Add(new ListBoxEditItem {Name = "delMeeListBoxEditItem", Content = "Удалить МЭЭ (" + ((IEnumerable<dynamic>)sanks).Count(x => (int)ObjHelper.GetAnonymousValue(x, "S_TIP") == 2) + ")" });
+                DelListBoxEdit.Items.Add(new ListBoxEditItem {Name = "delEkmpListBoxEditItem", Content = "Удалить ЭКМП (" + ((IEnumerable<dynamic>)sanks).Count(x => (int)ObjHelper.GetAnonymousValue(x, "S_TIP") == 3) + ")" });
                 LogBox.Text += " завершено";
             }, taskScheduler);
         }

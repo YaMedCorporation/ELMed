@@ -22,7 +22,7 @@ namespace Yamed.Entity
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ElmedicineNew")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ElmedicineSV_demo")]
 	public partial class ElmedDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -417,7 +417,7 @@ namespace Yamed.Entity
     #endregion
 		
 		public ElmedDataClassesDataContext() : 
-				base(global::Yamed.Entity.Properties.Settings.Default.ElmedicineNewConnectionString, mappingSource)
+				base(global::Yamed.Entity.Properties.Settings.Default.ElmedicineSV_demoConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1611,6 +1611,14 @@ namespace Yamed.Entity
 			get
 			{
 				return this.GetTable<USL>();
+			}
+		}
+		
+		public System.Data.Linq.Table<V016> V016
+		{
+			get
+			{
+				return this.GetTable<V016>();
 			}
 		}
 		
@@ -44778,6 +44786,105 @@ namespace Yamed.Entity
 		{
 			this.SendPropertyChanging();
 			entity.USL = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.V016")]
+	public partial class V016
+	{
+		
+		private string _IDDT;
+		
+		private string _DTNAME;
+		
+		private System.Nullable<int> _DTRULE;
+		
+		private System.Nullable<System.DateTime> _DATEBEG;
+		
+		private System.Nullable<System.DateTime> _DATEEND;
+		
+		public V016()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDT", DbType="NVarChar(5) NOT NULL", CanBeNull=false)]
+		public string IDDT
+		{
+			get
+			{
+				return this._IDDT;
+			}
+			set
+			{
+				if ((this._IDDT != value))
+				{
+					this._IDDT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DTNAME", DbType="NVarChar(254)")]
+		public string DTNAME
+		{
+			get
+			{
+				return this._DTNAME;
+			}
+			set
+			{
+				if ((this._DTNAME != value))
+				{
+					this._DTNAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DTRULE", DbType="Int")]
+		public System.Nullable<int> DTRULE
+		{
+			get
+			{
+				return this._DTRULE;
+			}
+			set
+			{
+				if ((this._DTRULE != value))
+				{
+					this._DTRULE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEBEG", DbType="Date")]
+		public System.Nullable<System.DateTime> DATEBEG
+		{
+			get
+			{
+				return this._DATEBEG;
+			}
+			set
+			{
+				if ((this._DATEBEG != value))
+				{
+					this._DATEBEG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEEND", DbType="Date")]
+		public System.Nullable<System.DateTime> DATEEND
+		{
+			get
+			{
+				return this._DATEEND;
+			}
+			set
+			{
+				if ((this._DATEEND != value))
+				{
+					this._DATEEND = value;
+				}
+			}
 		}
 	}
 }

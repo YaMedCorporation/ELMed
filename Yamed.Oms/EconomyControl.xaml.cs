@@ -94,7 +94,7 @@ namespace Yamed.Oms
             if (result != true) return;
 
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(EconomyWindow11.gridControl));
-            ((Button)sender).IsEnabled = false;
+            ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = false;
             Task.Factory.StartNew(() =>
             {
                 try
@@ -184,7 +184,7 @@ namespace Yamed.Oms
 
                 DXMessageBox.Show("Загрузка успешно завершена");
 
-                ((Button)sender).IsEnabled = true;
+                ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = true;
 
 
             }, TaskScheduler.FromCurrentSynchronizationContext());

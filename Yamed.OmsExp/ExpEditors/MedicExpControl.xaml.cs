@@ -46,14 +46,16 @@ namespace Yamed.OmsExp.ExpEditors
         private int? _sid;
         private object _row;
         private int _re;
+        private int? _arid;
 
-        public MedicExpControl(int? stype, int? sid = null, object row = null, int re = 0)
+        public MedicExpControl(int? stype, int? sid = null, object row = null, int re = 0, int? arid = null)
         {
             InitializeComponent();
             _stype = stype;
             _sid = sid;
             _row = row;
             _re = re;
+            _arid = arid;
 
             _isNew = sid == null;
 
@@ -131,6 +133,7 @@ namespace Yamed.OmsExp.ExpEditors
                         {
                             D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID"),
                             D3_SCID = (int)ObjHelper.GetAnonymousValue(row, "D3_SCID"),
+                            D3_ARID = _arid,
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
                             S_DATE = SprClass.WorkDate
@@ -272,22 +275,19 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
-            if ((AktNumEdit.Text != null || AktNumEdit.Text == "") && _isNew == true)
+            if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
             {
-                var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS", SprClass.LocalConnectionString);
-                foreach (var nums in num)
+                var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
+                if (num.Count > 0)
                 {
-                    if (AktNumEdit.Text == (string)ObjHelper.GetAnonymousValue(nums, "NUM_ACT"))
+                    MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.No)
                     {
-                        MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
-                        if (result == MessageBoxResult.No)
-                        {
-                            return;
-                        }
-                        else
-                        {
-                            break;   
-                        }
+                        return;
+                    }
+                    else
+                    {
+                        
                     }
                 }
             }

@@ -923,6 +923,26 @@ namespace Yamed
 
             ((Button)sender).IsEnabled = true;
         }
+
+
+        private void OmsExpAktRegistr_OnClick(object sender, RoutedEventArgs e)
+        {
+            Menu.Hide();
+            ((Button)sender).IsEnabled = false;
+            Decorator.IsSplashScreenShown = true;
+
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            {
+                Header = "Реестр актов",
+                MyControl = new AktRegisterGrid(),
+                IsCloseable = "True",
+                //TabLocalMenu = new OmsMenu().MenuElements
+            });
+
+            ((Button)sender).IsEnabled = true;
+        }
+
+
         //private void OmsExpAktRegistr_OnClick(object sender, RoutedEventArgs e)
         //{
         //    Menu.Hide();
