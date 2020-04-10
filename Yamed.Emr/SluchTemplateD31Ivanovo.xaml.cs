@@ -2108,7 +2108,8 @@ namespace Yamed.Emr
             {
                 var st = sank.S_TIP ?? (sank.S_TIP2 >= 20 && sank.S_TIP2 < 30 ? 2 : 3);
                 var re = sank.S_TIP == null ? 1 : 0;
-                if (sank.USER_ID.ToString() != "" && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
+                var admin = SqlReader.Select($@"Select ID from Yamed_Users where username like '%Admin%'", SprClass.LocalConnectionString);
+                if (sank.USER_ID.ToString() != "" && admin.Count < 1 && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
                 {
                     DXMessageBox.Show("Вы не можете редактировать эту санкцию, она проведена другим пользователем");
                     return;
@@ -2163,7 +2164,8 @@ namespace Yamed.Emr
             var result = DXMessageBox.Show("Удалить санкцию?", "Удаление", MessageBoxButton.YesNo);
             if (result != MessageBoxResult.Yes) return;
             var s = (D3_SANK_OMS)SankGridControl.SelectedItem;
-            if (s.USER_ID.ToString() != "" && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
+            var admin = SqlReader.Select($@"Select ID from Yamed_Users where username like '%Admin%'", SprClass.LocalConnectionString);
+            if (s.USER_ID.ToString() != "" && admin.Count < 1 && s.USER_ID.ToString() != SprClass.userId.ToString() && s.S_TIP2 != 1)
             {
                 DXMessageBox.Show("Вы не можете удалить эту санкцию, она проведена другим пользователем");
                 return;

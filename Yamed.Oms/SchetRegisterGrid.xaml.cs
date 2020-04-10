@@ -134,7 +134,7 @@ namespace Yamed.Oms
 
         }
 
-
+        public DateTime date2;
         private IQueryable _pQueryable;
         public void BindDataZsl()
         {
@@ -145,7 +145,6 @@ namespace Yamed.Oms
                               join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
                               select new
                               {
@@ -246,7 +245,6 @@ namespace Yamed.Oms
                               join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
                               select new
                               {
@@ -296,6 +294,7 @@ namespace Yamed.Oms
                                   zsl.VB_P,
                                   zsl.RSLT_D,
                                   zsl.VBR,
+                                 
 
                                   pa.FAM,
                                   pa.IM,
