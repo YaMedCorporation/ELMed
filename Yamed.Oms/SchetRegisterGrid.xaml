@@ -225,7 +225,7 @@
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column_USER_COMENT" FieldName="USER_COMENT" Header="Комментарий пользователя" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-
+                <dxg:GridColumn x:Name="Column__SL__SL_ID" FieldName="SL_ID" Header="УИД" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__VID_HMP" FieldName="VID_HMP" Header="Вид ВМП" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="VidHmpEdit" DisplayMember="NameWithID" ValueMember="IDHVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>

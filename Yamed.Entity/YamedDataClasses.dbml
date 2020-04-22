@@ -404,6 +404,7 @@
       <Column Name="LEK_TIP_V" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LUCH_TIP" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ONKUSL_ID" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="PPTR" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="D3_ONK_USL_OMS_D3_LEK_PR_OMS" Member="D3_LEK_PR_OMS" ThisKey="ID" OtherKey="D3_ONKUSLID" Type="D3_LEK_PR_OMS" />
       <Association Name="D3_ONK_SL_OMS_D3_ONK_USL_OMS" Member="D3_ONK_SL_OMS" ThisKey="D3_ONKSLID" OtherKey="ID" Type="D3_ONK_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>

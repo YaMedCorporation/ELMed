@@ -739,6 +739,7 @@ namespace Yamed.Emr
             ProtColumnEdit.DataContext = SprClass.N001;
 
             UslTipColumnEdit.DataContext = SprClass.N013;
+            PPTRColumnEdit.DataContext = SprClass.SprBit;
             HirTipColumnEdit.DataContext = SprClass.N014;
             LekTiplColumnEdit.DataContext = SprClass.N015;
             LekTipvColumnEdit.DataContext = SprClass.N016;

@@ -8844,6 +8844,8 @@ namespace Yamed.Entity
 		
 		private string _ONKUSL_ID;
 		
+		private System.Nullable<int> _PPTR;
+		
 		private EntitySet<D3_LEK_PR_OMS> _D3_LEK_PR_OMS;
 		
 		private EntityRef<D3_ONK_SL_OMS> _D3_ONK_SL_OMS;
@@ -8870,6 +8872,8 @@ namespace Yamed.Entity
     partial void OnLUCH_TIPChanged();
     partial void OnONKUSL_IDChanging(string value);
     partial void OnONKUSL_IDChanged();
+    partial void OnPPTRChanging(System.Nullable<int> value);
+    partial void OnPPTRChanged();
     #endregion
 		
 		public D3_ONK_USL_OMS()
@@ -9059,6 +9063,26 @@ namespace Yamed.Entity
 					this._ONKUSL_ID = value;
 					this.SendPropertyChanged("ONKUSL_ID");
 					this.OnONKUSL_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PPTR", DbType="Int")]
+		public System.Nullable<int> PPTR
+		{
+			get
+			{
+				return this._PPTR;
+			}
+			set
+			{
+				if ((this._PPTR != value))
+				{
+					this.OnPPTRChanging(value);
+					this.SendPropertyChanging();
+					this._PPTR = value;
+					this.SendPropertyChanged("PPTR");
+					this.OnPPTRChanged();
 				}
 			}
 		}

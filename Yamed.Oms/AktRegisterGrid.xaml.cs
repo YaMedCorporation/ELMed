@@ -250,9 +250,10 @@ namespace Yamed.Oms
             var id = ObjHelper.GetAnonymousValue(row, "ID");
             var sankList =
                 Reader2List.CustomAnonymousSelect($@"
-select sa.ID, FAM, IM, OT, DR, NPOLIS, SUMV, OPLATA, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+select sa.ID, FAM, IM, OT, DR, NPOLIS, NHISTORY, SUMV, OPLATA, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
 from D3_SANK_OMS sa
 join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
+join D3_SL_OMS sl on sl.d3_zslid=zs.id
 join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
 where sa.D3_ARID = {id}", SprClass.LocalConnectionString);
 

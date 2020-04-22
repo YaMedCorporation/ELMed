@@ -58,10 +58,11 @@ namespace Yamed.OmsExp.ExpEditors
             _arid = arid;
 
             _isNew = sid == null;
+            
 
             ExpertColumnEdit.DataContext = Reader2List.CustomAnonymousSelect("Select * from ExpertsDB order by FAM",SprClass.LocalConnectionString);//SprClass.ExpertDbs;
 
-
+            TemplateZaklEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from D3_SANK_TEMPLATE where userid='{SprClass.userId}' order by USERID", SprClass.LocalConnectionString);
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
             VidExpEdit.DataContext = videxp;
 
@@ -109,11 +110,11 @@ namespace Yamed.OmsExp.ExpEditors
             List<int> zslid = new List<int>();
             if (_re==1 && _stype==1)
             {
-                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or name like '%без замечаний%' order by Name", SprClass.LocalConnectionString);
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or Name like '%ИЗМЕНЕНИЙ%' order by Name", SprClass.LocalConnectionString);
             }
             else
             {
-                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null and isnull(osn,'0') not like '5%' order by Name", SprClass.LocalConnectionString);
             }
             ShablonEdit.DataContext = _sankAutos;
 
@@ -275,6 +276,7 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
+            
             if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
             {
                 var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
@@ -308,7 +310,18 @@ namespace Yamed.OmsExp.ExpEditors
                     if (obj.ID == 0)
                     {
                         obj.S_COM = obj.S_ZAKL;
+                        if (obj.S_COM != null && obj.S_COM != "")
+                        {
+                            var text = SqlReader.Select($@"Select text from D3_SANK_TEMPLATE where text='{obj.S_COM}'", SprClass.LocalConnectionString);
+                            if (text.Count > 0)
+                            {
 
+                            }
+                            else
+                            {
+                                Reader2List.CustomExecuteQuery($@"insert D3_SANK_TEMPLATE VALUES ('{obj.S_COM}','{SprClass.userId}')", SprClass.LocalConnectionString);
+                            }
+                        }
                         if (_stype == 3 && _expertList != null && _expertList.Count != 0 && _expert_delList == null && checkEditItem.EditValue.ToString() == "False")
                         {
                             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
@@ -349,9 +362,14 @@ namespace Yamed.OmsExp.ExpEditors
                 if (_expertList != null)
                     foreach (var obj in _expertList)
                     {
+                        if (obj.ExpertCode == null)
+                        {
+                            DXMessageBox.Show("Найдена пустая запись в экспертах, проверьте введенные данные и попробуйте снова!");
+                            return;
+                        }
                         if (obj.ID == 0)
                         {
-                            obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
+                            obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE ==  obj.D3_SANKGID).Sank.ID;
                             var id = Reader2List.ObjectInsertCommand("D3_SANK_EXPERT_OMS", obj, "ID",
                                 SprClass.LocalConnectionString);
                             obj.ID = (int)id;
@@ -521,6 +539,9 @@ namespace Yamed.OmsExp.ExpEditors
             }
         }
 
-
+        private void TemplateZaklEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            ZaklEdit.Text = TemplateZaklEdit.Text;
+        }
     }
 }

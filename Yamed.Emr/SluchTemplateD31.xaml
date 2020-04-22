@@ -2371,6 +2371,19 @@
                                                                 ValueMember="ID_TLuch" />
                                             </dxg:GridColumn.EditSettings>
                                         </dxg:GridColumn>
+                                        <dxg:GridColumn FieldName="PPTR" Header="Признак проведения профилактики тошноты и рвотного рефлекса">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:ComboBoxEditSettings x:Name="PPTRColumnEdit"
+                                                AutoComplete="True"
+                                                DisplayMember="NameWithID"
+                                                FilterCondition="Contains"
+                                                ImmediatePopup="True"
+                                                IncrementalFiltering="True"
+                                                ItemsSource="{Binding}"
+                                                NullValueButtonPlacement="EditBox"
+                                                ValueMember="ID" />
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
                                     </dxg:GridControl>
                                 </Grid>
 
@@ -2426,6 +2439,7 @@
                                                 ValueMember="ID_LEKP" />
                                                     </dxg:GridColumn.EditSettings>
                                                 </dxg:GridColumn>
+                                               
                                                 <dxg:GridColumn FieldName="CODE_SH" Header="Код схемы лекарственной терапии">
                                                     <dxg:GridColumn.EditSettings>
                                                         <dxe:ComboBoxEditSettings x:Name="CodeShColumnEdit"

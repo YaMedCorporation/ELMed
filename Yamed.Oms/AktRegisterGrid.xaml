@@ -173,6 +173,7 @@
                         <dxg:GridColumn x:Name="Column_OT" FieldName="OT" Header="Очество" Width="120" />
                         <dxg:GridColumn x:Name="Column_DR" FieldName="DR" Header="ДР" Width="50" />
                         <dxg:GridColumn x:Name="Column_NPOLIS" FieldName="NPOLIS" Header="Полис" Width="120" />
+                        <dxg:GridColumn x:Name="Column_NHISTORY" FieldName="NHISTORY" Header="Номер истории болезни" Width="120" />
                         <dxg:GridColumn x:Name="Column_SUMV" FieldName="SUMV" Header="Сумма выставленная" Width="80"/>
                         <dxg:GridColumn x:Name="Column_OPLATA" FieldName="OPLATA" Header="Оплата" Width="80"/>
                         <dxg:GridColumn x:Name="Column_SUMP" FieldName="SUMP" Header="Сумма принятая" Width="80"/>
