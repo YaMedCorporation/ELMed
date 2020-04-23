@@ -115,6 +115,8 @@ namespace Yamed.Emr
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
             {
+                SaveItem.IsEnabled = false;
+                NewItem.IsEnabled = false;
                 SlAddItem.IsEnabled = false;
                 SlDelItem.IsEnabled = false;
                 UslAddItem.IsEnabled = false;
@@ -638,11 +640,18 @@ namespace Yamed.Emr
         public string fap_lpu;
         void GetSpr()
         {
+            var ter = Reader2List.SelectScalar($@"
+declare @reg varchar(2)
+declare @tf_okato nvarchar(5) /* получаем окато текущей СМО. */
+SELECT @tf_okato = tf_okato FROM [F002] where smocod = (select Parametr from Settings where name='CodeSMO')
+select @reg=Parametr from Settings where name='Region'
+if @tf_okato is null /* берём и МО. */
+	SELECT @tf_okato = tf_okato FROM [F003] where mcod = (select Parametr from Settings where name='MedicalOrganization')
+select left(@tf_okato,2)", SprClass.LocalConnectionString);
             typeUdlBox.DataContext = SprClass.passport;
             //smoOkatoBox.DataContext = SprClass.smoOkato;
-            okatoTerBox.DataContext = SprClass.smoOkato;
-            okatoTerPribBox.DataContext = SprClass.smoOkato;
-
+            okatoTerBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00')) and name1 not like '%/'", SprClass.LocalConnectionString);
+            okatoTerPribBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00')) and name1 not like '%/'", SprClass.LocalConnectionString);
             wBox.DataContext = SprClass.sex;
             wpBox.DataContext = SprClass.sex;
 

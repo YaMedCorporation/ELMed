@@ -637,10 +637,10 @@
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutGroup Orientation="Vertical">
                                 <dxlc:LayoutItem ToolTip="ОКАТО территории проживания" Label="ОКАТО терр. проживания">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerBox" ItemsSource="{Binding}" ValueMember="KOD_OKATO" DisplayMember="OKATO" EditValue="{Binding DataContext.OKATOG, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerBox" ItemsSource="{Binding}" ValueMember="ID" DisplayMember="NameWithID" EditValue="{Binding DataContext.OKATOG, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem ToolTip="ОКАТО територии прибывания" Label="ОКАТО терр. прибывания">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerPribBox" ItemsSource="{Binding}" ValueMember="KOD_OKATO" DisplayMember="OKATO" EditValue="{Binding DataContext.OKATOP, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerPribBox" ItemsSource="{Binding}" ValueMember="ID" DisplayMember="NameWithID" EditValue="{Binding DataContext.OKATOP, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
 
                                 <dxlc:LayoutItem Label="Регион страхования">
