@@ -49,7 +49,7 @@
                         <dxg:GridColumn x:Name="Column_FAM" Width="90" Header="Фамилия" FieldName="Row.FAM"/>
                         <dxg:GridColumn x:Name="Column_IM" Width="70" Header="Имя" FieldName="Row.IM"/>
                         <dxg:GridColumn x:Name="Column_OT" Width="120" Header="Очество" FieldName="Row.OT"/>
-                        <dxg:GridColumn x:Name="Column_NHISTORY" Width="90" Header="Номер истории болезни" FieldName="Row.NHISTORY"/>
+                        <dxg:GridColumn x:Name="Column_NHISTORY" Width="90" Header="Номер истории болезни" FieldName="Nhistory"/>
                         <!--<dxg:GridColumn x:Name="Column_DATE_1" FieldName="Row.DATE_Z_1" Header="Дата начала лечения" Width="75" />-->
                         <dxg:GridColumn x:Name="Column_DATE_2" Width="75" Header="Дата окончания лечения" FieldName="Row.DATE_Z_2"/>
                         <!--<dxg:GridColumn x:Name="Column_Expert" FieldName="AktMee.ExpertID" Header="Эксперт" Width="150" Visible="True" ShowInColumnChooser="False">

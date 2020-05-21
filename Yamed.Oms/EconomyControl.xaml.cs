@@ -218,7 +218,27 @@ namespace Yamed.Oms
                 Reader2List.CustomExecuteQuery($@"
                     exec[dbo].[p_oms_calc_ksg] {0}, {sc.ID}, 'scid'", SprClass.LocalConnectionString);
             }
-
+            if (region == "37" || region == "037")
+            {
+                Reader2List.CustomExecuteQuery($@"
+                    exec[dbo].[p_oms_calc_kslp_sum] {0}, {sc.ID}, 'scid'", SprClass.LocalConnectionString);
+                var ksgs = SqlReader.Select(
+                $@"select auto_ksg from D3_KSG_KPG_OMS ksg join D3_SL_OMS sl on sl.ID=ksg.D3_SLID join D3_ZSL_OMS zsl on zsl.ID=sl.D3_ZSLID where zsl.D3_SCID={sc.ID}",
+                SprClass.LocalConnectionString);
+                foreach (var ksg in ksgs)
+                {
+                    if ((bool?)ksg.GetValue("auto_ksg")==true)
+                    {
+                        Reader2List.CustomExecuteQuery($@"
+                    exec[dbo].[p_oms_calc_ksg] {0}, {sc.ID}, 'scid'", SprClass.LocalConnectionString);
+                    }
+                    else if ((bool?)ksg.GetValue("auto_ksg") == false)
+                    {
+                        Reader2List.CustomExecuteQuery($@"
+                    exec[dbo].[p_oms_calc_ksg_m] {0}, {sc.ID}, 'scid'", SprClass.LocalConnectionString);
+                    }
+                }
+            }
             DXMessageBox.Show("Расчет завершен.");
 
             ((DevExpress.Xpf.Bars.BarButtonItem)sender).IsEnabled = true;

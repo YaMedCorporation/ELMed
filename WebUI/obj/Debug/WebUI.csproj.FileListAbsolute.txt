@@ -3,3 +3,9 @@ D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\WebUI\bin\Debug\WebUI.pdb
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\WebUI\obj\Debug\WebUI.dll
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\WebUI\obj\Debug\WebUI.pdb
+E:\ELMed-ELMed\WebUI\bin\Debug\WebUI.dll
+E:\ELMed-ELMed\WebUI\bin\Debug\WebUI.pdb
+E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
+E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
+E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.dll
+E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.pdb

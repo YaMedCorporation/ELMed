@@ -298,7 +298,6 @@ namespace Yamed.Server
             //    "property changed: " + e.PropertyName);
             //test.GetType().GetProperty("ID").SetValue(test, 5, null);
             //test.GetType().GetProperty("Name").SetValue(test, "testtest", null);
-
             VOplList = Reader2List.GetAnonymousTable("SprVOPL", LocalConnectionString);
             DoctList = Reader2List.GetAnonymousTable("DoctorBd", LocalConnectionString);
             DefGospList = Reader2List.GetAnonymousTable("SprDEFGOSP", LocalConnectionString);
@@ -482,6 +481,7 @@ namespace Yamed.Server
                 srzcon.UserID = "mo";
                 srzcon.Password = @"54Vtkrb[Gfrjcnys[J,zpmzyGjbvtkbDct[@Ufdy.rjd$";
                 GlobalSrzConnectionString = srzcon.ConnectionString;
+
 
 
                 schetQuery = @"Select sl.[ID]

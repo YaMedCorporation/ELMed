@@ -24,6 +24,7 @@ namespace Yamed.OmsExp.ExpEditors
         public object Row { get; set; }
         public D3_SANK_OMS Sank { get; set; }
         public D3_SANK_OMS ReSank { get; set; }
+        public object Nhistory { get; set; }
     }
 
 
@@ -104,13 +105,18 @@ namespace Yamed.OmsExp.ExpEditors
         }
 
 
-
+        public static object hist;
         private void MeeWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             List<int> zslid = new List<int>();
+            
             if (_re==1 && _stype==1)
             {
                 _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or Name like '%ИЗМЕНЕНИЙ%' order by Name", SprClass.LocalConnectionString);
+            }
+            else if (SprClass.Region == "57")
+            {
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null order by Name", SprClass.LocalConnectionString);
             }
             else
             {
@@ -128,6 +134,7 @@ namespace Yamed.OmsExp.ExpEditors
                    
                         ExpClass expList = new ExpClass();
                         expList.Row = row;
+                        expList.Nhistory = Reader2List.SelectScalar($@"Select (select top(1) sl.nhistory  from d3_sl_oms sl where sl.d3_zslid=zsl.id order by sl.id) as NHISTORY from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
                         expList.Sank = new D3_SANK_OMS()
@@ -138,8 +145,7 @@ namespace Yamed.OmsExp.ExpEditors
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
                             S_DATE = SprClass.WorkDate
-                        };
-                        
+                    };
                         _slpsList.Add(expList);
                         zslid.Add(expList.Sank.D3_ZSLID);
                     }
@@ -184,7 +190,7 @@ namespace Yamed.OmsExp.ExpEditors
                 }
 
 
-               
+                    
                     slupacsank.Row = _row;
                     slupacsank.Sank = sank.First();
                     _slpsList.Add(slupacsank);
@@ -196,12 +202,12 @@ namespace Yamed.OmsExp.ExpEditors
 
 
             sluchGridControl.DataContext = _slpsList;
+            
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {
                     sluchGridControl.SelectRange(0,0);
                 }));
-
         }
 
 
@@ -332,7 +338,6 @@ namespace Yamed.OmsExp.ExpEditors
                         {
                             obj.CODE_EXP = null;
                         }
-
                         var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
                         obj.ID = (int)id;
                     }
@@ -475,6 +480,10 @@ namespace Yamed.OmsExp.ExpEditors
 
                     sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                         MidpointRounding.AwayFromZero);
+                }
+                else if (_re == 1 && _stype == 1 && SprClass.Region == "25")
+                {
+                    ex.Sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                 }
                 else
                 {

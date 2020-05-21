@@ -650,8 +650,8 @@ if @tf_okato is null /* берём и МО. */
 select left(@tf_okato,2)", SprClass.LocalConnectionString);
             typeUdlBox.DataContext = SprClass.passport;
             //smoOkatoBox.DataContext = SprClass.smoOkato;
-            okatoTerBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00')) and name1 not like '%/'", SprClass.LocalConnectionString);
-            okatoTerPribBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00')) and name1 not like '%/'", SprClass.LocalConnectionString);
+            okatoTerBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00') or name1 like '%автоном%') and name1 not like '%/'", SprClass.LocalConnectionString);
+            okatoTerPribBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00') or name1 like '%автоном%') and name1 not like '%/'", SprClass.LocalConnectionString);
             wBox.DataContext = SprClass.sex;
             wpBox.DataContext = SprClass.sex;
 
@@ -2198,10 +2198,13 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
         private void LayoutControl_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F5)
-                SaveSluchAsync();
-            if (e.Key == Key.F7)
-                NewZsl();
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            {
+                if (e.Key == Key.F5)
+                    SaveSluchAsync();
+                if (e.Key == Key.F7)
+                    NewZsl();
+            }
         }
 
         private void GridViewBase_OnCellValueChanged(object sender, CellValueChangedEventArgs e)

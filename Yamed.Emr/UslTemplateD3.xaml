@@ -37,7 +37,7 @@
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutGroup>
                         <dxlc:LayoutItem Label="Врач">
-                            <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="DoctorBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="SNILS" EditValue="{Binding DataContext.CODE_MD, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" />
+                            <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="DoctorBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="SNILS" EditValue="{Binding DataContext.CODE_MD, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" EditValueChanged="DoctorBox_EditValueChanged" />
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutItem Label="Специальность">
@@ -84,6 +84,9 @@
                     <dxlc:LayoutGroup>
                         <dxlc:LayoutItem Label="Услуга">
                             <dxe:ComboBoxEdit x:Name="VidVmeBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.VID_VME, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="ID" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor" NullValueButtonPlacement="EditBox" GotFocus="VidVmeBox_OnGotFocus" LostFocus="VidVmeBox_OnLostFocus" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Код услуги" x:Name="kod_usl" Visibility="Collapsed">
+                            <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="Kod_uslBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="CODE_USL" EditValue="{Binding DataContext.CODE_USL, ElementName=GridUsl, UpdateSourceTrigger=PropertyChanged}" />
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutGroup>

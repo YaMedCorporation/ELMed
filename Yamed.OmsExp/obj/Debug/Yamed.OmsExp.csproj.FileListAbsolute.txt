@@ -332,8 +332,6 @@ E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\Yamed.Reports.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\Yamed.Server.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Xpf.Controls.v16.2.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.dll
-E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\FastReport.dll
-E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\FastReport.Bars.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.XtraReports.v16.2.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Xpf.ReportDesigner.v16.2.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.DataAccess.v16.2.dll
@@ -360,7 +358,6 @@ E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.XtraGauges.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Sparkline.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.XtraCharts.v16.2.Wizard.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.XtraCharts.v16.2.dll
-E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\FastReport.Editor.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Charts.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Diagram.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\DevExpress.Xpf.Diagram.v16.2.dll
@@ -614,3 +611,6 @@ E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csproj.CoreCompileInputs.cach
 E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csproj.CopyComplete
 E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll
 E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.pdb
+E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\FastReport.dll
+E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\FastReport.Bars.dll
+E:\ELMed-ELMed\Yamed.OmsExp\bin\Debug\FastReport.Editor.dll

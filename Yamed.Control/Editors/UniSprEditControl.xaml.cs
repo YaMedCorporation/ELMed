@@ -184,75 +184,104 @@ namespace Yamed.Control.Editors
 
             }
             var fkc = _foreignKeyColumn.SingleOrDefault(x => x.ColumnName == e.PropertyName);
-            if (fkc == null) return;
-
-
-            string rtName;
-            if (fkc.ReferenceTableName.Contains("___Guid___"))
+            if (fkc == null)
             {
-                rtName = fkc.ReferenceTableName.Remove(fkc.ReferenceTableName.IndexOf("___Guid___", StringComparison.CurrentCulture));
-            }
-            else
-            {
-                rtName = fkc.ReferenceTableName;
-            }
-
-            var cis = Reader2List.CustomSelect<DBaseInfoClass.ColumnsInformationSchema>($"select * from information_schema.columns where table_name = '{rtName}'", _connectionString);
-            var dn = cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("NameW")) ??
-                        cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("Name")) ?? cis.Single(x => x.ORDINAL_POSITION == 2);
-            //var rt = _foreignTable.Single(x => x.Key == rtName);
-
-
-            var bind = new Binding(e.PropertyName);
-            bind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            var control = new ComboBoxEdit();control.ValueMember = fkc.ReferenceColumnName;
-            control.DisplayMember = dn.COLUMN_NAME;
-            //control.ItemsSource = rt.Value;
-            control.SetBinding(BaseEdit.EditValueProperty, bind);
-            control.NullValueButtonPlacement = EditorPlacement.EditBox;
-            control.IncrementalFiltering = true;
-            control.AutoComplete = true;
-            control.FilterCondition = FilterCondition.Contains;
-            
-            e.Item.Content = control;
-
-            if (_columnsInformationSchema.Single(x => x.COLUMN_NAME == e.PropertyName).IS_NULLABLE == "NO")
-            {
-                e.Item.IsRequired = true;
-                ((BaseEdit)e.Item.Content).InvalidValueBehavior = InvalidValueBehavior.AllowLeaveEditor;
-                ((BaseEdit) e.Item.Content).Validate += (o, args) =>
+                if (SprClass.Region == "37" && _tableName== "Yamed_Spr_MedicalEmployee" && e.PropertyName == "KOD_SP")
                 {
-                    if (args.Value == null)
-                    {
-                        args.IsValid = false;
-                    }
-                };
-            }
+                    //var cis = Reader2List.CustomSelect<DBaseInfoClass.ColumnsInformationSchema>($"select * from information_schema.columns where table_name = 'rg012'", _connectionString);
+                    //var dn = cis.SingleOrDefault(x => x.COLUMN_NAME== "NameWithID");
+                    //var rt = _foreignTable.Single(x => x.Key == rtName);
 
-            var mekTask = Task.Factory.StartNew(() =>
-            {
-                var tn = fkc.ReferenceTableName.Contains("___Guid___")
-                    ? fkc.ReferenceTableName.Remove(fkc.ReferenceTableName.IndexOf("___Guid___", StringComparison.CurrentCulture))
-                    : fkc.ReferenceTableName;
-                var rt = Reader2List.GetAnonymousTable(tn, _connectionString);
-                if (_foreignTable.Any(x => x.Key == fkc.ReferenceTableName))
-                    fkc.ReferenceTableName = fkc.ReferenceTableName + "___Guid___" + Guid.NewGuid();
-                _foreignTable.Add(fkc.ReferenceTableName, rt);
 
-                return rt;
-            });
-            mekTask.ContinueWith(x =>
-            {
-                if (_tableName == "D3_AKT_REGISTR_OMS" && rtName == "F006_NEW")
-                {
-                    control.ItemsSource = Reader2List.CustomAnonymousSelect($@"select * from f006_new where dateend is null and idvid not in (1,2,3) and exp_re!=1", SprClass.LocalConnectionString);
+                    var bind = new Binding(e.PropertyName);
+                    bind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                    var control = new ComboBoxEdit(); control.ValueMember = "KOD_SP";
+                    control.DisplayMember = "NameWithID";
+                    //control.ItemsSource = rt.Value;
+                    control.SetBinding(BaseEdit.EditValueProperty, bind);
+                    control.NullValueButtonPlacement = EditorPlacement.EditBox;
+                    control.IncrementalFiltering = true;
+                    control.AutoComplete = true;
+                    control.FilterCondition = FilterCondition.Contains;
+
+                    e.Item.Content = control;
+                    control.ItemsSource = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{SprClass.ProdSett.OrgCode}' and '{DateTime.Today}' between dt_beg and isnull(dt_fin,'20530101')", _connectionString);
                 }
                 else
                 {
-                    control.ItemsSource = x.Result;
+                    return;
                 }
-            }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
+            else
+            {
 
+
+                string rtName;
+                if (fkc.ReferenceTableName.Contains("___Guid___"))
+                {
+                    rtName = fkc.ReferenceTableName.Remove(fkc.ReferenceTableName.IndexOf("___Guid___", StringComparison.CurrentCulture));
+                }
+                else
+                {
+                    rtName = fkc.ReferenceTableName;
+                }
+
+                var cis = Reader2List.CustomSelect<DBaseInfoClass.ColumnsInformationSchema>($"select * from information_schema.columns where table_name = '{rtName}'", _connectionString);
+                var dn = cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("NameW")) ??
+                            cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("Name")) ?? cis.Single(x => x.ORDINAL_POSITION == 2);
+                //var rt = _foreignTable.Single(x => x.Key == rtName);
+
+
+                var bind = new Binding(e.PropertyName);
+                bind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                var control = new ComboBoxEdit(); control.ValueMember = fkc.ReferenceColumnName;
+                control.DisplayMember = dn.COLUMN_NAME;
+                //control.ItemsSource = rt.Value;
+                control.SetBinding(BaseEdit.EditValueProperty, bind);
+                control.NullValueButtonPlacement = EditorPlacement.EditBox;
+                control.IncrementalFiltering = true;
+                control.AutoComplete = true;
+                control.FilterCondition = FilterCondition.Contains;
+
+                e.Item.Content = control;
+
+                if (_columnsInformationSchema.Single(x => x.COLUMN_NAME == e.PropertyName).IS_NULLABLE == "NO")
+                {
+                    e.Item.IsRequired = true;
+                    ((BaseEdit)e.Item.Content).InvalidValueBehavior = InvalidValueBehavior.AllowLeaveEditor;
+                    ((BaseEdit)e.Item.Content).Validate += (o, args) =>
+                   {
+                       if (args.Value == null)
+                       {
+                           args.IsValid = false;
+                       }
+                   };
+                }
+
+                var mekTask = Task.Factory.StartNew(() =>
+                {
+                    var tn = fkc.ReferenceTableName.Contains("___Guid___")
+                        ? fkc.ReferenceTableName.Remove(fkc.ReferenceTableName.IndexOf("___Guid___", StringComparison.CurrentCulture))
+                        : fkc.ReferenceTableName;
+                    var rt = Reader2List.GetAnonymousTable(tn, _connectionString);
+                    if (_foreignTable.Any(x => x.Key == fkc.ReferenceTableName))
+                        fkc.ReferenceTableName = fkc.ReferenceTableName + "___Guid___" + Guid.NewGuid();
+                    _foreignTable.Add(fkc.ReferenceTableName, rt);
+
+                    return rt;
+                });
+                mekTask.ContinueWith(x =>
+                {
+                    if (_tableName == "D3_AKT_REGISTR_OMS" && rtName == "F006_NEW")
+                    {
+                        control.ItemsSource = Reader2List.CustomAnonymousSelect($@"select * from f006_new where dateend is null and idvid not in (1,2,3) and exp_re!=1", SprClass.LocalConnectionString);
+                    }
+                    else
+                    {
+                        control.ItemsSource = x.Result;
+                    }
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
         }
 
 

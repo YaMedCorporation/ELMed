@@ -147,6 +147,7 @@ namespace Yamed.Emr
                 ConsAddItem.IsEnabled = false;
                 ConsDelItem.IsEnabled = false;
             }
+            
         }
 
         public void BindPacient(int pid)
@@ -163,8 +164,9 @@ namespace Yamed.Emr
                 new Action(delegate ()
                 {
                     polisBox.Focus();
+                    autoksg.EditValue = true;
                 }));
-
+            
         }
 
         public D3_PACIENT_OMS PacientData()
@@ -409,7 +411,6 @@ namespace Yamed.Emr
         //        tz.Dispose();
         //    }, TaskScheduler.FromCurrentSynchronizationContext());
         //}
-
         public void BindSluch(int slid, D3_SCHET_OMS sc = null)
         {
             if (_sc == null) _sc = sc;
@@ -435,6 +436,7 @@ namespace Yamed.Emr
                     {
                         _ksgList = Reader2List.CustomSelect<D3_KSG_KPG_OMS>($"Select * from D3_KSG_KPG_OMS where D3_SLID in ({slids})",
                                 SprClass.LocalConnectionString);
+
                         var ksgids = ObjHelper.GetIds(_ksgList.Select(x => x.ID).ToArray());
 
                         _kslpList = Reader2List.CustomSelect<D3_SL_KOEF_OMS>($"Select * from D3_SL_KOEF_OMS where D3_KSGID in ({ksgids})",
@@ -563,7 +565,7 @@ namespace Yamed.Emr
             _zsl.D3_SCID = _sc.ID;
             _zsl.LPU = _sc.CODE_MO;
             ZSlGrid.DataContext = _zsl;
-
+            autoksg.EditValue = true;
             _slList = new List<D3_SL_OMS>();
 
             _uslList = null;
@@ -600,7 +602,6 @@ namespace Yamed.Emr
 
             _slList.Add(new D3_SL_OMS { SL_ID = Guid.NewGuid().ToString() });
             SlGrid.DataContext = _slList;
-
 
 
             //_task = Task.Factory.StartNew(() =>
@@ -641,17 +642,6 @@ namespace Yamed.Emr
         public string zsl_lpu;
         void GetSpr()
         {
-
-            // для тестирования заполнения полей Иваново, Андрей insidious
-            Socstatus.DataContext = SprClass.rg001; //заполнение поля Socstatus для Иваново
-            Povodobr.DataContext = SprClass.rg003; //заполнение поля Povod obr для Иваново
-            ProfilkEditreg.DataContext = SprClass.rg004; //заполнение поля profil_reg для Иваново
-            
-            
-            Grafdn.DataContext = SprClass.SprGrafdn; // заполнение поля graf_dn для Иваново
-
-            typeUdlBox.DataContext = SprClass.passport;
-            //smoOkatoBox.DataContext = SprClass.smoOkato;
             var ter = Reader2List.SelectScalar($@"
 declare @reg varchar(2)
 declare @tf_okato nvarchar(5) /* получаем окато текущей СМО. */
@@ -660,8 +650,19 @@ select @reg=Parametr from Settings where name='Region'
 if @tf_okato is null /* берём и МО. */
 	SELECT @tf_okato = tf_okato FROM [F003] where mcod = (select Parametr from Settings where name='MedicalOrganization')
 select left(@tf_okato,2)", SprClass.LocalConnectionString);
-            okatoTerBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00')) and name1 not like '%/'", SprClass.LocalConnectionString);
-            okatoTerPribBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00')) and name1 not like '%/'", SprClass.LocalConnectionString);
+            // для тестирования заполнения полей Иваново, Андрей insidious
+            Socstatus.DataContext = SprClass.rg001; //заполнение поля Socstatus для Иваново
+            Povodobr.DataContext = SprClass.rg003; //заполнение поля Povod obr для Иваново
+            
+            
+            
+            Grafdn.DataContext = SprClass.SprGrafdn; // заполнение поля graf_dn для Иваново
+
+            typeUdlBox.DataContext = SprClass.passport;
+            //smoOkatoBox.DataContext = SprClass.smoOkato;
+            
+            okatoTerBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00') or name1 like '%автоном%') and name1 not like '%/'", SprClass.LocalConnectionString);
+            okatoTerPribBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00') or name1 like '%автоном%') and name1 not like '%/'", SprClass.LocalConnectionString);
 
             wBox.DataContext = SprClass.sex;
             wpBox.DataContext = SprClass.sex;
@@ -684,7 +685,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             LpuEdit.DataContext = SprClass.medOrg;
             UslOkzGrid.DataContext = SprClass.conditionHelp;
             ProfilGrid.DataContext = SprClass.profile;
-            //ProfilkEdit.DataContext = SprClass.Profil_V020;
+            ProfilkEdit.DataContext = SprClass.Profil_V020;
             ProfilColumnEdit.DataContext = SprClass.profile;
             PperEdit.DataContext = SprClass.Per;
             PrvsGrid.DataContext = SprClass.SpecV021List;
@@ -791,10 +792,9 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
             }
             zsl_lpu = _zsl.LPU == null ? "370001" : _zsl.LPU;
-            
             NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
                 KODSPColumn.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
-                UslCodeUslColumnIv.DataContext = Reader2List.CustomAnonymousSelect($@"Select KOD_LPU,convert(nvarchar,KODUSL) as KODUSL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+            UslCodeUslColumnIv.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct kodusl,convert(nvarchar,KODUSL) as CODE_USL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
             Vidviz.DataContext = Reader2List.CustomAnonymousSelect($"select distinct convert(int,vid_viz) as vid_viz,convert(nvarchar,vid_viz) + ' '+ nviz as NameWithID from rg013 where KOD_LPU='{zsl_lpu}' and DT_FIN='20530101'", SprClass.LocalConnectionString); //заполнение поля vid_viz для Иваново
             Vidbrig.DataContext = Reader2List.CustomAnonymousSelect($"select distinct convert(int,vid_brig) as vid_brig,convert(nvarchar,vid_brig) + ' '+ nbrig as NameWithID from rg013 where KOD_LPU='{zsl_lpu}' and DT_FIN='20530101'", SprClass.LocalConnectionString); //заполнение поля vid_brig для Иваново
             if (_sankList == null) return;
@@ -883,11 +883,13 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                         if (ksg.ID == 0)
                         {
                             ksg.D3_SLID = _slList.Single(x => x.SL_ID == ksg.D3_SLGID).ID;
+                            ksg.Auto_KSG = (bool?)autoksg.EditValue;
                             var ksgid = Reader2List.ObjectInsertCommand("D3_KSG_KPG_OMS", ksg, "ID", SprClass.LocalConnectionString);
                             ksg.ID = (int)ksgid;
                         }
                         else
                         {
+                            ksg.Auto_KSG = (bool?)autoksg.EditValue;
                             var upd = Reader2List.CustomUpdateCommand("D3_KSG_KPG_OMS", ksg, "ID");
                             Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                         }
@@ -1223,9 +1225,16 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             {
                     Reader2List.CustomExecuteQuery($@"
                     exec[dbo].[p_oms_calc_kslp_sum] {_zsl.ID}, 0, 'zsl'", SprClass.LocalConnectionString);
-
+                if ((bool?)autoksg.EditValue == false)
+                {
+                    Reader2List.CustomExecuteQuery($@"
+                    exec[dbo].[p_oms_calc_ksg_m] {_zsl.ID}, 0, 'zsl'", SprClass.LocalConnectionString);
+                }
+                else if ((bool?)autoksg.EditValue==true)
+                {
                     Reader2List.CustomExecuteQuery($@"
                     exec[dbo].[p_oms_calc_ksg] {_zsl.ID}, 0, 'zsl'", SprClass.LocalConnectionString);
+                }
 
                 BindSluch(_zsl.ID);
             }
@@ -1588,6 +1597,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
         void SlEditDefault()
         {
             fap.IsChecked = fapcheck;
+            autoksg.EditValue = true;
             ((D3_SL_OMS)SlGridControl.SelectedItem).USL_OK = _slLock.USL_OK;
             ((D3_SL_OMS)SlGridControl.SelectedItem).LPU_1 = _slLock.LPU_1;
             ((D3_SL_OMS)SlGridControl.SelectedItem).PODR = _slLock.PODR;
@@ -1655,8 +1665,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             _slLock.DS1_PR = Ds1PrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS1_PR : null;
             _slLock.POVOD = povodobrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).POVOD : null;
             _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
-            //_slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
-            _slLock.PROFIL_REG = ProfKrTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_REG : null;
+            _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
 
             if (fapTb.IsChecked == true && fap.IsChecked == true)
             {
@@ -2216,10 +2225,86 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
         private void LayoutControl_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F5)
-                SaveSluchAsync();
-            if (e.Key == Key.F7)
-                NewZsl();
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            {
+                if (e.Key == Key.F1)
+                {
+                    sved_sl.SelectedTabIndex = 0;
+                }
+                else if (e.Key == Key.F2)
+                {
+                    sved_sl.SelectedTabIndex = 1;
+                }
+                else if (e.Key == Key.F3)
+                {
+                    sved_sl.SelectedTabIndex = 2;
+                }
+                else if (e.Key == Key.F4)
+                {
+                    sved_sl.SelectedTabIndex = 3;
+                }
+                else if (e.Key == Key.F5)
+                {
+                    SaveSluchAsync();
+                }
+                else if (e.Key == Key.F6)
+                {
+                    sved_sl.SelectedTabIndex = 4;
+                }
+                else if (e.Key == Key.F7)
+                {
+                    NewZsl();
+                }
+                else if (e.Key == Key.F8)
+                {
+                    sved_sl.SelectedTabIndex = 5;
+                }
+                else if (e.Key == Key.F9)
+                {
+                    sved_sl.SelectedTabIndex = 6;
+                }
+                else if (e.Key == Key.F11)
+                {
+                    sved_sl.SelectedTabIndex = 7;
+                }
+            }
+            else
+            {
+                if (e.Key == Key.F1)
+                {
+                    sved_sl.SelectedTabIndex = 0;
+                }
+                else if (e.Key == Key.F2)
+                {
+                    sved_sl.SelectedTabIndex = 1;
+                }
+                else if (e.Key == Key.F3)
+                {
+                    sved_sl.SelectedTabIndex = 2;
+                }
+                else if (e.Key == Key.F4)
+                {
+                    sved_sl.SelectedTabIndex = 3;
+                }
+                else if (e.Key == Key.F6)
+                {
+                    sved_sl.SelectedTabIndex = 4;
+                }
+                else if (e.Key == Key.F8)
+                {
+                    sved_sl.SelectedTabIndex = 5;
+                }
+                else if (e.Key == Key.F9)
+                {
+                    sved_sl.SelectedTabIndex = 6;
+                }
+                else if (e.Key == Key.F11)
+                {
+                    sved_sl.SelectedTabIndex = 7;
+                }
+            }
+            //sved_sl.SelectedTabIndex = 1;
+
         }
 
         private void GridViewBase_OnCellValueChanged(object sender, CellValueChangedEventArgs e)
@@ -2557,7 +2642,31 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             } 
         }
 
+        private void DoctEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if (DoctEdit.EditValue != null && SprClass.ProdSett.OrgTypeStatus==OrgType.Lpu)
+            {
+                PrvsEdit.EditValue = Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
+                ProfilEdit.EditValue = Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
+                DetEdit.EditValue = Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
+            }
+        }
 
+        private void Autoksg_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if ((bool?)autoksg.EditValue !=null)
+            {
+                NksgIvEdit.EditValue = null;
+                if ((bool?)autoksg.EditValue == false)
+                {
+                    NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and len(N_ST_STR)>8 and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+                }
+                else if ((bool?)autoksg.EditValue == true)
+                {
+                    NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+                }
+            }
+        }
     }
 
     public class RoleVisibility1 : IValueConverter

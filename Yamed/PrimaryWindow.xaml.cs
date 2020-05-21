@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,7 @@ using DevExpress.Xpf.Core;
 using DevExpress.Xpf.Editors;
 using GalaSoft.MvvmLight.Command;
 using MaterialMenu;
+using Microsoft.Win32;
 using Yamed.Ambulatory;
 using Yamed.Control;
 using Yamed.Control.Editors;
@@ -45,12 +47,177 @@ namespace Yamed
     {
         //DxTabViewModel _vm = new DxTabViewModel();
 
-
-        public PrimaryWindow()
+        void DeadSecDecoding(string strfile)
         {
+
+            string newstrFile = strfile;
+
+            using (var stream1 = new MemoryStream())
+            {
+                using (FileStream file = new FileStream(newstrFile, FileMode.Open, FileAccess.Read))
+                {
+                    byte[] bytes = new byte[file.Length];
+                    file.Read(bytes, 0, (int)file.Length);
+                    stream1.Write(bytes, 0, (int)file.Length);
+                    stream1.Position = 0;
+                }
+                try
+                {
+                    using (var inputStream = stream1)
+                    using (var reader = new BinaryReader(inputStream))
+                    using (var outputStream1 = new FileStream(strfile.Replace(".dll", ".txt"), FileMode.Create, FileAccess.Write))
+                    {
+                        var sb = new StringBuilder();
+
+                        while (reader.PeekChar() != -1)
+                        {
+                            char[] chars = reader.ReadChars(1024 * 16);
+
+                            foreach (char c in chars)
+                            {
+                                if (c != '@')
+                                {
+                                    sb.Append(c);
+
+                                }
+
+
+                                else
+                                {
+                                    int number = int.Parse(sb.ToString()) / 528142;
+                                    byte b = (byte)number;
+                                    outputStream1.WriteByte(b);
+                                    sb.Clear();
+                                }
+                            }
+                        }
+
+                        if (sb.Length > 0)
+                        {
+                            int number = int.Parse(sb.ToString()) / 528142;
+                            byte b = (byte)number;
+                            outputStream1.WriteByte(b);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DXMessageBox.Show("Неверный формат файла Update.elm!!!  " + ex.Message);
+                    return;
+                }
+
+            }
+
+        }
+        private bool tlm_Click()
+        {
+            string strfile = Path.Combine(Environment.CurrentDirectory, "Yamed_lib_coreD.dll");
+            RegistryKey hkcu0 = Microsoft.Win32.Registry.CurrentUser;
+            RegistryKey soft0 = hkcu0.OpenSubKey("SOFTWARE", false);
+            RegistryKey medsmdcod0 = soft0.OpenSubKey("MedSmdCod", false);
+            string codmo = medsmdcod0.GetValue("cod").ToString();
+
+            string reshash;
+            DeadSecDecoding(strfile);
+
+            string a1;
+            string a2;
+            string a3;
+            try
+            {
+
+                a1 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(0, File.ReadAllText(strfile.Replace(".dll", ".txt")).Length - 33);
+                a2 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(File.ReadAllText(strfile.Replace(".dll", ".txt")).Length - 32, 32);
+                a3 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(0, 8);
+                System.IO.File.WriteAllText(strfile.Replace(".dll", ".txt"), a1);
+                //System.IO.File.WriteAllText(OF.SelectedPath + "\\Yamed_lib_coreD.txt", a1);
+                using (FileStream fs = new FileStream(strfile.Replace(".dll", ".txt"), FileMode.Open, FileAccess.Read))
+                {
+                    MD5 md5 = new MD5CryptoServiceProvider();
+                    byte[] fileData = new byte[fs.Length];
+                    fs.Read(fileData, 0, (int)fs.Length);
+                    byte[] checkSum = md5.ComputeHash(fileData);
+                    reshash = BitConverter.ToString(checkSum).Replace("-", String.Empty);
+                    fs.Close();
+                }
+                StreamReader f = new StreamReader(strfile.Replace(".dll", ".txt"));
+                string[] a = f.ReadToEnd().Split(',');
+                string MD5 = a[a.Count() - 1];
+                int i;
+                int j = a.Count();
+                TimeSpan span = DateTime.Today - Convert.ToDateTime(a3.Substring(0, 4) + "/" + a3.Substring(4, 2) + "/" + a3.Substring(6, 2));
+                if (a2 != reshash)
+                {
+                    DXMessageBox.Show("Неверный формат файла Update.elm!!!");
+                    f.Close();
+                    File.Delete(strfile.Replace(".dll", ".txt"));
+                    return false;
+                }
+                else if (span.Days > 10)
+                {
+                    DXMessageBox.Show("Без обновления работа невозможна!!!");
+                    f.Close();
+                    File.Delete(strfile.Replace(".dll", ".txt"));
+                    return false;
+
+                }
+                else
+                {
+
+                    RegistryKey hkcu = Microsoft.Win32.Registry.CurrentUser;
+                    RegistryKey soft = hkcu.OpenSubKey("SOFTWARE", false);
+                    RegistryKey medsmdcod = soft.OpenSubKey("MedSmdCod", false);
+                    string hashreg = medsmdcod.GetValue("dolg").ToString();
+                    medsmdcod.Close();
+                    if (reshash != hashreg)
+                    {
+                        DXMessageBox.Show("Неверный формат файла Update.elm!!!");
+                        f.Close();
+                        File.Delete(strfile.Replace(".dll", ".txt"));
+                        return false;
+                    }
+
+                    int r = 0;
+
+                    for (i = 0; i < a.Count() - 1; i++)
+                    {
+
+                        if (a[i] == codmo)
+                        {
+                            DXMessageBox.Show("Обновление невозможно, погасите задолженность!!!");
+                            r = 1;
+                            break;
+
+                        }
+
+                    }
+
+                    f.Close();
+                    File.Delete(strfile.Replace(".dll", ".txt"));
+                    if (r == 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DXMessageBox.Show("Неверный формат файла Update.elm!!!" + ex.Message);
+                File.Delete(strfile.Replace(".dll", ".txt"));
+                return false;
+            }
+
+        }        
+            public PrimaryWindow()
+        {
+            
             SprClass.LocalConnectionString = Properties.Settings.Default.ConnectionString;
             SprClass.SrzConnectionString = Properties.Settings.Default.SrzConnectionString;
-
+            
             BaseConnectionDescriptor connection = new MSSQLConnectionDescriptor();
             connection.ConnectionString = SprClass.LocalConnectionString;
 
@@ -58,7 +225,16 @@ namespace Yamed
             
             SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
 
-
+            //Запуск проверки на должников
+            //var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
+            //var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
+            //if (type == null && reg.ToString() != "37")
+            //{
+            //    if (tlm_Click() == false)
+            //    {
+            //        Environment.Exit(0);
+            //    }
+            //}
 
             //"Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa;Password=Hospital6";
 
@@ -180,7 +356,6 @@ namespace Yamed
                 });
                 return;
             }
-
             PasswordWindow password = new PasswordWindow();
             if (password.ShowDialog() == false)
             {
@@ -198,7 +373,7 @@ namespace Yamed
             PrimaryGrid.DataContext = СommonСomponents.DxTabControlSource;
 
             СommonСomponents.DxTabControlSource.TabElements.CollectionChanged += TabElements_CollectionChanged;
-
+            
             //new WebUI.VirtualUI().Start();
 
 
@@ -226,8 +401,9 @@ namespace Yamed
 
 
             }
+            
             ModulesAppBar.DataContext = new ModulesCollection();
-
+           
         }
 
         public class Version
@@ -1043,7 +1219,7 @@ namespace Yamed
             }
             else
             {
-                System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater.exe"));
+                System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.exe"));
             }
         }
 //>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15

@@ -441,8 +441,6 @@ E:\ELMed-ELMed\Yamed\bin\Debug\Yamed.Settings.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\ICSharpCode.AvalonEdit.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DotNetZip.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.dll
-E:\ELMed-ELMed\Yamed\bin\Debug\FastReport.dll
-E:\ELMed-ELMed\Yamed\bin\Debug\FastReport.Bars.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpo.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Pdf.v16.2.Core.dll
@@ -462,7 +460,6 @@ E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraVerticalGrid.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraLayout.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraGrid.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraCharts.v16.2.Wizard.dll
-E:\ELMed-ELMed\Yamed\bin\Debug\FastReport.Editor.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraDiagram.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\MaterialMenu.pdb
 E:\ELMed-ELMed\Yamed\bin\Debug\MaterialMenu.dll.config
@@ -712,3 +709,6 @@ E:\ELMed-ELMed\Yamed\obj\Debug\Yamed.csproj.CoreCompileInputs.cache
 E:\ELMed-ELMed\Yamed\obj\Debug\Yamed.csproj.CopyComplete
 E:\ELMed-ELMed\Yamed\obj\Debug\Yamed.exe
 E:\ELMed-ELMed\Yamed\obj\Debug\Yamed.pdb
+E:\ELMed-ELMed\Yamed\bin\Debug\FastReport.dll
+E:\ELMed-ELMed\Yamed\bin\Debug\FastReport.Bars.dll
+E:\ELMed-ELMed\Yamed\bin\Debug\FastReport.Editor.dll
