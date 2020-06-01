@@ -843,18 +843,22 @@ where zsl.D3_SCID in {ids}";
             if (tag == "ZSL" && isChecked)
             {
                 SchetRegisterGrid1.BindDataZsl();
+                scVid.Content = "Вид - Зак. случаи";
             }
             else if(tag == "SL" && isChecked)
             {
                 SchetRegisterGrid1.BindDataSl();
+                scVid.Content = "Вид - Cлучаи";
             }
             else if(tag == "USL" && isChecked)
             {
                 SchetRegisterGrid1.BindDataUsl();
+                scVid.Content = "Вид - Только услуги";
             }
             else if (tag == "SANK" && isChecked)
             {
                 SchetRegisterGrid1.BindDataSank();
+                scVid.Content = "Вид - Только санкции";
             }
         }
 

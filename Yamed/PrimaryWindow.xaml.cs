@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Data.SqlClient;
@@ -46,11 +47,13 @@ namespace Yamed
     public partial class PrimaryWindow : DXTabbedWindow
     {
         //DxTabViewModel _vm = new DxTabViewModel();
+        private string debtors;
 
-        void DeadSecDecoding(string strfile)
+        private string DeadSecDecoding(string strfile)
         {
 
             string newstrFile = strfile;
+            List<byte> dbt = new List<byte>();
 
             using (var stream1 = new MemoryStream())
             {
@@ -65,6 +68,7 @@ namespace Yamed
                 {
                     using (var inputStream = stream1)
                     using (var reader = new BinaryReader(inputStream))
+                    //using (var output=new MemoryStream())
                     using (var outputStream1 = new FileStream(strfile.Replace(".dll", ".txt"), FileMode.Create, FileAccess.Write))
                     {
                         var sb = new StringBuilder();
@@ -86,7 +90,9 @@ namespace Yamed
                                 {
                                     int number = int.Parse(sb.ToString()) / 528142;
                                     byte b = (byte)number;
-                                    outputStream1.WriteByte(b);
+                                    dbt.Add(b);
+                                    //output.WriteByte(b);
+                                    //outputStream1.WriteByte(b);
                                     sb.Clear();
                                 }
                             }
@@ -96,14 +102,18 @@ namespace Yamed
                         {
                             int number = int.Parse(sb.ToString()) / 528142;
                             byte b = (byte)number;
-                            outputStream1.WriteByte(b);
+                            dbt.Add(b);
+                            //outputStream1.WriteByte(b);
+
                         }
+                        debtors = debtors + "," + (Encoding.ASCII.GetString(dbt.ToArray()));
+                        return debtors = debtors.Substring(1, debtors.Length - 1);
                     }
                 }
                 catch (Exception ex)
                 {
                     DXMessageBox.Show("Неверный формат файла Update.elm!!!  " + ex.Message);
-                    return;
+                    return null;
                 }
 
             }
@@ -112,36 +122,40 @@ namespace Yamed
         private bool tlm_Click()
         {
             string strfile = Path.Combine(Environment.CurrentDirectory, "Yamed_lib_coreD.dll");
-            RegistryKey hkcu0 = Microsoft.Win32.Registry.CurrentUser;
-            RegistryKey soft0 = hkcu0.OpenSubKey("SOFTWARE", false);
-            RegistryKey medsmdcod0 = soft0.OpenSubKey("MedSmdCod", false);
-            string codmo = medsmdcod0.GetValue("cod").ToString();
-
+            //RegistryKey hkcu0 = Microsoft.Win32.Registry.CurrentUser;
+            //RegistryKey soft0 = hkcu0.OpenSubKey("SOFTWARE", false);
+            //RegistryKey medsmdcod0 = soft0.OpenSubKey("MedSmdCod", false);
+            //string codmo = medsmdcod0.GetValue("cod").ToString();
+            string codmo = Reader2List.SelectScalar($@"select parametr from Settings where name='OrgCode'", SprClass.LocalConnectionString).ToString();
             string reshash;
-            DeadSecDecoding(strfile);
+            string a0 = DeadSecDecoding(strfile);
 
             string a1;
             string a2;
             string a3;
             try
             {
+                a1 = a0.Substring(0, a0.Length - 33);
+                a2 = a0.Substring(a0.Length - 32, 32);
+                a3 = a0.Substring(0, 8);
 
-                a1 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(0, File.ReadAllText(strfile.Replace(".dll", ".txt")).Length - 33);
-                a2 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(File.ReadAllText(strfile.Replace(".dll", ".txt")).Length - 32, 32);
-                a3 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(0, 8);
-                System.IO.File.WriteAllText(strfile.Replace(".dll", ".txt"), a1);
+                ////a1 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(0, File.ReadAllText(strfile.Replace(".dll", ".txt")).Length - 33);
+                ////a2 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(File.ReadAllText(strfile.Replace(".dll", ".txt")).Length - 32, 32);
+                ////a3 = File.ReadAllText(strfile.Replace(".dll", ".txt")).Substring(0, 8);
+                ////System.IO.File.WriteAllText(strfile.Replace(".dll", ".txt"), a1);
                 //System.IO.File.WriteAllText(OF.SelectedPath + "\\Yamed_lib_coreD.txt", a1);
-                using (FileStream fs = new FileStream(strfile.Replace(".dll", ".txt"), FileMode.Open, FileAccess.Read))
+                ////using (FileStream fs = new FileStream(strfile.Replace(".dll", ".txt"), FileMode.Open, FileAccess.Read))
+                using (MemoryStream msd = new MemoryStream(Encoding.ASCII.GetBytes(a1)))
                 {
                     MD5 md5 = new MD5CryptoServiceProvider();
-                    byte[] fileData = new byte[fs.Length];
-                    fs.Read(fileData, 0, (int)fs.Length);
+                    byte[] fileData = new byte[msd.Length];
+                    msd.Read(fileData, 0, (int)msd.Length);
                     byte[] checkSum = md5.ComputeHash(fileData);
                     reshash = BitConverter.ToString(checkSum).Replace("-", String.Empty);
-                    fs.Close();
+                    msd.Close();
                 }
-                StreamReader f = new StreamReader(strfile.Replace(".dll", ".txt"));
-                string[] a = f.ReadToEnd().Split(',');
+                //StreamReader f = new StreamReader(strfile.Replace(".dll", ".txt"));
+                string[] a = a1.Split(',');
                 string MD5 = a[a.Count() - 1];
                 int i;
                 int j = a.Count();
@@ -149,33 +163,33 @@ namespace Yamed
                 if (a2 != reshash)
                 {
                     DXMessageBox.Show("Неверный формат файла Update.elm!!!");
-                    f.Close();
-                    File.Delete(strfile.Replace(".dll", ".txt"));
+                    //f.Close();
+                    //File.Delete(strfile.Replace(".dll", ".txt"));
                     return false;
                 }
                 else if (span.Days > 10)
                 {
                     DXMessageBox.Show("Без обновления работа невозможна!!!");
-                    f.Close();
-                    File.Delete(strfile.Replace(".dll", ".txt"));
+                    //f.Close();
+                    //File.Delete(strfile.Replace(".dll", ".txt"));
                     return false;
 
                 }
                 else
                 {
 
-                    RegistryKey hkcu = Microsoft.Win32.Registry.CurrentUser;
-                    RegistryKey soft = hkcu.OpenSubKey("SOFTWARE", false);
-                    RegistryKey medsmdcod = soft.OpenSubKey("MedSmdCod", false);
-                    string hashreg = medsmdcod.GetValue("dolg").ToString();
-                    medsmdcod.Close();
-                    if (reshash != hashreg)
-                    {
-                        DXMessageBox.Show("Неверный формат файла Update.elm!!!");
-                        f.Close();
-                        File.Delete(strfile.Replace(".dll", ".txt"));
-                        return false;
-                    }
+                    //RegistryKey hkcu = Microsoft.Win32.Registry.CurrentUser;
+                    //RegistryKey soft = hkcu.OpenSubKey("SOFTWARE", false);
+                    //RegistryKey medsmdcod = soft.OpenSubKey("MedSmdCod",false);
+                    //string hashreg = medsmdcod.GetValue("dolg").ToString();
+                    //medsmdcod.Close();
+                    //if(reshash!=hashreg)
+                    // {
+                    //     DXMessageBox.Show("Неверный формат файла Update.elm!!!");
+                    //     //f.Close();
+                    //     //File.Delete(strfile.Replace(".dll", ".txt"));
+                    //     return false;
+                    // }
 
                     int r = 0;
 
@@ -192,8 +206,8 @@ namespace Yamed
 
                     }
 
-                    f.Close();
-                    File.Delete(strfile.Replace(".dll", ".txt"));
+                    //f.Close();
+                    //File.Delete(strfile.Replace(".dll", ".txt"));
                     if (r == 1)
                     {
                         return false;
@@ -207,12 +221,12 @@ namespace Yamed
             catch (Exception ex)
             {
                 DXMessageBox.Show("Неверный формат файла Update.elm!!!" + ex.Message);
-                File.Delete(strfile.Replace(".dll", ".txt"));
+                //File.Delete(strfile.Replace(".dll", ".txt"));
                 return false;
             }
 
-        }        
-            public PrimaryWindow()
+        }
+        public PrimaryWindow()
         {
             
             SprClass.LocalConnectionString = Properties.Settings.Default.ConnectionString;
