@@ -226,15 +226,15 @@ namespace Yamed
             SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
 
             //Запуск проверки на должников
-            //var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
-            //var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
-            //if (type == null && reg.ToString() != "37")
-            //{
-            //    if (tlm_Click() == false)
-            //    {
-            //        Environment.Exit(0);
-            //    }
-            //}
+            var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
+            var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
+            if (type == null && reg.ToString() != "37")
+            {
+                if (tlm_Click() == false)
+                {
+                    Environment.Exit(0);
+                }
+            }
 
             //"Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa;Password=Hospital6";
 

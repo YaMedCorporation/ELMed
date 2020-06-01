@@ -41,6 +41,13 @@ namespace Yamed.Emr
             DoctorBox.DataContext = SprClass.MedicalEmployeeList;
             SpecBox.DataContext = SprClass.SpecV021List;
             DsBox.DataContext = SprClass.mkbSearching;
+           
+            //UslOslBox.DataContext = SprClass.OslList;
+            //AnestBox.DataContext = SprClass.AnestList;
+            //AssistColumnEdit.DataContext = SprClass.DoctList;
+            VidVmeBox.DataContext = SprClass.SprUsl804;
+            POtkBox.DataContext = SprClass.SprBit;
+            NplBox.DataContext = SprClass.SprNpl;
             if (SprClass.Region == "37")
             {
                 DoljnostBox.Visibility = Visibility.Visible;
@@ -50,12 +57,10 @@ namespace Yamed.Emr
                 kod_usl.Visibility = Visibility.Visible;
                 Kod_uslBox.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct kodusl,convert(nvarchar,KODUSL) as CODE_USL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where '{dvmp}' between dt_beg and isnull(dt_fin,'20530101') and kod_lpu='{usl.LPU}'", SprClass.LocalConnectionString);
             }
-            //UslOslBox.DataContext = SprClass.OslList;
-            //AnestBox.DataContext = SprClass.AnestList;
-            //AssistColumnEdit.DataContext = SprClass.DoctList;
-            VidVmeBox.DataContext = SprClass.SprUsl804;
-            POtkBox.DataContext = SprClass.SprBit;
-            NplBox.DataContext = SprClass.SprNpl;
+            else if (SprClass.Region != "37")
+            {
+                Kod_uslBox.DataContext = Reader2List.CustomAnonymousSelect($@"SELECT ID as CODE_USL,NameWithID from Yamed_Spr_UslCode", SprClass.LocalConnectionString);
+            }
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -105,7 +110,7 @@ namespace Yamed.Emr
 
         private void DoctorBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            if (SprClass.Region == "37")
+            if (SprClass.Region == "37" && SprClass.ProdSett.OrgTypeStatus == Core.OrgType.Lpu)
             {
                 if (DoctorBox.EditValue != null)
                 {

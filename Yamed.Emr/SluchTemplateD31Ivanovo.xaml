@@ -1190,6 +1190,50 @@
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="Ds1PrTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Диагноз первичн." ToolTip="Диагноз первичный" >
+                                <Grid x:Name="Ds0Grid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <dxg:LookUpEdit x:Name="Ds0Edit" 
+                                        DisplayMember="IDDS" DisplayTextConverter="{StaticResource diagnosShowConverter}"
+                                        ValueMember="IDDS"
+                                        AutoPopulateColumns="False"
+                                        AutoComplete="True"
+                                        IncrementalFiltering="True" EditValue="{Binding SelectedItem.DS0, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"
+                                        ImmediatePopup="True" FilterCondition="Contains"
+                                        IsPopupAutoWidth="True" ItemsSource="{Binding}" GotFocus="mkbBox_GotFocus" LostFocus="mkbBox_LostFocus" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox">
+                                        <dxg:LookUpEdit.PopupContentTemplate>
+                                            <ControlTemplate>
+                                                <dxg:GridControl x:Name="PART_GridControl">
+                                                    <dxg:GridControl.Resources>
+                                                        <Style x:Key="customCellStyle"
+                                            		BasedOn="{StaticResource {dxgt:GridRowThemeKey ResourceKey=LightweightCellStyle}}" TargetType="{x:Type dxg:LightweightCellEditor}">
+                                                            <Setter Property="Foreground" Value="{Binding RowData.Row.PAYABLE, Converter={StaticResource diagnosColorConverter}}" />
+                                                        </Style>
+                                                    </dxg:GridControl.Resources>
+
+                                                    <dxg:GridControl.Columns>
+                                                        <dxg:GridColumn FieldName="IDDS" Header="Код МКБ" Width="30" />
+                                                        <dxg:GridColumn FieldName="DSNAME" Header="Наименование МКБ" />
+                                                        <!--<dxg:GridColumn FieldName="Payable"  />-->
+                                                    </dxg:GridControl.Columns>
+
+                                                    <dxg:GridControl.View>
+                                                        <dxg:TableView CellStyle="{StaticResource customCellStyle}" AutoWidth="True" />
+                                                    </dxg:GridControl.View>
+                                                </dxg:GridControl>
+
+                                            </ControlTemplate>
+                                        </dxg:LookUpEdit.PopupContentTemplate>
+                                    </dxg:LookUpEdit>
+                                    <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="Ds0Tb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
+                                </Grid>
+                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Дисп. набл." ToolTip="Диспансерное наблюдение по основному диагнозу">
                                 <Grid x:Name="DnGrid">
                                     <Grid.ColumnDefinitions>

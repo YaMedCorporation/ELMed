@@ -78,13 +78,13 @@
                         <dxg:GridControl.Columns>
                             <dxg:GridColumn Name="Column_ID" Width="45" FieldName="ID" Header="ИД" ReadOnly="True" />
                             <dxg:GridColumn Name="Column_LOCK" Width="45" FieldName="LOCK" Header="Блок" ReadOnly="True"  />
-                            <dxg:GridColumn Name="Column_LPU" FieldName="LPU" Header="Медицинская организация" ReadOnly="True" >
+                            <dxg:GridColumn Name="Column_LPU" FieldName="LPU" Header="Медицинская организация" ReadOnly="True" ColumnFilterMode="DisplayText" >
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:ComboBoxEditSettings Name="LpuEdit" DisplayMember="NameWithID" ValueMember="mcod" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
                             <dxg:GridColumn Name="Column_PERIOD_EXP_NOTEDIT" Width="55" FieldName="PERIOD_EXP_NOTEDIT" GroupIndex="0" Header="Период" ReadOnly="True" SortOrder="Descending" />
-                            <dxg:GridColumn Name="Column_TYPE_MP" FieldName="TYPE_MP" Header="Тип ПМ" ReadOnly="True" >
+                        <dxg:GridColumn Name="Column_TYPE_MP" FieldName="TYPE_MP" Header="Тип ПМ" ReadOnly="True" ColumnFilterMode="DisplayText">
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:ComboBoxEditSettings Name="TypeMpEdit" DisplayMember="NameWithID" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
@@ -99,7 +99,7 @@
                                 <dxe:ComboBoxEditSettings Name="kolexp" DisplayMember="kol_exp" ValueMember="D3_ARID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn Name="Column_S_TIP2" FieldName="S_TIP2" Header="Тип санкции" ReadOnly="True" >
+                        <dxg:GridColumn Name="Column_S_TIP2" FieldName="S_TIP2" Header="Тип экспертизы" ReadOnly="True" ColumnFilterMode="DisplayText">
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:ComboBoxEditSettings Name="SType2Edit" DisplayMember="NameWithID" ValueMember="IDVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
@@ -175,7 +175,7 @@
                         <dxg:GridColumn x:Name="Column_DR" FieldName="DR" Header="ДР" Width="50" />
                         <dxg:GridColumn x:Name="Column_NPOLIS" FieldName="NPOLIS" Header="Полис" Width="120" />
                         <dxg:GridColumn x:Name="Column_NHISTORY" FieldName="NHISTORY" Header="Номер истории болезни" Width="120" />
-                        <dxg:GridColumn x:Name="Column_DS1" FieldName="DS1" Header="Диагноз осн." Width="80"/>
+                        <dxg:GridColumn x:Name="Column_DS1" FieldName="DS1" Header="Диагноз осн." FilterPopupMode="Excel"  Width="80"/>
                         <dxg:GridColumn x:Name="Column_USL_OK" FieldName="NameWithID" Header="Условия оказания МП" Width="80"/>
                         <dxg:GridColumn x:Name="Column_MEE_COUNT" FieldName="MEE_COUNT" Header="МЭЭ (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                         <dxg:GridColumn x:Name="Column_EKMP_COUNT" FieldName="EKMP_COUNT" Header="ЭКМП (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
@@ -187,6 +187,7 @@
                         <dxg:GridColumn x:Name="Column_S_SUM" FieldName="S_SUM" Header="Сумма удержанная" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM2" FieldName="S_SUM2" Header="Сумма штрафа" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_OSN" FieldName="S_OSN" Header="Пункт удержания" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_S_TIP_EXP" FieldName="TypeExp" Header="Тип экспертизы" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_COM" FieldName="S_COM" Header="Комментарий" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_DATE" FieldName="S_DATE" Header="Дата" Width="80"/>
 

@@ -124,16 +124,30 @@ namespace Yamed.Emr
 
         private void UslCategoryEdit_OnSelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-            datez = _sluchTemplateD31._zsl.DATE_Z_2;
-            var cid = ObjHelper.GetAnonymousValue(UslCategoryEdit.SelectedItem, "ID");
-            Task.Factory.StartNew(() =>
+            if (SprClass.Region != "37")
             {
-                return SqlReader.Select2($"Select * From Yamed_Spr_UslTemplate where CategoryID = {cid} and isnull('{datez}','21000101') between date1 and date2", SprClass.LocalConnectionString);
-            }).ContinueWith(x =>
+                datez = _sluchTemplateD31._zsl.DATE_Z_2;
+                var cid = ObjHelper.GetAnonymousValue(UslCategoryEdit.SelectedItem, "ID");
+                Task.Factory.StartNew(() =>
+                {
+                    return SqlReader.Select2($"Select * From Yamed_Spr_UslTemplate where CategoryID = {cid} and isnull('{datez}','21000101') between date1 and date2", SprClass.LocalConnectionString);
+                }).ContinueWith(x =>
+                {
+                    UslUserTemplEdit.DataContext = x.Result;
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
+            else if (SprClass.Region == "37")
             {
-                UslUserTemplEdit.DataContext = x.Result;
-            }, TaskScheduler.FromCurrentSynchronizationContext());
-
+                datez = _sluchTemplateD31Iv._zsl.DATE_Z_2;
+                var cid = ObjHelper.GetAnonymousValue(UslCategoryEdit.SelectedItem, "ID");
+                Task.Factory.StartNew(() =>
+                {
+                    return SqlReader.Select2($"Select * From Yamed_Spr_UslTemplate where CategoryID = {cid} and isnull('{datez}','21000101') between date1 and date2", SprClass.LocalConnectionString);
+                }).ContinueWith(x =>
+                {
+                    UslUserTemplEdit.DataContext = x.Result;
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
         }
     }
 }
