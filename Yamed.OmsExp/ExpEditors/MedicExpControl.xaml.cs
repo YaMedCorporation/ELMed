@@ -114,7 +114,7 @@ namespace Yamed.OmsExp.ExpEditors
             {
                 _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or Name like '%ИЗМЕНЕНИЙ%' order by Name", SprClass.LocalConnectionString);
             }
-            else if (SprClass.Region == "57")
+            else if (SprClass.Region == "57" || SprClass.Region == "37")
             {
                 _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null order by Name", SprClass.LocalConnectionString);
             }

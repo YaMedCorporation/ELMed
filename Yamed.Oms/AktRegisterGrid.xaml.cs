@@ -273,7 +273,7 @@ namespace Yamed.Oms
             {
                 var _sankList =
     Reader2List.CustomAnonymousSelect($@"
-             select distinct sa.ID, FAM, IM, OT, DR, NPOLIS, m1.NameWithID as DS1, f6.NameWithID as TypeExp,f3.nam_mok, v6.NameWithID, NHISTORY, akt.NUM_ACT, zs.MEE_COUNT, zs.EKMP_COUNT, SUMV, f5.NameWithId, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+             select distinct sa.ID, FAM, IM, OT, DR, NPOLIS, m1.NameWithID as DS1, f6.NameWithID as TypeExp,f3.NameWithID, v6.NameWithID, NHISTORY, akt.NUM_ACT, zs.MEE_COUNT, zs.EKMP_COUNT, SUMV, f5.NameWithId, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
             from D3_SANK_OMS sa
             join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
             join D3_SL_OMS sl on sl.d3_zslid=zs.id

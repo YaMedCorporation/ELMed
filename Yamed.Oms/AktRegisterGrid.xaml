@@ -183,7 +183,7 @@
                         <dxg:GridColumn x:Name="Column_OPLATA" FieldName="NameWithId" Header="Оплата" Width="80"/>
                         <dxg:GridColumn x:Name="Column_SUMP" FieldName="SUMP" Header="Сумма принятая" Width="80"/>
                         <dxg:GridColumn x:Name="Column_NUM_AC" FieldName="NUM_ACT" Header="Номер акта" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_LPU_D" FieldName="nam_mok" Header="МО" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_LPU_D" FieldName="NameWithID" Header="МО" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM" FieldName="S_SUM" Header="Сумма удержанная" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM2" FieldName="S_SUM2" Header="Сумма штрафа" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_OSN" FieldName="S_OSN" Header="Пункт удержания" Width="80"/>
