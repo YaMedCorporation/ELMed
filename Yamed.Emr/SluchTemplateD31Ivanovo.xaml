@@ -223,7 +223,7 @@
                 </StackPanel>
             </Grid>-->
             <dxlc:LayoutControl Padding="4,3,4,4" IsCustomization="{Binding EditValue, ElementName=CheckBox1}" Grid.Row="1" Orientation="Vertical" KeyUp="LayoutControl_KeyUp" VerticalAlignment="Stretch" StretchContentVertically="True" StretchContentHorizontally="True">
-                <dxlc:LayoutGroup View="Tabs" x:Name="PacientGroup" Orientation="Vertical" dxlc:LayoutControl.AllowVerticalSizing="True">
+                <dxlc:LayoutGroup View="Tabs" x:Name="PacientGroup" Orientation="Vertical" dxlc:LayoutControl.AllowVerticalSizing="True" >
                     <dxlc:LayoutGroup Header="Обращение пациента" View="Group" Name="ObrLayoutGroup">
                         <dxlc:LayoutGroup Orientation="Vertical" dxlc:LayoutControl.AllowHorizontalSizing="True">
                             <dxlc:LayoutItem Label="Полис" IsRequired="True">
@@ -283,7 +283,18 @@
                                           ГГ – последние две цифры года рожде-ния;
                                           Н – порядковый но-мер ребёнка (до двух знаков)." />
                             </dxlc:LayoutItem>
-
+                            <dxlc:LayoutItem Label="Житель">
+                                <dxe:ComboBoxEdit EditValue="{Binding DataContext.KOD_TER, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" x:Name="KodTerEdit" ItemsSource="{Binding}"
+                                          DisplayMember="NameWithId" ValueMember="ID" HorizontalScrollBarVisibility="Disabled"
+                                          NullValueButtonPlacement="EditBox"
+                                          AutoComplete="True"
+                                          ValidateOnTextInput="False"
+                                          IncrementalFiltering="True"
+                                          FilterCondition="Contains"
+                                          ImmediatePopup="True"
+                                          InvalidValueBehavior="AllowLeaveEditor"
+                                          Validate="Information_OnValidate" />
+                            </dxlc:LayoutItem>
                         </dxlc:LayoutGroup>
 
                         <dxlc:LayoutGroup dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
@@ -465,7 +476,7 @@
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutGroup>
                                     <dxlc:LayoutItem Label="Перевод" ToolTip="Признак внутрибольничного перевода">
-                                        <Grid x:Name="VbpGrid">
+                                        <Grid x:Name="VbpGrid" HorizontalAlignment="Left">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="20" />
@@ -474,7 +485,7 @@
                                             <ToggleButton Grid.Column="1" x:Name="VbpTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                         </Grid>
                                     </dxlc:LayoutItem>
-
+                                    
                                     <dxlc:LayoutItem Label="Прод. г-ии" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)">
                                         <dxe:TextEdit EditValue="{Binding DataContext.KD_Z, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" />
                                     </dxlc:LayoutItem>
@@ -529,18 +540,6 @@
                                           EditValue="{Binding DataContext.WORK_STAT, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID"
                                           ValueMember="Id" />
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Житель">
-                                <dxe:ComboBoxEdit EditValue="{Binding DataContext.KOD_TER, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" x:Name="KodTerEdit" ItemsSource="{Binding}"
-                                          DisplayMember="NameWithId" ValueMember="ID" HorizontalScrollBarVisibility="Disabled"
-                                          NullValueButtonPlacement="EditBox"
-                                          AutoComplete="True"
-                                          ValidateOnTextInput="False"
-                                          IncrementalFiltering="True"
-                                          FilterCondition="Contains"
-                                          ImmediatePopup="True"
-                                          InvalidValueBehavior="AllowLeaveEditor"
-                                          Validate="Information_OnValidate" />
-                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Категория населения (Соц. статус)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
                                 <dxe:ComboBoxEdit x:Name="Socstatus" ItemsSource="{Binding}"
                                           EditValue="{Binding DataContext.SOCSTATUS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID"
@@ -561,16 +560,7 @@
 
                         </dxlc:LayoutGroup>
                         <dxlc:LayoutGroup Orientation="Vertical">
-                            <dxlc:LayoutItem Label="Вид вызова" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
-                                <dxe:ComboBoxEdit x:Name="Vidviz" DisplayMember="NameWithID"
-                                          ValueMember="ID" ItemsSource="{Binding}"
-                                          EditValue="{Binding SelectedItem.VID_VIZ, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" Width="Auto" HorizontalAlignment="Stretch" />
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Вид бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
-                                <dxe:ComboBoxEdit x:Name="Vidbrig" DisplayMember="NameWithID"
-                                          ValueMember="ID" ItemsSource="{Binding}"
-                                          EditValue="{Binding SelectedItem.VID_BRIG, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" Width="Auto" HorizontalAlignment="Stretch" />
-                            </dxlc:LayoutItem>
+                            
                             <dxlc:LayoutItem Label="График дн. стац." Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
                                 <dxe:ComboBoxEdit x:Name="Grafdn" DisplayMember="NameWithID"
                                           ValueMember="ID" ItemsSource="{Binding}"
@@ -645,10 +635,10 @@
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutGroup Orientation="Vertical">
                                 <dxlc:LayoutItem ToolTip="ОКАТО территории проживания" Label="ОКАТО терр. проживания">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerBox" ItemsSource="{Binding}" ValueMember="KOD_OKATO" DisplayMember="OKATO" EditValue="{Binding DataContext.OKATOG, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerBox" ItemsSource="{Binding}" ValueMember="ID" DisplayMember="NameWithID" EditValue="{Binding DataContext.OKATOG, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem ToolTip="ОКАТО територии прибывания" Label="ОКАТО терр. прибывания">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerPribBox" ItemsSource="{Binding}" ValueMember="KOD_OKATO" DisplayMember="OKATO" EditValue="{Binding DataContext.OKATOP, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" x:Name="okatoTerPribBox" ItemsSource="{Binding}" ValueMember="ID" DisplayMember="NameWithID" EditValue="{Binding DataContext.OKATOP, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
 
                                 <dxlc:LayoutItem Label="Регион страхования">
@@ -897,8 +887,8 @@
                         </Grid>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>
-                <dxlc:LayoutGroup Header="LayoutGroup" View="Tabs" dxlc:LayoutControl.AllowVerticalSizing="True">
-                    <dxlc:LayoutGroup View="Group" Header="Сведения о случае">
+                <dxlc:LayoutGroup Header="LayoutGroup" x:Name="sved_sl" View="Tabs"  dxlc:LayoutControl.AllowVerticalSizing="True" >
+                    <dxlc:LayoutGroup View="Group" Name="Svedlayoutsl"  Header="Сведения о случае (F1)" >
                         <dxlc:LayoutGroup Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
                             <dxlc:LayoutItem Label="Повод обращения" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37" VerticalAlignment="Top">
                                 <Grid x:Name="PovodGrid">
@@ -955,14 +945,14 @@
                                     <ToggleButton Grid.Column="1" x:Name="PostTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Профиль койки (региональный)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
-                                <Grid x:Name="ProfKr">
+                            <dxlc:LayoutItem Label="Профиль койки">
+                                <Grid x:Name="ProfK">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="20" />
                                     </Grid.ColumnDefinitions>
-                                    <dxe:ComboBoxEdit x:Name="ProfilkEditreg" DisplayMember="NameWithID" ValueMember="KOD" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.PROFIL_REG, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" />
-                                    <ToggleButton Grid.Column="1" x:Name="ProfKrTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
+                                    <dxe:ComboBoxEdit HorizontalAlignment="Stretch" Validate="dxEdit_Validate" x:Name="ProfilkEdit" VerticalAlignment="Top" DisplayMember="NameWithID" ValueMember="IDK_PR" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.PROFIL_K, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" />
+                                    <ToggleButton Grid.Column="1" x:Name="ProfKTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Вид ВМП">
@@ -1025,7 +1015,7 @@
                                         <ColumnDefinition Width="20" />
                                     </Grid.ColumnDefinitions>
                                     <!--AllowCollectionView="True"-->
-                                    <dxe:ComboBoxEdit x:Name="DoctEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="SNILS" EditValue="{Binding SelectedItem.IDDOKT, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:ComboBoxEdit x:Name="DoctEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="SNILS" EditValue="{Binding SelectedItem.IDDOKT, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" EditValueChanged="DoctEdit_EditValueChanged" />
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="DoctTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
@@ -1200,6 +1190,50 @@
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="Ds1PrTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Диагноз первичн." ToolTip="Диагноз первичный" >
+                                <Grid x:Name="Ds0Grid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <dxg:LookUpEdit x:Name="Ds0Edit" 
+                                        DisplayMember="IDDS" DisplayTextConverter="{StaticResource diagnosShowConverter}"
+                                        ValueMember="IDDS"
+                                        AutoPopulateColumns="False"
+                                        AutoComplete="True"
+                                        IncrementalFiltering="True" EditValue="{Binding SelectedItem.DS0, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"
+                                        ImmediatePopup="True" FilterCondition="Contains"
+                                        IsPopupAutoWidth="True" ItemsSource="{Binding}" GotFocus="mkbBox_GotFocus" LostFocus="mkbBox_LostFocus" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox">
+                                        <dxg:LookUpEdit.PopupContentTemplate>
+                                            <ControlTemplate>
+                                                <dxg:GridControl x:Name="PART_GridControl">
+                                                    <dxg:GridControl.Resources>
+                                                        <Style x:Key="customCellStyle"
+                                            		BasedOn="{StaticResource {dxgt:GridRowThemeKey ResourceKey=LightweightCellStyle}}" TargetType="{x:Type dxg:LightweightCellEditor}">
+                                                            <Setter Property="Foreground" Value="{Binding RowData.Row.PAYABLE, Converter={StaticResource diagnosColorConverter}}" />
+                                                        </Style>
+                                                    </dxg:GridControl.Resources>
+
+                                                    <dxg:GridControl.Columns>
+                                                        <dxg:GridColumn FieldName="IDDS" Header="Код МКБ" Width="30" />
+                                                        <dxg:GridColumn FieldName="DSNAME" Header="Наименование МКБ" />
+                                                        <!--<dxg:GridColumn FieldName="Payable"  />-->
+                                                    </dxg:GridControl.Columns>
+
+                                                    <dxg:GridControl.View>
+                                                        <dxg:TableView CellStyle="{StaticResource customCellStyle}" AutoWidth="True" />
+                                                    </dxg:GridControl.View>
+                                                </dxg:GridControl>
+
+                                            </ControlTemplate>
+                                        </dxg:LookUpEdit.PopupContentTemplate>
+                                    </dxg:LookUpEdit>
+                                    <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="Ds0Tb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
+                                </Grid>
+                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Дисп. набл." ToolTip="Диспансерное наблюдение по основному диагнозу">
                                 <Grid x:Name="DnGrid">
                                     <Grid.ColumnDefinitions>
@@ -1245,6 +1279,17 @@
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="DsOnkTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Вид вызова" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
+                                <dxe:ComboBoxEdit x:Name="Vidviz" DisplayMember="NameWithID"
+                                          ValueMember="vid_viz" ItemsSource="{Binding}"
+                                          EditValue="{Binding SelectedItem.VID_VIZ, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" Width="Auto" HorizontalAlignment="Stretch" />
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Вид бригады" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
+                                <dxe:ComboBoxEdit x:Name="Vidbrig" DisplayMember="NameWithID"
+                                          ValueMember="vid_brig" ItemsSource="{Binding}"
+                                          EditValue="{Binding SelectedItem.VID_BRIG, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" Width="Auto" HorizontalAlignment="Stretch" />
+                            </dxlc:LayoutItem>
+                            
                             <!--<dxlc:LayoutItem Label="Подозр. онко" ToolTip="Признак подозрения на злокачественное новообразование">
                                 <dxe:ComboBoxEdit x:Name="DsOnkEdit" ItemsSource="{Binding}" EditValue="{Binding SelectedItem.DS_ONK, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" ValueMember="ID"        />
                             </dxlc:LayoutItem>-->
@@ -1272,9 +1317,11 @@
                         </dxlc:LayoutGroup>
 
                     </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Header="Услуги"
+
+                    <dxlc:LayoutGroup Header="Услуги (F2)"
                                   Padding="-8"
-                                  View="Group">
+                                  View="Group"
+                                       >
                         <Grid x:Name="UslGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -1289,7 +1336,8 @@
                                     ShowDragWidget="False"
                                     UseWholeRow="True">
                                     <dxb:BarButtonItem x:Name="UslTemplateItem"
-                                               BarItemDisplayMode="ContentAndGlyph"
+                                               
+                                                       BarItemDisplayMode="ContentAndGlyph"
                                         Content="Шаблоны"
                                                Glyph="pack://application:,,,/Yamed.Icons;component/Icons/catalogs.png"
                                                ItemClick="UslTemplateItem_OnItemClick" Alignment="Near" />
@@ -1503,7 +1551,7 @@
                                                                   AllowDefaultButton="True"
                                                                   DisplayMember="NameWithID"
                                                                   ItemsSource="{Binding}"
-                                                                  ValueMember="KODUSL" />
+                                                                  ValueMember="CODE_USL" />
                                     </dxg:GridColumn.EditSettings>
                                 </dxg:GridColumn>
                                 <dxg:GridColumn x:Name="UslKolUslColumn"
@@ -1516,7 +1564,7 @@
 
                     </dxlc:LayoutGroup>
 
-                    <dxlc:LayoutGroup View="Group" Header="Диагнозы" Padding="-8"
+                    <dxlc:LayoutGroup View="Group" Header="Диагнозы (F3)" Padding="-8"
                                   >
                         <Grid>
                             <Grid.RowDefinitions>
@@ -1616,11 +1664,20 @@
 
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutGroup Name="KsgGroup"
-                            Header="КСГ/КПГ"
+                            Header="КСГ/КПГ (F4)"
                               Padding="-8"
                                   View="Group" >
 
                         <dxlc:LayoutGroup Orientation="Vertical">
+                            <dxlc:LayoutItem Label="Авто расчет КСГ">
+                                <Grid x:Name="AutoKSGGrid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="20" />
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:CheckEdit x:Name="autoksg" EditValue="{Binding DataContext.Auto_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}" EditValueChanged="Autoksg_EditValueChanged" ></dxe:CheckEdit>
+                                </Grid>
+                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Номер КСГ" x:Name="ivksg" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
                                 <dxe:ComboBoxEdit x:Name="NksgIvEdit" ItemsSource="{Binding}"
                                           DisplayMember="NameWithID"
@@ -1793,7 +1850,7 @@
 
                     </dxlc:LayoutGroup>
 
-                    <dxlc:LayoutGroup Header="Назначения (ДИСП)"
+                    <dxlc:LayoutGroup Header="Назначения (ДИСП) (F6)"
                               Padding="-8"
                                   View="Group">
                         <Grid>
@@ -1932,7 +1989,7 @@
                             </dxg:GridControl>
                         </Grid>
                     </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Header="Направление (ОНКО)" Padding="-8"
+                    <dxlc:LayoutGroup Header="Направление (ОНКО) (F8)" Padding="-8"
                                   >
                         <Grid>
                             <Grid.RowDefinitions>
@@ -2037,7 +2094,7 @@
                         </Grid>
 
                     </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Header="Случай (ОНКО)" Padding="-8"
+                    <dxlc:LayoutGroup Header="Случай (ОНКО) (F9)" Padding="-8"
                                   >
 
                         <!--<Grid Width="350">
@@ -2407,6 +2464,19 @@
                                                                 ValueMember="ID_TLuch" />
                                             </dxg:GridColumn.EditSettings>
                                         </dxg:GridColumn>
+                                        <dxg:GridColumn FieldName="PPTR" Header="Признак проведения профилактики тошноты и рвотного рефлекса">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:ComboBoxEditSettings x:Name="PPTRColumnEdit"
+                                                AutoComplete="True"
+                                                DisplayMember="NameWithID"
+                                                FilterCondition="Contains"
+                                                ImmediatePopup="True"
+                                                IncrementalFiltering="True"
+                                                ItemsSource="{Binding}"
+                                                NullValueButtonPlacement="EditBox"
+                                                ValueMember="ID" />
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
                                     </dxg:GridControl>
                                 </Grid>
 
@@ -2491,7 +2561,7 @@
                         </dxlc:LayoutGroup>
 
                     </dxlc:LayoutGroup>
-                    <dxlc:LayoutGroup Header="Консилиум (ОНКО)">
+                    <dxlc:LayoutGroup Header="Консилиум (ОНКО) (F11)">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />

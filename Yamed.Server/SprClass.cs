@@ -119,8 +119,6 @@ namespace Yamed.Server
         public static List<SpecCodeDb> specCodeDb;
         //public static List<DoctorBd> doctorBd;
         public static List<F011> passport;
-        public static List<F010> smoOkato;
-        public static List<F010> terOkato;
         public static List<F002> smo;
         public static List<F003> LpuList;
         //public static List<Ishod> ishod;
@@ -264,7 +262,7 @@ namespace Yamed.Server
         public static object rg003;// класс для справочника rg003 Иваново
         public static object rg001; // класс для справочника rg001 Иваново
         public static object rg012; // класс для справочника rg012 Иваново
-        public static object SprVizov; //класс для справочника Вид вызова Иваново
+        public static object SprVizov;
         public static object SprBrigad; //класс для справочника Вид бригады Иваново
         public static object SprGrafdn; //класс для справочника график дн. стац. Иваново
 
@@ -300,7 +298,6 @@ namespace Yamed.Server
             //    "property changed: " + e.PropertyName);
             //test.GetType().GetProperty("ID").SetValue(test, 5, null);
             //test.GetType().GetProperty("Name").SetValue(test, "testtest", null);
-
             VOplList = Reader2List.GetAnonymousTable("SprVOPL", LocalConnectionString);
             DoctList = Reader2List.GetAnonymousTable("DoctorBd", LocalConnectionString);
             DefGospList = Reader2List.GetAnonymousTable("SprDEFGOSP", LocalConnectionString);
@@ -364,6 +361,8 @@ namespace Yamed.Server
             V028 = Reader2List.CustomAnonymousSelect($"Select * from V028 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             V029 = Reader2List.CustomAnonymousSelect($"Select * from V029 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
 
+            
+
             NAZR = Reader2List.GetAnonymousTable("Yamed_Spr_NAZR", LocalConnectionString);
 
             SchetType = Reader2List.GetAnonymousTable("Yamed_Spr_SchetType", LocalConnectionString);
@@ -382,6 +381,7 @@ namespace Yamed.Server
             rg004 = Reader2List.CustomAnonymousSelect($"Select * from rg004", LocalConnectionString);
             rg012 = Reader2List.CustomAnonymousSelect($"Select * from rg012", LocalConnectionString);
             SprVizov = Reader2List.CustomAnonymousSelect($"Select * from SprVizov", LocalConnectionString);
+            
             SprBrigad = Reader2List.CustomAnonymousSelect($"Select * from SprBrigad", LocalConnectionString);
             SprGrafdn = Reader2List.CustomAnonymousSelect($"Select * from SprGrafdn", LocalConnectionString);
 
@@ -411,8 +411,6 @@ namespace Yamed.Server
                 ExtrDbs = elMed.GetTable<SprExtr>().ToList();
 
                 passport = elMed.GetTable<F011>().ToList();
-                smoOkato = elMed.GetTable<F010>().ToList();
-                terOkato = elMed.GetTable<F010>().ToList();
                 smo = elMed.GetTable<F002>().ToList();
                 LpuList = elMed.GetTable<F003>().ToList();
                 //ishod = elMed.GetTable<Ishod>().ToList();
@@ -483,6 +481,7 @@ namespace Yamed.Server
                 srzcon.UserID = "mo";
                 srzcon.Password = @"54Vtkrb[Gfrjcnys[J,zpmzyGjbvtkbDct[@Ufdy.rjd$";
                 GlobalSrzConnectionString = srzcon.ConnectionString;
+
 
 
                 schetQuery = @"Select sl.[ID]

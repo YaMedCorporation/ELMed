@@ -52,9 +52,11 @@ namespace Yamed.Control.Editors
             list0.Add(new Dost { ID = 4, Name = "Приказ № 104 от 04.06.2018" });
             list0.Add(new Dost { ID = 5, Name = "Приказ № 260 от 29.11.2018" });
             this.Prikaz.ItemsSource = list0.OrderByDescending(i => i.ID);
-            //список типов для выгрузки по 104 пр.
+            //список типов для выгрузки по 104 пр. и 260 пр.
             list1.Add(new Dost { ID = 1, Name = "Случаи" });
             list1.Add(new Dost { ID = 2, Name = "ЭКМП" });
+            list1.Add(new Dost { ID = 3, Name = "Онко" });
+            list1.Add(new Dost { ID = 4, Name = "ОнкоВМП" });
             this.sluch_ekmp.ItemsSource = list1;
             sluch_ekmp.Visibility = Visibility.Collapsed;
             vibor_slekmp.Visibility = Visibility.Collapsed;
@@ -101,7 +103,6 @@ namespace Yamed.Control.Editors
                     Per2.IsEnabled = false;
                     Export.IsEnabled = true;
                     date_exp.IsEnabled = true;
-                    vibor_slekmp.IsEnabled = true;
                     sluch_ekmp.IsEnabled = true;
                 }
                 else
@@ -197,6 +198,88 @@ namespace Yamed.Control.Editors
                             });
                         }
                         }
+                    else if (Prikaz.EditValue.ToString() == "5" && y1 != null && m1 != null && np != "")
+                    {
+                        if (sluch_ekmp.EditValue.ToString() == "3")
+                        {
+                            var qxml = SqlReader.Select($@"
+                exec p_Eissoi_260_d4_XmlExport '{y1}','{m1}','Onko','{np}'"
+                        , SprClass.LocalConnectionString);
+                            string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("Column1");
+                            XDocument doc = XDocument.Parse(result1);
+                            var xname = doc.Element("ZL_LIST").Element("ZGLV").Element("FILENAME").Value;
+                            Dispatcher.BeginInvoke((Action)delegate ()
+                            {
+                                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                                saveFileDialog.Filter = "XML File (*.xml)|*.xml";
+                                saveFileDialog.FileName = xname + ".xml";
+                                bool? result = saveFileDialog.ShowDialog();
+                                if (result == true)
+                                {
+                                    doc.Save(saveFileDialog.FileName);
+                                    MessageBox.Show("Файл сохранен");                             
+                                }
+                                var qxml1 = SqlReader.Select($@"
+                exec p_Eissoi_260_Pers_XmlExport '{y1}','{m1}','Onko','{np}'"
+, SprClass.LocalConnectionString);
+                                string result2 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml1[0].GetValue("Column1");
+                                XDocument doc1 = XDocument.Parse(result2);
+                                var xname1 = doc1.Element("PERS_LIST").Element("ZGLV").Element("FILENAME").Value;
+                                Dispatcher.BeginInvoke((Action)delegate ()
+                                {
+                                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                                    saveFileDialog1.Filter = "XML File (*.xml)|*.xml";
+                                    saveFileDialog1.FileName = xname1 + ".xml";
+                                    bool? result3 = saveFileDialog1.ShowDialog();
+                                    if (result3 == true)
+                                    {
+                                        doc1.Save(saveFileDialog1.FileName);
+                                        MessageBox.Show("Файл сохранен");
+                                    }
+                                });
+                            });
+                            
+                        }
+                        else if (sluch_ekmp.EditValue.ToString() == "4")
+                        {
+                            var qxml = SqlReader.Select($@"
+                exec p_Eissoi_260_d4_XmlExport '{y1}','{m1}','OnkoVmp','{np}'"
+                        , SprClass.LocalConnectionString);
+                            string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("Column1");
+                            XDocument doc = XDocument.Parse(result1);
+                            var xname = doc.Element("ZL_LIST").Element("ZGLV").Element("FILENAME").Value;
+                            Dispatcher.BeginInvoke((Action)delegate ()
+                            {
+                                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                                saveFileDialog.Filter = "XML File (*.xml)|*.xml";
+                                saveFileDialog.FileName = xname + ".xml";
+                                bool? result = saveFileDialog.ShowDialog();
+                                if (result == true)
+                                {
+                                    doc.Save(saveFileDialog.FileName);
+                                    MessageBox.Show("Файл сохранен");
+                                }
+                                var qxml1 = SqlReader.Select($@"
+                exec p_Eissoi_260_Pers_XmlExport '{y1}','{m1}','OnkoVmp','{np}'"
+, SprClass.LocalConnectionString);
+                                string result2 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml1[0].GetValue("Column1");
+                                XDocument doc1 = XDocument.Parse(result2);
+                                var xname1 = doc1.Element("PERS_LIST").Element("ZGLV").Element("FILENAME").Value;
+                                Dispatcher.BeginInvoke((Action)delegate ()
+                                {
+                                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                                    saveFileDialog1.Filter = "XML File (*.xml)|*.xml";
+                                    saveFileDialog1.FileName = xname1 + ".xml";
+                                    bool? result3 = saveFileDialog1.ShowDialog();
+                                    if (result3 == true)
+                                    {
+                                        doc1.Save(saveFileDialog1.FileName);
+                                        MessageBox.Show("Файл сохранен");
+                                    }
+                                });
+                            });
+                        }
+                    }
                         else
                         {
                         MessageBox.Show("Заполните данные!");
@@ -215,12 +298,47 @@ namespace Yamed.Control.Editors
                 sluch_ekmp.Visibility = Visibility.Visible;
                 vibor_slekmp.Visibility = Visibility.Visible;
                 npp.IsEnabled = false;
+                Per1.IsEnabled = true;
+                Per2.IsEnabled = true;
+                Export.IsEnabled = false;
+                Pod.IsEnabled = true;
+                date_exp.IsEnabled = false;
+                sluch_ekmp.IsEnabled = false;
+                sluch_ekmp.Clear();
+                date_exp.Clear();
+                npp.Clear();
+            }
+            else if (Prikaz.Text.Contains("260"))
+            {
+                Per1.Clear();
+                Per2.Clear();
+                sluch_ekmp.Visibility = Visibility.Visible;
+                vibor_slekmp.Visibility = Visibility.Visible;
+                npp.IsEnabled = true;
+                Per1.IsEnabled = false;
+                Per2.IsEnabled = false;
+                Export.IsEnabled = true;
+                Pod.IsEnabled = false;
+                date_exp.IsEnabled = true;
+                sluch_ekmp.IsEnabled = true;
+                sluch_ekmp.Clear();
+                date_exp.Clear();
+                npp.Clear();
             }
             else
             {
                 npp.IsEnabled = true;
                 sluch_ekmp.Visibility = Visibility.Collapsed;
                 vibor_slekmp.Visibility = Visibility.Collapsed;
+                Per1.IsEnabled = true;
+                Per2.IsEnabled = true;
+                Export.IsEnabled = false;
+                Pod.IsEnabled = true;
+                sluch_ekmp.Clear();
+                date_exp.Clear();
+                date_exp.IsEnabled = false;
+                sluch_ekmp.IsEnabled = false;
+                npp.Clear();
             }
         }
     }

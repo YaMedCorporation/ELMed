@@ -115,6 +115,8 @@ namespace Yamed.Emr
             //DevExpress.Xpf.Core.DXGridDataController.DisableThreadingProblemsDetection = true;
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
             {
+                SaveItem.IsEnabled = false;
+                NewItem.IsEnabled = false;
                 SlAddItem.IsEnabled = false;
                 SlDelItem.IsEnabled = false;
                 UslAddItem.IsEnabled = false;
@@ -638,11 +640,18 @@ namespace Yamed.Emr
         public string fap_lpu;
         void GetSpr()
         {
+            var ter = Reader2List.SelectScalar($@"
+declare @reg varchar(2)
+declare @tf_okato nvarchar(5) /* получаем окато текущей СМО. */
+SELECT @tf_okato = tf_okato FROM [F002] where smocod = (select Parametr from Settings where name='CodeSMO')
+select @reg=Parametr from Settings where name='Region'
+if @tf_okato is null /* берём и МО. */
+	SELECT @tf_okato = tf_okato FROM [F003] where mcod = (select Parametr from Settings where name='MedicalOrganization')
+select left(@tf_okato,2)", SprClass.LocalConnectionString);
             typeUdlBox.DataContext = SprClass.passport;
             //smoOkatoBox.DataContext = SprClass.smoOkato;
-            okatoTerBox.DataContext = SprClass.smoOkato;
-            okatoTerPribBox.DataContext = SprClass.smoOkato;
-
+            okatoTerBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00') or name1 like '%автоном%') and name1 not like '%/'", SprClass.LocalConnectionString);
+            okatoTerPribBox.DataContext = Reader2List.CustomAnonymousSelect($"Select * from O002 where ((kod1<>'000'  and ter='{ter}') or  (kod1='000'  and ter<>'00') or name1 like '%автоном%') and name1 not like '%/'", SprClass.LocalConnectionString);
             wBox.DataContext = SprClass.sex;
             wpBox.DataContext = SprClass.sex;
 
@@ -673,6 +682,7 @@ namespace Yamed.Emr
             DetGrid.DataContext = SprClass.SprDetProfilList;
             IdspGrid.DataContext = SprClass.tarifUsl;
             Ds1Edit.DataContext = SprClass.mkbSearching.Where(x => x.ISDELETE == false).ToList();
+            Ds0Edit.DataContext = SprClass.mkbSearching.Where(x => x.ISDELETE == false).ToList();
             //ds.DataContext = SprClass.mkbSearching.Where(x => x.ISDELETE == false).ToList();
             //ds2Box.DataContext = SprClass.mkbSearching.Where(x => x.ISDELETE == false).ToList();
             SluchOsRegionGrid.DataContext = SprClass.OsobSluchDbs;
@@ -727,6 +737,7 @@ namespace Yamed.Emr
             ProtColumnEdit.DataContext = SprClass.N001;
 
             UslTipColumnEdit.DataContext = SprClass.N013;
+            PPTRColumnEdit.DataContext = SprClass.SprBit;
             HirTipColumnEdit.DataContext = SprClass.N014;
             LekTiplColumnEdit.DataContext = SprClass.N015;
             LekTipvColumnEdit.DataContext = SprClass.N016;
@@ -1573,7 +1584,7 @@ namespace Yamed.Emr
             ((D3_SL_OMS)SlGridControl.SelectedItem).DS1 = _slLock.DS1;
             ((D3_SL_OMS)SlGridControl.SelectedItem).DATE_1 = _slLock.DATE_1;
             ((D3_SL_OMS)SlGridControl.SelectedItem).DATE_2 = _slLock.DATE_2;
-
+            ((D3_SL_OMS)SlGridControl.SelectedItem).DS0 = _slLock.DS0;
             ((D3_SL_OMS)SlGridControl.SelectedItem).C_ZAB = _slLock.C_ZAB;
             ((D3_SL_OMS)SlGridControl.SelectedItem).DN = _slLock.DN;
             ((D3_SL_OMS)SlGridControl.SelectedItem).REAB = _slLock.REAB;
@@ -1620,6 +1631,7 @@ namespace Yamed.Emr
             _slLock.DET = DetTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DET : null;
             _slLock.P_CEL25 = PCelTypeTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_CEL25 : null;
             _slLock.DS1 = Ds1Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS1 : null;
+            _slLock.DS0 = Ds0Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DS0 : null;
             _slLock.DATE_1 = Date1Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DATE_1 : null;
             _slLock.DATE_2 = Date2Tb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).DATE_2 : null;
             _slLock.C_ZAB = CzabTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).C_ZAB : null;
@@ -2188,10 +2200,26 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
         private void LayoutControl_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F5)
-                SaveSluchAsync();
-            if (e.Key == Key.F7)
-                NewZsl();
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
+            {
+                if (e.Key == Key.F5)
+                    SaveSluchAsync();
+                if (e.Key == Key.F7)
+                    NewZsl();
+                if (e.Key == Key.F1)
+                {
+                    SlEditLock();
+
+                    var sl = new D3_SL_OMS { SL_ID = Guid.NewGuid().ToString() };
+
+                    _slList.Add(sl);
+
+                    SlGridControl.RefreshData();
+                    SlGridControl.SelectedItem = sl;
+
+                    SlEditDefault();
+                }
+            }
         }
 
         private void GridViewBase_OnCellValueChanged(object sender, CellValueChangedEventArgs e)
@@ -2530,8 +2558,6 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
             } 
         }
-
-
     }
 
     public class RoleVisibility : IValueConverter

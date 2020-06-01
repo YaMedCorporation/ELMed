@@ -120,30 +120,47 @@ namespace Yamed.Control.Editors
             if (cn != null) e.Column.Header = cn.value;
 
             var fkc = ForeignKeyColumn.SingleOrDefault(x => x.ColumnName == e.Column.FieldName);
-            if (fkc == null) return;
-
-            string rtName;
-            if (fkc.ReferenceTableName.Contains("___Guid___"))
+            if (fkc == null)
             {
-                rtName = fkc.ReferenceTableName.Remove(fkc.ReferenceTableName.IndexOf("___Guid___", StringComparison.CurrentCulture));
+                if (SprClass.Region == "37" && e.Column.FieldName == "KOD_SP")
+                {                    
+                    e.Column.EditSettings = new ComboBoxEditSettings
+                    {
+                        ValueMember = "KOD_SP",
+                        DisplayMember = "NameWithID",
+                        ItemsSource = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{SprClass.ProdSett.OrgCode}' and '{DateTime.Today}' between dt_beg and isnull(dt_fin,'20530101')", ConnectionString),
+                        AllowDefaultButton = false
+                    };
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                rtName = fkc.ReferenceTableName;
+                string rtName;
+                if (fkc.ReferenceTableName.Contains("___Guid___"))
+                {
+                    rtName = fkc.ReferenceTableName.Remove(fkc.ReferenceTableName.IndexOf("___Guid___", StringComparison.CurrentCulture));
+                }
+                else
+                {
+                    rtName = fkc.ReferenceTableName;
+                }
+
+                var cis = Reader2List.CustomSelect<DBaseInfoClass.ColumnsInformationSchema>($"select * from information_schema.columns where table_name = '{rtName}'", ConnectionString);
+                var dn = cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("NameWith")) ??
+                            cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("Name")) ?? cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("NAME")) ?? cis.Single(x => x.ORDINAL_POSITION == 2);
+                var rt = ForeignTable.Single(x => x.Key == fkc.ReferenceTableName);
+                e.Column.EditSettings = new ComboBoxEditSettings
+                {
+                    ValueMember = fkc.ReferenceColumnName,
+                    DisplayMember = dn.COLUMN_NAME,
+                    ItemsSource = rt.Value,
+                    AllowDefaultButton = false
+                };
             }
-
-            var cis = Reader2List.CustomSelect<DBaseInfoClass.ColumnsInformationSchema>($"select * from information_schema.columns where table_name = '{rtName}'", ConnectionString);
-            var dn = cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("NameWith")) ??
-                        cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("Name")) ?? cis.SingleOrDefault(x => x.COLUMN_NAME.StartsWith("NAME")) ?? cis.Single(x => x.ORDINAL_POSITION == 2);
-            var rt = ForeignTable.Single(x => x.Key == fkc.ReferenceTableName);
-            e.Column.EditSettings = new ComboBoxEditSettings
-            {
-                ValueMember = fkc.ReferenceColumnName,
-                DisplayMember = dn.COLUMN_NAME,
-                ItemsSource = rt.Value,
-                AllowDefaultButton = false
-            };
-
         }
-    }
+      }
 }

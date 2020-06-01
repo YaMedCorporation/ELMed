@@ -24,6 +24,7 @@ namespace Yamed.OmsExp.ExpEditors
         public object Row { get; set; }
         public D3_SANK_OMS Sank { get; set; }
         public D3_SANK_OMS ReSank { get; set; }
+        public object Nhistory { get; set; }
     }
 
 
@@ -58,10 +59,11 @@ namespace Yamed.OmsExp.ExpEditors
             _arid = arid;
 
             _isNew = sid == null;
+            
 
             ExpertColumnEdit.DataContext = Reader2List.CustomAnonymousSelect("Select * from ExpertsDB order by FAM",SprClass.LocalConnectionString);//SprClass.ExpertDbs;
 
-
+            TemplateZaklEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from D3_SANK_TEMPLATE where userid='{SprClass.userId}' order by USERID", SprClass.LocalConnectionString);
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
             VidExpEdit.DataContext = videxp;
 
@@ -103,17 +105,22 @@ namespace Yamed.OmsExp.ExpEditors
         }
 
 
-
+        public static object hist;
         private void MeeWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             List<int> zslid = new List<int>();
+            
             if (_re==1 && _stype==1)
             {
-                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or name like '%без замечаний%' order by Name", SprClass.LocalConnectionString);
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or Name like '%ИЗМЕНЕНИЙ%' order by Name", SprClass.LocalConnectionString);
+            }
+            else if (SprClass.Region == "57" || SprClass.Region == "37")
+            {
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null order by Name", SprClass.LocalConnectionString);
             }
             else
             {
-                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank order by Name", SprClass.LocalConnectionString);
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null and isnull(osn,'0') not like '5%' order by Name", SprClass.LocalConnectionString);
             }
             ShablonEdit.DataContext = _sankAutos;
 
@@ -127,6 +134,7 @@ namespace Yamed.OmsExp.ExpEditors
                    
                         ExpClass expList = new ExpClass();
                         expList.Row = row;
+                        expList.Nhistory = Reader2List.SelectScalar($@"Select (select top(1) sl.nhistory  from d3_sl_oms sl where sl.d3_zslid=zsl.id order by sl.id) as NHISTORY from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
                         expList.Sank = new D3_SANK_OMS()
@@ -137,8 +145,7 @@ namespace Yamed.OmsExp.ExpEditors
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
                             S_DATE = SprClass.WorkDate
-                        };
-                        
+                    };
                         _slpsList.Add(expList);
                         zslid.Add(expList.Sank.D3_ZSLID);
                     }
@@ -183,7 +190,7 @@ namespace Yamed.OmsExp.ExpEditors
                 }
 
 
-               
+                    
                     slupacsank.Row = _row;
                     slupacsank.Sank = sank.First();
                     _slpsList.Add(slupacsank);
@@ -195,12 +202,12 @@ namespace Yamed.OmsExp.ExpEditors
 
 
             sluchGridControl.DataContext = _slpsList;
+            
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {
                     sluchGridControl.SelectRange(0,0);
                 }));
-
         }
 
 
@@ -275,6 +282,7 @@ namespace Yamed.OmsExp.ExpEditors
             //    _slpsList.Sank.CODE_EXP = ObjHelper.GetAnonymousValue(ExpertBoxEdit.SelectedItem, "KOD").ToString();
 
             //}
+            
             if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
             {
                 var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
@@ -308,7 +316,18 @@ namespace Yamed.OmsExp.ExpEditors
                     if (obj.ID == 0)
                     {
                         obj.S_COM = obj.S_ZAKL;
+                        if (obj.S_COM != null && obj.S_COM != "")
+                        {
+                            var text = SqlReader.Select($@"Select text from D3_SANK_TEMPLATE where text='{obj.S_COM}'", SprClass.LocalConnectionString);
+                            if (text.Count > 0)
+                            {
 
+                            }
+                            else
+                            {
+                                Reader2List.CustomExecuteQuery($@"insert D3_SANK_TEMPLATE VALUES ('{obj.S_COM}','{SprClass.userId}')", SprClass.LocalConnectionString);
+                            }
+                        }
                         if (_stype == 3 && _expertList != null && _expertList.Count != 0 && _expert_delList == null && checkEditItem.EditValue.ToString() == "False")
                         {
                             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{obj.S_CODE}')";
@@ -319,7 +338,6 @@ namespace Yamed.OmsExp.ExpEditors
                         {
                             obj.CODE_EXP = null;
                         }
-
                         var id = Reader2List.ObjectInsertCommand("D3_SANK_OMS", obj, "ID", SprClass.LocalConnectionString);
                         obj.ID = (int)id;
                     }
@@ -349,9 +367,14 @@ namespace Yamed.OmsExp.ExpEditors
                 if (_expertList != null)
                     foreach (var obj in _expertList)
                     {
+                        if (obj.ExpertCode == null)
+                        {
+                            DXMessageBox.Show("Найдена пустая запись в экспертах, проверьте введенные данные и попробуйте снова!");
+                            return;
+                        }
                         if (obj.ID == 0)
                         {
-                            obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE == obj.D3_SANKGID).Sank.ID;
+                            obj.D3_SANKID = _slpsList.Single(x => x.Sank.S_CODE ==  obj.D3_SANKGID).Sank.ID;
                             var id = Reader2List.ObjectInsertCommand("D3_SANK_EXPERT_OMS", obj, "ID",
                                 SprClass.LocalConnectionString);
                             obj.ID = (int)id;
@@ -458,6 +481,10 @@ namespace Yamed.OmsExp.ExpEditors
                     sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                         MidpointRounding.AwayFromZero);
                 }
+                else if (_re == 1 && _stype == 1 && SprClass.Region == "25")
+                {
+                    ex.Sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
+                }
                 else
                 {
                     sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
@@ -521,6 +548,9 @@ namespace Yamed.OmsExp.ExpEditors
             }
         }
 
-
+        private void TemplateZaklEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            ZaklEdit.Text = TemplateZaklEdit.Text;
+        }
     }
 }

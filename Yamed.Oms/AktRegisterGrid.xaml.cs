@@ -3,6 +3,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -242,21 +243,61 @@ namespace Yamed.Oms
             var exp = Reader2List.CustomAnonymousSelect($@"Select D3_ARID,count(D3_ARID) as kol_exp from D3_SANK_OMS group by d3_arid", SprClass.LocalConnectionString);
             kolexp.DataContext = exp;
         }
+        public static string MyIds(int[] ids, DevExpress.Xpf.Grid.GridControl grid)
+        {
+
+            string sg_rows = "";
+            int[] rt = ids;
+            for (int i = 0; i < rt.Count(); i++)
+
+            {
+                var ddd = grid.GetCellValue(rt[i], "ID");
+                var sgr = sg_rows.Insert(sg_rows.Length, ddd.ToString()) + ",";
+                sg_rows = sgr;
+            }
+
+            sg_rows = sg_rows.Substring(0, sg_rows.Length - 1);
+            return sg_rows;
+
+
+        }
         private void GridControl1_OnSelectionChanged(object sender, GridSelectionChangedEventArgs e)
         {
-            var row = DxHelper.GetSelectedGridRow(gridControl1);
-            if (row == null) return;
+            
+            //var row = DxHelper.GetSelectedGridRow(gridControl1);
+            if (gridControl1.GetSelectedRowHandles().Count() == 0)
+            {
+                sankGridControl.DataContext = null;
+            }
+            else
+            {
+                var _sankList =
+    Reader2List.CustomAnonymousSelect($@"
+             select distinct sa.ID, FAM, IM, OT, DR, NPOLIS, m1.NameWithID as DS1, f6.NameWithID as TypeExp,f3.NameWithID, v6.NameWithID, NHISTORY, akt.NUM_ACT, zs.MEE_COUNT, zs.EKMP_COUNT, SUMV, f5.NameWithId, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+            from D3_SANK_OMS sa
+            join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
+            join D3_SL_OMS sl on sl.d3_zslid=zs.id
+            join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
+            join D3_AKT_REGISTR_OMS akt on akt.id=sa.d3_arid
+            left join f003 f3 on f3.mcod=zs.LPU
+			left join V006 v6 on v6.IDUMP=zs.USL_OK
+			left join F005 f5 on f5.Id=zs.OPLATA
+            left join m001_ksg m1 on m1.idds=sl.ds1 and ISDELETE<>1
+			left join F006_NEW f6 on f6.IDVID=sa.S_TIP2 and f6.DATEEND is null
+            where sa.D3_ARID in ({MyIds(gridControl1.GetSelectedRowHandles(), gridControl1)})", SprClass.LocalConnectionString);
+                sankGridControl.DataContext = _sankList;
+            }
+            //var id = ObjHelper.GetAnonymousValue(row, "ID");
+            //var sankList =
+            //    Reader2List.CustomAnonymousSelect($@"
+            //select sa.ID, FAM, IM, OT, DR, NPOLIS, NHISTORY, SUMV, OPLATA, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+            //from D3_SANK_OMS sa
+            //join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
+            //join D3_SL_OMS sl on sl.d3_zslid=zs.id
+            //join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
+            //where sa.D3_ARID = {id}", SprClass.LocalConnectionString);
 
-            var id = ObjHelper.GetAnonymousValue(row, "ID");
-            var sankList =
-                Reader2List.CustomAnonymousSelect($@"
-select sa.ID, FAM, IM, OT, DR, NPOLIS, SUMV, OPLATA, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
-from D3_SANK_OMS sa
-join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
-join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
-where sa.D3_ARID = {id}", SprClass.LocalConnectionString);
-
-            sankGridControl.DataContext = (object)sankList;
+            //sankGridControl.DataContext = sankList;
         }
     }
 

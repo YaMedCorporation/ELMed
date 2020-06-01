@@ -4,3 +4,10 @@ D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.c
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+E:\ELMed-ELMed\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+E:\ELMed-ELMed\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.csprojAssemblyReference.cache
+E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
+E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb

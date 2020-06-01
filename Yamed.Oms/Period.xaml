@@ -43,16 +43,16 @@
                 </DataTemplate>
             </dx:LoadingDecorator.SplashScreenTemplate>
         </dx:LoadingDecorator>
-        <dxe:DateEdit x:Name="Per1" HorizontalAlignment="Left" Margin="272,139,0,0" VerticalAlignment="Top" Width="150" Mask="y"
+        <dxe:DateEdit x:Name="Per1" HorizontalAlignment="Left" Margin="199,139,0,0" VerticalAlignment="Top" Width="150" Mask="y"
                                   MaskUseAsDisplayFormat="True"
                                   AllowRoundOutOfRangeValue="true" />
-            <dxe:DateEdit x:Name="Per2" HorizontalAlignment="Left" Margin="447,139,0,0" VerticalAlignment="Top" Width="150" Mask="y"
+            <dxe:DateEdit x:Name="Per2" HorizontalAlignment="Left" Margin="376,139,0,0" VerticalAlignment="Top" Width="150" Mask="y"
                                   MaskUseAsDisplayFormat="True"
                                   AllowRoundOutOfRangeValue="true" />
-        <dxe:ComboBoxEdit x:Name="Prikaz" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" Margin="124,93,0,0" VerticalAlignment="Top" Width="281" NullValueButtonPlacement="EditBox" Height="22"  EditValueChanged="Prikaz_EditValueChanged" />
-            <Label x:Name="s" Content="С" HorizontalAlignment="Left" Margin="253,139,0,0" VerticalAlignment="Top" FontWeight="Bold" />
-            <Label x:Name="po" Content="По" HorizontalAlignment="Left" Margin="427,139,0,0" VerticalAlignment="Top" FontWeight="Bold" />
-            <Label x:Name="vibor" Content="Выберите период подготовки данных" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="236" FontWeight="Bold" Height="22" />
+        <dxe:ComboBoxEdit x:Name="Prikaz" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" Margin="58,93,0,0" VerticalAlignment="Top" Width="259" NullValueButtonPlacement="EditBox" Height="22"  EditValueChanged="Prikaz_EditValueChanged" />
+            <Label x:Name="s" Content="С" HorizontalAlignment="Left" Margin="187,139,0,0" VerticalAlignment="Top" FontWeight="Bold" />
+            <Label x:Name="po" Content="По" HorizontalAlignment="Left" Margin="354,139,0,0" VerticalAlignment="Top" FontWeight="Bold" />
+            <Label x:Name="vibor" Content="Период подготовки данных" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="172" FontWeight="Bold" Height="22" />
             <Button x:Name="Pod" HorizontalAlignment="Left" Margin="193,16,0,0" VerticalAlignment="Top" Width="143" Height="58" Click="Pod_Click" Style="{StaticResource myButtonStyle1}">
                 <StackPanel Orientation="Vertical" Width="149">
                     <Image Source="/Yamed.Icons;component/Icons/1481912019_file_edit.png" Width="30" Height="30" Focusable="True" HorizontalAlignment="Center">
@@ -80,14 +80,14 @@
                     <TextBlock Text="Экспорт данных" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="27,0,26,0" Foreground="Black" FontWeight="Bold" FontSize="12" />
                 </StackPanel>
             </Button>
-            <Label x:Name="vibor_Copy" Content="Выберите приказ" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" />
+            <Label x:Name="vibor_Copy" Content="Приказ" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="43" FontWeight="Bold" />
             <Label x:Name="vibor_exp" Content="Год и месяц отчетного периода" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Width="194" FontWeight="Bold" />
             <dxe:DateEdit x:Name="date_exp" HorizontalAlignment="Left" Margin="209,223,0,0" VerticalAlignment="Top" Width="150" Mask="y"
             MaskUseAsDisplayFormat="True"
             AllowRoundOutOfRangeValue="true" />
-            <TextBox x:Name="npp" HorizontalAlignment="Left" Height="23" Margin="209,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-            <Label Content="Номер версии для имени файла" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="194" FontWeight="Bold"/>
-            <Label x:Name="vibor_slekmp" Content="Выберите тип выгрузки (случаи, ЭКМП)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="236" FontWeight="Bold" Margin="10,263,0,0" />
-            <dxe:ComboBoxEdit x:Name="sluch_ekmp" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" NullValueButtonPlacement="EditBox" Height="22" Margin="257,263,0,0" />
+            <TextBox x:Name="npp" HorizontalAlignment="Left" Height="23" Margin="124,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+            <Label Content="Номер для файла" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="109" FontWeight="Bold"/>
+            <Label x:Name="vibor_slekmp" Content="Выберите тип выгрузки" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" FontWeight="Bold" Margin="10,263,0,0" />
+            <dxe:ComboBoxEdit x:Name="sluch_ekmp" ItemsSource="{Binding}" FilterCondition="Contains" IncrementalFiltering="True" ValidateOnTextInput="False" ImmediatePopup="True" AutoComplete="True" ValueMember="ID" DisplayMember="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" NullValueButtonPlacement="EditBox" Height="22" Margin="159,263,0,0" />
     </Grid>
 </UserControl>

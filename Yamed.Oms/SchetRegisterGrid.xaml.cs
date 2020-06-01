@@ -33,6 +33,7 @@ namespace Yamed.Oms
         //public List<SQLTables.SluPacClass> _zsls;
         public List<int> Scids;
         public List<int> zslid;
+        
         public SchetRegisterGrid()
         {
             InitializeComponent();
@@ -89,6 +90,7 @@ namespace Yamed.Oms
             KsgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
+            Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from d3_dss_oms dss left join M001_KSG m011 on m011.IDDS=ds where ds_type=2", SprClass.LocalConnectionString);
             PrvsEdit.DataContext = SprClass.SpecV021List;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
@@ -133,19 +135,19 @@ namespace Yamed.Oms
             gridControl1.DataContext = _linqInstantFeedbackDataSource;
 
         }
-
-        public DateTime date2;
         private IQueryable _pQueryable;
         public void BindDataZsl()
         {
-            HideSlColumn();
+
             if (zslid != null)
             {
                 _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
                               join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any()) //&& (zsl.DATE_Z_2 >= sl.DATE_2)
+
                               select new
                               {
                                   sc.YEAR,
@@ -194,6 +196,8 @@ namespace Yamed.Oms
                                   zsl.VB_P,
                                   zsl.RSLT_D,
                                   zsl.VBR,
+                                  //////
+                                  //sl.NHISTORY,
 
                                   pa.FAM,
                                   pa.IM,
@@ -244,8 +248,9 @@ namespace Yamed.Oms
                 _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
                               join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              //join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
+                              where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) //&& (zsl.DATE_Z_2 >= sl.DATE_2)
                               select new
                               {
                                   sc.YEAR,
@@ -294,7 +299,8 @@ namespace Yamed.Oms
                                   zsl.VB_P,
                                   zsl.RSLT_D,
                                   zsl.VBR,
-                                 
+                                  //////
+                                  //sl.NHISTORY,
 
                                   pa.FAM,
                                   pa.IM,
@@ -379,6 +385,8 @@ namespace Yamed.Oms
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join dss in _ElmedDataClassesDataContext.D3_DSS_OMS on sl.ID equals dss.D3_SLID into tmpdss
+                              from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
                               where (Scids.Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
@@ -431,6 +439,7 @@ namespace Yamed.Oms
                                   zsl.RSLT_D,
                                   zsl.VBR,
                                   ///////////////////////////////////
+                                  sl.SL_ID,
                                   sl.VID_HMP,
                                   sl.METOD_HMP,
                                   sl.LPU_1,
@@ -462,7 +471,7 @@ namespace Yamed.Oms
                                   sl.POVOD,
                                   sl.PROFIL_REG,
                                   pa.SOCSTATUS,
-
+                                  dsss.DS,
 
 
                                   //sl.N_KSG,
@@ -533,6 +542,8 @@ namespace Yamed.Oms
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join dss in _ElmedDataClassesDataContext.D3_DSS_OMS on sl.ID equals dss.D3_SLID into tmpdss
+                              from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
                               where (Scids.Contains(zsl.D3_SCID) || !Scids.Any())
@@ -585,6 +596,7 @@ namespace Yamed.Oms
                                   zsl.RSLT_D,
                                   zsl.VBR,
                                   ///////////////////////////////////
+                                  sl.SL_ID,
                                   sl.VID_HMP,
                                   sl.METOD_HMP,
                                   sl.LPU_1,
@@ -616,7 +628,7 @@ namespace Yamed.Oms
                                   sl.POVOD,
                                   sl.PROFIL_REG,
                                   pa.SOCSTATUS,
-
+                                  dsss.DS,
 
 
                                   //sl.N_KSG,
@@ -742,7 +754,7 @@ namespace Yamed.Oms
                               zsl.VB_P,
                               zsl.RSLT_D,
                               zsl.VBR,
-
+                              sl.SL_ID,
                               sl.VID_HMP,
                         sl.METOD_HMP,
                         sl.LPU_1,
@@ -957,7 +969,7 @@ namespace Yamed.Oms
                               sl.PROFIL_K,
                               sl.C_ZAB,
                               sl.DS_ONK,
-
+                              sl.SL_ID,
 
 
                               //для отображения полей Иваново, Андрей insidious
@@ -1084,7 +1096,7 @@ namespace Yamed.Oms
                                   zsl.KD_Z,
                                   zsl.VB_P,
                                   zsl.RSLT_D,
-
+                                  sl.SL_ID,
                                   sl.VID_HMP,
                                   sl.METOD_HMP,
                                   sl.LPU_1,
@@ -1603,6 +1615,7 @@ FROM [D3_SCHET_OMS] sch
                                   zsl.VBR,
 
                                   ///////////////////////////////////
+                                  sl.SL_ID,
                                   sl.VID_HMP,
                                   sl.METOD_HMP,
                                   sl.LPU_1,
@@ -1771,6 +1784,7 @@ FROM [D3_SCHET_OMS] sch
                                   zsl.VBR,
 
                                   ///////////////////////////////////
+                                  sl.SL_ID,
                                   sl.VID_HMP,
                                   sl.METOD_HMP,
                                   sl.LPU_1,
