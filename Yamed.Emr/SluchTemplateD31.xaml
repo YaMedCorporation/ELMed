@@ -744,7 +744,7 @@
                                     UseWholeRow="True">
                                     <dxb:BarButtonItem x:Name="SlAddItem"
                                         BarItemDisplayMode="ContentAndGlyph"
-                                        Content="Добавить случай"
+                                        Content="Добавить случай (F1)"
                                         Glyph="pack://application:,,,/Yamed.Icons;component/Icons/plus_orange.png"
                                         ItemClick="SlAddItem_OnItemClick" />
                                     <dxb:BarButtonItem x:Name="SlDelItem"

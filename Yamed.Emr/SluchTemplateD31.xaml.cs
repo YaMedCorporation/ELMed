@@ -2206,6 +2206,19 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                     SaveSluchAsync();
                 if (e.Key == Key.F7)
                     NewZsl();
+                if (e.Key == Key.F1)
+                {
+                    SlEditLock();
+
+                    var sl = new D3_SL_OMS { SL_ID = Guid.NewGuid().ToString() };
+
+                    _slList.Add(sl);
+
+                    SlGridControl.RefreshData();
+                    SlGridControl.SelectedItem = sl;
+
+                    SlEditDefault();
+                }
             }
         }
 
@@ -2545,8 +2558,6 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
             } 
         }
-
-
     }
 
     public class RoleVisibility : IValueConverter
