@@ -87,7 +87,10 @@ namespace Yamed.Oms
             ProfilEdit.DataContext = SprClass.profile;
             VidHmpEdit.DataContext = SprClass.VidVmpList;
             MetodHmpEdit.DataContext = SprClass.MetodVmpList;
-            KsgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023", SprClass.LocalConnectionString);
+            KsgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select v23.K_KSG as K_KSG,v23.NameWithID as NameWithID from V023 v23
+join D3_KSG_KPG_OMS ksg on ksg.N_KSG=v23.K_KSG
+join D3_SL_OMS sl on sl.ID=ksg.D3_SLID
+where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101') or '{SprClass.WorkDate}' between datebeg and isnull(dateend,'21000101'))", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
             Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from d3_dss_oms dss left join M001_KSG m011 on m011.IDDS=ds where ds_type=2", SprClass.LocalConnectionString);

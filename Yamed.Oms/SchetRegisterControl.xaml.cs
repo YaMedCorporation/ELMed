@@ -860,6 +860,10 @@ where zsl.D3_SCID in {ids}";
                 SchetRegisterGrid1.BindDataSank();
                 scVid.Content = "Вид - Только санкции";
             }
+            else if (tag == "")
+            {
+                scVid.Content = "Вид";
+            }
         }
 
         private void Spisok_Form_ItemClick(object sender, ItemClickEventArgs e)
