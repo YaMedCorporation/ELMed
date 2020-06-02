@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\!!!_Code\ElmedNew\Yamed.OmsExp\obj\Debug\
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\
 Yamed.OmsExp
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 14808002779
 
-181438850515
-40346486723
+17966216237
+41528575168
 ExpEditors\AktMeeChoose.xaml;ExpEditors\MedicExpControl.xaml;ExpEditors\MeeWindow.xaml;ExpEditors\ReqControl.xaml;SqlEditor\AutoMekControl.xaml;EmrPacientControl.xaml;LicSpr.xaml;SqlEditor\AutoMekElement.xaml;SqlEditor\ErrorBox.xaml;SqlEditor\AlgEditControl.xaml;SqlEditor\SqlEditControl.xaml;ExpEditors\SankControl.xaml;ExpEditors\SankGroupDelete.xaml;SqlEditor\SmoReExpControl.xaml;
 
-True
+False
 
