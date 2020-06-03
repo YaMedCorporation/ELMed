@@ -236,7 +236,15 @@ namespace Yamed.Oms
                 //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
             });
         }
-        private void kol()
+        private void ExcelExportItem_OnItemClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel File (*.xlsx)|*.xlsx";
+
+            if (saveFileDialog.ShowDialog() == true)
+            gridControl1.View.ExportToXlsx(saveFileDialog.FileName);
+        }
+            private void kol()
         {
             var kol = Reader2List.CustomAnonymousSelect($@"Select D3_ARID,count(D3_ARID) as kol_zap from D3_REQ_OMS group by d3_arid", SprClass.LocalConnectionString);
             kolzap.DataContext = kol;
@@ -298,6 +306,15 @@ namespace Yamed.Oms
             //where sa.D3_ARID = {id}", SprClass.LocalConnectionString);
 
             //sankGridControl.DataContext = sankList;
+        }
+
+        private void ExExcelItem_ItemClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel File (*.xlsx)|*.xlsx";
+
+            if (saveFileDialog.ShowDialog() == true)
+                sankGridControl.View.ExportToXlsx(saveFileDialog.FileName);
         }
     }
 

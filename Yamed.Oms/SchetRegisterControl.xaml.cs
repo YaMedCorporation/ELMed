@@ -347,7 +347,16 @@ where zsl.D3_SCID in {ids}";
                     }
             }).ContinueWith(lr =>
             {
-
+                if (_arid != null)
+                {
+                    var type = Reader2List.SelectScalar($@"select left(S_TIP2,1) from D3_AKT_REGISTR_OMS akt
+  where akt.id={_arid}", SprClass.LocalConnectionString);
+                    if (type.ToString() != "2")
+                    {
+                        DXMessageBox.Show("Невозможно провести экспертизу для выбранного акта");
+                        return;
+                    }
+                }
                 var window = new DXWindow
                 {
                     ShowIcon = false,
@@ -363,7 +372,7 @@ where zsl.D3_SCID in {ids}";
                 DxHelper.LoadedRows.Clear();
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
-
+            SchetRegisterGrid1.gridControl1.IsEnabled = true;
         }
 
         private void AddEkmp_OnClick(object sender, RoutedEventArgs e)
@@ -388,7 +397,16 @@ where zsl.D3_SCID in {ids}";
                 }
             }).ContinueWith(lr =>
             {
-
+                if (_arid != null)
+                {
+                    var type = Reader2List.SelectScalar($@"select left(S_TIP2,1) from D3_AKT_REGISTR_OMS akt
+  where akt.id={_arid}", SprClass.LocalConnectionString);
+                    if (type.ToString() != "3")
+                    {
+                        DXMessageBox.Show("Невозможно провести экспертизу для выбранного акта");
+                        return;
+                    }
+                }
                 var window = new DXWindow
                 {
                     ShowIcon = false,
@@ -405,6 +423,7 @@ where zsl.D3_SCID in {ids}";
                 DxHelper.LoadedRows.Clear();
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
+            SchetRegisterGrid1.gridControl1.IsEnabled = true;
         }
 
         private void AddRMee_OnClick(object sender, RoutedEventArgs e)

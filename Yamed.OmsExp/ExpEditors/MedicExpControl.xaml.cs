@@ -48,7 +48,6 @@ namespace Yamed.OmsExp.ExpEditors
         private object _row;
         private int _re;
         private int? _arid;
-
         public MedicExpControl(int? stype, int? sid = null, object row = null, int re = 0, int? arid = null)
         {
             InitializeComponent();
@@ -66,7 +65,7 @@ namespace Yamed.OmsExp.ExpEditors
             TemplateZaklEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from D3_SANK_TEMPLATE where userid='{SprClass.userId}' order by USERID", SprClass.LocalConnectionString);
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
             VidExpEdit.DataContext = videxp;
-
+            
             if (stype == 2)
             {
                 ExpEkmpLayGr.Visibility = Visibility.Collapsed;
@@ -94,6 +93,7 @@ namespace Yamed.OmsExp.ExpEditors
                 date_act.Visibility = Visibility.Collapsed;
                 num_act.Visibility = Visibility.Collapsed;
             }
+           
         }
 
 
@@ -123,7 +123,7 @@ namespace Yamed.OmsExp.ExpEditors
                 _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null and isnull(osn,'0') not like '5%' order by Name", SprClass.LocalConnectionString);
             }
             ShablonEdit.DataContext = _sankAutos;
-
+            
             _slpsList = new List<ExpClass>();
 
             if (_isNew)
@@ -208,6 +208,8 @@ namespace Yamed.OmsExp.ExpEditors
                 {
                     sluchGridControl.SelectRange(0,0);
                 }));
+            
+            
         }
 
 
