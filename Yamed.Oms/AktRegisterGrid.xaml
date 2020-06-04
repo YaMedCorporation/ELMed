@@ -42,11 +42,14 @@
                                            Content="Просмотр"
                                            LargeGlyph="/Yamed.Icons;component/Icons/1481287271_Medical_Report-2.png"
                                            ItemClick="ScRegisterItem_OnItemClick"/>
-                            <!--<dxb:BarButtonItem Name="ScExportItem"
+                            <dxb:BarButtonItem Name="ExcelExportItem"
                                            BarItemDisplayMode="ContentAndGlyph"
-                                           ToolTip="" GlyphAlignment="Top"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/700048-icon-89-document-file-sql-512.png"
-                                           IsEnabled="False"/>-->
+                                           Content="Экспорт"
+                                           AllowGlyphTheming="True"
+                                           ToolTip="Экспорт Excel" GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png"
+                                           IsEnabled="True"
+                                           ItemClick="ExcelExportItem_OnItemClick"/>
                             <dxb:BarButtonItem Name="ScAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Добавить" GlyphAlignment="Top"
@@ -138,30 +141,35 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <dxb:BarContainerControl >
-                    <dxb:ToolBarControl AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" IsCollapsed="False" ShowDragWidget="False" UseWholeRow="False" IsEnabled="False">
+                    <dxb:ToolBarControl AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" IsCollapsed="False" ShowDragWidget="False" UseWholeRow="False" IsEnabled="True">
                         <dxb:BarButtonItem Name="OmsAddItem"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            Content="Добавить"
                                            Glyph="/Yamed.Icons;component/Icons/plus_orange.png"
-                                           />
+                                            IsEnabled="False"/>
                         <dxb:BarButtonItem Name="OmsEditItem"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            Content="Редактировать"
                                            Glyph="/Yamed.Icons;component/Icons/pencil.png"
-                                           />
+                                           IsEnabled="False"/>
                         <dxb:BarButtonItem Name="OmsDelItem"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            Content="Удалить"
                                            Glyph="/Yamed.Icons;component/Icons/deletered.png"
-                                           />
+                                           IsEnabled="False"/>
                         <dxb:BarItemSeparator ></dxb:BarItemSeparator>
 
                         <dxb:BarButtonItem Name="DocumentItem"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            Content="Документы"
                                            Glyph="/Yamed.Icons;component/Icons/script_badge.png" 
+                                           IsEnabled="False"/>
+                        <dxb:BarButtonItem Name="ExExcelItem"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           AllowGlyphTheming="True"
+                                           Content="Экспорт"
+                                           Glyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png" ItemClick="ExExcelItem_ItemClick" 
                                            />
-
                     </dxb:ToolBarControl>
                 </dxb:BarContainerControl>
                 <dxg:GridControl Grid.Row="1" Name="sankGridControl" SelectionMode="Row" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" >

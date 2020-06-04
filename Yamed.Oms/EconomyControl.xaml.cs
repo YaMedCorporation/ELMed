@@ -67,7 +67,7 @@ namespace Yamed.Oms
 
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
-                Header = "Реестр поликлиника",
+                Header = "Реестр счета",
                 MyControl = rc,
                 IsCloseable = "True",
                 //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
