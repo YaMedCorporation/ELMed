@@ -11,3 +11,8 @@ E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
 E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.csproj.CoreCompileInputs.cache
 E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.dll
 E:\ELMed-ELMed\Yamed.Icons\obj\Debug\Yamed.Icons.pdb
+D:\!!!_Code\ElmedNew\Yamed.Icons\bin\Debug\Yamed.Icons.dll
+D:\!!!_Code\ElmedNew\Yamed.Icons\bin\Debug\Yamed.Icons.pdb
+D:\!!!_Code\ElmedNew\Yamed.Icons\obj\Debug\Yamed.Icons.g.resources
+D:\!!!_Code\ElmedNew\Yamed.Icons\obj\Debug\Yamed.Icons.dll
+D:\!!!_Code\ElmedNew\Yamed.Icons\obj\Debug\Yamed.Icons.pdb

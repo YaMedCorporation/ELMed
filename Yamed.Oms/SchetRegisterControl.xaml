@@ -282,7 +282,7 @@
                 </dxb:BarSubItem>
                 <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Запросы первичной документации" Content="Запросы ПД" GlyphAlignment="Left" AllowGlyphTheming="True"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" x:Name="zapPD">
+                                           LargeGlyph="/Yamed.Icons;component/Icons/x-12-512.png" x:Name="zapPD" IsVisible="False">
                     <!--<dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                        ToolTip="Создать акт экспертизы" Content="Создать" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                        ItemClick="AddAktExp_OnItemClick" GlyphSize="Large" />-->
@@ -301,11 +301,13 @@
                                        ToolTip="Создать МЭК" Content="МЭК" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                        ItemClick="AddMek_OnClick" GlyphSize="Large"/>
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                       x:Name="add_mee" IsVisible="False"
                                           ToolTip="Создать МЭЭ" Content="МЭЭ" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
-                                           ItemClick="AddMee_OnClick" GlyphSize="Large"/>
+                                           ItemClick="AddMee_OnClick" GlyphSize="Large" />
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                       x:Name="add_ekmp" IsVisible="False"
                                            ToolTip="Создать ЭКМП" Content="ЭКМП" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
-                                           ItemClick="AddEkmp_OnClick" GlyphSize="Large"/>
+                                           ItemClick="AddEkmp_OnClick" GlyphSize="Large" />
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph"
                                        ToolTip="Удаление Санкций" Content="Удаление" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/delete-512.png"
                                        ItemClick="SankDel_OnClick" GlyphSize="Large"/>

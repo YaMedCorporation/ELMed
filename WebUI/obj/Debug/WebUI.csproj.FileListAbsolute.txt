@@ -9,3 +9,7 @@ E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.csprojAssemblyReference.cache
 E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.csproj.CoreCompileInputs.cache
 E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.dll
 E:\ELMed-ELMed\WebUI\obj\Debug\WebUI.pdb
+D:\!!!_Code\ElmedNew\WebUI\bin\Debug\WebUI.dll
+D:\!!!_Code\ElmedNew\WebUI\bin\Debug\WebUI.pdb
+D:\!!!_Code\ElmedNew\WebUI\obj\Debug\WebUI.dll
+D:\!!!_Code\ElmedNew\WebUI\obj\Debug\WebUI.pdb

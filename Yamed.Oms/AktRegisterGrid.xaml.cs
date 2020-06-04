@@ -224,6 +224,10 @@ namespace Yamed.Oms
             //rc.reexpertise.IsVisible = true;
             rc.add_mek.IsVisible = false;
             rc.re_mek.IsVisible = false;
+            rc.reexpertise.IsVisible = false;
+
+            rc.add_mee.IsVisible = true;
+            rc.add_ekmp.IsVisible = true;
             rc.mek.Content = "Экспертизы";
             rc._arid = row.ID;
             rc.SchetRegisterGrid1.BindAktExp(row.ID);

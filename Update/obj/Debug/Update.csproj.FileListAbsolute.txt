@@ -22,3 +22,23 @@ D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Update\bin\Debug\ActiveQueryBuilder
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Update\obj\Debug\Update.csproj.CopyComplete
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Update\obj\Debug\Yamed Update.exe
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Update\obj\Debug\Yamed Update.pdb
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed Update.exe.config
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed Update.exe
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed Update.pdb
+D:\!!!_Code\ElmedNew\Update\bin\Debug\DotNetZip.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Core.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Server.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Entity.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\ActiveQueryBuilder.View.WPF.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\ActiveQueryBuilder.Core.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\ActiveQueryBuilder.View.dll
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Core.pdb
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Server.pdb
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Server.dll.config
+D:\!!!_Code\ElmedNew\Update\bin\Debug\DotNetZip.xml
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Entity.pdb
+D:\!!!_Code\ElmedNew\Update\bin\Debug\Yamed.Entity.dll.config
+D:\!!!_Code\ElmedNew\Update\obj\Debug\Update.csprojAssemblyReference.cache
+D:\!!!_Code\ElmedNew\Update\obj\Debug\Update.csproj.CopyComplete
+D:\!!!_Code\ElmedNew\Update\obj\Debug\Yamed Update.exe
+D:\!!!_Code\ElmedNew\Update\obj\Debug\Yamed Update.pdb

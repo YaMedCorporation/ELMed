@@ -33,3 +33,15 @@ E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cach
 E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
 E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.dll
 E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.pdb
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Server.dll.config
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Server.dll
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Server.pdb
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Core.dll
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Entity.dll
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Core.pdb
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Entity.pdb
+D:\!!!_Code\ElmedNew\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
+D:\!!!_Code\ElmedNew\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
+D:\!!!_Code\ElmedNew\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete
+D:\!!!_Code\ElmedNew\Yamed.Server\obj\Debug\Yamed.Server.dll
+D:\!!!_Code\ElmedNew\Yamed.Server\obj\Debug\Yamed.Server.pdb
