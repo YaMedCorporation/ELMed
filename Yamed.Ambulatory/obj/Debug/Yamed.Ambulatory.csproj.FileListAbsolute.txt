@@ -185,13 +185,9 @@ E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\Yamed.OmsExp.pdb
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\Yamed.OmsExp.dll.config
-E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\ActiveQueryBuilder.View.WPF.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\ICSharpCode.AvalonEdit.xml
-E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
 E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\es\DevExpress.Data.v16.2.resources.dll

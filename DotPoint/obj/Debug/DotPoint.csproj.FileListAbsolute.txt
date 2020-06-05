@@ -10,3 +10,10 @@ D:\!!!_Code\ElmedNew\DotPoint\bin\Debug\DotPoint.pdb
 D:\!!!_Code\ElmedNew\DotPoint\obj\Debug\DotPoint.csprojAssemblyReference.cache
 D:\!!!_Code\ElmedNew\DotPoint\obj\Debug\DotPoint.exe
 D:\!!!_Code\ElmedNew\DotPoint\obj\Debug\DotPoint.pdb
+E:\ELMed-ELMed\DotPoint\bin\Debug\DotPoint.exe.config
+E:\ELMed-ELMed\DotPoint\bin\Debug\DotPoint.exe
+E:\ELMed-ELMed\DotPoint\bin\Debug\DotPoint.pdb
+E:\ELMed-ELMed\DotPoint\obj\Debug\DotPoint.csprojAssemblyReference.cache
+E:\ELMed-ELMed\DotPoint\obj\Debug\DotPoint.csproj.CoreCompileInputs.cache
+E:\ELMed-ELMed\DotPoint\obj\Debug\DotPoint.exe
+E:\ELMed-ELMed\DotPoint\obj\Debug\DotPoint.pdb

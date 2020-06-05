@@ -325,7 +325,6 @@ E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.DataAccess.v16.2.UI.dll
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraCharts.v16.2.Extensions.dll
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraPivotGrid.v16.2.dll
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\ELMed-ELMed\Yamed.Settings\bin\Debug\ActiveQueryBuilder.View.dll
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraDiagram.v16.2.dll
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\Yamed.Control.pdb
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\Yamed.Core.pdb
@@ -366,7 +365,6 @@ E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraReports.v16.2.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\Yamed.Entity.pdb
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\Yamed.Entity.dll.config
-E:\ELMed-ELMed\Yamed.Settings\bin\Debug\ActiveQueryBuilder.View.WPF.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.Xpo.v16.2.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraTreeList.v16.2.xml
@@ -378,8 +376,6 @@ E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraGrid.v16.2.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraNavBar.v16.2.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.DataAccess.v16.2.UI.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraPivotGrid.v16.2.xml
-E:\ELMed-ELMed\Yamed.Settings\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Settings\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\DevExpress.XtraDiagram.v16.2.xml
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
 E:\ELMed-ELMed\Yamed.Settings\bin\Debug\es\DevExpress.Data.v16.2.resources.dll

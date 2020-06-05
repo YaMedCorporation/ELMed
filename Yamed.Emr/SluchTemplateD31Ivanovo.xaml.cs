@@ -1534,6 +1534,19 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             CritGridControl.DataContext = _critList?.Where(x => x.D3_KSGGID == ((D3_KSG_KPG_OMS)KsgGroup.DataContext)?.KSG_ID);
 
             OnkSlGroup.DataContext = _onkSlList?.SingleOrDefault(x => x.D3_SLGID == ((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID);
+            bool? autok = (bool?)Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString);
+            if (autok == true)
+            {
+                autoksg.EditValue = true;
+            }
+            else if (autok == false)
+            {
+                autoksg.EditValue = false;
+            }
+            else if (autok == null)
+            {
+                autoksg.EditValue = true;
+            }
         }
 
         private void NewZSluch_OnClick(object sender, RoutedEventArgs e)
@@ -2655,21 +2668,21 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             }
         }
 
-        private void Autoksg_EditValueChanged(object sender, EditValueChangedEventArgs e)
-        {
-            if ((bool?)autoksg.EditValue !=null)
-            {
-                NksgIvEdit.EditValue = null;
-                if ((bool?)autoksg.EditValue == false)
-                {
-                    NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and len(N_ST_STR)>8 and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
-                }
-                else if ((bool?)autoksg.EditValue == true)
-                {
-                    NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
-                }
-            }
-        }
+        //private void Autoksg_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        //{
+        //    if ((bool?)autoksg.EditValue !=null)
+        //    {
+        //        NksgIvEdit.EditValue = null;
+        //        if ((bool?)autoksg.EditValue == false)
+        //        {
+        //            NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and len(N_ST_STR)>8 and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+        //        }
+        //        else if ((bool?)autoksg.EditValue == true)
+        //        {
+        //            NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
+        //        }
+        //    }
+        //}
     }
 
     public class RoleVisibility1 : IValueConverter

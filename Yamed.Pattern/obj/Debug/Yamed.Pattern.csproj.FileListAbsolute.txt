@@ -312,7 +312,6 @@ E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.DataAccess.v16.2.UI.dll
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraCharts.v16.2.Extensions.dll
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraPivotGrid.v16.2.dll
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\ActiveQueryBuilder.View.dll
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.Diagram.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraDiagram.v16.2.dll
@@ -345,7 +344,6 @@ E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraReports.v16.2.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\Yamed.Entity.pdb
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\Yamed.Entity.dll.config
-E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\ActiveQueryBuilder.View.WPF.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.Xpo.v16.2.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\System.Windows.Interactivity.xml
@@ -361,8 +359,6 @@ E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraRichEdit.v16.2.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraGauges.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.DataAccess.v16.2.UI.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraPivotGrid.v16.2.xml
-E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.Diagram.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Pattern\bin\Debug\DevExpress.XtraDiagram.v16.2.xml

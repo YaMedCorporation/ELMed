@@ -1675,7 +1675,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="20" />
                                     </Grid.ColumnDefinitions>
-                                    <dxe:CheckEdit x:Name="autoksg" EditValue="{Binding DataContext.Auto_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}" EditValueChanged="Autoksg_EditValueChanged" ></dxe:CheckEdit>
+                                    <dxe:CheckEdit x:Name="autoksg" EditValue="{Binding DataContext.Auto_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}" ></dxe:CheckEdit>
                                 </Grid>
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Номер КСГ" x:Name="ivksg" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">

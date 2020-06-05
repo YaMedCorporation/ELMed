@@ -193,14 +193,14 @@
                         <dxg:GridColumn x:Name="Column_NPOLIS" FieldName="NPOLIS" Header="Полис" Width="120" />
                         <dxg:GridColumn x:Name="Column_NHISTORY" FieldName="NHISTORY" Header="Номер истории болезни" Width="120" />
                         <dxg:GridColumn x:Name="Column_DS1" FieldName="DS1" Header="Диагноз осн." FilterPopupMode="Excel"  Width="80"/>
-                        <dxg:GridColumn x:Name="Column_USL_OK" FieldName="NameWithID" Header="Условия оказания МП" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_USL_OK" FieldName="USL_OK" Header="Условия оказания МП" Width="80"/>
                         <dxg:GridColumn x:Name="Column_MEE_COUNT" FieldName="MEE_COUNT" Header="МЭЭ (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                         <dxg:GridColumn x:Name="Column_EKMP_COUNT" FieldName="EKMP_COUNT" Header="ЭКМП (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                         <dxg:GridColumn x:Name="Column_SUMV" FieldName="SUMV" Header="Сумма выставленная" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_OPLATA" FieldName="NameWithId" Header="Оплата" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_OPLATA" FieldName="OPLATA" Header="Оплата" Width="80"/>
                         <dxg:GridColumn x:Name="Column_SUMP" FieldName="SUMP" Header="Сумма принятая" Width="80"/>
                         <dxg:GridColumn x:Name="Column_NUM_AC" FieldName="NUM_ACT" Header="Номер акта" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_LPU_D" FieldName="NameWithID" Header="МО" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_LPU_D" FieldName="LPU" Header="МО" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM" FieldName="S_SUM" Header="Сумма удержанная" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM2" FieldName="S_SUM2" Header="Сумма штрафа" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_OSN" FieldName="S_OSN" Header="Пункт удержания" Width="80"/>
