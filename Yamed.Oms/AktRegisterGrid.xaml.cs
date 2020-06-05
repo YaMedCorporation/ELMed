@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,7 @@ using Yamed.Control;
 using Yamed.Control.Editors;
 using Yamed.Core;
 using Yamed.Entity;
+using Yamed.Reports;
 using Yamed.Server;
 
 namespace Yamed.Oms
@@ -246,7 +248,7 @@ namespace Yamed.Oms
             saveFileDialog.Filter = "Excel File (*.xlsx)|*.xlsx";
 
             if (saveFileDialog.ShowDialog() == true)
-            gridControl1.View.ExportToXlsx(saveFileDialog.FileName);
+                gridControl1.View.ExportToXlsx(saveFileDialog.FileName);
         }
             private void kol()
         {
@@ -319,6 +321,53 @@ namespace Yamed.Oms
 
             if (saveFileDialog.ShowDialog() == true)
                 sankGridControl.View.ExportToXlsx(saveFileDialog.FileName);
+        }
+
+        private void ReportItem_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            DxHelper.GetSelectedGridRowsAsync(ref gridControl1);
+            bool isLoaded = false;
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+
+            }).ContinueWith(lr =>
+            {
+                //List<int> sc = new List<int>();
+                var rows = DxHelper.GetSelectedGridRows(gridControl1);
+                var sc = rows.Select(x => ObjHelper.GetAnonymousValue(x, "ID")).ToArray();
+                //if (rows != null)
+                //{
+                //    foreach (var row in rows)
+                //    {
+                //        sc.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
+                //    }
+                //}
+
+                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                {
+                    Header = "Печатные формы",
+                    MyControl = new StatisticReports(sc, 2000),
+                    IsCloseable = "True",
+                });
+
+
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+
         }
     }
 

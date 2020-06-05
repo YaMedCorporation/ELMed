@@ -50,6 +50,15 @@
                                            LargeGlyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png"
                                            IsEnabled="True"
                                            ItemClick="ExcelExportItem_OnItemClick"/>
+                            <dxb:BarButtonItem Name="ReportItem"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           Content="Документы"
+                                           AllowGlyphTheming="True"
+                                           ToolTip="Печатные формы" GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/Copy_Printer-256.png"
+                                           IsEnabled="True"
+                                           ItemClick="ReportItem_OnItemClick"/>
+
                             <dxb:BarButtonItem Name="ScAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Добавить" GlyphAlignment="Top"
