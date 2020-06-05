@@ -48,6 +48,85 @@ namespace Yamed.Server
             }
             return objList;
         }
+        public static void UpdateFromTable<T>(string com, string connectionString, DataTable dt, bool deltype)
+        {
+            string sqltype = "";
+
+
+            foreach (DataColumn dc in dt.Columns)
+            {
+                //dt.Columns.Add(d.NAME,d.TYPE);
+                string s;
+                switch (dc.DataType.Name.ToString())
+                {
+                    case "Int32":
+                        s = "int";
+                        break;
+                    case "String":
+                        s = "nvarchar(500)";
+                        break;
+                    case "Guid":
+                        s = "uniqueidentifier";
+                        break;
+                    case "Boolean":
+                        s = "bit";
+                        break;
+                    case "DateTime":
+                        s = "DateTime2";
+                        break;
+                    case "Decimal":
+                        s = "numeric(10,2)";
+                        break;
+                    default:
+                        s = dc.DataType.Name.ToString();
+                        break;
+                }
+
+                sqltype = sqltype + dc.ColumnName + " " + s + ",";
+
+            }
+            sqltype = sqltype.Substring(0, sqltype.Length - 1);
+            //foreach (var item in ids)
+            //{
+
+            //    dt.Rows.Add(item);
+
+            //}
+
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd0 = new SqlCommand($@" 
+IF exists (select * from sys.table_types where name='ForDeleteZsl')  
+DROP TYPE dbo.ForDeleteZsl  
+CREATE TYPE ForDeleteZsl AS TABLE ({sqltype})", con);
+
+
+
+            SqlCommand cmd = new SqlCommand(com, con);
+
+            var t = new SqlParameter("@dt", SqlDbType.Structured);
+            t.TypeName = "dbo.ForDeleteZsl";
+            t.Value = dt;
+            cmd.Parameters.Add(t);
+            //SqlParameter t = cmd.Parameters.AddWithValue("@t", dt);
+            //t.SqlDbType = SqlDbType.Structured;
+            //t.TypeName = "dbo.ForUpdate";
+
+            cmd.CommandTimeout = 0;
+            con.Open();
+            if (deltype)
+            {
+                cmd0.ExecuteNonQuery();
+                int str = cmd.ExecuteNonQuery();
+                int isrt = str;
+            }
+            else
+            {
+                int str = cmd.ExecuteNonQuery();
+                int isrt = str;
+            }
+
+            con.Close();
+        }
         public static object SelectScalar(string selectCmd, string connectionString)
         {
             object objList = new object();

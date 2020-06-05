@@ -836,6 +836,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             }
             else
             {
+                _pacient.OT = OtBox.DisplayText==""?null:OtBox.DisplayText;
                 var upd = Reader2List.CustomUpdateCommand("D3_PACIENT_OMS", _pacient, "ID");
                 Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
             }

@@ -1266,7 +1266,8 @@ where z.D3_SCID in({scs})", con);
                 if (DxHelper.LoadedRows.Count > 0)
                 {
                     var ids =
-                        DxHelper.LoadedRows.Select(x => ObjHelper.GetAnonymousValue(x, "ID"))
+                        DxHelper.LoadedRows
+                        .Select(x => ObjHelper.GetAnonymousValue(x, "ID"))
                             .OfType<int>()
                             .Distinct()
                             .ToArray();
@@ -1278,21 +1279,66 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                         try
                         {
                             var tab = SchetRegisterGrid1;
-                            var idstr = ObjHelper.GetIds(ids);
-                            var connectionString = SprClass.LocalConnectionString;
-                            SqlConnection con = new SqlConnection(connectionString);
-                            SqlCommand comm = new SqlCommand($@"select convert(nvarchar, d3_pid)+',' from d3_zsl_oms where id in({idstr}) for xml path('') ", con);
-                            con.Open();
-                            string pacid = (string)comm.ExecuteScalar();
-                            con.Close();
-                            string pacids = pacid.Substring(0, pacid.Length - 1);
-                            Reader2List.CustomExecuteQuery($"DELETE D3_USL_OMS WHERE D3_ZSLID in({idstr})", SprClass.LocalConnectionString);
+                            //var idstr = ObjHelper.GetIds(ids);
+                            
+                            DataTable dt = new DataTable();
+                            
+                            dt.Columns.Add("ID", typeof (int));
+                            for (int i = 0; i < ids.Count();i++)
+                            {
+                                dt.LoadDataRow(new object[] { ids[i] },true);
+                            }
+                            string command0 = $@"exec [p_delzsl] @dt";
+                            Reader2List.UpdateFromTable<DataTable>(command0, SprClass.LocalConnectionString, dt, false);
+                            //                            var connectionString = SprClass.LocalConnectionString;
+                            //                            SqlConnection con = new SqlConnection(connectionString);
+                            //                            SqlCommand comm = new SqlCommand($@"declare @zid table(id int)
+                            //declare @sid table(id int)
+                            //declare @onksid table(id int)
+                            //declare @pid table(id int)
+                            //declare @ksgid table (id int)
+                            //insert @zid select item from dbo.[SplitString]('{idstr}',',') 
+                            //insert @pid select D3_PID from D3_ZSL_OMS where ID in(select*from @zid) group by D3_PID
+                            //insert @sid select ID from D3_SL_OMS where D3_ZSLID in(select*from @zid)
+                            //insert @onksid select ID from D3_ONK_SL_OMS where D3_SLID in(select*from @sid)
+                            //insert @ksgid select ID from D3_KSG_KPG_OMS where D3_SLID in(select * from @sid) 
+                            //delete from D3_B_DIAG_OMS where D3_ONKSLID in (select*from @onksid)
+                            //delete from D3_B_PROT_OMS where D3_ONKSLID in (select*from @onksid)
+                            //delete from D3_CONS_OMS where D3_SLID in (select*from @sid)
+                            //delete from D3_CRIT_OMS where D3_KSGID in (select ID from  D3_KSG_KPG_OMS where D3_SLID in(select*from @sid))
+                            //delete from D3_SL_KOEF_OMS where D3_KSGID in (select*from @ksgid)
+                            //delete from D3_KSG_KPG_OMS where D3_SLID in (select*from @sid)
+                            //delete from D3_LEK_PR_OMS where D3_ONKUSLID in (select id from D3_ONK_USL_OMS where D3_ONKSLID in (select id from @onksid))
+                            //delete from D3_NAPR_OMS where D3_SLID in (select*from @sid)
+                            //delete from D3_NAZ_OMS where D3_SLID in (select*from @sid)
+                            //delete from D3_ONK_USL_OMS where D3_ONKSLID in (select*from @onksid)
+
+                            //delete from D3_DSS_OMS where D3_SLID in (select*from @sid)
+                            //delete from D3_ONK_SL_OMS where D3_SLID in (select*from @sid)
+
+
+
+                            //delete from D3_USL_OMS where D3_SLID in (select*from @sid)
+                            //delete from D3_SL_OMS where ID in (select*from @sid)
+
+                            //delete from D3_ZSL_OMS where ID in (select*from @zid)
+
+                            //delete from D3_PACIENT_OMS where id in (select*from @pid)", con);
+                            //                            con.Open();
+                            //                            comm.ExecuteNonQuery();
+                            //                            //string pacid = (string)comm.ExecuteScalar();
+                            //                            con.Close();
+                            //string pacids = pacid.Substring(0, pacid.Length - 1);
+
+                            // Reader2List.CustomExecuteQuery($"DELETE D3_USL_OMS WHERE D3_ZSLID in({idstr})", SprClass.LocalConnectionString);
                             //Reader2List.CustomExecuteQuery($"DELETE SLUCH_DS2 WHERE SLID={id}", SprClass.LocalConnectionString);
                             //Reader2List.CustomExecuteQuery($"DELETE SLUCH_DS3 WHERE SLID={id}", SprClass.LocalConnectionString);
-                            Reader2List.CustomExecuteQuery($"DELETE D3_SL_OMS WHERE D3_ZSLID in({idstr})", SprClass.LocalConnectionString);
+                            //Reader2List.CustomExecuteQuery($"DELETE D3_SL_OMS WHERE D3_ZSLID in({idstr})", SprClass.LocalConnectionString);
 
-                            Reader2List.CustomExecuteQuery($"DELETE D3_ZSL_OMS WHERE ID in({idstr})", SprClass.LocalConnectionString);
-                            Reader2List.CustomExecuteQuery($"DELETE D3_PACIENT_OMS WHERE ID in({pacids})", SprClass.LocalConnectionString);
+                            //Reader2List.CustomExecuteQuery($"DELETE D3_ZSL_OMS WHERE ID in({idstr})", SprClass.LocalConnectionString);
+
+                            //Reader2List.CustomExecuteQuery($"DELETE D3_PACIENT_OMS WHERE ID in({pacids})", SprClass.LocalConnectionString);
+
                             DXMessageBox.Show($"Удаление успешно выполнено. Удалено {ids.Length} записей");
                             tab._linqInstantFeedbackDataSource.Refresh();
                         }
