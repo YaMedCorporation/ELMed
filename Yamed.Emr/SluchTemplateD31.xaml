@@ -262,7 +262,7 @@
                                 <dxe:TextEdit x:Name="ImBox" EditValue="{Binding IM, UpdateSourceTrigger=PropertyChanged}" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" CharacterCasing="Upper" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Отчество">
-                                <dxe:TextEdit x:Name="OtBox" EditValue="{Binding OT, UpdateSourceTrigger=PropertyChanged}" Validate="Conditional_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" CharacterCasing="Upper" />
+                                <dxe:TextEdit x:Name="OtBox" EditValue="{Binding OT, UpdateSourceTrigger=PropertyChanged}" Validate="Conditional_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" CharacterCasing="Upper"  />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True">
                                 <dxlc:LayoutItem Label="Дата рожд." IsRequired="True">
