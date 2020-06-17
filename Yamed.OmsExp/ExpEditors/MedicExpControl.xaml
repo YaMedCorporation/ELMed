@@ -80,9 +80,6 @@
                                 <dxlc:LayoutItem x:Name="date_act" Label="Дата акта">
                                     <dxe:DateEdit x:Name="AktDateEdit" EditValue="{Binding DATE_ACT, UpdateSourceTrigger=PropertyChanged}"/>
                                 </dxlc:LayoutItem>
-                                <dxlc:LayoutItem x:Name="num_act" Label="Номер акта">
-                                    <dxe:TextEdit x:Name="AktNumEdit" EditValue="{Binding NUM_ACT, UpdateSourceTrigger=PropertyChanged}"/>
-                                </dxlc:LayoutItem>
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutItem Label="Шаблон нарушения">
                                 <dxe:ComboBoxEdit x:Name="ShablonEdit" ValueMember="ID" SelectedIndexChanged="ShablonEdit_OnSelectedIndexChanged" PopupOpening="ShablonEdit_OnPopupOpening" NullValueButtonPlacement="EditBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.MODEL_ID, ElementName=ExpLayGr, UpdateSourceTrigger=PropertyChanged}" DisplayMember="Name">
@@ -127,7 +124,7 @@
                             <dxe:TextEdit x:Name="OsnEdit" Background="MistyRose" EditValue="{Binding S_OSN, UpdateSourceTrigger=PropertyChanged}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="% снятия">
-                            <dxe:TextEdit Background="AntiqueWhite" EditValue="{Binding SelectedItem.Penalty_1, ElementName=ShablonEdit, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                            <dxe:TextEdit Background="AntiqueWhite" EditValue="{Binding SelectedItem.Penalty_1, ElementName=ShablonEdit, UpdateSourceTrigger=PropertyChanged}" />
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="Сумма снятия">
                             <dxe:TextEdit x:Name="Sum1Edit" IsEnabled="False" EditValue="{Binding S_SUM, UpdateSourceTrigger=PropertyChanged}" Background="MistyRose"/>

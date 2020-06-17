@@ -28,11 +28,11 @@ namespace Yamed.Reports
             InitializeComponent();
             _scs = scs;
             _rt = rt;
-            if (_rt >= 2000)
+            if (_rt >= 3000)
             {
                 GridControl1.DataContext =
                     Reader2List.CustomAnonymousSelect(
-                        $"Select * from YamedReports where Reptype >= {_rt} and Reptype < {_rt + 2000}",
+                        $"Select * from YamedReports where Reptype >= {_rt} and Reptype < {_rt + 3100}",
                         SprClass.LocalConnectionString);
             }
         }
@@ -71,7 +71,7 @@ namespace Yamed.Reports
 
         private void ReportExportItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            if (_rt >= 2000)
+            if (_rt >= 3000)
             {
                 GetReportParametr(2);
             }
@@ -85,7 +85,7 @@ namespace Yamed.Reports
             mas[0] = ids;
             var rtype = (int)ObjHelper.GetAnonymousValue(_row, "RepType");
             var pc = new Reports.ParametrControl(mas, _row, isExport);
-            if (rtype > 1999)
+            if (rtype >= 3000)
             {
                 var window = new DXWindow
                 {

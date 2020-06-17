@@ -406,7 +406,6 @@ E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpf.Themes.Office2016Black.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpf.Themes.Office2016Colorful.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpf.Themes.Seven.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpf.Themes.TouchlineDark.v16.2.dll
-E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.Xpf.Themes.VS2010.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraCharts.v16.2.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraGauges.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed\bin\Debug\DevExpress.XtraReports.v16.2.dll

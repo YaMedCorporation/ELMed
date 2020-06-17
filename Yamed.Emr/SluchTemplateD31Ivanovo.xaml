@@ -877,9 +877,9 @@
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />
                                 <dxg:GridColumn FieldName="S_SUM2" Header="Штраф" />
                                 <dxg:GridColumn FieldName="S_DATE" Header="Дата" />
-                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"
-                                                />
-
+                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"/>
+                                <dxg:GridColumn x:Name="IDACT" FieldName="D3_ARID" Header="ИД акта"/>
+                                <dxg:GridColumn x:Name="NUMACT" FieldName="NUM_ACT" Header="Номер акта"/>
                             </dxg:GridControl>
                             <dxlc:LayoutItem Grid.Row="3" Label="ФЛК" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="LPU">
                                 <dxe:TextEdit EditValue="{Binding DataContext.EXP_COMENT, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" />
@@ -903,7 +903,7 @@
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="povodobrTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="ФАП">
+                            <!--<dxlc:LayoutItem Label="ФАП">
                                 <Grid x:Name="FapGrid">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -912,7 +912,7 @@
                                     <dxe:CheckEdit x:Name="fap" EditValueChanged="Fap_EditValueChanged"></dxe:CheckEdit>
                                     <ToggleButton Grid.Column="1" x:Name="fapTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
-                            </dxlc:LayoutItem>
+                            </dxlc:LayoutItem>-->
                             <dxlc:LayoutItem Label="Подразделение" ToolTip="Подразделение медицинской организации">
                                 <Grid x:Name="PodrGrid">
                                     <Grid.ColumnDefinitions>
@@ -2239,7 +2239,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn x:Name="DiagDateColumn"
                                         FieldName="DIAG_DATE" Header="Дата взятия материала" />
@@ -2336,7 +2336,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="PROT" Header="Код противопоказания или отказа">
                                             <dxg:GridColumn.EditSettings>
@@ -2396,7 +2396,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="USL_TIP" Header="Тип услуги">
                                             <dxg:GridColumn.EditSettings>
@@ -2517,7 +2517,7 @@
                                                     <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                                 </dxg:GridControl.View>
                                                 <dxg:GridColumn FieldName="REGNUM" Header="Регистрационный номер лекарственного препарата">
                                                     <dxg:GridColumn.EditSettings>

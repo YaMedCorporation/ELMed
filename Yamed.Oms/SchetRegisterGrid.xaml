@@ -306,7 +306,7 @@
                 </dxg:GridColumn>
                 <!--<dxg:GridColumn x:Name="Column__SL__DS2" FieldName="DS" Header="Диагноз сопутств." FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="NameWithID" ValueMember="IDDS" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="lst"  ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>-->
                 <dxg:GridColumn x:Name="Column__SL__DS1_PR" FieldName="DS1_PR" Header="Диагноз выявлен впервые" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
@@ -351,7 +351,9 @@
                 <dxg:GridColumn x:Name="Column__SANK__S_OSN" FieldName="S_OSN" Header="Основание санкции" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SANK__S_SUM" FieldName="S_SUM" Header="Сумма санкции" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SANK__S_SUM2" FieldName="S_SUM2" Header="Сумма штрафа" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-
+                <dxg:GridColumn x:Name="Column__SANK__D3_ARID" FieldName="D3_ARID" Header="ИД акта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SANK__COMMENT" FieldName="COMMENT" Header="Комментарий акта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SANK__NUM_ACT" FieldName="NUM_ACT" Header="Номер акта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__POVOD" FieldName="POVOD" Header="Повод обращения" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="POVOD" DisplayMember="NameWithID" ValueMember="KC" ItemsSource="{Binding}" AllowDefaultButton="False"/>

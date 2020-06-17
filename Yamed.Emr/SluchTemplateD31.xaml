@@ -879,9 +879,9 @@
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />
                                 <dxg:GridColumn FieldName="S_SUM2" Header="Штраф" />
                                 <dxg:GridColumn FieldName="S_DATE" Header="Дата" />
-                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"
-                                                />
-
+                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"/>
+                                <dxg:GridColumn x:Name="IDACT" FieldName="D3_ARID" Header="ИД акта"/>
+                                <dxg:GridColumn x:Name="NUMACT" FieldName="NUM_ACT" Header="Номер акта"/>
                             </dxg:GridControl>
                             <dxlc:LayoutItem Grid.Row="3" Label="ФЛК" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="LPU">
                                 <dxe:TextEdit EditValue="{Binding DataContext.EXP_COMENT, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" />

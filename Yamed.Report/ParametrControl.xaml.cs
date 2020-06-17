@@ -33,6 +33,7 @@ namespace Yamed.Reports
         public bool IsDocType;
         public bool IsAktDates;
 
+
         public ParametrControl(int[] sc, object row, int isExport)
         {
             _isExport = isExport;
@@ -98,7 +99,7 @@ namespace Yamed.Reports
                     PayerEdit.EditValue = ReportsClass.PaymentId;
 
                 }
-
+                
 
 
                 DateSankGenerate();
@@ -172,6 +173,7 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
             DateListBoxEdit.DataContext = dates;
             DateListBoxEdit.SelectedIndex = ((IList) dates).Count - 1;
             DateActListBoxEdit.DataContext = dates;
+            DateActListBoxEdit.SelectedIndex = ((IList)dates).Count - 1;
         }
 
         string GetStringOfDates(ObservableCollection<object> collection)
@@ -249,10 +251,10 @@ ORDER BY S_DATE", SprClass.LocalConnectionString);
             {
                 rp.os = (int?)DocTypeEdit.EditValue;
             }
-
             rp.ID = id?? _sc?.First();
             rp.IDS = ObjHelper.GetIds(_sc);
             rp.ReqID = id?? _sc?.First();
+            rp.IDA = ObjHelper.GetIds(_sc);
             return rp;
         }
 

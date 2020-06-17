@@ -81,7 +81,6 @@ namespace Yamed.OmsExp.ExpEditors
             if (stype == 1)
             {
                 AktDateEdit.Visibility = Visibility.Collapsed;
-                AktNumEdit.Visibility = Visibility.Collapsed;
                 ExpEkmpLayGr.Visibility = Visibility.Collapsed;
                 ExpertGridControl.Visibility = Visibility.Collapsed;
                 checkEditItem.IsVisible = false;
@@ -91,9 +90,8 @@ namespace Yamed.OmsExp.ExpEditors
                 exporuch.Visibility = Visibility.Collapsed;
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
                 date_act.Visibility = Visibility.Collapsed;
-                num_act.Visibility = Visibility.Collapsed;
             }
-           
+            
         }
 
 
@@ -137,6 +135,7 @@ namespace Yamed.OmsExp.ExpEditors
                         expList.Nhistory = Reader2List.SelectScalar($@"Select (select top(1) sl.nhistory  from d3_sl_oms sl where sl.d3_zslid=zsl.id order by sl.id) as NHISTORY from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
+                        
                         expList.Sank = new D3_SANK_OMS()
                         {
                             D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID"),
@@ -144,8 +143,15 @@ namespace Yamed.OmsExp.ExpEditors
                             D3_ARID = _arid,
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
-                            S_DATE = SprClass.WorkDate
+                            S_DATE = SprClass.WorkDate, 
                     };
+                        if (_arid != null)
+                        {
+                            expList.Sank.S_TIP2 = (decimal?)Reader2List.SelectScalar($@"select S_TIP2 from D3_AKT_REGISTR_OMS where id={_arid}", SprClass.LocalConnectionString);
+                            expList.Sank.DATE_ACT = SprClass.WorkDate;
+                            expList.Sank.NUM_ACT = Reader2List.SelectScalar($@"select num_act from D3_AKT_REGISTR_OMS where id={_arid}", SprClass.LocalConnectionString).ToString();
+                        }
+                        
                         _slpsList.Add(expList);
                         zslid.Add(expList.Sank.D3_ZSLID);
                     }
@@ -193,7 +199,9 @@ namespace Yamed.OmsExp.ExpEditors
                     
                     slupacsank.Row = _row;
                     slupacsank.Sank = sank.First();
-                    _slpsList.Add(slupacsank);
+                
+                
+                _slpsList.Add(slupacsank);
                 ExpertGridControl.DataContext = _expertList =
                     Reader2List.CustomSelect<D3_SANK_EXPERT_OMS>($@"Select * From D3_SANK_EXPERT_OMS where D3_SANKID={slupacsank.Sank.ID}",
                         SprClass.LocalConnectionString);
@@ -202,7 +210,7 @@ namespace Yamed.OmsExp.ExpEditors
 
 
             sluchGridControl.DataContext = _slpsList;
-            
+         
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {
@@ -285,22 +293,22 @@ namespace Yamed.OmsExp.ExpEditors
 
             //}
             
-            if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
-            {
-                var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
-                if (num.Count > 0)
-                {
-                    MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.No)
-                    {
-                        return;
-                    }
-                    else
-                    {
+            //if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
+            //{
+            //    var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
+            //    if (num.Count > 0)
+            //    {
+            //        MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
+            //        if (result == MessageBoxResult.No)
+            //        {
+            //            return;
+            //        }
+            //        else
+            //        {
                         
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
             if (_re == 0 && Sum2Edit.Text== "")
             {
@@ -439,7 +447,14 @@ namespace Yamed.OmsExp.ExpEditors
 
 
                 decimal? sump, sum_np;
-                if (_re == 0)
+                if (SprClass.Region == "25" && _re == 0)
+                {
+                    sum_np = (decimal?)SqlReader.Select($@"EXEC	[dbo].[p_fix_25]
+            		@zslid = {ex.Sank.D3_ZSLID},
+                    @model = {ex.Sank.MODEL_ID}",
+                    SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("S_SUM");
+                }
+                else if (_re == 0)
                 {
                     if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null ||
                         (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
@@ -456,6 +471,7 @@ namespace Yamed.OmsExp.ExpEditors
                     pe2 = 0;
                     ex.Sank.S_OSN = ex.ReSank.S_OSN;
                 }
+                
                 else
                 {
                     sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");

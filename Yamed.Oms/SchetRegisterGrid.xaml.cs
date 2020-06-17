@@ -93,7 +93,19 @@ join D3_SL_OMS sl on sl.ID=ksg.D3_SLID
 where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101') or '{SprClass.WorkDate}' between datebeg and isnull(dateend,'21000101'))", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
-            //Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from d3_dss_oms dss left join M001_KSG m011 on m011.IDDS=ds where ds_type=2", SprClass.LocalConnectionString);
+//            Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"select sl.ID,
+//  stuff((
+//    select (',' + ds.DS) 
+//    from D3_DSS_OMS ds
+//    where ds.D3_SLID=sl.id and ds.DS_TYPE=2
+//    for XML path('')
+//    ),1,1,'') lst
+//from D3_SL_OMS sl
+//join D3_DSS_OMS ds on ds.D3_SLID=sl.ID and ds.DS_TYPE=2
+//join M001_KSG m011 on m011.IDDS=ds
+//group by sl.id
+//order by sl.id
+//", SprClass.LocalConnectionString);
             PrvsEdit.DataContext = SprClass.SpecV021List;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
@@ -388,7 +400,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS on sl.ID equals dss.D3_SLID into tmpdss
+                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS.Where(x => x.DS_TYPE == 2) on sl.ID equals dss.D3_SLID into tmpdss
                               //from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
@@ -474,7 +486,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                                   sl.POVOD,
                                   sl.PROFIL_REG,
                                   pa.SOCSTATUS,
-                                 // dsss.DS,
+                                  //dsss.DS,
 
 
                                   //sl.N_KSG,
@@ -631,8 +643,8 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                                   sl.POVOD,
                                   sl.PROFIL_REG,
                                   pa.SOCSTATUS,
-                                 // dsss.DS,
-
+                                  //dsss.DS,
+                                  
 
                                   //sl.N_KSG,
                                   //sl.KSG_PG,
@@ -1979,7 +1991,8 @@ FROM [D3_SCHET_OMS] sch
                                   sa.S_SUM2,
                                   sa.S_TIP,
                                   sa.S_TIP2,
-
+                                  sa.D3_ARID,
+                                  sa.D3_AKT_REGISTR_OMS.COMMENT,
 
                                   ////////////////////////////////
                                   pa.FAM,
@@ -2103,8 +2116,8 @@ FROM [D3_SCHET_OMS] sch
                                   sa.S_SUM2,
                                   sa.S_TIP,
                                   sa.S_TIP2,
-
-
+                                  sa.D3_ARID,
+                                  sa.D3_AKT_REGISTR_OMS.COMMENT,
                                   ////////////////////////////////
                                   pa.FAM,
                                   pa.IM,

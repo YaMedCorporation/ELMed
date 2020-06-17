@@ -788,7 +788,8 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             sankdate = _sankList[0].S_DATE.Value;
             
             sanknameColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from f014 where '{sankdate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
-
+            NUMACT.DataContext = _sankList.Select(x => x.D3_AKT_REGISTR_OMS.NUM_ACT);
+            IDACT.DataContext = _sankList.Select(x => x.D3_ARID);
             VidExpColumnEdit.DataContext = SprClass.TypeExp;
             VidExp2ColumnEdit.DataContext = SprClass.TypeExp2;
         }
@@ -1509,6 +1510,11 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             CritGridControl.DataContext = _critList?.Where(x => x.D3_KSGGID == ((D3_KSG_KPG_OMS)KsgGroup.DataContext)?.KSG_ID);
 
             OnkSlGroup.DataContext = _onkSlList?.SingleOrDefault(x => x.D3_SLGID == ((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID);
+            OnkUslGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+            BdiagGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+            BprotGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+
+            LekprGridControl.FilterString = $"([D3_ONKUSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
         }
 
         private void NewZSluch_OnClick(object sender, RoutedEventArgs e)

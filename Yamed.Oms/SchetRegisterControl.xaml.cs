@@ -401,7 +401,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     var type = Reader2List.SelectScalar($@"select left(S_TIP2,1) from D3_AKT_REGISTR_OMS akt
   where akt.id={_arid}", SprClass.LocalConnectionString);
-                    if (type.ToString() != "3")
+                    if (type.ToString() != "3" && type.ToString() != "4")
                     {
                         DXMessageBox.Show("Невозможно провести экспертизу для выбранного акта");
                         return;
@@ -669,15 +669,15 @@ where zsl.D3_SCID in {ids}";
                 var rl = (string)ObjHelper.GetAnonymousValue(yr[0], "Template");
                 var sc = ReqGridControl.SelectedItem;
 
-                СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
-                {
-                    Header = "Отчет",
-                    MyControl = new FRPreviewControl(rl, new ReportParams { ReqID = (int)ObjHelper.GetAnonymousValue(sc, "ID") }),
-                    IsCloseable = "True",
-                    //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
-                });
+            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            {
+                Header = "Отчет",
+                MyControl = new FRPreviewControl(rl, new ReportParams { ReqID = (int)ObjHelper.GetAnonymousValue(sc, "ID") }),
+                IsCloseable = "True",
+                //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+            });
 
-     
+
 
 
             //_reqAkt_app
@@ -895,7 +895,7 @@ where zsl.D3_SCID in {ids}";
                 {
                     ShowIcon = false,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                    Content = new StatisticReportsRequest(ReqID, 2000),
+                    Content = new StatisticReportsRequest(ReqID, 3000),
                     Title = "Печатные формы",
                     SizeToContent = SizeToContent.Width,
                     Height = 600
@@ -1393,36 +1393,43 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             }).ContinueWith(lr =>
             {
-                bool isMek = false;
-                var sluids = new List<int>();
-                foreach (var row in DxHelper.LoadedRows)
+            bool isMek = false;
+            var sluids = new List<int>();
+            foreach (var row in DxHelper.LoadedRows)
+            {
+                if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                 {
-                    if ((int?)ObjHelper.GetAnonymousValue(row, "OPLATA") == 1 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
-                    {
-                        sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
-                    }
-                    else
-                    {
-                        isMek = true;
-                    }
+                    sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
                 }
-
-                if (!sluids.Any())
+                else
                 {
-                    DXMessageBox.Show("Не выбрано ни одной записи или записи имеют некорректный статус оплаты");
-                    SchetRegisterGrid1.gridControl1.IsEnabled = true;
-                    DxHelper.LoadedRows.Clear();
-                    return;
+                    isMek = true;
                 }
+            }
 
-                if (isMek)
-                {
-                    DXMessageBox.Show("Внимание выбраны записи с некорректным статусом оплаты, которые не могут быть включены в акт экспертизы");
-                }
+            if (!sluids.Any())
+            {
+                DXMessageBox.Show("Не выбрано ни одной записи или записи имеют некорректный статус оплаты");
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+                return;
+            }
 
+            if (isMek)
+            {
+                DXMessageBox.Show("Внимание выбраны записи с некорректным статусом оплаты, которые не могут быть включены в акт экспертизы");
+            }
+            if (DxHelper.LoadedRows.GroupBy(x => ObjHelper.GetAnonymousValue(x, "LPU")).Select(gr => gr.Key).Count() > 1)
+            {
+                DXMessageBox.Show("Акт можно создать только в рамках одной МО");
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+                return;
+            }
 
-                var item = new D3_AKT_REGISTR_OMS();
-                item.USERID_NOTEDIT = SprClass.userId;
+            var item = new D3_AKT_REGISTR_OMS();
+            item.USERID_NOTEDIT = SprClass.userId;
+            item.LPU = (string)ObjHelper.GetAnonymousValue(DxHelper.LoadedRows[0], "LPU");
                 var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", item, false, SprClass.LocalConnectionString);
                 var window = new DXWindow
                 {

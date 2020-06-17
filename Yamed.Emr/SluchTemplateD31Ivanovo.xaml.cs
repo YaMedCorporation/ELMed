@@ -491,8 +491,7 @@ namespace Yamed.Emr
 
             if (_onkSlList?.Count > 0)
             {
-                var onkid = _onkSlList[0].ID;
-
+                var onkid =  _onkSlList[0].ID;
                 //Диагностический блок
                 Task.Factory.StartNew(() =>
             {
@@ -638,7 +637,7 @@ namespace Yamed.Emr
         }
         public DateTime? dvmp;
         public int? usl_ok;
-        public string fap_lpu;
+        //public string fap_lpu;
         public string zsl_lpu;
         void GetSpr()
         {
@@ -776,35 +775,37 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             Ds2PrColumnEdit.DataContext = SprClass.SprBit;
             Ds2TypeColumnEdit.DataContext = SprClass.DsType;
             PrDs2nColumnEdit.DataContext = SprClass.DnList;
-            PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
+            
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
             HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
-            fap_lpu = _slList[0].LPU_1;
-            if ((fap_lpu ?? "3").Length == 8)
-            {
-                fap.IsChecked = true;
-            }
-            else
-            {
-                fap.IsChecked = false;
-                PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
-            }
+            //fap_lpu = _slList[0].LPU_1;
+            //if ((fap_lpu ?? "3").Length == 8)
+            //{
+            //    fap.IsChecked = true;
+            //}
+            //else
+            //{
+            //    fap.IsChecked = false;
+            //    PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
+            //}
             zsl_lpu = _zsl.LPU == null ? "370001" : _zsl.LPU;
             NksgIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select *,N_ST_STR + ' '+ naim as NameWithID from rg010 where (N_ST_STR like 'ds%' or N_ST_STR like 'st%') and kod_lpu='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
                 KODSPColumn.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
             UslCodeUslColumnIv.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct kodusl,convert(nvarchar,KODUSL) as CODE_USL,convert(nvarchar,KODUSL)+' '+NUSL as NameWithID from rg012 where KOD_LPU='{zsl_lpu}' and '{dvmp}' between dt_beg and isnull(dt_fin,'20530101')", SprClass.LocalConnectionString);
             Vidviz.DataContext = Reader2List.CustomAnonymousSelect($"select distinct convert(int,vid_viz) as vid_viz,convert(nvarchar,vid_viz) + ' '+ nviz as NameWithID from rg013 where KOD_LPU='{zsl_lpu}' and DT_FIN='20530101'", SprClass.LocalConnectionString); //заполнение поля vid_viz для Иваново
             Vidbrig.DataContext = Reader2List.CustomAnonymousSelect($"select distinct convert(int,vid_brig) as vid_brig,convert(nvarchar,vid_brig) + ' '+ nbrig as NameWithID from rg013 where KOD_LPU='{zsl_lpu}' and DT_FIN='20530101'", SprClass.LocalConnectionString); //заполнение поля vid_brig для Иваново
+            PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select convert(nvarchar,KOD_LPU) as Id,convert(nvarchar,KOD_LPU) + ' ' + NAIM_LPU as NameWithID from rg006 where gln='{zsl_lpu}'", SprClass.LocalConnectionString);
             if (_sankList == null) return;
             if (_sankList.Count == 0) return;
 
             sankdate = _sankList[0].S_DATE.Value;
             
             sanknameColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from f014 where '{sankdate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
-
+            NUMACT.DataContext = _sankList.Select(x => x.D3_AKT_REGISTR_OMS.NUM_ACT);
+            IDACT.DataContext = _sankList.Select(x => x.D3_ARID);
             VidExpColumnEdit.DataContext = SprClass.TypeExp;
             VidExp2ColumnEdit.DataContext = SprClass.TypeExp2;
         }
@@ -1532,8 +1533,12 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             KsgGroup.DataContext = _ksgList?.SingleOrDefault(x => x.D3_SLGID == ((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID);
             KslpGridControl.DataContext = _kslpList?.Where(x => x.D3_KSGGID == ((D3_KSG_KPG_OMS)KsgGroup.DataContext)?.KSG_ID);
             CritGridControl.DataContext = _critList?.Where(x => x.D3_KSGGID == ((D3_KSG_KPG_OMS)KsgGroup.DataContext)?.KSG_ID);
-
             OnkSlGroup.DataContext = _onkSlList?.SingleOrDefault(x => x.D3_SLGID == ((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID);
+            OnkUslGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+            BdiagGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+            BprotGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+           
+            LekprGridControl.FilterString = $"([D3_ONKUSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
             bool? autok = (bool?)Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString);
             if (autok == true)
             {
@@ -1608,10 +1613,10 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             _zsl.RSLT_D = _zslLock.RSLT_D;
             _zsl.VBR = _zslLock.VBR;
         }
-        public bool fapcheck;
+       // public bool fapcheck;
         void SlEditDefault()
         {
-            fap.IsChecked = fapcheck;
+            //fap.IsChecked = fapcheck;
             autoksg.EditValue = true;
             ((D3_SL_OMS)SlGridControl.SelectedItem).USL_OK = _slLock.USL_OK;
             ((D3_SL_OMS)SlGridControl.SelectedItem).LPU_1 = _slLock.LPU_1;
@@ -1683,14 +1688,14 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             _slLock.P_PER = PostTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).P_PER : null;
             _slLock.PROFIL_K = ProfKTb.IsChecked == true ? ((D3_SL_OMS)SlGridControl.SelectedItem).PROFIL_K : null;
 
-            if (fapTb.IsChecked == true && fap.IsChecked == true)
-            {
-                fapcheck = true;
-            }
-            else if (fapTb.IsChecked == true && fap.IsChecked == false)
-            {
-                fapcheck = false;
-            }
+            //if (fapTb.IsChecked == true && fap.IsChecked == true)
+            //{
+            //    fapcheck = true;
+            //}
+            //else if (fapTb.IsChecked == true && fap.IsChecked == false)
+            //{
+            //    fapcheck = false;
+            //}
         }
 
         private void EmrPacient_OnClick(object sender, RoutedEventArgs e)
@@ -2394,6 +2399,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
         private void OnkUslGridControl_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
+            //LekprGridControl.DataContext = _lekList?.Where(x => x.D3_ONKUSLID == ((D3_ONK_USL_OMS)OnkUslGridControl.SelectedItem)?.ID);
             //LekprGridControl.FilterString = $"([D3_ONKUSLGID] = '{((D3_ONK_USL_OMS)OnkUslGridControl.SelectedItem)?.ONKUSL_ID}')";
 
         }
@@ -2646,17 +2652,17 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             usl_ok = (int?)UslOkzEdit.EditValue;
         }
 
-        private void Fap_EditValueChanged(object sender, EditValueChangedEventArgs e)
-        {
-            if (fap.IsChecked == false)
-            {
-                PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
-            }
-            else
-            {
-                PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
-            } 
-        }
+        //private void Fap_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        //{
+        //    if (fap.IsChecked == false)
+        //    {
+        //        PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where len(id)=3", SprClass.LocalConnectionString);
+        //    }
+        //    else
+        //    {
+        //        PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
+        //    }
+        //}
 
         private void DoctEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
         {

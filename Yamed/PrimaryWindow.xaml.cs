@@ -198,7 +198,7 @@ namespace Yamed
 
                         if (a[i] == codmo)
                         {
-                            DXMessageBox.Show("Обновление невозможно, погасите задолженность!!!");
+                            DXMessageBox.Show("Погасите задолженность!!!");
                             r = 1;
                             break;
 
@@ -239,16 +239,7 @@ namespace Yamed
             
             SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
 
-            //Запуск проверки на должников
-            var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
-            var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
-            if (type == null && reg.ToString() != "37")
-            {
-                if (tlm_Click() == false)
-                {
-                    Environment.Exit(0);
-                }
-            }
+           
 
             //"Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa;Password=Hospital6";
 
@@ -1082,6 +1073,16 @@ namespace Yamed
 
         private void Reestr_OnClick(object sender, RoutedEventArgs e)
         {
+            //Запуск проверки на должников
+            var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
+            var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
+            if (type == null && reg.ToString() != "37")
+            {
+                if (tlm_Click() == false)
+                {
+                    return;
+                }
+            }
             Menu.Hide();
             ((Button)sender).IsEnabled = false;
             Decorator.IsSplashScreenShown = true;
@@ -1095,6 +1096,7 @@ namespace Yamed
             });
 
             ((Button)sender).IsEnabled = true;
+            
         }
 
         private void OmsExpButton_OnClick(object sender, RoutedEventArgs e)
@@ -1233,7 +1235,22 @@ namespace Yamed
             }
             else
             {
-                System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.exe"));
+                //if (File.Exists("Imed_Updater.exe"))
+                //{
+                //    File.Delete(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.exe"));
+                //}
+                //else if (File.Exists("Imed_Updater.dll"))
+                //{
+                //    File.Delete(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.dll"));
+                //}
+                //else if (File.Exists("Imed_Updater.pdb"))
+                //{
+                //    File.Delete(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.pdb"));
+                //}
+                ProcessStartInfo startInfo = new ProcessStartInfo("Imed_Updater.exe");
+                startInfo.WorkingDirectory = Environment.CurrentDirectory + "\\Imed Updater";
+                System.Diagnostics.Process.Start(startInfo);
+                //System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater", "Imed_Updater.exe"));
             }
         }
 //>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15
