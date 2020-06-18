@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Core;
 using Ionic.Zip;
@@ -43,6 +44,10 @@ namespace Yamed.Oms
                 Export22.IsVisible = false;
                 Load22.IsVisible = false;
             }
+            if (SprClass.Region != "57")
+            {
+                ExportOrel.IsVisible = false;
+            }
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
             {
                 zaprosPD.Visibility = Visibility.Collapsed;
@@ -72,6 +77,10 @@ namespace Yamed.Oms
                 Export22.IsVisible = false;
                 Load22.IsVisible = false;
             }
+            if (SprClass.Region != "57")
+            {
+                ExportOrel.IsVisible = false;
+            }
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
             {
                 zaprosPD.Visibility = Visibility.Collapsed;
@@ -100,6 +109,10 @@ namespace Yamed.Oms
             {
                 Export22.IsVisible = false;
                 Load22.IsVisible = false;
+            }
+            if (SprClass.Region != "57")
+            {
+                ExportOrel.IsVisible = false;
             }
             _scids = scids;
 
@@ -877,7 +890,7 @@ where zsl.D3_SCID in {ids}";
             else if (tag == "SANK" && isChecked)
             {
                 SchetRegisterGrid1.BindDataSank();
-                scVid.Content = "Вид - Только санкции";
+                scVid.Content = "Вид - Санкции/Экспертизы";
             }
             else if (tag == "")
             {
@@ -1470,6 +1483,43 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
         private void EditAktExp_OnItemClick(object sender, ItemClickEventArgs e)
         {
             DXMessageBox.Show("Не реализовано");
+        }
+
+        private void ExportOrel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var rows = DxHelper.GetSelectedGridRows(SchetRegisterGrid1.gridControl1);
+            var sankids = rows.Select(x => ObjHelper.GetAnonymousValue(x, "SID")).ToArray();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID", typeof(int));
+            for (int i = 0; i < sankids.Count(); i++)
+            {
+                dt.LoadDataRow(new object[] { sankids[i] }, true);
+            }
+            string command0 = $@"select * from f_sank_mek_xml (@dt,1,'{SprClass.WorkDate}')";
+            string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + Reader2List.StartFunctionFromTable<DataTable>(command0, SprClass.LocalConnectionString, dt, false);
+            XDocument doc = XDocument.Parse(result1);
+            var xname = doc.Element("ZL_LIST").Element("ZGLV").Element("FILENAME").Value;
+            using (ZipFile zip = new ZipFile(Encoding.GetEncoding("windows-1251")))
+            {
+                zip.AddEntry(xname + ".xml", result1);
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                        saveFileDialog.Filter = "ZIP File (*.zip)|*.zip";
+                        saveFileDialog.FileName = xname + ".zip";
+
+                        bool? result = saveFileDialog.ShowDialog();
+                        if (result == true)
+                        {
+                            zip.Save(saveFileDialog.FileName);
+                           DXMessageBox.Show("Файл сохранен");
+                        }
+                    });
+                }
+
+            }
         }
     }
 }

@@ -306,7 +306,7 @@
                 </dxg:GridColumn>
                 <!--<dxg:GridColumn x:Name="Column__SL__DS2" FieldName="DS" Header="Диагноз сопутств." FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="lst"  ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="lst" ValueMember="IDDS"  ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>-->
                 <dxg:GridColumn x:Name="Column__SL__DS1_PR" FieldName="DS1_PR" Header="Диагноз выявлен впервые" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>

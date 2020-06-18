@@ -236,7 +236,7 @@
                     <dxb:BarCheckItem Tag="ZSL" Content="Зак. случаи" GroupIndex="1" IsChecked="True" CheckedChanged="ViewCheckItem_CheckedChanged"/>
                     <dxb:BarCheckItem Tag="SL" Content="Случаи" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                     <dxb:BarCheckItem Tag="USL" Content="Только услуги" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
-                    <dxb:BarCheckItem Tag="SANK" x:Name="sank" Content="Только санкции" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
+                    <dxb:BarCheckItem Tag="SANK" x:Name="sank" Content="Санкции/Экспертизы" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                 </dxb:BarSubItem>
                 <dxb:BarItemSeparator/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
@@ -339,6 +339,11 @@
                                            ItemClick="TestBarnaul1"
                                            Name="Load22"/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Выгрузка в XML МЭК" Content="Выгрузка МЭК" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/49-512.png"
+                                           
+                                           Name="ExportOrel" ItemClick="ExportOrel_ItemClick"/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Экспорт" Content="Экспорт" GlyphAlignment="Left" AllowGlyphTheming="True" Alignment="Far"
                                            LargeGlyph="/Yamed.Icons;component/Icons/eb94f4c188d8cd0047e51f685096fbd4-512.png" ItemClick="ExcelButtonBase_OnClick"/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
@@ -364,7 +369,7 @@
                 <dxdo:LayoutPanel ShowCaption="False" ShowBorder="False" AllowClose="False" AllowMove="False" AllowHide="False" AllowFloat="False" >
                     <oms:SchetRegisterGrid x:Name="SchetRegisterGrid1"/>
                 </dxdo:LayoutPanel>
-                <dxdo:LayoutPanel x:Name="zaprosPD" Caption="Запросы первичной документации" ShowCloseButton="False" ItemWidth="350" AutoHidden="True">
+                <dxdo:LayoutPanel x:Name="zaprosPD" Caption="Запросы первичной документации" Visibility="Collapsed" ShowCloseButton="False" ItemWidth="350" AutoHidden="True">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
