@@ -1410,7 +1410,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
             var sluids = new List<int>();
             foreach (var row in DxHelper.LoadedRows)
             {
-                if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                 {
                     sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
                 }
