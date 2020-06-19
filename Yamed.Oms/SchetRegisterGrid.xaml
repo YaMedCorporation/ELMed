@@ -345,6 +345,12 @@
                 <dxg:GridColumn x:Name="Column__SL__KOL_USL" FieldName="KOL_USL" Header="Кол-во услуги" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SUMV_USL" FieldName="SUMV_USL" Header="Сумма услуги" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
 
+                <dxg:GridColumn x:Name="Column__SL__TARIF_USLIV" FieldName="CODE_USL" Header="Тариф усл.">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="UslTarifIvEdit" DisplayMember="TARIF" ValueMember="KODUSL" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                
                 <dxg:GridColumn x:Name="Column__SANK__CODE_EXP" FieldName="CODE_EXP" Header="Код эксперта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SANK__S_TIP" FieldName="S_TIP" Header="Тип экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SANK__S_TIP2" FieldName="S_TIP2" Header="Вид экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>

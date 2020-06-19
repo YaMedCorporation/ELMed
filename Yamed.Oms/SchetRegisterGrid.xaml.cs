@@ -124,7 +124,15 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
             GRAF_DN.DataContext = SprClass.SprGrafdn;
             VID_VIZ.DataContext = SprClass.SprVizov;
             VID_BRIG.DataContext = SprClass.SprBrigad;
-
+            if (SprClass.Region == "37")
+            {
+                UslTarifIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct 
+rg.TARIF,usl.KOD_SP as KOD_D,usl.CODE_USL as KODUSL
+from rg012 rg 
+join d3_usl_oms usl on usl.CODE_USL=convert(nvarchar,rg.KODUSL)
+where KOD_LPU=usl.LPU and usl.date_out between rg.DT_BEG and rg.DT_FIN 
+and usl.kod_sp=rg.kod_sp", SprClass.LocalConnectionString);
+            }
             SocStatBox.DataContext = SprClass.SocStatsnew;
             ProfilkEdit.DataContext = SprClass.Profil_V020;
             PperEdit.DataContext = SprClass.Per;

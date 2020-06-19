@@ -1031,7 +1031,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                             if (diag.ID == 0)
                             {
                                 //napr.D3_ZSLID = _zsl.ID;
-                                diag.D3_ONKSLID = osl.ID;
+                                diag.D3_ONKSLID = _onkSlList.Single(x => x.D3_SLGID == diag.D3_ONKSLGID).ID; //osl.ID;
                                 var id = Reader2List.ObjectInsertCommand("D3_B_DIAG_OMS", diag, "ID", SprClass.LocalConnectionString);
                                 diag.ID = id;
                             }
@@ -1048,7 +1048,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                             if (prot.ID == 0)
                             {
                                 //napr.D3_ZSLID = _zsl.ID;
-                                prot.D3_ONKSLID = osl.ID;
+                                prot.D3_ONKSLID = _onkSlList.Single(x => x.D3_SLGID == prot.D3_ONKSLGID).ID;//osl.ID;
                                 var id = Reader2List.ObjectInsertCommand("D3_B_PROT_OMS", prot, "ID", SprClass.LocalConnectionString);
                                 prot.ID = id;
                             }
@@ -1066,7 +1066,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                             if (ousl.ID == 0)
                             {
                                 //napr.D3_ZSLID = _zsl.ID;
-                                ousl.D3_ONKSLID = osl.ID;
+                                ousl.D3_ONKSLID = _onkSlList.Single(x => x.D3_SLGID == ousl.D3_ONKSLGID).ID; //osl.ID;
                                 var id = Reader2List.ObjectInsertCommand("D3_ONK_USL_OMS", ousl, "ID", SprClass.LocalConnectionString);
                                 ousl.ID = id;
                             }
@@ -1084,7 +1084,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                                     if (lek.ID == 0)
                                     {
                                         //napr.D3_ZSLID = _zsl.ID;
-                                        lek.D3_ONKUSLID = ousl.ID;
+                                        lek.D3_ONKUSLID = _onklUslList.Single(x => x.D3_ONKSLGID == lek.D3_ONKUSLGID).ID; //ousl.ID;
                                         var id = Reader2List.ObjectInsertCommand("D3_LEK_PR_OMS", lek, "ID", SprClass.LocalConnectionString);
                                         lek.ID = id;
                                     }
@@ -1508,13 +1508,12 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             KsgGroup.DataContext = _ksgList?.SingleOrDefault(x => x.D3_SLGID == ((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID);
             KslpGridControl.DataContext = _kslpList?.Where(x => x.D3_KSGGID == ((D3_KSG_KPG_OMS)KsgGroup.DataContext)?.KSG_ID);
             CritGridControl.DataContext = _critList?.Where(x => x.D3_KSGGID == ((D3_KSG_KPG_OMS)KsgGroup.DataContext)?.KSG_ID);
-
             OnkSlGroup.DataContext = _onkSlList?.SingleOrDefault(x => x.D3_SLGID == ((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID);
             OnkUslGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
             BdiagGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
             BprotGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
 
-            LekprGridControl.FilterString = $"([D3_ONKUSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
+
         }
 
         private void NewZSluch_OnClick(object sender, RoutedEventArgs e)
@@ -2300,6 +2299,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
         private void OnkUslGridControl_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
+            LekprGridControl.FilterString = $"([D3_ONKUSLGID] = '{((D3_ONK_USL_OMS)OnkUslGridControl.SelectedItem)?.D3_ONKSLGID}')";
             //LekprGridControl.FilterString = $"([D3_ONKUSLGID] = '{((D3_ONK_USL_OMS)OnkUslGridControl.SelectedItem)?.ONKUSL_ID}')";
 
         }
