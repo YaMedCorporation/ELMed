@@ -261,7 +261,7 @@
                                             <TextBlock Grid.Column="1" Text="НСИ" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
                                         </Grid>
                                     </Button>
-                                <Button Click="Load_OnClick" Style="{StaticResource InformButton}" IsEnabled="True" Tag="LPUIV" Visibility="Collapsed">
+                                <Button Click="Load_OnClick" Tag="LPUIV" Style="{StaticResource InformButton}" IsEnabled="True" Visibility="Collapsed">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="75"></ColumnDefinition>
