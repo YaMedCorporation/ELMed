@@ -1368,22 +1368,25 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             try
             {
                 var srz = SqlReader.Select(
-                    $@"SELECT [FAM],[IM],[OT],[W],[DR],[DS],[Q],[SPOL],[NPOL],[ENP],[OPDOC]  FROM [dbo].[PEOPLE] where npol = '{polisBox.EditValue}' or enp = '{polisBox.EditValue}' order by ID desc",
-                    SprClass.GlobalSrzConnectionString);
+                    $@"SELECT [FAM],[IM],[OT],convert(int,[POL]) as [POL],convert(datetime,[D_R]) as [D_R],(case when kod_smo=2 then '37002' else '37004' end) as [Q],[EDINNP],convert(nvarchar,[NOM_POL]) as [NOM_POL] FROM [dbo].[POLIS_RZ] where edinnp = '{polisBox.EditValue}' or nom_pol = '{polisBox.EditValue}'",
+                    SprClass.LocalConnectionString);
 
                 if (srz.Any())
                 {
                     _pacient.FAM = (string)srz[0].GetValue("FAM");
                     _pacient.IM = (string)srz[0].GetValue("IM");
                     _pacient.OT = (string)srz[0].GetValue("OT");
-                    _pacient.W = (int?)srz[0].GetValue("W");
-                    _pacient.DR = (DateTime?)srz[0].GetValue("DR");
+                    _pacient.W = (int?)srz[0].GetValue("POL");
+                    _pacient.DR = (DateTime?)srz[0].GetValue("D_R");
                     _pacient.SMO = (string)srz[0].GetValue("Q");
-                    _pacient.VPOLIS = (int?)srz[0].GetValue("OPDOC");
                     _pacient.NPOLIS =
-                        (int?)srz[0].GetValue("OPDOC") == 3
-                            ? (string)srz[0].GetValue("ENP")
-                            : (string)srz[0].GetValue("NPOL");
+                        srz[0].GetValue("EDINNP") == null
+                            ?  srz[0].GetValue("NOM_POL").ToString().Replace(".00","")
+                            : (string)srz[0].GetValue("EDINNP");
+                    _pacient.VPOLIS =
+                       srz[0].GetValue("EDINNP") == null
+                           ? 2
+                           : 3;
                 }
                 else
                 {
