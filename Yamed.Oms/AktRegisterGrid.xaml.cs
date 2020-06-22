@@ -95,6 +95,7 @@ namespace Yamed.Oms
         private void RefreshItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             _linqInstantFeedbackDataSource.Refresh();
+            kol();
         }
 
         private void AddItem_OnItemClick(object sender, ItemClickEventArgs e)

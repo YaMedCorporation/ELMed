@@ -35,7 +35,7 @@ namespace Yamed.Oms
         private string _reqCmd;
         private D3_SCHET_OMS _sc;
         public int? _arid;
-
+        
         public SchetRegisterControl(D3_SCHET_OMS sc)
         {
             InitializeComponent();
@@ -1520,6 +1520,86 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 }
 
             }
+        }
+
+        private void RazdelAkt_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+
+            }).ContinueWith(lr =>
+            {
+                bool isMek = false;
+                var sluids = new List<int>();
+                foreach (var row in DxHelper.LoadedRows)
+                {
+                    if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                    {
+                        sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
+                    }
+                    else
+                    {
+                        isMek = true;
+                    }
+                }
+
+                if (!sluids.Any())
+                {
+                    DXMessageBox.Show("Не выбрано ни одной записи или записи имеют некорректный статус оплаты");
+                    SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                    DxHelper.LoadedRows.Clear();
+                    return;
+                }
+
+                if (isMek)
+                {
+                    DXMessageBox.Show("Внимание выбраны записи с некорректным статусом оплаты, которые не могут быть включены в акт экспертизы");
+                }
+
+                var item = new D3_AKT_REGISTR_OMS();
+                item.USERID_NOTEDIT = SprClass.userId;
+                item.LPU = (string)ObjHelper.GetAnonymousValue(DxHelper.LoadedRows[0], "LPU");
+                var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", item, false, SprClass.LocalConnectionString);
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    SizeToContent = SizeToContent.Height,
+                    Width = 600,
+                    Content = sprEditWindow,
+                    Title = "Новый акт экспертизы"
+                };
+
+                if (window.ShowDialog() == true)
+                {
+                    var arid = item.ID;
+                    Reader2List.CustomExecuteQuery($@"update D3_REQ_OMS set d3_arid={arid} where d3_zslid in ({ObjHelper.GetIds(sluids.ToArray())})", SprClass.LocalConnectionString);
+                }
+
+
+
+
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
     }
 }

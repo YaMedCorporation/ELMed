@@ -278,7 +278,9 @@
                     <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                        ToolTip="Добавить в существующий акт" Content="Добавить" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/list-add-512.png" 
                                        ItemClick="EditAktExp_OnItemClick" GlyphSize="Large" />
-
+                    <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                       ToolTip="Разделить акт" Content="Разделить" AllowGlyphTheming="True" Glyph="/Yamed.Icons;component/Icons/refresh-512.png" 
+                                        GlyphSize="Large" ItemClick="RazdelAkt_ItemClick" />
                 </dxb:BarSubItem>
                 <dxb:BarSubItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Запросы первичной документации" Content="Запросы ПД" GlyphAlignment="Left" AllowGlyphTheming="True"
