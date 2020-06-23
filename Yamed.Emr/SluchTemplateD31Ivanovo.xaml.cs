@@ -805,7 +805,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             
             sanknameColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from f014 where '{sankdate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
             NUMACT.DataContext = _sankList.Select(x => x.D3_AKT_REGISTR_OMS.NUM_ACT);
-            IDACT.DataContext = _sankList.Select(x => x.D3_ARID);
+            IDACT.DataContext = _sankList.Select(x => x.D3_AKT_REGISTR_OMS.ID);
             VidExpColumnEdit.DataContext = SprClass.TypeExp;
             VidExp2ColumnEdit.DataContext = SprClass.TypeExp2;
         }
@@ -2670,9 +2670,12 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
         {
             if (DoctEdit.EditValue != null && SprClass.ProdSett.OrgTypeStatus==OrgType.Lpu)
             {
-                PrvsEdit.EditValue = Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
-                ProfilEdit.EditValue = Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
-                DetEdit.EditValue = Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
+                PrvsEdit.EditValue = Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString)==null?
+                    null: Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
+                ProfilEdit.EditValue = Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString) == null ?
+                    null : Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
+                DetEdit.EditValue = Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString) == null ?
+                    null : Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctEdit.EditValue}'", SprClass.LocalConnectionString).ToString();
             }
         }
 

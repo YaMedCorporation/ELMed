@@ -319,7 +319,7 @@ users.UserName as [Пользователь]
                 }
             }
             if (saveFileDialog.ShowDialog() == true)
-                c.View.ExportToXlsx(saveFileDialog.FileName);
+            c.View.ExportToXlsx(saveFileDialog.FileName);
         }
 
         private void kol()

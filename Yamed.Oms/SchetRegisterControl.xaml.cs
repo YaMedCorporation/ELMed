@@ -1552,6 +1552,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 {
                     if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                     {
+                       if (sluids.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                         sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
                     }
                     else
@@ -1590,7 +1591,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (window.ShowDialog() == true)
                 {
                     var arid = item.ID;
-                    Reader2List.CustomExecuteQuery($@"update D3_REQ_OMS set d3_arid={arid} where d3_zslid in ({ObjHelper.GetIds(sluids.ToArray())})", SprClass.LocalConnectionString);
+                    Reader2List.CustomExecuteQuery($@"update D3_REQ_OMS set d3_arid={arid} where d3_zslid in ({ObjHelper.GetIds(sluids.ToArray())}) and d3_arid={_arid}", SprClass.LocalConnectionString);
                 }
 
 
