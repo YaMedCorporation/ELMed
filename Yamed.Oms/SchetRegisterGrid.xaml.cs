@@ -131,7 +131,7 @@ rg.TARIF,usl.KOD_SP as KOD_D,usl.CODE_USL as KODUSL
 from rg012 rg 
 join d3_usl_oms usl on usl.CODE_USL=convert(nvarchar,rg.KODUSL)
 where KOD_LPU=usl.LPU and usl.date_out between rg.DT_BEG and rg.DT_FIN 
-and usl.kod_sp=rg.kod_sp", SprClass.LocalConnectionString);
+and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionString);
             }
             SocStatBox.DataContext = SprClass.SocStatsnew;
             ProfilkEdit.DataContext = SprClass.Profil_V020;
