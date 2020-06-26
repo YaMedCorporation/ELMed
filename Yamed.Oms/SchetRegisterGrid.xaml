@@ -217,6 +217,7 @@
                         <dxe:ComboBoxEditSettings Name="ExpTypeEdit" DisplayMember="NameWithID" ValueMember="Id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column_AKT_DBEG" FieldName="DBEG" Header="Дата запроса (реестр акт.)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_EXP_DATE" FieldName="EXP_DATE" Header="Дата запроса ПД" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_ReqID" FieldName="ReqID" Header="Номер запроса ПД" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_USERID" FieldName="USERID" Header="Пользователь" FilterPopupMode="CheckedList" ColumnFilterMode="Value">

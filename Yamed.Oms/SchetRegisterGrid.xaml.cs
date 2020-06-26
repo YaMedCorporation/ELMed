@@ -2008,6 +2008,7 @@ FROM [D3_SCHET_OMS] sch
                                   sa.S_TIP2,
                                   sa.D3_ARID,
                                   sa.D3_AKT_REGISTR_OMS.COMMENT,
+                                  sa.D3_AKT_REGISTR_OMS.DBEG,
                                   SID = sa.ID,
                                   ////////////////////////////////
                                   pa.FAM,
@@ -2133,6 +2134,7 @@ FROM [D3_SCHET_OMS] sch
                                   sa.S_TIP2,
                                   sa.D3_ARID,
                                   sa.D3_AKT_REGISTR_OMS.COMMENT,
+                                  sa.D3_AKT_REGISTR_OMS.DBEG,
                                   SID = sa.ID,
                                   ////////////////////////////////
                                   pa.FAM,
