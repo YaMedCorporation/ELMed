@@ -306,7 +306,7 @@
                 </dxg:GridColumn>
                 <!--<dxg:GridColumn x:Name="Column__SL__DS2" FieldName="DS" Header="Диагноз сопутств." FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="lst" ValueMember="IDDS"  ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="lst" ValueMember="KeyID"  ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>-->
                 <dxg:GridColumn x:Name="Column__SL__DS1_PR" FieldName="DS1_PR" Header="Диагноз выявлен впервые" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
@@ -345,7 +345,7 @@
                 <dxg:GridColumn x:Name="Column__SL__KOL_USL" FieldName="KOL_USL" Header="Кол-во услуги" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SUMV_USL" FieldName="SUMV_USL" Header="Сумма услуги" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
 
-                <dxg:GridColumn x:Name="Column__SL__TARIF_USLIV" FieldName="CODE_USL" Header="Тариф усл.">
+                <dxg:GridColumn x:Name="Column__TARIF__USLIV" FieldName="CODE_USL" Header="Тариф усл." Visible="False">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="UslTarifIvEdit" DisplayMember="TARIF" ValueMember="KODUSL" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>

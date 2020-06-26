@@ -892,7 +892,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                         }
                         else
                         {
-                            ksg.Auto_KSG = (bool?)autoksg.EditValue;
+                            
                             var upd = Reader2List.CustomUpdateCommand("D3_KSG_KPG_OMS", ksg, "ID");
                             Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                         }
@@ -1542,16 +1542,17 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             BprotGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
 
 
-            bool? autok = (bool?)Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString);
-            if (autok == true)
+            var autok = (Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString)??"").ToString() == "" ?
+                    true : Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString);
+            if ((bool?)autok == true)
             {
                 autoksg.EditValue = true;
             }
-            else if (autok == false)
+            else if ((bool?)autok == false)
             {
                 autoksg.EditValue = false;
             }
-            else if (autok == null)
+            else if ((bool?)autok == null)
             {
                 autoksg.EditValue = true;
             }

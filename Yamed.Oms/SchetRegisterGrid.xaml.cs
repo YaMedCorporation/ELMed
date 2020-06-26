@@ -47,7 +47,7 @@ namespace Yamed.Oms
             }
             writer.Flush();
             stream.Seek(0, SeekOrigin.Begin);
-
+            
 
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(delegate ()
@@ -60,9 +60,17 @@ namespace Yamed.Oms
 
                     gridControl1.FilterString = "";
                     gridControl1.ClearSorting();
+                    if (SprClass.Region != "37")
+                    {
+                        Column__TARIF__USLIV.Visible = false;
+                    }
+                    else
+                    {
+                        Column__TARIF__USLIV.Visible = true;
+                    }
+                    
                 }));
 
-           
             ZUslOkEdit.DataContext = SprClass.conditionHelp;
             SmoEdit.DataContext = SprClass.smo;
             VidPomEdit.DataContext = SprClass.typeHelp;
@@ -94,17 +102,18 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
 //            Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"select
-//sl.ID,min(ds.ds) as IDDS,
+//isnull(sl.ID,'') as KeyID,
 //  stuff((
-//    select (',' + ds.DS) 
-//    from D3_DSS_OMS ds
-//    where ds.D3_SLID=sl.id and ds.DS_TYPE=2
+//    select (',' + dss.DS) 
+//    from D3_DSS_OMS dss
+//    where dss.D3_SLID=sl.id and dss.DS_TYPE=2
 //    for XML path('')
 //    ),1,1,'') lst
 //from D3_SL_OMS sl
 //join D3_DSS_OMS ds on ds.D3_SLID=sl.ID and ds.DS_TYPE=2
 //join M001_KSG m011 on m011.IDDS=ds
 //group by sl.id
+//order by sl.id
 //", SprClass.LocalConnectionString);
             PrvsEdit.DataContext = SprClass.SpecV021List;
             OplataEdit.DataContext = SprClass.Spr79_F005;
@@ -140,7 +149,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
             DnEdit.DataContext = SprClass.DnList;
             ReabEdit.DataContext = SprClass.SprBit;
             DsOnkEdit.DataContext = SprClass.SprBit;
-
+            
             //if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
             //    (forLPU).Visibility = Visibility.Visible;
 
@@ -156,8 +165,9 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                 AreSourceRowsThreadSafe = false, KeyExpression = "KeyID"
             };
             gridControl1.DataContext = _linqInstantFeedbackDataSource;
-
+          
         }
+
         private IQueryable _pQueryable;
         public void BindDataZsl()
         {

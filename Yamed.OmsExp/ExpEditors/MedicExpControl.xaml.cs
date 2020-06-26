@@ -25,6 +25,7 @@ namespace Yamed.OmsExp.ExpEditors
         public D3_SANK_OMS Sank { get; set; }
         public D3_SANK_OMS ReSank { get; set; }
         public object Nhistory { get; set; }
+        public object usl_ok { get; set; }
     }
 
 
@@ -133,6 +134,7 @@ namespace Yamed.OmsExp.ExpEditors
                         ExpClass expList = new ExpClass();
                         expList.Row = row;
                         expList.Nhistory = Reader2List.SelectScalar($@"Select (select top(1) sl.nhistory  from d3_sl_oms sl where sl.d3_zslid=zsl.id order by sl.id) as NHISTORY from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
+                        expList.usl_ok = Reader2List.SelectScalar($@"Select usl_ok from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
                         
@@ -447,7 +449,7 @@ namespace Yamed.OmsExp.ExpEditors
 
 
                 decimal? sump, sum_np;
-                if (SprClass.Region == "25" && _re == 0)
+                if (SprClass.Region == "25" && _re == 0 && ex.usl_ok.ToString() == "4")
                 {
                     sum_np = (decimal?)SqlReader.Select($@"EXEC	[dbo].[p_fix_25]
             		@zslid = {ex.Sank.D3_ZSLID},
