@@ -259,16 +259,18 @@ namespace Yamed.Oms
 select distinct 
 akt.ID as [ИД акта],
 akt.PERIOD_EXP_NOTEDIT as [Период],
-f3.NameWithID as [МО], 
+case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as [МО],
 pa.FAM as [Фамилия], 
 pa.IM as [Имя], 
 pa.OT as [Отчество], 
 DR as [Дата рождения], 
 NPOLIS as [Номер полиса], 
+case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as [Медиц. орг.],
 m1.NameWithID as [Диагноз осн.], 
+v9.NameWithID as [Результат],
 f6.NameWithID as [Тип экспертизы],
 v6.NameWithID as [Условия оказания МП], 
-NHISTORY as [Номер истории], 
+NHISTORY as [Номер истории],
 zs.MEE_COUNT as [МЭЭ кол-во], 
 zs.EKMP_COUNT as [ЭКМП кол-во], 
 SUMV as [Сумма выставленная], 
@@ -300,12 +302,14 @@ users.UserName as [Пользователь]
             join D3_SL_OMS sl on sl.d3_zslid=zs.id
             join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
             join D3_AKT_REGISTR_OMS akt on akt.id=sa.d3_arid
+			join D3_SCHET_OMS sc on sc.ID=zs.D3_SCID
 			join (select count(d3_arid) as kol_zap, D3_ARID,D3_ZSLID from D3_REQ_OMS group by D3_ARID,D3_ZSLID) req on req.D3_ARID=akt.ID
 			left join Yamed_ExpSpr_Sank sank on sank.ID=sa.MODEL_ID and sank.DEND is null
 			left join Yamed_Spr_TypeMP typ on typ.ID=akt.TYPE_MP
 			left join Yamed_Users users on users.ID=akt.USERID_NOTEDIT
             left join f003 f3 on f3.mcod=zs.LPU
 			left join V006 v6 on v6.IDUMP=zs.USL_OK
+			left join v009 v9 on v9.IDRMP=zs.RSLT
 			left join F005 f5 on f5.Id=zs.OPLATA
             left join m001_ksg m1 on m1.idds=sl.ds1 and ISDELETE<>1
 			left join F006_NEW f6 on f6.IDVID=sa.S_TIP2 and f6.DATEEND is null
@@ -360,12 +364,27 @@ users.UserName as [Пользователь]
             {
                 var _sankList =
     Reader2List.CustomAnonymousSelect($@"
-             select distinct sa.ID,FAM, IM, OT, DR, NPOLIS, m1.NameWithID as DS1, f6.NameWithID as TypeExp,f3.NameWithID as LPU, v6.NameWithID as USL_OK, NHISTORY, akt.NUM_ACT, zs.MEE_COUNT, zs.EKMP_COUNT, SUMV, f5.NameWithId as OPLATA, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+             select distinct sa.ID,FAM, IM, OT, DR, NPOLIS, 
+m1.NameWithID as DS1, 
+f6.NameWithID as TypeExp,
+case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as LPU, 
+v6.NameWithID as USL_OK, 
+v9.NameWithID as RSLT,
+NHISTORY, 
+akt.NUM_ACT, 
+zs.MEE_COUNT, 
+zs.EKMP_COUNT, 
+SUMV, 
+f5.NameWithId as OPLATA,
+SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
             from D3_SANK_OMS sa
             join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
             join D3_SL_OMS sl on sl.d3_zslid=zs.id
             join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
             join D3_AKT_REGISTR_OMS akt on akt.id=sa.d3_arid
+            join D3_SCHET_OMS sc on sc.id=zs.d3_scid
+            left join Yamed_ExpSpr_Sank sank on sank.ID=sa.MODEL_ID and sank.DEND is null
+            left join v009 v9 on v9.IDRMP=zs.RSLT
             left join f003 f3 on f3.mcod=zs.LPU
 			left join V006 v6 on v6.IDUMP=zs.USL_OK
 			left join F005 f5 on f5.Id=zs.OPLATA

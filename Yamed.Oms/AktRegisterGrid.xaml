@@ -90,7 +90,7 @@
                         <dxg:GridControl.Columns>
                             <dxg:GridColumn Name="Column_ID" Width="45" FieldName="ID" Header="ИД" ReadOnly="True" />
                             <dxg:GridColumn Name="Column_LOCK" Width="45" FieldName="LOCK" Header="Блок" ReadOnly="True"  />
-                            <dxg:GridColumn Name="Column_LPU" FieldName="LPU" Header="Медицинская организация" ReadOnly="True" ColumnFilterMode="DisplayText" >
+                        <dxg:GridColumn Name="Column_LPU" FieldName="LPU" Header="Медицинская организация" ReadOnly="True" FilterPopupMode="CheckedList" ColumnFilterMode="Value" >
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:ComboBoxEditSettings Name="LpuEdit" DisplayMember="NameWithID" ValueMember="mcod" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
@@ -111,15 +111,15 @@
                                 <dxe:ComboBoxEditSettings Name="kolexp" DisplayMember="kol_exp" ValueMember="D3_ARID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                             </dxg:GridColumn.EditSettings>
                         </dxg:GridColumn>
-                        <dxg:GridColumn Name="Column_S_TIP2" FieldName="S_TIP2" Header="Тип экспертизы" ReadOnly="True" ColumnFilterMode="DisplayText">
+                        <dxg:GridColumn Name="Column_S_TIP2" FieldName="S_TIP2" Header="Тип экспертизы" ReadOnly="True" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:ComboBoxEditSettings Name="SType2Edit" DisplayMember="NameWithID" ValueMember="IDVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                            <dxg:GridColumn Name="Column_COMMENT" FieldName="COMMENT" Header="Комментарий" ReadOnly="True" />
-                        <dxg:GridColumn Name="Column_COMMENT_EKON" FieldName="COMMENT_EKON" Header="Комментарий экономиста" ReadOnly="True" />
+                        <dxg:GridColumn Name="Column_COMMENT" FieldName="COMMENT" Header="Комментарий" FilterPopupMode="CheckedList" ReadOnly="True" />
+                        <dxg:GridColumn Name="Column_COMMENT_EKON" FieldName="COMMENT_EKON" Header="Комментарий экономиста" FilterPopupMode="CheckedList" ReadOnly="True" />
                         <dxg:GridColumn Name="Column_DATE_ACT" FieldName="DATE_ACT" Header="Дата создания акта" ReadOnly="True" />
-                            <dxg:GridColumn Name="Column_NUM_ACT" FieldName="NUM_ACT" Header="Номер акта" ReadOnly="True" />
+                        <dxg:GridColumn Name="Column_NUM_ACT" FieldName="NUM_ACT" Header="Номер акта" FilterPopupMode="CheckedList" ReadOnly="True" />
                             <dxg:GridColumn Name="Column_DBEG" FieldName="DBEG" Header="Дата запроса" ReadOnly="True" />
                             <dxg:GridColumn Name="Column_DEND" FieldName="DEND" Header="Дата закрытия акта" ReadOnly="True" />
                             <dxg:GridColumn Name="Column_DATE_PMD" FieldName="DATE_PMD" Header="Дата предоставления документа" ReadOnly="True" />
@@ -186,25 +186,26 @@
 
                     </dxg:GridControl.Resources>
                     <dxg:GridControl.Columns>
-                        <dxg:GridColumn x:Name="Column_FAM" FieldName="FAM" Header="Фамилия" Width="90" />
+                        <dxg:GridColumn x:Name="Column_FAM" FieldName="FAM" Header="Фамилия" FilterPopupMode="CheckedList" Width="90" />
                         <dxg:GridColumn x:Name="Column_IM" FieldName="IM" Header="Имя" Width="70" />
                         <dxg:GridColumn x:Name="Column_OT" FieldName="OT" Header="Очество" Width="120" />
                         <dxg:GridColumn x:Name="Column_DR" FieldName="DR" Header="ДР" Width="50" />
                         <dxg:GridColumn x:Name="Column_NPOLIS" FieldName="NPOLIS" Header="Полис" Width="120" />
                         <dxg:GridColumn x:Name="Column_NHISTORY" FieldName="NHISTORY" Header="Номер истории болезни" Width="120" />
+                        <dxg:GridColumn x:Name="Column_RSLT" FieldName="RSLT" Header="Результат" FilterPopupMode="CheckedList" Width="80"/>
                         <dxg:GridColumn x:Name="Column_DS1" FieldName="DS1" Header="Диагноз осн." FilterPopupMode="Excel"  Width="80"/>
-                        <dxg:GridColumn x:Name="Column_USL_OK" FieldName="USL_OK" Header="Условия оказания МП" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_USL_OK" FieldName="USL_OK" Header="Условия оказания МП" FilterPopupMode="CheckedList" Width="80"/>
                         <dxg:GridColumn x:Name="Column_MEE_COUNT" FieldName="MEE_COUNT" Header="МЭЭ (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                         <dxg:GridColumn x:Name="Column_EKMP_COUNT" FieldName="EKMP_COUNT" Header="ЭКМП (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                         <dxg:GridColumn x:Name="Column_SUMV" FieldName="SUMV" Header="Сумма выставленная" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_OPLATA" FieldName="OPLATA" Header="Оплата" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_OPLATA" FieldName="OPLATA" Header="Оплата" FilterPopupMode="CheckedList" Width="80"/>
                         <dxg:GridColumn x:Name="Column_SUMP" FieldName="SUMP" Header="Сумма принятая" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_NUM_AC" FieldName="NUM_ACT" Header="Номер акта" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_LPU_D" FieldName="LPU" Header="МО" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_NUM_AC" FieldName="NUM_ACT" Header="Номер акта" FilterPopupMode="CheckedList" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_LPU_D" FieldName="LPU" Header="МО" FilterPopupMode="CheckedList" ColumnFilterMode="Value" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM" FieldName="S_SUM" Header="Сумма удержанная" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_SUM2" FieldName="S_SUM2" Header="Сумма штрафа" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_S_OSN" FieldName="S_OSN" Header="Пункт удержания" Width="80"/>
-                        <dxg:GridColumn x:Name="Column_S_TIP_EXP" FieldName="TypeExp" Header="Тип экспертизы" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_S_OSN" FieldName="S_OSN" Header="Пункт удержания" FilterPopupMode="CheckedList" ColumnFilterMode="Value" Width="80"/>
+                        <dxg:GridColumn x:Name="Column_S_TIP_EXP" FieldName="TypeExp" FilterPopupMode="CheckedList" ColumnFilterMode="Value" Header="Тип экспертизы" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_COM" FieldName="S_COM" Header="Комментарий" Width="80"/>
                         <dxg:GridColumn x:Name="Column_S_DATE" FieldName="S_DATE" Header="Дата" Width="80"/>
 
