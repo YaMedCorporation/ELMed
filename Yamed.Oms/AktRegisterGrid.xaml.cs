@@ -260,6 +260,7 @@ select distinct
 akt.ID as [ИД акта],
 akt.PERIOD_EXP_NOTEDIT as [Период],
 case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as [МО],
+zs.ID as [ИД зак. случая],
 pa.FAM as [Фамилия], 
 pa.IM as [Имя], 
 pa.OT as [Отчество], 
