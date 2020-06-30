@@ -491,11 +491,11 @@ namespace Yamed.Emr
 
             if (_onkSlList?.Count > 0)
             {
-                var onkid =  _onkSlList[0].ID;
+                var onkslids = ObjHelper.GetIds(_onkSlList.Select(x => x.ID).ToArray());
                 //Диагностический блок
                 Task.Factory.StartNew(() =>
             {
-                return Reader2List.CustomSelect<D3_B_DIAG_OMS>($"Select * from D3_B_DIAG_OMS where D3_ONKSLID = {onkid}",
+                return Reader2List.CustomSelect<D3_B_DIAG_OMS>($"Select * from D3_B_DIAG_OMS where D3_ONKSLID = {onkslids}",
                     SprClass.LocalConnectionString);
             }).ContinueWith((diag) =>
             {
@@ -507,7 +507,7 @@ namespace Yamed.Emr
                 //Противопоказания
                 Task.Factory.StartNew(() =>
             {
-                return Reader2List.CustomSelect<D3_B_PROT_OMS>($"Select * from D3_B_PROT_OMS where D3_ONKSLID = {onkid}",
+                return Reader2List.CustomSelect<D3_B_PROT_OMS>($"Select * from D3_B_PROT_OMS where D3_ONKSLID = {onkslids}",
                     SprClass.LocalConnectionString);
             }).ContinueWith((prot) =>
             {
@@ -519,7 +519,7 @@ namespace Yamed.Emr
                 //Онко услуги
                 Task.Factory.StartNew(() =>
             {
-                return Reader2List.CustomSelect<D3_ONK_USL_OMS>($"Select * from D3_ONK_USL_OMS where D3_ONKSLID = {onkid}",
+                return Reader2List.CustomSelect<D3_ONK_USL_OMS>($"Select * from D3_ONK_USL_OMS where D3_ONKSLID in ({onkslids})",
                     SprClass.LocalConnectionString);
             }).ContinueWith((ousl) =>
             {
@@ -1041,7 +1041,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                         var upd = Reader2List.CustomUpdateCommand("D3_ONK_SL_OMS", osl, "ID");
                         Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
                     }
-
+                }
                     if (_diagList != null)
                         foreach (var diag in _diagList)
                         {
@@ -1077,43 +1077,42 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                             }
                         }
 
-                    if (_onklUslList != null)
-                        foreach (var ousl in _onklUslList)
-                        {
+            if (_onklUslList != null)
+                foreach (var ousl in _onklUslList)
+                {
 
-                            if (ousl.ID == 0)
-                            {
-                                //napr.D3_ZSLID = _zsl.ID;
-                                ousl.D3_ONKSLID = _onkSlList.Single(x => x.D3_SLGID == ousl.D3_ONKSLGID).ID; //osl.ID;
-                                var id = Reader2List.ObjectInsertCommand("D3_ONK_USL_OMS", ousl, "ID", SprClass.LocalConnectionString);
-                                ousl.ID = id;
-                            }
-                            else
-                            {
-                                var upd = Reader2List.CustomUpdateCommand("D3_ONK_USL_OMS", ousl, "ID");
-                                Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
-                            }
-
-
-                            if (_lekList != null)
-                                foreach (var lek in _lekList)
-                                {
-
-                                    if (lek.ID == 0)
-                                    {
-                                        //napr.D3_ZSLID = _zsl.ID;
-                                        lek.D3_ONKUSLID = _onklUslList.Single(x => x.D3_ONKSLGID == lek.D3_ONKUSLGID).ID; //ousl.ID;
-                                        var id = Reader2List.ObjectInsertCommand("D3_LEK_PR_OMS", lek, "ID", SprClass.LocalConnectionString);
-                                        lek.ID = id;
-                                    }
-                                    else
-                                    {
-                                        var upd = Reader2List.CustomUpdateCommand("D3_LEK_PR_OMS", lek, "ID");
-                                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
-                                    }
-                                }
-                        }
+                    if (ousl.ID == 0)
+                    {
+                        //napr.D3_ZSLID = _zsl.ID;
+                        ousl.D3_ONKSLID = _onkSlList.Single(x => x.D3_SLGID == ousl.D3_ONKSLGID).ID; //osl.ID;
+                        var id = Reader2List.ObjectInsertCommand("D3_ONK_USL_OMS", ousl, "ID", SprClass.LocalConnectionString);
+                        ousl.ID = id;
+                    }
+                    else
+                    {
+                        var upd = Reader2List.CustomUpdateCommand("D3_ONK_USL_OMS", ousl, "ID");
+                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                    }
                 }
+
+             if (_lekList != null)
+                 foreach (var lek in _lekList)
+               {
+
+                    if (lek.ID == 0)
+                    {
+                        //napr.D3_ZSLID = _zsl.ID;
+                        lek.D3_ONKUSLID = _onklUslList.Single(x => x.D3_ONKSLGID == lek.D3_ONKUSLGID).ID; //ousl.ID;
+                        var id = Reader2List.ObjectInsertCommand("D3_LEK_PR_OMS", lek, "ID", SprClass.LocalConnectionString);
+                        lek.ID = id;
+                    }
+                    else
+                    {
+                        var upd = Reader2List.CustomUpdateCommand("D3_LEK_PR_OMS", lek, "ID");
+                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                    }
+                }
+                
 
             //Удаление Назначений
             if (_naz_delList != null)
@@ -1542,7 +1541,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             BprotGridControl.FilterString = $"([D3_ONKSLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
 
 
-            var autok = (Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString)??"").ToString() == "" ?
+            var autok = (Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString) ?? "").ToString() == "" ?
                     true : Reader2List.SelectScalar($@"Select auto_ksg from d3_ksg_kpg_oms where d3_slgid = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}'", SprClass.LocalConnectionString);
             if ((bool?)autok == true)
             {

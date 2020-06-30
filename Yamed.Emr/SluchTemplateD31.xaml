@@ -2190,7 +2190,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn x:Name="DiagDateColumn"
                                         FieldName="DIAG_DATE" Header="Дата взятия материала" />
@@ -2287,7 +2287,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="PROT" Header="Код противопоказания или отказа">
                                             <dxg:GridColumn.EditSettings>
@@ -2347,7 +2347,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="USL_TIP" Header="Тип услуги">
                                             <dxg:GridColumn.EditSettings>
@@ -2468,7 +2468,7 @@
                                                     <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                                 </dxg:GridControl.View>
                                                 <dxg:GridColumn FieldName="REGNUM" Header="Регистрационный номер лекарственного препарата">
                                                     <dxg:GridColumn.EditSettings>
