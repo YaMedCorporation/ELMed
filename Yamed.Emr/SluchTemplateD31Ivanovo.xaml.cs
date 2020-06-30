@@ -495,7 +495,7 @@ namespace Yamed.Emr
                 //Диагностический блок
                 Task.Factory.StartNew(() =>
             {
-                return Reader2List.CustomSelect<D3_B_DIAG_OMS>($"Select * from D3_B_DIAG_OMS where D3_ONKSLID = {onkslids}",
+                return Reader2List.CustomSelect<D3_B_DIAG_OMS>($"Select * from D3_B_DIAG_OMS where D3_ONKSLID in ({onkslids})",
                     SprClass.LocalConnectionString);
             }).ContinueWith((diag) =>
             {
@@ -507,7 +507,7 @@ namespace Yamed.Emr
                 //Противопоказания
                 Task.Factory.StartNew(() =>
             {
-                return Reader2List.CustomSelect<D3_B_PROT_OMS>($"Select * from D3_B_PROT_OMS where D3_ONKSLID = {onkslids}",
+                return Reader2List.CustomSelect<D3_B_PROT_OMS>($"Select * from D3_B_PROT_OMS where D3_ONKSLID in ({onkslids})",
                     SprClass.LocalConnectionString);
             }).ContinueWith((prot) =>
             {
