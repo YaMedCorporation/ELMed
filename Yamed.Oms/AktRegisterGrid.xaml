@@ -33,7 +33,14 @@
                                            Content="Обновить"
                                            LargeGlyph="/Yamed.Icons;component/Icons/reload.png"
                                            ItemClick="RefreshItem_OnItemClick" />
-                            <dxb:BarItemSeparator BarItemDisplayMode="ContentAndGlyph" />
+                        <dxb:BarButtonItem Name="SlAddItem"
+                                           BarItemDisplayMode="ContentAndGlyph" 
+                                           AllowGlyphTheming="True"
+                                           ToolTip="Добавить в акт" GlyphAlignment="Top"
+                                           Content="Добавить"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/1481911997_file_add.png"
+                                           IsVisible="False" ItemClick="SlAddItem_ItemClick" />
+                        <dxb:BarItemSeparator BarItemDisplayMode="ContentAndGlyph" />
 
                             <dxb:BarButtonItem Name="ScRegisterItem"
                                            BarItemDisplayMode="ContentAndGlyph"

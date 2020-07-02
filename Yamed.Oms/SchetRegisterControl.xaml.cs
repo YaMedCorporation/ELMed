@@ -1482,7 +1482,98 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
 
         private void EditAktExp_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            DXMessageBox.Show("Не реализовано");
+            DxHelper.GetSelectedGridRowsAsync(ref SchetRegisterGrid1.gridControl1);
+            bool isLoaded = false;
+            SchetRegisterGrid1.gridControl1.IsEnabled = false;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.BeginInvoke((Action)delegate ()
+                    {
+                        if (SchetRegisterGrid1.gridControl1.IsAsyncOperationInProgress == false)
+                        {
+                            isLoaded = true;
+                        }
+                    });
+                    if (isLoaded) break;
+                    Thread.Sleep(200);
+                }
+
+            }).ContinueWith(lr =>
+            {
+                bool isMek = false;
+                var sluids = new List<int>();
+                foreach (var row in DxHelper.LoadedRows)
+                {
+                    if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                    {
+                        sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
+                    }
+                    else
+                    {
+                        isMek = true;
+                    }
+                }
+
+                if (!sluids.Any())
+                {
+                    DXMessageBox.Show("Не выбрано ни одной записи или записи имеют некорректный статус оплаты");
+                    SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                    DxHelper.LoadedRows.Clear();
+                    return;
+                }
+
+                if (isMek)
+                {
+                    DXMessageBox.Show("Внимание выбраны записи с некорректным статусом оплаты, которые не могут быть включены в акт экспертизы");
+                }
+                if (DxHelper.LoadedRows.GroupBy(x => ObjHelper.GetAnonymousValue(x, "LPU")).Select(gr => gr.Key).Count() > 1)
+                {
+                    DXMessageBox.Show("Добавить случаи в акт можно только в рамках одной МО");
+                    SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                    DxHelper.LoadedRows.Clear();
+                    return;
+                }
+                var sprEditWindow = new AktRegisterGrid();
+                sprEditWindow.SlAddItem.IsVisible = true;
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    SizeToContent = SizeToContent.Height,
+                    Content = sprEditWindow,
+                    Title = "Добавить случаи в акт"
+                };
+                window.ShowDialog();
+                
+                //if (window.ShowDialog() == true)
+                
+                //{
+                //    var arid = item.ID;
+                //    List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
+
+                //    foreach (int slid in sluids.ToArray())
+                //    {
+                //        var rq = new D3_REQ_OMS()
+                //        {
+                //            D3_ARID = arid,
+                //            D3_ZSLID = slid
+                //        };
+                //        rlist.Add(rq);
+                //    }
+                //    Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
+                //}
+
+
+
+
+                SchetRegisterGrid1.gridControl1.IsEnabled = true;
+                DxHelper.LoadedRows.Clear();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+            //DXMessageBox.Show("Не реализовано");
         }
 
         private void ExportOrel_ItemClick(object sender, ItemClickEventArgs e)

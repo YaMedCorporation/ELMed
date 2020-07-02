@@ -37,7 +37,6 @@ namespace Yamed.Oms
     {
         public readonly LinqInstantFeedbackDataSource _linqInstantFeedbackDataSource;
         private readonly YamedDataClassesDataContext _edc;
-
         public AktRegisterGrid()
         {
             InitializeComponent();
@@ -235,7 +234,8 @@ namespace Yamed.Oms
             rc.mek.Content = "Экспертизы";
             rc._arid = row.ID;
             rc.SchetRegisterGrid1.BindAktExp(row.ID);
-
+            rc.AddSlAkt.IsVisible = false;
+            rc.RazdelAkt.IsVisible = true;
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
                 Header = "Акт экспертиз " + row.PERIOD_EXP_NOTEDIT + " номер " + row.NUM_ACT + " от " + row.DATE_ACT?.ToShortDateString(), 
@@ -461,6 +461,35 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
+        }
+
+        private void SlAddItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var row = DxHelper.GetSelectedGridRow(gridControl1);
+            if (row == null) return;
+
+            var sc = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(row);
+            object lpu_status = DxHelper.LoadedRows.GroupBy(x=>ObjHelper.GetAnonymousValue(x,"LPU")).Select(gr=>gr.Key).Contains(sc.LPU);
+            if ((bool?)lpu_status == false)
+            {
+                DXMessageBox.Show("Медицинская организация выбранного акта не соответствует медицинской организации выбранных случаев");
+            }
+            else
+            {
+                List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
+                foreach (var rows in DxHelper.LoadedRows)
+                {
+                    var rq = new D3_REQ_OMS()
+                    {
+                        D3_ARID = sc.ID,
+                        D3_ZSLID = (int)ObjHelper.GetAnonymousValue(rows, "ID")
+                    };
+                    rlist.Add(rq);
+                }
+                Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
+                DXMessageBox.Show("Добавлено случаев в акт - " + rlist.Count);
+            }
+            ((DXWindow)this.Parent).Close();
         }
     }
 
