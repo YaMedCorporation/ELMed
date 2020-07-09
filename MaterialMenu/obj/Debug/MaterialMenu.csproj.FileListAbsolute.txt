@@ -45,3 +45,4 @@ D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.re
 D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
 D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.dll
 D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\ELMed-ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache

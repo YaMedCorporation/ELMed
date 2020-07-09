@@ -53,7 +53,7 @@
             <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" Width="110" Name="MekCommSearchEdit" Margin="5,0,10,0" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor" />
 
         </StackPanel>-->
-        <dxg:GridControl Name="gridControl1" AutoExpandAllGroups="True" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public">
+        <dxg:GridControl Name="gridControl1" AutoExpandAllGroups="True" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public" >
             <dxg:GridControl.Columns>
                 <dxg:GridColumn x:Name="Column_PR_NOV" FieldName="PR_NOV" Header="Переподача" />
                 <dxg:GridColumn x:Name="Column_IDC" FieldName="ID" Header="ИД" />
@@ -319,7 +319,7 @@
                         <dxe:ComboBoxEditSettings Name="KsgEdit" DisplayMember="NameWithID" ValueMember="K_KSG" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn x:Name="Column__SL__KSG_PG" FieldName="KSG_PG" Header="Поргруппа КСГ" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__KSG_PG" FieldName="KSG_PG" Header="Подгруппа КСГ" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SL_K" FieldName="SL_K" Header="КСЛП" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__IT_SL" FieldName="IT_SL" Header="Итог КСЛП" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__PRVS" FieldName="PRVS" Header="Специальность" FilterPopupMode="CheckedList" ColumnFilterMode="Value">

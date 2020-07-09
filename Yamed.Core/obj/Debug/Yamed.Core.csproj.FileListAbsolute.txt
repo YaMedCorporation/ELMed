@@ -12,3 +12,4 @@ D:\!!!_Code\ElmedNew\Yamed.Core\bin\Debug\Yamed.Core.dll
 D:\!!!_Code\ElmedNew\Yamed.Core\bin\Debug\Yamed.Core.pdb
 D:\!!!_Code\ElmedNew\Yamed.Core\obj\Debug\Yamed.Core.dll
 D:\!!!_Code\ElmedNew\Yamed.Core\obj\Debug\Yamed.Core.pdb
+E:\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache

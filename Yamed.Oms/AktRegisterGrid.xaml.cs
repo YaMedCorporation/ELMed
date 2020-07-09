@@ -161,7 +161,11 @@ namespace Yamed.Oms
                         try
                         {
                             isDel = true;
+                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_SANK_OMS where D3_ARID = {row.ID} ",
+                                SprClass.LocalConnectionString);
                             Reader2List.CustomExecuteQuery($@"DELETE FROM D3_AKT_REGISTR_OMS where ID = {row.ID} ",
+                                SprClass.LocalConnectionString);
+                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_REQ_OMS where D3_ARID = {row.ID} ",
                                 SprClass.LocalConnectionString);
                         }
                         catch (Exception ex)
@@ -179,7 +183,7 @@ namespace Yamed.Oms
                         LoadingDecorator1.IsSplashScreenShown = false;
 
                         _linqInstantFeedbackDataSource.Refresh();
-                        ErrorGlobalWindow.ShowError("Акт удален");
+                        DXMessageBox.Show("Акт удален");
                     }
                 }, uiScheduler);
 

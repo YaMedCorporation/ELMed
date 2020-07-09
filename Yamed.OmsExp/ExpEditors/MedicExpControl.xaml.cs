@@ -501,7 +501,7 @@ namespace Yamed.OmsExp.ExpEditors
                     sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                         MidpointRounding.AwayFromZero);
                 }
-                else if (_re == 1 && _stype == 1 && SprClass.Region == "25")
+                else if (_re == 1 && _stype == 1 && (SprClass.Region == "25" || SprClass.Region=="67"))
                 {
                     ex.Sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                 }
