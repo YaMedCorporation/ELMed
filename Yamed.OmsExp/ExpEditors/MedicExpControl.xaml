@@ -124,10 +124,10 @@
                             <dxe:TextEdit x:Name="OsnEdit" Background="MistyRose" EditValue="{Binding S_OSN, UpdateSourceTrigger=PropertyChanged}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="% снятия">
-                            <dxe:TextEdit Background="AntiqueWhite" EditValue="{Binding SelectedItem.Penalty_1, ElementName=ShablonEdit, UpdateSourceTrigger=PropertyChanged}" />
+                            <dxe:TextEdit Background="AntiqueWhite" IsEnabled="False" EditValue="{Binding SelectedItem.Penalty_1, ElementName=ShablonEdit, UpdateSourceTrigger=PropertyChanged}" />
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="Сумма снятия">
-                            <dxe:TextEdit x:Name="Sum1Edit" IsEnabled="False" EditValue="{Binding S_SUM, UpdateSourceTrigger=PropertyChanged}" Background="MistyRose"/>
+                            <dxe:TextEdit x:Name="Sum1Edit" IsEnabled="True" EditValue="{Binding S_SUM, UpdateSourceTrigger=PropertyChanged}" Background="MistyRose"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="% штрафа">
                             <dxe:TextEdit Background="AntiqueWhite" EditValue="{Binding SelectedItem.Penalty_2, ElementName=ShablonEdit, UpdateSourceTrigger=PropertyChanged}"/>
