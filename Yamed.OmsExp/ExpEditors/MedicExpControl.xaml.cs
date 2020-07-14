@@ -429,14 +429,7 @@ namespace Yamed.OmsExp.ExpEditors
             if (sh == null) return;
             var pe1 = (int)sh.GetValue("Penalty_1");
             var osn = (string)sh.GetValue("Osn");
-            if (osn == "4.6.1.") //по запросу ТФОМС Курск
-            {
-                Sum1Edit.IsEnabled = true;
-            }
-            else
-            {
-                Sum1Edit.IsEnabled = false;
-            }
+            
             ex.Sank.S_OSN = osn;
             if (_stype != 1)
             {
