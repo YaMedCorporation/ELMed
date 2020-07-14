@@ -436,3 +436,5 @@ D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.g.resources
 D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.csproj.CopyComplete
 D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.dll
 D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.pdb
+E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DotNetZip.dll
+E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DotNetZip.xml

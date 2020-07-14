@@ -911,3 +911,7 @@ D:\!!!_Code\ElmedNew\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.g.resources
 D:\!!!_Code\ElmedNew\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.csproj.CopyComplete
 D:\!!!_Code\ElmedNew\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll
 D:\!!!_Code\ElmedNew\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.pdb
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkElement.baml
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkControl.g.cs
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkElement.g.cs
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkControl.baml

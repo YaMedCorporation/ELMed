@@ -881,3 +881,5 @@ D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.g.resources
 D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.csproj.CopyComplete
 D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.dll
 D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.pdb
+E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DotNetZip.dll
+E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DotNetZip.xml

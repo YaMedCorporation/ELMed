@@ -391,3 +391,5 @@ D:\!!!_Code\ElmedNew\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.g.resources
 D:\!!!_Code\ElmedNew\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.csproj.CopyComplete
 D:\!!!_Code\ElmedNew\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.dll
 D:\!!!_Code\ElmedNew\Yamed.Ambulatory\obj\Debug\Yamed.Ambulatory.pdb
+E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DotNetZip.dll
+E:\ELMed-ELMed\Yamed.Ambulatory\bin\Debug\DotNetZip.xml

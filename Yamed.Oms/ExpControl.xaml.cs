@@ -32,6 +32,8 @@ namespace Yamed.Oms
         public ExpControl()
         {
             InitializeComponent();
+            if (SprClass.Region == "89" || SprClass.Region == "39")
+            { auto_flk.IsVisible = true; }
         }
 
         private void Amb_OnClick(object sender, RoutedEventArgs e)
@@ -715,6 +717,29 @@ namespace Yamed.Oms
                 Title = "Автоматическая экспертиза",
                 //SizeToContent = SizeToContent.WidthAndHeight
                 Width = 900, Height = 600
+                //WindowStyle = WindowStyle.None
+            };
+            window.ShowDialog();
+        }
+        private void AutoFlk_OnClick(object sender, RoutedEventArgs e)
+        {
+            var schets = DxHelper.GetSelectedGridRows(EconomyTabOMS1.gridControl).ToArray();
+
+            //СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+            //{
+            //    Header = "Автоматический МЭК",
+            //    MyControl = new AutoMekControl(ids),
+            //    IsCloseable = "True"
+            //});
+
+            var window = new DXWindow
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                Content = new AutoFlkControl(schets),
+                Title = "Автоматическая проверка ФЛК",
+                //SizeToContent = SizeToContent.WidthAndHeight
+                Width = 900,
+                Height = 600
                 //WindowStyle = WindowStyle.None
             };
             window.ShowDialog();
