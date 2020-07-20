@@ -118,6 +118,8 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
             PrvsEdit.DataContext = SprClass.SpecV021List;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
+            VidExpEdit.DataContext = SprClass.TypeExp2;
+            TypeExpEdit.DataContext = Reader2List.CustomAnonymousSelect("SELECT convert(int,idvid) IDVID,NameWithID FROM [F006_NEW] where IDVID in (1,2,3)", SprClass.LocalConnectionString);
             UserEdit.DataContext = SprClass.YamedUsers;
             PCelEdit.DataContext = SprClass.SprPCelList;
             DoctEdit.DataContext = SprClass.MedicalEmployeeList;

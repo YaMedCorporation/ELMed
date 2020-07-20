@@ -1469,10 +1469,43 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                         rlist.Add(rq);
                     }
                     Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
+                    MessageBoxResult result = DXMessageBox.Show("Желаете сразу провести экспертизу?", "Выберите действие", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.No)
+                    {
+                        window.Close();
+                    }
+                    else
+                    {
+                            var type = Reader2List.SelectScalar($@"select left(S_TIP2,1) from D3_AKT_REGISTR_OMS akt
+                        where akt.id={arid}", SprClass.LocalConnectionString);
+                        if (type.ToString() == "2")
+                        {
+                            var windowMee = new DXWindow
+                            {
+                                ShowIcon = false,
+                                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                                Content = new MedicExpControl(2, null, DxHelper.LoadedRows, 0, arid),
+                                Title = "Акт МЭЭ",
+                                SizeToContent = SizeToContent.Height,
+                                Width = 1450
+                            };
+                            windowMee.ShowDialog();
+                        }
+                        else if (type.ToString()=="3" || type.ToString() == "4")
+                        {
+                            var windowEkmp = new DXWindow
+                            {
+                                ShowIcon = false,
+                                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                                Content = new MedicExpControl(3, null, DxHelper.LoadedRows, 0, arid),
+                                Title = "Акт ЭКМП",
+                                SizeToContent = SizeToContent.Height,
+                                Width = 1450
+                            };
+                            windowEkmp.ShowDialog();
+                        }
+                    }
                 }
-
-
-
 
                 SchetRegisterGrid1.gridControl1.IsEnabled = true;
                 DxHelper.LoadedRows.Clear();

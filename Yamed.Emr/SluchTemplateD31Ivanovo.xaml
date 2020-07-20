@@ -239,7 +239,7 @@
                                     <dxe:TextEdit x:Name="serPolisTextBox" EditValue="{Binding SPOLIS, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Тип" ToolTip="Тип полиса ОМС" IsRequired="True">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" x:Name="policyTypeBox" ItemsSource="{Binding}" ValueMember="Id" DisplayMember="NameWithId" EditValue="{Binding DataContext.VPOLIS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" x:Name="policyTypeBox" ItemsSource="{Binding}" ValueMember="Id" DisplayMember="NameWithId" EditValue="{Binding DataContext.VPOLIS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" EditValueChanged="PolicyTypeBox_EditValueChanged" />
                                 </dxlc:LayoutItem>
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutItem Label="СМО" IsRequired="True">
@@ -608,10 +608,10 @@
                         <dxlc:LayoutGroup Orientation="Horizontal">
                             <dxlc:LayoutGroup View="Group" Orientation="Vertical">
                                 <dxlc:LayoutItem Label="Документ УДЛ">
-                                    <dxe:ComboBoxEdit ItemsSource="{Binding}" x:Name="typeUdlBox" ValueMember="Id" EditValue="{Binding DataContext.DOCTYPE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" />
+                                    <dxe:ComboBoxEdit ItemsSource="{Binding}" x:Name="typeUdlBox" ValueMember="Id" EditValue="{Binding DataContext.DOCTYPE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" EditValueChanged="TypeUdlBox_EditValueChanged" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Серия">
-                                    <dxe:TextEdit EditValue="{Binding DOCSER, UpdateSourceTrigger=PropertyChanged}" x:Name="udlSerialBox" />
+                                    <dxe:TextEdit EditValue="{Binding DOCSER, UpdateSourceTrigger=PropertyChanged}" x:Name="udlSerialBox" PreviewKeyDown="UdlSerialBox_PreviewKeyDown" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Номер">
                                     <dxe:TextEdit EditValue="{Binding DOCNUM, UpdateSourceTrigger=PropertyChanged}" x:Name="udlNumberBox" />
@@ -626,7 +626,7 @@
                                     <dxe:TextEdit EditValue="{Binding MR, UpdateSourceTrigger=PropertyChanged}" x:Name="mrBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="СНИЛС">
-                                    <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" Mask="000-000-000 00" MaskType="Simple"/>
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Телефон пациента">
                                     <dxe:TextEdit EditValue="{Binding TEL, UpdateSourceTrigger=PropertyChanged}" x:Name="telBox" />

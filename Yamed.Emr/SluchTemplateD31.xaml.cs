@@ -2212,15 +2212,182 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 if (e.Key == Key.F1)
                 {
                     SlEditLock();
-
                     var sl = new D3_SL_OMS { SL_ID = Guid.NewGuid().ToString() };
-
                     _slList.Add(sl);
-
                     SlGridControl.RefreshData();
                     SlGridControl.SelectedItem = sl;
-
                     SlEditDefault();
+                    Date1Edit.Focus();
+                }
+                if (e.Key == Key.F2 && sved_sl.SelectedTabIndex == 1)
+                {
+                    var window = new DXWindow
+                    {
+                        ShowIcon = false,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        Width = 800,
+                        Height = 600,
+                        //SizeToContent = SizeToContent.Height,
+                        Content = new UslUserTempl(this)
+                    };
+                    window.ShowDialog();
+                    UslGridControl.RefreshData();
+                }
+                if (e.Key == Key.F3 && sved_sl.SelectedTabIndex == 1)
+                {
+                    if (_zsl.DATE_Z_2 == null || _pacient.DR == null || _pacient.W == null || _zsl.OS_SLUCH_REGION == null)
+                    {
+                        DXMessageBox.Show("Не заполнены поля для определения стандарта");
+                        return;
+                    }
+                    //var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
+                    string v = "";
+                    string s;
+                    string sg = "0";
+                    var pol = _pacient.W;
+                    var os = _zsl.OS_SLUCH_REGION;
+                    var lpu = _zsl.LPU;
+                    var datez2 = _zsl.DATE_Z_2;
+                    var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
+                    if (os == 47 || os == 49 && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year) >= 18)
+                    {
+                        v = (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year).ToString();
+                    }
+                    else if (os == 11)
+                    {
+                        var mm = Math.Floor((_zsl.DATE_Z_1 - _pacient.DR).Value.Days / 365.25 * 12);
+                        var mg = Math.Floor((_zsl.DATE_Z_1 - _pacient.DR).Value.Days / 365.25);
+                        var ms = "";
+                        if (mg == 0)
+                        {
+                            if (mm % 12 < 10)
+                            {
+                                s = "0";
+                                ms = (mm % 12).ToString();
+                            }
+                            else
+                            {
+                                s = "";
+                                ms = mm.ToString();
+                            }
+                        }
+                        else if (mg > 0 && mg < 2)
+                        {
+                            if (mm % 12 < 3)
+                            {
+                                s = "00";
+                            }
+                            else if (mm % 12 > 2 && mm % 12 < 6)
+                            {
+                                s = "03";
+                            }
+                            else
+                            {
+                                s = "06";
+                            }
+                        }
+                        else
+                        {
+                            mg = (double)(_zsl.DATE_Z_1?.Year - _pacient.DR?.Year);
+                            s = "00";
+                            if (mg > 9)
+                            {
+                                sg = "";
+                            }
+                        }
+                        v = "G" + sg + mg + "." + "M" + s + ms;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    Task.Factory.StartNew(() =>
+                    {
+
+                        var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{v},%'", SprClass.LocalConnectionString);
+
+                        if (autoTempl.Count == 0)
+                        {
+                            return null;
+                        }
+
+                        if (_uslList == null)
+                        {
+                            _uslList = new List<D3_USL_OMS>();
+                        }
+
+                        foreach (DynamicBaseClass usl in autoTempl)
+                        {
+                            _uslList.Add(new D3_USL_OMS
+                            {
+                                COMENTU = (string)usl.GetValue("UsL_Name"),
+                                CODE_USL = (string)usl.GetValue("Code_Usl"),
+                                VID_VME = (string)usl.GetValue("Code_Usl"),
+                                KOL_USL = 1, //(decimal?)usl.GetValue("Kol"),
+                                TARIF = 0, //(decimal?)usl.GetValue("Tarif"),
+                                PROFIL = (int?)usl.GetValue("Prof"),
+                                DET = 0, //(int?)usl.GetValue("Det"),
+                                PRVS = (int?)usl.GetValue("Spec"),
+                                PRVS_VERS = "V021_" + (int?)usl.GetValue("Spec"),
+                                LPU = lpu,
+                                D3_SLGID = slgid
+                            });
+                        }
+                        return _uslList;
+                    }).ContinueWith(x =>
+                    {
+                        UslGrid.DataContext = x.Result;
+                        UslGridControl.RefreshData();
+                    }, TaskScheduler.FromCurrentSynchronizationContext());
+                }
+                if (e.Key == Key.F4 && sved_sl.SelectedTabIndex == 1)
+                {
+                    if (_uslList == null)
+                    {
+                        UslGrid.DataContext = _uslList = new List<D3_USL_OMS>();
+                    }
+
+                    var usl = new D3_USL_OMS { LPU = _zsl.LPU, D3_SLGID = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID };
+                    _uslList.Add(usl);
+
+                    var window = new DXWindow
+                    {
+                        ShowIcon = false,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        SizeToContent = SizeToContent.Height,
+                        Content = new UslTemplateD3(usl)
+                    };
+                    window.ShowDialog();
+                    UslGridControl.RefreshData();
+                }
+                if (e.Key == Key.F6 && sved_sl.SelectedTabIndex == 1)
+                {
+                    var usl = (D3_USL_OMS)UslGridControl.SelectedItem;
+                    var window = new DXWindow
+                    {
+                        ShowIcon = false,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        SizeToContent = SizeToContent.Height,
+                        Content = new UslTemplateD3(usl)
+                    };
+                    window.ShowDialog();
+                    UslGridControl.RefreshData();
+                }
+                if (e.Key == Key.F8 && sved_sl.SelectedTabIndex == 1)
+                {
+                    var del = (D3_USL_OMS)UslGridControl.SelectedItem;
+                    if (del.ID == 0)
+                    {
+                        _uslList.Remove(del);
+                    }
+                    else
+                    {
+                        if (_usl_delList == null) _usl_delList = new List<D3_USL_OMS>();
+                        _usl_delList.Add(del);
+                        _uslList.Remove(del);
+                    }
+                    UslGridControl.RefreshData();
                 }
             }
         }
@@ -2561,6 +2728,60 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             {
                 PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb where left(id,6)='{_zsl.LPU}'", SprClass.LocalConnectionString);
             } 
+        }
+
+        private void TypeUdlBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if ((int?)typeUdlBox.EditValue == 14)
+            {
+                udlSerialBox.MaskType = MaskType.Simple;
+                udlSerialBox.Mask = "00 00";
+                udlNumberBox.MaskType = MaskType.Simple;
+                udlNumberBox.Mask = "000000";
+            }
+            else if ((int?)typeUdlBox.EditValue == 3)
+            {
+                udlSerialBox.MaskType = MaskType.RegEx;
+                udlSerialBox.Mask = "[A-Z]{1,4}-[А-Я]{2}";
+                udlNumberBox.MaskType = MaskType.Simple;
+                udlNumberBox.Mask = "000000";
+            }
+        }
+
+        private void UdlSerialBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ((int?)typeUdlBox.EditValue == 3)
+            {
+                int c = udlSerialBox.CaretIndex;
+                string cc = "";
+
+                if (udlSerialBox.CaretIndex == 0)
+                {
+
+                }
+                else
+                {
+                    cc = udlSerialBox.DisplayText.Substring(udlSerialBox.CaretIndex - 1, 1);
+                }
+                if (cc == "-")
+                {
+                    InputLanguageManager.Current.CurrentInputLanguage = new CultureInfo("ru-RU");
+                }
+            }
+        }
+
+        private void PolicyTypeBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if ((int?)policyTypeBox.EditValue == 3)
+            {
+                polisBox.MaskType = MaskType.Simple;
+                polisBox.Mask = "0000000000000000";
+            }
+            else if ((int?)policyTypeBox.EditValue == 2)
+            {
+                polisBox.MaskType = MaskType.Simple;
+                polisBox.Mask = "000000000";
+            }
         }
     }
 

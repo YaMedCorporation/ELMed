@@ -112,7 +112,7 @@ namespace Yamed.Reports
                 };
                 window.ShowDialog();
             }
-            else
+            else if (rtype >=2000)
             {
                 var rl = (string)ObjHelper.GetAnonymousValue(_row, "Template");
                 var rf = (int)ObjHelper.GetAnonymousValue(_row, "RepFormat");

@@ -2679,6 +2679,59 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             }
         }
 
+        private void TypeUdlBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if ((int?)typeUdlBox.EditValue == 14)
+            {
+                    udlSerialBox.MaskType = MaskType.Simple;
+                    udlSerialBox.Mask = "00 00";
+                    udlNumberBox.MaskType = MaskType.Simple;
+                    udlNumberBox.Mask = "000000";
+            }
+            else if ((int?)typeUdlBox.EditValue == 3)
+            {
+                udlSerialBox.MaskType = MaskType.RegEx;
+                udlSerialBox.Mask = "[A-Z]{1,4}-[А-Я]{2}";
+                udlNumberBox.MaskType = MaskType.Simple;
+                udlNumberBox.Mask = "000000";
+            }
+        }
+
+        private void UdlSerialBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ((int?)typeUdlBox.EditValue == 3)
+            {
+                int c = udlSerialBox.CaretIndex;
+                string cc = "";
+
+                if (udlSerialBox.CaretIndex == 0)
+                {
+
+                }
+                else
+                {
+                    cc = udlSerialBox.DisplayText.Substring(udlSerialBox.CaretIndex - 1, 1);
+                }
+                if (cc == "-")
+                {
+                    InputLanguageManager.Current.CurrentInputLanguage = new CultureInfo("ru-RU");
+                }
+            }
+        }
+
+        private void PolicyTypeBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            if ((int?)policyTypeBox.EditValue == 3)
+            {
+                polisBox.MaskType = MaskType.Simple;
+                polisBox.Mask = "0000000000000000";
+            }
+            else if ((int?)policyTypeBox.EditValue == 2)
+            {
+                polisBox.MaskType = MaskType.Simple;
+                polisBox.Mask = "000000000";
+            }
+        }
         //private void Autoksg_EditValueChanged(object sender, EditValueChangedEventArgs e)
         //{
         //    if ((bool?)autoksg.EditValue !=null)
