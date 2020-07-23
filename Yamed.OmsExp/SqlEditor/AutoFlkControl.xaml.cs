@@ -256,7 +256,7 @@ namespace Yamed.OmsExp.SqlEditor
                                 if (errList?.Count > 0)
                                 {
                                     string ids = "";
-                                    ; foreach (var err in errList)
+                                    foreach (var err in errList)
                                     {
                                         ids = ids + ObjHelper.GetAnonymousValue(err, "ID").ToString() + ",";
                                     }

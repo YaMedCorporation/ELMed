@@ -366,7 +366,7 @@ where zsl.D3_SCID in {ids}";
   where akt.id={_arid}", SprClass.LocalConnectionString);
                     if (type.ToString() != "2")
                     {
-                        DXMessageBox.Show("Невозможно провести экспертизу для выбранного акта");
+                        DXMessageBox.Show("Тип выбранной экспертизы не соответствует типу экспертизы акта!");
                         return;
                     }
                 }
@@ -416,7 +416,7 @@ where zsl.D3_SCID in {ids}";
   where akt.id={_arid}", SprClass.LocalConnectionString);
                     if (type.ToString() != "3" && type.ToString() != "4")
                     {
-                        DXMessageBox.Show("Невозможно провести экспертизу для выбранного акта");
+                        DXMessageBox.Show("Тип выбранной экспертизы не соответствует типу экспертизы акта!");
                         return;
                     }
                 }
@@ -1459,8 +1459,9 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                     var arid = item.ID;
                     List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
 
-                    foreach (int slid in sluids.ToArray())
+                    foreach (int slid in sluids.ToArray().Distinct())
                     {
+
                         var rq = new D3_REQ_OMS()
                         {
                             D3_ARID = arid,
