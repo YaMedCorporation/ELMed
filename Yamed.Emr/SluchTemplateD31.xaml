@@ -239,7 +239,7 @@
                                     <dxe:TextEdit x:Name="serPolisTextBox" EditValue="{Binding SPOLIS, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Тип" ToolTip="Тип полиса ОМС" IsRequired="True">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" x:Name="policyTypeBox" ItemsSource="{Binding}" ValueMember="Id" DisplayMember="NameWithId" EditValue="{Binding DataContext.VPOLIS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" x:Name="policyTypeBox" ItemsSource="{Binding}" ValueMember="Id" DisplayMember="NameWithId" EditValue="{Binding DataContext.VPOLIS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" EditValueChanged="PolicyTypeBox_EditValueChanged" />
                                 </dxlc:LayoutItem>
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutItem Label="СМО" IsRequired="True">
@@ -610,10 +610,10 @@
                         <dxlc:LayoutGroup Orientation="Horizontal">
                             <dxlc:LayoutGroup View="Group" Orientation="Vertical">
                                 <dxlc:LayoutItem Label="Документ УДЛ">
-                                    <dxe:ComboBoxEdit ItemsSource="{Binding}" x:Name="typeUdlBox" ValueMember="Id" EditValue="{Binding DataContext.DOCTYPE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" />
+                                    <dxe:ComboBoxEdit ItemsSource="{Binding}" x:Name="typeUdlBox" ValueMember="Id" EditValue="{Binding DataContext.DOCTYPE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" EditValueChanged="TypeUdlBox_EditValueChanged" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Серия">
-                                    <dxe:TextEdit EditValue="{Binding DOCSER, UpdateSourceTrigger=PropertyChanged}" x:Name="udlSerialBox" />
+                                    <dxe:TextEdit EditValue="{Binding DOCSER, UpdateSourceTrigger=PropertyChanged}" x:Name="udlSerialBox" PreviewKeyDown="UdlSerialBox_PreviewKeyDown" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Номер">
                                     <dxe:TextEdit EditValue="{Binding DOCNUM, UpdateSourceTrigger=PropertyChanged}" x:Name="udlNumberBox" />
@@ -628,7 +628,7 @@
                                     <dxe:TextEdit EditValue="{Binding MR, UpdateSourceTrigger=PropertyChanged}" x:Name="mrBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="СНИЛС">
-                                    <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" Mask="000-000-000 00" MaskType="Simple" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Телефон пациента">
                                     <dxe:TextEdit EditValue="{Binding TEL, UpdateSourceTrigger=PropertyChanged}" x:Name="telBox" />
@@ -879,9 +879,9 @@
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />
                                 <dxg:GridColumn FieldName="S_SUM2" Header="Штраф" />
                                 <dxg:GridColumn FieldName="S_DATE" Header="Дата" />
-                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"
-                                                />
-
+                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"/>
+                                <dxg:GridColumn x:Name="IDACT" FieldName="D3_ARID" Header="ИД акта"/>
+                                <dxg:GridColumn x:Name="NUMACT" FieldName="NUM_ACT" Header="Номер акта"/>
                             </dxg:GridControl>
                             <dxlc:LayoutItem Grid.Row="3" Label="ФЛК" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility}, UpdateSourceTrigger=PropertyChanged}" Tag="LPU">
                                 <dxe:TextEdit EditValue="{Binding DataContext.EXP_COMENT, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" />
@@ -889,7 +889,7 @@
                         </Grid>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>
-                <dxlc:LayoutGroup Header="LayoutGroup" View="Tabs" dxlc:LayoutControl.AllowVerticalSizing="True">
+                <dxlc:LayoutGroup Header="LayoutGroup" x:Name="sved_sl" View="Tabs" dxlc:LayoutControl.AllowVerticalSizing="True">
                     <dxlc:LayoutGroup View="Group" Header="Сведения о случае">
                         <dxlc:LayoutGroup Header="LayoutGroup" View="Group" dxlc:LayoutControl.AllowHorizontalSizing="True" Orientation="Vertical">
                             
@@ -1314,29 +1314,29 @@
                                     UseWholeRow="True">
                                     <dxb:BarButtonItem x:Name="UslTemplateItem"
                                                BarItemDisplayMode="ContentAndGlyph"
-                                        Content="Шаблоны"
+                                        Content="Шаблоны (F2)"
                                                Glyph="pack://application:,,,/Yamed.Icons;component/Icons/catalogs.png"
                                                ItemClick="UslTemplateItem_OnItemClick" Alignment="Near" />
                                     <dxb:BarButtonItem x:Name="UslAutoTemplateItem"
                                                BarItemDisplayMode="ContentAndGlyph"
-                                        Content="Стандарт"
+                                        Content="Стандарт (F3)"
                                                Glyph="pack://application:,,,/Yamed.Icons;component/Icons/catalogs.png"
                                                ItemClick="UslAutoTemplateItem_ItemClick" Alignment="Near" />
 
                                     <dxb:BarItemSeparator />
                                     <dxb:BarButtonItem x:Name="UslAddItem"
                                                BarItemDisplayMode="ContentAndGlyph"
-                                        Content="Добавить"
+                                        Content="Добавить (F4)"
                                                    Glyph="pack://application:,,,/Yamed.Icons;component/Icons/plus_orange.png"
                                         ItemClick="UslAddItem_OnItemClick" />
                                     <dxb:BarButtonItem x:Name="UslEditItem"
                                                BarItemDisplayMode="ContentAndGlyph"
-                                        Content="Редактировать"
+                                        Content="Редактировать (F6)"
                                                    Glyph="pack://application:,,,/Yamed.Icons;component/Icons/pencil.png"
                                                    ItemClick="UslEditItem_OnItemClick" />
                                     <dxb:BarButtonItem x:Name="UslDelItem"
                                                BarItemDisplayMode="ContentAndGlyph"
-                                        Content="Удалить"
+                                        Content="Удалить (F8)"
                                                    Glyph="pack://application:,,,/Yamed.Icons;component/Icons/deletered.png"
                                         ItemClick="UslDelItem_OnItemClick" />
                                 </dxb:ToolBarControl>
@@ -2190,7 +2190,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn x:Name="DiagDateColumn"
                                         FieldName="DIAG_DATE" Header="Дата взятия материала" />
@@ -2287,7 +2287,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="PROT" Header="Код противопоказания или отказа">
                                             <dxg:GridColumn.EditSettings>
@@ -2347,7 +2347,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="USL_TIP" Header="Тип услуги">
                                             <dxg:GridColumn.EditSettings>
@@ -2468,7 +2468,7 @@
                                                     <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                                 </dxg:GridControl.View>
                                                 <dxg:GridColumn FieldName="REGNUM" Header="Регистрационный номер лекарственного препарата">
                                                     <dxg:GridColumn.EditSettings>

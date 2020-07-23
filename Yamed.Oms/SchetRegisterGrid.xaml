@@ -53,7 +53,7 @@
             <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" Width="110" Name="MekCommSearchEdit" Margin="5,0,10,0" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" IsSynchronizedWithCurrentItem="True" InvalidValueBehavior="AllowLeaveEditor" />
 
         </StackPanel>-->
-        <dxg:GridControl Name="gridControl1" AutoExpandAllGroups="True" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public">
+        <dxg:GridControl Name="gridControl1" AutoExpandAllGroups="True" AutoGenerateColumns="None" SelectionMode="Row" Grid.Row="1" ItemsSource="{Binding Data}" x:FieldModifier="public" >
             <dxg:GridControl.Columns>
                 <dxg:GridColumn x:Name="Column_PR_NOV" FieldName="PR_NOV" Header="Переподача" />
                 <dxg:GridColumn x:Name="Column_IDC" FieldName="ID" Header="ИД" />
@@ -212,11 +212,12 @@
                 <dxg:GridColumn x:Name="Column_MEE_COUNT" FieldName="MEE_COUNT" Header="МЭЭ (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_EKMP_COUNT" FieldName="EKMP_COUNT" Header="ЭКМП (кол-во)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_EXP_COMENT" FieldName="EXP_COMENT" Header="Экспертиза (комментарий)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-                <dxg:GridColumn x:Name="Column_EXP_TYPE" FieldName="EXP_TYPE" Header="Тип экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
+                <dxg:GridColumn x:Name="Column_EXP_TYPE" FieldName="EXP_TYPE" Header="Тип экспертизы (устар.)" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="ExpTypeEdit" DisplayMember="NameWithID" ValueMember="Id" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column_AKT_DBEG" FieldName="DBEG" Header="Дата запроса (реестр акт.)" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_EXP_DATE" FieldName="EXP_DATE" Header="Дата запроса ПД" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_ReqID" FieldName="ReqID" Header="Номер запроса ПД" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column_USERID" FieldName="USERID" Header="Пользователь" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
@@ -306,7 +307,7 @@
                 </dxg:GridColumn>
                 <!--<dxg:GridColumn x:Name="Column__SL__DS2" FieldName="DS" Header="Диагноз сопутств." FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
                     <dxg:GridColumn.EditSettings>
-                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="NameWithID" ValueMember="IDDS" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                        <dxe:ComboBoxEditSettings Name="Ds2Edit" DisplayMember="lst" ValueMember="KeyID"  ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>-->
                 <dxg:GridColumn x:Name="Column__SL__DS1_PR" FieldName="DS1_PR" Header="Диагноз выявлен впервые" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
@@ -318,7 +319,7 @@
                         <dxe:ComboBoxEditSettings Name="KsgEdit" DisplayMember="NameWithID" ValueMember="K_KSG" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn x:Name="Column__SL__KSG_PG" FieldName="KSG_PG" Header="Поргруппа КСГ" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__KSG_PG" FieldName="KSG_PG" Header="Подгруппа КСГ" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SL_K" FieldName="SL_K" Header="КСЛП" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__IT_SL" FieldName="IT_SL" Header="Итог КСЛП" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__PRVS" FieldName="PRVS" Header="Специальность" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
@@ -345,13 +346,30 @@
                 <dxg:GridColumn x:Name="Column__SL__KOL_USL" FieldName="KOL_USL" Header="Кол-во услуги" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__SUMV_USL" FieldName="SUMV_USL" Header="Сумма услуги" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
 
+                <dxg:GridColumn x:Name="Column__TARIF__USLIV" FieldName="CODE_USL" Header="Тариф усл." Visible="False">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="UslTarifIvEdit" DisplayMember="TARIF" ValueMember="KODUSL" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                
                 <dxg:GridColumn x:Name="Column__SANK__CODE_EXP" FieldName="CODE_EXP" Header="Код эксперта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-                <dxg:GridColumn x:Name="Column__SANK__S_TIP" FieldName="S_TIP" Header="Тип экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-                <dxg:GridColumn x:Name="Column__SANK__S_TIP2" FieldName="S_TIP2" Header="Вид экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SANK__S_TIP" FieldName="S_TIP" Header="Тип экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="TypeExpEdit" DisplayMember="NameWithID" ValueMember="IDVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column__SANK__S_TIP2" FieldName="S_TIP2" Header="Вид экспертизы" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings Name="VidExpEdit" DisplayMember="NameWithID" ValueMember="IDVID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
                 <dxg:GridColumn x:Name="Column__SANK__S_OSN" FieldName="S_OSN" Header="Основание санкции" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+
                 <dxg:GridColumn x:Name="Column__SANK__S_SUM" FieldName="S_SUM" Header="Сумма санкции" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SANK__S_SUM2" FieldName="S_SUM2" Header="Сумма штрафа" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
-
+                <dxg:GridColumn x:Name="Column__SANK__D3_ARID" FieldName="D3_ARID" Header="ИД акта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SANK__COMMENT" FieldName="COMMENT" Header="Комментарий акта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SANK__NUM_ACT" FieldName="NUM_ACT" Header="Номер акта" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__POVOD" FieldName="POVOD" Header="Повод обращения" FilterPopupMode="CheckedList" ColumnFilterMode="Value">
                     <dxg:GridColumn.EditSettings>
                         <dxe:ComboBoxEditSettings Name="POVOD" DisplayMember="NameWithID" ValueMember="KC" ItemsSource="{Binding}" AllowDefaultButton="False"/>

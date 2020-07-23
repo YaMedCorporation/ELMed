@@ -25,6 +25,8 @@ using Yamed.Core;
 using Yamed.Entity;
 using Yamed.Reports;
 using Yamed.Server;
+using DevExpress.Xpf.Printing;
+using DevExpress.XtraPrinting;
 
 namespace Yamed.Oms
 {
@@ -35,7 +37,6 @@ namespace Yamed.Oms
     {
         public readonly LinqInstantFeedbackDataSource _linqInstantFeedbackDataSource;
         private readonly YamedDataClassesDataContext _edc;
-
         public AktRegisterGrid()
         {
             InitializeComponent();
@@ -74,7 +75,6 @@ namespace Yamed.Oms
 
             _linqInstantFeedbackDataSource.QueryableSource = _edc.D3_AKT_REGISTR_OMS;
 
-
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(delegate()
                 {
@@ -94,6 +94,7 @@ namespace Yamed.Oms
         private void RefreshItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             _linqInstantFeedbackDataSource.Refresh();
+            kol();
         }
 
         private void AddItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -160,7 +161,11 @@ namespace Yamed.Oms
                         try
                         {
                             isDel = true;
+                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_SANK_OMS where D3_ARID = {row.ID} ",
+                                SprClass.LocalConnectionString);
                             Reader2List.CustomExecuteQuery($@"DELETE FROM D3_AKT_REGISTR_OMS where ID = {row.ID} ",
+                                SprClass.LocalConnectionString);
+                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_REQ_OMS where D3_ARID = {row.ID} ",
                                 SprClass.LocalConnectionString);
                         }
                         catch (Exception ex)
@@ -178,7 +183,7 @@ namespace Yamed.Oms
                         LoadingDecorator1.IsSplashScreenShown = false;
 
                         _linqInstantFeedbackDataSource.Refresh();
-                        ErrorGlobalWindow.ShowError("Акт удален");
+                        DXMessageBox.Show("Акт удален");
                     }
                 }, uiScheduler);
 
@@ -233,7 +238,8 @@ namespace Yamed.Oms
             rc.mek.Content = "Экспертизы";
             rc._arid = row.ID;
             rc.SchetRegisterGrid1.BindAktExp(row.ID);
-
+            rc.AddSlAkt.IsVisible = false;
+            rc.RazdelAkt.IsVisible = true;
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
                 Header = "Акт экспертиз " + row.PERIOD_EXP_NOTEDIT + " номер " + row.NUM_ACT + " от " + row.DATE_ACT?.ToShortDateString(), 
@@ -242,15 +248,90 @@ namespace Yamed.Oms
                 //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
             });
         }
+
+      
+       
         private void ExcelExportItem_OnItemClick(object sender, RoutedEventArgs e)
         {
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel File (*.xlsx)|*.xlsx";
-
+            var c = new GridControl();
+            c.EnableSmartColumnsGeneration = true;
+            c.AutoGenerateColumns = AutoGenerateColumnsMode.AddNew;
+            c.ItemsSource = Reader2List.CustomAnonymousSelect($@"
+select distinct 
+akt.ID as [ИД акта],
+akt.PERIOD_EXP_NOTEDIT as [Период],
+case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as [МО],
+zs.ID as [ИД зак. случая],
+pa.FAM as [Фамилия], 
+pa.IM as [Имя], 
+pa.OT as [Отчество], 
+DR as [Дата рождения], 
+NPOLIS as [Номер полиса], 
+case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as [Медиц. орг.],
+m1.NameWithID as [Диагноз осн.], 
+v9.NameWithID as [Результат],
+f6.NameWithID as [Тип экспертизы],
+v6.NameWithID as [Условия оказания МП], 
+NHISTORY as [Номер истории],
+zs.MEE_COUNT as [МЭЭ кол-во], 
+zs.EKMP_COUNT as [ЭКМП кол-во], 
+SUMV as [Сумма выставленная], 
+f5.NameWithId as [Оплата], 
+SUMP as [Сумма принятая], 
+S_SUM as [Сумма удержанная], 
+S_SUM2 as [Сумма штрафа], 
+sank.Name as [Пункт удержания], 
+S_COM as [Комментарий экспертизы], 
+S_DATE as [Дата экспертизы],
+typ.NameWithID as [Тип помощи],
+sa.kol_exp as [Кол-во экспертиз],
+req.kol_zap as [Кол-во записей],
+akt.COMMENT as [Комментарий к акту],
+akt.COMMENT_EKON as [Комментарий экономиста],
+akt.DATE_ACT as [Дата создания акта],
+akt.NUM_ACT as [Номер акта],
+akt.DBEG as [Дата запроса],
+akt.DEND as [Дата закрытия акта],
+akt.DATE_PMD as [Дата предоставления документа],
+akt.DATE_PODPIS_SMO as [Дата подписания СМО],
+akt.DATE_TO_MO as [Дата отправки],
+akt.DATE_PODPIS_MO as [Дата подписания МО],
+akt.DATE_MO_TO_SMO as [Дата возвр. подписанных актов из МО в СМО],
+akt.DATE_OPL_SHTRAF as [Дата оплаты штрафа],
+users.UserName as [Пользователь]
+            from D3_ZSL_OMS zs	 
+            join (select count(D3_ARID) as kol_exp,D3_ARID,D3_ZSLID,S_SUM,S_SUM2,S_DATE,MODEL_ID,S_TIP2,S_COM from D3_SANK_OMS group by D3_ARID,D3_ZSLID,S_SUM,S_SUM2,S_DATE,MODEL_ID,S_TIP2,S_COM) sa on sa.D3_ZSLID=zs.id
+            join D3_SL_OMS sl on sl.d3_zslid=zs.id
+            join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
+            join D3_AKT_REGISTR_OMS akt on akt.id=sa.d3_arid
+			join D3_SCHET_OMS sc on sc.ID=zs.D3_SCID
+			join (select count(d3_arid) as kol_zap, D3_ARID,D3_ZSLID from D3_REQ_OMS group by D3_ARID,D3_ZSLID) req on req.D3_ARID=akt.ID
+			left join Yamed_ExpSpr_Sank sank on sank.ID=sa.MODEL_ID and sank.DEND is null
+			left join Yamed_Spr_TypeMP typ on typ.ID=akt.TYPE_MP
+			left join Yamed_Users users on users.ID=akt.USERID_NOTEDIT
+            left join f003 f3 on f3.mcod=zs.LPU
+			left join V006 v6 on v6.IDUMP=zs.USL_OK
+			left join v009 v9 on v9.IDRMP=zs.RSLT
+			left join F005 f5 on f5.Id=zs.OPLATA
+            left join m001_ksg m1 on m1.idds=sl.ds1 and ISDELETE<>1
+			left join F006_NEW f6 on f6.IDVID=sa.S_TIP2 and f6.DATEEND is null
+            where sa.D3_ARID in ({MyIds(gridControl1.GetSelectedRowHandles(), gridControl1)})", SprClass.LocalConnectionString);
+            foreach (var col in c.Columns)
+            {
+                c.GroupBy(col.HeaderCaption.ToString());
+                if (col.HeaderCaption.ToString() == "МО")
+                {
+                    break;
+                }
+            }
             if (saveFileDialog.ShowDialog() == true)
-                gridControl1.View.ExportToXlsx(saveFileDialog.FileName);
+            c.View.ExportToXlsx(saveFileDialog.FileName);
         }
-            private void kol()
+
+        private void kol()
         {
             var kol = Reader2List.CustomAnonymousSelect($@"Select D3_ARID,count(D3_ARID) as kol_zap from D3_REQ_OMS group by d3_arid", SprClass.LocalConnectionString);
             kolzap.DataContext = kol;
@@ -275,6 +356,7 @@ namespace Yamed.Oms
 
 
         }
+
         private void GridControl1_OnSelectionChanged(object sender, GridSelectionChangedEventArgs e)
         {
             
@@ -287,12 +369,27 @@ namespace Yamed.Oms
             {
                 var _sankList =
     Reader2List.CustomAnonymousSelect($@"
-             select distinct sa.ID, FAM, IM, OT, DR, NPOLIS, m1.NameWithID as DS1, f6.NameWithID as TypeExp,f3.NameWithID, v6.NameWithID, NHISTORY, akt.NUM_ACT, zs.MEE_COUNT, zs.EKMP_COUNT, SUMV, f5.NameWithId, SUMP, S_SUM, S_SUM2, S_OSN, S_COM, S_DATE
+             select distinct sa.ID,FAM, IM, OT, DR, NPOLIS, 
+m1.NameWithID as DS1, 
+f6.NameWithID as TypeExp,
+case when left(zs.lpu,2)= '37' then sc.COMENTS else f3.NameWithID end as LPU, 
+v6.NameWithID as USL_OK, 
+v9.NameWithID as RSLT,
+NHISTORY, 
+akt.NUM_ACT, 
+zs.MEE_COUNT, 
+zs.EKMP_COUNT, 
+SUMV, 
+f5.NameWithId as OPLATA,
+SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
             from D3_SANK_OMS sa
             join D3_ZSL_OMS zs on sa.D3_ZSLID = zs.ID
             join D3_SL_OMS sl on sl.d3_zslid=zs.id
             join D3_PACIENT_OMS pa on pa.ID = zs.D3_PID
             join D3_AKT_REGISTR_OMS akt on akt.id=sa.d3_arid
+            join D3_SCHET_OMS sc on sc.id=zs.d3_scid
+            left join Yamed_ExpSpr_Sank sank on sank.ID=sa.MODEL_ID and sank.DEND is null
+            left join v009 v9 on v9.IDRMP=zs.RSLT
             left join f003 f3 on f3.mcod=zs.LPU
 			left join V006 v6 on v6.IDUMP=zs.USL_OK
 			left join F005 f5 on f5.Id=zs.OPLATA
@@ -368,6 +465,35 @@ namespace Yamed.Oms
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
+        }
+
+        private void SlAddItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var row = DxHelper.GetSelectedGridRow(gridControl1);
+            if (row == null) return;
+
+            var sc = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(row);
+            object lpu_status = DxHelper.LoadedRows.GroupBy(x=>ObjHelper.GetAnonymousValue(x,"LPU")).Select(gr=>gr.Key).Contains(sc.LPU);
+            if ((bool?)lpu_status == false)
+            {
+                DXMessageBox.Show("Медицинская организация выбранного акта не соответствует медицинской организации выбранных случаев");
+            }
+            else
+            {
+                List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
+                foreach (var rows in DxHelper.LoadedRows)
+                {
+                    var rq = new D3_REQ_OMS()
+                    {
+                        D3_ARID = sc.ID,
+                        D3_ZSLID = (int)ObjHelper.GetAnonymousValue(rows, "ID")
+                    };
+                    rlist.Add(rq);
+                }
+                Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
+                DXMessageBox.Show("Добавлено случаев в акт - " + rlist.Count);
+            }
+            ((DXWindow)this.Parent).Close();
         }
     }
 

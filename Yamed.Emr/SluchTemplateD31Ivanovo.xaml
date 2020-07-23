@@ -239,7 +239,7 @@
                                     <dxe:TextEdit x:Name="serPolisTextBox" EditValue="{Binding SPOLIS, UpdateSourceTrigger=PropertyChanged}" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Тип" ToolTip="Тип полиса ОМС" IsRequired="True">
-                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" x:Name="policyTypeBox" ItemsSource="{Binding}" ValueMember="Id" DisplayMember="NameWithId" EditValue="{Binding DataContext.VPOLIS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" />
+                                    <dxe:ComboBoxEdit AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" x:Name="policyTypeBox" ItemsSource="{Binding}" ValueMember="Id" DisplayMember="NameWithId" EditValue="{Binding DataContext.VPOLIS, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" Validate="Required_OnValidate" InvalidValueBehavior="AllowLeaveEditor" FontWeight="DemiBold" EditValueChanged="PolicyTypeBox_EditValueChanged" />
                                 </dxlc:LayoutItem>
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutItem Label="СМО" IsRequired="True">
@@ -608,10 +608,10 @@
                         <dxlc:LayoutGroup Orientation="Horizontal">
                             <dxlc:LayoutGroup View="Group" Orientation="Vertical">
                                 <dxlc:LayoutItem Label="Документ УДЛ">
-                                    <dxe:ComboBoxEdit ItemsSource="{Binding}" x:Name="typeUdlBox" ValueMember="Id" EditValue="{Binding DataContext.DOCTYPE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" />
+                                    <dxe:ComboBoxEdit ItemsSource="{Binding}" x:Name="typeUdlBox" ValueMember="Id" EditValue="{Binding DataContext.DOCTYPE, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" InvalidValueBehavior="AllowLeaveEditor" EditValueChanged="TypeUdlBox_EditValueChanged" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Серия">
-                                    <dxe:TextEdit EditValue="{Binding DOCSER, UpdateSourceTrigger=PropertyChanged}" x:Name="udlSerialBox" />
+                                    <dxe:TextEdit EditValue="{Binding DOCSER, UpdateSourceTrigger=PropertyChanged}" x:Name="udlSerialBox" PreviewKeyDown="UdlSerialBox_PreviewKeyDown" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Номер">
                                     <dxe:TextEdit EditValue="{Binding DOCNUM, UpdateSourceTrigger=PropertyChanged}" x:Name="udlNumberBox" />
@@ -626,7 +626,7 @@
                                     <dxe:TextEdit EditValue="{Binding MR, UpdateSourceTrigger=PropertyChanged}" x:Name="mrBox" />
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="СНИЛС">
-                                    <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" />
+                                    <dxe:TextEdit x:Name="snilsBox" EditValue="{Binding SNILS, UpdateSourceTrigger=PropertyChanged}" Mask="000-000-000 00" MaskType="Simple"/>
                                 </dxlc:LayoutItem>
                                 <dxlc:LayoutItem Label="Телефон пациента">
                                     <dxe:TextEdit EditValue="{Binding TEL, UpdateSourceTrigger=PropertyChanged}" x:Name="telBox" />
@@ -877,9 +877,9 @@
                                 <dxg:GridColumn FieldName="S_SUM" Header="Сумма" />
                                 <dxg:GridColumn FieldName="S_SUM2" Header="Штраф" />
                                 <dxg:GridColumn FieldName="S_DATE" Header="Дата" />
-                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"
-                                                />
-
+                                <dxg:GridColumn FieldName="S_ZAKL" Header="Комментарий"/>
+                                <dxg:GridColumn x:Name="IDACT" FieldName="D3_ARID" Header="ИД акта"/>
+                                <dxg:GridColumn x:Name="NUMACT" FieldName="NUM_ACT" Header="Номер акта"/>
                             </dxg:GridControl>
                             <dxlc:LayoutItem Grid.Row="3" Label="ФЛК" ToolTip="Продолжительность госпитализации (Койко-дни/пациенто-дни)" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="LPU">
                                 <dxe:TextEdit EditValue="{Binding DataContext.EXP_COMENT, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" />
@@ -903,7 +903,7 @@
                                     <ToggleButton Style="{DynamicResource toggleButtonStyle}" Grid.Column="1" x:Name="povodobrTb" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{x:Null}" IsTabStop="False" />
                                 </Grid>
                             </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="ФАП">
+                            <!--<dxlc:LayoutItem Label="ФАП">
                                 <Grid x:Name="FapGrid">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -912,7 +912,7 @@
                                     <dxe:CheckEdit x:Name="fap" EditValueChanged="Fap_EditValueChanged"></dxe:CheckEdit>
                                     <ToggleButton Grid.Column="1" x:Name="fapTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
-                            </dxlc:LayoutItem>
+                            </dxlc:LayoutItem>-->
                             <dxlc:LayoutItem Label="Подразделение" ToolTip="Подразделение медицинской организации">
                                 <Grid x:Name="PodrGrid">
                                     <Grid.ColumnDefinitions>
@@ -1675,7 +1675,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="20" />
                                     </Grid.ColumnDefinitions>
-                                    <dxe:CheckEdit x:Name="autoksg" EditValue="{Binding DataContext.Auto_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}" EditValueChanged="Autoksg_EditValueChanged" ></dxe:CheckEdit>
+                                    <dxe:CheckEdit x:Name="autoksg" EditValue="{Binding DataContext.Auto_KSG, ElementName=KsgGroup, UpdateSourceTrigger=PropertyChanged}" ></dxe:CheckEdit>
                                 </Grid>
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Номер КСГ" x:Name="ivksg" Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource roleVisibility1}, UpdateSourceTrigger=PropertyChanged}" Tag="37">
@@ -2239,7 +2239,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn x:Name="DiagDateColumn"
                                         FieldName="DIAG_DATE" Header="Дата взятия материала" />
@@ -2336,7 +2336,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="PROT" Header="Код противопоказания или отказа">
                                             <dxg:GridColumn.EditSettings>
@@ -2396,7 +2396,7 @@
                                             <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                         </dxg:GridControl.View>
                                         <dxg:GridColumn FieldName="USL_TIP" Header="Тип услуги">
                                             <dxg:GridColumn.EditSettings>
@@ -2517,7 +2517,7 @@
                                                     <dxg:TableView AllowPerPixelScrolling="True"
                                             AutoWidth="True"
                                             ShowGroupPanel="False"
-                                            ShowTotalSummary="False" />
+                                            ShowTotalSummary="False" ShowFilterPanelMode="Never" />
                                                 </dxg:GridControl.View>
                                                 <dxg:GridColumn FieldName="REGNUM" Header="Регистрационный номер лекарственного препарата">
                                                     <dxg:GridColumn.EditSettings>

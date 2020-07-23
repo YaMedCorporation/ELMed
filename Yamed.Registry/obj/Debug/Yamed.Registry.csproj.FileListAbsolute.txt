@@ -397,7 +397,6 @@ E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.XtraReports.v16.2.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\System.Windows.Interactivity.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.pdb
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\Yamed.OmsExp.dll.config
-E:\ELMed-ELMed\Yamed.Registry\bin\Debug\ActiveQueryBuilder.View.WPF.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.Utils.v16.2.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.XtraEditors.v16.2.xml
@@ -410,9 +409,6 @@ E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.XtraNavBar.v16.2.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.XtraRichEdit.v16.2.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.DataAccess.v16.2.UI.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.XtraPivotGrid.v16.2.xml
-E:\ELMed-ELMed\Yamed.Registry\bin\Debug\ICSharpCode.AvalonEdit.xml
-E:\ELMed-ELMed\Yamed.Registry\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Registry\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.Diagram.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DevExpress.XtraDiagram.v16.2.xml
 E:\ELMed-ELMed\Yamed.Registry\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
@@ -885,3 +881,5 @@ D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.g.resources
 D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.csproj.CopyComplete
 D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.dll
 D:\!!!_Code\ElmedNew\Yamed.Registry\obj\Debug\Yamed.Registry.pdb
+E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DotNetZip.dll
+E:\ELMed-ELMed\Yamed.Registry\bin\Debug\DotNetZip.xml

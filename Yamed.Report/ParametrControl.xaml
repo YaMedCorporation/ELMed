@@ -23,6 +23,7 @@
                         </dxe:ListBoxEdit.StyleSettings>
                     </dxe:ListBoxEdit>
                 </dxlc:LayoutGroup>
+               
                 <dxlc:LayoutGroup Name="SpisokAktLGroup">
                     <dxlc:LayoutGroup Orientation="Vertical">
                         <dxlc:LayoutItem Label="Номер акта">

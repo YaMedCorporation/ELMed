@@ -92,7 +92,7 @@ namespace Yamed.OmsExp.SqlEditor
                 {
                     //using (var dc = new ElmedDataClassesDataContext(SprClass.LocalConnectionString))
                     {
-                        AutoMekElement1.MekList.DataContext = SqlReader.Select("Select * From Yamed_ExpSpr_SqlAlg where ExpType = 1 ", SprClass.LocalConnectionString);
+                        AutoMekElement1.MekList.DataContext = SqlReader.Select("Select * From Yamed_ExpSpr_SqlAlg where ExpType = 1 and PrEnable = 1", SprClass.LocalConnectionString);
                     }
                 }
                 catch (Exception ex)

@@ -47,7 +47,7 @@ namespace Yamed.Oms
             }
             writer.Flush();
             stream.Seek(0, SeekOrigin.Begin);
-
+            
 
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(delegate ()
@@ -60,9 +60,17 @@ namespace Yamed.Oms
 
                     gridControl1.FilterString = "";
                     gridControl1.ClearSorting();
+                    if (SprClass.Region != "37")
+                    {
+                        Column__TARIF__USLIV.Visible = false;
+                    }
+                    else
+                    {
+                        Column__TARIF__USLIV.Visible = true;
+                    }
+                    
                 }));
 
-           
             ZUslOkEdit.DataContext = SprClass.conditionHelp;
             SmoEdit.DataContext = SprClass.smo;
             VidPomEdit.DataContext = SprClass.typeHelp;
@@ -93,10 +101,25 @@ join D3_SL_OMS sl on sl.ID=ksg.D3_SLID
 where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101') or '{SprClass.WorkDate}' between datebeg and isnull(dateend,'21000101'))", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
-            //Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from d3_dss_oms dss left join M001_KSG m011 on m011.IDDS=ds where ds_type=2", SprClass.LocalConnectionString);
+//            Ds2Edit.DataContext = Reader2List.CustomAnonymousSelect($@"select
+//isnull(sl.ID,'') as KeyID,
+//  stuff((
+//    select (',' + dss.DS) 
+//    from D3_DSS_OMS dss
+//    where dss.D3_SLID=sl.id and dss.DS_TYPE=2
+//    for XML path('')
+//    ),1,1,'') lst
+//from D3_SL_OMS sl
+//join D3_DSS_OMS ds on ds.D3_SLID=sl.ID and ds.DS_TYPE=2
+//join M001_KSG m011 on m011.IDDS=ds
+//group by sl.id
+//order by sl.id
+//", SprClass.LocalConnectionString);
             PrvsEdit.DataContext = SprClass.SpecV021List;
             OplataEdit.DataContext = SprClass.Spr79_F005;
             ExpTypeEdit.DataContext = SprClass.MeeTypeDbs;
+            VidExpEdit.DataContext = SprClass.TypeExp2;
+            TypeExpEdit.DataContext = Reader2List.CustomAnonymousSelect("SELECT convert(int,idvid) IDVID,NameWithID FROM [F006_NEW] where IDVID in (1,2,3)", SprClass.LocalConnectionString);
             UserEdit.DataContext = SprClass.YamedUsers;
             PCelEdit.DataContext = SprClass.SprPCelList;
             DoctEdit.DataContext = SprClass.MedicalEmployeeList;
@@ -112,7 +135,15 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
             GRAF_DN.DataContext = SprClass.SprGrafdn;
             VID_VIZ.DataContext = SprClass.SprVizov;
             VID_BRIG.DataContext = SprClass.SprBrigad;
-
+            if (SprClass.Region == "37")
+            {
+                UslTarifIvEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select distinct 
+rg.TARIF,usl.KOD_SP as KOD_D,usl.CODE_USL as KODUSL
+from rg012 rg 
+join d3_usl_oms usl on usl.CODE_USL=convert(nvarchar,rg.KODUSL)
+where KOD_LPU=usl.LPU and usl.date_out between rg.DT_BEG and rg.DT_FIN 
+and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionString);
+            }
             SocStatBox.DataContext = SprClass.SocStatsnew;
             ProfilkEdit.DataContext = SprClass.Profil_V020;
             PperEdit.DataContext = SprClass.Per;
@@ -120,7 +151,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
             DnEdit.DataContext = SprClass.DnList;
             ReabEdit.DataContext = SprClass.SprBit;
             DsOnkEdit.DataContext = SprClass.SprBit;
-
+            
             //if (SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
             //    (forLPU).Visibility = Visibility.Visible;
 
@@ -136,8 +167,9 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                 AreSourceRowsThreadSafe = false, KeyExpression = "KeyID"
             };
             gridControl1.DataContext = _linqInstantFeedbackDataSource;
-
+          
         }
+
         private IQueryable _pQueryable;
         public void BindDataZsl()
         {
@@ -388,7 +420,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS on sl.ID equals dss.D3_SLID into tmpdss
+                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS.Where(x => x.DS_TYPE == 2) on sl.ID equals dss.D3_SLID into tmpdss
                               //from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
@@ -474,9 +506,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                                   sl.POVOD,
                                   sl.PROFIL_REG,
                                   pa.SOCSTATUS,
-                                 // dsss.DS,
-
-
+                                  //dsss.DS,
                                   //sl.N_KSG,
                                   //sl.KSG_PG,
                                   //sl.SL_K,
@@ -545,7 +575,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS on sl.ID equals dss.D3_SLID into tmpdss
+                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS.Where(x => x.DS_TYPE == 2) on sl.ID equals dss.D3_SLID into tmpdss
                               //from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
@@ -631,8 +661,7 @@ where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101
                                   sl.POVOD,
                                   sl.PROFIL_REG,
                                   pa.SOCSTATUS,
-                                 // dsss.DS,
-
+                                  //dsss.DS,
 
                                   //sl.N_KSG,
                                   //sl.KSG_PG,
@@ -1979,8 +2008,10 @@ FROM [D3_SCHET_OMS] sch
                                   sa.S_SUM2,
                                   sa.S_TIP,
                                   sa.S_TIP2,
-
-
+                                  sa.D3_ARID,
+                                  sa.D3_AKT_REGISTR_OMS.COMMENT,
+                                  sa.D3_AKT_REGISTR_OMS.DBEG,
+                                  SID = sa.ID,
                                   ////////////////////////////////
                                   pa.FAM,
                                   pa.IM,
@@ -2103,8 +2134,10 @@ FROM [D3_SCHET_OMS] sch
                                   sa.S_SUM2,
                                   sa.S_TIP,
                                   sa.S_TIP2,
-
-
+                                  sa.D3_ARID,
+                                  sa.D3_AKT_REGISTR_OMS.COMMENT,
+                                  sa.D3_AKT_REGISTR_OMS.DBEG,
+                                  SID = sa.ID,
                                   ////////////////////////////////
                                   pa.FAM,
                                   pa.IM,

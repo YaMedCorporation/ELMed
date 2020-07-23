@@ -21,13 +21,9 @@ E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.dll
 E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Server.pdb
 E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Core.dll
 E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll
-E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.dll
 E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Core.pdb
 E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.pdb
 E:\ELMed-ELMed\Yamed.Server\bin\Debug\Yamed.Entity.dll.config
-E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.WPF.xml
-E:\ELMed-ELMed\Yamed.Server\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csprojAssemblyReference.cache
 E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CoreCompileInputs.cache
 E:\ELMed-ELMed\Yamed.Server\obj\Debug\Yamed.Server.csproj.CopyComplete

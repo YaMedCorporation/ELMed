@@ -69,7 +69,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <CheckBox Name="CheckBox5" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        <dxe:ComboBoxEdit Name="PCelEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID"  Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox5}"/>
+                        <dxe:ComboBoxEdit Name="PCelEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDPC"  Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox5}"/>
                     </Grid>
                     <TextBlock Text="Условие оказание помощи" Margin="30,0,0,0"/>
                     <Grid Margin="5">

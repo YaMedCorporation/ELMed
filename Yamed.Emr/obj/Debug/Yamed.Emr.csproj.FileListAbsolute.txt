@@ -197,10 +197,6 @@ E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Xpf.Printing.v16.2.xml
 E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
 E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
-E:\ELMed-ELMed\Yamed.Emr\bin\Debug\ICSharpCode.AvalonEdit.xml
-E:\ELMed-ELMed\Yamed.Emr\bin\Debug\ActiveQueryBuilder.View.WPF.xml
-E:\ELMed-ELMed\Yamed.Emr\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Emr\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
 E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
@@ -440,3 +436,5 @@ D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.g.resources
 D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.csproj.CopyComplete
 D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.dll
 D:\!!!_Code\ElmedNew\Yamed.Emr\obj\Debug\Yamed.Emr.pdb
+E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DotNetZip.dll
+E:\ELMed-ELMed\Yamed.Emr\bin\Debug\DotNetZip.xml

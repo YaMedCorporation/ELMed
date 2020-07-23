@@ -104,6 +104,12 @@
     <Compile Include="ExpEditors\ReqControl.xaml.cs">
       <DependentUpon>ReqControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SqlEditor\AutoFlkControl.xaml.cs">
+      <DependentUpon>AutoFlkControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SqlEditor\AutoFlkElement.xaml.cs">
+      <DependentUpon>AutoFlkElement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SqlEditor\AutoMekControl.xaml.cs">
       <DependentUpon>AutoMekControl.xaml</DependentUpon>
     </Compile>
@@ -152,6 +158,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExpEditors\ReqControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SqlEditor\AutoFlkControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SqlEditor\AutoFlkElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

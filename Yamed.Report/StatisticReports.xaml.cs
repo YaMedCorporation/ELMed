@@ -47,7 +47,7 @@ namespace Yamed.Reports
             {
                 GridControl1.DataContext =
                     Reader2List.CustomAnonymousSelect(
-                        $"Select * from YamedReports where Reptype >= 2000 and Reptype < 3000",
+                        $"Select * from YamedReports where Reptype >= 2000 and Reptype <= 3000",
                         SprClass.LocalConnectionString);
             }
         }
@@ -111,6 +111,34 @@ namespace Yamed.Reports
                     SizeToContent = SizeToContent.WidthAndHeight
                 };
                 window.ShowDialog();
+            }
+            else if (rtype >=2000)
+            {
+                var rl = (string)ObjHelper.GetAnonymousValue(_row, "Template");
+                var rf = (int)ObjHelper.GetAnonymousValue(_row, "RepFormat");
+                var rp = new ReportParams {IDA = ObjHelper.GetIds(ids)};
+                if (rf == 1)
+                {
+                    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                    {
+                        Header = "Отчет",
+                        MyControl = new PreviewControl(rl, rp),
+                        IsCloseable = "True",
+                        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                    });
+
+                }
+                else
+                {
+                    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement
+                    {
+                        Header = "Отчет",
+                        MyControl = new FRPreviewControl(rl, rp),
+                        IsCloseable = "True",
+                        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                    });
+                }
+               
             }
 
         }

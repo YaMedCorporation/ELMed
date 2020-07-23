@@ -6,6 +6,7 @@ using System.Data.Linq.Mapping;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Xml;
 using System.Reflection;
 using System.Text;
 using Yamed.Entity;
@@ -48,6 +49,97 @@ namespace Yamed.Server
             }
             return objList;
         }
+        public static void LoadFromTable<T>(string connectionString, DataTable dt, string sqltable)
+        {
+            string[] rezervsql = { "ADD", "ALL", "ALTER", "AND", "ANY", "AS", "ASC", "AUTHORIZATION", "BACKUP", "BEGIN", "BETWEEN",
+                "BREAK", "BROWSE", "BULK", "BY", "CASCADE", "CASE", "CHECK", "CHECKPOINT", "CLOSE", "CLUSTERED", "COALESCE", "COLLATE",
+                "COLUMN", "COMMIT", "COMPUTE", "CONSTRAINT", "CONTAINS", "CONTAINSTABLE", "CONTINUE", "CONVERT", "CREATE", "CROSS",
+                "CURRENT", "CURRENT_DATE", "CURRENT_TIME", "CURRENT_TIMESTAMP", "CURRENT_USER", "CURSOR", "DATABASE", "DBCC",
+                "DEALLOCATE", "DECLARE", "DEFAULT", "DELETE", "DENY", "DESC", "DISK;", "DISTINCT", "DISTRIBUTED", "DOUBLE", "DROP",
+                "DUMP;", "ELSE", "END", "ERRLVL", "ESCAPE", "EXCEPT", "EXEC", "EXECUTE", "EXISTS", "EXIT", "EXTERNAL", "FETCH", "FILE",
+                "FILLFACTOR", "FOR", "FOREIGN", "FREETEXT", "FREETEXTTABLE", "FROM", "FULL", "FUNCTION", "GOTO", "GRANT", "GROUP",
+                "HAVING", "HOLDLOCK", "IDENTITY", "IDENTITY_INSERT", "IDENTITYCOL", "IF", "IN", "INDEX", "INNER", "INSERT", "INTERSECT",
+                "INTO", "IS", "JOIN", "KEY", "KILL", "LEFT", "LIKE", "LINENO", "LOAD", "MERGE", "NATIONAL", "NOCHECK", "NONCLUSTERED",
+                "NOT", "NULL", "NULLIF", "OF", "OFF", "OFFSETS", "ON", "OPEN", "OPENDATASOURCE", "OPENQUERY", "OPENROWSET", "OPENXML",
+                "OPTION", "OR", "ORDER", "OUTER", "OVER", "PERCENT", "PIVOT", "PLAN", "PRECISION", "PRIMARY", "PRINT", "PROC",
+                "PROCEDURE", "PUBLIC", "RAISERROR", "READ", "READTEXT", "RECONFIGURE", "REFERENCES", "РЕПЛИКАЦИЯ", "RESTORE", "RESTRICT",
+                "RETURN", "REVERT", "REVOKE", "RIGHT", "ROLLBACK", "ROWCOUNT", "ROWGUIDCOL", "RULE", "SAVE", "SCHEMA", "SECURITYAUDIT",
+                "SELECT", "SEMANTICKEYPHRASETABLE", "SEMANTICSIMILARITYDETAILSTABLE", "SEMANTICSIMILARITYTABLE", "SESSION_USER", "SET",
+                "SETUSER", "SHUTDOWN", "SOME", "STATISTICS", "SYSTEM_USER", "TABLE", "TABLESAMPLE", "TEXTSIZE", "THEN", "TO", "В начало",
+                "TRAN", "TRANSACTION", "TRIGGER", "TRUNCATE", "TRY_CONVERT", "TSEQUAL", "UNION", "UNIQUE", "UNPIVOT", "UPDATE",
+                "UPDATETEXT", "USE", "Пользователь", "VALUES", "VARYING", "VIEW", "WAITFOR", "WHEN", "WHERE", "WHILE", "WITH",
+                "WITHIN GROUP", "WRITETEXT" };
+            string sqltype = "";
+            string sqlcolumns = "";
+            foreach (DataColumn dc in dt.Columns)
+            {
+                //dt.Columns.Add(d.NAME,d.TYPE);
+                string s;
+                switch (dc.DataType.Name.ToString())
+                {
+                    case "Int32":
+                        s = "int";
+                        break;
+                    case "String":
+                        s = $"nvarchar({dc.MaxLength})";
+                        break;
+                    case "Guid":
+                        s = "uniqueidentifier";
+                        break;
+                    case "Boolean":
+                        s = "bit";
+                        break;
+                    case "DateTime":
+                        s = "DateTime2";
+                        break;
+                    case "Decimal":
+                        s = "numeric(20,2)";
+                        break;
+                    default:
+                        s = dc.DataType.Name.ToString();
+                        break;
+                }
+                if (rezervsql.Contains(dc.ColumnName))
+                {
+                    sqltype = sqltype + "[" + dc.ColumnName + "]" + " " + s + ",";
+                    sqlcolumns = sqlcolumns + "[" + dc.ColumnName + "]" + ",";
+                }
+                else
+                {
+                    sqltype = sqltype + dc.ColumnName + " " + s + ",";
+                    sqlcolumns = sqlcolumns + dc.ColumnName + ",";
+                }
+
+            }
+            sqltype = sqltype.Substring(0, sqltype.Length - 1);
+            sqlcolumns = sqlcolumns.Substring(0, sqlcolumns.Length - 1);
+
+            SqlConnection con = new SqlConnection(connectionString);
+
+            SqlCommand cmd0 = new SqlCommand($@" IF exists (select * from sys.table_types where name='ForUpdate')  
+                                                 DROP TYPE dbo.ForUpdate   
+                                                 CREATE TYPE ForUpdate AS TABLE ({sqltype})
+                                                 IF exists (select * from sys.tables where name='{sqltable}') 
+                                                 DROP table {sqltable}  
+                                                 CREATE TABLE dbo.{sqltable} ({sqltype})", con);
+
+            SqlCommand cmd = new SqlCommand($@"insert into dbo.{sqltable}({sqlcolumns})
+                                                select {sqlcolumns} from @dt", con);
+
+            var t = new SqlParameter("@dt", SqlDbType.Structured);
+            t.TypeName = "dbo.ForUpdate";
+            t.Value = dt;
+            cmd.Parameters.Add(t);
+            //SqlParameter t = cmd.Parameters.AddWithValue("@t", dt);
+            //t.SqlDbType = SqlDbType.Structured;
+            //t.TypeName = "dbo.ForUpdate";
+            cmd.CommandTimeout = 0;
+            con.Open();
+            cmd0.ExecuteNonQuery();
+            int str = cmd.ExecuteNonQuery();
+            int isrt = str;
+            con.Close();
+        }
         public static void UpdateFromTable<T>(string com, string connectionString, DataTable dt, bool deltype)
         {
             string sqltype = "";
@@ -86,36 +178,18 @@ namespace Yamed.Server
 
             }
             sqltype = sqltype.Substring(0, sqltype.Length - 1);
-            //foreach (var item in ids)
-            //{
-
-            //    dt.Rows.Add(item);
-
-            //}
-
             SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd0 = new SqlCommand($@" 
-IF exists (select * from sys.table_types where name='ForDeleteZsl')  
-DROP TYPE dbo.ForDeleteZsl  
-CREATE TYPE ForDeleteZsl AS TABLE ({sqltype})", con);
-
-
-
             SqlCommand cmd = new SqlCommand(com, con);
 
             var t = new SqlParameter("@dt", SqlDbType.Structured);
-            t.TypeName = "dbo.ForDeleteZsl";
+            t.TypeName = "dbo.IDTable";
             t.Value = dt;
             cmd.Parameters.Add(t);
-            //SqlParameter t = cmd.Parameters.AddWithValue("@t", dt);
-            //t.SqlDbType = SqlDbType.Structured;
-            //t.TypeName = "dbo.ForUpdate";
 
             cmd.CommandTimeout = 0;
             con.Open();
             if (deltype)
             {
-                cmd0.ExecuteNonQuery();
                 int str = cmd.ExecuteNonQuery();
                 int isrt = str;
             }
@@ -126,6 +200,56 @@ CREATE TYPE ForDeleteZsl AS TABLE ({sqltype})", con);
             }
 
             con.Close();
+        }
+        public static string StartFunctionFromTable<T>(string com, string connectionString, DataTable dt, bool deltype)
+        {
+            string sqltype = "";
+
+
+            foreach (DataColumn dc in dt.Columns)
+            {
+                //dt.Columns.Add(d.NAME,d.TYPE);
+                string s;
+                switch (dc.DataType.Name.ToString())
+                {
+                    case "Int32":
+                        s = "int";
+                        break;
+                    case "String":
+                        s = "nvarchar(500)";
+                        break;
+                    case "Guid":
+                        s = "uniqueidentifier";
+                        break;
+                    case "Boolean":
+                        s = "bit";
+                        break;
+                    case "DateTime":
+                        s = "DateTime2";
+                        break;
+                    case "Decimal":
+                        s = "numeric(10,2)";
+                        break;
+                    default:
+                        s = dc.DataType.Name.ToString();
+                        break;
+                }
+
+                sqltype = sqltype + dc.ColumnName + " " + s + ",";
+
+            }
+            sqltype = sqltype.Substring(0, sqltype.Length - 1);
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand(com, con);
+            var t = new SqlParameter("@dt", SqlDbType.Structured);
+            t.TypeName = "dbo.IDTable";
+            t.Value = dt;
+            cmd.Parameters.Add(t);
+            cmd.CommandTimeout = 0;
+            con.Open();
+            string xml = (string)cmd.ExecuteScalar();
+            con.Close();
+            return xml;
         }
         public static object SelectScalar(string selectCmd, string connectionString)
         {

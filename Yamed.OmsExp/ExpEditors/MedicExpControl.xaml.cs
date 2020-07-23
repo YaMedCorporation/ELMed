@@ -25,6 +25,7 @@ namespace Yamed.OmsExp.ExpEditors
         public D3_SANK_OMS Sank { get; set; }
         public D3_SANK_OMS ReSank { get; set; }
         public object Nhistory { get; set; }
+        public object usl_ok { get; set; }
     }
 
 
@@ -81,7 +82,6 @@ namespace Yamed.OmsExp.ExpEditors
             if (stype == 1)
             {
                 AktDateEdit.Visibility = Visibility.Collapsed;
-                AktNumEdit.Visibility = Visibility.Collapsed;
                 ExpEkmpLayGr.Visibility = Visibility.Collapsed;
                 ExpertGridControl.Visibility = Visibility.Collapsed;
                 checkEditItem.IsVisible = false;
@@ -91,9 +91,8 @@ namespace Yamed.OmsExp.ExpEditors
                 exporuch.Visibility = Visibility.Collapsed;
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
                 date_act.Visibility = Visibility.Collapsed;
-                num_act.Visibility = Visibility.Collapsed;
             }
-           
+            
         }
 
 
@@ -114,13 +113,9 @@ namespace Yamed.OmsExp.ExpEditors
             {
                 _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where osn like '5%' or Name like '%ИЗМЕНЕНИЙ%' order by Name", SprClass.LocalConnectionString);
             }
-            else if (SprClass.Region == "57" || SprClass.Region == "37")
-            {
-                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null order by Name", SprClass.LocalConnectionString);
-            }
             else
             {
-                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null and isnull(osn,'0') not like '5%' order by Name", SprClass.LocalConnectionString);
+                _sankAutos = SqlReader.Select("Select * from Yamed_ExpSpr_Sank where name like '%36%' or DEND is null order by Name", SprClass.LocalConnectionString);
             }
             ShablonEdit.DataContext = _sankAutos;
             
@@ -135,8 +130,10 @@ namespace Yamed.OmsExp.ExpEditors
                         ExpClass expList = new ExpClass();
                         expList.Row = row;
                         expList.Nhistory = Reader2List.SelectScalar($@"Select (select top(1) sl.nhistory  from d3_sl_oms sl where sl.d3_zslid=zsl.id order by sl.id) as NHISTORY from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
+                        expList.usl_ok = Reader2List.SelectScalar($@"Select usl_ok from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
+                        
                         expList.Sank = new D3_SANK_OMS()
                         {
                             D3_ZSLID = (int)ObjHelper.GetAnonymousValue(row, "ID"),
@@ -144,8 +141,15 @@ namespace Yamed.OmsExp.ExpEditors
                             D3_ARID = _arid,
                             S_TIP = _re == 0 ? (int?)_stype : null,
                             S_CODE = Guid.NewGuid().ToString(),
-                            S_DATE = SprClass.WorkDate
+                            S_DATE = SprClass.WorkDate, 
                     };
+                        if (_arid != null)
+                        {
+                            expList.Sank.S_TIP2 = (decimal?)Reader2List.SelectScalar($@"select S_TIP2 from D3_AKT_REGISTR_OMS where id={_arid}", SprClass.LocalConnectionString);
+                            expList.Sank.DATE_ACT = SprClass.WorkDate;
+                            expList.Sank.NUM_ACT = Reader2List.SelectScalar($@"select num_act from D3_AKT_REGISTR_OMS where id={_arid}", SprClass.LocalConnectionString).ToString();
+                        }
+                        
                         _slpsList.Add(expList);
                         zslid.Add(expList.Sank.D3_ZSLID);
                     }
@@ -193,7 +197,9 @@ namespace Yamed.OmsExp.ExpEditors
                     
                     slupacsank.Row = _row;
                     slupacsank.Sank = sank.First();
-                    _slpsList.Add(slupacsank);
+                
+                
+                _slpsList.Add(slupacsank);
                 ExpertGridControl.DataContext = _expertList =
                     Reader2List.CustomSelect<D3_SANK_EXPERT_OMS>($@"Select * From D3_SANK_EXPERT_OMS where D3_SANKID={slupacsank.Sank.ID}",
                         SprClass.LocalConnectionString);
@@ -202,7 +208,7 @@ namespace Yamed.OmsExp.ExpEditors
 
 
             sluchGridControl.DataContext = _slpsList;
-            
+         
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 new Action(delegate ()
                 {
@@ -285,22 +291,22 @@ namespace Yamed.OmsExp.ExpEditors
 
             //}
             
-            if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
-            {
-                var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
-                if (num.Count > 0)
-                {
-                    MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.No)
-                    {
-                        return;
-                    }
-                    else
-                    {
+            //if ((AktNumEdit.Text != null || AktNumEdit.Text != "") && _isNew == true)
+            //{
+            //    var num = SqlReader.Select($@"Select NUM_ACT from D3_SANK_OMS where num_act='{AktNumEdit.Text}'", SprClass.LocalConnectionString);
+            //    if (num.Count > 0)
+            //    {
+            //        MessageBoxResult result = DXMessageBox.Show("Указанный номер акта уже существует в базе, хотите продолжить?", "Выберите действие", MessageBoxButton.YesNo);
+            //        if (result == MessageBoxResult.No)
+            //        {
+            //            return;
+            //        }
+            //        else
+            //        {
                         
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
             if (_re == 0 && Sum2Edit.Text== "")
             {
@@ -419,14 +425,7 @@ namespace Yamed.OmsExp.ExpEditors
             if (sh == null) return;
             var pe1 = (int)sh.GetValue("Penalty_1");
             var osn = (string)sh.GetValue("Osn");
-            if (osn == "4.6.1.") //по запросу ТФОМС Курск
-            {
-                Sum1Edit.IsEnabled = true;
-            }
-            else
-            {
-                Sum1Edit.IsEnabled = false;
-            }
+            
             ex.Sank.S_OSN = osn;
             if (_stype != 1)
             {
@@ -439,7 +438,14 @@ namespace Yamed.OmsExp.ExpEditors
 
 
                 decimal? sump, sum_np;
-                if (_re == 0)
+                if (SprClass.Region == "25" && _re == 0 && ex.usl_ok.ToString() == "4")
+                {
+                    sum_np = (decimal?)SqlReader.Select($@"EXEC	[dbo].[p_fix_25]
+            		@zslid = {ex.Sank.D3_ZSLID},
+                    @model = {ex.Sank.MODEL_ID}",
+                    SprClass.LocalConnectionString).FirstOrDefault()?.GetValue("S_SUM");
+                }
+                else if (_re == 0)
                 {
                     if (ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == null ||
                         (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMP") == 0 || !_isNew)
@@ -456,6 +462,7 @@ namespace Yamed.OmsExp.ExpEditors
                     pe2 = 0;
                     ex.Sank.S_OSN = ex.ReSank.S_OSN;
                 }
+                
                 else
                 {
                     sump = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
@@ -483,7 +490,7 @@ namespace Yamed.OmsExp.ExpEditors
                     sum_np = Math.Round((decimal)sump * pe1 / 100, 2,
                         MidpointRounding.AwayFromZero);
                 }
-                else if (_re == 1 && _stype == 1 && SprClass.Region == "25")
+                else if (_re == 1 && _stype == 1 && (SprClass.Region == "25" || SprClass.Region=="67"))
                 {
                     ex.Sank.S_SUM = (decimal)ObjHelper.GetAnonymousValue(ex.Row, "SUMV");
                 }

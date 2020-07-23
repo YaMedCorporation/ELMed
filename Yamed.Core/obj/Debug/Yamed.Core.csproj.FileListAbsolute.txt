@@ -5,7 +5,6 @@ D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.dll
 D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.pdb
 E:\ELMed-ELMed\Yamed.Core\bin\Debug\Yamed.Core.dll
 E:\ELMed-ELMed\Yamed.Core\bin\Debug\Yamed.Core.pdb
-E:\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache
 E:\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.csproj.CoreCompileInputs.cache
 E:\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.dll
 E:\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.pdb
@@ -13,3 +12,4 @@ D:\!!!_Code\ElmedNew\Yamed.Core\bin\Debug\Yamed.Core.dll
 D:\!!!_Code\ElmedNew\Yamed.Core\bin\Debug\Yamed.Core.pdb
 D:\!!!_Code\ElmedNew\Yamed.Core\obj\Debug\Yamed.Core.dll
 D:\!!!_Code\ElmedNew\Yamed.Core\obj\Debug\Yamed.Core.pdb
+E:\ELMed-ELMed\Yamed.Core\obj\Debug\Yamed.Core.csprojAssemblyReference.cache

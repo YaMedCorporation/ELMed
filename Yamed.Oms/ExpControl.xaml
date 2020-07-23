@@ -28,6 +28,12 @@
                                            LargeGlyph="/Yamed.Icons;component/Icons/Pin_Note-256.png"
                                            ItemClick="SchetRep_OnClick" />
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Авто-ФЛК" Content="Авто-ФЛК" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/bug-report-256.png"
+                                           ItemClick="AutoFlk_OnClick"
+                                           IsVisible="False"
+                                           x:Name="auto_flk"/>
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Авто-МЭК" Content="Авто-МЭК" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/bug-report-256.png"
                                            ItemClick="AutoMek_OnClick" />

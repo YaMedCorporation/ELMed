@@ -17,7 +17,6 @@ D:\!!!_Code\ELMed-ELMed_20200311\ELMed-ELMed\MaterialMenu\obj\Debug\MaterialMenu
 E:\ELMed-ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll.config
 E:\ELMed-ELMed\MaterialMenu\bin\Debug\MaterialMenu.dll
 E:\ELMed-ELMed\MaterialMenu\bin\Debug\MaterialMenu.pdb
-E:\ELMed-ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache
 E:\ELMed-ELMed\MaterialMenu\obj\Debug\MenuButton.g.cs
 E:\ELMed-ELMed\MaterialMenu\obj\Debug\SideMenu.g.cs
 E:\ELMed-ELMed\MaterialMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -46,3 +45,4 @@ D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.Properties.Resources.re
 D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.csproj.GenerateResource.cache
 D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.dll
 D:\!!!_Code\ElmedNew\MaterialMenu\obj\Debug\MaterialMenu.pdb
+E:\ELMed-ELMed\MaterialMenu\obj\Debug\MaterialMenu.csprojAssemblyReference.cache

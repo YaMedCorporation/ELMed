@@ -261,6 +261,16 @@
                                             <TextBlock Grid.Column="1" Text="НСИ" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
                                         </Grid>
                                     </Button>
+                                <Button Click="Load_OnClick" Tag="LPUIV" Style="{StaticResource InformButton}" IsEnabled="True" Visibility="Collapsed">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="75"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="/Yamed.Icons;component/Icons/1481747560_Libros_01_20.png" Width="48" Height="48" ></Image>
+                                        <TextBlock Grid.Column="1" Text="Загрузка ЗЛ" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
+                                    </Grid>
+                                </Button>
                                 <Button Click="Update_OnClick" Style="{StaticResource InformButton}" IsEnabled="True">
                                     <Grid>
                                         <Grid.ColumnDefinitions>

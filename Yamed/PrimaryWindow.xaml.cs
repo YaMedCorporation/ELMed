@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
@@ -198,7 +199,7 @@ namespace Yamed
 
                         if (a[i] == codmo)
                         {
-                            DXMessageBox.Show("Обновление невозможно, погасите задолженность!!!");
+                            DXMessageBox.Show("Погасите задолженность!!!");
                             r = 1;
                             break;
 
@@ -239,16 +240,7 @@ namespace Yamed
             
             SprClass.Qb.SQLContext.Assign(connection.GetSqlContext());
 
-            //Запуск проверки на должников
-            var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
-            var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
-            if (type == null && reg.ToString() != "37")
-            {
-                if (tlm_Click() == false)
-                {
-                    Environment.Exit(0);
-                }
-            }
+           
 
             //"Data Source=91.240.209.20,1432;Initial Catalog=Elmed;User ID=sa;Password=Hospital6";
 
@@ -572,15 +564,13 @@ namespace Yamed
 
                         if ((string)b.Tag == "LPU" && SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu)
                             ((Button)child).Visibility = Visibility.Visible;
-                    }
+                        if ((string)b.Tag == "LPUIV" && SprClass.ProdSett.OrgTypeStatus == OrgType.Lpu && SprClass.Region == "37")
+                        ((Button)child).Visibility = Visibility.Visible;
+            }
 
                     Decorator.IsSplashScreenShown = false;
                 }, taskScheduler);
             }, taskScheduler);
-
-
-
-
 
 
         }
@@ -1082,6 +1072,16 @@ namespace Yamed
 
         private void Reestr_OnClick(object sender, RoutedEventArgs e)
         {
+            //Запуск проверки на должников
+            var type = Reader2List.SelectScalar($@"select parametr from Settings where name='tfoms'", SprClass.LocalConnectionString);
+            var reg = Reader2List.SelectScalar($@"select parametr from Settings where name='region'", SprClass.LocalConnectionString);
+            if (type == null && reg.ToString() != "37")
+            {
+                if (tlm_Click() == false)
+                {
+                    return;
+                }
+            }
             Menu.Hide();
             ((Button)sender).IsEnabled = false;
             Decorator.IsSplashScreenShown = true;
@@ -1095,6 +1095,7 @@ namespace Yamed
             });
 
             ((Button)sender).IsEnabled = true;
+            
         }
 
         private void OmsExpButton_OnClick(object sender, RoutedEventArgs e)
@@ -1233,9 +1234,105 @@ namespace Yamed
             }
             else
             {
-                System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.exe"));
+                //if (File.Exists("Imed_Updater.exe"))
+                //{
+                //    File.Delete(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.exe"));
+                //}
+                //else if (File.Exists("Imed_Updater.dll"))
+                //{
+                //    File.Delete(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.dll"));
+                //}
+                //else if (File.Exists("Imed_Updater.pdb"))
+                //{
+                //    File.Delete(Path.Combine(Environment.CurrentDirectory, "Imed_Updater.pdb"));
+                //}
+                ProcessStartInfo startInfo = new ProcessStartInfo("Imed_Updater.exe");
+                startInfo.WorkingDirectory = Environment.CurrentDirectory + "\\Imed Updater";
+                System.Diagnostics.Process.Start(startInfo);
+                //System.Diagnostics.Process.Start(Path.Combine(Environment.CurrentDirectory, "Imed Updater", "Imed_Updater.exe"));
             }
         }
-//>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15
+
+        private void Load_OnClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog OF = new OpenFileDialog();
+            OF.Title = "Выберите первый том архива";
+            OF.Multiselect = false;
+            bool res = OF.ShowDialog().Value;
+            if (res == true)
+            {
+                Cursor = Cursors.Wait;
+                ProcessStartInfo psi;
+                if (Environment.Is64BitOperatingSystem)
+                {
+                    psi = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "x64", "7z.exe"), $@"e {(char)34 + OF.FileName + (char)34} -o{(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -y");
+                }
+                else
+                {
+                    psi = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "x86", "7z.exe"), $@"e {(char)34 + OF.FileName + (char)34} -o{(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -y");
+                }
+                psi.RedirectStandardInput = true;
+                psi.UseShellExecute = false;
+                psi.CreateNoWindow = true;
+                Process procCommand = Process.Start(psi);
+                StreamWriter inputWriter = procCommand.StandardInput;
+                inputWriter.Write("y");
+                procCommand.WaitForExit();
+
+                DirectoryInfo dir = new DirectoryInfo(OF.FileName.Replace($"{OF.SafeFileName}", ""));
+                var spr = dir.GetFiles("*.dbf");
+
+                foreach (var f in spr)
+                {
+                    DataTable dt = new DataTable();
+                    using (Stream fos = File.Open(f.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                    {
+                        var dbf = new DotNetDBF.DBFReader(fos);
+                        dbf.CharEncoding = Encoding.GetEncoding(866);
+                        var cnt = dbf.RecordCount;
+                        var fields = dbf.Fields;
+                        for (int ii = 0; ii < fields.Count(); ii++)
+                        {
+                            DataColumn workCol = dt.Columns.Add(fields[ii].Name, fields[ii].Type);
+                            if (workCol.DataType == typeof(string)) workCol.MaxLength = fields[ii].FieldLength;
+                            workCol.AllowDBNull = true;
+                            workCol.DefaultValue = DBNull.Value;
+                        }
+
+                        for (int ii = 0; ii < dbf.RecordCount; ii++)
+                        {
+                            var rtt = dbf.NextRecord();
+
+                            if (rtt != null)
+                            {
+                                for (int i = 0; i < rtt.Count(); i++)
+                                {
+                                    if (rtt[i] == null)
+                                    {
+                                        rtt[i] = null;
+                                    }
+                                    else
+                                    if (rtt[i].ToString() == "")
+                                    {
+                                        rtt[i] = null;
+                                    }
+                                }
+                                dt.LoadDataRow(rtt, true);
+
+                            }
+
+                        }
+                    }
+                    string sqltable = f.Name.Replace(".dbf", "_RZ").Replace(".DBF", "_RZ").Replace(".Dbf", "_RZ");
+                    Reader2List.LoadFromTable<DataTable>(SprClass.LocalConnectionString, dt, sqltable);
+                    File.Delete(f.FullName);
+                }
+                procCommand.Close();
+                Cursor = Cursors.Arrow;
+                MessageBox.Show("Файлы успешно загружены в таблицы базы данных");
+
+            }
+        }
+        //>>>>>>> 9b0437a00be34a44e896169b1aee22c0972a7d15
     }
 }

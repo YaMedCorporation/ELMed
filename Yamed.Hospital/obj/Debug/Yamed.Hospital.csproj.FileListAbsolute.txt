@@ -150,7 +150,6 @@ E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.dll
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.dll
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.dll
-E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.dll
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.dll
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Control.pdb
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\Yamed.Core.pdb
@@ -170,13 +169,10 @@ E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Grid.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.LayoutControl.v16.2.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Controls.v16.2.xml
-E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.WPF.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Pdf.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Ribbon.v16.2.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.DocumentViewer.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Docking.v16.2.xml
-E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.Core.xml
-E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\ActiveQueryBuilder.View.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\DevExpress.Xpf.Layout.v16.2.Core.xml
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\de\DevExpress.Data.v16.2.resources.dll
 E:\ELMed-ELMed\Yamed.Hospital\bin\Debug\es\DevExpress.Data.v16.2.resources.dll
