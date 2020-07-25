@@ -2719,19 +2719,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             }
         }
 
-        private void PolicyTypeBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
-        {
-            if ((int?)policyTypeBox.EditValue == 3)
-            {
-                polisBox.MaskType = MaskType.Simple;
-                polisBox.Mask = "0000000000000000";
-            }
-            else if ((int?)policyTypeBox.EditValue == 2)
-            {
-                polisBox.MaskType = MaskType.Simple;
-                polisBox.Mask = "000000000";
-            }
-        }
+       
         //private void Autoksg_EditValueChanged(object sender, EditValueChangedEventArgs e)
         //{
         //    if ((bool?)autoksg.EditValue !=null)

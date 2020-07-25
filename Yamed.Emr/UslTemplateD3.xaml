@@ -10,11 +10,12 @@
              xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
              xmlns:control="clr-namespace:Yamed.Control;assembly=Yamed.Control"
              xmlns:emr="clr-namespace:Yamed.Emr"
-             mc:Ignorable="d" Unloaded="HospitalEmrUslugiPanel_OnUnloaded" control:EnterKeyTraversal.IsEnabled="True">
+             mc:Ignorable="d" Unloaded="HospitalEmrUslugiPanel_OnUnloaded"  control:EnterKeyTraversal.IsEnabled="True">
     <UserControl.Resources>
         <emr:DiagnosColorConverter x:Key="diagnosColorConverter" />
         <emr:KsgColorConverter x:Key="ksgColorConverter" />
         <emr:DiagnosShowConverter x:Key="diagnosShowConverter" />
+        
     </UserControl.Resources>
     <Grid Name="GridUsl">
         <dxlc:LayoutControl Header="Header" Orientation="Vertical" UseLayoutRounding="True">
@@ -121,6 +122,7 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
+
         </dxlc:LayoutControl>
 
     </Grid>

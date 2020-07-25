@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -38,6 +40,16 @@ namespace Yamed.Oms
         public EconomyControl()
         {
             InitializeComponent();
+            if (SprClass.Region == "37")
+            {
+                lmis.IsVisible = false;
+                ldbf.IsVisible = true;
+            }
+            else if (SprClass.Region !="37")
+            {
+                lmis.IsVisible = true;
+                ldbf.IsVisible = false;
+            }
         }
 
         //private void Hosp_OnClick(object sender, RoutedEventArgs e)
@@ -1487,5 +1499,120 @@ UPDATE D3_USL_OMS
                 DXMessageBox.Show("Не выбран счет для загрузки МИС");
             }
         }
+
+        private void Ldbf_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            
+            OpenFileDialog OF = new OpenFileDialog();
+            //OF.Filter= "Файлы DBF (.dbf)|*.dbf";
+            OF.Title = "Выберите любой файл в папке с DBF файлами";
+            bool res = OF.ShowDialog().Value;
+            if (res == true)
+            {
+                DirectoryInfo dir = new DirectoryInfo(OF.FileName.Replace($"{OF.SafeFileName}", ""));
+                var spr = dir.GetFiles("*.dbf");
+
+                foreach (var f in spr)
+                {
+                    //string ConnectionString1 = Properties.Settings.Default.DocExchangeConnectionString;
+                    DataTable dt = new DataTable();
+                    using (Stream fos = File.Open(f.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                    {
+                        var dbf = new DotNetDBF.DBFReader(fos);
+                        dbf.CharEncoding = Encoding.GetEncoding(866);
+                        var cnt = dbf.RecordCount;
+                        var fields = dbf.Fields;
+                        for (int ii = 0; ii < fields.Count(); ii++)
+                        {
+                            DataColumn workCol = dt.Columns.Add(fields[ii].Name, fields[ii].Type);
+                            if (workCol.DataType == typeof(string)) workCol.MaxLength = fields[ii].FieldLength;
+                            workCol.AllowDBNull = true;
+                            workCol.DefaultValue = DBNull.Value;
+                        }
+
+                        for (int ii = 0; ii < dbf.RecordCount; ii++)
+                        {
+                            var rtt = dbf.NextRecord();
+
+                            if (rtt != null)
+                            {
+                                for (int i = 0; i < rtt.Count(); i++)
+                                {
+                                    if (rtt[i] == null)
+                                    {
+                                        rtt[i] = null;
+                                    }
+                                    else
+                                    if (rtt[i].ToString() == "")
+                                    {
+                                        rtt[i] = null;
+                                    }
+                                }
+                                dt.LoadDataRow(rtt, true);
+
+                            }
+
+                        }
+                    }
+                    string sqltable;
+                    string sqltable1;
+                    if (f.Name.Contains('_'))
+                    {
+                        sqltable = f.Name.Replace(".dbf", "").Replace(".DBF", "").Replace(".Dbf", "");
+                        sqltable1 = f.Name.Replace(f.Name, "DBF37_" + f.Name.Substring(0, 2) + f.Name.Substring(f.Name.IndexOf('_'), f.Name.Length - f.Name.IndexOf('_') - 4));
+                    }
+                    else
+                    {
+                        sqltable = f.Name.Replace(".dbf", "").Replace(".DBF", "").Replace(".Dbf", "");
+                        sqltable1 = f.Name.Replace(f.Name, "DBF37_" + f.Name.Substring(0, 2));
+                    }
+                    Reader2List.LoadFromTable<DataTable>(SprClass.LocalConnectionString, dt, sqltable1);
+                }
+
+                MessageBox.Show("Файлы успешно загружены в таблицы базы данных");
+
+            }
+            // здесь будет процедура
+            ////////////////////////
+            //удаляем таблицы
+            string ConnectionString1 = SprClass.LocalConnectionString;
+            SqlConnection con = new SqlConnection(ConnectionString1);
+            var database = con.Database;
+            List<string> spr1 = new List<string>();
+            SqlCommand com0 = new SqlCommand($@"select name from sys.tables where name like 'DBF37_%'", con);
+            con.Open();
+            SqlDataReader reader = com0.ExecuteReader();
+
+            if (reader.HasRows == true)
+            {
+                while (reader.Read())
+                {
+                    spr1.Add(reader["name"].ToString());
+                }
+                con.Close();
+                foreach (var table in spr1)
+                {
+
+                    SqlCommand com = new SqlCommand($@"DROP table {table}  ", con);
+                    con.Open();
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+                var command = new SqlCommand($@" declare @n nvarchar(50)
+                set @n=(SELECT name FROM sysfiles WHERE filename LIKE '%LDF%')
+                ALTER DATABASE [{database}] SET RECOVERY SIMPLE WITH NO_WAIT
+                DBCC SHRINKFILE (@n , 0)
+                ALTER DATABASE [{database}] SET RECOVERY FULL", con);
+                con.Open();
+                command.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Таблицы успешно удалены из базы данных");
+            }
+            else
+            {
+                MessageBox.Show("Таблиц DBF в базе не найдено");
+            }
+        }
+
     }
 }

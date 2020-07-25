@@ -22,7 +22,7 @@ namespace Yamed.Emr
         public UslTemplateD3(D3_USL_OMS usl)
         {
             InitializeComponent();
-
+            
             _usl = usl;
             dvmp = _usl.DATE_OUT == null ? SprClass.WorkDate : _usl.DATE_OUT;
             //if (_usl.ID != 0)
@@ -121,5 +121,7 @@ namespace Yamed.Emr
                 }
             }
         }
+
+
     }
 }
