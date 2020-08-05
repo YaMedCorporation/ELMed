@@ -118,7 +118,7 @@ namespace Yamed.Oms
         static object ExportExp(int year, string month)
         {
             string tempQuery = String.Format(@"
-DROP TABLE SANK_EXP_TT
+--DROP TABLE SANK_EXP_TT
 SELECT sl.LPU CODE_MO, sc.[YEAR], sc.[MONTH], sc.NSCHET, sc.DSCHET, sc.PLAT,
 pa.NPOLIS, sl.USL_OK, OS_SLUCH_REGION,
 sl.ZSL_ID, s.S_CODE, (CASE WHEN s.S_TIP = 3 THEN (SELECT TOP 1 KOD FROM ExpertsDB WHERE id = k.ExpertID) ELSE NULL END)S_EXP_CODE,

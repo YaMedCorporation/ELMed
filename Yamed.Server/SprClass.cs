@@ -216,7 +216,7 @@ namespace Yamed.Server
         public static object N003;
         public static object N004;
         public static object N005;
-        public static object N006;
+        //public static object N006;
         public static object N007;
         public static object N008;
         public static object N009;
@@ -333,7 +333,7 @@ namespace Yamed.Server
             N003 = Reader2List.CustomAnonymousSelect($"Select * from N003 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N004 = Reader2List.CustomAnonymousSelect($"Select * from N004 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N005 = Reader2List.CustomAnonymousSelect($"Select * from N005 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
-            N006 = Reader2List.CustomAnonymousSelect($"Select * from N006 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
+           // N006 = Reader2List.CustomAnonymousSelect($"Select * from N006 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N007 = Reader2List.CustomAnonymousSelect($"Select * from N007 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N008 = Reader2List.CustomAnonymousSelect($"Select * from N008 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);
             N009 = Reader2List.CustomAnonymousSelect($"Select * from N009 where datebeg <= '{today}' and isnull(DATEEND, '20991231') >= '{today}'", LocalConnectionString);

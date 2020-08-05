@@ -114,10 +114,14 @@ namespace Yamed.Emr
             {
                 if (DoctorBox.EditValue != null)
                 {
-                    ProfilBox.EditValue = Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
-                    SpecBox.EditValue = Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
-                    DetBox.EditValue = Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
-                    DoljnostBox.EditValue = Reader2List.SelectScalar($@"select KOD_SP from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
+                    ProfilBox.EditValue = Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString) == null ?
+                    ProfilBox.EditValue : Reader2List.SelectScalar($@"select PROFIL_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
+                    SpecBox.EditValue = Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString) == null ?
+                    SpecBox.EditValue : Reader2List.SelectScalar($@"select PRVS_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
+                    DetBox.EditValue = Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString) == null ?
+                    SpecBox.EditValue : Reader2List.SelectScalar($@"select DET_ID from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
+                    DoljnostBox.EditValue = Reader2List.SelectScalar($@"select KOD_SP from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString) == null ?
+                    DoljnostBox.EditValue : Reader2List.SelectScalar($@"select KOD_SP from Yamed_Spr_MedicalEmployee where snils='{DoctorBox.EditValue}'", SprClass.LocalConnectionString).ToString();
                 }
             }
         }

@@ -88,7 +88,20 @@
                                            ToolTip="Изменить вид группировки" GlyphAlignment="Top"
                                            LargeGlyph="/Yamed.Icons;component/Icons/021_119_layout_wireframe_grid_sitemap_structure_list_thread-512.png"
                                            ItemClick="GrItem_OnItemClick" />
-                        </dxb:ToolBarControl>
+                        <dxb:BarItemSeparator BarItemDisplayMode="ContentAndGlyph" />
+                        <dxb:BarButtonItem Name="LoadXmlItem" Alignment="Near"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Загрузка XML актов" GlyphAlignment="Top"
+                                           Content="Загрузка"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/1481911997_file_add.png"
+                                            />
+                        <dxb:BarButtonItem Name="UnloadXmlItem" Alignment="Near"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Выгрузка XML актов" GlyphAlignment="Top"
+                                           Content="Выгрузка"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/update.png"
+                                            />
+                    </dxb:ToolBarControl>
                     </dxb:BarContainerControl>
 
 

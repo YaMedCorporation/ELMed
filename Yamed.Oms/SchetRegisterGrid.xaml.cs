@@ -1553,7 +1553,16 @@ FROM [D3_SCHET_OMS] sch
      )
     or 
     (sch.year<2019 and (S.DS1 LIKE 'C%' OR S.DS1 between 'D00' AND 'D09.z') 
-  )                                 
+  )
+or (sch.CODE_MO like '37%' and                                     
+                      (S.DS1 LIKE 'C%' 
+                            OR 
+                      S.DS1 between 'D00' AND 'D09.z'
+                             OR
+                       (S.DS1 LIKE 'd70%' AND SD.DS LIKE 'C%') 
+                          or
+                        ds_onk=1
+                       ))
 ";
             var result = SqlReader.Select(q, SprClass.LocalConnectionString).Select(x=>x.GetValue("ID")).OfType<int>().ToList();
             var rc = new Oms.SchetRegisterControl();

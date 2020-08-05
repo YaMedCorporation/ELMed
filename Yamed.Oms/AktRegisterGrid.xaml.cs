@@ -62,6 +62,11 @@ namespace Yamed.Oms
             SType2Edit.DataContext = SprClass.TypeExp2;
             UserEdit.DataContext = SprClass.YamedUsers;
             kol();
+            if (SprClass.Region != "37" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            {
+                LoadXmlItem.IsVisible = false;
+                UnloadXmlItem.IsVisible = false;
+            }
         }
 
 

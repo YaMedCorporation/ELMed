@@ -2695,6 +2695,11 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 udlNumberBox.MaskType = MaskType.Simple;
                 udlNumberBox.Mask = "000000";
             }
+            else
+            {
+                udlSerialBox.MaskType = MaskType.None;
+                udlNumberBox.MaskType = MaskType.None;
+            }
         }
 
         private void UdlSerialBox_PreviewKeyDown(object sender, KeyEventArgs e)

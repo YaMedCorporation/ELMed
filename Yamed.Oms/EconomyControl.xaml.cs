@@ -1568,12 +1568,10 @@ UPDATE D3_USL_OMS
                     }
                     Reader2List.LoadFromTable<DataTable>(SprClass.LocalConnectionString, dt, sqltable1);
                 }
-
                 MessageBox.Show("Файлы успешно загружены в таблицы базы данных");
-
             }
             // здесь будет процедура
-            ////////////////////////
+            Reader2List.CustomExecuteQuery($@"EXEC p_load_DBF37", SprClass.LocalConnectionString);
             //удаляем таблицы
             string ConnectionString1 = SprClass.LocalConnectionString;
             SqlConnection con = new SqlConnection(ConnectionString1);
@@ -1598,7 +1596,7 @@ UPDATE D3_USL_OMS
                     com.ExecuteNonQuery();
                     con.Close();
                 }
-                var command = new SqlCommand($@" declare @n nvarchar(50)
+                var command = new SqlCommand($@"declare @n nvarchar(50)
                 set @n=(SELECT name FROM sysfiles WHERE filename LIKE '%LDF%')
                 ALTER DATABASE [{database}] SET RECOVERY SIMPLE WITH NO_WAIT
                 DBCC SHRINKFILE (@n , 0)
@@ -1606,7 +1604,7 @@ UPDATE D3_USL_OMS
                 con.Open();
                 command.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Таблицы успешно удалены из базы данных");
+                MessageBox.Show("Таблицы успешно удалены из базы данных, данные загружены");
             }
             else
             {
