@@ -2627,7 +2627,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                         KOL_USL = 1, //(decimal?)usl.GetValue("Kol"),
                         TARIF = 0, //(decimal?)usl.GetValue("Tarif"),
                         PROFIL = (int?)usl.GetValue("Prof"),
-                        DET = 0, //(int?)usl.GetValue("Det"),
+                        DET = (int?)usl.GetValue("det"),//, DET = 0,
                         PRVS = (int?)usl.GetValue("Spec"),
                         PRVS_VERS = "V021_"+ (int?)usl.GetValue("Spec"),
                         LPU = lpu,

@@ -190,6 +190,7 @@
                         <dxe:ComboBoxEditSettings Name="VozrEdit" DisplayMember="NAME" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
+                <dxg:GridColumn x:Name="Column_NOVOR" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="NOVOR" Header="Новорожденный" />
                 <dxg:GridColumn x:Name="Column_SUMV" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="SUMV" Header="Сумма выставленная" />
                 <dxg:GridColumn x:Name="Column_OPLATA" FilterPopupMode="CheckedList" ColumnFilterMode="Value" FieldName="OPLATA" Header="Оплата" >
                     <dxg:GridColumn.EditSettings>
@@ -294,6 +295,12 @@
                 <dxg:GridColumn x:Name="Column__SL__NHISTORY" FieldName="NHISTORY" Header="Номер истории болезни" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__DATE_1" FieldName="DATE_1" Header="Дата начала" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__DATE_2" FieldName="DATE_2" Header="Дата окончания" />
+                <dxg:GridColumn x:Name="Column__SL__BRIGADA" FieldName="BRIGADA" Header="Бригада" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__NBRIGADA" FieldName="N_BRIGADA" Header="Номер бригады" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__PRIEM_VIZ" FieldName="PRIEM_VIZ" Header="Время приема вызова" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__PERED_VIZ" FieldName="PERED_VIZ" Header="Время передачи вызова" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__PRIB_VIZ" FieldName="PRIB_VIZ" Header="Время прибытия" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
+                <dxg:GridColumn x:Name="Column__SL__ADRES_VIZ" FieldName="ADRES_VIZ" Header="Адрес вызова" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__KD" FieldName="KD" Header="Койко дни" FilterPopupMode="CheckedList" ColumnFilterMode="Value"/>
                 <dxg:GridColumn x:Name="Column__SL__DS1" FieldName="DS1" Header="Диагноз основной" FilterPopupMode="Excel" ColumnFilterMode="DisplayText" >
                     <dxg:GridColumn.EditSettings>

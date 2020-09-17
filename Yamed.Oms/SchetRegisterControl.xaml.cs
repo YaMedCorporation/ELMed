@@ -66,6 +66,10 @@ namespace Yamed.Oms
                 perenos.IsVisible = false;
                 compilezsl.IsVisible = false;
             }
+            if (SprClass.Region == "25")
+            {
+                zaprosPD.Visibility = Visibility.Visible;
+            }
             _sc = sc;
             SchetRegisterGrid1.Scids = new List<int>() { _sc.ID };
         }
@@ -98,6 +102,10 @@ namespace Yamed.Oms
                 flk_osp.IsVisible = false;
                 perenos.IsVisible = false;
                 compilezsl.IsVisible = false;
+            }
+            if (SprClass.Region == "25")
+            {
+                zaprosPD.Visibility = Visibility.Visible;
             }
         }
 
@@ -136,7 +144,10 @@ namespace Yamed.Oms
                 perenos.IsVisible = false;
                 compilezsl.IsVisible = false;
             }
-
+            if (SprClass.Region == "25")
+            {
+                zaprosPD.Visibility = Visibility.Visible;
+            }
             if (scids.Any())
             {
                 var ids = "(";
@@ -836,32 +847,87 @@ where zsl.D3_SCID in {ids}";
 
         private void MtrCheckItem_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            if (((BarCheckItem)sender).IsChecked == true)
-            {
-                if (string.IsNullOrEmpty(SchetRegisterGrid1.gridControl1.FilterString))
-                {
-                    SchetRegisterGrid1.gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '46%')";
+            //if (((BarCheckItem)sender).IsChecked == true)
+            //{
+            //    if (string.IsNullOrEmpty(SchetRegisterGrid1.gridControl1.FilterString))
+            //    {
+            //        SchetRegisterGrid1.gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '46%')";
 
+            //    }
+            //    else
+            //    {
+            //        SchetRegisterGrid1.gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '46%')";
+
+            //    }
+            //}
+            //else
+            //{
+                
+            //    SchetRegisterGrid1.gridControl1.FilterString =
+            //        SchetRegisterGrid1.gridControl1.FilterString.
+            //            Replace($" And ([SMO] Is Null Or [SMO] Not Like '46%')", "").
+            //            Replace($"([SMO] Is Null Or [SMO] Not Like '46%') And ", "").
+
+            //            Replace($"([SMO] Is Null Or [SMO] Not Like '46%')", "").
+            //            Replace($"[SMO] Is Null Or [SMO] Not Like '46%'", "");
+
+            //}
+            if (SprClass.Region == "46")
+            {
+                if (((BarCheckItem)sender).IsChecked == true)
+                {
+                    if (string.IsNullOrEmpty(SchetRegisterGrid1.gridControl1.FilterString))
+                    {
+                        SchetRegisterGrid1.gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '46%')";
+
+                    }
+                    else
+                    {
+                        SchetRegisterGrid1.gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '46%')";
+
+                    }
                 }
                 else
                 {
-                    SchetRegisterGrid1.gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '46%')";
+                    SchetRegisterGrid1.gridControl1.FilterString =
+                        SchetRegisterGrid1.gridControl1.FilterString.
+                            Replace($" And ([SMO] Is Null Or [SMO] Not Like '46%')", "").
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '46%') And ", "").
+
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '46%')", "").
+                            Replace($"[SMO] Is Null Or [SMO] Not Like '46%'", "");
 
                 }
             }
-            else
+            else if (SprClass.Region == "37")
             {
-                
-                SchetRegisterGrid1.gridControl1.FilterString =
-                    SchetRegisterGrid1.gridControl1.FilterString.
-                        Replace($" And ([SMO] Is Null Or [SMO] Not Like '46%')", "").
-                        Replace($"([SMO] Is Null Or [SMO] Not Like '46%') And ", "").
+                if (((BarCheckItem)sender).IsChecked == true)
+                {
+                    if (string.IsNullOrEmpty(SchetRegisterGrid1.gridControl1.FilterString))
+                    {
+                        SchetRegisterGrid1.gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '37%')";
 
-                        Replace($"([SMO] Is Null Or [SMO] Not Like '46%')", "").
-                        Replace($"[SMO] Is Null Or [SMO] Not Like '46%'", "");
+                    }
+                    else
+                    {
+                        SchetRegisterGrid1.gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '37%')";
 
+                    }
+                }
+                else
+                {
+                    SchetRegisterGrid1.gridControl1.FilterString =
+                        SchetRegisterGrid1.gridControl1.FilterString.
+                            Replace($" And ([SMO] Is Null Or [SMO] Not Like '37%')", "").
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '37%') And ", "").
+
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '37%')", "").
+                            Replace($"[SMO] Is Null Or [SMO] Not Like '37%'", "");
+
+                }
             }
-            
+
+
         }
 
         private void ViewCheckItem_CheckedChanged(object sender, ItemClickEventArgs e)
@@ -1410,7 +1476,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
             var sluids = new List<int>();
             foreach (var row in DxHelper.LoadedRows)
             {
-                if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.Region=="25" || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                 {
                     sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
                 }
@@ -1443,6 +1509,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
             var item = new D3_AKT_REGISTR_OMS();
             item.USERID_NOTEDIT = SprClass.userId;
             item.LPU = (string)ObjHelper.GetAnonymousValue(DxHelper.LoadedRows[0], "LPU");
+
                 var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", item, false, SprClass.LocalConnectionString);
                 var window = new DXWindow
                 {
@@ -1453,61 +1520,61 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                     Content = sprEditWindow,
                     Title = "Новый акт экспертизы"
                 };
-
                 if (window.ShowDialog() == true)
                 {
-                    var arid = item.ID;
-                    List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
-
-                    foreach (int slid in sluids.ToArray().Distinct())
-                    {
-
-                        var rq = new D3_REQ_OMS()
+                        var arid = item.ID;
+                        var exp_date = item.DATE_ACT;
+                        var coment = item.COMMENT;
+                        List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
+                        foreach (int slid in sluids.ToArray().Distinct())
                         {
-                            D3_ARID = arid,
-                            D3_ZSLID = slid
-                        };
-                        rlist.Add(rq);
-                    }
-                    Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
-                    MessageBoxResult result = DXMessageBox.Show("Желаете сразу провести экспертизу?", "Выберите действие", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.No)
-                    {
-                        window.Close();
-                    }
-                    else
-                    {
+                        Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_date='{exp_date}' where id={slid}", SprClass.LocalConnectionString);
+                        Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_coment='{coment}' where id={slid}", SprClass.LocalConnectionString);
+                        var rq = new D3_REQ_OMS()
+                            {
+                                D3_ARID = arid,
+                                D3_ZSLID = slid
+                            };
+                            rlist.Add(rq);
+                }
+                        Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
+                        MessageBoxResult result = DXMessageBox.Show("Желаете сразу провести экспертизу?", "Выберите действие", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.No)
+                        {
+                            window.Close();
+                        }
+                        else
+                        {
                             var type = Reader2List.SelectScalar($@"select left(S_TIP2,1) from D3_AKT_REGISTR_OMS akt
                         where akt.id={arid}", SprClass.LocalConnectionString);
-                        if (type.ToString() == "2")
-                        {
-                            var windowMee = new DXWindow
+                            if (type.ToString() == "2")
                             {
-                                ShowIcon = false,
-                                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                                Content = new MedicExpControl(2, null, DxHelper.LoadedRows, 0, arid),
-                                Title = "Акт МЭЭ",
-                                SizeToContent = SizeToContent.Height,
-                                Width = 1450
-                            };
-                            windowMee.ShowDialog();
-                        }
-                        else if (type.ToString()=="3" || type.ToString() == "4")
-                        {
-                            var windowEkmp = new DXWindow
+                                var windowMee = new DXWindow
+                                {
+                                    ShowIcon = false,
+                                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                                    Content = new MedicExpControl(2, null, DxHelper.LoadedRows, 0, arid),
+                                    Title = "Акт МЭЭ",
+                                    SizeToContent = SizeToContent.Height,
+                                    Width = 1450
+                                };
+                                windowMee.ShowDialog();
+                            }
+                            else if (type.ToString() == "3" || type.ToString() == "4")
                             {
-                                ShowIcon = false,
-                                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                                Content = new MedicExpControl(3, null, DxHelper.LoadedRows, 0, arid),
-                                Title = "Акт ЭКМП",
-                                SizeToContent = SizeToContent.Height,
-                                Width = 1450
-                            };
-                            windowEkmp.ShowDialog();
+                                var windowEkmp = new DXWindow
+                                {
+                                    ShowIcon = false,
+                                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                                    Content = new MedicExpControl(3, null, DxHelper.LoadedRows, 0, arid),
+                                    Title = "Акт ЭКМП",
+                                    SizeToContent = SizeToContent.Height,
+                                    Width = 1450
+                                };
+                                windowEkmp.ShowDialog();
+                            }
                         }
                     }
-                }
-
                 SchetRegisterGrid1.gridControl1.IsEnabled = true;
                 DxHelper.LoadedRows.Clear();
 
@@ -1541,7 +1608,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 var sluids = new List<int>();
                 foreach (var row in DxHelper.LoadedRows)
                 {
-                    if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                    if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.Region == "25" ||  SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                     {
                         sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));
                     }
@@ -1675,7 +1742,7 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                 var sluids = new List<int>();
                 foreach (var row in DxHelper.LoadedRows)
                 {
-                    if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                    if ((int?)ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == 0 || ObjHelper.GetAnonymousValue(row, "MEK_COUNT") == null || SprClass.Region == "25" || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                     {
                        if (sluids.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                         sluids.Add((int)ObjHelper.GetAnonymousValue(row, "ID"));

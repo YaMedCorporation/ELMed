@@ -117,6 +117,32 @@ namespace Yamed.Control.Editors
         {
             if (_isEdit == false)
             {
+                if (_tableName == "D3_AKT_REGISTR_OMS")
+                {
+                    var num = SqlReader.Select($@"Select NUM_ACT from D3_AKT_REGISTR_OMS where num_act='{ObjHelper.GetAnonymousValue(_obj, "NUM_ACT")}' and left('{ObjHelper.GetAnonymousValue(_obj,"S_TIP2")}',1)=left(S_TIP2,1)", SprClass.LocalConnectionString);
+                    if (ObjHelper.GetAnonymousValue(_obj, "NUM_ACT") != null)
+                    {
+                        if (num.Count > 0)
+                        {
+                            string type = "";
+                            if (ObjHelper.GetAnonymousValue(_obj, "S_TIP2").ToString().Substring(0, 1) == "2")
+                            {
+                                type = "МЭЭ";
+                            }
+                            else
+                            {
+                                type = "ЭКМП";
+                            }
+                            DXMessageBox.Show($@"Указанный номер акта для {type} уже существует в базе!");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        DXMessageBox.Show("Не заполнено поле номер акта!");
+                        return;
+                    }
+                }
                 if (_is_identity)
                 {
                    var id = Reader2List.ObjectInsertCommand(_tableName, _obj, _pkCol.Column_Name, _connectionString);

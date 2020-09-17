@@ -478,6 +478,8 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
             if (row == null) return;
 
             var sc = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(row);
+            var exp_date = ObjHelper.GetAnonymousValue(row,"DATE_ACT");
+            var coment = ObjHelper.GetAnonymousValue(row, "COMMENT");
             object lpu_status = DxHelper.LoadedRows.GroupBy(x=>ObjHelper.GetAnonymousValue(x,"LPU")).Select(gr=>gr.Key).Contains(sc.LPU);
             if ((bool?)lpu_status == false)
             {
@@ -486,19 +488,94 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
             else
             {
                 List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
+                var sluids = new List<int>();
                 foreach (var rows in DxHelper.LoadedRows)
                 {
+                    sluids.Add((int)ObjHelper.GetAnonymousValue(rows, "ID"));
+                }
+                foreach (int slid in sluids.ToArray().Distinct())
+                {
+                    Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_date='{exp_date}' where id={slid}", SprClass.LocalConnectionString);
+                    Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_coment='{coment}' where id={slid}", SprClass.LocalConnectionString);
                     var rq = new D3_REQ_OMS()
                     {
                         D3_ARID = sc.ID,
-                        D3_ZSLID = (int)ObjHelper.GetAnonymousValue(rows, "ID")
+                        D3_ZSLID = slid
                     };
                     rlist.Add(rq);
                 }
                 Reader2List.AnonymousInsertCommand("D3_REQ_OMS", rlist, "ID", SprClass.LocalConnectionString);
                 DXMessageBox.Show("Добавлено случаев в акт - " + rlist.Count);
+                
             }
             ((DXWindow)this.Parent).Close();
+        }
+
+        private void UnloadXmlItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var rows = gridControl1.GetSelectedRowHandles();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "OMS File (*.oms)|*.oms";
+            saveFileDialog.FileName = "Acts.oms";
+
+            bool? result = saveFileDialog.ShowDialog();
+            if (result == true)
+            {
+                int cntacts = 0;
+                foreach (var r in rows)
+                {
+                    if (r >= 0)
+                    {
+                        var sc = (int)gridControl1.GetCellValue(r, "ID");
+
+                        var qxml = SqlReader.Select($@"
+                    exec Export_to_mobile {sc}"
+                        , SprClass.LocalConnectionString);
+                        string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("HM");
+                        string result2 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("LM");
+                        using (ZipFile zip = new ZipFile(Encoding.GetEncoding("windows-1251")))
+                        {
+                            zip.AddEntry((string)qxml[0].GetValue("hf_name") + sc.ToString() + ".xml", result1);
+                            zip.AddEntry((string)qxml[0].GetValue("lf_name") + sc.ToString() + ".xml", result2);
+                            string fnm = saveFileDialog.FileName.Replace("Acts.oms", (string)qxml[0].GetValue("hf_name") + sc.ToString() + ".oms");
+                            zip.Save(fnm);
+                            cntacts = cntacts + 1;
+                        }
+                    }
+                }
+                DXMessageBox.Show("Успешно выгружено актов: " + cntacts + "\n" +
+                    " Папка выгрузки: " + saveFileDialog.FileName.Replace("\\Acts.oms", ""));
+            }
+        }
+
+        private void LoadXmlItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenFileDialog OF = new OpenFileDialog();
+            OF.Multiselect = true;
+            bool? result = OF.ShowDialog();
+            string[] zipfiles = OF.FileNames;
+            if (result == true)
+            {
+                foreach (var f in zipfiles)
+                {
+                    using (var zf = new ZipFile(f))
+                    {
+                        zf.ExtractAll(f.Replace(".oms", ""));
+                    }
+                    var files_xml = Directory.GetFiles(f.Replace(".oms", ""));
+                    XmlDocument s_xml = new XmlDocument();
+                    s_xml.Load(files_xml[0]);
+                    SqlReader.Select($@"exec Import_mobile_acts '{s_xml.InnerXml}'", SprClass.LocalConnectionString);
+
+                    foreach (var fx in files_xml)
+                    {
+                        File.Delete(fx);
+                    }
+                    Directory.Delete(f.Replace(".oms", ""));
+                }
+                DXMessageBox.Show("Экспертизы успешно загружены.");
+            }
         }
     }
 

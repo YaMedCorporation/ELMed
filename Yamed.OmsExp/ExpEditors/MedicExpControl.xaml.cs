@@ -131,6 +131,7 @@ namespace Yamed.OmsExp.ExpEditors
                         expList.Row = row;
                         expList.Nhistory = Reader2List.SelectScalar($@"Select (select top(1) sl.nhistory  from d3_sl_oms sl where sl.d3_zslid=zsl.id order by sl.id) as NHISTORY from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
                         expList.usl_ok = Reader2List.SelectScalar($@"Select usl_ok from D3_ZSL_OMS zsl where zsl.ID={(int)ObjHelper.GetAnonymousValue(row, "ID")}", SprClass.LocalConnectionString);
+                        
                     if (zslid.Contains((int)ObjHelper.GetAnonymousValue(row, "ID")) == false)
                     {
                         

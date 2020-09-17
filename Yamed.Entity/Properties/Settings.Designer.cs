@@ -12,7 +12,7 @@ namespace Yamed.Entity.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -210,6 +210,17 @@ namespace Yamed.Entity.Properties {
         public string ElmedicineSV_OnkoConnectionString {
             get {
                 return ((string)(this["ElmedicineSV_OnkoConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MED\\SQLEXPRESS01;Initial Catalog=ElmedicineNewSV3;Integrated Security" +
+            "=True")]
+        public string ElmedicineNewSV3ConnectionString {
+            get {
+                return ((string)(this["ElmedicineNewSV3ConnectionString"]));
             }
         }
     }

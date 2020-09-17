@@ -93,14 +93,14 @@
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Загрузка XML актов" GlyphAlignment="Top"
                                            Content="Загрузка"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/1481911997_file_add.png"
-                                            />
+                                           LargeGlyph="/Yamed.Icons;component/Icons/1481911997_file_add.png" ItemClick="LoadXmlItem_ItemClick"
+                                           IsEnabled="True" />
                         <dxb:BarButtonItem Name="UnloadXmlItem" Alignment="Near"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Выгрузка XML актов" GlyphAlignment="Top"
                                            Content="Выгрузка"
-                                           LargeGlyph="/Yamed.Icons;component/Icons/update.png"
-                                            />
+                                           LargeGlyph="/Yamed.Icons;component/Icons/update.png" ItemClick="UnloadXmlItem_ItemClick"
+                                           IsEnabled="True" />
                     </dxb:ToolBarControl>
                     </dxb:BarContainerControl>
 

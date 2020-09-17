@@ -60,15 +60,27 @@ namespace Yamed.Oms
 
                     gridControl1.FilterString = "";
                     gridControl1.ClearSorting();
-                    if (SprClass.Region != "37")
+                    if (SprClass.Region != "37" && SprClass.Region != "39")
                     {
                         Column__TARIF__USLIV.Visible = false;
+                        Column__SL__ADRES_VIZ.Visible = false;
+                        Column__SL__BRIGADA.Visible = false;
+                        Column__SL__NBRIGADA.Visible = false;
+                        Column__SL__PRIEM_VIZ.Visible = false;
+                        Column__SL__PRIB_VIZ.Visible = false;
+                        Column__SL__PERED_VIZ.Visible = false;
                     }
-                    else
+                    else if (SprClass.Region == "37")
                     {
                         Column__TARIF__USLIV.Visible = true;
+                        Column__SL__ADRES_VIZ.Visible = false;
+                        Column__SL__BRIGADA.Visible = false;
+                        Column__SL__NBRIGADA.Visible = false;
+                        Column__SL__PRIEM_VIZ.Visible = false;
+                        Column__SL__PRIB_VIZ.Visible = false;
+                        Column__SL__PERED_VIZ.Visible = false;
                     }
-                    
+
                 }));
 
             ZUslOkEdit.DataContext = SprClass.conditionHelp;
@@ -497,7 +509,13 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
-
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
                                   //для отображения полей Иваново, Андрей insidious
                                   sl.GRAF_DN,
                                   sl.KSKP,
@@ -652,7 +670,13 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
-
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
                                   //для отображения полей Иваново, Андрей insidious
                                   sl.GRAF_DN,
                                   sl.KSKP,
@@ -825,7 +849,13 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               sl.PROFIL_K,
                               sl.C_ZAB,
                               sl.DS_ONK,
-
+                              //для отображения полей Калининград
+                              sl.BRIGADA,
+                              sl.ADRES_VIZ,
+                              sl.N_BRIGADA,
+                              sl.PERED_VIZ,
+                              sl.PRIB_VIZ,
+                              sl.PRIEM_VIZ,
                               //для отображения полей Иваново, Андрей insidious
                               sl.GRAF_DN,
                               sl.KSKP,
@@ -1003,7 +1033,13 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               sl.DS_ONK,
                               sl.SL_ID,
 
-
+                              //для отображения полей Калининград
+                              sl.BRIGADA,
+                              sl.ADRES_VIZ,
+                              sl.N_BRIGADA,
+                              sl.PERED_VIZ,
+                              sl.PRIB_VIZ,
+                              sl.PRIEM_VIZ,
                               //для отображения полей Иваново, Андрей insidious
                               sl.GRAF_DN,
                               sl.KSKP,
@@ -1167,7 +1203,13 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.PROFIL_K,
                                   sl.C_ZAB,
                                   sl.DS_ONK,
-
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
 
                                   //для отображения полей Иваново, Андрей insidious
                                   sl.GRAF_DN,
@@ -1395,29 +1437,59 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
 
         private void MtrCheck_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            if ((bool?) e.NewValue == true)
+            if (SprClass.Region == "46")
             {
-                if (string.IsNullOrEmpty(gridControl1.FilterString))
+                if ((bool?)e.NewValue == true)
                 {
-                    gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '46%')";
+                    if (string.IsNullOrEmpty(gridControl1.FilterString))
+                    {
+                        gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '46%')";
 
+                    }
+                    else
+                    {
+                        gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '46%')";
+
+                    }
                 }
                 else
                 {
-                    gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '46%')";
+                    gridControl1.FilterString =
+                        gridControl1.FilterString.
+                            Replace($" And ([SMO] Is Null Or [SMO] Not Like '46%')", "").
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '46%') And ", "").
+
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '46%')", "").
+                            Replace($"[SMO] Is Null Or [SMO] Not Like '46%'", "");
 
                 }
             }
-            else
+            else if (SprClass.Region == "37")
             {
-                gridControl1.FilterString =
-                    gridControl1.FilterString.
-                        Replace($" And ([SMO] Is Null Or [SMO] Not Like '46%')", "").
-                        Replace($"([SMO] Is Null Or [SMO] Not Like '46%') And ", "").
+                if ((bool?)e.NewValue == true)
+                {
+                    if (string.IsNullOrEmpty(gridControl1.FilterString))
+                    {
+                        gridControl1.FilterString = $"([SMO] Is Null Or [SMO] Not Like '37%')";
 
-                        Replace($"([SMO] Is Null Or [SMO] Not Like '46%')", "").
-                        Replace($"[SMO] Is Null Or [SMO] Not Like '46%'", "");
+                    }
+                    else
+                    {
+                        gridControl1.FilterString += $"And ([SMO] Is Null Or [SMO] Not Like '37%')";
 
+                    }
+                }
+                else
+                {
+                    gridControl1.FilterString =
+                        gridControl1.FilterString.
+                            Replace($" And ([SMO] Is Null Or [SMO] Not Like '37%')", "").
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '37%') And ", "").
+
+                            Replace($"([SMO] Is Null Or [SMO] Not Like '37%')", "").
+                            Replace($"[SMO] Is Null Or [SMO] Not Like '37%'", "");
+
+                }
             }
         }
 
@@ -1687,7 +1759,13 @@ or (sch.CODE_MO like '37%' and
                                   ksg.KSG_PG,
                                   ksg.SL_K,
                                   ksg.IT_SL,
-
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
 
                                   //для отображения полей Иваново, Андрей insidious
                                   sl.GRAF_DN,
@@ -1856,7 +1934,13 @@ or (sch.CODE_MO like '37%' and
                                   ksg.KSG_PG,
                                   ksg.SL_K,
                                   ksg.IT_SL,
-
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
 
                                   //для отображения полей Иваново, Андрей insidious
                                   sl.GRAF_DN,

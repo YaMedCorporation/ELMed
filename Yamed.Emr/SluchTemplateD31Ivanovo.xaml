@@ -273,15 +273,15 @@
                                 </dxlc:LayoutItem>
                             </dxlc:LayoutGroup>
                             <dxlc:LayoutItem Label="Новорожд." IsRequired="True">
-                                <dxe:TextEdit x:Name="novorBox" EditValue="{Binding NOVOR, UpdateSourceTrigger=PropertyChanged}" ToolTip="Указывается в случае оказания медицин-ской помощи ребёнку до государственной регистрации рожде-ния.
-                                          0 – признак отсут-ствует.
-                                          Если значение при-знака отлично от ну-ля, он заполняется по следующему шабло-ну:
-                                          ПДДММГГН, где
-                                          П – пол ребёнка в со-ответствии с класси-фикатором V005 Приложения А;
-                                          ДД – день рождения;
-                                          ММ – месяц рожде-ния;
-                                          ГГ – последние две цифры года рожде-ния;
-                                          Н – порядковый но-мер ребёнка (до двух знаков)." />
+                                <dxe:TextEdit x:Name="novorBox" EditValue="{Binding NOVOR, UpdateSourceTrigger=PropertyChanged}" ToolTip="Указывается в случае оказания медицинской помощи ребёнку до государственной регистрации рождения.&#10;
+                                          0 – признак отсутствует.&#10;
+                                          Если значение признака отлично от нуля, он заполняется по следующему шаблону:&#10;
+                                          ПДДММГГН, где&#10;
+                                          П – пол ребёнка в соответствии с классификатором V005 Приложения А;&#10;
+                                          ДД – день рождения;&#10;
+                                          ММ – месяц рождения;&#10;
+                                          ГГ – последние две цифры года рождения;&#10;
+                                          Н – порядковый номер ребёнка (до двух знаков).&#10;" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Житель">
                                 <dxe:ComboBoxEdit EditValue="{Binding DataContext.KOD_TER, ElementName=PacientGroup, UpdateSourceTrigger=PropertyChanged}" x:Name="KodTerEdit" ItemsSource="{Binding}"
