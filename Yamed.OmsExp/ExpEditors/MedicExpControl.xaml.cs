@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Core;
@@ -27,7 +29,46 @@ namespace Yamed.OmsExp.ExpEditors
         public object Nhistory { get; set; }
         public object usl_ok { get; set; }
     }
+    public class StrToArr : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo ture)
+        {
 
+            int[] ev = null;
+            //string[] ev1 = null;
+            if (value != null)
+            {
+                ev = value.ToString().Split(';').Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => int.Parse(x)).ToArray();
+                return ev;
+            }
+            else
+            {
+                return ev;
+            }
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo ture)
+        {
+            string p1 = "";
+            if (value == null)
+            {
+                return null;
+            }
+            else
+            {
+                var d1 = (ICollection)value;
+                int[] dd1 = new int[d1.Count];
+                string p = "";
+                d1.CopyTo(dd1, 0);
+                for (int i = 0; i < dd1.Count(); i++)
+                {
+                    p1 += (dd1[i] + ";");
+                    p = p1.Substring(0, p1.Length - 1);
+                }
+
+                return p;
+            }
+        }
+    }
 
     /// <summary>
     /// Логика взаимодействия для MeeWindow.xaml
@@ -59,10 +100,19 @@ namespace Yamed.OmsExp.ExpEditors
             _arid = arid;
 
             _isNew = sid == null;
-            
 
+           
             ExpertColumnEdit.DataContext = Reader2List.CustomAnonymousSelect("Select * from ExpertsDB order by FAM",SprClass.LocalConnectionString);//SprClass.ExpertDbs;
-
+            if (SprClass.Region == "39")
+            {
+                ds1.Visibility = Visibility.Visible;
+                ds2.Visibility = Visibility.Visible;
+                ds3.Visibility = Visibility.Visible;
+                kategrash.Visibility = Visibility.Visible;
+                prichrash.Visibility = Visibility.Visible;
+                VarianceCatEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from variance_cat", SprClass.LocalConnectionString);
+                VarianceReasonEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from variance_reason", SprClass.LocalConnectionString);
+            }
             TemplateZaklEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from D3_SANK_TEMPLATE where userid='{SprClass.userId}' order by USERID", SprClass.LocalConnectionString);
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
             VidExpEdit.DataContext = videxp;
@@ -92,6 +142,7 @@ namespace Yamed.OmsExp.ExpEditors
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
                 date_act.Visibility = Visibility.Collapsed;
             }
+
             
         }
 
@@ -264,7 +315,6 @@ namespace Yamed.OmsExp.ExpEditors
             ExpLayGr.DataContext = sa;
             ExpertGridControl.FilterString = $"([D3_SANKGID] = '{sa.S_CODE}')";
             sa.S_COM = sa.S_ZAKL;
-            
         }
 
         private void ShablonEdit_OnPopupOpening(object sender, OpenPopupEventArgs e)
@@ -543,7 +593,12 @@ namespace Yamed.OmsExp.ExpEditors
                     ex.Sank.Z_INFO_NP = sa.Z_INFO_NP;
                     ex.Sank.Z_DS_NP = sa.Z_DS_NP;
                     ex.Sank.Z_PREEM_NP = sa.Z_PREEM_NP;
-                    if (_expertList != null)
+                    ex.Sank.DEATH_DS1 = sa.DEATH_DS1;
+                    ex.Sank.DEATH_DS2 = sa.DEATH_DS2;
+                    ex.Sank.DEATH_DS3 = sa.DEATH_DS3;
+                    ex.Sank.VARIANCE_CAT = sa.VARIANCE_CAT;
+                    ex.Sank.VARIANCE_REASON = sa.VARIANCE_REASON;
+                if (_expertList != null)
                         foreach (var expert in _expertList.Where(x => x.D3_SANKGID == sa.S_CODE).ToList())
                         {
                             D3_SANK_EXPERT_OMS nexpert = new D3_SANK_EXPERT_OMS()
@@ -562,5 +617,6 @@ namespace Yamed.OmsExp.ExpEditors
         {
             ZaklEdit.Text = TemplateZaklEdit.Text;
         }
+
     }
 }

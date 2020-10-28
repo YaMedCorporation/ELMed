@@ -69,7 +69,7 @@
 
                 <dxg:GridColumn x:Name="Column_FAM" FieldName="FAM" Header="Фамилия" FilterPopupMode="CheckedList" />
                 <dxg:GridColumn x:Name="Column_IM" FieldName="IM" Header="Имя"  />
-                <dxg:GridColumn x:Name="Column_OT" FieldName="OT" Header="Очество" />
+                <dxg:GridColumn x:Name="Column_OT" FieldName="OT" Header="Отчество" />
                 <dxg:GridColumn x:Name="Column_W" FieldName="W" Header="Пол" />
                 <dxg:GridColumn x:Name="Column_DR" FieldName="DR" Header="Дата рождения" />
                 <!--<dxg:GridColumn x:Name="Column_DOST" FieldName="DOST" Header="Код надежности" />-->

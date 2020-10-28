@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using Yamed.Server;
 
 namespace Yamed.OmsExp.SqlEditor
 {
@@ -11,6 +12,13 @@ namespace Yamed.OmsExp.SqlEditor
         public AutoMekElement()
         {
             InitializeComponent();
+            if (SprClass.Region == "37")
+            {
+                TextBlock1.Visibility = System.Windows.Visibility.Collapsed;
+                TextBlock9.Visibility = System.Windows.Visibility.Collapsed;
+                PolisCheckListBoxEdit.Visibility = System.Windows.Visibility.Collapsed;
+                AttachedCheckListBoxEdit.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
         private void LogBox_EditValueChanged(object sender, DevExpress.Xpf.Editors.EditValueChangedEventArgs e)

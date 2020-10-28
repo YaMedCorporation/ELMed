@@ -63,40 +63,42 @@ namespace Yamed.Oms
                 Connection = { ConnectionString = SprClass.LocalConnectionString }
             };
 
-            IQueryable pQueryable = from sc in edc.D3_SCHET_OMS
-                                    join f3 in edc.D3_F003 on sc.CODE_MO equals f3.mcod
-                                    join sprsc in edc.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                                    select new
-                                    {                                        
-                                        ID = sc.ID,
-                                        CODE_MO = sc.CODE_MO,
-                                        NAME_MO = f3.nam_mok,
-                                        NAME_MO_ID = f3.NameWithID,
-                                        PLAT = sc.PLAT,
-                                        YEAR = sc.YEAR,
-                                        MONTH = sc.MONTH,
-                                        NSCHET = sc.NSCHET,
-                                        DSCHET = sc.DSCHET,
-                                        SUMMAV = sc.SUMMAV,
-                                        SUMMAP = sc.SUMMAP,
-                                        SANK_MEK = sc.SANK_MEK,
-                                        SANK_MEE = sc.SANK_MEE,
-                                        SANK_EKMP = sc.SANK_EKMP,
-                                        COMENTS = sc.COMENTS,
-                                        sc.DISP,
-                                        sc.SD_Z,
-                                        sc.OmsFileName,
-                                        sc.ZapFileName,
-                                        sc.PersFileName,
-                                        sc.SchetType,
-                                        SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
-                                        sc.Status 
-                                    };
+            /* IQueryable*/
+            var pQueryable = (from sc in edc.D3_SCHET_OMS
+                             join f3 in edc.D3_F003 on sc.CODE_MO equals f3.mcod
+                             join sprsc in edc.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                             select new
+                             {
+                                 ID = sc.ID,
+                                 CODE_MO = sc.CODE_MO,
+                                 NAME_MO = f3.nam_mok,
+                                 NAME_MO_ID = f3.NameWithID,
+                                 PLAT = sc.PLAT,
+                                 YEAR = sc.YEAR,
+                                 MONTH = sc.MONTH,
+                                 NSCHET = sc.NSCHET,
+                                 DSCHET = sc.DSCHET,
+                                 SUMMAV = sc.SUMMAV,
+                                 SUMMAP = sc.SUMMAP,
+                                 SANK_MEK = sc.SANK_MEK,
+                                 SANK_MEE = sc.SANK_MEE,
+                                 SANK_EKMP = sc.SANK_EKMP,
+                                 COMENTS = sc.COMENTS,
+                                 sc.DISP,
+                                 sc.SD_Z,
+                                 sc.OmsFileName,
+                                 sc.ZapFileName,
+                                 sc.PersFileName,
+                                 sc.SchetType,
+                                 SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
+                                 sc.Status
+                             }).ToList();
+            gridControl.ItemsSource = pQueryable;
+            //linqInstantFeedbackDataSource.QueryableSource = pQueryable;Data,
+            //Source ={ StaticResource LinqInstantFeedbackDataSource}
 
-            linqInstantFeedbackDataSource.QueryableSource = pQueryable;
-
-//            var tfoms = Reader2List.CustomSelect<Settings>("Select * from Settings where Name = 'TFOMS'",
-//SprClass.LocalConnectionString).SingleOrDefault()?.Parametr;
+            //            var tfoms = Reader2List.CustomSelect<Settings>("Select * from Settings where Name = 'TFOMS'",
+            //SprClass.LocalConnectionString).SingleOrDefault()?.Parametr;
             //            var isTfoms = tfoms != null && bool.Parse(tfoms);
             //            var isSmo = tfoms != null && !bool.Parse(tfoms);
 

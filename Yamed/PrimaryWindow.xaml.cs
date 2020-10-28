@@ -1265,11 +1265,11 @@ namespace Yamed
                 ProcessStartInfo psi;
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    psi = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "x64", "7z.exe"), $@"e {(char)34 + OF.FileName + (char)34} -o{(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -y");
+                    psi = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "x64", "7z.exe"), $@"e {(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -o{(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -y");
                 }
                 else
                 {
-                    psi = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "x86", "7z.exe"), $@"e {(char)34 + OF.FileName + (char)34} -o{(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -y");
+                    psi = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "x86", "7z.exe"), $@"e {(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -o{(char)34 + OF.FileName.Replace("\\" + OF.SafeFileName, "") + (char)34} -y");
                 }
                 psi.RedirectStandardInput = true;
                 psi.UseShellExecute = false;

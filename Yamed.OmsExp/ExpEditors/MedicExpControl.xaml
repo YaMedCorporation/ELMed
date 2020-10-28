@@ -1,5 +1,6 @@
 ﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Yamed.OmsExp.ExpEditors"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v16.2" Loaded="MeeWindow_OnLoaded" 
         x:Class="Yamed.OmsExp.ExpEditors.MedicExpControl">
@@ -8,7 +9,7 @@
             <Style TargetType="{x:Type dxlc:LayoutItem}">
                 <Setter Property="LabelPosition" Value="Top" />
             </Style>
-
+            <local:StrToArr x:Key="StringToArray"/>
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -157,6 +158,25 @@
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="ДИАГНОЗЫ. Негативные последствия">
                         <dxe:TextEdit EditValue="{Binding Z_DS_NP, UpdateSourceTrigger=PropertyChanged}" x:Name="DsNegPosEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Name="ds1" Label="ДИАГНОЗ 1. Основного заболевания (первоначальная причина смерти)" Visibility="Collapsed">
+                        <dxe:TextEdit EditValue="{Binding DEATH_DS1, UpdateSourceTrigger=PropertyChanged}" x:Name="DsOsnzEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Name="ds2" Label="ДИАГНОЗ 2. Осложнения осн. забол." Visibility="Collapsed">
+                        <dxe:TextEdit EditValue="{Binding DEATH_DS2, UpdateSourceTrigger=PropertyChanged}" x:Name="DsOsnOsEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Name="ds3" Label="ДИАГНОЗ 3. Сопутств. заболевания" Visibility="Collapsed">
+                        <dxe:TextEdit EditValue="{Binding DEATH_DS3, UpdateSourceTrigger=PropertyChanged}" x:Name="DsOsnSoEdit" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem x:Name="kategrash" Label="Категории расх. диагн." Visibility="Collapsed">
+                        <dxe:ComboBoxEdit ValueMember="ID" ValidateOnTextInput="False" NullValueButtonPlacement="EditBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.VARIANCE_CAT, ElementName=ExpLayGr,UpdateSourceTrigger=PropertyChanged}" FilterCondition="Contains" DisplayMember="NameWithID" AutoComplete="True" x:Name="VarianceCatEdit"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem x:Name="prichrash" Label="Причины расх. диагн."  Visibility="Collapsed">
+                        <dxe:ComboBoxEdit ValueMember="ID" ValidateOnTextInput="False" NullValueButtonPlacement="EditBox" ItemsSource="{Binding}" EditValue="{Binding DataContext.VARIANCE_REASON, ElementName=ExpLayGr, Converter={StaticResource StringToArray},UpdateSourceTrigger=PropertyChanged}" FilterCondition="Contains" DisplayMember="NameWithID" AutoComplete="True" x:Name="VarianceReasonEdit" >
+                            <dxe:ComboBoxEdit.StyleSettings>
+                                <dxe:CheckedComboBoxStyleSettings />
+                            </dxe:ComboBoxEdit.StyleSettings>
+                        </dxe:ComboBoxEdit>
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="ОКАЗАНИЕ МП">
                         <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding Z_OKAZ_MP, UpdateSourceTrigger=PropertyChanged}" x:Name="OkazMpEdit" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" />

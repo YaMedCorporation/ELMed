@@ -221,10 +221,16 @@ namespace Yamed.OmsExp.SqlEditor
                                     //    {
                                     //    var x = 1;
                                     //}
-                                    errList =
-                                        (IList)Reader2List.CustomAnonymousSelect(alg.Replace("@p1", id.ToString()), SprClass.LocalConnectionString);
-                                    flkcnt += errList.Count;
-
+                                    if ((string)flk.GetValue("AlgName") == "Проверка ОСП")
+                                    {
+                                        Reader2List.CustomExecuteQuery(alg.Replace("@p1", id.ToString()), SprClass.LocalConnectionString);
+                                    }
+                                    else
+                                    {
+                                        errList =
+                                            (IList)Reader2List.CustomAnonymousSelect(alg.Replace("@p1", id.ToString()), SprClass.LocalConnectionString);
+                                        flkcnt += errList.Count;
+                                    }
                                     deadlock = false;
 
                                 }
@@ -282,7 +288,15 @@ SELECT {id} SCHET_ID,
 	join D3_PACIENT_OMS pa on z.D3_PID = pa.ID
 	where z.ID in ({ids})";
                                     //   Reader2List.CustomExecuteQuery(errIns, _connectionString);
-                                    string result = inDataBase(errIns, "Ошибка добавления FLK_RSLT");
+                                    string result;
+                                    if ((string)flk.GetValue("AlgName") != "Проверка ОСП")
+                                    {
+                                        result = inDataBase(errIns, "Ошибка добавления FLK_RSLT");
+                                    }
+                                    else
+                                    {
+                                        result = "Done";
+                                    }
                                     if (result != "Done")
                                     {
                                         throw new Exception(result);

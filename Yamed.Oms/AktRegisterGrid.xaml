@@ -101,6 +101,12 @@
                                            Content="Выгрузка"
                                            LargeGlyph="/Yamed.Icons;component/Icons/update.png" ItemClick="UnloadXmlItem_ItemClick"
                                            IsEnabled="True" />
+                        <dxb:BarButtonItem Name="UnloadXmlK" Alignment="Near"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Выгрузка XML актов" GlyphAlignment="Top"
+                                           Content="Выгрузка"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/update.png" ItemClick="UnloadXmlK_ItemClick"
+                                           IsEnabled="True" />
                     </dxb:ToolBarControl>
                     </dxb:BarContainerControl>
 

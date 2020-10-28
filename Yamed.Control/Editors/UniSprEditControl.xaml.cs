@@ -233,15 +233,29 @@ namespace Yamed.Control.Editors
                     e.Item.Content = control;
                     control.ItemsSource = Reader2List.CustomAnonymousSelect($@"Select distinct convert(int,KOD_SP) as KOD_SP,convert(nvarchar,KOD_SP)+' '+NSP as NameWithID from rg012 where KOD_LPU='{SprClass.ProdSett.OrgCode}' and '{DateTime.Today}' between dt_beg and isnull(dt_fin,'20530101')", _connectionString);
                 }
+                else if (_tableName == "D3_SCHET_OMS" && e.PropertyName == "DISP")
+                {
+                    var bind = new Binding(e.PropertyName);
+                    bind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                    var control = new ComboBoxEdit(); control.ValueMember = "IDDT";
+                    control.DisplayMember = "NameWithID";
+                    //control.ItemsSource = rt.Value;
+                    control.SetBinding(BaseEdit.EditValueProperty, bind);
+                    control.NullValueButtonPlacement = EditorPlacement.EditBox;
+                    control.IncrementalFiltering = true;
+                    control.AutoComplete = true;
+                    control.FilterCondition = FilterCondition.Contains;
+                    e.Item.Content = control;
+                    control.ItemsSource = Reader2List.CustomAnonymousSelect($@"Select IDDT,NameWithID from V016 where '{DateTime.Today}' between datebeg and isnull(dateend,'21000101')", _connectionString);
+                }
                 else
                 {
                     return;
                 }
+
             }
             else
             {
-
-
                 string rtName;
                 if (fkc.ReferenceTableName.Contains("___Guid___"))
                 {

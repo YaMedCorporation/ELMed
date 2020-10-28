@@ -219,7 +219,7 @@
       <Column Name="PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="COD_PU_TS" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="ExpertID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="D3_SANK_OMS_D3_AKT_MEE_TBL" Member="D3_SANK_OMS" ThisKey="SANKID" OtherKey="ID" Type="D3_SANK_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SANK_OMS1_D3_AKT_MEE_TBL" Member="D3_SANK_OMS" ThisKey="SANKID" OtherKey="ID" Type="D3_SANK_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_CONS_OMS" Member="D3_CONS_OMS">
@@ -229,7 +229,7 @@
       <Column Name="D3_SLGID" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
       <Column Name="PR_CONS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DT_CONS" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="D3_SL_OMS1_D3_CONS_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_CONS_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_B_PROT_OMS" Member="D3_B_PROT_OMS">
@@ -251,7 +251,7 @@
       <Column Name="DS_PR" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DS_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PR_DS2_N" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="D3_SL_OMS1_D3_DSS_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_DSS_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_EXP_BUFER" Member="D3_EXP_BUFER">
@@ -291,7 +291,7 @@
       <Column Name="NAPR_V" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MET_ISSL" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NAPR_USL" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Association Name="D3_SL_OMS1_D3_NAPR_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_NAPR_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_NAZ_OMS" Member="D3_NAZ_OMS">
@@ -308,7 +308,7 @@
       <Column Name="NAPR_MO" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
       <Column Name="NAZ_PMP" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NAZ_PK" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="D3_SL_OMS1_D3_NAZ_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_NAZ_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_PAY_OMS_BUFER" Member="D3_PAY_OMS_BUFER">
@@ -439,7 +439,7 @@
       <Association Name="D3_ONK_SL_OMS_D3_B_PROT_OMS" Member="D3_B_PROT_OMS" ThisKey="ID" OtherKey="D3_ONKSLID" Type="D3_B_PROT_OMS" />
       <Association Name="D3_ONK_SL_OMS_D3_B_DIAG_OMS" Member="D3_B_DIAG_OMS" ThisKey="ID" OtherKey="D3_ONKSLID" Type="D3_B_DIAG_OMS" />
       <Association Name="D3_ONK_SL_OMS_D3_ONK_USL_OMS" Member="D3_ONK_USL_OMS" ThisKey="ID" OtherKey="D3_ONKSLID" Type="D3_ONK_USL_OMS" />
-      <Association Name="D3_SL_OMS1_D3_ONK_SL_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_ONK_SL_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_CRIT_OMS" Member="D3_CRIT_OMS">
@@ -487,7 +487,7 @@
       <Column Name="KOD_SP" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FORMUL" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
       <Association Name="D3_ZSL_OMS_D3_USL_OMS" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" />
-      <Association Name="D3_SL_OMS1_D3_USL_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_USL_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_EXP_QUERY" Member="D3_EXP_QUERY">
@@ -527,7 +527,7 @@
       <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="D3_SCHET_OMS_D3_PACIENT_OMS" Member="D3_PACIENT_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_PACIENT_OMS" />
       <Association Name="D3_SCHET_OMS_D3_ZSL_OMS" Member="D3_ZSL_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_ZSL_OMS" />
-      <Association Name="D3_SCHET_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_SANK_OMS" />
+      <Association Name="D3_SCHET_OMS_D3_SANK_OMS1" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_SCID" Type="D3_SANK_OMS" />
       <Association Name="Yamed_Spr_SchetType_D3_SCHET_OMS" Member="Yamed_Spr_SchetType" ThisKey="SchetType" OtherKey="ID" Type="Yamed_Spr_SchetType" IsForeignKey="true" />
     </Type>
   </Table>
@@ -662,54 +662,10 @@
       <Column Name="St_IDCASE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ZSL_ID_PARENT" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
       <Association Name="D3_ZSL_OMS_D3_USL_OMS" Member="D3_USL_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_USL_OMS" />
-      <Association Name="D3_ZSL_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SANK_OMS" />
-      <Association Name="D3_ZSL_OMS_D3_SL_OMS1" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SL_OMS" />
+      <Association Name="D3_ZSL_OMS_D3_SL_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SL_OMS" />
+      <Association Name="D3_ZSL_OMS_D3_SANK_OMS1" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ZSLID" Type="D3_SANK_OMS" />
       <Association Name="D3_SCHET_OMS_D3_ZSL_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="D3_PACIENT_OMS_D3_ZSL_OMS" Member="D3_PACIENT_OMS" ThisKey="D3_PID" OtherKey="ID" Type="D3_PACIENT_OMS" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.D3_SANK_OMS" Member="D3_SANK_OMS">
-    <Type Name="D3_SANK_OMS">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="S_CODE" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
-      <Column Name="S_SUM" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
-      <Column Name="S_SUM2" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
-      <Column Name="S_TIP" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="S_OSN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="S_COM" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
-      <Column Name="S_ZAKL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="S_IST" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="S_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="D3_ZSLID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="D3_ZSLGID" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
-      <Column Name="D3_SCID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IMP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="S_TIP2" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
-      <Column Name="CODE_EXP" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="DATE_ACT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NUM_ACT" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="USER_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MODEL_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExpOrder" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="S_KOD" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
-      <Column Name="S_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Z_INFO" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS1" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS2" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS3" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_OKAZ_MP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_NEG_POS" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_PREEM" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_OBOSN_OB" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_PROF_GOSP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_INFO_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_DS_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="Z_PREEM_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="D3_ARID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="D3_SANK_OMS_D3_AKT_MEE_TBL" Member="D3_AKT_MEE_TBL" ThisKey="ID" OtherKey="SANKID" Type="D3_AKT_MEE_TBL" />
-      <Association Name="D3_SCHET_OMS_D3_SANK_OMS" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" />
-      <Association Name="D3_ZSL_OMS_D3_SANK_OMS" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="D3_AKT_REGISTR_OMS_D3_SANK_OMS" Member="D3_AKT_REGISTR_OMS" ThisKey="D3_ARID" OtherKey="ID" Type="D3_AKT_REGISTR_OMS" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_REQ_OMS" Member="D3_REQ_OMS">
@@ -741,7 +697,7 @@
       <Column Name="Auto_KSG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="D3_KSG_KPG_OMS_D3_SL_KOEF_OMS" Member="D3_SL_KOEF_OMS" ThisKey="ID" OtherKey="D3_KSGID" Type="D3_SL_KOEF_OMS" />
       <Association Name="D3_KSG_KPG_OMS_D3_CRIT_OMS" Member="D3_CRIT_OMS" ThisKey="ID" OtherKey="D3_KSGID" Type="D3_CRIT_OMS" />
-      <Association Name="D3_SL_OMS1_D3_KSG_KPG_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_KSG_KPG_OMS" Member="D3_SL_OMS" Storage="_D3_SL_OMS1" ThisKey="D3_SLID" OtherKey="ID" Type="D3_SL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.D3_AKT_REGISTR_OMS" Member="D3_AKT_REGISTR_OMS">
@@ -767,7 +723,7 @@
       <Column Name="COMMENT" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="LOCK" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="COMMENT_EKON" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Association Name="D3_AKT_REGISTR_OMS_D3_SANK_OMS" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ARID" Type="D3_SANK_OMS" />
+      <Association Name="D3_AKT_REGISTR_OMS_D3_SANK_OMS1" Member="D3_SANK_OMS" ThisKey="ID" OtherKey="D3_ARID" Type="D3_SANK_OMS" />
       <Association Name="D3_F003_D3_AKT_REGISTR_OMS" Member="D3_F003" ThisKey="LPU" OtherKey="mcod" Type="D3_F003" IsForeignKey="true" />
       <Association Name="Yamed_Users_D3_AKT_REGISTR_OMS" Member="Yamed_Users" ThisKey="USERID_NOTEDIT" OtherKey="ID" Type="Yamed_Users" IsForeignKey="true" />
     </Type>
@@ -832,19 +788,68 @@
       <Column Name="KLPU" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SZ" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BRIGADA" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="N_BRIGADA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="N_BRIGADA" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="PRIEM_VIZ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PERED_VIZ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PRIB_VIZ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="ADRES_VIZ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="D3_SL_OMS1_D3_CONS_OMS" Member="D3_CONS_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_CONS_OMS" />
-      <Association Name="D3_SL_OMS1_D3_DSS_OMS" Member="D3_DSS_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_DSS_OMS" />
-      <Association Name="D3_SL_OMS1_D3_NAPR_OMS" Member="D3_NAPR_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_NAPR_OMS" />
-      <Association Name="D3_SL_OMS1_D3_NAZ_OMS" Member="D3_NAZ_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_NAZ_OMS" />
-      <Association Name="D3_SL_OMS1_D3_ONK_SL_OMS" Member="D3_ONK_SL_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_ONK_SL_OMS" />
-      <Association Name="D3_SL_OMS1_D3_USL_OMS" Member="D3_USL_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_USL_OMS" />
-      <Association Name="D3_SL_OMS1_D3_KSG_KPG_OMS" Member="D3_KSG_KPG_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_KSG_KPG_OMS" />
-      <Association Name="D3_ZSL_OMS_D3_SL_OMS1" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="D3_SL_OMS_D3_CONS_OMS" Member="D3_CONS_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_CONS_OMS" />
+      <Association Name="D3_SL_OMS_D3_DSS_OMS" Member="D3_DSS_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_DSS_OMS" />
+      <Association Name="D3_SL_OMS_D3_NAPR_OMS" Member="D3_NAPR_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_NAPR_OMS" />
+      <Association Name="D3_SL_OMS_D3_NAZ_OMS" Member="D3_NAZ_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_NAZ_OMS" />
+      <Association Name="D3_SL_OMS_D3_ONK_SL_OMS" Member="D3_ONK_SL_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_ONK_SL_OMS" />
+      <Association Name="D3_SL_OMS_D3_USL_OMS" Member="D3_USL_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_USL_OMS" />
+      <Association Name="D3_SL_OMS_D3_KSG_KPG_OMS" Member="D3_KSG_KPG_OMS" ThisKey="ID" OtherKey="D3_SLID" Type="D3_KSG_KPG_OMS" />
+      <Association Name="D3_ZSL_OMS_D3_SL_OMS" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.D3_SANK_OMS" Member="D3_SANK_OMS">
+    <Type Name="D3_SANK_OMS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="S_CODE" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="S_SUM" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
+      <Column Name="S_SUM2" Type="System.Decimal" DbType="Decimal(17,2)" CanBeNull="true" />
+      <Column Name="S_TIP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="S_OSN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="S_COM" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="S_ZAKL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="S_IST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="S_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="D3_ZSLID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="D3_ZSLGID" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="D3_SCID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IMP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="S_TIP2" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+      <Column Name="CODE_EXP" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DATE_ACT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NUM_ACT" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MODEL_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpOrder" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="S_KOD" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="S_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Z_INFO" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS1" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS2" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS3" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_OKAZ_MP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_NEG_POS" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_PREEM" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_OBOSN_OB" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_PROF_GOSP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_INFO_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_DS_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Z_PREEM_NP" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="D3_ARID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DEATH_DS1" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="DEATH_DS2" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="DEATH_DS3" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="VARIANCE_CAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VARIANCE_REASON" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="D3_SANK_OMS1_D3_AKT_MEE_TBL" Member="D3_AKT_MEE_TBL" ThisKey="ID" OtherKey="SANKID" Type="D3_AKT_MEE_TBL" />
+      <Association Name="D3_AKT_REGISTR_OMS_D3_SANK_OMS1" Member="D3_AKT_REGISTR_OMS" ThisKey="D3_ARID" OtherKey="ID" Type="D3_AKT_REGISTR_OMS" IsForeignKey="true" />
+      <Association Name="D3_SCHET_OMS_D3_SANK_OMS1" Member="D3_SCHET_OMS" ThisKey="D3_SCID" OtherKey="ID" Type="D3_SCHET_OMS" IsForeignKey="true" />
+      <Association Name="D3_ZSL_OMS_D3_SANK_OMS1" Member="D3_ZSL_OMS" ThisKey="D3_ZSLID" OtherKey="ID" Type="D3_ZSL_OMS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

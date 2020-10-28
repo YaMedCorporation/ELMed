@@ -67,6 +67,10 @@ namespace Yamed.Oms
                 LoadXmlItem.IsVisible = false;
                 UnloadXmlItem.IsVisible = false;
             }
+            if (SprClass.Region != "39" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            {
+                UnloadXmlK.IsVisible = false;
+            }
         }
 
 
@@ -245,6 +249,7 @@ namespace Yamed.Oms
             rc.SchetRegisterGrid1.BindAktExp(row.ID);
             rc.AddSlAkt.IsVisible = false;
             rc.RazdelAkt.IsVisible = true;
+            rc.SchetRegisterGrid1.arid = new List<int> { row.ID };
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
                 Header = "Акт экспертиз " + row.PERIOD_EXP_NOTEDIT + " номер " + row.NUM_ACT + " от " + row.DATE_ACT?.ToShortDateString(), 
@@ -495,8 +500,11 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
                 }
                 foreach (int slid in sluids.ToArray().Distinct())
                 {
-                    Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_date='{exp_date}' where id={slid}", SprClass.LocalConnectionString);
-                    Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_coment='{coment}' where id={slid}", SprClass.LocalConnectionString);
+                    if (SprClass.Region != "25")
+                    {
+                        Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_date='{exp_date}' where id={slid}", SprClass.LocalConnectionString);
+                        Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_coment='{coment}' where id={slid}", SprClass.LocalConnectionString);
+                    }
                     var rq = new D3_REQ_OMS()
                     {
                         D3_ARID = sc.ID,
@@ -577,6 +585,30 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
                 DXMessageBox.Show("Экспертизы успешно загружены.");
             }
         }
+
+        private void UnloadXmlK_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var g = ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(gridControl1), "PERIOD_EXP_NOTEDIT").ToString().Split('-');           
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "ZIP File (*.zip)|*.zip";
+            saveFileDialog.FileName = $@"RS39001T39_{g[0].Substring(2,2)+g[1]}1.zip";
+            bool? result = saveFileDialog.ShowDialog();
+            if (result == true)
+            {
+                        var sc = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(gridControl1), "ID");
+                        var qxml = SqlReader.Select($@"
+                    exec Export_sank_Kaliningrad {sc},'{saveFileDialog.SafeFileName}'"
+                        , SprClass.LocalConnectionString);
+                        string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("sanks");
+                        using (ZipFile zip = new ZipFile(Encoding.GetEncoding("windows-1251")))
+                        {
+                            zip.AddEntry(saveFileDialog.SafeFileName.Replace(".zip",".xml"), result1);
+                            string fnm = saveFileDialog.FileName;
+                            zip.Save(fnm);
+                        }
+            }
+                DXMessageBox.Show("Успешно выгружено!");
+            }
     }
 
 }

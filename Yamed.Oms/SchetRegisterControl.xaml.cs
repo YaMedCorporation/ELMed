@@ -1157,7 +1157,7 @@ where z.D3_SCID in({scs})", con);
                 zslTempl.BindEmptySluch2(_sc);
                 СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
                 {
-                    Header = "Случай поликлиники",
+                    Header = "Зак. случай",
                     MyControl = zslTempl,
                     IsCloseable = "True"
                 });
@@ -1528,8 +1528,11 @@ MessageBoxButton.YesNo, MessageBoxImage.Question);
                         List<D3_REQ_OMS> rlist = new List<D3_REQ_OMS>();
                         foreach (int slid in sluids.ToArray().Distinct())
                         {
-                        Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_date='{exp_date}' where id={slid}", SprClass.LocalConnectionString);
-                        Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_coment='{coment}' where id={slid}", SprClass.LocalConnectionString);
+                        if (SprClass.Region != "25")
+                        {
+                            Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_date='{exp_date}' where id={slid}", SprClass.LocalConnectionString);
+                            Reader2List.CustomExecuteQuery($@"update d3_zsl_oms set exp_coment='{coment}' where id={slid}", SprClass.LocalConnectionString);
+                        }
                         var rq = new D3_REQ_OMS()
                             {
                                 D3_ARID = arid,

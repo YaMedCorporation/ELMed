@@ -7,6 +7,7 @@ using System.Windows.Documents;
 using DevExpress.Data;
 using DevExpress.Data.Async.Helpers;
 using DevExpress.Xpf.Grid;
+using Yamed.Core;
 
 namespace Yamed.Control
 {
@@ -28,6 +29,62 @@ namespace Yamed.Control
                 }
             }
             return null;
+        }
+        public static object GetSelectedGridRowOt(GridControl gridControl)
+        {
+            var handles = gridControl.GetSelectedRowHandles();
+            if (handles != null && handles.Any())
+            {
+                foreach (var handle in handles)
+                {
+                    if (handle >= 0)
+                    {
+                        var row = gridControl.GetRow(handle);
+                        return row;
+                    }
+                }
+            }
+            return null;
+        }
+        public static object[] GetSelectedGridRowsSC(GridControl gridControl)
+        {
+            bool isAsyncLoader = false;
+            var handles = gridControl.GetSelectedRowHandles();
+            
+            if (handles == null || !handles.Any()) return null;
+            handles = handles.Where(x => x >= 0).Select(x => x).ToArray();
+            var count = handles.Count();
+            object[] obj = new object[count];
+            LoadedRows = new List<object>();
+            for (int index = 0; index < count; index++)
+            {
+                var handle = handles[index];
+                var s = gridControl.GetCellValue(handle, "ID");
+                if (s.ToString() != "")
+                    LoadedRows.Add(s);
+            }
+            return obj = LoadedRows.ToArray();
+
+        }
+        public static object[] GetSelectedGridRowsM(GridControl gridControl)
+        {
+            bool isAsyncLoader = false;
+            var handles = gridControl.GetSelectedRowHandles();
+
+            if (handles == null || !handles.Any()) return null;
+            handles = handles.Where(x => x >= 0).Select(x => x).ToArray();
+            var count = handles.Count();
+            object[] obj = new object[count];
+            LoadedRows = new List<object>();
+            for (int index = 0; index < count; index++)
+            {
+                var handle = handles[index];
+                var s = gridControl.GetRow(handle);
+                if (s.ToString() != "")
+                    LoadedRows.Add(s);
+            }
+            return obj = LoadedRows.ToArray();
+
         }
 
         public static object[] GetSelectedGridRows(GridControl gridControl)

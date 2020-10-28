@@ -2538,6 +2538,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 DXMessageBox.Show("Не заполнены поля для определения стандарта");
                 return;
             }
+            
             //var vozr = _zsl.DATE_Z_2?.Year - _pacient.DR?.Year;
             string v = "";
             string s;
@@ -2547,7 +2548,12 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             var lpu = _zsl.LPU;
             var datez2 = _zsl.DATE_Z_2;
             var slgid = ((D3_SL_OMS)SlGridControl.SelectedItem).SL_ID;
-            if (os == 47 || os == 49 && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year) >= 18)
+            if ((os == 47 || os == 49) && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year) < 18)
+            {
+                DXMessageBox.Show("Ошибка в заполнении полей для стандарта. ДВН неприменим к детям");
+                return;
+            }
+            if ((os == 47 || os == 49) && (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year) >= 18)
             {
                 v = (_zsl.DATE_Z_2?.Year - _pacient.DR?.Year).ToString();
             }
@@ -2604,9 +2610,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
 
             Task.Factory.StartNew(() =>
             {
-               
                 var autoTempl = SqlReader.Select2($"Select * From Kursk_Usl_124N where '{datez2}' between Dbeg and Dend and OsSluchReg = {os} and Pol = {pol} and Age like '%{v},%'", SprClass.LocalConnectionString);
-
                 if (autoTempl.Count == 0)
                 {
                     return null;
