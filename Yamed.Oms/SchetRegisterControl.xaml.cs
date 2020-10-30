@@ -958,6 +958,11 @@ where zsl.D3_SCID in {ids}";
                 SchetRegisterGrid1.BindDataSank();
                 scVid.Content = "Вид - Санкции/Экспертизы";
             }
+            else if (tag == "DSS" && isChecked)
+            {
+                SchetRegisterGrid1.BindDataDSS();
+                scVid.Content = "Вид - Сопутств. диагнозы";
+            }
             else if (tag == "")
             {
                 scVid.Content = "Вид";

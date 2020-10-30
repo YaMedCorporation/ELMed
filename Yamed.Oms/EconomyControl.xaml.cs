@@ -1514,59 +1514,64 @@ UPDATE D3_USL_OMS
 
                 foreach (var f in spr)
                 {
-                    //string ConnectionString1 = Properties.Settings.Default.DocExchangeConnectionString;
-                    DataTable dt = new DataTable();
-                    using (Stream fos = File.Open(f.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
-                    {
-                        var dbf = new DotNetDBF.DBFReader(fos);
-                        dbf.CharEncoding = Encoding.GetEncoding(866);
-                        var cnt = dbf.RecordCount;
-                        var fields = dbf.Fields;
-                        for (int ii = 0; ii < fields.Count(); ii++)
-                        {
-                            DataColumn workCol = dt.Columns.Add(fields[ii].Name, fields[ii].Type);
-                            if (workCol.DataType == typeof(string)) workCol.MaxLength = fields[ii].FieldLength;
-                            workCol.AllowDBNull = true;
-                            workCol.DefaultValue = DBNull.Value;
-                        }
-
-                        for (int ii = 0; ii < dbf.RecordCount; ii++)
-                        {
-                            var rtt = dbf.NextRecord();
-
-                            if (rtt != null)
-                            {
-                                for (int i = 0; i < rtt.Count(); i++)
-                                {
-                                    if (rtt[i] == null)
-                                    {
-                                        rtt[i] = null;
-                                    }
-                                    else
-                                    if (rtt[i].ToString() == "")
-                                    {
-                                        rtt[i] = null;
-                                    }
-                                }
-                                dt.LoadDataRow(rtt, true);
-
-                            }
-
-                        }
-                    }
-                    string sqltable;
-                    string sqltable1;
-                    if (f.Name.Contains('_'))
-                    {
-                        sqltable = f.Name.Replace(".dbf", "").Replace(".DBF", "").Replace(".Dbf", "");
-                        sqltable1 = f.Name.Replace(f.Name, "DBF37_" + f.Name.Substring(0, 2) + f.Name.Substring(f.Name.IndexOf('_'), f.Name.Length - f.Name.IndexOf('_') - 4));
-                    }
+                    if (f.Name.StartsWith("V"))
+                    { }
                     else
                     {
-                        sqltable = f.Name.Replace(".dbf", "").Replace(".DBF", "").Replace(".Dbf", "");
-                        sqltable1 = f.Name.Replace(f.Name, "DBF37_" + f.Name.Substring(0, 2));
+                        //string ConnectionString1 = Properties.Settings.Default.DocExchangeConnectionString;
+                        DataTable dt = new DataTable();
+                        using (Stream fos = File.Open(f.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                        {
+                            var dbf = new DotNetDBF.DBFReader(fos);
+                            dbf.CharEncoding = Encoding.GetEncoding(866);
+                            var cnt = dbf.RecordCount;
+                            var fields = dbf.Fields;
+                            for (int ii = 0; ii < fields.Count(); ii++)
+                            {
+                                DataColumn workCol = dt.Columns.Add(fields[ii].Name, fields[ii].Type);
+                                if (workCol.DataType == typeof(string)) workCol.MaxLength = fields[ii].FieldLength;
+                                workCol.AllowDBNull = true;
+                                workCol.DefaultValue = DBNull.Value;
+                            }
+
+                            for (int ii = 0; ii < dbf.RecordCount; ii++)
+                            {
+                                var rtt = dbf.NextRecord();
+
+                                if (rtt != null)
+                                {
+                                    for (int i = 0; i < rtt.Count(); i++)
+                                    {
+                                        if (rtt[i] == null)
+                                        {
+                                            rtt[i] = null;
+                                        }
+                                        else
+                                        if (rtt[i].ToString() == "")
+                                        {
+                                            rtt[i] = null;
+                                        }
+                                    }
+                                    dt.LoadDataRow(rtt, true);
+
+                                }
+
+                            }
+                        }
+                        string sqltable;
+                        string sqltable1;
+                        if (f.Name.Contains('_'))
+                        {
+                            sqltable = f.Name.Replace(".dbf", "").Replace(".DBF", "").Replace(".Dbf", "");
+                            sqltable1 = f.Name.Replace(f.Name, "DBF37_" + f.Name.Substring(0, 2) + f.Name.Substring(f.Name.IndexOf('_'), f.Name.Length - f.Name.IndexOf('_') - 4));
+                        }
+                        else
+                        {
+                            sqltable = f.Name.Replace(".dbf", "").Replace(".DBF", "").Replace(".Dbf", "");
+                            sqltable1 = f.Name.Replace(f.Name, "DBF37_" + f.Name.Substring(0, 2));
+                        }
+                        Reader2List.LoadFromTable<DataTable>(SprClass.LocalConnectionString, dt, sqltable1);
                     }
-                    Reader2List.LoadFromTable<DataTable>(SprClass.LocalConnectionString, dt, sqltable1);
                 }
                 MessageBox.Show("Файлы успешно загружены в таблицы базы данных");
             }

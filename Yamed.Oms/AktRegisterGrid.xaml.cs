@@ -27,6 +27,7 @@ using Yamed.Reports;
 using Yamed.Server;
 using DevExpress.Xpf.Printing;
 using DevExpress.XtraPrinting;
+using System.Xml.Linq;
 
 namespace Yamed.Oms
 {
@@ -67,7 +68,7 @@ namespace Yamed.Oms
                 LoadXmlItem.IsVisible = false;
                 UnloadXmlItem.IsVisible = false;
             }
-            if (SprClass.Region != "39" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            if (SprClass.Region != "39" && SprClass.Region != "67" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
             {
                 UnloadXmlK.IsVisible = false;
             }
@@ -588,11 +589,13 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
 
         private void UnloadXmlK_ItemClick(object sender, ItemClickEventArgs e)
         {
+            var code = Reader2List.SelectScalar($@"select Parametr from Settings where name='CodeSMO'",SprClass.LocalConnectionString);
             var g = ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(gridControl1), "PERIOD_EXP_NOTEDIT").ToString().Split('-');           
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "ZIP File (*.zip)|*.zip";
-            saveFileDialog.FileName = $@"RS39001T39_{g[0].Substring(2,2)+g[1]}1.zip";
+            saveFileDialog.FileName = saveFileDialog.FileName + $@"RS{code}T{SprClass.Region}_{g[0].Substring(2, 2) + g[1]}1.zip";
             bool? result = saveFileDialog.ShowDialog();
+            var sff = saveFileDialog.FileName.Replace(saveFileDialog.SafeFileName,$@"RS{code}T{SprClass.Region}_{g[0].Substring(2, 2) + g[1]}1.zip");
             if (result == true)
             {
                         var sc = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(gridControl1), "ID");
@@ -600,14 +603,20 @@ SUMP, S_SUM, S_SUM2, sank.name as S_OSN, S_COM, S_DATE
                     exec Export_sank_Kaliningrad {sc},'{saveFileDialog.SafeFileName}'"
                         , SprClass.LocalConnectionString);
                         string result1 = "<?xml version=\"1.0\" encoding=\"windows-1251\"?>" + (string)qxml[0].GetValue("sanks");
-                        using (ZipFile zip = new ZipFile(Encoding.GetEncoding("windows-1251")))
+                System.IO.File.WriteAllText(sff.Replace(".zip",".xml"), result1, Encoding.GetEncoding("windows-1251"));
+                XDocument xDoc = XDocument.Load(sff.Replace(".zip", ".xml"));
+                xDoc.Save(sff.Replace(".zip", ".xml"));
+                using (ZipFile zip = new ZipFile(Encoding.GetEncoding("windows-1251")))
                         {
-                            zip.AddEntry(saveFileDialog.SafeFileName.Replace(".zip",".xml"), result1);
-                            string fnm = saveFileDialog.FileName;
-                            zip.Save(fnm);
+                    zip.AddFile(sff.Replace(".zip",".xml"), "");
+
+                    zip.Save(sff);
                         }
-            }
+                File.Delete(sff.Replace(".zip", ".xml"));
                 DXMessageBox.Show("Успешно выгружено!");
+            }
+           
+            
             }
     }
 

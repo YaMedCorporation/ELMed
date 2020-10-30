@@ -103,7 +103,7 @@ namespace Yamed.OmsExp.ExpEditors
 
            
             ExpertColumnEdit.DataContext = Reader2List.CustomAnonymousSelect("Select * from ExpertsDB order by FAM",SprClass.LocalConnectionString);//SprClass.ExpertDbs;
-            if (SprClass.Region == "39")
+            if (SprClass.Region == "39" || SprClass.Region == "67")
             {
                 ds1.Visibility = Visibility.Visible;
                 ds2.Visibility = Visibility.Visible;
