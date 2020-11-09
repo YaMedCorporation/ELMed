@@ -32,7 +32,6 @@ namespace Yamed.Oms
 
         public static readonly DependencyProperty IsSmoTableVisibleProperty =
             DependencyProperty.Register("IsSmoTableVisible", typeof (Visibility), typeof (EconomyWindow), null);
-
         public Visibility IsSmoTableVisible
         {
             get
@@ -173,10 +172,60 @@ namespace Yamed.Oms
             //gridControl2.DataContext = OmsList;
         }
 
+        private void UpdateData ()
+        {
+            var edc = new YamedDataClassesDataContext()
+            {
+                ObjectTrackingEnabled = false,
+                Connection = { ConnectionString = SprClass.LocalConnectionString }
+            };
 
+            /* IQueryable*/
+            var pQueryable = (from sc in edc.D3_SCHET_OMS
+                              join f3 in edc.D3_F003 on sc.CODE_MO equals f3.mcod
+                              join sprsc in edc.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              select new
+                              {
+                                  ID = sc.ID,
+                                  CODE_MO = sc.CODE_MO,
+                                  NAME_MO = f3.nam_mok,
+                                  NAME_MO_ID = f3.NameWithID,
+                                  PLAT = sc.PLAT,
+                                  YEAR = sc.YEAR,
+                                  MONTH = sc.MONTH,
+                                  NSCHET = sc.NSCHET,
+                                  DSCHET = sc.DSCHET,
+                                  SUMMAV = sc.SUMMAV,
+                                  SUMMAP = sc.SUMMAP,
+                                  SANK_MEK = sc.SANK_MEK,
+                                  SANK_MEE = sc.SANK_MEE,
+                                  SANK_EKMP = sc.SANK_EKMP,
+                                  COMENTS = sc.COMENTS,
+                                  sc.DISP,
+                                  sc.SD_Z,
+                                  sc.OmsFileName,
+                                  sc.ZapFileName,
+                                  sc.PersFileName,
+                                  sc.SchetType,
+                                  SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
+                                  sc.Status
+                              }).ToList();
+            gridControl.ItemsSource = pQueryable;
+        }
         private void RefreshItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            linqInstantFeedbackDataSource.Refresh();
+            UpdateData();
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+            new Action(delegate ()
+            {
+            gridControl.ExpandGroupRow(-1);
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+            new Action(delegate ()
+            {
+                gridControl.ExpandGroupRow(-2);
+            }));
+            }));
+            //linqInstantFeedbackDataSource.Refresh();
         }
 
         private void AddItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -194,13 +243,14 @@ namespace Yamed.Oms
             };
 
             window.ShowDialog();
-            linqInstantFeedbackDataSource.Refresh();
+            UpdateData();
+            //linqInstantFeedbackDataSource.Refresh();
         }
 
         private void EditItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
-            var row = DxHelper.GetSelectedGridRow(gridControl);
+            var row = DxHelper.GetSelectedGridRowOt(gridControl);
             if (row == null) return;
 
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(row);
@@ -215,13 +265,14 @@ namespace Yamed.Oms
             };
 
             window.ShowDialog();
-            linqInstantFeedbackDataSource.Refresh();
+            UpdateData();
+            //linqInstantFeedbackDataSource.Refresh();
         }
 
         private void DelItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
-            var row = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(gridControl));
+            var row = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRowOt(gridControl));
             if (row == null) return;
 
             MessageBoxResult result = MessageBox.Show("Удалить счет за период " + row.MONTH + "." + row.YEAR + "\n" + SprClass.LpuList.Single(x => x.mcod == row.CODE_MO).NameWithID + "?", "Удаление",
@@ -265,9 +316,11 @@ namespace Yamed.Oms
                         if (isDel)
                         {
                             LoadingDecorator1.IsSplashScreenShown = false;
-
-                            linqInstantFeedbackDataSource.Refresh();
-                            ErrorGlobalWindow.ShowError("Счет удален");
+                            UpdateData();
+                            //linqInstantFeedbackDataSource.Refresh();
+                            DXMessageBox.Show("Счет удален");
+                            //ErrorGlobalWindow.ShowError("Счет удален");
+                            
                         }
                     //barButtonItem4.IsEnabled = true;
                     //}
@@ -487,7 +540,8 @@ namespace Yamed.Oms
 
             }).ContinueWith(x =>
             {
-                linqInstantFeedbackDataSource.Refresh();
+                UpdateData();
+                //linqInstantFeedbackDataSource.Refresh();
 
                 DXMessageBox.Show("Загрузка успешно завершена");
 
@@ -500,7 +554,7 @@ namespace Yamed.Oms
 
         private void DelMekRowMenu_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            var row = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(gridControl));
+            var row = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRowOt(gridControl));
             if (row == null) return;
 
             MessageBoxResult result = MessageBox.Show("Удалить МЭКи за период " + row.MONTH + "." + row.YEAR + "\n" + SprClass.LpuList.Single(x => x.mcod == row.CODE_MO).NameWithID + "?", "Удаление",
@@ -538,7 +592,8 @@ EXEC p_oms_calc_schet {row.ID}
                     {
                         LoadingDecorator1.IsSplashScreenShown = false;
 
-                        linqInstantFeedbackDataSource.Refresh();
+                        UpdateData();
+                        //linqInstantFeedbackDataSource.Refresh();
                         ErrorGlobalWindow.ShowError("МЭКи в счете удалены.");
                     }
                     //barButtonItem4.IsEnabled = true;
@@ -579,7 +634,7 @@ EXEC p_oms_calc_schet {row.ID}
         private void ScExportItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             //MtrExport();
-            var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRow(gridControl));
+            var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRowOt(gridControl));
 
             var qxml = SqlReader.Select($@"
             exec p_oms_export_30K {ObjHelper.GetAnonymousValue(sc, "ID")}"
@@ -624,7 +679,7 @@ EXEC p_oms_calc_schet {row.ID}
 
         private void MtrExport()
         {
-            var schets = DxHelper.GetSelectedGridRows(gridControl);
+            var schets = DxHelper.GetSelectedGridRowsSC(gridControl);
             if (schets.Length > 1)
                 foreach (var sc1 in schets)
                 {
@@ -1441,7 +1496,7 @@ SELECT [ID]
 
         private void ScImport3Item_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            var row = DxHelper.GetSelectedGridRow(gridControl);
+            var row = DxHelper.GetSelectedGridRowOt(gridControl);
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(row);
 
             try
@@ -1500,7 +1555,7 @@ SELECT [ID]
 
         private void ScExport3Item_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            var schets = DxHelper.GetSelectedGridRows(gridControl);
+            var schets = DxHelper.GetSelectedGridRowsSC(gridControl);
             if (schets.Length > 1)
                 foreach (var sc1 in schets)
                 {
