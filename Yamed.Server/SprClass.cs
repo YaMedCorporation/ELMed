@@ -475,7 +475,7 @@ namespace Yamed.Server
                 GlobalDocExchangeConnectionString = conatt.ConnectionString;
 
                 var srzcon = new SqlConnectionStringBuilder();
-                srzcon.DataSource = @"91.240.209.114,19450";
+                srzcon.DataSource = @"109.194.54.128,1433";//@"91.240.209.114,19450";
                 srzcon.ConnectTimeout = 2;
                 srzcon.InitialCatalog = "srz_mini";
                 srzcon.UserID = "mo";

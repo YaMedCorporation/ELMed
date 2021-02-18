@@ -69,6 +69,7 @@ namespace Yamed.Oms
                         Column__SL__PRIEM_VIZ.Visible = false;
                         Column__SL__PRIB_VIZ.Visible = false;
                         Column__SL__PERED_VIZ.Visible = false;
+                        
                     }
                     else if (SprClass.Region == "37")
                     {
@@ -111,6 +112,9 @@ namespace Yamed.Oms
 join D3_KSG_KPG_OMS ksg on ksg.N_KSG=v23.K_KSG
 join D3_SL_OMS sl on sl.ID=ksg.D3_SLID
 where idump in (1,2) and (sl.DATE_2 between datebeg and isnull(dateend,'21000101') or '{SprClass.WorkDate}' between datebeg and isnull(dateend,'21000101'))", SprClass.LocalConnectionString);
+            MPHmpEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select v22.IDMPAC as IDMPAC,v22.NameWithID as NameWithID from v022 v22
+join D3_SL_OMS sl on sl.MP_HMP=v22.IDMPAC 
+where sl.date_2 between datebeg and isnull(dateend,'21000101') or '{SprClass.WorkDate}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
             Ds1Edit.DataContext = SprClass.mkbSearching;
             Ds0Edit.DataContext = SprClass.mkbSearching;
             Ds2Edit.DataContext = SprClass.mkbSearching;
@@ -284,7 +288,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
 
                                   zsl.VOZR,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-
+                                  pa.ENP,
                                   //для отображения в Иваново
                                   pa.SOCSTATUS
                               };
@@ -387,7 +391,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
 
                                   zsl.VOZR,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-
+                                  pa.ENP,
                                   //для отображения в Иваново
                                   pa.SOCSTATUS
                               };
@@ -433,8 +437,6 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS.Where(x => x.DS_TYPE == 2) on sl.ID equals dss.D3_SLID into tmpdss
-                              //from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
                               where (Scids.Distinct().Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
@@ -510,6 +512,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
+                                  sl.MP_HMP,
                                   //для отображения полей Калининград
                                   sl.BRIGADA,
                                   sl.ADRES_VIZ,
@@ -524,12 +527,14 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.VID_VIZ,
                                   sl.POVOD,
                                   sl.PROFIL_REG,
+                                  
                                   pa.SOCSTATUS,
                                   //dsss.DS,
                                   //sl.N_KSG,
                                   //sl.KSG_PG,
                                   //sl.SL_K,
                                   //sl.IT_SL,
+                                  
                                   ksg.N_KSG,
                                   ksg.KSG_PG,
                                   ksg.SL_K,
@@ -584,6 +589,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
@@ -594,8 +600,6 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
                               join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
                               join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
-                              //join dss in _ElmedDataClassesDataContext.D3_DSS_OMS.Where(x => x.DS_TYPE == 2) on sl.ID equals dss.D3_SLID into tmpdss
-                              //from dsss in tmpdss.DefaultIfEmpty()
                               join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
                               from ksg in tmpksg.DefaultIfEmpty()
                               where (Scids.Distinct().Contains(zsl.D3_SCID) || !Scids.Any())
@@ -671,6 +675,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
+                                  sl.MP_HMP,
                                   //для отображения полей Калининград
                                   sl.BRIGADA,
                                   sl.ADRES_VIZ,
@@ -692,6 +697,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   //sl.KSG_PG,
                                   //sl.SL_K,
                                   //sl.IT_SL,
+                                  
                                   ksg.N_KSG,
                                   ksg.KSG_PG,
                                   ksg.SL_K,
@@ -746,11 +752,345 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
         }
+        public void BindDataCritKSG()
+        {
+            ShowSlColumn();
+            if (zslid != null)
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              from ksg in tmpksg.DefaultIfEmpty()
+                              join crit in _ElmedDataClassesDataContext.D3_CRIT_OMS on ksg.KSG_ID equals crit.D3_KSGGID into tmpcrit
+                              from cr in tmpcrit.DefaultIfEmpty()
+                              where (Scids.Distinct().Contains(zsl.D3_SCID) || !Scids.Any()) && (zslid.Contains(zsl.ID) || !zslid.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  zsl.PR_NOV,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
 
+                                  KeyID = sl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+                                  ///////////////////////////////////
+                                  sl.SL_ID,
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
+                                  sl.MP_HMP,
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+
+                                  pa.SOCSTATUS,
+                                  //dsss.DS,
+                                  //sl.N_KSG,
+                                  //sl.KSG_PG,
+                                  //sl.SL_K,
+                                  //sl.IT_SL,
+                                  cr.CRIT,
+                                  ksg.N_KSG,
+                                  ksg.KSG_PG,
+                                  ksg.SL_K,
+                                  ksg.IT_SL,
+
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
+                                  ////////////////////////////////
+
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
+            else
+            {
+                _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
+                              join pa in _ElmedDataClassesDataContext.D3_PACIENT_OMS on zsl.D3_PID equals pa.ID
+                              join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                              join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                              join sprsc in _ElmedDataClassesDataContext.Yamed_Spr_SchetType on sc.SchetType equals sprsc.ID
+                              join lksg in _ElmedDataClassesDataContext.D3_KSG_KPG_OMS on sl.ID equals lksg.D3_SLID into tmpksg
+                              from ksg in tmpksg.DefaultIfEmpty()
+                              join crit in _ElmedDataClassesDataContext.D3_CRIT_OMS on ksg.KSG_ID equals crit.D3_KSGGID into tmpcrit
+                              from cr in tmpcrit.DefaultIfEmpty()
+                              where (Scids.Distinct().Contains(zsl.D3_SCID) || !Scids.Any())
+                              select new
+                              {
+                                  sc.YEAR,
+                                  sc.MONTH,
+                                  sc.NSCHET,
+                                  sc.DSCHET,
+                                  zsl.PR_NOV,
+                                  SchetType = sprsc.NameWithID,
+                                  sc.OmsFileName,
+
+                                  KeyID = sl.ID,
+                                  zsl.D3_SCID,
+                                  zsl.ID,
+                                  zsl.ZSL_ID,
+                                  IDCASE = (Int64?)zsl.IDCASE,
+                                  zsl.VIDPOM,
+                                  zsl.NPR_MO,
+                                  zsl.LPU,
+                                  zsl.FOR_POM,
+                                  zsl.DATE_Z_1,
+                                  zsl.DATE_Z_2,
+                                  zsl.RSLT,
+                                  zsl.ISHOD,
+                                  zsl.OS_SLUCH,
+                                  zsl.OS_SLUCH_REGION,
+                                  zsl.IDSP,
+                                  zsl.SUMV,
+                                  zsl.OPLATA,
+                                  zsl.SUMP,
+                                  zsl.SANK_IT,
+                                  zsl.MEK_COMENT,
+                                  zsl.OSP_COMENT,
+                                  zsl.USL_OK,
+                                  zsl.MEK_COUNT,
+                                  zsl.MEE_COUNT,
+                                  zsl.EKMP_COUNT,
+                                  zsl.EXP_COMENT,
+                                  zsl.EXP_TYPE,
+                                  zsl.EXP_DATE,
+                                  zsl.ReqID,
+                                  zsl.USER_COMENT,
+                                  zsl.USERID,
+                                  Z_P_CEL = zsl.P_CEL,
+                                  zsl.NPR_DATE,
+                                  zsl.KD_Z,
+                                  zsl.VB_P,
+                                  zsl.RSLT_D,
+                                  zsl.VBR,
+                                  ///////////////////////////////////
+                                  sl.SL_ID,
+                                  sl.VID_HMP,
+                                  sl.METOD_HMP,
+                                  sl.LPU_1,
+                                  sl.PODR,
+                                  sl.PROFIL,
+                                  sl.DET,
+                                  sl.P_CEL25,
+                                  sl.TAL_NUM,
+                                  sl.TAL_D,
+                                  sl.TAL_P,
+                                  sl.NHISTORY,
+                                  sl.P_PER,
+                                  sl.DATE_1,
+                                  sl.DATE_2,
+                                  sl.KD,
+                                  sl.DS0,
+                                  sl.DS1,
+                                  sl.DS1_PR,
+                                  sl.DN,
+                                  sl.CODE_MES1,
+                                  sl.CODE_MES2,
+                                  sl.KSG_DKK,
+                                  sl.MP_HMP,
+                                  //для отображения полей Калининград
+                                  sl.BRIGADA,
+                                  sl.ADRES_VIZ,
+                                  sl.N_BRIGADA,
+                                  sl.PERED_VIZ,
+                                  sl.PRIB_VIZ,
+                                  sl.PRIEM_VIZ,
+                                  //для отображения полей Иваново, Андрей insidious
+                                  sl.GRAF_DN,
+                                  sl.KSKP,
+                                  sl.VID_BRIG,
+                                  sl.VID_VIZ,
+                                  sl.POVOD,
+                                  sl.PROFIL_REG,
+                                  pa.SOCSTATUS,
+                                  //dsss.DS,
+
+                                  //sl.N_KSG,
+                                  //sl.KSG_PG,
+                                  //sl.SL_K,
+                                  //sl.IT_SL,
+                                  cr.CRIT,
+                                  ksg.N_KSG,
+                                  ksg.KSG_PG,
+                                  ksg.SL_K,
+                                  ksg.IT_SL,
+
+                                  sl.REAB,
+                                  sl.PRVS,
+                                  sl.VERS_SPEC,
+                                  sl.PRVS_VERS,
+                                  sl.IDDOKT,
+                                  sl.ED_COL,
+                                  sl.TARIF,
+                                  sl.SUM_M,
+                                  sl.COMENTSL,
+                                  sl.PROFIL_K,
+                                  sl.C_ZAB,
+                                  sl.DS_ONK,
+                                  ////////////////////////////////
+
+                                  pa.FAM,
+                                  pa.IM,
+                                  pa.OT,
+                                  pa.W,
+                                  pa.DR,
+                                  pa.FAM_P,
+                                  pa.IM_P,
+                                  pa.OT_P,
+                                  pa.W_P,
+                                  pa.DR_P,
+                                  pa.MR,
+                                  pa.DOCTYPE,
+                                  pa.DOCSER,
+                                  pa.DOCNUM,
+                                  pa.SNILS,
+                                  pa.OKATOG,
+                                  pa.OKATOP,
+                                  pa.COMENTP,
+                                  pa.VPOLIS,
+                                  pa.SPOLIS,
+                                  pa.NPOLIS,
+                                  pa.SMO,
+                                  pa.SMO_OGRN,
+                                  pa.SMO_OK,
+                                  pa.SMO_NAM,
+                                  pa.NOVOR,
+                                  zsl.VOZR,
+                                  pa.SOC_STAT,
+                                  pa.KOD_TER,
+                                  pa.KAT_LGOT,
+                                  pa.MSE,
+                                  pa.INV,
+                                  pa.VETERAN,
+                                  pa.WORK_STAT,
+                                  pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
+                              };
+                _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
+            }
+        }
         public void BindDataPacient(string fam, string im, string ot, DateTime? dr, string npol = null)
         {
             //ShowSlColumn();
@@ -850,6 +1190,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               sl.PROFIL_K,
                               sl.C_ZAB,
                               sl.DS_ONK,
+                              sl.MP_HMP,
                               //для отображения полей Калининград
                               sl.BRIGADA,
                               sl.ADRES_VIZ,
@@ -903,6 +1244,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               pa.VETERAN,
                               pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              pa.ENP,
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
 
@@ -1033,7 +1375,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               sl.C_ZAB,
                               sl.DS_ONK,
                               sl.SL_ID,
-
+                              sl.MP_HMP,
                               //для отображения полей Калининград
                               sl.BRIGADA,
                               sl.ADRES_VIZ,
@@ -1086,6 +1428,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                               pa.VETERAN,
                               pa.WORK_STAT,
                               pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                              pa.ENP,
                           };
             _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             var sci = (from exq in _ElmedDataClassesDataContext.D3_EXP_QUERY
@@ -1098,13 +1441,22 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
             Scids = sci.Select(x => x.D3_SCID).ToList();
         }
 
-
+        public object d1;
+        public object d2;
         public void BindDataSearch(string lpu, int? m1, int? m2, int? y1, int? y2,
             int? profil, string ds, string pcel, int? uslOk, int? osSl, string st)
-        {           
-            var d1 = Reader2List.SelectScalar($@"select convert(datetime,STR(10000*{y1}+100*{m1}+1))", SprClass.LocalConnectionString);
-            var d2 = Reader2List.SelectScalar($@"select DATEADD(DAY,-1, DATEADD(MONTH,1, STR(10000*{y2}+100*{m2}+1)))", SprClass.LocalConnectionString);
-
+        {
+            
+            if (y1 != null && m1 != null && y2 != null && m2 != null)
+            {
+                d1 = Reader2List.SelectScalar($@"select convert(datetime,STR(10000*{y1}+100*{m1}+1))", SprClass.LocalConnectionString);
+                d2 = Reader2List.SelectScalar($@"select DATEADD(DAY,-1, DATEADD(MONTH,1, STR(10000*{y2}+100*{m2}+1)))", SprClass.LocalConnectionString);
+            }
+            else
+            {
+                d1 = Convert.ToDateTime("01.01.2000");
+                d2 = SprClass.WorkDate;
+            }
             //ShowSlColumn();
             SlCheckEdit.IsEnabled = false;
                 _pQueryable = from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
@@ -1205,6 +1557,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   sl.PROFIL_K,
                                   sl.C_ZAB,
                                   sl.DS_ONK,
+                                  sl.MP_HMP,
                                   //для отображения полей Калининград
                                   sl.BRIGADA,
                                   sl.ADRES_VIZ,
@@ -1258,20 +1611,20 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
-            Thread.Sleep(200);
+            Thread.Sleep(500);
             var scid = (from zsl in _ElmedDataClassesDataContext.D3_ZSL_OMS
-                       join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
-                       join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
-                       where sc.DSCHET >= (DateTime)d1 && sc.DSCHET <= (DateTime)d2
-                              && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
-                              && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl == null) && (sc.SchetType == st || st == null)
-                       select new
-                       {
-                           zsl.D3_SCID,
-                       }).ToList();
-
+                        join sc in _ElmedDataClassesDataContext.D3_SCHET_OMS on zsl.D3_SCID equals sc.ID
+                        join sl in _ElmedDataClassesDataContext.D3_SL_OMS on zsl.ID equals sl.D3_ZSLID
+                        where sc.DSCHET >= (DateTime?)d1 && sc.DSCHET <= (DateTime?)d2
+                               && (zsl.LPU == lpu || lpu == null) && (sl.PROFIL == profil || profil == null) && (sl.DS1.StartsWith(ds) || ds == null) && (sl.P_CEL25 == pcel || pcel == null)
+                               && (zsl.USL_OK == uslOk || uslOk == null) && (zsl.OS_SLUCH_REGION == osSl || osSl == null) && (sc.SchetType == st || st == null)
+                        select new
+                        {
+                            zsl.D3_SCID,
+                        }).ToList();
             Scids = scid.Select(x => x.D3_SCID).ToList();
         }
 
@@ -1369,7 +1722,7 @@ and usl.kod_sp=rg.kod_sp and year(rg.DT_FIN)=2053", SprClass.LocalConnectionStri
 
                     zsl.VOZR,
                     pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
-
+                    pa.ENP,
                     //для отображения в Иваново
                     pa.SOCSTATUS
                 };
@@ -1766,6 +2119,7 @@ or (sch.CODE_MO like '37%' and
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
+                                  sl.MP_HMP,
                                   //sl.N_KSG,
                                   //sl.KSG_PG,
                                   //sl.SL_K,
@@ -1851,6 +2205,7 @@ or (sch.CODE_MO like '37%' and
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
@@ -1941,6 +2296,7 @@ or (sch.CODE_MO like '37%' and
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
+                                  sl.MP_HMP,
                                   //sl.N_KSG,
                                   //sl.KSG_PG,
                                   //sl.SL_K,
@@ -2025,6 +2381,7 @@ or (sch.CODE_MO like '37%' and
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
@@ -2156,6 +2513,7 @@ or (sch.CODE_MO like '37%' and
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
@@ -2282,6 +2640,7 @@ or (sch.CODE_MO like '37%' and
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
@@ -2373,6 +2732,7 @@ or (sch.CODE_MO like '37%' and
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
+                                  sl.MP_HMP,
                                   //для отображения полей Калининград
                                   sl.BRIGADA,
                                   sl.ADRES_VIZ,
@@ -2447,6 +2807,7 @@ or (sch.CODE_MO like '37%' and
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }
@@ -2534,6 +2895,7 @@ or (sch.CODE_MO like '37%' and
                                   sl.CODE_MES1,
                                   sl.CODE_MES2,
                                   sl.KSG_DKK,
+                                  sl.MP_HMP,
                                   //для отображения полей Калининград
                                   sl.BRIGADA,
                                   sl.ADRES_VIZ,
@@ -2609,6 +2971,7 @@ or (sch.CODE_MO like '37%' and
                                   pa.VETERAN,
                                   pa.WORK_STAT,
                                   pa.AdressP, // поле Адрес регистрации добавил Андрей insidiuos
+                                  pa.ENP,
                               };
                 _linqInstantFeedbackDataSource.QueryableSource = _pQueryable;
             }

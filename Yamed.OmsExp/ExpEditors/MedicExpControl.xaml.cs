@@ -112,6 +112,7 @@ namespace Yamed.OmsExp.ExpEditors
                 prichrash.Visibility = Visibility.Visible;
                 VarianceCatEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from variance_cat", SprClass.LocalConnectionString);
                 VarianceReasonEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from variance_reason", SprClass.LocalConnectionString);
+                ZaklEdit.MaxLength = 250;
             }
             TemplateZaklEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from D3_SANK_TEMPLATE where userid='{SprClass.userId}' order by USERID", SprClass.LocalConnectionString);
             var videxp = ((IEnumerable<dynamic>)SprClass.TypeExp2).Where(x => ObjHelper.GetAnonymousValue(x, "EXP_TYPE") == _stype && ObjHelper.GetAnonymousValue(x, "EXP_RE") == _re).ToList();
@@ -142,7 +143,6 @@ namespace Yamed.OmsExp.ExpEditors
                 ExpMeeLayGr.Visibility = Visibility.Collapsed;
                 date_act.Visibility = Visibility.Collapsed;
             }
-
             
         }
 

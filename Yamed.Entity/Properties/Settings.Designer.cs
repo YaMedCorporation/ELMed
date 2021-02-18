@@ -223,5 +223,16 @@ namespace Yamed.Entity.Properties {
                 return ((string)(this["ElmedicineNewSV3ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MED\\SQLEXPRESS01;Initial Catalog=Elmedicines;Integrated Security=True" +
+            "")]
+        public string ElmedicinesConnectionString {
+            get {
+                return ((string)(this["ElmedicinesConnectionString"]));
+            }
+        }
     }
 }

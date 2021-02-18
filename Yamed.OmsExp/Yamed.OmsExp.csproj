@@ -104,6 +104,9 @@
     <Compile Include="ExpEditors\ReqControl.xaml.cs">
       <DependentUpon>ReqControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="License.xaml.cs">
+      <DependentUpon>License.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SqlEditor\AutoFlkControl.xaml.cs">
       <DependentUpon>AutoFlkControl.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExpEditors\ReqControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="License.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,6 +244,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="SqlEditor\SqlSyntax.xshd" />
     <None Include="App.config" />
     <None Include="SqlEditor\SqlSyntax2.xshd" />

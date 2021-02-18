@@ -140,6 +140,88 @@ namespace Yamed.Server
             int isrt = str;
             con.Close();
         }
+        public static void InsertFromTable<T>(string com, string connectionString, DataTable dt, bool deltype)
+        {
+            string sqltype = "";
+
+
+            foreach (DataColumn dc in dt.Columns)
+            {
+                //dt.Columns.Add(d.NAME,d.TYPE);
+                string s;
+                switch (dc.DataType.Name.ToString())
+                {
+                    case "Int32":
+                        s = "int";
+                        break;
+                    case "String":
+                        s = "nvarchar(500)";
+                        break;
+                    case "Guid":
+                        s = "uniqueidentifier";
+                        break;
+                    case "Boolean":
+                        s = "bit";
+                        break;
+                    case "Binary":
+                        s = "varbinary(20)";
+                        break;
+                    case "DateTime":
+                        s = "DateTime2";
+                        break;
+                    case "Decimal":
+                        s = "numeric(10,2)";
+                        break;
+                    default:
+                        s = dc.DataType.Name.ToString();
+                        break;
+                }
+
+                sqltype = sqltype + dc.ColumnName + " " + s + ",";
+
+            }
+            sqltype = sqltype.Substring(0, sqltype.Length - 1);
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd0 = new SqlCommand($@" IF exists (select * from sys.table_types where name='ForUpdate_LIS')  
+                                                 DROP TYPE dbo.ForUpdate_LIS   
+                                                 CREATE TYPE ForUpdate_LIS AS TABLE ({sqltype})", con);
+
+            SqlCommand cmd = new SqlCommand(com, con);
+
+            var t = new SqlParameter("@dt", SqlDbType.Structured);
+            t.TypeName = "dbo.ForUpdate_LIS";
+            t.Value = dt;
+            cmd.Parameters.Add(t);
+            cmd.CommandTimeout = 0;
+            con.Open();
+            cmd0.ExecuteNonQuery();
+            int str = cmd.ExecuteNonQuery();
+            int isrt = str;
+            con.Close();
+        }
+        public static DataTable ToDataTable<T>(List<T> items)
+
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo prop in Props)
+            {
+                dataTable.Columns.Add(prop.Name, prop.PropertyType.GetGenericArguments().Count() > 0 ? prop.PropertyType.GetGenericArguments()[0] : prop.PropertyType);
+            }
+
+            foreach (T item in items)
+            {
+                var values = new object[Props.Length];
+
+                for (int i = 0; i < Props.Length; i++)
+                {
+                    values[i] = Props[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            return dataTable;
+
+        }
         public static void UpdateFromTable<T>(string com, string connectionString, DataTable dt, bool deltype)
         {
             string sqltype = "";

@@ -915,3 +915,6 @@ E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkElement.baml
 E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkControl.g.cs
 E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkElement.g.cs
 E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\SqlEditor\AutoFlkControl.baml
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\License.g.cs
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\License.baml
+E:\ELMed-ELMed\Yamed.OmsExp\obj\Debug\Yamed.OmsExp.dll.licenses

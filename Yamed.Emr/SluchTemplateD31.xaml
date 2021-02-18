@@ -600,6 +600,9 @@
                                           EditValue="{Binding DataContext.PR_NOV, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" DisplayMember="NameWithID"
                                           ValueMember="ID" />
                             </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Комментарий пользователя" Width="400" HorizontalAlignment="Left">
+                                <dxe:TextEdit EditValue="{Binding DataContext.USER_COMENT, ElementName=ZSlGrid, UpdateSourceTrigger=PropertyChanged}" />
+                            </dxlc:LayoutItem>
 
                         </dxlc:LayoutGroup>
                         <dxlc:LayoutGroup />
@@ -945,6 +948,42 @@
                                     <ToggleButton Grid.Column="1" x:Name="ProfKTb" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Style="{DynamicResource toggleButtonStyle}" />
                                 </Grid>
                             </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Метод ВМП">
+                                <dxe:ComboBoxEdit x:Name="HMetodBox"
+                                          AllowSpinOnMouseWheel="False"
+                                          AutoComplete="True"
+                                          DisplayMember="NameWithID"
+                                          EditValue="{Binding SelectedItem.METOD_HMP,
+                                                              ElementName=SlGridControl,
+                                                              UpdateSourceTrigger=PropertyChanged}"
+                                          FilterCondition="Contains"
+                                          HorizontalScrollBarVisibility="Disabled"
+                                          ImmediatePopup="True"
+                                          IncrementalFiltering="True"
+                                          InvalidValueBehavior="AllowLeaveEditor"
+                                          ItemsSource="{Binding}"
+                                          NullValueButtonPlacement="EditBox"
+                                          ValidateOnTextInput="False"
+                                          ValueMember="IDHM" EditValueChanged="HMetodBox_EditValueChanged" />
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Модель пациента">
+                                <dxe:ComboBoxEdit x:Name="ModPacBox"
+                                          AllowSpinOnMouseWheel="False"
+                                          AutoComplete="True"
+                                          DisplayMember="NameWithID"
+                                          EditValue="{Binding SelectedItem.MP_HMP,
+                                                              ElementName=SlGridControl,
+                                                              UpdateSourceTrigger=PropertyChanged}"
+                                          FilterCondition="Contains"
+                                          HorizontalScrollBarVisibility="Disabled"
+                                          ImmediatePopup="True"
+                                          IncrementalFiltering="True"
+                                          InvalidValueBehavior="AllowLeaveEditor"
+                                          ItemsSource="{Binding}"
+                                          NullValueButtonPlacement="EditBox"
+                                          ValidateOnTextInput="False"
+                                          ValueMember="IDMPAC"  />
+                            </dxlc:LayoutItem>
                             <dxlc:LayoutItem Label="Вид ВМП">
                                 <dxe:ComboBoxEdit x:Name="HVidBox"
                                           AllowSpinOnMouseWheel="False"
@@ -964,24 +1003,6 @@
                                           ValidateOnTextInput="False"
                                           ValueMember="IDHVID" 
                                                    />
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="Метод ВМП">
-                                <dxe:ComboBoxEdit x:Name="HMetodBox"
-                                          AllowSpinOnMouseWheel="False"
-                                          AutoComplete="True"
-                                          DisplayMember="NameWithID"
-                                          EditValue="{Binding SelectedItem.METOD_HMP,
-                                                              ElementName=SlGridControl,
-                                                              UpdateSourceTrigger=PropertyChanged}"
-                                          FilterCondition="Contains"
-                                          HorizontalScrollBarVisibility="Disabled"
-                                          ImmediatePopup="True"
-                                          IncrementalFiltering="True"
-                                          InvalidValueBehavior="AllowLeaveEditor"
-                                          ItemsSource="{Binding}"
-                                          NullValueButtonPlacement="EditBox"
-                                          ValidateOnTextInput="False"
-                                          ValueMember="IDHM" />
                             </dxlc:LayoutItem>
                             <dxlc:LayoutGroup>
                                 <dxlc:LayoutItem Label="№ талона ВМП" ToolTip="Номер талона на ВМП">
@@ -1103,7 +1124,7 @@
                                         AutoComplete="True"
                                         IncrementalFiltering="True" EditValue="{Binding SelectedItem.DS1, ElementName=SlGridControl, UpdateSourceTrigger=PropertyChanged}"
                                         ImmediatePopup="True" FilterCondition="Contains"
-                                        IsPopupAutoWidth="True" ItemsSource="{Binding}" GotFocus="mkbBox_GotFocus" LostFocus="mkbBox_LostFocus" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox">
+                                        IsPopupAutoWidth="True" ItemsSource="{Binding}" GotFocus="mkbBox_GotFocus" LostFocus="mkbBox_LostFocus" HorizontalScrollBarVisibility="Disabled" NullValueButtonPlacement="EditBox" EditValueChanged="Ds1Edit_EditValueChanged" >
                                         <dxg:LookUpEdit.PopupContentTemplate>
                                             <ControlTemplate>
                                                 <dxg:GridControl x:Name="PART_GridControl">

@@ -100,7 +100,7 @@ namespace Yamed.Emr
         public List<D3_USL_OMS> _usl_delList;
 
 
-        public SluchTemplateD31(GridControl gc)
+        public SluchTemplateD31(GridControl gc, bool? locked = false)
         {
             InitializeComponent();
 
@@ -146,7 +146,44 @@ namespace Yamed.Emr
                 LekprDelItem.IsEnabled = false;
                 ConsAddItem.IsEnabled = false;
                 ConsDelItem.IsEnabled = false;
-            }            
+            }
+            else if (SprClass.Region == "79" && SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms && locked == true)
+            {
+                SaveItem.IsEnabled = false;
+                NewItem.IsEnabled = false;
+                SlAddItem.IsEnabled = false;
+                SlDelItem.IsEnabled = false;
+                UslAddItem.IsEnabled = false;
+                UslDelItem.IsEnabled = false;
+                UslAutoTemplateItem.IsEnabled = false;
+                UslEditItem.IsEnabled = false;
+                UslTemplateItem.IsEnabled = false;
+                Ds2AddItem.IsEnabled = false;
+                Ds2DelItem.IsEnabled = false;
+                KslpAddItem.IsEnabled = false;
+                KslpDelItem.IsEnabled = false;
+                CritAddItem.IsEnabled = false;
+                CritDelItem.IsEnabled = false;
+                NaprAddItem.IsEnabled = false;
+                NaprDelItem.IsEnabled = false;
+                NaznAddItem.IsEnabled = false;
+                NaznDelItem.IsEnabled = false;
+                BdiagAddItem.IsEnabled = false;
+                BdiagDelItem.IsEnabled = false;
+                BprotAddItem.IsEnabled = false;
+                BprotDelItem.IsEnabled = false;
+                OnkslAddItem.IsEnabled = false;
+                OnkslDelItem.IsEnabled = false;
+                OnkUslAddItem.IsEnabled = false;
+                OnkUslDelItem.IsEnabled = false;
+                LekprAddItem.IsEnabled = false;
+                LekprDelItem.IsEnabled = false;
+                ConsAddItem.IsEnabled = false;
+                ConsDelItem.IsEnabled = false;
+                SankAddItem.IsEnabled = false;
+                SankDelItem.IsEnabled = false;
+                SankEditItem.IsEnabled = false;
+            }
         }
 
         public void BindPacient(int pid)
@@ -548,7 +585,6 @@ namespace Yamed.Emr
             SlGrid.DataContext = _slList;
             NextButton.IsEnabled = true;
             PrevButton.IsEnabled = true;
-
         }, TaskScheduler.FromCurrentSynchronizationContext());
 
         }
@@ -635,6 +671,7 @@ namespace Yamed.Emr
             //});
         }
         public DateTime? dvmp;
+        public DateTime? dkslp;
         public int? usl_ok;
         public string fap_lpu;
         void GetSpr()
@@ -749,7 +786,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
 
 
             
-            KslpCodeColumnEdit.DataContext = SprClass.KslpList;
+            //KslpCodeColumnEdit.DataContext = SprClass.KslpList;
             CritColumn.DataContext = SprClass.V024;
             RsltdBox.DataContext = SprClass.V017;
             NazrColumnEdit.DataContext = SprClass.NAZR;
@@ -767,10 +804,13 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             PodrGrid.DataContext = Reader2List.CustomAnonymousSelect($@"select * from podrdb", SprClass.LocalConnectionString);
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
+            dkslp = ((D3_SL_OMS)SlGridControl.SelectedItem)?.DATE_2 == null ? SprClass.WorkDate : ((D3_SL_OMS)SlGridControl.SelectedItem)?.DATE_2;
+            KslpCodeColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from SprKSLP where '{dkslp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
             NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
             MseEdit.DataContext = SprClass.SprBit;
-            HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
-            HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
+            //ModPacBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V022 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by IDMPAC", SprClass.LocalConnectionString);
+            //HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
+            //HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
             fap_lpu = _slList[0].LPU_1;
             if ((fap_lpu ?? "3").Length == 8)
             {
@@ -795,8 +835,9 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
 
         private void HVidBox_OnEditValueChanged(object sender, EditValueChangedEventArgs e)
         {
-            HMetodBox.DataContext = 
-                SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND>=dvmp)).ToList().OrderBy(x => x.IDHM);
+                //ModPacBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V022 where '{dvmp}' between datebeg and isnull(dateend,'21000101') and idmpac={(int?)e.NewValue} order by IDMPAC", SprClass.LocalConnectionString);
+                //HMetodBox.DataContext =
+                //SprClass.MetodVmpList.Where(x => x.HVID == (string)e.NewValue && (x.DATEEND >= dvmp)).ToList().OrderBy(x => x.IDHM);
         }
 
         private DateTime sankdate;
@@ -921,16 +962,26 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
 
                     if (usl.ID == 0)
                     {
-                        usl.D3_ZSLID = _zsl.ID;
-                        usl.VERS_SPEC = "V021";
-                        usl.D3_SLID = _slList.Single(x => x.SL_ID == usl.D3_SLGID).ID;
-                        var uslid = Reader2List.ObjectInsertCommand("D3_USL_OMS", usl, "ID", SprClass.LocalConnectionString);
-                        usl.ID = (int)uslid;
+                            usl.D3_ZSLID = _zsl.ID;
+                            usl.VERS_SPEC = "V021";
+                            usl.D3_SLID = _slList.Single(x => x.SL_ID == usl.D3_SLGID).ID;
+                            var uslid = Reader2List.ObjectInsertCommand("D3_USL_OMS", usl, "ID", SprClass.LocalConnectionString);
+                            usl.ID = (int)uslid;
                     }
                     else
                     {
-                        var upd = Reader2List.CustomUpdateCommand("D3_USL_OMS", usl, "ID");
-                        Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                        if (usl.CODE_USL != null && usl.VID_VME != null)
+                        {
+                            if (!usl.CODE_USL.StartsWith("R") && usl.VID_VME != usl.CODE_USL)
+                            {
+                                DXMessageBox.Show("Некорректно заполнено поле код услуги в таблице услуг, для не региональной услуги!!!");
+                            }
+                            else
+                            {
+                                var upd = Reader2List.CustomUpdateCommand("D3_USL_OMS", usl, "ID");
+                                Reader2List.CustomExecuteQuery(upd, SprClass.LocalConnectionString);
+                            }
+                        }
                     }
                 }
 
@@ -1495,6 +1546,8 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
 
         private void SlGridControl_OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
+            dkslp = ((D3_SL_OMS)SlGridControl.SelectedItem)?.DATE_2 == null ? SprClass.WorkDate : ((D3_SL_OMS)SlGridControl.SelectedItem)?.DATE_2;
+            KslpCodeColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from SprKSLP where '{dkslp}' between datebeg and isnull(dateend,'21000101')", SprClass.LocalConnectionString);
             UslGridControl.FilterString = $"([D3_SLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
             NaprGridControl.FilterString = $"([D3_SLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
             ConsGridControl.FilterString = $"([D3_SLGID] = '{((D3_SL_OMS)SlGridControl.SelectedItem)?.SL_ID}')";
@@ -2107,7 +2160,14 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
                 var st = sank.S_TIP ?? (sank.S_TIP2 >= 20 && sank.S_TIP2 < 30 ? 2 : 3);
                 var re = sank.S_TIP == null ? 1 : 0;
                 var admin = SqlReader.Select($@"Select ID from Yamed_Users where username like '%Admin%'", SprClass.LocalConnectionString);
-                if (sank.USER_ID.ToString() != "" && admin.Count < 1 && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
+                var fam = Reader2List.SelectScalar($@"Select Fam from Yamed_Users where id={SprClass.userId}", SprClass.LocalConnectionString);
+                var act_st = Reader2List.SelectScalar($@"Select act_status from D3_AKT_REGISTR_OMS where id = {sank.D3_ARID}", SprClass.LocalConnectionString);
+                if (SprClass.Region=="83" && fam.ToString() != "Терещенко" && fam.ToString() != "Геращенко" && (act_st.ToString() == "1" || act_st.ToString() == "3"))
+                {
+                    DXMessageBox.Show("Вы не можете редактировать эту санкцию!");
+                    return;
+                }
+                else if (sank.USER_ID.ToString() != "" && admin.Count < 1 && sank.USER_ID.ToString() != SprClass.userId.ToString() && sank.S_TIP2 != 1)
                 {
                     DXMessageBox.Show("Вы не можете редактировать эту санкцию, она проведена другим пользователем");
                     return;
@@ -2399,7 +2459,7 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
             {
                 if (Equals(e.Column, KslpCodeColumn) && e.Value != null)
                 {
-                    var val = ((IEnumerable<dynamic>)SprClass.KslpList).SingleOrDefault(
+                    var val = ((IEnumerable<dynamic>)Reader2List.CustomAnonymousSelect($@"Select * from SprKSLP where isnull(DATEEND,'21000101') >='{dvmp}'", SprClass.LocalConnectionString)).SingleOrDefault(
                         x => (int)ObjHelper.GetAnonymousValue(x, "IDSL") == (int?)e.Value);
                     KslpGridControl.SetCellValue(e.RowHandle, "Z_SL",
         ObjHelper.GetAnonymousValue(val, "ZKOEF"));
@@ -2715,6 +2775,9 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
         {
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
             NksgEdit.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V023 where idump='{usl_ok}' and '{dvmp}' between datebeg and isnull(dateend,'21000101') order by k_ksg", SprClass.LocalConnectionString);
+            ModPacBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V022 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by IDMPAC", SprClass.LocalConnectionString);
+            HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
+            HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);
         }
 
         private void UslOkzEdit_EditValueChanged(object sender, EditValueChangedEventArgs e)
@@ -2779,6 +2842,18 @@ EXEC p_oms_calc_schet {_zsl.D3_SCID}
                 }
             }
         }
+        private void HMetodBox_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            ModPacBox.DataContext = Reader2List.CustomAnonymousSelect($@"select v22.IDMPAC as IDMPAC,v22.NameWithID as NameWithID from v022 v22 join v019 v19 on v19.IDMODP=v22.IDMPAC where '{dvmp}' between v22.datebeg and isnull(v22.dateend,'21000101') and v19.idhm ='{(int?)e.NewValue}' and v19.diag like '%{((D3_SL_OMS)SlGridControl.SelectedItem).DS1}%'", SprClass.LocalConnectionString);
+            HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select v18.IDHVID as IDHVID,v18.NameWithID as NameWithID from v018 v18 join v019 v19 on v19.HVID=v18.IDHVID where '{dvmp}' between v18.datebeg and isnull(v18.dateend,'21000101') and v19.idhm='{(int?)e.NewValue}' and v19.diag like '%{((D3_SL_OMS)SlGridControl.SelectedItem).DS1}%'", SprClass.LocalConnectionString);
+        }
+
+        private void Ds1Edit_EditValueChanged(object sender, EditValueChangedEventArgs e)
+        {
+            HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select IDHM,NameWithID from v019 where diag like '%{e.NewValue??"".ToString()}%' and dateend >='{dvmp}' group by IDHM,NameWithID",SprClass.LocalConnectionString);//SprClass.MetodVmpList.Where(x => x.DIAG.Contains((e.NewValue ?? "").ToString()) && x.DATEEND >= dvmp).ToList().OrderBy(x=>x.IDHM);
+        }
+
+        // HMetodBox.DataContext = SprClass.MetodVmpList.Where(x => x.DIAG.Contains((string) e.NewValue) && x.DATEEND >= dvmp).ToList().OrderBy(x=>x.IDHM);
     }
 
     public class RoleVisibility : IValueConverter

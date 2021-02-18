@@ -203,7 +203,7 @@
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="Заключение" HorizontalAlignment="Left">
-                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding S_ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" Width="300" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" HorizontalAlignment="Left" MaxLength="250" />
+                        <dxe:TextEdit VerticalScrollBarVisibility="Auto" EditValue="{Binding S_ZAKL, UpdateSourceTrigger=PropertyChanged}" x:Name="ZaklEdit" Height="75" Width="300" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" HorizontalAlignment="Left" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="Шаблоны заключений" VerticalAlignment="Top" >
                         <dxe:ComboBoxEdit VerticalScrollBarVisibility="Auto" ValueMember="id" ValidateOnTextInput="False" NullValueButtonPlacement="EditBox" ItemsSource="{Binding}" ImmediatePopup="True" IncrementalFiltering="True" FilterCondition="Contains" DisplayMember="TEXT" AutoComplete="True" x:Name="TemplateZaklEdit" TextWrapping="Wrap" AcceptsReturn="True" EditValueChanged="TemplateZaklEdit_EditValueChanged" />

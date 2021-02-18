@@ -35,7 +35,7 @@ namespace Yamed.Oms
         private string _reqCmd;
         private D3_SCHET_OMS _sc;
         public int? _arid;
-        
+        public bool? lock_zsl;
         public SchetRegisterControl(D3_SCHET_OMS sc)
         {
             InitializeComponent();
@@ -110,9 +110,10 @@ namespace Yamed.Oms
         }
 
         private List<int> _scids;
-        public SchetRegisterControl(List<int> scids)
+        public SchetRegisterControl(List<int> scids,bool? locked=false)
         {
             InitializeComponent();
+            lock_zsl = locked;
             if (SprClass.Region != "22")
             {
                 Export22.IsVisible = false;
@@ -147,6 +148,15 @@ namespace Yamed.Oms
             if (SprClass.Region == "25")
             {
                 zaprosPD.Visibility = Visibility.Visible;
+            }
+            if (SprClass.Region=="79" && SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms && locked==true)
+            {
+                zaprosPD.Visibility = Visibility.Collapsed;
+                zapPD.IsVisible = false;
+                aktExp.IsEnabled = false;
+                mek.IsEnabled = false;
+                reexpertise.IsEnabled = false;
+                sank.IsEnabled = false;
             }
             if (scids.Any())
             {
@@ -816,7 +826,7 @@ where zsl.D3_SCID in {ids}";
             }
             else
             {
-                if (SprClass.Region != "37")
+                if (SprClass.Region != "37" && SprClass.Region!="79")
                 {
                     var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
                     var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1);
@@ -833,6 +843,19 @@ where zsl.D3_SCID in {ids}";
                 {
                     var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
                     var slt = new SluchTemplateD31Ivanovo(SchetRegisterGrid1.gridControl1);
+                    slt.BindSluch(id, new Entity.D3_SCHET_OMS());
+                    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                    {
+                        Header = "Карта пациента",
+                        MyControl = slt,
+                        IsCloseable = "True",
+                        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                    });
+                }
+                else if (SprClass.Region == "79" && SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                {
+                    var id = (int)ObjHelper.GetAnonymousValue(DxHelper.GetSelectedGridRow(tab.gridControl1), "ID");
+                    var slt = new SluchTemplateD31(SchetRegisterGrid1.gridControl1,lock_zsl);
                     slt.BindSluch(id, new Entity.D3_SCHET_OMS());
                     СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
                     {
@@ -962,6 +985,11 @@ where zsl.D3_SCID in {ids}";
             {
                 SchetRegisterGrid1.BindDataDSS();
                 scVid.Content = "Вид - Сопутств. диагнозы";
+            }
+            else if (tag == "CRIT" && isChecked)
+            {
+                SchetRegisterGrid1.BindDataCritKSG();
+                scVid.Content = "Вид - Классиф. критерии КСГ";
             }
             else if (tag == "")
             {

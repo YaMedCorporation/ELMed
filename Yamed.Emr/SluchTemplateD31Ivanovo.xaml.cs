@@ -778,6 +778,7 @@ select left(@tf_okato,2)", SprClass.LocalConnectionString);
             
             usl_ok = _zsl.USL_OK == null ? 3 : _zsl.USL_OK;
             dvmp = _zsl.DATE_Z_2 == null ? SprClass.WorkDate : _zsl.DATE_Z_2;
+            //KslpCodeColumnEdit.DataContext = Reader2List.CustomAnonymousSelect($@"Select * from SprKSLP where DATEBEG >='{_zsl.DATE_Z_2}'", SprClass.LocalConnectionString);
             MseEdit.DataContext = SprClass.SprBit;
             HVidBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V018 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhvid", SprClass.LocalConnectionString);
             HMetodBox.DataContext = Reader2List.CustomAnonymousSelect($@"select * from V019 where '{dvmp}' between datebeg and isnull(dateend,'21000101') order by idhm", SprClass.LocalConnectionString);

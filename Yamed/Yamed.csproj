@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Yamed.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiveQueryBuilder.Core">
       <HintPath>F:\TFS_Codes\Git_Yamed\Yamed\bin\Debug\ActiveQueryBuilder.Core.dll</HintPath>
@@ -304,6 +307,9 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="SplashScreen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Yamed.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

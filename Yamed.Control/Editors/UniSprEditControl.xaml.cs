@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -143,6 +144,7 @@ namespace Yamed.Control.Editors
                         return;
                     }
                 }
+                
                 if (_is_identity)
                 {
                    var id = Reader2List.ObjectInsertCommand(_tableName, _obj, _pkCol.Column_Name, _connectionString);
@@ -153,6 +155,13 @@ namespace Yamed.Control.Editors
             }
             else
             {
+                if (_tableName == "D3_SCHET_OMS" && SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+                {
+                    if (_columnsInformationSchema.SingleOrDefault(x => x.COLUMN_NAME == "Status").COLUMN_NAME == "Status" && ObjHelper.GetAnonymousValue(_obj, "Status").ToString() == "900")
+                    {
+                        Reader2List.CustomExecuteQuery($@"use DocExchange update DOX_SCHET set DOX_STATUS=900 where SCHET_ID={ObjHelper.GetAnonymousValue(_obj, "SCHET_ID")}", SprClass.LocalConnectionString);
+                    }
+                }
                 Reader2List.CustomExecuteQuery(
                     Reader2List.CustomUpdateCommand(_tableName, _obj, _pkCol.Column_Name)
                     , _connectionString);
@@ -173,7 +182,12 @@ namespace Yamed.Control.Editors
         {
             SaveItem();
         }
-
+        public class Dost
+        {
+            public int ID { get; set; }
+            public string NameWithID { get; set; }
+        }
+        public ObservableCollection<Dost> stat_act = new ObservableCollection<Dost>();
         private void DataLayoutControl_OnAutoGeneratingItem(object sender, DataLayoutControlAutoGeneratingItemEventArgs e)
         {
             if (_columnsInformationSchema.SingleOrDefault(x => x.COLUMN_NAME == e.PropertyName) == null)
@@ -183,7 +197,7 @@ namespace Yamed.Control.Editors
             }
             var cn = _extendedProperties.SingleOrDefault(x => x.objname == e.PropertyName);
             if (cn != null) e.Item.Label = cn.value;
-
+            
             if (_columnsInformationSchema.Single(x => x.COLUMN_NAME == e.PropertyName).IS_NULLABLE == "NO")
             {
                 if (e.PropertyName == _pkCol.Column_Name && _is_identity)
@@ -248,11 +262,39 @@ namespace Yamed.Control.Editors
                     e.Item.Content = control;
                     control.ItemsSource = Reader2List.CustomAnonymousSelect($@"Select IDDT,NameWithID from V016 where '{DateTime.Today}' between datebeg and isnull(dateend,'21000101')", _connectionString);
                 }
+                else if (SprClass.Region=="83" && _tableName == "D3_AKT_REGISTR_OMS" && e.PropertyName=="ACT_STATUS")
+                {
+                    stat_act.Add(new Dost { ID = 0, NameWithID = "0 В работе" });
+                    stat_act.Add(new Dost { ID = 1, NameWithID = "1 Согласован" });
+                    stat_act.Add(new Dost { ID = 2, NameWithID = "2 Черновик" });
+                    var bind = new Binding(e.PropertyName);
+                    bind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                    var control = new ComboBoxEdit(); control.ValueMember = "ID";
+                    control.DisplayMember = "NameWithID";
+                    //control.ItemsSource = rt.Value;
+                    control.SetBinding(BaseEdit.EditValueProperty, bind);
+                    control.NullValueButtonPlacement = EditorPlacement.EditBox;
+                    control.IncrementalFiltering = true;
+                    control.AutoComplete = true;
+                    control.FilterCondition = FilterCondition.Contains;
+                    e.Item.Content = control;
+                    e.Item.Label = "Статус акта";
+                    control.ItemsSource = stat_act;
+                }
+                else if (SprClass.Region != "83" && _tableName == "D3_AKT_REGISTR_OMS" && e.PropertyName == "ACT_STATUS")
+                {
+                    ((BaseEdit)e.Item.Content).Visibility = Visibility.Collapsed;
+                    e.Item.Label = "";
+                }
+                else if (_tableName == "D3_SCHET_OMS" && e.PropertyName == "LOCK_STATUS")
+                {
+                    ((BaseEdit)e.Item.Content).Visibility = Visibility.Collapsed;
+                    e.Item.Label = "";
+                }
                 else
                 {
                     return;
                 }
-
             }
             else
             {

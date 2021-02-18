@@ -238,6 +238,7 @@
                     <dxb:BarCheckItem Tag="USL" Content="Только услуги" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                     <dxb:BarCheckItem Tag="SANK" x:Name="sank" Content="Санкции/Экспертизы" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                     <dxb:BarCheckItem Tag="DSS" Content="Сопутств. диагнозы" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
+                    <dxb:BarCheckItem Tag="CRIT" Content="Классиф. критерии КСГ" GroupIndex="1"  CheckedChanged="ViewCheckItem_CheckedChanged"/>
                 </dxb:BarSubItem>
                 <dxb:BarItemSeparator/>
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 

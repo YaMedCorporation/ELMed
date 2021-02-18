@@ -74,6 +74,7 @@ namespace Yamed.Oms
                                     {                                        
                                         ID = sc.ID,
                                         CODE_MO = sc.CODE_MO,
+                                        CODE = sc.CODE,
                                         NAME_MO = f3.nam_mok,
                                         PLAT = sc.PLAT,
                                         YEAR = sc.YEAR,

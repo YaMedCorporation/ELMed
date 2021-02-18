@@ -122,12 +122,17 @@
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Импорт oms" Content="Импорт&#10;   oms" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/folder_blue_open_2087.png"
-                                           ItemClick="ImportOms_OnClick" />
+                                           ItemClick="ImportOms_OnClick" IsVisible="False" />
 
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Загрузка МИС" x:Name="lmis" Content="Загрузка&#10;    МИС" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/folder_web.png"
                                            ItemClick="LoadMis_OnClick" />
+                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
+                                           ToolTip="Загрузка диагностических исследований" x:Name="lissl" Content="Загрузка&#10;исследований" GlyphAlignment="Left" AllowGlyphTheming="True"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/folder_web.png" ItemClick="Lissl_ItemClick"
+                                           
+                                            />
                 <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" 
                                            ToolTip="Загрузка ДБФ" x:Name="ldbf" Content="Загрузка&#10;    ДБФ" GlyphAlignment="Left" AllowGlyphTheming="True"
                                            LargeGlyph="/Yamed.Icons;component/Icons/folder_web.png" ItemClick="Ldbf_ItemClick"

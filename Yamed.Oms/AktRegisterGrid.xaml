@@ -159,7 +159,8 @@
                                     <dxe:ComboBoxEditSettings Name="UserEdit" DisplayMember="UserName" ValueMember="ID" ItemsSource="{Binding}" AllowDefaultButton="False"/>
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
-                        </dxg:GridControl.Columns>
+                        <dxg:GridColumn Name="Column_ACT_STATUS" FieldName="ACT_STATUS" Header="Статус акта" FilterPopupMode="CheckedList" ReadOnly="True" Visible="False" />
+                    </dxg:GridControl.Columns>
                         <dxg:GridControl.View>
                             <dxg:TableView x:Name="view"  WaitIndicatorType="Panel" ShowSearchPanelMode="Always" ShowCriteriaInAutoFilterRow="True" AllowConditionalFormattingMenu="True" RetainSelectionOnClickOutsideCheckBoxSelector="False" ShowCheckBoxSelectorColumn="True" ShowCheckBoxSelectorInGroupRow="True" AllowEditing="True" ShowAutoFilterRow="True" ShowGroupedColumns="True" ShowTotalSummary="True" AllowFixedColumnMenu="True"  >
                                 <dxg:TableView.RowCellMenuCustomizations>

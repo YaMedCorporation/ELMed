@@ -53,6 +53,8 @@ namespace Yamed.Oms
                     Glyph = new Uri("/Yamed.Icons;component/Icons/certificate_diploma_folded_achievement_license_graduation_graduate-256.png", UriKind.Relative),
                     Command = new RelayCommand(() =>
                         {
+                            if (SprClass.Region!="83")
+                            {
                             var window = new DXWindow
                             {
                                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
@@ -62,6 +64,20 @@ namespace Yamed.Oms
                                 Height = 768
                             };
                             window.ShowDialog();
+                            }
+                            else
+                            {
+                            var window = new DXWindow
+                            {
+                                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                                Content = new License(),
+                                Title = "Лицензии",
+                                Width = 922,
+                                ResizeMode=ResizeMode.NoResize,
+                                Height = 503
+                            };
+                            window.ShowDialog();
+                            }
                         },
                         () => true)
                 },

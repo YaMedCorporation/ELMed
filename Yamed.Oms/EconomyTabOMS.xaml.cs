@@ -29,7 +29,7 @@ namespace Yamed.Oms
     public partial class EconomyTabOMS : UserControl
     {
         public LinqInstantFeedbackDataSource linqInstantFeedbackDataSource;
-
+        public object context;
         public static readonly DependencyProperty IsSmoTableVisibleProperty =
             DependencyProperty.Register("IsSmoTableVisible", typeof (Visibility), typeof (EconomyWindow), null);
         public Visibility IsSmoTableVisible
@@ -54,7 +54,9 @@ namespace Yamed.Oms
             if (SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
             {
                 ScExportEis.IsVisible = true;
+                ScUp900.IsVisible = true;
             }
+
             linqInstantFeedbackDataSource = (LinqInstantFeedbackDataSource)FindResource("LinqInstantFeedbackDataSource");
             var edc =  new YamedDataClassesDataContext()
             {
@@ -70,6 +72,7 @@ namespace Yamed.Oms
                              {
                                  ID = sc.ID,
                                  CODE_MO = sc.CODE_MO,
+                                 CODE = sc.CODE,
                                  NAME_MO = f3.nam_mok,
                                  NAME_MO_ID = f3.NameWithID,
                                  PLAT = sc.PLAT,
@@ -90,9 +93,18 @@ namespace Yamed.Oms
                                  sc.PersFileName,
                                  sc.SchetType,
                                  SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
-                                 sc.Status
+                                 sc.Status,
+                                 sc.LOCK_STATUS
                              }).ToList();
             gridControl.ItemsSource = pQueryable;
+
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms && SprClass.Region == "79")
+            {
+                Lock_sc.IsVisible = true;
+                Unlock_sc.IsVisible = true;
+                lstatus.Visible = true;
+                gridControl.FilterString = $@"[LOCK_STATUS] = 0";
+            }
             //linqInstantFeedbackDataSource.QueryableSource = pQueryable;Data,
             //Source ={ StaticResource LinqInstantFeedbackDataSource}
 
@@ -100,8 +112,6 @@ namespace Yamed.Oms
             //SprClass.LocalConnectionString).SingleOrDefault()?.Parametr;
             //            var isTfoms = tfoms != null && bool.Parse(tfoms);
             //            var isSmo = tfoms != null && !bool.Parse(tfoms);
-
-
         }
 
 
@@ -172,14 +182,13 @@ namespace Yamed.Oms
             //gridControl2.DataContext = OmsList;
         }
 
-        private void UpdateData ()
+        private void UpdateData (int? row = null)
         {
             var edc = new YamedDataClassesDataContext()
             {
                 ObjectTrackingEnabled = false,
                 Connection = { ConnectionString = SprClass.LocalConnectionString }
             };
-
             /* IQueryable*/
             var pQueryable = (from sc in edc.D3_SCHET_OMS
                               join f3 in edc.D3_F003 on sc.CODE_MO equals f3.mcod
@@ -188,6 +197,7 @@ namespace Yamed.Oms
                               {
                                   ID = sc.ID,
                                   CODE_MO = sc.CODE_MO,
+                                  CODE = sc.CODE,
                                   NAME_MO = f3.nam_mok,
                                   NAME_MO_ID = f3.NameWithID,
                                   PLAT = sc.PLAT,
@@ -208,24 +218,52 @@ namespace Yamed.Oms
                                   sc.PersFileName,
                                   sc.SchetType,
                                   SchetTypeName = sprsc.NameWithID, // добавил Андрей insidious
-                                  sc.Status
+                                  sc.Status,
+                                  sc.LOCK_STATUS
                               }).ToList();
             gridControl.ItemsSource = pQueryable;
+            if (SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms && SprClass.Region == "79")
+            {
+                gridControl.FilterString = $@"[LOCK_STATUS] = 0";
+            }
+            if (row != null)
+            {
+                Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                new Action(delegate ()
+                {
+                    Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                    new Action(delegate ()
+                    {
+                        int rowHandle = (int)row;
+                        int row0 = 0;
+                        if (!gridControl.IsGroupRowHandle(rowHandle))
+                            rowHandle = gridControl.GetParentRowHandle(rowHandle);
+                        row0 = gridControl.GetParentRowHandle(rowHandle);
+                        if (!gridControl.IsGroupRowExpanded(rowHandle))
+                            gridControl.ExpandGroupRow(rowHandle);
+                        gridControl.ExpandGroupRow(row0);
+                    }));
+                }));
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+            new Action(delegate ()
+            {
+                gridControl.ExpandGroupRow(-1);
+                Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                new Action(delegate ()
+                {
+                    gridControl.ExpandGroupRow(-2);
+                }));
+            }));
+            }
         }
         private void RefreshItem_OnItemClick(object sender, ItemClickEventArgs e)
         {
             UpdateData();
-            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
-            new Action(delegate ()
-            {
-            gridControl.ExpandGroupRow(-1);
-            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
-            new Action(delegate ()
-            {
-                gridControl.ExpandGroupRow(-2);
-            }));
-            }));
             //linqInstantFeedbackDataSource.Refresh();
+
         }
 
         private void AddItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -252,9 +290,13 @@ namespace Yamed.Oms
             //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
             var row = DxHelper.GetSelectedGridRowOt(gridControl);
             if (row == null) return;
-
+           
             var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(row);
-
+            if (sc.LOCK_STATUS != 0)
+            {
+                DXMessageBox.Show("Невозможно отредактировать заблокированный счет!");
+                return;
+            }
             var sprEditWindow = new UniSprEditControl("D3_SCHET_OMS", sc, true, SprClass.LocalConnectionString);
             var window = new DXWindow
             {
@@ -265,7 +307,9 @@ namespace Yamed.Oms
             };
 
             window.ShowDialog();
-            UpdateData();
+            UpdateData(gridControl.GetSelectedRowHandles()[0]);
+           
+
             //linqInstantFeedbackDataSource.Refresh();
         }
 
@@ -274,7 +318,11 @@ namespace Yamed.Oms
             //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
             var row = ObjHelper.ClassConverter<D3_SCHET_OMS>(DxHelper.GetSelectedGridRowOt(gridControl));
             if (row == null) return;
-
+            if (row.LOCK_STATUS!=0)
+            {
+                DXMessageBox.Show("Невозможно удалить заблокированный счет!");
+                return;
+            }
             MessageBoxResult result = MessageBox.Show("Удалить счет за период " + row.MONTH + "." + row.YEAR + "\n" + SprClass.LpuList.Single(x => x.mcod == row.CODE_MO).NameWithID + "?", "Удаление",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -284,12 +332,12 @@ namespace Yamed.Oms
 
 
                // обработчик удаления счетов со статусами, Андрей insidious
-                if (string.Equals(row.Status, "отработан", StringComparison.CurrentCultureIgnoreCase) || string.Equals(row.Status, "ошибочен", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    ErrorGlobalWindow.ShowError("Невозможно удалить счет с данным статусом");
-                }
-                else
-                {
+                //if (string.Equals(row.Status, "отработан", StringComparison.CurrentCultureIgnoreCase) || string.Equals(row.Status, "ошибочен", StringComparison.CurrentCultureIgnoreCase))
+                //{
+                //    ErrorGlobalWindow.ShowError("Невозможно удалить счет с данным статусом");
+                //}
+                //else
+                //{
                     bool isDel = false;
                     LoadingDecorator1.IsSplashScreenShown = true;
                     var delSchet = Task.Factory.StartNew(() =>
@@ -325,9 +373,9 @@ namespace Yamed.Oms
                     //barButtonItem4.IsEnabled = true;
                     //}
                 }, uiScheduler);
-                }
+               // }
             }
-
+            UpdateData();
             //var id = PublicVoids.GetAnonymousValue(row, "ID");
             //Reader2List.CustomExecuteQuery($"DELETE FROM {"D3_SCHET_OMS"} WHERE {"ID"}={id}", SprClass.LocalConnectionString);
             //tab.linqInstantFeedbackDataSource.Refresh();
@@ -1559,13 +1607,13 @@ SELECT [ID]
             if (schets.Length > 1)
                 foreach (var sc1 in schets)
                 {
-                    var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(sc1);
-                    XmlStreemMtr3(sc, true, true);
+                    //var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(sc1);
+                    XmlStreemMtr3(sc1, true, true);
                 }
             else
             {
-                var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(schets[0]);
-                XmlStreemMtr3(sc, true);
+                //var sc = ObjHelper.ClassConverter<D3_SCHET_OMS>(schets[0]);
+                XmlStreemMtr3(schets[0], true);
             }
 
         }
@@ -1574,7 +1622,7 @@ SELECT [ID]
         {
 
             var qxml = SqlReader.Select($@"
-            exec p_oms_export_mtr_30K {ObjHelper.GetAnonymousValue(schet, "ID")}"
+            exec p_oms_export_mtr_30K {schet/*ObjHelper.GetAnonymousValue(schet, "ID")*/}"
             , SprClass.LocalConnectionString);
 
 
@@ -1625,6 +1673,58 @@ SELECT [ID]
             window.ShowDialog();
         }
 
+        private void ScUp900_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var scs = DxHelper.GetSelectedGridRowsSC(gridControl);
+            var ids = "(";
+            foreach (var sc in scs)
+            {
+                ids += sc + ", ";
+            }
+            ids += ")";
+            ids = ids.Replace(", )", ")");
+            Task.Factory.StartNew(() =>
+            {
+                Reader2List.CustomExecuteQuery($@"update d3_schet_oms set Status=900 where ID in {ids}", SprClass.LocalConnectionString);
+                Reader2List.CustomExecuteQuery($@"update DocExchange.dbo.DOX_SCHET set DocExchange.dbo.DOX_SCHET.DOX_STATUS=900 where DocExchange.dbo.DOX_SCHET.SCHET_ID in (select SCHET_ID from d3_schet_oms where id in {ids})", SprClass.LocalConnectionString);
+            });
+        }
+
+        private void Lock_sc_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var scs = DxHelper.GetSelectedGridRowsSC(gridControl);
+            int l = 0;
+            int kol = 0;
+            foreach (var sc in scs)
+            {
+                l = Convert.ToInt32(Reader2List.SelectScalar($@"select lock_status from d3_schet_oms where id = {sc}", SprClass.LocalConnectionString));
+                if (l==0)
+                {
+                    Reader2List.CustomExecuteQuery($@"update d3_schet_oms set LOCK_STATUS=1 where ID= {sc}", SprClass.LocalConnectionString);
+                    kol += 1;
+                }
+            }
+            DXMessageBox.Show($@"Заблокировано счетов: {kol}" + "\r\n" + $@"Не удалось заблокировать счетов: {scs.Count()-kol}");
+            UpdateData();
+        }
+
+        private void Unlock_sc_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var scs = DxHelper.GetSelectedGridRowsSC(gridControl);
+            int l = 0;
+            int kol = 0;
+            foreach (var sc in scs)
+            {
+                l = Convert.ToInt32(Reader2List.SelectScalar($@"select lock_status from d3_schet_oms where id = {sc}", SprClass.LocalConnectionString));
+                if (l < 100)
+                {
+                    Reader2List.CustomExecuteQuery($@"update d3_schet_oms set LOCK_STATUS=0 where ID= {sc}", SprClass.LocalConnectionString);
+                    kol += 1;
+                }
+            }
+            DXMessageBox.Show($@"Разблокировано счетов: {kol}" + "\r\n" + $@"Не удалось разблокировать счетов: {scs.Count() - kol}");
+            UpdateData();
+        }
     }
 
 }

@@ -56,5 +56,50 @@ namespace Yamed.Oms
                     //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
                 });
         }
+
+
+
+        private void CheckBox4_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DsComboBoxEdit.EditValue = "";
+        }
+
+        private void CheckBox1_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            LpuComboBoxEdit.EditValue = "";
+        }
+
+        private void CheckBox2_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            StartMonthComboBoxEdit.EditValue = "";
+            StartYearComboBoxEdit.EditValue = "";
+            EndMonthComboBoxEdit.EditValue = "";
+            EndYearComboBoxEdit.EditValue = "";
+        }
+
+        private void CheckBox3_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ProfilComboBoxEdit.EditValue = "";
+        }
+
+        private void CheckBox5_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            PCelEdit.EditValue = "";
+        }
+
+        private void CheckBox6_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            UslOkEdit.EditValue = "";
+        }
+
+        private void CheckBox7_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            OsSluchEdit.EditValue = "";
+        }
+
+        private void CheckBox8_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            TypeSchetEdit.EditValue = "";
+        }
     }
 }

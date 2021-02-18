@@ -755,18 +755,6 @@
       <Column Name="UPR_K" Type="System.Decimal" DbType="Decimal(5,4)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.LIC_NUM_TBL" Member="LIC_NUM_TBL">
-    <Type Name="LIC_NUM_TBL">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="LPU" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
-      <Column Name="DATE_1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DATE_2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DATE_3" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LICN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="VID_MP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="LIC_NUM_TBL_LIC_TBL" Member="LIC_TBL" ThisKey="ID" OtherKey="LIC_NUM_ID" Type="LIC_TBL" />
-    </Type>
-  </Table>
   <Table Name="dbo.LIC_TBL" Member="LIC_TBL">
     <Type Name="LIC_TBL">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -775,7 +763,6 @@
       <Column Name="USL_MP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="VID_MP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PROFIL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="LIC_NUM_TBL_LIC_TBL" Member="LIC_NUM_TBL" ThisKey="LIC_NUM_ID" OtherKey="ID" Type="LIC_NUM_TBL" IsForeignKey="true" />
       <Association Name="V002_LIC_TBL" Member="V002" ThisKey="PROFIL" OtherKey="Id" Type="V002" IsForeignKey="true" />
       <Association Name="V006_LIC_TBL" Member="V006" ThisKey="USL_MP" OtherKey="id" Type="V006" IsForeignKey="true" />
       <Association Name="V008_LIC_TBL" Member="V008" ThisKey="VID_MP" OtherKey="Id" Type="V008" IsForeignKey="true" />
@@ -1692,28 +1679,6 @@
       <Column Name="Prof" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.V018" Member="V018">
-    <Type Name="V018">
-      <Column Name="IDHVID" Type="System.String" DbType="NVarChar(12) NOT NULL" CanBeNull="false" />
-      <Column Name="HVIDNAME" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Column Name="DATEBEG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DATEEND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NameWithID" Type="System.String" DbType="NVarChar(1016)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-    </Type>
-  </Table>
-  <Table Name="dbo.V019" Member="V019">
-    <Type Name="V019">
-      <Column Name="IDHM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="HMNAME" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Column Name="DIAG" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Column Name="HVID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
-      <Column Name="DATEBEG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DATEEND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NameWithID" Type="System.String" DbType="NVarChar(1005)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="HGR" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HMODP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.VeteranDb" Member="VeteranDb">
     <Type Name="VeteranDb">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -2110,6 +2075,42 @@
       <Association Name="V002_USL" Member="V002" ThisKey="PROFIL" OtherKey="Id" Type="V002" IsForeignKey="true" />
       <Association Name="V004_USL" Member="V004" ThisKey="PRVS" OtherKey="id" Type="V004" IsForeignKey="true" />
       <Association Name="V015_USL" Member="V015" ThisKey="MSPUID" OtherKey="ID" Type="V015" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LIC_NUM_TBL" Member="LIC_NUM_TBL">
+    <Type Name="LIC_NUM_TBL">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LPU" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="DATE_1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATE_2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATE_3" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LICN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VID_MP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USL_MP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROFIL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V018" Member="V018">
+    <Type Name="V018">
+      <Column Name="IDHVID" Type="System.String" DbType="NVarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="HVIDNAME" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DATEBEG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATEEND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NameWithID" Type="System.String" DbType="NVarChar(1016)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V019" Member="V019">
+    <Type Name="V019">
+      <Column Name="IDHM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HMNAME" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DIAG" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="HVID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DATEBEG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATEEND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NameWithID" Type="System.String" DbType="NVarChar(1005)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HGR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HMODP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IDMODP" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.Mek_Calc" Method="Mek_Calc">

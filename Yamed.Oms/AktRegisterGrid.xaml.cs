@@ -63,14 +63,18 @@ namespace Yamed.Oms
             SType2Edit.DataContext = SprClass.TypeExp2;
             UserEdit.DataContext = SprClass.YamedUsers;
             kol();
-            if (SprClass.Region != "37" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            if (SprClass.Region != "37" && (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms))
             {
                 LoadXmlItem.IsVisible = false;
                 UnloadXmlItem.IsVisible = false;
             }
-            if (SprClass.Region != "39" && SprClass.Region != "67" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            if (SprClass.Region != "39" && SprClass.Region != "67" && (SprClass.ProdSett.OrgTypeStatus == OrgType.Smo || SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms))
             {
                 UnloadXmlK.IsVisible = false;
+            }
+            if (SprClass.Region == "83" && SprClass.ProdSett.OrgTypeStatus == OrgType.Smo)
+            {
+               Column_ACT_STATUS.Visible = true;
             }
         }
 
@@ -132,22 +136,49 @@ namespace Yamed.Oms
             //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
             var row = DxHelper.GetSelectedGridRow(gridControl1);
             if (row == null) return;
-
-            var sc = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(row);
-
-            var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", sc, true, SprClass.LocalConnectionString);
-            var window = new DXWindow
+            if (SprClass.Region == "83")
             {
-                ShowIcon = false,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                SizeToContent = SizeToContent.Height,
-                Width = 600,
-                Content = sprEditWindow,
-                Title = "Редактирование"
-            };
+                var fam = Reader2List.SelectScalar($@"select fam from Yamed_Users where id={SprClass.userId}", SprClass.LocalConnectionString);
+                var status = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(DxHelper.GetSelectedGridRow(gridControl1));
+                if (fam.ToString() != "Терещенко" && fam.ToString() != "Геращенко" && (status.ACT_STATUS == 0 || status.ACT_STATUS == 1))
+                {
+                    DXMessageBox.Show("Вы не можете редактировать акт с данным статусом");
+                }
+                else
+                {
+                    var sc = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(row);
+                    var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", sc, true, SprClass.LocalConnectionString);
+                    var window = new DXWindow
+                    {
+                        ShowIcon = false,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        SizeToContent = SizeToContent.Height,
+                        Width = 600,
+                        Content = sprEditWindow,
+                        Title = "Редактирование"
+                    };
+                    window.ShowDialog();
+                    _linqInstantFeedbackDataSource.Refresh();
+                }
+            }
+            else
+            {
+                var sc = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(row);
 
-            window.ShowDialog();
-            _linqInstantFeedbackDataSource.Refresh();
+                var sprEditWindow = new UniSprEditControl("D3_AKT_REGISTR_OMS", sc, true, SprClass.LocalConnectionString);
+                var window = new DXWindow
+                {
+                    ShowIcon = false,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    SizeToContent = SizeToContent.Height,
+                    Width = 600,
+                    Content = sprEditWindow,
+                    Title = "Редактирование"
+                };
+
+                window.ShowDialog();
+                _linqInstantFeedbackDataSource.Refresh();
+            }
         }
 
         private void DelItem_OnItemClick(object sender, ItemClickEventArgs e)
@@ -155,48 +186,99 @@ namespace Yamed.Oms
             //var tab = (EconomyWindow)((TabElement)СommonСomponents.DxTabObject).MyControl;
             var row = ObjHelper.ClassConverter<D3_AKT_REGISTR_OMS>(DxHelper.GetSelectedGridRow(gridControl1));
             if (row == null) return;
-
-            MessageBoxResult result = MessageBox.Show("Удалить акт за период " + row.PERIOD_EXP_NOTEDIT  + "\n" + SprClass.LpuList.Single(x => x.mcod == row.LPU).NameWithID + "?", "Удаление",
-                MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (SprClass.Region == "83")
             {
-                TaskScheduler uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
-
-
-                bool isDel = false;
-                LoadingDecorator1.IsSplashScreenShown = true;
-                var delSchet = Task.Factory.StartNew(() =>
+                var fam = Reader2List.SelectScalar($@"select fam from Yamed_Users where id={SprClass.userId}", SprClass.LocalConnectionString);
+                if (fam.ToString() != "Терещенко" && fam.ToString() != "Геращенко" && (row.ACT_STATUS == 0 || row.ACT_STATUS == 1))
                 {
-                    {
-                        try
-                        {
-                            isDel = true;
-                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_SANK_OMS where D3_ARID = {row.ID} ",
-                                SprClass.LocalConnectionString);
-                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_AKT_REGISTR_OMS where ID = {row.ID} ",
-                                SprClass.LocalConnectionString);
-                            Reader2List.CustomExecuteQuery($@"DELETE FROM D3_REQ_OMS where D3_ARID = {row.ID} ",
-                                SprClass.LocalConnectionString);
-                        }
-                        catch (Exception ex)
-                        {
-                            isDel = false;
-                            Dispatcher.BeginInvoke((Action) delegate() { ErrorGlobalWindow.ShowError(ex.Message); });
-                        }
-                    }
-                });
-                delSchet.ContinueWith(x =>
+                    DXMessageBox.Show("Вы не можете удалить акт с данным статусом");
+                }
+                else
                 {
-
-                    if (isDel)
+                    MessageBoxResult result = MessageBox.Show("Удалить акт за период " + row.PERIOD_EXP_NOTEDIT + "\n" + SprClass.LpuList.Single(x => x.mcod == row.LPU).NameWithID + "?", "Удаление",
+            MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
                     {
-                        LoadingDecorator1.IsSplashScreenShown = false;
+                        TaskScheduler uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+                        bool isDel = false;
+                        LoadingDecorator1.IsSplashScreenShown = true;
+                        var delSchet = Task.Factory.StartNew(() =>
+                        {
+                            {
+                                try
+                                {
+                                    isDel = true;
+                                    Reader2List.CustomExecuteQuery($@"DELETE FROM D3_SANK_OMS where D3_ARID = {row.ID} ",
+                                        SprClass.LocalConnectionString);
+                                    Reader2List.CustomExecuteQuery($@"DELETE FROM D3_AKT_REGISTR_OMS where ID = {row.ID} ",
+                                        SprClass.LocalConnectionString);
+                                    Reader2List.CustomExecuteQuery($@"DELETE FROM D3_REQ_OMS where D3_ARID = {row.ID} ",
+                                        SprClass.LocalConnectionString);
+                                }
+                                catch (Exception ex)
+                                {
+                                    isDel = false;
+                                    Dispatcher.BeginInvoke((Action)delegate () { ErrorGlobalWindow.ShowError(ex.Message); });
+                                }
+                            }
+                        });
+                        delSchet.ContinueWith(x =>
+                        {
 
-                        _linqInstantFeedbackDataSource.Refresh();
-                        DXMessageBox.Show("Акт удален");
+                            if (isDel)
+                            {
+                                LoadingDecorator1.IsSplashScreenShown = false;
+
+                                _linqInstantFeedbackDataSource.Refresh();
+                                DXMessageBox.Show("Акт удален");
+                            }
+                        }, uiScheduler);
+
                     }
-                }, uiScheduler);
+                }
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Удалить акт за период " + row.PERIOD_EXP_NOTEDIT + "\n" + SprClass.LpuList.Single(x => x.mcod == row.LPU).NameWithID + "?", "Удаление",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    TaskScheduler uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+                    bool isDel = false;
+                    LoadingDecorator1.IsSplashScreenShown = true;
+                    var delSchet = Task.Factory.StartNew(() =>
+                    {
+                        {
+                            try
+                            {
+                                isDel = true;
+                                Reader2List.CustomExecuteQuery($@"DELETE FROM D3_SANK_OMS where D3_ARID = {row.ID} ",
+                                    SprClass.LocalConnectionString);
+                                Reader2List.CustomExecuteQuery($@"DELETE FROM D3_AKT_REGISTR_OMS where ID = {row.ID} ",
+                                    SprClass.LocalConnectionString);
+                                Reader2List.CustomExecuteQuery($@"DELETE FROM D3_REQ_OMS where D3_ARID = {row.ID} ",
+                                    SprClass.LocalConnectionString);
+                            }
+                            catch (Exception ex)
+                            {
+                                isDel = false;
+                                Dispatcher.BeginInvoke((Action)delegate () { ErrorGlobalWindow.ShowError(ex.Message); });
+                            }
+                        }
+                    });
+                    delSchet.ContinueWith(x =>
+                    {
 
+                        if (isDel)
+                        {
+                            LoadingDecorator1.IsSplashScreenShown = false;
+
+                            _linqInstantFeedbackDataSource.Refresh();
+                            DXMessageBox.Show("Акт удален");
+                        }
+                    }, uiScheduler);
+
+                }
             }
         }
 

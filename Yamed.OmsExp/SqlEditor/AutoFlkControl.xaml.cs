@@ -1,4 +1,5 @@
 ﻿using Ionic.Zip;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -682,7 +683,100 @@ from FLK_RSLT where SCHET_ID={id}", SprClass.LocalConnectionString);
                     return smoCod;
             }
         }
+        private void AutoUnloadStartButton_Click(object sender, RoutedEventArgs e)
+        {
+            string ConnectionString1 = SprClass.LocalConnectionString;
+            SqlConnection con = new SqlConnection(ConnectionString1);
+            SaveFileDialog SF = new SaveFileDialog();
+            List<int> scids = new List<int>();
+            bool res = SF.ShowDialog().Value;
+            if (res)
+            {
+                con.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("select scid from REG_PROTOCOLS_FILES", con))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        while (sqlDataReader.Read())
+                        {
+                            scids.Add((int)sqlDataReader["scid"]);
+                        }
+                    }
+                }
+                if (scids.Any())
+                {
+                    foreach (int sc in scids)
+                    {
+                        string fname = "";
+                        using (SqlCommand sqlCommand = new SqlCommand($@"select FNAME from REG_PROTOCOLS_FILES where scid={sc}", con))
+                        {
+                            fname = sqlCommand.ExecuteScalar().ToString();
+                        }
+                        using (SqlCommand sqlCommand = new SqlCommand($@"select fzip from REG_PROTOCOLS_FILES where scid={sc}", con))
+                        {
 
+                            sqlCommand.CommandTimeout = 0;
+                            using (System.IO.FileStream fs = new System.IO.FileStream(SF.FileName.Replace(SF.SafeFileName, fname), FileMode.Create, FileAccess.Write))
+                            {
+                                StreamWriter sw = new StreamWriter(fs);
+                                // преобразуем строку в байты
+                                byte[] array = (byte[])sqlCommand.ExecuteScalar();
+
+                                // считываем данные
+                                fs.Write(array, 0, array.Length);
+                                // декодируем байты в строку
+                                //string textFromFile = System.Text.Encoding.Default.GetString(array);
+                            }
+                        }
+                        using (SqlCommand sqlCommand = new SqlCommand($@"declare @sc int={sc}
+declare @zid table(id int)
+declare @sid table(id int)
+declare @onksid table(id int)
+
+insert @zid select id from D3_ZSL_OMS where D3_SCID = @sc 
+insert @sid select id from D3_SL_OMS where D3_ZSLID in(select*from @zid)
+insert @onksid select id from D3_ONK_SL_OMS where D3_SLID in(select*from @sid)  
+
+delete from FLK_RSLT where SCHET_ID = @sc
+delete from REG_PROTOCOLS_FILES  where SCID=@sc
+
+delete from D3_B_DIAG_OMS where D3_ONKSLID in (select*from @onksid)
+delete from D3_B_PROT_OMS where D3_ONKSLID in (select*from @onksid)
+delete from D3_CONS_OMS where D3_SLID in (select*from @sid)
+delete from D3_CRIT_OMS where D3_KSGID in (select ID from  D3_KSG_KPG_OMS where D3_SLID in(select*from @sid))
+delete from D3_KSG_KPG_OMS where D3_SLID in (select*from @sid)
+delete from D3_LEK_PR_OMS where D3_ONKUSLID in (select id from D3_ONK_USL_OMS where D3_ONKSLID in (select id from @onksid))
+delete from D3_NAPR_OMS where D3_SLID in (select*from @sid)
+delete from D3_NAZ_OMS where D3_SLID in (select*from @sid)
+delete from D3_ONK_USL_OMS where D3_ONKSLID in (select*from @onksid)
+
+delete from D3_DSS_OMS where D3_SLID in (select*from @sid)
+delete from D3_ONK_SL_OMS where D3_SLID in (select*from @sid)
+
+delete from D3_SL_KOEF_OMS where IDSL in (select*from @sid)
+delete from D3_SANK_SL_OMS where D3_SLID in (select*from @sid)
+delete from D3_SANK_OMS where D3_ZSLID in (select*from @zid)
+
+delete from D3_USL_OMS where D3_SLID in (select*from @sid)
+delete from D3_SL_OMS where ID in (select*from @sid)
+
+delete from D3_SCHET_OMS_FILES  where D3_SCID=@sc
+delete from D3_ZSL_OMS where ID in (select*from @zid)
+
+delete from D3_PACIENT_OMS where D3_SCID = @sc
+
+delete from D3_SCHET_OMS where ID = @sc", con))
+                        {
+                            sqlCommand.CommandTimeout = 0;
+                            sqlCommand.ExecuteNonQuery();
+
+                        }
+                    }
+                }
+                con.Close();
+                MessageBox.Show("Файлы успешно выгружены!");
+            }
+        }
         private void AutoMekStartButton_Click(object sender, RoutedEventArgs e)
         {
             //AutoMekStart();

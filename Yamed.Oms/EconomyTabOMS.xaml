@@ -75,6 +75,21 @@
                                            LargeGlyph="/Yamed.Icons;component/Icons/1472127383_46.png"
                                            ItemClick="ScExportEis_OnItemClick"
                                            IsVisible="False"/>
+                        <dxb:BarButtonItem Name="Lock_sc" Alignment="Far"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Заблокировать счета" GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/lock_closed.png"
+                                           IsVisible="False" ItemClick="Lock_sc_ItemClick" />
+                        <dxb:BarButtonItem Name="Unlock_sc" Alignment="Far"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Разблокировать счета" GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/lock_open.png"
+                                           IsVisible="False" ItemClick="Unlock_sc_ItemClick" />
+                        <dxb:BarButtonItem Name="ScUp900" Alignment="Far"
+                                           BarItemDisplayMode="ContentAndGlyph"
+                                           ToolTip="Проставить статус 900" GlyphAlignment="Top"
+                                           LargeGlyph="/Yamed.Icons;component/Icons/camera_test_3497.png" ItemClick="ScUp900_ItemClick"
+                                           IsVisible="false" />
                         <dxb:BarButtonItem Name="ScAddItem" Alignment="Far"
                                            BarItemDisplayMode="ContentAndGlyph"
                                            ToolTip="Добавить" GlyphAlignment="Top"
@@ -149,6 +164,12 @@
                                     FieldName="Status"
                                     Header="Статус"
                                     ReadOnly="True"/>
+                        <dxg:GridColumn Width="70"
+                                    FieldName="LOCK_STATUS"
+                                    Header="Признак блокировки"
+                                    ReadOnly="True"
+                                    x:Name="lstatus"
+                                    Visible="False"/>
                         <dxg:GridColumn Width="40"
                                     FieldName="SchetTypeName"
                                     Header="Тип счета"

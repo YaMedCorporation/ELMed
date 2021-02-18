@@ -37,6 +37,370 @@ namespace Yamed.Oms
     /// </summary>
     public partial class EconomyControl : UserControl
     {
+        public class D3_PACIENT_OMS_LIS
+        {
+
+            public int ID { get; set; }
+
+            public int D3_SCID { get; set; }
+
+            public string ID_PAC { get; set; }
+
+            public string FAM { get; set; }
+
+            public string IM { get; set; }
+
+            public string OT { get; set; }
+
+            public int? W { get; set; }
+
+            public DateTime? DR { get; set; }
+
+            public string TEL { get; set; }
+
+            public string FAM_P { get; set; }
+
+            public string IM_P { get; set; }
+
+            public string OT_P { get; set; }
+
+            public int? W_P { get; set; }
+
+            public DateTime? DR_P { get; set; }
+
+            public string MR { get; set; }
+
+            public int? DOCTYPE { get; set; }
+
+            public string DOCSER { get; set; }
+
+            public string DOCNUM { get; set; }
+
+            public string SNILS { get; set; }
+
+            public string OKATOG { get; set; }
+
+            public string OKATOP { get; set; }
+
+            public string COMENTP { get; set; }
+
+            public int? VPOLIS { get; set; }
+
+            public string SPOLIS { get; set; }
+
+            public string NPOLIS { get; set; }
+
+            public string ST_OKATO { get; set; }
+
+            public string SMO { get; set; }
+
+            public string SMO_OGRN { get; set; }
+
+            public string SMO_OK { get; set; }
+
+            public string SMO_NAM { get; set; }
+
+            public int? INV { get; set; }
+
+            public int? MSE { get; set; }
+
+            public string NOVOR { get; set; }
+
+            public int? VNOV_D { get; set; }
+
+            public int? N_ZAP { get; set; }
+
+            public decimal? PR_NOV { get; set; }
+
+            public int? VETERAN { get; set; }
+
+            public int? WORK_STAT { get; set; }
+
+        }
+        public class D3_ZSL_OMS_LIS
+        {
+
+            public int ID { get; set; }
+
+            public string ZSL_ID { get; set; }
+
+            public int D3_PID { get; set; }
+
+            public string D3_PGID { get; set; }
+
+            public int D3_SCID { get; set; }
+
+            public int? IDCASE { get; set; }
+
+            public int? VIDPOM { get; set; }
+
+            public int? FOR_POM { get; set; }
+
+            public string NPR_MO { get; set; }
+
+            public string LPU { get; set; }
+
+            public int? VBR { get; set; }
+
+            public DateTime? DATE_Z_1 { get; set; }
+
+            public DateTime? DATE_Z_2 { get; set; }
+
+            public int? P_OTK { get; set; }
+
+            public int? RSLT_D { get; set; }
+
+            public int? KD_Z { get; set; }
+
+            public int? VNOV_M { get; set; }
+
+            public int? RSLT { get; set; }
+
+            public int? ISHOD { get; set; }
+
+            public int? OS_SLUCH { get; set; }
+
+            public int? OS_SLUCH_REGION { get; set; }
+
+            public string VOZR { get; set; }
+
+            public int? VB_P { get; set; }
+
+            public int? IDSP { get; set; }
+
+            public decimal? SUMV { get; set; }
+
+            public int? OPLATA { get; set; }
+
+            public decimal? SUMP { get; set; }
+
+            public decimal? SANK_IT { get; set; }
+
+            public string MEK_COMENT { get; set; }
+
+            public string OSP_COMENT { get; set; }
+
+            public int? MEK_COUNT { get; set; }
+
+            public int? MEE_COUNT { get; set; }
+
+            public int? EKMP_COUNT { get; set; }
+
+            public bool MTR { get; set; }
+
+            public int? USL_OK { get; set; }
+
+            public string P_CEL { get; set; }
+
+            public string EXP_COMENT { get; set; }
+
+            public int? EXP_TYPE { get; set; }
+
+            public DateTime? EXP_DATE { get; set; }
+
+            public int? USERID { get; set; }
+
+            public int? ReqID { get; set; }
+
+            public string USER_COMENT { get; set; }
+
+            public DateTime? NPR_DATE { get; set; }
+
+            public int? DTP { get; set; }
+
+            public int? T_ARRIVAL { get; set; }
+
+            public int? N_ZAP { get; set; }
+
+            public int? PR_NOV { get; set; }
+
+            public int? St_IDCASE { get; set; }
+
+        }
+
+        public class D3_SL_OMS_LIS
+        {
+            public int ID { get; set; }
+
+            public int D3_ZSLID { get; set; }
+
+            public string D3_ZSLGID { get; set; }
+
+            public string SL_ID { get; set; }
+
+            public int? USL_OK { get; set; }
+
+            public string VID_HMP { get; set; }
+
+            public int? METOD_HMP { get; set; }
+
+            public string LPU_1 { get; set; }
+
+            public string PODR { get; set; }
+
+            public int? PROFIL { get; set; }
+
+            public int? DET { get; set; }
+
+            public string P_CEL { get; set; }
+
+            public string TAL_NUM { get; set; }
+
+            public DateTime? TAL_D { get; set; }
+
+            public DateTime? TAL_P { get; set; }
+
+            public string NHISTORY { get; set; }
+
+            public int? P_PER { get; set; }
+
+            public DateTime? DATE_1 { get; set; }
+
+            public DateTime? DATE_2 { get; set; }
+
+            public int? KD { get; set; }
+
+            public string DS0 { get; set; }
+
+            public string DS1 { get; set; }
+
+            public int? DS1_PR { get; set; }
+
+            public int? DN { get; set; }
+
+            public string CODE_MES1 { get; set; }
+
+            public string CODE_MES2 { get; set; }
+
+            public string KSG_DKK { get; set; }
+
+            public string N_KSG { get; set; }
+
+            public int? KSG_PG { get; set; }
+
+            public int? SL_K { get; set; }
+
+            public decimal? IT_SL { get; set; }
+
+            public int? REAB { get; set; }
+
+            public int? PRVS { get; set; }
+
+            public string VERS_SPEC { get; set; }
+
+            public string IDDOKT { get; set; }
+
+            public decimal? ED_COL { get; set; }
+
+            public decimal? TARIF { get; set; }
+
+            public decimal? SUM_M { get; set; }
+
+            public string COMENTSL { get; set; }
+
+            public int? PROFIL_K { get; set; }
+
+            public int? PRVS15 { get; set; }
+
+            public int? PRVS21 { get; set; }
+
+            public string P_CEL25 { get; set; }
+
+            public string PRVS_VERS { get; set; }
+
+            public int? PRVD { get; set; }
+
+            public int? C_ZAB { get; set; }
+
+            public int? DS_ONK { get; set; }
+
+            public int? St_IDCASE { get; set; }
+
+            public decimal? KSKP { get; set; }
+
+            public int? POVOD { get; set; }
+
+            public string PROFIL_REG { get; set; }
+
+            public int? GRAF_DN { get; set; }
+
+            public int? VID_VIZ { get; set; }
+
+            public int? VID_BRIG { get; set; }
+
+            public int? OMI_INVOICES_EV_ID { get; set; }
+        }
+        public partial class D3_USL_OMS_LIS
+        {
+
+            public int ID { get; set; }
+
+            public int D3_SLID { get; set; }
+
+            public int D3_ZSLID { get; set; }
+
+            public string D3_SLGID { get; set; }
+
+            public string IDSERV { get; set; }
+
+            public string LPU { get; set; }
+
+            public string LPU_1 { get; set; }
+
+            public string PODR { get; set; }
+
+            public int? PROFIL { get; set; }
+
+            public string VID_VME { get; set; }
+
+            public int? DET { get; set; }
+
+            public DateTime? DATE_IN { get; set; }
+
+            public DateTime? DATE_OUT { get; set; }
+
+            public int? P_OTK { get; set; }
+
+            public string DS { get; set; }
+
+            public string CODE_USL { get; set; }
+
+            public decimal? KOL_USL { get; set; }
+
+            public decimal? TARIF { get; set; }
+
+            public decimal? SUMV_USL { get; set; }
+
+            public int? PRVS { get; set; }
+
+            public string CODE_MD { get; set; }
+
+            public int? NPL { get; set; }
+
+            public string COMENTU { get; set; }
+
+            public int? PRVS15 { get; set; }
+
+            public int? PRVS21 { get; set; }
+
+            public string VERS_SPEC { get; set; }
+
+            public string PRVS_VERS { get; set; }
+
+            public int? PRVD { get; set; }
+
+            public int? DOP { get; set; }
+
+            public int? PP { get; set; }
+
+            public int? St_IDSERV { get; set; }
+
+            public int? KOD_SP { get; set; }
+
+            public string FORMUL { get; set; }
+
+
+        }
         public EconomyControl()
         {
             InitializeComponent();
@@ -76,10 +440,18 @@ namespace Yamed.Oms
             var rc = new SchetRegisterControl(sc);
             rc.SchetRegisterGrid1.Scids = new List<int> { sc.ID };
             rc.SchetRegisterGrid1.BindDataZsl();
-
+            string M = "";
+            if (sc.MONTH.ToString().Length < 2)
+            {
+                M = "0" + sc.MONTH.ToString();
+            }
+            else
+            {
+                M = sc.MONTH.ToString();
+            }
             СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             {
-                Header = "Реестр счета",
+                Header = "Реестр счета "+ sc.SchetType+ " от "+ M+"-"+sc.YEAR,
                 MyControl = rc,
                 IsCloseable = "True",
                 //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
@@ -1617,5 +1989,171 @@ UPDATE D3_USL_OMS
             }
         }
 
+        private void Lissl_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            try
+            {
+                DateTime WD = SprClass.WorkDate;
+                DateTime now = SprClass.WorkDate;
+                DateTime last;
+                if (WD.Month == 12)
+                {
+                    last = new DateTime(WD.Year + 1, 1, 1).AddDays(-1);
+                }
+                else
+                {
+                    last = new DateTime(WD.Year, WD.Month + 1, 1).AddDays(-1);
+                }
+
+
+                D3_SCHET_OMS sch = new D3_SCHET_OMS();
+                sch.CODE_MO = SprClass.ProdSett.OrgCode;
+                sch.YEAR = SprClass.WorkDate.Year;
+                sch.MONTH = SprClass.WorkDate.Month;
+                sch.DSCHET = last;
+                sch.SchetType = "H";
+
+                sch.ID = Reader2List.ObjectInsertCommand("D3_SCHET_OMS", sch, "ID", SprClass.LocalConnectionString);
+
+
+                string cstr = "Data Source=109.194.54.128;Initial Catalog=Yamed_LIS;User ID=sa;Password=Gbljh:100";
+                var lis_pac = Reader2List.CustomSelect<D3_PACIENT_OMS_LIS>($@"select p.* from d3_pacient_oms p
+join d3_zsl_oms z on p.id=z.d3_pid 
+where z.lpu='{sch.CODE_MO}' and year(z.date_z_2)={sch.YEAR} and month(z.date_z_2)={sch.MONTH}", cstr);
+                var lis_zsl = Reader2List.CustomSelect<D3_ZSL_OMS_LIS>($@"select z.* from d3_pacient_oms p
+join d3_zsl_oms z on p.id=z.d3_pid 
+where z.lpu='{sch.CODE_MO}' and year(z.date_z_2)={sch.YEAR} and month(z.date_z_2)={sch.MONTH}", cstr);
+                var lis_sl = Reader2List.CustomSelect<D3_SL_OMS_LIS>($@"select s.* from d3_pacient_oms p
+join d3_zsl_oms z on p.id=z.d3_pid 
+join D3_SL_OMS s on z.id=d3_zslid
+where z.lpu='{sch.CODE_MO}' and year(z.date_z_2)={sch.YEAR} and month(z.date_z_2)={sch.MONTH}", cstr);
+                var lis_usl = Reader2List.CustomSelect<D3_USL_OMS_LIS>($@"select u.* from d3_pacient_oms p
+join d3_zsl_oms z on p.id=z.d3_pid 
+join D3_SL_OMS s on z.id=d3_zslid
+join D3_USL_OMS u on s.id=u.D3_SLID
+where z.lpu='{sch.CODE_MO}' and year(z.date_z_2)={sch.YEAR} and month(z.date_z_2)={sch.MONTH}", cstr);
+
+
+
+                Reader2List.InsertFromTable<DataTable>($@"insert into d3_pacient_oms ([D3_SCID] ,[ID_PAC] ,[FAM] ,[IM] ,[OT] ,[W] ,[DR] ,[TEL] ,[FAM_P] ,[IM_P] ,[OT_P] ,[W_P] ,[DR_P] ,[MR] ,[DOCTYPE] ,[DOCSER]
+      ,[DOCNUM] ,[SNILS] ,[OKATOG] ,[OKATOP] ,[COMENTP] ,[VPOLIS] ,[SPOLIS] ,[NPOLIS] ,[ST_OKATO] ,[SMO] ,[SMO_OGRN] ,[SMO_OK]
+      ,[SMO_NAM] ,[INV] ,[MSE] ,[NOVOR]  ,[VNOV_D] ,[N_ZAP] ,[PR_NOV] ,[VETERAN] ,[WORK_STAT])
+select 
+{sch.ID},[ID_PAC] ,[FAM] ,[IM] ,[OT] ,[W] ,[DR] ,[TEL] ,[FAM_P] ,[IM_P] ,[OT_P] ,[W_P] ,[DR_P] ,[MR] ,[DOCTYPE] ,[DOCSER]
+      ,[DOCNUM] ,[SNILS] ,[OKATOG] ,[OKATOP] ,[COMENTP] ,[VPOLIS] ,[SPOLIS] ,[NPOLIS] ,[ST_OKATO] ,[SMO] ,[SMO_OGRN] ,[SMO_OK]
+      ,[SMO_NAM] ,[INV] ,[MSE] ,[NOVOR]  ,[VNOV_D] ,[N_ZAP] ,[PR_NOV] ,[VETERAN] ,[WORK_STAT]
+from @dt", SprClass.LocalConnectionString, Reader2List.ToDataTable(lis_pac), true);
+
+                Reader2List.InsertFromTable<DataTable>($@"insert into d3_zsl_oms ([ZSL_ID] ,[D3_PID] ,[D3_PGID] ,[D3_SCID]  ,[IDCASE] ,[VIDPOM] ,[FOR_POM] ,[NPR_MO] ,[LPU] ,[VBR] ,[DATE_Z_1] ,[DATE_Z_2] ,[P_OTK] ,[RSLT_D] ,[KD_Z] ,[VNOV_M] ,[RSLT]
+      ,[ISHOD] ,[OS_SLUCH] ,[OS_SLUCH_REGION] ,[VOZR] ,[VB_P] ,[IDSP] ,[SUMV] ,[OPLATA] ,[SUMP] ,[SANK_IT] ,[MEK_COMENT] ,[OSP_COMENT] ,[MEK_COUNT] ,[MEE_COUNT]  ,[EKMP_COUNT]
+      ,[MTR] ,[USL_OK] ,[P_CEL] ,[EXP_COMENT] ,[EXP_TYPE] ,[EXP_DATE] ,[USERID] ,[ReqID] ,[USER_COMENT] ,[NPR_DATE] ,[DTP] ,[T_ARRIVAL] ,[N_ZAP] ,[PR_NOV] ,[St_IDCASE])
+select 
+[ZSL_ID] ,[D3_PID] ,[D3_PGID] , {sch.ID} ,[IDCASE] ,[VIDPOM] ,[FOR_POM] ,[NPR_MO] ,[LPU] ,[VBR] ,[DATE_Z_1] ,[DATE_Z_2] ,[P_OTK] ,[RSLT_D] ,[KD_Z] ,[VNOV_M] ,[RSLT]
+      ,[ISHOD] ,[OS_SLUCH] ,[OS_SLUCH_REGION] ,[VOZR] ,[VB_P] ,[IDSP] ,[SUMV] ,[OPLATA] ,[SUMP] ,[SANK_IT] ,[MEK_COMENT] ,[OSP_COMENT] ,[MEK_COUNT] ,[MEE_COUNT]  ,[EKMP_COUNT]
+      ,[MTR] ,[USL_OK] ,[P_CEL] ,[EXP_COMENT] ,[EXP_TYPE] ,[EXP_DATE] ,[USERID] ,[ReqID] ,[USER_COMENT] ,[NPR_DATE] ,[DTP] ,[T_ARRIVAL] ,[N_ZAP] ,[PR_NOV] ,[St_IDCASE]
+from @dt", SprClass.LocalConnectionString, Reader2List.ToDataTable(lis_zsl), true);
+
+                Reader2List.InsertFromTable<DataTable>($@"insert into d3_sl_oms ([D3_ZSLID] ,[D3_ZSLGID] ,[SL_ID] ,[USL_OK] ,[VID_HMP] ,[METOD_HMP] ,[LPU_1] ,[PODR] ,[PROFIL] ,[DET] ,[P_CEL] ,[TAL_NUM] ,[TAL_D] ,[TAL_P] ,[NHISTORY] ,[P_PER] ,[DATE_1] ,[DATE_2]
+,[KD] ,[DS0] ,[DS1] ,[DS1_PR] ,[DN] ,[CODE_MES1] ,[CODE_MES2] ,[KSG_DKK] ,[N_KSG] ,[KSG_PG] ,[SL_K] ,[IT_SL] ,[REAB] ,[PRVS] ,[VERS_SPEC] ,[IDDOKT] ,[ED_COL] ,[TARIF] ,[SUM_M]
+,[COMENTSL] ,[PROFIL_K] ,[PRVS21] ,[P_CEL25] ,[PRVS15] ,[PRVD] ,[C_ZAB] ,[DS_ONK] ,[St_IDCASE] ,[POVOD] ,[PROFIL_REG] ,[GRAF_DN] ,[KSKP] ,[VID_VIZ]
+,[VID_BRIG]  ,[OMI_INVOICES_EV_ID])
+select 
+[D3_ZSLID] ,[D3_ZSLGID] ,[SL_ID] ,[USL_OK] ,[VID_HMP] ,[METOD_HMP] ,[LPU_1] ,[PODR] ,[PROFIL] ,[DET] ,[P_CEL] ,[TAL_NUM] ,[TAL_D] ,[TAL_P] ,[NHISTORY] ,[P_PER] ,[DATE_1] ,[DATE_2]
+,[KD] ,[DS0] ,[DS1] ,[DS1_PR] ,[DN] ,[CODE_MES1] ,[CODE_MES2] ,[KSG_DKK] ,[N_KSG] ,[KSG_PG] ,[SL_K] ,[IT_SL] ,[REAB] ,[PRVS] ,[VERS_SPEC] ,[IDDOKT] ,[ED_COL] ,[TARIF] ,[SUM_M]
+,[COMENTSL] ,[PROFIL_K] ,[PRVS21] ,[P_CEL25] ,[PRVS15] ,[PRVD] ,[C_ZAB] ,[DS_ONK] ,[St_IDCASE] ,[POVOD] ,[PROFIL_REG] ,[GRAF_DN] ,[KSKP] ,[VID_VIZ]
+,[VID_BRIG]  ,[OMI_INVOICES_EV_ID]
+from @dt", SprClass.LocalConnectionString, Reader2List.ToDataTable(lis_sl), true);
+
+                Reader2List.InsertFromTable<DataTable>($@"insert into d3_usl_oms ([D3_SLID] ,[D3_ZSLID] ,[D3_SLGID] ,[IDSERV] ,[LPU] ,[LPU_1] ,[PODR] ,[PROFIL] ,[VID_VME] ,[DET] ,[DATE_IN] ,[DATE_OUT] ,[P_OTK] ,[DS] ,[CODE_USL] ,[KOL_USL] ,
+	  [TARIF] ,[SUMV_USL]  ,[PRVS] ,[CODE_MD] ,[NPL] ,[COMENTU] ,[PRVS15] ,[PRVS21] ,[VERS_SPEC] ,[PRVD] ,[DOP] ,[PP] ,[St_IDSERV] ,[KOD_SP] ,[FORMUL])
+select 
+[D3_SLID] ,[D3_ZSLID] ,[D3_SLGID] ,[IDSERV] ,[LPU] ,[LPU_1] ,[PODR] ,[PROFIL] ,[VID_VME] ,[DET] ,[DATE_IN] ,[DATE_OUT] ,[P_OTK] ,[DS] ,[CODE_USL] ,[KOL_USL] ,
+	  [TARIF] ,[SUMV_USL]  ,[PRVS] ,[CODE_MD] ,[NPL] ,[COMENTU] ,[PRVS15] ,[PRVS21] ,[VERS_SPEC] ,[PRVD] ,[DOP] ,[PP] ,[St_IDSERV] ,[KOD_SP] ,[FORMUL]
+from @dt", SprClass.LocalConnectionString, Reader2List.ToDataTable(lis_usl), true);
+
+                Reader2List.CustomExecuteQuery($@"update z set d3_pid=p.id 
+from d3_pacient_oms p
+join d3_zsl_oms z on p.id_pac=z.d3_pgid 
+where p.d3_scid={sch.ID} 
+
+update s set d3_zslid=z.id
+from d3_pacient_oms p
+join d3_zsl_oms z on p.id_pac=z.d3_pgid 
+join D3_SL_OMS s on z.zsl_id=d3_zslgid
+where p.d3_scid={sch.ID} 
+
+update u set d3_zslid=z.id, d3_slid=s.id
+from d3_pacient_oms p
+join d3_zsl_oms z on p.id_pac=z.d3_pgid 
+join D3_SL_OMS s on z.zsl_id=d3_zslgid
+join D3_USL_OMS u on s.sl_id=u.D3_SLGID
+where p.d3_scid={sch.ID} ", SprClass.LocalConnectionString);
+
+                DXMessageBox.Show("Данные загружены!");
+            }
+            catch
+            {
+                DXMessageBox.Show("Не удалось загрузить данные из ЛИС!!!");
+            }
+        }
+        public static void InsertFromTable<T>(string com, string connectionString, DataTable dt, bool deltype)
+        {
+            string sqltype = "";
+
+
+            foreach (DataColumn dc in dt.Columns)
+            {
+                //dt.Columns.Add(d.NAME,d.TYPE);
+                string s;
+                switch (dc.DataType.Name.ToString())
+                {
+                    case "Int32":
+                        s = "int";
+                        break;
+                    case "String":
+                        s = "nvarchar(500)";
+                        break;
+                    case "Guid":
+                        s = "uniqueidentifier";
+                        break;
+                    case "Boolean":
+                        s = "bit";
+                        break;
+                    case "Binary":
+                        s = "varbinary(20)";
+                        break;
+                    case "DateTime":
+                        s = "DateTime2";
+                        break;
+                    case "Decimal":
+                        s = "numeric(10,2)";
+                        break;
+                    default:
+                        s = dc.DataType.Name.ToString();
+                        break;
+                }
+
+                sqltype = sqltype + dc.ColumnName + " " + s + ",";
+
+            }
+            sqltype = sqltype.Substring(0, sqltype.Length - 1);
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd0 = new SqlCommand($@" IF exists (select * from sys.table_types where name='ForUpdate_LIS')  
+                                                 DROP TYPE dbo.ForUpdate_LIS   
+                                                 CREATE TYPE ForUpdate_LIS AS TABLE ({sqltype})", con);
+
+            SqlCommand cmd = new SqlCommand(com, con);
+
+            var t = new SqlParameter("@dt", SqlDbType.Structured);
+            t.TypeName = "dbo.ForUpdate_LIS";
+            t.Value = dt;
+            cmd.Parameters.Add(t);
+            cmd.CommandTimeout = 0;
+            con.Open();
+            cmd0.ExecuteNonQuery();
+            int str = cmd.ExecuteNonQuery();
+            int isrt = str;
+            con.Close();
+        }
     }
 }

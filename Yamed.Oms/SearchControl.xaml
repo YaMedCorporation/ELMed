@@ -22,7 +22,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox1" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox1_Unchecked" />
                         <dxe:ComboBoxEdit Name="LpuComboBoxEdit" ItemsSource="{Binding}" ValueMember="mcod" DisplayMember="NameWithID" IsEnabled="{Binding IsChecked, ElementName=CheckBox1}" Grid.Column="1"/>
                     </Grid>
                     <TextBlock Text="Период" Margin="30,0,0,0"/>
@@ -36,7 +36,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1.5*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox2" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox2_Unchecked" />
                         <TextBlock Grid.Column="1" Text="С" Margin="2,0,0,0"/>
                         <dxe:ComboBoxEdit Name="StartMonthComboBoxEdit" Grid.Column="2"  Margin="0,0,4,0" IsEnabled="{Binding IsChecked, ElementName=CheckBox2}"/>
                         <dxe:ComboBoxEdit Name="StartYearComboBoxEdit" Grid.Column="3" IsEnabled="{Binding IsChecked, ElementName=CheckBox2}"/>
@@ -50,7 +50,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox3" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox3_Unchecked" />
                         <dxe:ComboBoxEdit ValueMember="Id" DisplayMember="NameWithID" Name="ProfilComboBoxEdit" ItemsSource="{Binding}" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox3}"/>
                     </Grid>
                     <TextBlock Text="Диагноз" Margin="30,0,0,0"/>
@@ -59,7 +59,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox4" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox4_Unchecked" />
                         <dxe:ComboBoxEdit Name="DsComboBoxEdit" DisplayMember="NameWithID" ImmediatePopup="True" IncrementalFiltering="True" AutoComplete="True" ItemsSource="{Binding}" NullValueButtonPlacement="EditBox" ValueMember="IDDS" FilterCondition="Contains" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox4}"/>
                     </Grid>
                     <TextBlock Text="Тип случая" Margin="30,0,0,0"/>
@@ -68,7 +68,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox5" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox5_Unchecked" />
                         <dxe:ComboBoxEdit Name="PCelEdit" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="IDPC"  Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox5}"/>
                     </Grid>
                     <TextBlock Text="Условие оказание помощи" Margin="30,0,0,0"/>
@@ -77,7 +77,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox6" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox6" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox6_Unchecked" />
                         <dxe:ComboBoxEdit ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="id" Name="UslOkEdit" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox6}"/>
                     </Grid>
                     <TextBlock Text="Региональный признак" Margin="30,0,0,0"/>
@@ -86,7 +86,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox7" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox7" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox7_Unchecked" />
                         <dxe:ComboBoxEdit ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="Id" Name="OsSluchEdit"  Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox7}"/>
                     </Grid>
                     <TextBlock Text="Тип счета" Margin="30,0,0,0"/>
@@ -95,7 +95,7 @@
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CheckBox8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Name="CheckBox8" HorizontalAlignment="Center" VerticalAlignment="Center" Unchecked="CheckBox8_Unchecked" />
                         <dxe:ComboBoxEdit ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="ID" Name="TypeSchetEdit"  Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=CheckBox8}"/>
 
                     </Grid>

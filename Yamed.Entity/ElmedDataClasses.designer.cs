@@ -168,9 +168,6 @@ namespace Yamed.Entity
     partial void InsertKSG_SPR(KSG_SPR instance);
     partial void UpdateKSG_SPR(KSG_SPR instance);
     partial void DeleteKSG_SPR(KSG_SPR instance);
-    partial void InsertLIC_NUM_TBL(LIC_NUM_TBL instance);
-    partial void UpdateLIC_NUM_TBL(LIC_NUM_TBL instance);
-    partial void DeleteLIC_NUM_TBL(LIC_NUM_TBL instance);
     partial void InsertLIC_TBL(LIC_TBL instance);
     partial void UpdateLIC_TBL(LIC_TBL instance);
     partial void DeleteLIC_TBL(LIC_TBL instance);
@@ -414,6 +411,9 @@ namespace Yamed.Entity
     partial void InsertUSL(USL instance);
     partial void UpdateUSL(USL instance);
     partial void DeleteUSL(USL instance);
+    partial void InsertLIC_NUM_TBL(LIC_NUM_TBL instance);
+    partial void UpdateLIC_NUM_TBL(LIC_NUM_TBL instance);
+    partial void DeleteLIC_NUM_TBL(LIC_NUM_TBL instance);
     #endregion
 		
 		public ElmedDataClassesDataContext() : 
@@ -867,14 +867,6 @@ namespace Yamed.Entity
 			get
 			{
 				return this.GetTable<KSG_SPR>();
-			}
-		}
-		
-		public System.Data.Linq.Table<LIC_NUM_TBL> LIC_NUM_TBL
-		{
-			get
-			{
-				return this.GetTable<LIC_NUM_TBL>();
 			}
 		}
 		
@@ -1486,22 +1478,6 @@ namespace Yamed.Entity
 			}
 		}
 		
-		public System.Data.Linq.Table<V018> V018
-		{
-			get
-			{
-				return this.GetTable<V018>();
-			}
-		}
-		
-		public System.Data.Linq.Table<V019> V019
-		{
-			get
-			{
-				return this.GetTable<V019>();
-			}
-		}
-		
 		public System.Data.Linq.Table<VeteranDb> VeteranDb
 		{
 			get
@@ -1611,6 +1587,30 @@ namespace Yamed.Entity
 			get
 			{
 				return this.GetTable<USL>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LIC_NUM_TBL> LIC_NUM_TBL
+		{
+			get
+			{
+				return this.GetTable<LIC_NUM_TBL>();
+			}
+		}
+		
+		public System.Data.Linq.Table<V018> V018
+		{
+			get
+			{
+				return this.GetTable<V018>();
+			}
+		}
+		
+		public System.Data.Linq.Table<V019> V019
+		{
+			get
+			{
+				return this.GetTable<V019>();
 			}
 		}
 		
@@ -16483,240 +16483,6 @@ namespace Yamed.Entity
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LIC_NUM_TBL")]
-	public partial class LIC_NUM_TBL : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _LPU;
-		
-		private System.Nullable<System.DateTime> _DATE_1;
-		
-		private System.Nullable<System.DateTime> _DATE_2;
-		
-		private System.Nullable<System.DateTime> _DATE_3;
-		
-		private string _LICN;
-		
-		private string _VID_MP;
-		
-		private EntitySet<LIC_TBL> _LIC_TBL;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnLPUChanging(string value);
-    partial void OnLPUChanged();
-    partial void OnDATE_1Changing(System.Nullable<System.DateTime> value);
-    partial void OnDATE_1Changed();
-    partial void OnDATE_2Changing(System.Nullable<System.DateTime> value);
-    partial void OnDATE_2Changed();
-    partial void OnDATE_3Changing(System.Nullable<System.DateTime> value);
-    partial void OnDATE_3Changed();
-    partial void OnLICNChanging(string value);
-    partial void OnLICNChanged();
-    partial void OnVID_MPChanging(string value);
-    partial void OnVID_MPChanged();
-    #endregion
-		
-		public LIC_NUM_TBL()
-		{
-			this._LIC_TBL = new EntitySet<LIC_TBL>(new Action<LIC_TBL>(this.attach_LIC_TBL), new Action<LIC_TBL>(this.detach_LIC_TBL));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LPU", DbType="NVarChar(6)")]
-		public string LPU
-		{
-			get
-			{
-				return this._LPU;
-			}
-			set
-			{
-				if ((this._LPU != value))
-				{
-					this.OnLPUChanging(value);
-					this.SendPropertyChanging();
-					this._LPU = value;
-					this.SendPropertyChanged("LPU");
-					this.OnLPUChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_1", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATE_1
-		{
-			get
-			{
-				return this._DATE_1;
-			}
-			set
-			{
-				if ((this._DATE_1 != value))
-				{
-					this.OnDATE_1Changing(value);
-					this.SendPropertyChanging();
-					this._DATE_1 = value;
-					this.SendPropertyChanged("DATE_1");
-					this.OnDATE_1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_2", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATE_2
-		{
-			get
-			{
-				return this._DATE_2;
-			}
-			set
-			{
-				if ((this._DATE_2 != value))
-				{
-					this.OnDATE_2Changing(value);
-					this.SendPropertyChanging();
-					this._DATE_2 = value;
-					this.SendPropertyChanged("DATE_2");
-					this.OnDATE_2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_3", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATE_3
-		{
-			get
-			{
-				return this._DATE_3;
-			}
-			set
-			{
-				if ((this._DATE_3 != value))
-				{
-					this.OnDATE_3Changing(value);
-					this.SendPropertyChanging();
-					this._DATE_3 = value;
-					this.SendPropertyChanged("DATE_3");
-					this.OnDATE_3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LICN", DbType="NVarChar(255)")]
-		public string LICN
-		{
-			get
-			{
-				return this._LICN;
-			}
-			set
-			{
-				if ((this._LICN != value))
-				{
-					this.OnLICNChanging(value);
-					this.SendPropertyChanging();
-					this._LICN = value;
-					this.SendPropertyChanged("LICN");
-					this.OnLICNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VID_MP", DbType="NVarChar(255)")]
-		public string VID_MP
-		{
-			get
-			{
-				return this._VID_MP;
-			}
-			set
-			{
-				if ((this._VID_MP != value))
-				{
-					this.OnVID_MPChanging(value);
-					this.SendPropertyChanging();
-					this._VID_MP = value;
-					this.SendPropertyChanged("VID_MP");
-					this.OnVID_MPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LIC_NUM_TBL_LIC_TBL", Storage="_LIC_TBL", ThisKey="ID", OtherKey="LIC_NUM_ID")]
-		public EntitySet<LIC_TBL> LIC_TBL
-		{
-			get
-			{
-				return this._LIC_TBL;
-			}
-			set
-			{
-				this._LIC_TBL.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_LIC_TBL(LIC_TBL entity)
-		{
-			this.SendPropertyChanging();
-			entity.LIC_NUM_TBL = this;
-		}
-		
-		private void detach_LIC_TBL(LIC_TBL entity)
-		{
-			this.SendPropertyChanging();
-			entity.LIC_NUM_TBL = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LIC_TBL")]
 	public partial class LIC_TBL : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -16734,8 +16500,6 @@ namespace Yamed.Entity
 		private int _VID_MP;
 		
 		private int _PROFIL;
-		
-		private EntityRef<LIC_NUM_TBL> _LIC_NUM_TBL;
 		
 		private EntityRef<V002> _V002;
 		
@@ -16763,7 +16527,6 @@ namespace Yamed.Entity
 		
 		public LIC_TBL()
 		{
-			this._LIC_NUM_TBL = default(EntityRef<LIC_NUM_TBL>);
 			this._V002 = default(EntityRef<V002>);
 			this._V006 = default(EntityRef<V006>);
 			this._V008 = default(EntityRef<V008>);
@@ -16801,10 +16564,6 @@ namespace Yamed.Entity
 			{
 				if ((this._LIC_NUM_ID != value))
 				{
-					if (this._LIC_NUM_TBL.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnLIC_NUM_IDChanging(value);
 					this.SendPropertyChanging();
 					this._LIC_NUM_ID = value;
@@ -16902,40 +16661,6 @@ namespace Yamed.Entity
 					this._PROFIL = value;
 					this.SendPropertyChanged("PROFIL");
 					this.OnPROFILChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LIC_NUM_TBL_LIC_TBL", Storage="_LIC_NUM_TBL", ThisKey="LIC_NUM_ID", OtherKey="ID", IsForeignKey=true)]
-		public LIC_NUM_TBL LIC_NUM_TBL
-		{
-			get
-			{
-				return this._LIC_NUM_TBL.Entity;
-			}
-			set
-			{
-				LIC_NUM_TBL previousValue = this._LIC_NUM_TBL.Entity;
-				if (((previousValue != value) 
-							|| (this._LIC_NUM_TBL.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LIC_NUM_TBL.Entity = null;
-						previousValue.LIC_TBL.Remove(this);
-					}
-					this._LIC_NUM_TBL.Entity = value;
-					if ((value != null))
-					{
-						value.LIC_TBL.Add(this);
-						this._LIC_NUM_ID = value.ID;
-					}
-					else
-					{
-						this._LIC_NUM_ID = default(int);
-					}
-					this.SendPropertyChanged("LIC_NUM_TBL");
 				}
 			}
 		}
@@ -34814,276 +34539,6 @@ namespace Yamed.Entity
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.V018")]
-	public partial class V018
-	{
-		
-		private string _IDHVID;
-		
-		private string _HVIDNAME;
-		
-		private System.Nullable<System.DateTime> _DATEBEG;
-		
-		private System.Nullable<System.DateTime> _DATEEND;
-		
-		private string _NameWithID;
-		
-		public V018()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDHVID", DbType="NVarChar(12) NOT NULL", CanBeNull=false)]
-		public string IDHVID
-		{
-			get
-			{
-				return this._IDHVID;
-			}
-			set
-			{
-				if ((this._IDHVID != value))
-				{
-					this._IDHVID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HVIDNAME", DbType="NVarChar(1000)")]
-		public string HVIDNAME
-		{
-			get
-			{
-				return this._HVIDNAME;
-			}
-			set
-			{
-				if ((this._HVIDNAME != value))
-				{
-					this._HVIDNAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEBEG", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATEBEG
-		{
-			get
-			{
-				return this._DATEBEG;
-			}
-			set
-			{
-				if ((this._DATEBEG != value))
-				{
-					this._DATEBEG = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEEND", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATEEND
-		{
-			get
-			{
-				return this._DATEEND;
-			}
-			set
-			{
-				if ((this._DATEEND != value))
-				{
-					this._DATEEND = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameWithID", AutoSync=AutoSync.Always, DbType="NVarChar(1016)", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public string NameWithID
-		{
-			get
-			{
-				return this._NameWithID;
-			}
-			set
-			{
-				if ((this._NameWithID != value))
-				{
-					this._NameWithID = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.V019")]
-	public partial class V019
-	{
-		
-		private int _IDHM;
-		
-		private string _HMNAME;
-		
-		private string _DIAG;
-		
-		private string _HVID;
-		
-		private System.Nullable<System.DateTime> _DATEBEG;
-		
-		private System.Nullable<System.DateTime> _DATEEND;
-		
-		private string _NameWithID;
-		
-		private System.Nullable<int> _HGR;
-		
-		private string _HMODP;
-		
-		public V019()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDHM", DbType="Int NOT NULL")]
-		public int IDHM
-		{
-			get
-			{
-				return this._IDHM;
-			}
-			set
-			{
-				if ((this._IDHM != value))
-				{
-					this._IDHM = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HMNAME", DbType="NVarChar(1000)")]
-		public string HMNAME
-		{
-			get
-			{
-				return this._HMNAME;
-			}
-			set
-			{
-				if ((this._HMNAME != value))
-				{
-					this._HMNAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIAG", DbType="NVarChar(1000)")]
-		public string DIAG
-		{
-			get
-			{
-				return this._DIAG;
-			}
-			set
-			{
-				if ((this._DIAG != value))
-				{
-					this._DIAG = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HVID", DbType="NVarChar(12)")]
-		public string HVID
-		{
-			get
-			{
-				return this._HVID;
-			}
-			set
-			{
-				if ((this._HVID != value))
-				{
-					this._HVID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEBEG", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATEBEG
-		{
-			get
-			{
-				return this._DATEBEG;
-			}
-			set
-			{
-				if ((this._DATEBEG != value))
-				{
-					this._DATEBEG = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEEND", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DATEEND
-		{
-			get
-			{
-				return this._DATEEND;
-			}
-			set
-			{
-				if ((this._DATEEND != value))
-				{
-					this._DATEEND = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameWithID", AutoSync=AutoSync.Always, DbType="NVarChar(1005)", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public string NameWithID
-		{
-			get
-			{
-				return this._NameWithID;
-			}
-			set
-			{
-				if ((this._NameWithID != value))
-				{
-					this._NameWithID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HGR", DbType="Int")]
-		public System.Nullable<int> HGR
-		{
-			get
-			{
-				return this._HGR;
-			}
-			set
-			{
-				if ((this._HGR != value))
-				{
-					this._HGR = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HMODP", DbType="NVarChar(255)")]
-		public string HMODP
-		{
-			get
-			{
-				return this._HMODP;
-			}
-			set
-			{
-				if ((this._HMODP != value))
-				{
-					this._HMODP = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VeteranDb")]
 	public partial class VeteranDb : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -44778,6 +44233,548 @@ namespace Yamed.Entity
 		{
 			this.SendPropertyChanging();
 			entity.USL = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LIC_NUM_TBL")]
+	public partial class LIC_NUM_TBL : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _LPU;
+		
+		private System.Nullable<System.DateTime> _DATE_1;
+		
+		private System.Nullable<System.DateTime> _DATE_2;
+		
+		private System.Nullable<System.DateTime> _DATE_3;
+		
+		private string _LICN;
+		
+		private string _VID_MP;
+		
+		private System.Nullable<int> _USL_MP;
+		
+		private string _PROFIL;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnLPUChanging(string value);
+    partial void OnLPUChanged();
+    partial void OnDATE_1Changing(System.Nullable<System.DateTime> value);
+    partial void OnDATE_1Changed();
+    partial void OnDATE_2Changing(System.Nullable<System.DateTime> value);
+    partial void OnDATE_2Changed();
+    partial void OnDATE_3Changing(System.Nullable<System.DateTime> value);
+    partial void OnDATE_3Changed();
+    partial void OnLICNChanging(string value);
+    partial void OnLICNChanged();
+    partial void OnVID_MPChanging(string value);
+    partial void OnVID_MPChanged();
+    partial void OnUSL_MPChanging(System.Nullable<int> value);
+    partial void OnUSL_MPChanged();
+    partial void OnPROFILChanging(string value);
+    partial void OnPROFILChanged();
+    #endregion
+		
+		public LIC_NUM_TBL()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LPU", DbType="NVarChar(6)")]
+		public string LPU
+		{
+			get
+			{
+				return this._LPU;
+			}
+			set
+			{
+				if ((this._LPU != value))
+				{
+					this.OnLPUChanging(value);
+					this.SendPropertyChanging();
+					this._LPU = value;
+					this.SendPropertyChanged("LPU");
+					this.OnLPUChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_1", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_1
+		{
+			get
+			{
+				return this._DATE_1;
+			}
+			set
+			{
+				if ((this._DATE_1 != value))
+				{
+					this.OnDATE_1Changing(value);
+					this.SendPropertyChanging();
+					this._DATE_1 = value;
+					this.SendPropertyChanged("DATE_1");
+					this.OnDATE_1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_2", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_2
+		{
+			get
+			{
+				return this._DATE_2;
+			}
+			set
+			{
+				if ((this._DATE_2 != value))
+				{
+					this.OnDATE_2Changing(value);
+					this.SendPropertyChanging();
+					this._DATE_2 = value;
+					this.SendPropertyChanged("DATE_2");
+					this.OnDATE_2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_3", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_3
+		{
+			get
+			{
+				return this._DATE_3;
+			}
+			set
+			{
+				if ((this._DATE_3 != value))
+				{
+					this.OnDATE_3Changing(value);
+					this.SendPropertyChanging();
+					this._DATE_3 = value;
+					this.SendPropertyChanged("DATE_3");
+					this.OnDATE_3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LICN", DbType="NVarChar(255)")]
+		public string LICN
+		{
+			get
+			{
+				return this._LICN;
+			}
+			set
+			{
+				if ((this._LICN != value))
+				{
+					this.OnLICNChanging(value);
+					this.SendPropertyChanging();
+					this._LICN = value;
+					this.SendPropertyChanged("LICN");
+					this.OnLICNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VID_MP", DbType="NVarChar(255)")]
+		public string VID_MP
+		{
+			get
+			{
+				return this._VID_MP;
+			}
+			set
+			{
+				if ((this._VID_MP != value))
+				{
+					this.OnVID_MPChanging(value);
+					this.SendPropertyChanging();
+					this._VID_MP = value;
+					this.SendPropertyChanged("VID_MP");
+					this.OnVID_MPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USL_MP", DbType="Int")]
+		public System.Nullable<int> USL_MP
+		{
+			get
+			{
+				return this._USL_MP;
+			}
+			set
+			{
+				if ((this._USL_MP != value))
+				{
+					this.OnUSL_MPChanging(value);
+					this.SendPropertyChanging();
+					this._USL_MP = value;
+					this.SendPropertyChanged("USL_MP");
+					this.OnUSL_MPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROFIL", DbType="VarChar(500)")]
+		public string PROFIL
+		{
+			get
+			{
+				return this._PROFIL;
+			}
+			set
+			{
+				if ((this._PROFIL != value))
+				{
+					this.OnPROFILChanging(value);
+					this.SendPropertyChanging();
+					this._PROFIL = value;
+					this.SendPropertyChanged("PROFIL");
+					this.OnPROFILChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.V018")]
+	public partial class V018
+	{
+		
+		private string _IDHVID;
+		
+		private string _HVIDNAME;
+		
+		private System.Nullable<System.DateTime> _DATEBEG;
+		
+		private System.Nullable<System.DateTime> _DATEEND;
+		
+		private string _NameWithID;
+		
+		public V018()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDHVID", DbType="NVarChar(12) NOT NULL", CanBeNull=false)]
+		public string IDHVID
+		{
+			get
+			{
+				return this._IDHVID;
+			}
+			set
+			{
+				if ((this._IDHVID != value))
+				{
+					this._IDHVID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HVIDNAME", DbType="NVarChar(1000)")]
+		public string HVIDNAME
+		{
+			get
+			{
+				return this._HVIDNAME;
+			}
+			set
+			{
+				if ((this._HVIDNAME != value))
+				{
+					this._HVIDNAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEBEG", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATEBEG
+		{
+			get
+			{
+				return this._DATEBEG;
+			}
+			set
+			{
+				if ((this._DATEBEG != value))
+				{
+					this._DATEBEG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEEND", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATEEND
+		{
+			get
+			{
+				return this._DATEEND;
+			}
+			set
+			{
+				if ((this._DATEEND != value))
+				{
+					this._DATEEND = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameWithID", AutoSync=AutoSync.Always, DbType="NVarChar(1016)", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public string NameWithID
+		{
+			get
+			{
+				return this._NameWithID;
+			}
+			set
+			{
+				if ((this._NameWithID != value))
+				{
+					this._NameWithID = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.V019")]
+	public partial class V019
+	{
+		
+		private int _IDHM;
+		
+		private string _HMNAME;
+		
+		private string _DIAG;
+		
+		private string _HVID;
+		
+		private System.Nullable<System.DateTime> _DATEBEG;
+		
+		private System.Nullable<System.DateTime> _DATEEND;
+		
+		private string _NameWithID;
+		
+		private System.Nullable<int> _HGR;
+		
+		private string _HMODP;
+		
+		private System.Nullable<int> _IDMODP;
+		
+		public V019()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDHM", DbType="Int NOT NULL")]
+		public int IDHM
+		{
+			get
+			{
+				return this._IDHM;
+			}
+			set
+			{
+				if ((this._IDHM != value))
+				{
+					this._IDHM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HMNAME", DbType="NVarChar(1000)")]
+		public string HMNAME
+		{
+			get
+			{
+				return this._HMNAME;
+			}
+			set
+			{
+				if ((this._HMNAME != value))
+				{
+					this._HMNAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIAG", DbType="VarChar(4000)")]
+		public string DIAG
+		{
+			get
+			{
+				return this._DIAG;
+			}
+			set
+			{
+				if ((this._DIAG != value))
+				{
+					this._DIAG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HVID", DbType="NVarChar(12)")]
+		public string HVID
+		{
+			get
+			{
+				return this._HVID;
+			}
+			set
+			{
+				if ((this._HVID != value))
+				{
+					this._HVID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEBEG", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATEBEG
+		{
+			get
+			{
+				return this._DATEBEG;
+			}
+			set
+			{
+				if ((this._DATEBEG != value))
+				{
+					this._DATEBEG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATEEND", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATEEND
+		{
+			get
+			{
+				return this._DATEEND;
+			}
+			set
+			{
+				if ((this._DATEEND != value))
+				{
+					this._DATEEND = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameWithID", AutoSync=AutoSync.Always, DbType="NVarChar(1005)", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public string NameWithID
+		{
+			get
+			{
+				return this._NameWithID;
+			}
+			set
+			{
+				if ((this._NameWithID != value))
+				{
+					this._NameWithID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HGR", DbType="Int")]
+		public System.Nullable<int> HGR
+		{
+			get
+			{
+				return this._HGR;
+			}
+			set
+			{
+				if ((this._HGR != value))
+				{
+					this._HGR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HMODP", DbType="NVarChar(255)")]
+		public string HMODP
+		{
+			get
+			{
+				return this._HMODP;
+			}
+			set
+			{
+				if ((this._HMODP != value))
+				{
+					this._HMODP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMODP", DbType="Int")]
+		public System.Nullable<int> IDMODP
+		{
+			get
+			{
+				return this._IDMODP;
+			}
+			set
+			{
+				if ((this._IDMODP != value))
+				{
+					this._IDMODP = value;
+				}
+			}
 		}
 	}
 }

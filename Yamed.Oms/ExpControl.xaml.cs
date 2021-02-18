@@ -32,7 +32,7 @@ namespace Yamed.Oms
         public ExpControl()
         {
             InitializeComponent();
-            if (SprClass.Region == "89" || SprClass.Region == "39")
+            if (SprClass.Region == "83" || SprClass.Region == "39")
             { auto_flk.IsVisible = true; }
         }
 
@@ -58,24 +58,101 @@ namespace Yamed.Oms
 
             //}).ContinueWith(lr =>
             //{
-                List<int> sc = new List<int>();
+            List<int> sc = new List<int>();
             var rows = DxHelper.GetSelectedGridRowsSC(EconomyTabOMS1.gridControl);
+            
             if (rows != null)
             {
-                foreach (var row in rows)
+                if (SprClass.Region == "79" && SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
                 {
-                    sc.Add((int)row);
+                    bool? locked = false;
+                    foreach (var row in rows)
+                    {
+                        if ((byte)Reader2List.SelectScalar($@"select lock_status from d3_schet_oms where id = {(int)row}",SprClass.LocalConnectionString) == 0)
+                        {
+                            sc.Add((int)row);
+                        }
+                    }
+                    if (sc.Count==0)
+                    {
+                        foreach (var row in rows)
+                        {
+                            if ((byte)Reader2List.SelectScalar($@"select lock_status from d3_schet_oms where id = {(int)row}", SprClass.LocalConnectionString) != 0)
+                            {
+                                sc.Add((int)row);
+                            }
+                        }
+                        СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                        {
+                            Header = "Реестр счета",
+                            MyControl = new SchetRegisterControl(sc, true),
+                            IsCloseable = "True",
+                            //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                        });
+                    }
+                    else
+                    {
+                        СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                        {
+                            Header = "Реестр счета",
+                            MyControl = new SchetRegisterControl(sc,locked),
+                            IsCloseable = "True",
+                            //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                        });
+
+                        DxHelper.LoadedRows.Clear();
+                    }
+                }
+                else if (SprClass.Region=="79" && SprClass.ProdSett.OrgTypeStatus==OrgType.Tfoms)
+                {
+                    foreach (var row in rows)
+                    {
+                        if ((byte)Reader2List.SelectScalar($@"select lock_status from d3_schet_oms where id = {(int)row}", SprClass.LocalConnectionString) != 0)
+                        {
+                            sc.Add((int)row);
+                        }
+                    }
+                    if (sc.Count == 0)
+                    {
+                        СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                        {
+                            Header = "Реестр счета",
+                            MyControl = new SchetRegisterControl(sc, true),
+                            IsCloseable = "True",
+                            //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                        });
+                    }
+                    else
+                    {
+                        СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                        {
+                            Header = "Реестр счета",
+                            MyControl = new SchetRegisterControl(sc,true),
+                            IsCloseable = "True",
+                            //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                        });
+
+                        DxHelper.LoadedRows.Clear();
+                    }
+                }
+                else if (SprClass.Region!="79" && SprClass.ProdSett.OrgTypeStatus != OrgType.Tfoms)
+                {
+                    foreach (var row in rows)
+                    {
+                       sc.Add((int)row);
+                    }
+                    СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
+                    {
+                        Header = "Реестр счета",
+                        MyControl = new SchetRegisterControl(sc),
+                        IsCloseable = "True",
+                        //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
+                    });
+
+                    DxHelper.LoadedRows.Clear();
                 }
             }
-            СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
-                {
-                    Header = "Реестр счета",
-                    MyControl = new SchetRegisterControl(sc),
-                    IsCloseable = "True",
-                    //TabLocalMenu = new Yamed.Registry.RegistryMenu().MenuElements
-                });
-
-            DxHelper.LoadedRows.Clear();
+            
             //}, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
@@ -700,9 +777,43 @@ namespace Yamed.Oms
 
         private void AutoMek_OnClick(object sender, RoutedEventArgs e)
         {
-
-           var schets = DxHelper.GetSelectedGridRowsM(EconomyTabOMS1.gridControl).ToArray();
-
+            var schets = DxHelper.GetSelectedGridRowsM(EconomyTabOMS1.gridControl).ToArray();
+            List<object> schet = new List<object>();
+            if (SprClass.Region == "79" && SprClass.ProdSett.OrgTypeStatus == OrgType.Tfoms)
+            {
+                foreach (var sc in schets)
+                {
+                    if ((byte)ObjHelper.GetAnonymousValue(sc, "LOCK_STATUS")==0)
+                    {
+                        schet.Add(sc);
+                    }
+                }
+                var window = new DXWindow
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    Content = new AutoMekControl(schet.ToArray()),
+                    Title = "Автоматическая экспертиза",
+                    //SizeToContent = SizeToContent.WidthAndHeight
+                    Width = 900,
+                    Height = 600
+                    //WindowStyle = WindowStyle.None
+                };
+                window.ShowDialog();
+            }
+            else
+            {
+                var window = new DXWindow
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    Content = new AutoMekControl(schets),
+                    Title = "Автоматическая экспертиза",
+                    //SizeToContent = SizeToContent.WidthAndHeight
+                    Width = 900,
+                    Height = 600
+                    //WindowStyle = WindowStyle.None
+                };
+                window.ShowDialog();
+            }
             //СommonСomponents.DxTabControlSource.TabElements.Add(new TabElement()
             //{
             //    Header = "Автоматический МЭК",
@@ -710,16 +821,7 @@ namespace Yamed.Oms
             //    IsCloseable = "True"
             //});
 
-            var window = new DXWindow
-            {
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                Content = new AutoMekControl(schets),
-                Title = "Автоматическая экспертиза",
-                //SizeToContent = SizeToContent.WidthAndHeight
-                Width = 900, Height = 600
-                //WindowStyle = WindowStyle.None
-            };
-            window.ShowDialog();
+            
         }
         private void AutoFlk_OnClick(object sender, RoutedEventArgs e)
         {

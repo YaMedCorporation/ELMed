@@ -4,7 +4,8 @@
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
         x:Class="Yamed.OmsExp.LicSpr">
-    <Grid>
+
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -20,15 +21,14 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Grid.ColumnSpan="2" >
+
                     <TextBlock Text="Медицинская организация"  />
                     <dxe:ComboBoxEdit NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True"  InvalidValueBehavior="AllowLeaveEditor" x:Name="MOBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="mcod" SelectedIndexChanged="MOBox_OnSelectedIndexChanged" />
 
-                    <TextBlock Text="Номер лицензии"  />
+                    <TextBlock Text="Номер лицензии" />
                     <dxe:ComboBoxEdit NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True"  InvalidValueBehavior="AllowLeaveEditor" x:Name="LicBox" ItemsSource="{Binding}" DisplayMember="LICN" ValueMember="ID" SelectedIndexChanged="LicBox_OnSelectedIndexChanged"/>
-
-                    <TextBlock Text="Вид помощи"  />
-                    <dxe:ComboBoxEdit HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" x:Name="typeHelpBox" VerticalAlignment="Top" ItemsSource="{Binding}" SelectedItem="{Binding DataContext.V008, ElementName=sluchGrid}" DisplayMember="NameWithID" ValueMember="Id" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True"  InvalidValueBehavior="AllowLeaveEditor" SelectedIndexChanged="TypeHelpBox_OnSelectedIndexChanged" />
-
+                    <TextBlock Text="Вид помощи" />
+                    <dxe:ComboBoxEdit  HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" x:Name="typeHelpBox" VerticalAlignment="Top" ItemsSource="{Binding}" SelectedItem="{Binding DataContext.V008, ElementName=sluchGrid}" DisplayMember="NameWithID" ValueMember="Id" NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True"  InvalidValueBehavior="AllowLeaveEditor" SelectedIndexChanged="TypeHelpBox_OnSelectedIndexChanged" />
                     <TextBlock Text="Условия оказания помощи"  />
                     <dxe:ComboBoxEdit NullValueButtonPlacement="EditBox" AutoComplete="True" ValidateOnTextInput="False" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True"  InvalidValueBehavior="AllowLeaveEditor" x:Name="conditionHelpBox" ItemsSource="{Binding}" DisplayMember="NameWithID" ValueMember="id" SelectedItem="{Binding DataContext.V006, ElementName=sluchGrid}" SelectedIndexChanged="ConditionHelpBox_OnSelectedIndexChanged"/>
 
